@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Rawgolf Manifesto — Why We Exist | RawGolf</title>
+<meta name="description" content="Golf media became a PR machine afraid to lose its credentials. Rawgolf is the answer: scorecard-honest coverage, ratings that never bend, and a standing promise to the reader.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fairway:#14402A;
+  --fairway-deep:#0B2418;
+  --flag:#E03E2D;
+  --paper:#F3F4F0;
+  --white:#fff;
+  --ink:#101511;
+  --grey:#5B665E;
+  --maxw:1080px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:3px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1240px;margin:0 auto;padding:0 20px}
+.logo{font-weight:900;font-size:26px;letter-spacing:-.04em;text-transform:uppercase}
+.logo .raw{color:var(--flag)}
+.back{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;font-weight:600;border:2px solid var(--ink);
+  padding:8px 16px;transition:background .15s,color .15s;
+}
+.back:hover{background:var(--ink);color:#fff}
+
+/* ============ OPENING DECLARATION ============ */
+.decl{
+  background:var(--ink);color:#fff;
+  border-bottom:3px solid var(--flag);
+  padding:88px 0 72px;position:relative;overflow:hidden;
+}
+.decl::before{
+  content:"P-01";position:absolute;top:-60px;right:-30px;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;
+  font-size:300px;line-height:1;color:rgba(255,255,255,.04);pointer-events:none;
+}
+.doc-id{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:#8b958d;display:flex;gap:18px;flex-wrap:wrap;margin-bottom:28px;
+}
+.doc-id b{color:#fff;font-weight:600}
+.decl h1{
+  font-weight:900;font-size:clamp(44px,8vw,108px);line-height:.92;
+  letter-spacing:-.04em;text-transform:uppercase;max-width:12ch;
+}
+.decl h1 .x{color:var(--flag)}
+.decl .sub{
+  margin-top:30px;font-size:clamp(16px,1.8vw,20px);color:#b9c2bb;max-width:54ch;
+}
+.decl .sub b{color:#fff}
+
+/* ============ THE PROBLEM ============ */
+.problem{padding:80px 0;border-bottom:3px solid var(--ink);background:var(--white)}
+.kick{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;font-weight:600;color:var(--flag);
+  display:flex;align-items:center;gap:12px;margin-bottom:22px;
+}
+.kick::after{content:"";flex:1;height:2px;background:var(--ink);max-width:80px}
+.problem h2,.answer h2{
+  font-weight:900;font-size:clamp(28px,4vw,48px);line-height:1;
+  letter-spacing:-.03em;text-transform:uppercase;margin-bottom:26px;max-width:20ch;
+}
+.problem p,.answer p{font-size:17px;max-width:62ch;margin-bottom:18px}
+.problem p b,.answer p b{font-weight:800}
+.strike-list{margin:30px 0;max-width:62ch}
+.strike-item{
+  display:flex;gap:16px;align-items:baseline;padding:13px 0;
+  border-bottom:1px solid #DADDD4;font-size:16px;
+}
+.strike-item .mono{color:var(--flag);font-weight:600;font-size:13px;min-width:36px}
+.strike-item s{text-decoration-color:var(--flag);text-decoration-thickness:2px;color:var(--grey)}
+
+/* ============ PULL QUOTE ============ */
+.pull{
+  background:var(--flag);color:#fff;border-bottom:3px solid var(--ink);
+  padding:96px 0;text-align:left;position:relative;overflow:hidden;
+}
+.pull blockquote{
+  font-weight:900;font-size:clamp(38px,7vw,92px);line-height:.95;
+  letter-spacing:-.04em;text-transform:uppercase;max-width:14ch;
+}
+.pull blockquote mark{background:var(--ink);color:#fff;padding:0 14px}
+.pull .attr{
+  margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:#FFD9D3;
+}
+
+/* ============ THE ANSWER ============ */
+.answer{padding:80px 0;border-bottom:3px solid var(--ink);background:var(--fairway);color:#fff}
+.answer .kick{color:#9CC9AE}
+.answer .kick::after{background:#9CC9AE}
+.answer p{color:#CFE3D6}
+.answer p b{color:#fff}
+
+/* ============ TENETS ============ */
+.tenets{padding:80px 0;border-bottom:3px solid var(--ink)}
+.tenets-head{margin-bottom:44px}
+.tenets-head h2{
+  font-weight:900;font-size:clamp(30px,4.4vw,54px);letter-spacing:-.03em;
+  text-transform:uppercase;line-height:1;
+}
+.tenets-head p{margin-top:12px;color:var(--grey);font-size:16px;max-width:56ch}
+.tenet{
+  display:grid;grid-template-columns:200px 1fr;gap:32px;
+  border:2px solid var(--ink);background:var(--white);margin-bottom:-2px;
+  transition:background .15s;
+}
+.tenet:hover{background:#FBFBF8}
+.tenet-no{
+  border-right:2px solid var(--ink);padding:30px;
+  display:flex;flex-direction:column;justify-content:space-between;gap:16px;
+  background:var(--paper);
+}
+.tenet-no .big{
+  font-weight:900;font-size:64px;line-height:1;letter-spacing:-.04em;color:var(--flag);
+}
+.tenet-no .tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);font-weight:600}
+.tenet-body{padding:30px 32px 30px 0}
+.tenet-body h3{font-weight:900;font-size:clamp(20px,2.4vw,28px);text-transform:uppercase;letter-spacing:-.02em;line-height:1.1;margin-bottom:12px}
+.tenet-body p{font-size:15.5px;color:var(--grey);max-width:60ch;margin-bottom:10px}
+.tenet-body p b{color:var(--ink);font-weight:800}
+.tenet-body .vow{
+  margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;
+  letter-spacing:.06em;color:var(--ink);font-weight:600;
+  border-left:4px solid var(--flag);padding-left:14px;
+}
+
+/* ============ SIGNATURE ============ */
+.sig{padding:80px 0;background:var(--white);border-bottom:3px solid var(--ink)}
+.sig-box{border:2px solid var(--ink);max-width:640px;margin:0 auto;background:var(--paper)}
+.sig-head{
+  padding:14px 24px;border-bottom:2px solid var(--ink);
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:600;display:flex;justify-content:space-between;
+}
+.sig-head .stamp{border:2px solid var(--flag);color:var(--flag);padding:2px 8px;transform:rotate(-2deg)}
+.sig-body{padding:30px 24px}
+.sig-body p{font-size:15px;margin-bottom:22px}
+.sig-line{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
+  border-top:1px solid #C9CDC2;padding-top:18px;
+}
+.sig-name{font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-.02em}
+.sig-name small{display:block;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:10.5px;color:var(--grey);letter-spacing:.1em;margin-top:4px}
+.sig-date{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--grey)}
+
+/* ============ CTA ============ */
+.m-cta{background:var(--ink);color:#fff;padding:64px 0}
+.m-cta-inner{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.m-cta h2{font-weight:900;font-size:clamp(24px,3.4vw,40px);text-transform:uppercase;letter-spacing:-.03em;line-height:1}
+.m-cta p{color:#8b958d;margin-top:8px;font-size:15px}
+.m-btns{display:flex;gap:14px;flex-wrap:wrap}
+.m-btn{
+  background:var(--flag);color:#fff;font-weight:900;font-size:14px;
+  text-transform:uppercase;letter-spacing:.06em;padding:16px 28px;
+  border:3px solid #fff;box-shadow:6px 6px 0 rgba(255,255,255,.25);
+  transition:transform .12s,box-shadow .12s;display:inline-block;
+}
+.m-btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 rgba(255,255,255,.25)}
+.m-btn.alt{background:transparent}
+
+footer{background:var(--ink);color:#8b958d;padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;border-top:1px solid rgba(255,255,255,.15)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer a:hover{color:#fff}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s,transform .55s}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+@media(max-width:760px){
+  .tenet{grid-template-columns:1fr}
+  .tenet-no{border-right:none;border-bottom:2px solid var(--ink);flex-direction:row;align-items:center;padding:18px 24px}
+  .tenet-no .big{font-size:44px}
+  .tenet-body{padding:24px}
+}
+
+.burger{display:none;background:none;border:2px solid var(--ink);cursor:pointer;padding:8px 10px}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+@media(max-width:760px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--paper);border-bottom:3px solid var(--ink);}
+  .nav-links.open{display:flex}
+  .nav-links a{border-left:none;border-top:1px solid #D7DAD2;padding:14px 20px}
+  .burger{display:block}
+}
+</style>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="logo">Raw<span class="raw">Golf</span></a>
+    <a href="index.html" class="back">← Back to front page</a>
+  </div>
+</header>
+
+<!-- OPENING DECLARATION -->
+<div class="decl">
+  <div class="wrap">
+    <div class="doc-id">
+      <span>DOCUMENT <b>P-01</b></span>
+      <span>THE MANIFESTO</span>
+      <span>STATUS <b>PERMANENT</b></span>
+    </div>
+    <h1>Golf deserves<br>better than<br>its <span class="x">coverage.</span></h1>
+    <p class="sub">This is the most honest sport on earth. You sign your own card. You call penalties on yourself. You shoot what you shoot. <b>So why does the media covering it read like it was written by a sponsor's legal team?</b></p>
+  </div>
+</div>
+
+<!-- THE PROBLEM -->
+<section class="problem">
+  <div class="wrap">
+    <div class="kick">Part I — The Problem</div>
+    <h2 class="reveal">Golf media became a PR machine.</h2>
+    <p class="reveal">Here's how it works, and everyone inside knows it: access is the currency. The interview, the locker-room pass, the seat in the press tent — all of it can be revoked. So the coverage gets careful. Then it gets soft. Then it gets <b>useless</b>.</p>
+    <p class="reveal">A player tanks a Sunday and it's "a learning experience." A tour tears itself in half over money and it's "an evolving landscape." A swing falls apart on camera and nobody in the booth will say the word <b>yips</b>. The fan can see it. The data shows it. The coverage won't print it.</p>
+    <p class="reveal">That's not journalism. That's hospitality.</p>
+    <div class="strike-list reveal">
+      <div class="strike-item"><span class="mono">X-1</span><span><s>"He'll be disappointed with that one."</s>&nbsp; He made triple from the middle of the fairway.</span></div>
+      <div class="strike-item"><span class="mono">X-2</span><span><s>"Both sides remain optimistic."</s>&nbsp; They've hated each other for three years and it's about money.</span></div>
+      <div class="strike-item"><span class="mono">X-3</span><span><s>"He's working on some things."</s>&nbsp; He's lost 4 mph of ball speed and his coach.</span></div>
+      <div class="strike-item"><span class="mono">X-4</span><span><s>"A future star to watch."</s>&nbsp; His equipment deal was announced Tuesday.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<div class="pull">
+  <div class="wrap">
+    <blockquote class="reveal">They protect their credentials. <mark>We protect the card.</mark></blockquote>
+    <div class="attr reveal">THE RAWGOLF MANIFESTO · LINE 1</div>
+  </div>
+</div>
+
+<!-- THE ANSWER -->
+<section class="answer">
+  <div class="wrap">
+    <div class="kick">Part II — The Answer</div>
+    <h2 class="reveal">We cover golf like golf keeps score.</h2>
+    <p class="reveal">Rawgolf was built on one observation: <b>the scorecard is the only piece of golf media that has never lied.</b> It doesn't care about your sponsors, your story arc, or your media training. It records what happened, and it's final.</p>
+    <p class="reveal">So that's the standard. Every story, every rating, every breakdown on this site is held to the scorecard's rules: earned numbers, no spin, signed and attested. We don't have press credentials to protect, because we never asked for any. <b>Our access is the same as yours — the broadcast, the shot data, the sources who talk because they trust us — and it turns out that's enough to tell the truth.</b></p>
+  </div>
+</section>
+
+<!-- TENETS -->
+<section class="tenets">
+  <div class="wrap">
+    <div class="tenets-head reveal">
+      <div class="kick">Part III — The Promises</div>
+      <h2>Four tenets.<br>Signed like a card.</h2>
+      <p>These aren't values on a slide deck. They're rules we can be caught breaking — and the Corrections Log is where you'd catch us.</p>
+    </div>
+
+    <div class="tenet reveal">
+      <div class="tenet-no"><span class="big">T1</span><span class="tag">The Number Rule</span></div>
+      <div class="tenet-body">
+        <h3>The number is the story.</h3>
+        <p>Every claim we publish traces back to something measurable: strokes gained, proximity, scoring under pressure, dollars and contracts. When we speculate, we label it speculation. When we're guessing, we say "we're guessing." <b>Narrative serves the data — never the other way around.</b></p>
+        <div class="vow">VOW: IF WE CAN'T SOURCE IT OR MEASURE IT, WE DON'T PRINT IT.</div>
+      </div>
+    </div>
+
+    <div class="tenet reveal">
+      <div class="tenet-no"><span class="big">T2</span><span class="tag">The Access Rule</span></div>
+      <div class="tenet-body">
+        <h3>We owe access nothing.</h3>
+        <p>No rating has ever been softened to keep an interview. No story has ever been spiked to stay friendly with a tour. If being honest about a player means that player never talks to us — <b>that's a price, and we've already paid it.</b> The reader is the only relationship we protect.</p>
+        <div class="vow">VOW: NO COVERAGE IS EVER TRADED FOR ACCESS. SEE RULE 4.2, DOCUMENT RG-001.</div>
+      </div>
+    </div>
+
+    <div class="tenet reveal">
+      <div class="tenet-no"><span class="big">T3</span><span class="tag">The Lock Rule</span></div>
+      <div class="tenet-body">
+        <h3>What we publish stays published.</h3>
+        <p>Ratings lock at publication and never quietly change. Mistakes get corrected in the open — original visible, crossed out, dated, with credit to whoever caught it. <b>We'd rather look wrong in public than be wrong in private.</b> Memory-holing is the coward's edit.</p>
+        <div class="vow">VOW: EVERY ERROR LIVES FOREVER IN THE CORRECTIONS LOG. NEWEST FIRST.</div>
+      </div>
+    </div>
+
+    <div class="tenet reveal">
+      <div class="tenet-no"><span class="big">T4</span><span class="tag">The Fan Rule</span></div>
+      <div class="tenet-body">
+        <h3>Written by obsessives, for obsessives.</h3>
+        <p>We assume you know what strokes gained means. We assume you've blown a Sunday lead of your own. We will never explain what a birdie is, never pad a story to hit a word count, and never write a headline the article can't cash. <b>Your time is the green fee. We intend to be worth it.</b></p>
+        <div class="vow">VOW: NO FLUFF, NO FILLER, NO INSULTING YOUR GOLF IQ.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE -->
+<section class="sig">
+  <div class="wrap">
+    <div class="sig-box reveal">
+      <div class="sig-head">
+        <span>Attestation · Document P-01</span>
+        <span class="stamp">SIGNED</span>
+      </div>
+      <div class="sig-body">
+        <p>In golf, when you sign your scorecard, you're attesting that every number on it is true — and signing a wrong card means disqualification. We hold this page to the same rule. This manifesto is our signed card. Catch us breaking it, and say so loudly.</p>
+        <div class="sig-line">
+          <div class="sig-name">Rawgolf<small>EDITORS & RATERS, RAWGOLF.COM</small></div>
+          <div class="sig-date">ATTESTED · 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="m-cta">
+  <div class="wrap m-cta-inner">
+    <div>
+      <h2>Words are cheap. Check the math.</h2>
+      <p>The Rating Manual shows exactly how every number on this site is built.</p>
+    </div>
+    <div class="m-btns">
+      <a href="ratings-manual.html" class="m-btn">Read the Rating Manual</a>
+      <a href="index.html#ratings" class="m-btn alt">This Week's Ratings</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 RAWGOLF.COM — DOCUMENT P-01 · PERMANENT</span>
+    <a href="index.html">← FRONT PAGE</a>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+<script>
+// Mobile nav
+const burger=document.getElementById('burger'),links=document.getElementById('navLinks');
+if(burger && links) {
+  burger.addEventListener('click',()=>{
+    const open=links.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open);
+  });
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+}
+</script>
+
+</body>
+</html>

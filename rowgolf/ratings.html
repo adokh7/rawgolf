@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Player Ratings | RawGolf</title>
+<meta name="description" content="Data-driven Raw Player Ratings from RawGolf. Strokes Gained, weighted weekly, no narratives.">
+<link rel="canonical" href="https://rawgolf.com/ratings">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RawGolf">
+<meta property="og:title" content="Player Ratings | RawGolf">
+<meta property="og:description" content="Data-driven Raw Player Ratings from RawGolf. Strokes Gained, weighted weekly, no narratives.">
+<meta property="og:url" content="https://rawgolf.com/ratings">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fairway:#14402A;--fairway-deep:#0B2418;--flag:#E03E2D;
+  --paper:#F3F4F0;--white:#fff;--ink:#101511;--grey:#5B665E;--maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+/* HEADER */
+.site-header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:3px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.logo{font-weight:900;font-size:26px;letter-spacing:-.04em;text-transform:uppercase}
+.logo .raw{color:var(--flag)}
+.nav-links{display:flex;gap:0}
+.nav-links a{font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;padding:8px 14px;transition:background .15s,color .15s}
+.nav-links a:hover{background:var(--ink);color:#fff}
+.nav-links a.active{background:var(--ink);color:#fff}
+.burger{display:none;background:none;border:2px solid var(--ink);cursor:pointer;padding:8px 10px}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+@media(max-width:760px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--paper);border-bottom:3px solid var(--ink);}
+  .nav-links.open{display:flex}
+  .nav-links a{border-left:none;border-top:1px solid #D7DAD2;padding:14px 20px}
+  .burger{display:block}
+}
+
+/* HUB PAGE */
+.hub-hero{
+  background:var(--ink);color:#fff;border-bottom:4px solid var(--flag);
+  padding:72px 0 64px;
+}
+.hub-hero .eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--flag);font-weight:600;margin-bottom:18px;
+}
+.hub-hero h1{
+  font-weight:900;font-size:clamp(40px,6vw,80px);line-height:.95;
+  letter-spacing:-.04em;text-transform:uppercase;margin-bottom:20px;
+}
+.hub-hero p{font-size:18px;color:#9CC9AE;max-width:52ch;line-height:1.6}
+
+.hub-body{padding:64px 0}
+.coming-soon-box{
+  border:2px solid var(--ink);background:var(--white);padding:48px 40px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:18px;
+}
+.coming-soon-box .cs-label{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--flag);font-weight:600;
+}
+.coming-soon-box h2{
+  font-weight:900;font-size:clamp(24px,3vw,38px);text-transform:uppercase;
+  letter-spacing:-.03em;line-height:1.1;
+}
+.coming-soon-box p{font-size:16px;color:var(--grey);max-width:58ch;line-height:1.7}
+.cs-back{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;font-weight:700;color:var(--flag);
+  border-bottom:2px solid var(--flag);padding-bottom:2px;
+  transition:color .15s;
+}
+.cs-back:hover{color:var(--ink)}
+
+/* FOOTER */
+.site-footer{background:var(--ink);color:#8b958d;padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em}
+.site-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.site-footer a:hover{color:#fff}
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav">
+    <a href="./index.html" class="logo">Raw<span class="raw">Golf</span></a>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="./news.html">Latest News</a>
+      <a href="./ratings.html" class="active">Player Ratings</a>
+      <a href="./tournaments.html">Tournaments</a>
+      <a href="./analysis.html">Swing Analysis</a>
+      <a href="./vault.html">The Vault</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="hub-hero">
+  <div class="wrap">
+    <div class="eyebrow">RAWGOLF · SECTION 03</div>
+    <h1>Player Ratings</h1>
+    <p>Every rating is locked before publication and never edited after. You scored what you scored.</p>
+  </div>
+</div>
+
+<div class="hub-body">
+  <div class="wrap">
+    <div class="coming-soon-box">
+      <div class="cs-label">Coming Soon</div>
+      <h2>Week 24 Ratings Board</h2>
+      <p>The full interactive ratings board is in development. In the meantime, the current week's top ratings appear in the hero panel on the front page.</p>
+      <a href="./index.html" class="cs-back">← Back to Front Page</a>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 RAWGOLF.COM — ALL RATINGS FINAL</span>
+    <nav aria-label="Footer navigation" style="display:flex;gap:20px">
+      <a href="./manifesto.html">MANIFESTO</a>
+      <a href="./ratings-manual.html">HOW RATINGS WORK</a>
+      <a href="./corrections.html">CORRECTIONS</a>
+      <a href="./privacy.html">PRIVACY</a>
+      <a href="./index.html">← FRONT PAGE</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+const burger=document.getElementById('burger'),links=document.getElementById('navLinks');
+if(burger&&links){
+  burger.addEventListener('click',()=>{const open=links.classList.toggle('open');burger.setAttribute('aria-expanded',open)});
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+}
+</script>
+</body>
+</html>

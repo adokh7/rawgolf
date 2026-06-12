@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RawGolf — Golf News, Player Ratings & Tournament Analysis. Unfiltered.</title>
+  <meta name="description"
+    content="RawGolf covers golf the way it deserves: honest news, data-driven player ratings, tactical tournament analysis and golf culture. No fluff, no PR rewrites.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --fairway: #14402A;
+      --fairway-deep: #0B2418;
+      --flag: #E03E2D;
+      --white: #FFFFFF;
+      --paper: #F3F4F0;
+      --ink: #101511;
+      --grey: #5B665E;
+      --line: #101511;
+      --maxw: 1240px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Archivo', system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', monospace
+    }
+
+    /* ============ TICKER ============ */
+    .ticker {
+      background: var(--ink);
+      color: #fff;
+      overflow: hidden;
+      border-bottom: 3px solid var(--flag);
+      display: flex;
+      align-items: stretch;
+    }
+
+    .ticker-label {
+      background: var(--flag);
+      color: #fff;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      padding: 9px 14px;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      z-index: 2;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #fff;
+      animation: blink 1.2s infinite
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: .25
+      }
+    }
+
+    .ticker-view {
+      overflow: hidden;
+      flex: 1
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 56px;
+      white-space: nowrap;
+      padding: 9px 0;
+      width: max-content;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: .03em;
+      animation: tick 36s linear infinite;
+    }
+
+    .ticker-track b {
+      color: #fff;
+      font-weight: 600
+    }
+
+    .ticker-track .pos {
+      color: #6FDB9A
+    }
+
+    .ticker-track .neg {
+      color: #FF9486
+    }
+
+    @keyframes tick {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      .ticker-track {
+        animation: none
+      }
+
+      .dot {
+        animation: none
+      }
+    }
+
+    /* ============ HEADER ============ */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: var(--paper);
+      border-bottom: 3px solid var(--ink);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px
+    }
+
+    .logo {
+      font-weight: 900;
+      font-size: 28px;
+      letter-spacing: -.04em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+    }
+
+    .logo .raw {
+      color: var(--flag)
+    }
+
+    .logo .tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: .16em;
+      font-weight: 500;
+      color: var(--grey);
+      margin-left: 10px;
+      align-self: center;
+      border: 1px solid var(--grey);
+      padding: 2px 6px;
+      display: none;
+    }
+
+    @media(min-width:760px) {
+      .logo .tag {
+        display: inline-block
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0
+    }
+
+    .nav-links a {
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      padding: 8px 16px;
+      border-left: 1px solid #D7DAD2;
+      transition: background .15s, color .15s;
+    }
+
+    .nav-links a:first-child {
+      border-left: none
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: var(--ink);
+      color: #fff
+    }
+
+    .nav-links a.hot {
+      background: var(--flag);
+      color: #fff;
+      margin-left: 16px;
+      border: none
+    }
+
+    .nav-links a.hot:hover {
+      background: var(--ink)
+    }
+
+    .burger {
+      display: none;
+      background: none;
+      border: 2px solid var(--ink);
+      cursor: pointer;
+      padding: 8px 10px
+    }
+
+    .burger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--ink);
+      margin: 4px 0
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      border-bottom: 3px solid var(--ink);
+      background: var(--white)
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      min-height: 520px
+    }
+
+    .hero-main {
+      background: var(--fairway);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      padding: 56px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border-right: 3px solid var(--ink);
+    }
+
+    .hero-main::before {
+      content: "01";
+      position: absolute;
+      top: -40px;
+      right: -20px;
+      font-weight: 900;
+      font-size: 340px;
+      line-height: 1;
+      color: rgba(255, 255, 255, .05);
+      font-family: 'IBM Plex Mono', monospace;
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: #9CC9AE;
+    }
+
+    .eyebrow .chip {
+      background: var(--flag);
+      color: #fff;
+      padding: 3px 10px;
+      font-weight: 600
+    }
+
+    .hero-main h1 {
+      font-weight: 900;
+      font-size: clamp(34px, 4.6vw, 62px);
+      line-height: .98;
+      letter-spacing: -.03em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      max-width: 14ch;
+    }
+
+    .hero-main h1 mark {
+      background: var(--flag);
+      color: #fff;
+      padding: 0 8px
+    }
+
+    .hero-main p {
+      color: #CFE3D6;
+      font-size: 16px;
+      max-width: 52ch;
+      margin-bottom: 26px
+    }
+
+    .hero-meta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      letter-spacing: .06em;
+      color: #9CC9AE;
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta b {
+      color: #fff;
+      font-weight: 600
+    }
+
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--flag);
+      color: #fff;
+      font-weight: 900;
+      font-size: 15px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border: 3px solid var(--ink);
+      box-shadow: 6px 6px 0 var(--ink);
+      transition: transform .12s, box-shadow .12s;
+    }
+
+    .cta-btn:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 3px 3px 0 var(--ink)
+    }
+
+    .cta-btn:active {
+      transform: translate(6px, 6px);
+      box-shadow: 0 0 0 var(--ink)
+    }
+
+    .cta-link {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #CFE3D6;
+      border-bottom: 2px solid var(--flag);
+      padding-bottom: 2px;
+    }
+
+    .cta-link:hover {
+      color: #fff
+    }
+
+    /* player rating card */
+    .hero-side {
+      display: flex;
+      flex-direction: column
+    }
+
+    .rating-card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: var(--white)
+    }
+
+    .rc-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 22px;
+      border-bottom: 2px solid var(--ink);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .rc-head .stamp {
+      border: 2px solid var(--flag);
+      color: var(--flag);
+      font-weight: 600;
+      padding: 3px 9px;
+      transform: rotate(-2deg);
+    }
+
+    .rc-player {
+      padding: 22px;
+      border-bottom: 2px solid var(--ink)
+    }
+
+    .rc-player .nm {
+      font-weight: 900;
+      font-size: 26px;
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+      line-height: 1
+    }
+
+    .rc-player .ev {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      color: var(--grey);
+      margin-top: 6px
+    }
+
+    .rc-rows {
+      flex: 1;
+      display: flex;
+      flex-direction: column
+    }
+
+    .rc-row {
+      display: grid;
+      grid-template-columns: 1fr 90px 64px;
+      align-items: center;
+      padding: 12px 22px;
+      border-bottom: 1px solid #DADDD4;
+      gap: 14px;
+    }
+
+    .rc-row .lbl {
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .04em
+    }
+
+    .bar {
+      height: 8px;
+      background: #E4E7DF;
+      position: relative
+    }
+
+    .bar i {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      background: var(--fairway);
+      width: 0;
+      transition: width 1s cubic-bezier(.2, .7, .2, 1)
+    }
+
+    .bar.low i {
+      background: var(--flag)
+    }
+
+    .rc-row .num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 600;
+      font-size: 16px;
+      text-align: right
+    }
+
+    .rc-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--ink);
+      color: #fff;
+      padding: 18px 22px;
+      margin-top: auto;
+    }
+
+    .rc-total .lbl {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #9aa59d
+    }
+
+    .rc-total .big {
+      font-weight: 900;
+      font-size: 44px;
+      line-height: 1;
+      letter-spacing: -.02em
+    }
+
+    .rc-total .big sup {
+      font-size: 14px;
+      color: var(--flag);
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 600;
+      letter-spacing: 0
+    }
+
+    /* ============ SECTION HEADS ============ */
+    section {
+      padding: 64px 0
+    }
+
+    .sec-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+      border-bottom: 3px solid var(--ink);
+      padding-bottom: 14px;
+      margin-bottom: 32px;
+    }
+
+    .sec-head h2 {
+      font-weight: 900;
+      font-size: clamp(26px, 3.2vw, 40px);
+      letter-spacing: -.03em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .sec-head h2 .idx {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .45em;
+      color: var(--flag);
+      vertical-align: top;
+      font-weight: 600;
+      margin-right: 8px
+    }
+
+    .sec-head a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      white-space: nowrap;
+      border-bottom: 2px solid var(--flag);
+      padding-bottom: 2px;
+    }
+
+    .sec-head a:hover {
+      color: var(--flag)
+    }
+
+    /* ============ NEWS GRID ============ */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 2px solid var(--ink)
+    }
+
+    .news {
+      background: var(--white);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      border-right: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      transition: background .15s;
+      position: relative;
+    }
+
+    .news:nth-child(3n) {
+      border-right: none
+    }
+
+    .news:nth-last-child(-n+3) {
+      border-bottom: none
+    }
+
+    .news:hover {
+      background: #FBFBF8
+    }
+
+    .news:hover h3 {
+      text-decoration: underline;
+      text-decoration-color: var(--flag);
+      text-decoration-thickness: 3px;
+      text-underline-offset: 4px
+    }
+
+    .news .cat {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--flag);
+      margin-bottom: 12px;
+    }
+
+    .news h3 {
+      font-weight: 800;
+      font-size: 19px;
+      line-height: 1.22;
+      letter-spacing: -.015em;
+      margin-bottom: 10px
+    }
+
+    .news p {
+      font-size: 14px;
+      color: var(--grey);
+      flex: 1
+    }
+
+    .news .meta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--grey);
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px solid #DADDD4;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .news.lead {
+      grid-column: span 2;
+      background: var(--fairway);
+      color: #fff
+    }
+
+    .news.lead p {
+      color: #CFE3D6
+    }
+
+    .news.lead .meta {
+      color: #9CC9AE;
+      border-top-color: rgba(255, 255, 255, .18)
+    }
+
+    .news.lead h3 {
+      font-size: 30px;
+      max-width: 22ch
+    }
+
+    .news.lead:hover {
+      background: var(--fairway-deep)
+    }
+
+    /* ============ RATINGS STRIP ============ */
+    .ratings {
+      background: var(--ink);
+      color: #fff;
+      border-top: 3px solid var(--flag);
+      border-bottom: 3px solid var(--flag)
+    }
+
+    .ratings .sec-head {
+      border-bottom-color: rgba(255, 255, 255, .25)
+    }
+
+    .r-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid rgba(255, 255, 255, .2)
+    }
+
+    .r-card {
+      padding: 24px;
+      border-right: 1px solid rgba(255, 255, 255, .2);
+      transition: background .15s;
+    }
+
+    .r-card:last-child {
+      border-right: none
+    }
+
+    .r-card:hover {
+      background: rgba(255, 255, 255, .05)
+    }
+
+    .r-card .rank {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: #8b958d;
+      letter-spacing: .14em
+    }
+
+    .r-card .nm {
+      font-weight: 900;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: -.02em;
+      margin: 6px 0 2px
+    }
+
+    .r-card .ev {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: #8b958d
+    }
+
+    .r-card .sc {
+      font-weight: 900;
+      font-size: 40px;
+      margin-top: 14px;
+      line-height: 1;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .r-card .delta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      font-weight: 600
+    }
+
+    .delta.up {
+      color: #6FDB9A
+    }
+
+    .delta.dn {
+      color: #FF9486
+    }
+
+    /* ============ TWO-COL: VAULT + ANALYSIS ============ */
+    .split {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 48px
+    }
+
+    .story-list {
+      display: flex;
+      flex-direction: column
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      gap: 18px;
+      align-items: baseline;
+      padding: 18px 0;
+      border-bottom: 1px solid #C9CDC2;
+    }
+
+    .story .n {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--flag)
+    }
+
+    .story h3 {
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: -.01em;
+      line-height: 1.3
+    }
+
+    .story:hover h3 {
+      text-decoration: underline;
+      text-decoration-color: var(--flag);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px
+    }
+
+    .story .d {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--grey);
+      white-space: nowrap
+    }
+
+    .vault-box {
+      border: 2px solid var(--ink);
+      background: var(--white);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      height: fit-content;
+    }
+
+    .vault-box .eyebrow {
+      color: var(--flag)
+    }
+
+    .vault-box h3 {
+      font-weight: 900;
+      font-size: 24px;
+      text-transform: uppercase;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      margin-bottom: 8px
+    }
+
+    .vault-box p {
+      font-size: 14px;
+      color: var(--grey);
+      margin-bottom: 16px
+    }
+
+    .vault-item {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      padding: 10px 0;
+      border-top: 1px solid #DADDD4;
+      display: flex;
+      gap: 14px;
+    }
+
+    .vault-item b {
+      color: var(--flag);
+      font-weight: 600;
+      min-width: 42px
+    }
+
+    .vault-item:hover span {
+      text-decoration: underline
+    }
+
+    /* ============ NEWSLETTER ============ */
+    .nl {
+      background: var(--flag);
+      color: #fff;
+      border-top: 3px solid var(--ink)
+    }
+
+    .nl-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center
+    }
+
+    .nl h2 {
+      font-weight: 900;
+      font-size: clamp(26px, 3.4vw, 42px);
+      text-transform: uppercase;
+      letter-spacing: -.03em;
+      line-height: 1
+    }
+
+    .nl p {
+      margin-top: 8px;
+      color: #FFD9D3;
+      font-size: 15px;
+      max-width: 46ch
+    }
+
+    .nl-form {
+      display: flex;
+      gap: 0
+    }
+
+    .nl-form input {
+      border: 3px solid var(--ink);
+      border-right: none;
+      padding: 14px 18px;
+      font-size: 14px;
+      font-family: 'IBM Plex Mono', monospace;
+      min-width: 260px;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .nl-form input:focus {
+      outline: 3px solid #fff;
+      outline-offset: -3px
+    }
+
+    .nl-form button {
+      background: var(--ink);
+      color: #fff;
+      border: 3px solid var(--ink);
+      font-weight: 800;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      padding: 14px 24px;
+      cursor: pointer;
+      transition: background .15s;
+    }
+
+    .nl-form button:hover {
+      background: var(--fairway-deep)
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: var(--ink);
+      color: #8b958d;
+      padding: 52px 0 28px
+    }
+
+    .foot-core {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border: 1px solid rgba(255, 255, 255, .25);
+      margin-bottom: 44px;
+    }
+
+    .fc-link {
+      padding: 20px 18px;
+      border-right: 1px solid rgba(255, 255, 255, .25);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: background .15s;
+    }
+
+    .fc-link:last-child {
+      border-right: none
+    }
+
+    .fc-link:hover {
+      background: var(--flag);
+      color: #fff
+    }
+
+    .fc-link:hover .fc-n,
+    .fc-link:hover .fc-d {
+      color: #FFD9D3
+    }
+
+    .fc-n {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .16em;
+      color: var(--flag);
+      font-weight: 600
+    }
+
+    .fc-link b {
+      color: #fff;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: .02em
+    }
+
+    .fc-d {
+      font-size: 12px;
+      line-height: 1.45;
+      color: #8b958d
+    }
+
+    @media(max-width:1020px) {
+      .foot-core {
+        grid-template-columns: 1fr 1fr 1fr
+      }
+
+      .fc-link:nth-child(3n) {
+        border-right: none
+      }
+
+      .fc-link {
+        border-bottom: 1px solid rgba(255, 255, 255, .25)
+      }
+    }
+
+    @media(max-width:680px) {
+      .foot-core {
+        grid-template-columns: 1fr
+      }
+
+      .fc-link {
+        border-right: none
+      }
+    }
+
+    .foot-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 36px;
+      margin-bottom: 40px
+    }
+
+    .foot-grid h4 {
+      color: #fff;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .foot-grid a {
+      display: block;
+      font-size: 14px;
+      padding: 4px 0;
+      font-weight: 600
+    }
+
+    .foot-grid a:hover {
+      color: #fff
+    }
+
+    .f-logo {
+      font-weight: 900;
+      font-size: 26px;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: -.03em
+    }
+
+    .f-logo .raw {
+      color: var(--flag)
+    }
+
+    .foot-brand p {
+      font-size: 13.5px;
+      max-width: 34ch;
+      margin-top: 10px
+    }
+
+    .foot-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .15);
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .06em;
+    }
+
+    /* ============ REVEAL ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .55s, transform .55s
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none
+      }
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media(max-width:1020px) {
+      .hero-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero-main {
+        border-right: none;
+        border-bottom: 3px solid var(--ink);
+        min-height: 420px
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .news:nth-child(3n) {
+        border-right: 2px solid var(--ink)
+      }
+
+      .news:nth-child(2n) {
+        border-right: none
+      }
+
+      .news.lead {
+        grid-column: span 2
+      }
+
+      .r-strip {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .r-card:nth-child(2) {
+        border-right: none
+      }
+
+      .r-card:nth-child(-n+2) {
+        border-bottom: 1px solid rgba(255, 255, 255, .2)
+      }
+
+      .split {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:680px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        background: var(--paper);
+        border-bottom: 3px solid var(--ink);
+      }
+
+      .nav-links.open {
+        display: flex
+      }
+
+      .nav-links a {
+        border-left: none;
+        border-top: 1px solid #D7DAD2;
+        padding: 14px 20px
+      }
+
+      .nav-links a.hot {
+        margin: 0
+      }
+
+      .burger {
+        display: block
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr
+      }
+
+      .news,
+      .news:nth-child(3n),
+      .news:nth-child(2n) {
+        border-right: none
+      }
+
+      .news {
+        border-bottom: 2px solid var(--ink)
+      }
+
+      .news:last-child {
+        border-bottom: none
+      }
+
+      .news.lead {
+        grid-column: span 1
+      }
+
+      .news.lead h3 {
+        font-size: 24px
+      }
+
+      .nl-inner {
+        grid-template-columns: 1fr
+      }
+
+      .nl-form {
+        flex-direction: column
+      }
+
+      .nl-form input {
+        border-right: 3px solid var(--ink);
+        border-bottom: none;
+        min-width: 0
+      }
+
+      .foot-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .hero-main {
+        padding: 40px 24px
+      }
+
+      .story {
+        grid-template-columns: 42px 1fr;
+        grid-template-rows: auto auto
+      }
+
+      .story .d {
+        grid-column: 2
+      }
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+  <!-- ====== LIVE TICKER ====== -->
+  <div class="ticker" aria-label="Live golf updates">
+    <div class="ticker-label"><span class="dot"></span>LIVE</div>
+    <div class="ticker-view">
+      <div class="ticker-track">
+        <span><b>US OPEN R2</b> · Scheffler <span class="pos">−9</span> thru 14</span>
+        <span>Rahm <span class="pos">−7</span> · bogey-free 66</span>
+        <span>McIlroy <span class="neg">+1</span> · cut line watch</span>
+        <span><b>BREAKING</b> · LIV–PGA framework vote moved to Monday</span>
+        <span>Åberg WD (wrist) · MRI scheduled</span>
+        <span><b>RAW RATING</b> · Scheffler week 24: 9.3</span>
+        <span><b>US OPEN R2</b> · Scheffler <span class="pos">−9</span> thru 14</span>
+        <span>Rahm <span class="pos">−7</span> · bogey-free 66</span>
+        <span>McIlroy <span class="neg">+1</span> · cut line watch</span>
+        <span><b>BREAKING</b> · LIV–PGA framework vote moved to Monday</span>
+        <span>Åberg WD (wrist) · MRI scheduled</span>
+        <span><b>RAW RATING</b> · Scheffler week 24: 9.3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== HEADER ====== -->
+  <header>
+    <div class="wrap nav">
+      <a href="./index.html" class="logo">Raw<span class="raw">Golf</span><span class="tag">NO PR REWRITES</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="./news.html">Latest News</a>
+        <a href="./ratings.html">Player Ratings</a>
+        <a href="./tournaments.html">Tournaments</a>
+        <a href="./analysis.html">Swing Analysis</a>
+        <a href="./vault.html">The Vault</a>
+        <a href="./index.html#newsletter" class="hot">The Card</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ====== HERO ====== -->
+  <div class="hero">
+    <div class="hero-grid">
+      <article class="hero-main">
+        <div class="eyebrow"><span class="chip">RAWGOLF</span> The most honest game deserves honest coverage</div>
+        <h1>You shot <mark>what you shot.</mark></h1>
+        <p>Golf is the only sport that can't be spun. We cover it the same way — every number earned, every rating
+          final.</p>
+        <div class="hero-cta-row">
+          <a href="./ratings.html" class="cta-btn">SEE THE RATINGS</a>
+          <a href="./news.html" class="cta-link">Latest stories ↓</a>
+        </div>
+        <div class="hero-meta" style="margin-top:28px">
+          <span>RATINGS LOCKED <b>WK 24</b></span>
+          <span>STORIES THIS WEEK <b>14</b></span>
+          <span>PR REWRITES <b style="color:#FF9486">0</b></span>
+        </div>
+      </article>
+
+      <aside class="hero-side">
+        <div class="rating-card">
+          <div class="rc-head">
+            <span>Raw Rating · Wk 24</span>
+            <span class="stamp">VERIFIED</span>
+          </div>
+          <div class="rc-player">
+            <div class="nm">Scottie Scheffler</div>
+            <div class="ev">US OPEN · ROUNDS 1–2 · OAKMONT</div>
+          </div>
+          <div class="rc-rows">
+            <div class="rc-row">
+              <span class="lbl">Driving</span>
+              <div class="bar"><i data-w="85%"></i></div>
+              <span class="num">8.5</span>
+            </div>
+            <div class="rc-row">
+              <span class="lbl">Approach</span>
+              <div class="bar"><i data-w="96%"></i></div>
+              <span class="num">9.6</span>
+            </div>
+            <div class="rc-row">
+              <span class="lbl">Putting</span>
+              <div class="bar"><i data-w="91%"></i></div>
+              <span class="num">9.1</span>
+            </div>
+            <div class="rc-row">
+              <span class="lbl">Mental</span>
+              <div class="bar low"><i data-w="70%"></i></div>
+              <span class="num">7.0</span>
+            </div>
+          </div>
+          <div class="rc-total">
+            <span class="lbl">Raw Score</span>
+            <span class="big">9.3<sup>▲ 0.4</sup></span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ====== NEWS GRID ====== -->
+  <section id="news">
+    <span id="tournaments" style="display:block;position:relative;top:-80px;visibility:hidden;"
+      aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2><span class="idx">02</span>Latest News</h2>
+        <a href="#">All stories →</a>
+      </div>
+      <div class="news-grid reveal">
+        <!-- Scheffler WITB Article Card -->
+        <article class="news">
+          <div class="cat" style="display:flex;align-items:center;gap:8px;">
+            <span>Gear · Reality Check</span>
+            <span
+              style="color:#eab308;border:1px solid #eab308;padding:1px 6px;font-size:9.5px;font-weight:900;font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;">INDUSTRY
+              LIE</span>
+          </div>
+          <h3><a href="./scheffler-witb.html">Scottie Scheffler WITB: Why Buying His Irons Will Ruin Your Game</a></h3>
+          <p>Brands want you to buy his exact setup. Here is the brutal truth about why playing tour-level blades is an
+            ego trip destroying your scorecard.</p>
+          <div class="meta"><span>BY RAWGOLF STAFF</span><span class="mono">FRI 13 JUN</span></div>
+        </article>
+        <!-- Match Play Article Card -->
+        <article class="news">
+          <div class="cat" style="display:flex;align-items:center;gap:8px;">
+            <span>Tournaments · Analysis</span>
+            <span
+              style="color:var(--flag);border:1px solid var(--flag);padding:1px 6px;font-size:9.5px;font-weight:900;font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;">HOT
+              DEBATE</span>
+          </div>
+          <h3><a href="./match-play.html">Match Play vs Stroke Play in Golf: Which Format Actually Exposes the
+              Frauds?</a></h3>
+          <p>One is a 72-hole mental math test, the other is a street fight. See why the PGA Tour is terrified of match
+            play.</p>
+          <div class="meta"><span>BY RAWGOLF STAFF</span><span class="mono">FRI 13 JUN</span></div>
+        </article>
+        <!-- Strokes Gained Article Card -->
+        <article class="news">
+          <div class="cat" style="display:flex;align-items:center;gap:8px;">
+            <span>Data · The Vault</span>
+            <span
+              style="background:var(--fairway);color:#9CC9AE;padding:1px 7px;font-size:9.5px;font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;font-weight:600;text-transform:uppercase;">EVERGREEN</span>
+          </div>
+          <h3><a href="./strokes-gained.html">What Does Strokes Gained Mean? (The Only Explanation That Doesn't
+              Suck)</a></h3>
+          <p>The stat that changed how every tour pro is evaluated. Here's what it actually measures — and how to read a
+            leaderboard with it in five minutes.</p>
+          <div class="meta"><span>RAWGOLF DATA DESK</span><span class="mono">THU 12 JUN</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PLAYER RATINGS STRIP ====== -->
+  <section class="ratings" id="ratings">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2 style="color:#fff"><span class="idx">03</span>Raw Player Ratings</h2>
+        <a href="#" style="color:#fff">Full board →</a>
+      </div>
+      <div class="r-strip reveal">
+        <a class="r-card" href="#">
+          <div class="rank">RANK 01 · WK 24</div>
+          <div class="nm">Scheffler</div>
+          <div class="ev">US OPEN R1–R2</div>
+          <div class="sc">9.3 <span class="delta up">▲ 0.4</span></div>
+        </a>
+        <a class="r-card" href="#">
+          <div class="rank">RANK 02 · WK 24</div>
+          <div class="nm">Rahm</div>
+          <div class="ev">US OPEN R1–R2</div>
+          <div class="sc">8.9 <span class="delta up">▲ 0.7</span></div>
+        </a>
+        <a class="r-card" href="#">
+          <div class="rank">RANK 03 · WK 24</div>
+          <div class="nm">Morikawa</div>
+          <div class="ev">US OPEN R1–R2</div>
+          <div class="sc">8.4 <span class="delta dn">▼ 0.2</span></div>
+        </a>
+        <a class="r-card" href="#">
+          <div class="rank">RANK 04 · WK 24</div>
+          <div class="nm">McIlroy</div>
+          <div class="ev">US OPEN R1–R2</div>
+          <div class="sc">7.6 <span class="delta dn">▼ 1.1</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== ANALYSIS + VAULT ====== -->
+  <section id="analysis">
+    <div class="wrap split">
+      <div class="reveal">
+        <div class="sec-head">
+          <h2><span class="idx">04</span>Swing Analysis</h2>
+          <a href="#">All breakdowns →</a>
+        </div>
+        <div class="story-list">
+          <!--
+          PLACEHOLDER ARTICLES — RESTORE WHEN PUBLISHED
+          <a class="story" href="#">
+            <span class="n">A-12</span>
+            <h3>Why Scheffler's "ugly" footwork is the most repeatable move on tour</h3>
+            <span class="d">11 JUN</span>
+          </a>
+          <a class="story" href="#">
+            <span class="n">A-11</span>
+            <h3>Shallow vs. steep: the amateur obsession that's costing you 20 yards</h3>
+            <span class="d">08 JUN</span>
+          </a>
+          <a class="story" href="#">
+            <span class="n">A-10</span>
+            <h3>We tracked 50 club golfers' transitions — 43 had the same fault</h3>
+            <span class="d">04 JUN</span>
+          </a>
+          <a class="story" href="#">
+            <span class="n">A-09</span>
+            <h3>The 3-wood off the deck is dying. The data says good riddance</h3>
+            <span class="d">01 JUN</span>
+          </a>
+          <a class="story" href="#">
+            <span class="n">A-08</span>
+            <h3>Frame by frame: how Nelly Korda's tempo survives major pressure</h3>
+            <span class="d">28 MAY</span>
+          </a>
+          -->
+          <!-- COMING SOON PLACEHOLDER RETIRED — A-12 PUBLISHED -->
+          <a class="story" href="./scheffler-swing.html">
+            <span class="n">A-12</span>
+            <h3>Why Scheffler's "ugly" footwork is the most repeatable move on tour</h3>
+            <span class="d" style="display:flex;align-items:center;gap:6px;">13 JUN <span
+                style="background:var(--flag);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.12em;padding:1px 6px;text-transform:uppercase;">NEW</span></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="vault-box reveal" id="vault">
+        <div class="eyebrow">THE VAULT · GOLF HISTORY</div>
+        <h3>This Week in Golf, Replayed</h3>
+        <p>One archive deep-dive every Sunday. Old scorecards, forgotten collapses, and the shots that changed the game.
+        </p>
+        <!--
+        PLACEHOLDER VAULT ENTRIES — RESTORE WHEN PUBLISHED
+        <a class="vault-item" href="#"><b>1960</b><span>Palmer drives the 1st at Cherry Hills — the charge that built modern golf</span></a>
+        <a class="vault-item" href="#"><b>1986</b><span>Nicklaus, back nine, Augusta. The greatest 30 ever shot, hole by hole</span></a>
+        <a class="vault-item" href="#"><b>1999</b><span>Van de Velde at Carnoustie: a tactical autopsy, 27 years on</span></a>
+        <a class="vault-item" href="#"><b>2008</b><span>Tiger on one leg at Torrey — what the medical file really said</span></a>
+        -->
+        <!-- VAULT SEALED PLACEHOLDER -->
+        <div class="vault-item" style="opacity:.6;cursor:default">
+          <b style="color:var(--grey)">LOCKED</b>
+          <span style="font-style:italic">The Vault is currently sealed. Archival deep-dives and forgotten scorecard
+            autopsies drop every Sunday.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== NEWSLETTER ====== -->
+  <section class="nl" id="newsletter" style="padding:56px 0">
+    <div class="wrap nl-inner">
+      <div>
+        <h2>The Card — Every Friday</h2>
+        <p>The week's Raw Ratings, one story the golf media buried, and one Vault gem. Free. No PR rewrites, no spam.
+        </p>
+      </div>
+      <div class="nl-form">
+        <input type="email" placeholder="you@email.com" aria-label="Email address">
+        <button onclick="this.textContent='✓ SIGNED';this.disabled=true">Sign the card</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-core">
+        <a href="manifesto.html" class="fc-link"><span class="fc-n">P-01</span><b>Rawgolf</b><span class="fc-d">The
+            manifesto. Why we exist, why golf media broke, what we promise.</span></a>
+        <a href="ratings-manual.html" class="fc-link"><span class="fc-n">P-02</span><b>How Ratings Work</b><span
+            class="fc-d">Document RG-001. The full method, weights and integrity rules.</span></a>
+        <a href="./vault.html" class="fc-link"><span class="fc-n">P-03</span><b>The Vault</b><span class="fc-d">Golf
+            history,
+            replayed. Legendary rounds, forgotten collapses.</span></a>
+        <a href="corrections.html" class="fc-link"><span class="fc-n">P-04</span><b>Corrections Log</b><span
+            class="fc-d">Every mistake we've made, in public, forever. Our trust ledger.</span></a>
+        <a href="contact.html" class="fc-link"><span class="fc-n">P-05</span><b>Contact</b><span class="fc-d">Tour
+            leaks, tip-offs, and hate mail about our ratings.</span></a>
+      </div>
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <div class="f-logo">Raw<span class="raw">Golf</span></div>
+          <p>Golf news and player analysis with the press-release language removed. Ratings are locked before
+            publication and never edited after.</p>
+        </div>
+        <div>
+          <h4>Coverage</h4>
+          <a href="./news.html">Latest News</a>
+          <a href="./tournaments.html">Tournaments</a>
+          <a href="./ratings.html">Player Ratings</a>
+          <a href="./analysis.html">Swing Analysis</a>
+        </div>
+        <div>
+          <h4>Follow</h4>
+          <a href="#">YouTube</a><a href="#">Instagram</a><a href="#">X / Twitter</a><a href="#">RSS</a>
+        </div>
+        <div>
+          <h4>The Card</h4>
+          <a href="#newsletter">Newsletter signup</a><a href="#">Past issues</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 RAWGOLF.COM — ALL RATINGS FINAL</span>
+        <a href="privacy.html">PRIVACY POLICY</a>
+        <span>PLAY IT AS IT LIES</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    const burger = document.getElementById('burger'), links = document.getElementById('navLinks');
+    burger.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+    // Scroll reveal
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) }
+    }), { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Animate rating bars when visible
+    const bio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.bar i').forEach(i => i.style.width = i.dataset.w);
+        bio.unobserve(e.target);
+      }
+    }), { threshold: .3 });
+    document.querySelectorAll('.rating-card').forEach(el => bio.observe(el));
+  </script>
+  <script>
+    // ============ COOKIE CONSENT (EU) ============
+    // Drop this block into every page template. Loads ad/analytics scripts ONLY after "accept".
+    (function () {
+      if (localStorage.getItem('rg_consent')) return; // already answered
+      const b = document.createElement('div');
+      b.id = 'rg-cookie';
+      b.innerHTML = `
+    <style>
+      #rg-cookie{
+        position:fixed;bottom:0;left:0;right:0;z-index:9999;
+        background:#101511;color:#fff;border-top:4px solid #E03E2D;
+        font-family:'Archivo',system-ui,sans-serif;
+        padding:18px 20px;
+        display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;
+        box-shadow:0 -8px 30px rgba(0,0,0,.35);
+      }
+      #rg-cookie .rg-c-txt{max-width:640px}
+      #rg-cookie .rg-c-kick{
+        font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;
+        text-transform:uppercase;color:#E03E2D;font-weight:600;margin-bottom:4px;
+      }
+      #rg-cookie p{font-size:14px;line-height:1.5;color:#c9d0ca;margin:0}
+      #rg-cookie p b{color:#fff}
+      #rg-cookie p a{color:#fff;font-weight:700;border-bottom:2px solid #E03E2D;text-decoration:none}
+      #rg-cookie p a:hover{color:#E03E2D}
+      #rg-cookie .rg-c-btns{display:flex;gap:12px;flex-shrink:0}
+      #rg-cookie button{
+        font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;
+        text-transform:uppercase;letter-spacing:.05em;padding:13px 22px;
+        cursor:pointer;border:2px solid #fff;transition:transform .1s;
+      }
+      #rg-cookie button:hover{transform:translateY(-2px)}
+      #rg-cookie .rg-accept{background:#E03E2D;color:#fff;border-color:#E03E2D}
+      #rg-cookie .rg-reject{background:transparent;color:#fff}
+      @media(max-width:680px){
+        #rg-cookie{flex-direction:column;align-items:stretch;text-align:left}
+        #rg-cookie .rg-c-btns{width:100%}
+        #rg-cookie button{flex:1}
+      }
+    </style>
+    <div class="rg-c-txt">
+      <div class="rg-c-kick">Cookie Disclosure · No Spin</div>
+      <p><b>Yeah, we use cookies.</b> They keep the lights on — analytics to see what you actually read, and Google AdSense ads that fund the journalism. Accept and the ads get relevant. Refuse and the site works exactly the same, the ads just get dumber. Your call, no guilt trip. The boring legal stuff: <a href="privacy.html">privacy policy</a>.</p>
+    </div>
+    <div class="rg-c-btns">
+      <button class="rg-reject">Refuse</button>
+      <button class="rg-accept">Accept</button>
+    </div>`;
+      document.body.appendChild(b);
+      function done(choice) {
+        localStorage.setItem('rg_consent', choice);
+        b.remove();
+        if (choice === 'accepted') {
+          loadTrackingScripts(); // ads + analytics load ONLY here
+        }
+      }
+      b.querySelector('.rg-accept').addEventListener('click', () => done('accepted'));
+      b.querySelector('.rg-reject').addEventListener('click', () => done('rejected'));
+    })();
+
+    // Placeholder: replace with real AdSense + analytics loaders at launch.
+    // Scripts MUST only be injected here (after consent), never in <head> directly, for EU compliance.
+    function loadTrackingScripts() {
+      /* Example at launch:
+      const s=document.createElement('script');
+      s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXX';
+      s.async=true; s.crossOrigin='anonymous';
+      document.head.appendChild(s);
+      */
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Ratings Work — The Rawgolf Rating Manual | RawGolf</title>
+<meta name="description" content="The complete, transparent methodology behind Raw Player Ratings: strokes gained data, mental fortitude, clutch factor, and the rules that keep every rating honest.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fairway:#14402A;
+  --fairway-deep:#0B2418;
+  --flag:#E03E2D;
+  --paper:#F3F4F0;
+  --white:#fff;
+  --ink:#101511;
+  --grey:#5B665E;
+  --maxw:980px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:3px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1240px;margin:0 auto;padding:0 20px}
+.logo{font-weight:900;font-size:26px;letter-spacing:-.04em;text-transform:uppercase}
+.logo .raw{color:var(--flag)}
+.back{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;font-weight:600;border:2px solid var(--ink);
+  padding:8px 16px;transition:background .15s,color .15s;
+}
+.back:hover{background:var(--ink);color:#fff}
+
+/* DOC HERO */
+.doc-hero{background:var(--fairway);color:#fff;border-bottom:3px solid var(--ink);padding:64px 0}
+.doc-id{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:#9CC9AE;display:flex;gap:18px;flex-wrap:wrap;margin-bottom:20px;
+}
+.doc-id b{color:#fff;font-weight:600}
+.doc-hero h1{
+  font-weight:900;font-size:clamp(34px,5vw,58px);line-height:.98;
+  letter-spacing:-.03em;text-transform:uppercase;max-width:16ch;margin-bottom:18px;
+}
+.doc-hero h1 mark{background:var(--flag);color:#fff;padding:0 8px}
+.doc-hero p{color:#CFE3D6;font-size:17px;max-width:58ch}
+.doc-stamp{
+  display:inline-block;margin-top:26px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;font-weight:600;
+  border:2px solid var(--flag);color:#fff;background:rgba(224,62,45,.15);
+  padding:6px 14px;transform:rotate(-1.5deg);
+}
+
+/* TOC BAR */
+.toc{
+  background:var(--ink);color:#fff;border-bottom:3px solid var(--flag);
+  overflow-x:auto;
+}
+.toc-row{display:flex;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.toc-row a{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;font-weight:600;padding:12px 18px;white-space:nowrap;
+  border-right:1px solid rgba(255,255,255,.15);color:#9aa59d;
+  transition:color .15s,background .15s;
+}
+.toc-row a:first-child{padding-left:0;border-left:none}
+.toc-row a:hover{color:#fff;background:rgba(255,255,255,.06)}
+
+/* RULE SECTIONS */
+.rulebook{padding:64px 0}
+.rule-sec{margin-bottom:64px}
+.rule-head{
+  display:flex;align-items:baseline;gap:16px;
+  border-bottom:3px solid var(--ink);padding-bottom:12px;margin-bottom:26px;
+}
+.rule-head .rno{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px;
+  background:var(--flag);color:#fff;padding:4px 10px;
+}
+.rule-head h2{font-weight:900;font-size:clamp(22px,3vw,32px);letter-spacing:-.02em;text-transform:uppercase;line-height:1.05}
+.rule-sec > p{font-size:16px;max-width:68ch;margin-bottom:18px}
+.rule-sec > p b{font-weight:800}
+.callout{
+  border:2px solid var(--ink);background:var(--white);
+  border-left:8px solid var(--flag);
+  padding:18px 22px;margin:24px 0;font-size:15px;max-width:68ch;
+}
+.callout .mono{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--flag);font-weight:600;display:block;margin-bottom:6px}
+
+/* METRIC TABLE */
+.metric-table{border:2px solid var(--ink);background:var(--white);margin:28px 0}
+.mt-head{
+  display:grid;grid-template-columns:140px 1fr 110px;
+  background:var(--ink);color:#fff;padding:12px 20px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+}
+.mt-row{
+  display:grid;grid-template-columns:140px 1fr 110px;
+  padding:18px 20px;border-bottom:1px solid #DADDD4;align-items:start;gap:16px;
+}
+.mt-row:last-child{border-bottom:none}
+.mt-row .m-name{font-weight:900;text-transform:uppercase;font-size:15px;letter-spacing:-.01em}
+.mt-row .m-name small{
+  display:block;font-family:'IBM Plex Mono',monospace;font-weight:500;
+  font-size:10.5px;color:var(--grey);letter-spacing:.08em;margin-top:4px;
+}
+.mt-row .m-desc{font-size:14px;color:var(--grey)}
+.mt-row .m-desc b{color:var(--ink);font-weight:700}
+.mt-row .m-weight{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:18px;text-align:right;
+}
+.mt-row .m-weight small{display:block;font-size:10px;color:var(--grey);font-weight:500;letter-spacing:.1em}
+
+/* SCALE */
+.scale{display:grid;grid-template-columns:repeat(5,1fr);border:2px solid var(--ink);margin:28px 0;background:var(--white)}
+.scale-cell{padding:18px 16px;border-right:1px solid #DADDD4}
+.scale-cell:last-child{border-right:none}
+.scale-cell .rng{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:18px}
+.scale-cell .nm{font-weight:900;text-transform:uppercase;font-size:12px;letter-spacing:.06em;margin:4px 0}
+.scale-cell p{font-size:12.5px;color:var(--grey);line-height:1.45}
+.scale-cell:nth-child(1) .rng{color:var(--flag)}
+.scale-cell:nth-child(5) .rng{color:var(--fairway)}
+.scale-cell:nth-child(5){background:#EDF3EC}
+
+/* INTEGRITY RULES */
+.law{
+  display:grid;grid-template-columns:56px 1fr;gap:18px;
+  border:2px solid var(--ink);background:var(--white);padding:20px;margin-bottom:14px;
+}
+.law .ln{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;
+  color:var(--flag);border:2px solid var(--flag);
+  width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+}
+.law b{display:block;font-weight:900;text-transform:uppercase;font-size:15px;letter-spacing:-.01em;margin-bottom:4px}
+.law span{font-size:14px;color:var(--grey)}
+
+/* EXAMPLE CARD */
+.ex-card{border:2px solid var(--ink);background:var(--white);max-width:520px;margin:28px 0}
+.ex-head{
+  display:flex;justify-content:space-between;padding:14px 20px;border-bottom:2px solid var(--ink);
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+}
+.ex-head .stamp{border:2px solid var(--flag);color:var(--flag);font-weight:600;padding:2px 8px;transform:rotate(-2deg)}
+.ex-row{
+  display:grid;grid-template-columns:1fr 80px 70px;padding:11px 20px;
+  border-bottom:1px solid #DADDD4;align-items:center;font-size:14px;
+}
+.ex-row .lbl{font-weight:700;text-transform:uppercase;font-size:12.5px;letter-spacing:.04em}
+.ex-row .raw-n,.ex-row .wt{font-family:'IBM Plex Mono',monospace;text-align:right;font-size:13px}
+.ex-row .wt{color:var(--grey)}
+.ex-total{
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--ink);color:#fff;padding:16px 20px;
+}
+.ex-total .lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#9aa59d}
+.ex-total .big{font-weight:900;font-size:36px;line-height:1}
+
+/* FOOTER CTA */
+.doc-foot{background:var(--flag);color:#fff;border-top:3px solid var(--ink);padding:48px 0}
+.df-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.df-inner h2{font-weight:900;font-size:clamp(22px,3vw,34px);text-transform:uppercase;letter-spacing:-.02em;line-height:1.05}
+.df-inner p{color:#FFD9D3;margin-top:6px;font-size:14px}
+.df-btn{
+  background:var(--ink);color:#fff;font-weight:900;font-size:14px;
+  text-transform:uppercase;letter-spacing:.06em;padding:16px 28px;
+  border:3px solid var(--ink);box-shadow:6px 6px 0 rgba(0,0,0,.35);
+  transition:transform .12s,box-shadow .12s;display:inline-block;
+}
+.df-btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 rgba(0,0,0,.35)}
+
+footer{background:var(--ink);color:#8b958d;padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer a:hover{color:#fff}
+
+@media(max-width:720px){
+  .mt-head{display:none}
+  .mt-row{grid-template-columns:1fr;gap:8px}
+  .mt-row .m-weight{text-align:left;border-top:1px dashed #DADDD4;padding-top:8px}
+  .scale{grid-template-columns:1fr}
+  .scale-cell{border-right:none;border-bottom:1px solid #DADDD4}
+  .scale-cell:last-child{border-bottom:none}
+  .ex-row{grid-template-columns:1fr 60px 60px}
+}
+
+.burger{display:none;background:none;border:2px solid var(--ink);cursor:pointer;padding:8px 10px}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+@media(max-width:760px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--paper);border-bottom:3px solid var(--ink);}
+  .nav-links.open{display:flex}
+  .nav-links a{border-left:none;border-top:1px solid #D7DAD2;padding:14px 20px}
+  .burger{display:block}
+}
+</style>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="logo">Raw<span class="raw">Golf</span></a>
+    <a href="index.html" class="back">← Back to front page</a>
+  </div>
+</header>
+
+<!-- DOC HERO -->
+<div class="doc-hero">
+  <div class="wrap">
+    <div class="doc-id">
+      <span>DOCUMENT <b>RG-001</b></span>
+      <span>REVISION <b>1.0</b></span>
+      <span>EFFECTIVE <b>WK 24 / 2026</b></span>
+      <span>STATUS <b>BINDING</b></span>
+    </div>
+    <h1>The Rating <mark>Manual</mark></h1>
+    <p>Every Raw Player Rating on this site is produced by the method below. No exceptions, no vibes, no favors. If we ever break one of these rules, it goes in the Corrections Log — publicly.</p>
+    <span class="doc-stamp">READ BEFORE ARGUING WITH US</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<nav class="toc" aria-label="Sections">
+  <div class="toc-row">
+    <a href="#r1">R1 · The Scale</a>
+    <a href="#r2">R2 · The Five Metrics</a>
+    <a href="#r3">R3 · Worked Example</a>
+    <a href="#r4">R4 · Integrity Rules</a>
+    <a href="#r5">R5 · What We Don't Rate</a>
+  </div>
+</nav>
+
+<div class="rulebook wrap">
+
+  <!-- R1 -->
+  <section class="rule-sec" id="r1">
+    <div class="rule-head">
+      <span class="rno">RULE 1</span>
+      <h2>The Scale: 0.0 to 10.0</h2>
+    </div>
+    <p>Every player is rated weekly on a 0.0–10.0 scale, to one decimal. The scale is <b>anchored, not relative</b> — a 9.0 means the same thing in a major week as it does in a fall event. Most tour-quality weeks land between 5.0 and 8.0. Anything above 9.0 should be rare enough that you remember it.</p>
+    <div class="scale">
+      <div class="scale-cell">
+        <div class="rng">0.0–2.9</div>
+        <div class="nm">Card-Wrecker</div>
+        <p>Missed cut by a mile, visible struggle, or WD without cause.</p>
+      </div>
+      <div class="scale-cell">
+        <div class="rng">3.0–4.9</div>
+        <div class="nm">Grinding</div>
+        <p>Made the weekend or fought hard. Nothing clicked.</p>
+      </div>
+      <div class="scale-cell">
+        <div class="rng">5.0–6.9</div>
+        <div class="nm">Tour Standard</div>
+        <p>Solid professional golf. Paychecks, not headlines.</p>
+      </div>
+      <div class="scale-cell">
+        <div class="rng">7.0–8.9</div>
+        <div class="nm">Contending</div>
+        <p>In the mix on Sunday. Game travels under pressure.</p>
+      </div>
+      <div class="scale-cell">
+        <div class="rng">9.0–10.0</div>
+        <div class="nm">Raw Elite</div>
+        <p>Performance of the season territory. Earned, never gifted.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <span class="mono">Plain English</span>
+      A 10.0 has never been awarded. Tiger at Pebble in 2000 would have been a 10.0. That's the bar.
+    </div>
+  </section>
+
+  <!-- R2 -->
+  <section class="rule-sec" id="r2">
+    <div class="rule-head">
+      <span class="rno">RULE 2</span>
+      <h2>The Five Metrics</h2>
+    </div>
+    <p>The Raw Score is a weighted blend of five components. Four are built on measurable data; one is judgment — and we tell you exactly how much it can move the needle, so you know where the opinion lives.</p>
+
+    <div class="metric-table">
+      <div class="mt-head"><div>Metric</div><div>What it measures</div><div style="text-align:right">Weight</div></div>
+      <div class="mt-row">
+        <div class="m-name">Driving<small>DATA · SG:OTT</small></div>
+        <div class="m-desc">Strokes Gained: Off-the-Tee for the week, normalized against the field, adjusted for course width and penal rough. <b>Distance without position scores nothing here.</b></div>
+        <div class="m-weight">20%<small>OF RAW</small></div>
+      </div>
+      <div class="mt-row">
+        <div class="m-name">Approach<small>DATA · SG:APP</small></div>
+        <div class="m-desc">Strokes Gained: Approach, the single most predictive stat in golf — which is why it carries the heaviest data weight. Proximity from 175+ yards is tracked separately as a tiebreaker.</div>
+        <div class="m-weight">25%<small>OF RAW</small></div>
+      </div>
+      <div class="mt-row">
+        <div class="m-name">Short Game<small>DATA · SG:ARG</small></div>
+        <div class="m-desc">Strokes Gained: Around-the-Green. Scrambling percentage from rough vs. fairway lies is weighted by difficulty of miss.</div>
+        <div class="m-weight">15%<small>OF RAW</small></div>
+      </div>
+      <div class="mt-row">
+        <div class="m-name">Putting<small>DATA · SG:PUTT</small></div>
+        <div class="m-desc">Strokes Gained: Putting, with a volatility damper — putting is the noisiest stat in golf, so one hot week moves the rating less than one hot week of approach play. <b>By design.</b></div>
+        <div class="m-weight">20%<small>OF RAW</small></div>
+      </div>
+      <div class="mt-row">
+        <div class="m-name">Mental<small>JUDGMENT · CAPPED</small></div>
+        <div class="m-desc">The honest one: clutch factor. Scoring on the final nine with a lead or within three. Bounce-back rate after bogey. Decision quality under pressure (layup/go calls, club selection). This is the only subjective component — <b>two raters score it independently and the scores are averaged.</b></div>
+        <div class="m-weight">20%<small>OF RAW</small></div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="mono">Why "Mental" is capped at 20%</span>
+      Because narrative is where sports media lies to you. A player's "aura" can move our number by at most one-fifth — the other 80% is math the player wrote with their own clubs.
+    </div>
+  </section>
+
+  <!-- R3 -->
+  <section class="rule-sec" id="r3">
+    <div class="rule-head">
+      <span class="rno">RULE 3</span>
+      <h2>Worked Example</h2>
+    </div>
+    <p>Here is an actual weekly card, computed in front of you. Each metric is scored 0–10, multiplied by its weight, and summed. No rounding tricks: the Raw Score is what the arithmetic says.</p>
+
+    <div class="ex-card">
+      <div class="ex-head">
+        <span>S. SCHEFFLER · WK 24 · OAKMONT</span>
+        <span class="stamp">VERIFIED</span>
+      </div>
+      <div class="ex-row"><span class="lbl">Driving</span><span class="raw-n">8.5</span><span class="wt">× .20</span></div>
+      <div class="ex-row"><span class="lbl">Approach</span><span class="raw-n">9.6</span><span class="wt">× .25</span></div>
+      <div class="ex-row"><span class="lbl">Short Game</span><span class="raw-n">9.0</span><span class="wt">× .15</span></div>
+      <div class="ex-row"><span class="lbl">Putting</span><span class="raw-n">9.1</span><span class="wt">× .20</span></div>
+      <div class="ex-row"><span class="lbl">Mental</span><span class="raw-n">7.0</span><span class="wt">× .20</span></div>
+      <div class="ex-total">
+        <span class="lbl">Raw Score · Locked</span>
+        <span class="big">9.3</span>
+      </div>
+    </div>
+    <p style="font-size:14px;color:var(--grey)">(8.5×.20) + (9.6×.25) + (9.0×.15) + (9.1×.20) + (7.0×.20) = 1.70 + 2.40 + 1.35 + 1.82 + 1.40 = <b style="color:var(--ink)">8.67 → field-strength adjustment +0.6 → 9.3</b>. The field-strength adjustment is published with every card.</p>
+  </section>
+
+  <!-- R4 -->
+  <section class="rule-sec" id="r4">
+    <div class="rule-head">
+      <span class="rno">RULE 4</span>
+      <h2>Integrity Rules</h2>
+    </div>
+    <div class="law">
+      <div class="ln">4.1</div>
+      <div><b>Ratings lock at publication.</b><span>Once a weekly card is published, the number never changes. If we got it wrong, the correction is published alongside it — the original stays visible, crossed out.</span></div>
+    </div>
+    <div class="law">
+      <div class="ln">4.2</div>
+      <div><b>No access journalism.</b><span>A player's rating is never influenced by whether they (or their agent, or their tour) talk to us. We'd rather lose the interview than cook the number.</span></div>
+    </div>
+    <div class="law">
+      <div class="ln">4.3</div>
+      <div><b>The Mental score requires receipts.</b><span>Every subjective Mental score above 8.0 or below 4.0 must cite specific, timestamped moments from the broadcast or shot data. "He looked nervous" is not evidence.</span></div>
+    </div>
+    <div class="law">
+      <div class="ln">4.4</div>
+      <div><b>Conflicts get declared.</b><span>If any rater has a personal or financial connection to a player, they're off that card and it's noted in the footer of the rating.</span></div>
+    </div>
+    <div class="law">
+      <div class="ln">4.5</div>
+      <div><b>The method is versioned.</b><span>If we change a weight or add a metric, the revision number at the top of this page changes, and old ratings are never retroactively recalculated.</span></div>
+    </div>
+  </section>
+
+  <!-- R5 -->
+  <section class="rule-sec" id="r5" style="margin-bottom:0">
+    <div class="rule-head">
+      <span class="rno">RULE 5</span>
+      <h2>What We Don't Rate</h2>
+    </div>
+    <p>We rate <b>golf</b>. We do not rate personality, marketability, press-conference charm, swing aesthetics, or whether a player is "good for the game." A boring player who hits it to 6 feet all week outscores a charismatic one who doesn't. That's the whole point of a scorecard.</p>
+    <div class="callout">
+      <span class="mono">The standing offer</span>
+      Think a rating is wrong? Email us the data. If you're right, the correction runs with your name on it. If you're wrong, we'll show you the math. Either way, somebody learns something.
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOT CTA -->
+<div class="doc-foot">
+  <div class="wrap df-inner">
+    <div>
+      <h2>Seen the rules. Now see the board.</h2>
+      <p>This week's Raw Player Ratings, computed exactly as described above.</p>
+    </div>
+    <a href="index.html#ratings" class="df-btn">View This Week's Ratings</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 RAWGOLF.COM — DOCUMENT RG-001 · REV 1.0</span>
+    <a href="index.html">← FRONT PAGE</a>
+  </div>
+</footer>
+
+
+<script>
+// Mobile nav
+const burger=document.getElementById('burger'),links=document.getElementById('navLinks');
+if(burger && links) {
+  burger.addEventListener('click',()=>{
+    const open=links.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open);
+  });
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+}
+</script>
+
+</body>
+</html>

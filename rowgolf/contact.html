@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Leaks, Tip-Offs & Hate Mail | RawGolf</title>
+<meta name="description" content="Got a Tour leak, a tip-off, or proof one of our ratings is garbage? This inbox is read by humans who answer. Best correction of the month gets your name on the fix.">
+<link rel="canonical" href="https://rawgolf.com/contact">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fairway:#14402A;--fairway-deep:#0B2418;--flag:#E03E2D;
+  --paper:#F3F4F0;--white:#fff;--ink:#101511;--grey:#5B665E;--maxw:1020px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:3px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1240px;margin:0 auto;padding:0 20px}
+.logo{font-weight:900;font-size:26px;letter-spacing:-.04em;text-transform:uppercase}
+.logo .raw{color:var(--flag)}
+.back{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;border:2px solid var(--ink);padding:8px 16px;transition:background .15s,color .15s}
+.back:hover{background:var(--ink);color:#fff}
+
+.doc-hero{background:var(--flag);color:#fff;border-bottom:3px solid var(--ink);padding:60px 0}
+.doc-id{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#FFD9D3;display:flex;gap:18px;flex-wrap:wrap;margin-bottom:20px}
+.doc-id b{color:#fff;font-weight:600}
+.doc-hero h1{font-weight:900;font-size:clamp(34px,5.6vw,60px);line-height:.98;letter-spacing:-.03em;text-transform:uppercase;max-width:16ch;margin-bottom:16px}
+.doc-hero h1 mark{background:var(--ink);color:#fff;padding:0 10px}
+.doc-hero p{color:#FFD9D3;font-size:16.5px;max-width:58ch}
+.doc-hero p b{color:#fff}
+
+.body{padding:56px 0 72px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+
+/* CHANNELS */
+.channel{border:2px solid var(--ink);background:var(--white);margin-bottom:18px;transition:background .15s}
+.channel:hover{background:#FBFBF8}
+.ch-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:13px 20px;border-bottom:2px solid var(--ink);
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+}
+.ch-head .code{color:var(--flag)}
+.ch-body{padding:18px 20px}
+.ch-body h2{font-weight:900;font-size:19px;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:6px}
+.ch-body p{font-size:14px;color:var(--grey);margin-bottom:10px}
+.ch-body .addr{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px;
+  border-left:4px solid var(--flag);padding-left:12px;
+}
+.warn{
+  border:2px solid var(--ink);border-left:8px solid var(--flag);background:var(--white);
+  padding:16px 20px;font-size:14px;margin-top:6px;
+}
+.warn .mono{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--flag);font-weight:600;display:block;margin-bottom:5px}
+
+/* FORM */
+.form-box{border:2px solid var(--ink);background:var(--white)}
+.fb-head{
+  background:var(--ink);color:#fff;padding:14px 22px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+}
+.fb-head .stamp{border:2px solid var(--flag);color:#FF9486;padding:2px 8px;transform:rotate(-2deg)}
+.fb-body{padding:24px 22px}
+.field{margin-bottom:18px}
+.field label{
+  display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:7px;
+}
+.field label span{color:var(--flag)}
+.field input,.field select,.field textarea{
+  width:100%;border:2px solid var(--ink);background:var(--paper);
+  padding:12px 14px;font-size:14px;font-family:'IBM Plex Mono',monospace;color:var(--ink);
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:3px solid var(--flag);outline-offset:-1px}
+.field textarea{min-height:140px;resize:vertical}
+.field .hint{font-size:12px;color:var(--grey);margin-top:6px;font-family:'Archivo',sans-serif}
+.send-btn{
+  width:100%;background:var(--flag);color:#fff;border:3px solid var(--ink);
+  font-weight:900;font-size:15px;text-transform:uppercase;letter-spacing:.06em;
+  font-family:'Archivo',sans-serif;padding:16px;cursor:pointer;
+  box-shadow:6px 6px 0 var(--ink);transition:transform .12s,box-shadow .12s;
+}
+.send-btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
+.send-btn:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink)}
+.send-btn:disabled{background:var(--fairway);cursor:default;transform:translate(6px,6px);box-shadow:0 0 0 var(--ink)}
+.fine{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--grey);margin-top:14px;line-height:1.6}
+.fine a{color:var(--flag);font-weight:600}
+.fine a:hover{text-decoration:underline}
+
+footer{background:var(--ink);color:#8b958d;padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer a:hover{color:#fff}
+
+.burger{display:none;background:none;border:2px solid var(--ink);cursor:pointer;padding:8px 10px}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+@media(max-width:760px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--paper);border-bottom:3px solid var(--ink);}
+  .nav-links.open{display:flex}
+  .nav-links a{border-left:none;border-top:1px solid #D7DAD2;padding:14px 20px}
+  .burger{display:block}
+}
+</style>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="logo">Raw<span class="raw">Golf</span></a>
+    <a href="index.html" class="back">← Back to front page</a>
+  </div>
+</header>
+
+<div class="doc-hero">
+  <div class="wrap">
+    <div class="doc-id">
+      <span>DOCUMENT <b>P-05</b></span>
+      <span>CONTACT</span>
+      <span>READ BY <b>HUMANS WHO ANSWER</b></span>
+    </div>
+    <h1>Leaks. Tip-offs. <mark>Hate mail.</mark></h1>
+    <p>Got a Tour leak, a tip-off, or proof one of our ratings is garbage? Fire away. <b>Best correction of the month gets your name on the fix</b> — permanently, in the Corrections Log. Agents pitching "exclusive access" in exchange for coverage: save the email, read Rule 4.2 instead.</p>
+  </div>
+</div>
+
+<main class="body wrap">
+  <div class="contact-grid">
+
+    <!-- LEFT: CHANNELS -->
+    <div>
+      <div class="channel">
+        <div class="ch-head"><span class="code">CH-01</span><span>Source Protected</span></div>
+        <div class="ch-body">
+          <h2>Tour Leaks & Tips</h2>
+          <p>Locker-room politics, contract whispers, setup intel, anything the press tent won't print. Sources stay confidential — that one's non-negotiable.</p>
+          <div class="addr">tips@rawgolf.com</div>
+        </div>
+      </div>
+
+      <div class="channel">
+        <div class="ch-head"><span class="code">CH-02</span><span>Name On The Fix</span></div>
+        <div class="ch-body">
+          <h2>Corrections & Rating Disputes</h2>
+          <p>Think a number is wrong? Bring data, not vibes. If you're right, the correction runs with your name on it. If you're wrong, we'll show you the math. Either way, somebody learns something.</p>
+          <div class="addr">corrections@rawgolf.com</div>
+        </div>
+      </div>
+
+      <div class="channel">
+        <div class="ch-head"><span class="code">CH-03</span><span>We Can Take It</span></div>
+        <div class="ch-body">
+          <h2>Hate Mail & Everything Else</h2>
+          <p>Disagree with a rating? Furious about a take? Good — that means you read it. General questions, press, and partnership inquiries land here too.</p>
+          <div class="addr">hello@rawgolf.com</div>
+        </div>
+      </div>
+
+      <div class="warn">
+        <span class="mono">Notice to agents & PR</span>
+        Coverage is never traded for access (Rule 4.2, Document RG-001). Pitches offering interviews "in exchange for favorable framing" are printed out and put on the office wall. You've been warned.
+      </div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div>
+      <div class="form-box">
+        <div class="fb-head">
+          <span>Submission Card</span>
+          <span class="stamp">UNFILTERED</span>
+        </div>
+        <div class="fb-body">
+          <div class="field">
+            <label for="c-type">What is this? <span>*</span></label>
+            <select id="c-type">
+              <option>TIP-OFF / LEAK</option>
+              <option>CORRECTION / RATING DISPUTE</option>
+              <option>HATE MAIL</option>
+              <option>FAN MAIL (RARE BUT WELCOME)</option>
+              <option>PRESS / OTHER</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="c-name">Name / Handle</label>
+            <input type="text" id="c-name" placeholder="ANONYMOUS IS FINE">
+            <div class="hint">Leave blank for tips. We'd rather have the story than your name.</div>
+          </div>
+          <div class="field">
+            <label for="c-email">Email <span>*</span></label>
+            <input type="email" id="c-email" placeholder="YOU@EMAIL.COM">
+            <div class="hint">Only used to reply. Never added to any list. See the privacy policy.</div>
+          </div>
+          <div class="field">
+            <label for="c-msg">The message <span>*</span></label>
+            <textarea id="c-msg" placeholder="GIVE IT TO US STRAIGHT. RECEIPTS, TIMESTAMPS, AND DATA WELCOME."></textarea>
+          </div>
+          <button class="send-btn" onclick="this.textContent='✓ ON THE CARD — WE READ EVERYTHING';this.disabled=true">Send It Raw</button>
+          <p class="fine">Submissions are read by humans, usually within 48 hours. Tips may be kept confidential indefinitely to protect sources. By sending, you're OK with us storing the message — details in the <a href="privacy.html">privacy policy</a>.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 RAWGOLF.COM — DOCUMENT P-05</span>
+    <a href="index.html">← FRONT PAGE</a>
+  </div>
+</footer>
+
+
+<script>
+// Mobile nav
+const burger=document.getElementById('burger'),links=document.getElementById('navLinks');
+if(burger && links) {
+  burger.addEventListener('click',()=>{
+    const open=links.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open);
+  });
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+}
+</script>
+
+</body>
+</html>

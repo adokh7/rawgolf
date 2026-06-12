@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latest News | RawGolf</title>
+<meta name="description" content="The latest golf news, tour updates, and player stories from RawGolf. No PR rewrites. No spin.">
+<link rel="canonical" href="https://rawgolf.com/news">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RawGolf">
+<meta property="og:title" content="Latest News | RawGolf">
+<meta property="og:description" content="The latest golf news, tour updates, and player stories from RawGolf. No PR rewrites. No spin.">
+<meta property="og:url" content="https://rawgolf.com/news">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fairway:#14402A;--fairway-deep:#0B2418;--flag:#E03E2D;
+  --paper:#F3F4F0;--white:#fff;--ink:#101511;--grey:#5B665E;--maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+/* HEADER */
+.site-header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:3px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.logo{font-weight:900;font-size:26px;letter-spacing:-.04em;text-transform:uppercase}
+.logo .raw{color:var(--flag)}
+.nav-links{display:flex;gap:0}
+.nav-links a{font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;padding:8px 14px;transition:background .15s,color .15s}
+.nav-links a:hover{background:var(--ink);color:#fff}
+.nav-links a.active{background:var(--ink);color:#fff}
+.burger{display:none;background:none;border:2px solid var(--ink);cursor:pointer;padding:8px 10px}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+@media(max-width:760px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--paper);border-bottom:3px solid var(--ink);}
+  .nav-links.open{display:flex}
+  .nav-links a{border-left:none;border-top:1px solid #D7DAD2;padding:14px 20px}
+  .burger{display:block}
+}
+
+/* HUB PAGE */
+.hub-hero{
+  background:var(--ink);color:#fff;border-bottom:4px solid var(--flag);
+  padding:72px 0 64px;
+}
+.hub-hero .eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--flag);font-weight:600;margin-bottom:18px;
+}
+.hub-hero h1{
+  font-weight:900;font-size:clamp(40px,6vw,80px);line-height:.95;
+  letter-spacing:-.04em;text-transform:uppercase;margin-bottom:20px;
+}
+.hub-hero p{font-size:18px;color:#9CC9AE;max-width:52ch;line-height:1.6}
+
+/* NEWS GRID */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--ink)}
+.news{background:var(--white);padding:26px;display:flex;flex-direction:column;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transition:background .15s;}
+.news:nth-child(3n){border-right:none}
+.news:last-child,.news:nth-last-child(2),.news:nth-last-child(3){border-bottom:none}
+.news:hover{background:#FBFBF8}
+.news .cat{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--flag);font-weight:600;margin-bottom:12px}
+.news h3{font-weight:800;font-size:19px;line-height:1.15;letter-spacing:-.02em;margin-bottom:12px;}
+.news:hover h3{text-decoration:underline;text-decoration-color:var(--flag);text-decoration-thickness:2px}
+.news p{font-size:15px;color:var(--grey);line-height:1.6;margin-bottom:24px;flex-grow:1}
+.news .meta{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);display:flex;justify-content:space-between;border-top:1px solid #DADDD4;padding-top:14px}
+.news .meta .mono{color:var(--grey)}
+@media(max-width:980px){.news-grid{grid-template-columns:repeat(2,1fr)}.news:nth-child(3n){border-right:2px solid var(--ink)}.news:nth-child(2n){border-right:none}.news:nth-last-child(-n+2){border-bottom:none}}
+@media(max-width:760px){.news-grid{grid-template-columns:1fr}.news{border-right:none;border-bottom:2px solid var(--ink)}.news:last-child{border-bottom:none}}
+
+.hub-body{padding:64px 0}
+.coming-soon-box{
+  border:2px solid var(--ink);background:var(--white);padding:48px 40px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:18px;
+}
+.coming-soon-box .cs-label{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--flag);font-weight:600;
+}
+.coming-soon-box h2{
+  font-weight:900;font-size:clamp(24px,3vw,38px);text-transform:uppercase;
+  letter-spacing:-.03em;line-height:1.1;
+}
+.coming-soon-box p{font-size:16px;color:var(--grey);max-width:58ch;line-height:1.7}
+.cs-back{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;font-weight:700;color:var(--flag);
+  border-bottom:2px solid var(--flag);padding-bottom:2px;
+  transition:color .15s;
+}
+.cs-back:hover{color:var(--ink)}
+
+/* FOOTER */
+.site-footer{background:var(--ink);color:#8b958d;padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em}
+.site-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.site-footer a:hover{color:#fff}
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav">
+    <a href="./index.html" class="logo">Raw<span class="raw">Golf</span></a>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="./news.html" class="active">Latest News</a>
+      <a href="./ratings.html">Player Ratings</a>
+      <a href="./tournaments.html">Tournaments</a>
+      <a href="./analysis.html">Swing Analysis</a>
+      <a href="./vault.html">The Vault</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="hub-hero">
+  <div class="wrap">
+    <div class="eyebrow">RAWGOLF · SECTION 02</div>
+    <h1>Latest News</h1>
+    <p>Golf news without the press-release language. Every story is what it is.</p>
+  </div>
+</div>
+
+<div class="hub-body">
+  <div class="wrap">
+    <div class="news-grid">
+      <!-- Scheffler WITB Article Card -->
+      <article class="news">
+        <div class="cat" style="display:flex;align-items:center;gap:8px;">
+          <span>Gear · Reality Check</span>
+          <span style="color:#eab308;border:1px solid #eab308;padding:1px 6px;font-size:9.5px;font-weight:900;font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;">INDUSTRY LIE</span>
+        </div>
+        <h3><a href="./scheffler-witb.html">Scottie Scheffler WITB: Why Buying His Irons Will Ruin Your Game</a></h3>
+        <p>Brands want you to buy his exact setup. Here is the brutal truth about why playing tour-level blades is an ego trip destroying your scorecard.</p>
+        <div class="meta"><span>BY RAWGOLF STAFF</span><span class="mono">FRI 13 JUN</span></div>
+      </article>
+      <!-- Match Play Article Card -->
+      <article class="news">
+        <div class="cat" style="display:flex;align-items:center;gap:8px;">
+          <span>Tournaments · Analysis</span>
+          <span style="color:var(--flag);border:1px solid var(--flag);padding:1px 6px;font-size:9.5px;font-weight:900;font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;">HOT DEBATE</span>
+        </div>
+        <h3><a href="./match-play.html">Match Play vs Stroke Play in Golf: Which Format Actually Exposes the Frauds?</a></h3>
+        <p>One is a 72-hole mental math test, the other is a street fight. See why the PGA Tour is terrified of match play.</p>
+        <div class="meta"><span>BY RAWGOLF STAFF</span><span class="mono">FRI 13 JUN</span></div>
+      </article>
+      <!-- Strokes Gained Article Card -->
+      <article class="news">
+        <div class="cat" style="display:flex;align-items:center;gap:8px;">
+          <span>Data · The Vault</span>
+          <span style="background:var(--fairway);color:#9CC9AE;padding:1px 7px;font-size:9.5px;font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;font-weight:600;text-transform:uppercase;">EVERGREEN</span>
+        </div>
+        <h3><a href="./strokes-gained.html">What Does Strokes Gained Mean? (The Only Explanation That Doesn't Suck)</a></h3>
+        <p>The stat that changed how every tour pro is evaluated. Here's what it actually measures — and how to read a leaderboard with it in five minutes.</p>
+        <div class="meta"><span>RAWGOLF DATA DESK</span><span class="mono">THU 12 JUN</span></div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 RAWGOLF.COM — ALL RATINGS FINAL</span>
+    <nav aria-label="Footer navigation" style="display:flex;gap:20px">
+      <a href="./manifesto.html">MANIFESTO</a>
+      <a href="./ratings-manual.html">HOW RATINGS WORK</a>
+      <a href="./corrections.html">CORRECTIONS</a>
+      <a href="./privacy.html">PRIVACY</a>
+      <a href="./index.html">← FRONT PAGE</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+const burger=document.getElementById('burger'),links=document.getElementById('navLinks');
+if(burger&&links){
+  burger.addEventListener('click',()=>{const open=links.classList.toggle('open');burger.setAttribute('aria-expanded',open)});
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+}
+</script>
+</body>
+</html>
