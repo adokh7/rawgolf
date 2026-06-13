@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PMECW4VW66');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golf Raw Guides | The Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --fairway: #14402A;
+  --fairway-deep: #0B2418;
+  --flag: #E03E2D;
+  --paper: #F3F4F0;
+  --white: #fff;
+  --ink: #101511;
+  --grey: #5B665E;
+  --maxw: 1180px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box }
+html { scroll-behavior: smooth }
+body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased }
+a { color: inherit; text-decoration: none }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+.mono { font-family: 'IBM Plex Mono', monospace }
+
+/* HEADER */
+.site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+.logo { font-weight: 900; font-size: 26px; letter-spacing: -.04em; text-transform: uppercase }
+.logo .raw { color: var(--flag) }
+.nav-links { display: flex; gap: 0 }
+.nav-links a { font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; padding: 8px 14px; transition: background .15s, color .15s }
+.nav-links a:hover { background: var(--ink); color: #fff }
+.nav-links a.hot { background: var(--flag); color: #fff; margin-left: 16px; border: none }
+.nav-links a.hot:hover { background: var(--ink) }
+.burger { display: none; background: none; border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px }
+.burger span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0 }
+@media(max-width: 760px) {
+  .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
+  .nav-links.open { display: flex }
+  .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+  .burger { display: block }
+}
+
+/* GUIDES HEADER */
+.page-head { padding: 64px 0 32px; border-bottom: 3px solid var(--ink); margin-bottom: 48px; }
+.page-head h1 { font-weight: 900; font-size: clamp(34px, 4.6vw, 62px); text-transform: uppercase; letter-spacing: -.03em; line-height: 1; }
+.page-head p { font-size: 19px; color: var(--grey); margin-top: 12px; max-width: 60ch; }
+
+/* GRID */
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 2px solid var(--ink); margin-bottom: 80px; background: var(--white); }
+.news { padding: 32px; border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); display: flex; flex-direction: column; transition: background .15s; position: relative; }
+.news:nth-child(3n) { border-right: none; }
+.news:nth-last-child(-n+3) { border-bottom: none; }
+.news:hover { background: #FBFBF8; }
+.news:hover h3 { text-decoration: underline; text-decoration-color: var(--flag); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+.news .cat { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--flag); margin-bottom: 14px; }
+.news h3 { font-weight: 800; font-size: 22px; line-height: 1.2; letter-spacing: -.015em; margin-bottom: 12px; }
+.news p { font-size: 15px; color: var(--grey); flex: 1; }
+.news .meta { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--grey); margin-top: 24px; padding-top: 16px; border-top: 1px solid #DADDD4; display: flex; justify-content: space-between; }
+
+/* PLACEHOLDERS */
+.news.locked { background: var(--paper); opacity: 0.6; }
+.news.locked:hover { background: var(--paper); }
+.news.locked:hover h3 { text-decoration: none; }
+.news.locked .cat { color: var(--grey); }
+.locked-badge { font-family: 'IBM Plex Mono', monospace; font-size: 10px; background: var(--ink); color: #fff; padding: 2px 8px; font-weight: 600; letter-spacing: .1em; }
+
+@media(max-width: 1020px) {
+  .news-grid { grid-template-columns: 1fr 1fr; }
+  .news:nth-child(3n) { border-right: 2px solid var(--ink); }
+  .news:nth-child(2n) { border-right: none; }
+  .news:nth-last-child(-n+2) { border-bottom: none; }
+}
+@media(max-width: 680px) {
+  .news-grid { grid-template-columns: 1fr; }
+  .news { border-right: none !important; border-bottom: 2px solid var(--ink) !important; }
+  .news:last-child { border-bottom: none !important; }
+}
+
+/* FOOTER */
+.site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em; margin-top: auto; }
+.site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.site-footer a:hover { color: #fff; }
+</style>
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="nav">
+    <a href="index.html" class="logo">Golf<span class="raw">Raw</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#news">Latest News</a>
+      <a href="index.html#ratings">Player Ratings</a>
+      <a href="index.html#tournaments">Tournaments</a>
+      <a href="index.html#analysis">Swing Analysis</a>
+      <a href="index.html#vault">The Vault</a>
+      <a href="guides.html">Golf Raw Guides</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="page-head">
+      <h1>Golf Raw Guides</h1>
+      <p>The definitive instruction archive. No fluff, no quick fixes — just honest, mechanically sound advice that actually translates to the course.</p>
+    </div>
+
+    <div class="news-grid">
+      <!-- FEATURED GUIDE -->
+      <article class="news">
+        <div class="cat" style="display:flex;align-items:center;gap:8px;">
+          <span>Fundamentals</span>
+          <span style="background:var(--fairway);color:#9CC9AE;padding:1px 7px;font-size:9.5px;font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;font-weight:600;text-transform:uppercase;">EVERGREEN</span>
+        </div>
+        <h3><a href="swing-guide.html">How to Swing a Golf Club: The Ultimate Guide</a></h3>
+        <p>Forget the 30-point mental checklist. This no-fluff guide covers grip, posture, tempo drills, and the actual biomechanics of speed for golfers at every level.</p>
+        <div class="meta"><span>BY GOLF RAW STAFF</span><span class="mono">AVAILABLE</span></div>
+      </article>
+
+      <!-- PLACEHOLDER 1 -->
+      <article class="news locked">
+        <div class="cat">Putting</div>
+        <h3>The Ultimate Putting Routine: Reading, Pacing, Executing</h3>
+        <p>A comprehensive breakdown of how tour pros read greens and dial in their speed before they even step onto the putting surface.</p>
+        <div class="meta"><span>BY GOLF RAW STAFF</span><span class="locked-badge">COMING SOON</span></div>
+      </article>
+
+      <!-- PLACEHOLDER 2 -->
+      <article class="news locked">
+        <div class="cat">Fixes</div>
+        <h3>How to Fix Your Slice: The Truth About Face Control</h3>
+        <p>Stop trying to swing more to the left. The actual mechanical truth about path and face angle that will fix your ball flight in one session.</p>
+        <div class="meta"><span>BY GOLF RAW STAFF</span><span class="locked-badge">COMING SOON</span></div>
+      </article>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 GOLFRAW.COM — ALL RATINGS FINAL</span>
+    <nav aria-label="Footer navigation" style="display:flex;gap:20px">
+      <a href="manifesto.html">MANIFESTO</a>
+      <a href="ratings-manual.html">HOW RATINGS WORK</a>
+      <a href="index.html">FRONT PAGE</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+// Mobile nav
+const burger = document.getElementById('burger'), links = document.getElementById('navLinks');
+if (burger && links) {
+  burger.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+}
+</script>
+</body>
+</html>
