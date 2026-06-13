@@ -90,6 +90,29 @@ a{color:inherit;text-decoration:none}
 }
 .cs-back:hover{color:var(--ink)}
 
+/* GUIDE GRID */
+.guide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:2px solid var(--ink);margin-bottom:40px}
+@media(max-width:640px){.guide-grid{grid-template-columns:1fr}}
+
+/* GUIDE CARD */
+.guide-card{display:flex;flex-direction:column;background:var(--white);border-right:2px solid var(--ink);transition:background .15s;overflow:hidden}
+.guide-card:last-child{border-right:none}
+@media(max-width:640px){.guide-card{border-right:none !important;border-bottom:2px solid var(--ink)}.guide-card:last-child{border-bottom:none}}
+.guide-card:hover{background:#f9faf7}
+.card-thumb{width:100%;height:220px;object-fit:cover;object-position:center;border-bottom:2px solid var(--ink);display:block}
+.card-body{padding:28px 28px 32px;display:flex;flex-direction:column;flex:1}
+.badge-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;font-weight:600;text-transform:uppercase;padding:2px 8px}
+.badge-red{background:var(--flag);color:#fff}
+.badge-grey{background:#D0D4CC;color:#5B665E}
+.card-body h3{font-weight:900;font-size:20px;line-height:1.2;letter-spacing:-.02em;margin-bottom:12px}
+.guide-card:hover h3{text-decoration:underline;text-decoration-color:var(--flag);text-decoration-thickness:3px;text-underline-offset:4px}
+.card-body p{font-size:14.5px;color:var(--grey);flex:1;margin-bottom:24px}
+.card-meta{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #DADDD4;padding-top:16px;margin-top:auto}
+.card-meta .author{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--grey)}
+.card-cta{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border:2px solid var(--ink);background:var(--ink);color:#fff;transition:background .15s,color .15s;white-space:nowrap}
+.card-cta:hover{background:var(--flag);border-color:var(--flag)}
+
 /* FOOTER */
 .site-footer{background:var(--ink);color:#8b958d;padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em}
 .site-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
@@ -125,12 +148,36 @@ a{color:inherit;text-decoration:none}
 
 <div class="hub-body">
   <div class="wrap">
+
+    <!-- ====== GUIDES GRID ====== -->
+    <div class="guide-grid">
+
+      <!-- CARD: AMATEUR TOURNAMENT GUIDE -->
+      <a class="guide-card" href="amateur-tournament-guide.html">
+        <img src="/proper-golf-swing-mechanics.webp" alt="Amateur golf tournament pressure" class="card-thumb" loading="lazy">
+        <div class="card-body">
+          <div class="badge-row">
+            <span class="badge badge-red">COMPETITION</span>
+            <span class="badge badge-grey">AMATEUR</span>
+          </div>
+          <h3>Your First Amateur Tournament: How Not to Choke</h3>
+          <p>An honest guide to tournament golf for normal players. Prepare smart, beat the first-tee nerves, and play under pressure the raw golf way.</p>
+          <div class="card-meta">
+            <span class="author">Golf Raw Staff</span>
+            <span class="card-cta">Read Guide →</span>
+          </div>
+        </div>
+      </a>
+
+    </div><!-- /.guide-grid -->
+
     <div class="coming-soon-box">
       <div class="cs-label">Coming Soon</div>
       <h2>Tournament Coverage</h2>
       <p>Full tournament hub pages are being built. Our current tournament analysis is published as articles — find them in Latest News or read our US Open deep-dive now.</p>
       <a href="./index.html" class="cs-back">← Back to Front Page</a>
     </div>
+
   </div>
 </div>
 
