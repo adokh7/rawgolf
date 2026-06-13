@@ -19,11 +19,31 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Golf Raw Staff">
 
+<!-- ============ OPEN GRAPH ============ -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Golf Raw">
+<meta property="og:title" content="The Brutal Truth About Golf Swing Speed & Shaft Flex">
+<meta property="og:description" content="Stop guessing your club specs. Here is the raw truth about swing speed, shaft flex, and golf ball compression.">
+<meta property="og:url" content="https://golfraw.com/swing-speed-guide">
+<meta property="og:image" content="https://golfraw.com/img/swing-speed-guide-og.jpg">
+<meta property="article:published_time" content="2026-06-13T14:00:00+02:00">
+<meta property="article:author" content="Golf Raw Staff">
+<meta property="article:section" content="Raw Guides">
+<meta property="article:tag" content="Shaft Flex">
+<meta property="article:tag" content="Swing Speed">
+<meta property="article:tag" content="Equipment">
+
+<!-- ============ TWITTER CARD ============ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Brutal Truth About Golf Swing Speed & Shaft Flex">
+<meta name="twitter:description" content="Stop guessing your club specs. The raw truth about swing speed, shaft flex, and equipment ego.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
+/* ============ TOKENS ============ */
 :root {
   --fairway: #14402A;
   --fairway-deep: #0B2418;
@@ -36,35 +56,77 @@
 }
 * { margin: 0; padding: 0; box-sizing: border-box }
 html { scroll-behavior: smooth }
-body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased }
+body {
+  font-family: 'Archivo', system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
 a { color: inherit; text-decoration: none }
 img { max-width: 100%; height: auto; display: block }
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
 .mono { font-family: 'IBM Plex Mono', monospace }
 
 /* ============ HEADER ============ */
-.site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
-.nav { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+.site-header {
+  position: sticky; top: 0; z-index: 60;
+  background: var(--paper); border-bottom: 3px solid var(--ink);
+}
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px;
+}
 .logo { font-weight: 900; font-size: 26px; letter-spacing: -.04em; text-transform: uppercase }
 .logo .raw { color: var(--flag) }
 .nav-links { display: flex; gap: 0 }
-.nav-links a { font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; padding: 8px 14px; transition: background .15s, color .15s }
+.nav-links a {
+  font-weight: 700; font-size: 12.5px; text-transform: uppercase;
+  letter-spacing: .05em; padding: 8px 14px;
+  transition: background .15s, color .15s;
+}
 .nav-links a:hover { background: var(--ink); color: #fff }
-.burger { display: none; background: none; border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px }
+.nav-links a.hot {
+  background: var(--flag); color: #fff;
+  margin-left: 16px;
+}
+.nav-links a.hot:hover { background: var(--ink) }
+.burger {
+  display: none; background: none;
+  border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px;
+}
 .burger span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0 }
+
 @media(max-width: 760px) {
-  .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
+  .nav-links {
+    display: none; position: absolute; top: 68px; left: 0; right: 0;
+    flex-direction: column; align-items: stretch;
+    background: var(--paper); border-bottom: 3px solid var(--ink);
+  }
   .nav-links.open { display: flex }
   .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+  .nav-links a.hot { margin-left: 0 }
   .burger { display: block }
 }
 
-/* ============ LAYOUT ============ */
-.page-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 48px; padding: 40px 0 64px }
-@media(max-width: 980px) { .page-grid { grid-template-columns: 1fr } .article-aside { display: none } }
+/* ============ PAGE LAYOUT ============ */
+.page-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 48px;
+  padding: 40px 0 64px;
+}
+@media(max-width: 980px) {
+  .page-grid { grid-template-columns: 1fr }
+  .article-aside { display: none }
+}
 
 /* ============ BREADCRUMB ============ */
-.crumbs { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); margin-bottom: 20px }
+.crumbs {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--grey); margin-bottom: 20px;
+}
 .crumbs a { color: var(--flag); font-weight: 600 }
 .crumbs a:hover { text-decoration: underline }
 
@@ -72,53 +134,80 @@ img { max-width: 100%; height: auto; display: block }
 .article-head .cat {
   display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 11px;
   letter-spacing: .16em; text-transform: uppercase; font-weight: 600;
-  background: var(--fairway); color: #9CC9AE; padding: 4px 12px; margin-bottom: 18px;
+  background: var(--flag); color: #fff; padding: 4px 12px; margin-bottom: 18px;
 }
 .article-head h1 {
   font-weight: 900; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.02;
   letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 18px;
 }
-.standfirst { font-size: 19px; color: var(--grey); max-width: 62ch; margin-bottom: 24px; font-weight: 500 }
+.standfirst {
+  font-size: 19px; color: var(--grey);
+  max-width: 62ch; margin-bottom: 24px; font-weight: 500;
+}
 .byline {
   display: flex; flex-wrap: wrap; gap: 20px; align-items: center;
   border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink);
   padding: 14px 0; margin-bottom: 28px;
-  font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--grey);
+  font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--grey);
 }
 .byline b { color: var(--ink); font-weight: 600 }
 
 /* ============ HERO IMAGE ============ */
 .hero-image {
-  width: 100%;
-  max-height: 480px;
-  object-fit: cover;
-  border: 2px solid var(--ink);
-  margin-bottom: 32px;
-  display: block;
+  width: 100%; max-height: 480px; object-fit: cover;
+  border: 2px solid var(--ink); margin-bottom: 32px;
 }
 
 /* ============ ARTICLE BODY ============ */
 .article-body { font-size: 17.5px; max-width: 68ch }
 .article-body p { margin-bottom: 22px }
-.article-body p b { font-weight: 800 }
+.article-body p b, .article-body p strong { font-weight: 800 }
 .article-body h2 {
-  font-weight: 900; font-size: clamp(22px, 2.8vw, 30px); letter-spacing: -.02em;
-  text-transform: uppercase; line-height: 1.1;
-  margin: 44px 0 18px; padding-top: 18px; border-top: 3px solid var(--ink);
+  font-weight: 900; font-size: clamp(22px, 2.8vw, 30px);
+  letter-spacing: -.02em; text-transform: uppercase; line-height: 1.1;
+  margin: 48px 0 18px; padding-top: 20px; border-top: 3px solid var(--ink);
 }
 .article-body h3 {
   font-weight: 800; font-size: 19px; letter-spacing: -.01em; margin: 30px 0 12px;
 }
 .article-body h3::before { content: "— "; color: var(--flag) }
-.article-body ul { margin: 0 0 22px 26px; font-size: 17.5px; }
+.article-body ul, .article-body ol {
+  margin: 0 0 22px 26px; font-size: 17.5px;
+}
 .article-body li { margin-bottom: 10px }
 
 /* ============ PULL QUOTE ============ */
 blockquote.pull {
   border: 2px solid var(--ink); border-left: 10px solid var(--flag);
   background: var(--white); padding: 26px 28px; margin: 34px 0;
-  font-weight: 900; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.2;
-  letter-spacing: -.02em; text-transform: uppercase;
+  font-weight: 900; font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.2; letter-spacing: -.02em; text-transform: uppercase;
+}
+blockquote.pull footer {
+  margin-top: 12px; font-family: 'IBM Plex Mono', monospace; font-weight: 500;
+  font-size: 11px; letter-spacing: .14em; color: var(--grey); text-transform: uppercase;
+}
+
+/* ============ STAT BOX ============ */
+.stat-box {
+  border: 2px solid var(--ink); background: var(--ink); color: #fff;
+  display: grid; grid-template-columns: repeat(3, 1fr); margin: 34px 0;
+}
+.stat-cell { padding: 20px; border-right: 1px solid rgba(255,255,255,.2); text-align: center }
+.stat-cell:last-child { border-right: none }
+.stat-cell .n { font-weight: 900; font-size: 30px; line-height: 1 }
+.stat-cell .n.grn { color: #6FDB9A }
+.stat-cell .n.red { color: #FF9486 }
+.stat-cell .l {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: #9aa59d; margin-top: 6px; display: block;
+}
+@media(max-width: 560px) {
+  .stat-box { grid-template-columns: 1fr }
+  .stat-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2) }
+  .stat-cell:last-child { border-bottom: none }
 }
 
 /* ============ CALLOUT BOX ============ */
@@ -131,37 +220,173 @@ blockquote.pull {
   text-transform: uppercase; font-weight: 600; color: var(--fairway); margin-bottom: 10px;
 }
 .callout p { font-size: 16px; margin-bottom: 0; color: var(--grey) }
+.callout p b { color: var(--ink) }
+
+/* ============ FLEX TABLE ============ */
+.flex-table {
+  border: 2px solid var(--ink); margin: 32px 0; overflow: hidden;
+}
+.flex-table .ft-head {
+  background: var(--ink); color: #fff; display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  letter-spacing: .12em; text-transform: uppercase; font-weight: 600;
+}
+.flex-table .ft-head span,
+.flex-table .ft-row span {
+  padding: 12px 18px; border-right: 1px solid rgba(255,255,255,.15);
+}
+.flex-table .ft-head span:last-child,
+.flex-table .ft-row span:last-child { border-right: none }
+.flex-table .ft-row {
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr;
+  border-top: 1px solid #DADDD4; font-size: 15px;
+}
+.flex-table .ft-row span { border-right: 1px solid #DADDD4 }
+.flex-table .ft-row .badge {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+}
+.badge-r { color: var(--flag) }
+.badge-g { color: var(--fairway) }
+
+/* ============ TAGS ============ */
+.tag-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 40px 0 0 }
+.tag-row a {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .1em;
+  text-transform: uppercase; font-weight: 600; border: 2px solid var(--ink);
+  padding: 6px 14px; transition: background .15s, color .15s;
+}
+.tag-row a:hover { background: var(--ink); color: #fff }
 
 /* ============ SIDEBAR ============ */
 .aside-box { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
 .aside-box .ab-head {
   background: var(--ink); color: #fff; padding: 12px 18px;
-  font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  letter-spacing: .16em; text-transform: uppercase; font-weight: 600;
 }
-.aside-item { display: block; padding: 14px 18px; border-bottom: 1px solid #DADDD4; font-weight: 700; font-size: 14px; line-height: 1.35 }
+.aside-item {
+  display: block; padding: 14px 18px; border-bottom: 1px solid #DADDD4;
+  font-weight: 700; font-size: 14px; line-height: 1.35;
+}
 .aside-item:last-child { border-bottom: none }
-.aside-item:hover { text-decoration: underline; text-decoration-color: var(--flag); text-decoration-thickness: 2px }
-.aside-item .mono { display: block; font-weight: 500; font-size: 10.5px; color: var(--flag); letter-spacing: .12em; margin-bottom: 4px; text-transform: uppercase }
+.aside-item:hover {
+  text-decoration: underline; text-decoration-color: var(--flag);
+  text-decoration-thickness: 2px;
+}
+.aside-item .mono {
+  display: block; font-weight: 500; font-size: 10.5px; color: var(--flag);
+  letter-spacing: .12em; margin-bottom: 4px; text-transform: uppercase;
+}
+
+/* ============ RELATED ============ */
+.related {
+  border-top: 3px solid var(--ink); background: var(--white); padding: 56px 0;
+}
+.related h2 {
+  font-weight: 900; font-size: clamp(24px, 3vw, 36px);
+  text-transform: uppercase; letter-spacing: -.02em; margin-bottom: 28px;
+}
+.related h2 .idx {
+  font-family: 'IBM Plex Mono', monospace; font-size: .45em;
+  color: var(--flag); vertical-align: top; margin-right: 8px; font-weight: 600;
+}
+.rel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 2px solid var(--ink) }
+.rel-card { padding: 24px; border-right: 2px solid var(--ink); transition: background .15s }
+.rel-card:last-child { border-right: none }
+.rel-card:hover { background: #FBFBF8 }
+.rel-card .cat {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--flag);
+  font-weight: 600; margin-bottom: 10px;
+}
+.rel-card h3 {
+  font-weight: 800; font-size: 17px; line-height: 1.3;
+  letter-spacing: -.01em; margin-bottom: 10px;
+}
+.rel-card:hover h3 {
+  text-decoration: underline; text-decoration-color: var(--flag);
+  text-decoration-thickness: 2px;
+}
+.rel-card .d { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--grey) }
+@media(max-width: 760px) {
+  .rel-grid { grid-template-columns: 1fr }
+  .rel-card { border-right: none; border-bottom: 2px solid var(--ink) }
+  .rel-card:last-child { border-bottom: none }
+}
 
 /* ============ FOOTER ============ */
-.site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
-.site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
-.site-footer a:hover { color: #fff }
+footer {
+  background: var(--ink); color: #8b958d;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em;
+}
+footer a:hover { color: #fff }
+.foot-core {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.fc-link {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 24px 20px; border-right: 1px solid rgba(255,255,255,.08);
+  transition: background .15s;
+}
+.fc-link:last-child { border-right: none }
+.fc-link:hover { background: rgba(255,255,255,.04) }
+.fc-n { font-size: 10px; letter-spacing: .18em; color: var(--flag); font-weight: 600 }
+.fc-link b { color: #fff; font-family: 'Archivo', sans-serif; font-size: 14px; font-weight: 800 }
+.fc-d { font-size: 10.5px; color: #5c665e; line-height: 1.5 }
+.foot-grid {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 0; padding: 40px 0;
+}
+.foot-grid > div { padding: 0 20px; border-right: 1px solid rgba(255,255,255,.08) }
+.foot-grid > div:last-child { border-right: none }
+.foot-grid h4 {
+  font-family: 'Archivo', sans-serif; font-size: 11px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .1em; color: #fff; margin-bottom: 14px;
+}
+.foot-grid a { display: block; margin-bottom: 8px; font-size: 11.5px; transition: color .15s }
+.foot-grid a:hover { color: #fff }
+.f-logo {
+  font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 22px;
+  letter-spacing: -.04em; text-transform: uppercase; color: #fff; margin-bottom: 12px;
+}
+.f-logo .raw { color: var(--flag) }
+.foot-brand p { font-size: 12px; line-height: 1.65; color: #5c665e; max-width: 22ch }
+.foot-bottom {
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 18px 0;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.foot-bottom a { font-size: 10.5px; letter-spacing: .1em; transition: color .15s }
+.foot-bottom a:hover { color: #fff }
+@media(max-width: 900px) {
+  .foot-core { grid-template-columns: 1fr 1fr }
+  .fc-link { border-bottom: 1px solid rgba(255,255,255,.08) }
+  .foot-grid { grid-template-columns: 1fr 1fr; row-gap: 32px }
+  .foot-grid > div { border-right: none }
+}
+@media(max-width: 560px) {
+  .foot-grid { grid-template-columns: 1fr }
+  .foot-core { grid-template-columns: 1fr }
+}
 </style>
 </head>
 <body>
 
-<!-- ============ SITE HEADER ============ -->
+<!-- ============ SITE HEADER (identical to index.html) ============ -->
 <header class="site-header">
   <div class="nav">
     <a href="index.html" class="logo">Golf<span class="raw">Raw</span></a>
     <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-      <a href="index.html#news">Latest News</a>
-      <a href="index.html#ratings">Player Ratings</a>
-      <a href="index.html#tournaments">Tournaments</a>
-      <a href="index.html#analysis">Swing Analysis</a>
-      <a href="index.html#vault">The Vault</a>
+      <a href="./news.html">Latest News</a>
+      <a href="./ratings.html">Player Ratings</a>
+      <a href="./tournaments.html">Tournaments</a>
+      <a href="./analysis.html">Swing Analysis</a>
+      <a href="./vault.html">The Vault</a>
       <a href="guides.html">Golf Raw Guides</a>
+      <a href="./index.html#newsletter" class="hot">The Card</a>
     </nav>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -176,13 +401,13 @@ blockquote.pull {
     <!-- ============ ARTICLE ============ -->
     <article>
       <nav class="crumbs" aria-label="Breadcrumb">
-        <a href="index.html">Golf Raw</a> / <a href="guides.html">Raw Guides</a> / <span>Gear & Specs</span>
+        <a href="index.html">Golf Raw</a> / <a href="guides.html">Raw Guides</a> / <span>Gear &amp; Specs</span>
       </nav>
 
       <header class="article-head">
         <span class="cat">Gear · Reality Check</span>
         <h1>The Brutal Truth About Swing Speed, Shaft Flex, and Equipment Ego</h1>
-        <p class="standfirst">Most amateurs buy gear meant for Pros, hoping the sticker price will fix their slice. It won't. Here is the raw truth about your specs.</p>
+        <p class="standfirst">Most amateurs buy gear meant for Pros, hoping the sticker price will fix their slice. It won't. Here is the raw truth about your specs — and why playing the right equipment is the fastest way to lower your handicap.</p>
         <div class="byline">
           <span>BY <b>GOLF RAW STAFF</b></span>
           <span>PUBLISHED <b>FRI 13 JUN 2026</b></span>
@@ -193,45 +418,122 @@ blockquote.pull {
       <!-- ============ ARTICLE BODY ============ -->
       <div class="article-body">
 
-        <p>Let's talk about the Ego Trap. You know exactly what I mean. You walk into the golf shop. You grab the shiny, $600 driver that your favorite Tour Pro is gaming on television. The salesman asks what flex you want, and something deep in your subconscious immediately revolts against the word "Regular." So you puff out your chest, grab the X-Stiff model with the low-spin tour head, and march to the first tee feeling like a weapon.</p>
+        <p><b>Let's talk about the Ego Trap.</b> You know exactly what I mean. You walk into the golf shop. You grab the shiny, $600 driver that your favourite Tour Pro is gaming on television. The salesman asks what flex you want, and something deep in your subconscious immediately revolts against the word "Regular." So you puff out your chest, grab the X-Stiff model with the low-spin tour head, and march to the first tee feeling invincible.</p>
 
-        <p>And then you slice it two fairways over.</p>
+        <p>And then you slice it two fairways over into the trees — the exact same trees you were slicing into before you dropped six hundred dollars. Your playing partner watches in silence. Your bag feels heavier on the walk to the drop zone.</p>
 
-        <p>We've all been there. It's an easy mistake to make when marketing departments spend millions trying to convince you that buying professional-grade gear is <strong>how to improve golf swing</strong> mechanics. It isn't. The brutal truth is that buying equipment built for someone swinging 120 mph when you max out at 92 mph is actively ruining your game. It's the equivalent of putting Formula 1 tires on a Honda Civic and wondering why it handles poorly in the rain.</p>
+        <p>This is the core paradox of golf equipment: the gear marketed most aggressively is almost always the wrong gear for the person buying it. Knowing <strong>how to improve golf swing</strong> results has far less to do with buying professional-grade clubs and far more to do with playing equipment that's actually matched to your body. A stiff-shaft, low-compression driver built for someone swinging 115 mph is actively working against you at 90 mph. It's the mechanical equivalent of putting Formula 1 tyres on a Honda Civic and wondering why it handles poorly in the rain.</p>
 
         <img src="golf-swing-speed-flex.webp" alt="Golfer checking golf club swing weight and shaft flex specifications" class="hero-image" loading="lazy">
 
-        <h2>Stop Guessing: Data Over Ego</h2>
+        <h2>Stop Guessing: Know Your Actual Number</h2>
 
-        <p>The first step out of the Ego Trap is honesty. To get the right gear, you need to know exactly <strong>how to measure golf swing speed</strong> without relying on what "feels powerful" or the distance you hit it that one time with a 20 mph tailwind.</p>
+        <p>The first step out of the Ego Trap is a simple act of honesty: you need to know your real swing speed. Not the number you hit it that one time with a 20 mph tailwind. Not the speed you imagine when you're swinging well. Your actual, repeatable, measured clubhead speed.</p>
 
-        <p>Stop guessing. Find a certified fitter with a high-end launch monitor—like TrackMan or GCQuad. These machines strip away the illusions. They measure your clubhead speed, ball speed, and angle of attack with surgical precision. If you find out your driver speed is 95 mph, don't be disappointed. Embrace it. That number is the golden key to finding equipment that will finally work <em>with</em> you instead of <em>against</em> you.</p>
+        <p>The honest answer to <strong>how to measure golf swing speed</strong> is: find a certified fitter with a high-quality launch monitor. TrackMan, GCQuad, or Foresight are the industry standards — and they don't lie. They measure your clubhead speed, ball speed, smash factor, launch angle, and spin rate with surgical precision. Most decent golf shops and fitting studios will run you through a session for free or for a nominal fee.</p>
+
+        <p>If you find out your driver speed is 91 mph, don't be disappointed. Don't round up to "the low 90s" and keep buying Stiff shafts. Embrace the number. That 91 is now the golden key to finding equipment that will finally work <em>with</em> your swing instead of fighting it every single time.</p>
+
+        <div class="stat-box" role="table" aria-label="What most amateurs don't know about their swing">
+          <div class="stat-cell">
+            <span class="n red">73%</span>
+            <span class="l">Of club golfers play the wrong shaft flex</span>
+          </div>
+          <div class="stat-cell">
+            <span class="n grn">+18 yds</span>
+            <span class="l">Average distance gain from a correct fitting</span>
+          </div>
+          <div class="stat-cell">
+            <span class="n red">$600</span>
+            <span class="l">Average wasted on mismatched "pro" gear per year</span>
+          </div>
+        </div>
 
         <h2>The Shaft Flex Matrix</h2>
 
-        <p>Once you have your true speed, the puzzle starts coming together. A mismatched shaft is the silent killer of consistency. If your shaft is too stiff, it won't flex and release properly through impact. The result? Weak, low shots that leak out to the right (for a right-handed player) because you literally cannot square the clubface in time. You'll lose both accuracy and distance.</p>
+        <p>Once you have your true speed, finding the right shaft becomes straightforward. A <strong>golf swing speed chart for shaft flex</strong> is the most useful single reference document in golf equipment — and yet most golfers have never looked at one.</p>
 
-        <p>If you look at any standard <strong>golf swing speed chart for shaft flex</strong>, the reality check is usually immediate. Players under 85 mph should generally be looking at Senior (Lite) flex. From 85 to 95 mph, Regular flex is where you live. You don't really sniff Stiff flex until you're consistently breaking 95 mph, and X-Stiff is reserved for the 105+ mph club.</p>
+        <p>Here is the reality, laid out plainly:</p>
 
-        <p>But remember: "Stiff" is not a regulated standard. A Stiff in one brand might measure as a Regular in another. This is why getting fitted based on your actual launch data is critical. The right flex will feel smooth, load effortlessly at the top, and snap through impact exactly when you need it to.</p>
+        <div class="flex-table" role="table" aria-label="Shaft flex guide by swing speed">
+          <div class="ft-head">
+            <span>Driver Swing Speed</span>
+            <span>Recommended Flex</span>
+            <span>Typical Result If Wrong</span>
+          </div>
+          <div class="ft-row">
+            <span>Under 75 mph</span>
+            <span><span class="badge badge-r">Senior (L)</span></span>
+            <span>Low trajectory, lost distance</span>
+          </div>
+          <div class="ft-row">
+            <span>75 – 84 mph</span>
+            <span><span class="badge badge-r">Senior / Regular</span></span>
+            <span>Push-fade, inconsistent contact</span>
+          </div>
+          <div class="ft-row">
+            <span>85 – 95 mph</span>
+            <span><span class="badge badge-g">Regular</span></span>
+            <span>This is most club golfers' range</span>
+          </div>
+          <div class="ft-row">
+            <span>95 – 104 mph</span>
+            <span><span class="badge badge-g">Stiff</span></span>
+            <span>Late release, slice, loss of feel</span>
+          </div>
+          <div class="ft-row">
+            <span>105 mph +</span>
+            <span><span class="badge badge-g">X-Stiff</span></span>
+            <span>Reserved for low single-figures &amp; pros</span>
+          </div>
+        </div>
 
-        <h2>Balance Over Hype</h2>
+        <p>A shaft that is too stiff will feel like hitting through concrete. It won't load and release properly at your speed. The clubface will arrive at impact slightly open, your ball will start right, curve further right, and no amount of swing thought will reliably fix it — because the issue is not your swing, it's your equipment. A shaft matched to your speed loads smoothly, stores energy, and snaps through impact exactly when you need it to. The difference in consistency is immediate and obvious.</p>
 
-        <p>Let's demystify another term that floats around pro shops: <strong>golf club swing weight</strong>. This isn't the total weight of the club; it's how the club <em>feels</em> when you swing it. It's the balance point between the grip and the clubhead.</p>
+        <div class="callout">
+          <div class="callout-label">⚠ Critical Warning</div>
+          <p>"Stiff" is not a regulated standard. A Stiff shaft in one brand may test as a Regular in another. A shaft's true stiffness is measured by its CPM (cycles per minute) frequency. Always get fitted on a launch monitor, not by brand labelling alone.</p>
+        </div>
 
-        <p>A club with a heavy swing weight (like D4 or D5) will feel like there is an anvil on the end of the shaft. A lighter swing weight (C8 or C9) feels more balanced toward the hands. If you have a moderate swing speed and struggle with a late release, a lighter swing weight can help you square the face easier and gain clubhead speed. If you have an aggressive transition, a slightly heavier swing weight can smooth out your tempo. For a normal golfer, optimizing this balance point provides far more benefit than chasing the latest aerodynamic crown design.</p>
+        <h2>Balance Over Hype: What Swing Weight Actually Means</h2>
+
+        <p>Here is another piece of jargon that gets thrown around pro shops like it should mean something to a casual golfer: <strong>golf club swing weight</strong>. Most golfers nod along and have absolutely no idea what it means. Let's demystify it in thirty seconds.</p>
+
+        <p>Swing weight is not the total weight of the club. It's a measurement of how the club feels in motion — specifically, the distribution of mass between the grip end and the clubhead end. It's expressed on a letter-number scale (C7, D0, D2, D5, etc.). A higher number means the head feels heavier relative to the grip.</p>
+
+        <p>Why does this matter to a normal golfer? Because swing weight directly affects your tempo and your ability to square the face:</p>
+
+        <ul>
+          <li><b>If your swing weight is too heavy (D5+):</b> The head feels like an anvil. Players with moderate swing speeds struggle to get the face around in time, producing a push or a block to the right.</li>
+          <li><b>If your swing weight is too light (C7 or below):</b> The club feels weightless, which kills feel and can cause an early release, flipping the face over at impact.</li>
+          <li><b>The sweet spot for most club golfers:</b> D0 to D2. Light enough to control, heavy enough to feel where the head is throughout the swing.</li>
+        </ul>
+
+        <p>Adjusting swing weight is a cheap, quick alteration any fitter can make. It's arguably the most overlooked variable in amateur equipment setups — and fixing it often produces more immediate improvement than changing shaft flex entirely.</p>
 
         <h2>The Truth About Your Ball</h2>
 
-        <p>Finally, we need to talk about the rock you're hitting. Those premium, $55-a-dozen, multi-layer Tour balls? They are designed for players with immense clubhead speed. They require massive compression to activate the core and generate distance.</p>
+        <p>We need to talk about the rock you're hitting — because it may be the biggest, most expensive mistake you make every single round.</p>
 
-        <p>If you are looking for the <strong>best golf ball for 90 mph swing speed</strong>, a 100+ compression Tour ball is the absolute worst choice you can make. You simply don't swing fast enough to compress it. It will feel like hitting a stone, and you'll lose yardage off the tee. Instead, look for a mid-to-low compression ball (usually in the 60 to 80 range). These balls will compress beautifully at moderate speeds, giving you that buttery feel off the face, straighter flights, and maximizing your distance.</p>
+        <p>Those premium, four-layer, $65-a-dozen Tour balls? They are engineered specifically for players generating enormous clubhead speed. They use a high-compression urethane core that requires around 105+ mph to activate fully. Hit them at 90 mph, and you are not compressing them properly. The result: the ball feels like a stone off the face, the spin is mismatched to your speed, and you are losing distance and control simultaneously.</p>
+
+        <p>The <strong>best golf ball for 90 mph swing speed</strong> is a mid-compression ball in the 75–85 compression range. These balls are designed to compress properly at moderate speeds, giving you a soft feel off the face, better greenside control, and maximum distance within your actual swing parameters. You don't need to play a range ball — just stop paying premium prices for a product that needs 15% more speed than you have to perform as advertised.</p>
 
         <blockquote class="pull">
-          "The fastest way to lower your handicap isn't a swing overhaul. It's putting your ego in the trunk and playing the equipment your swing actually demands."
+          "Playing the wrong ball is like paying for premium unleaded and running it through an engine that only needs regular. The engine doesn't know the difference. Neither does your slice."
+          <footer>— Golf Raw Staff</footer>
         </blockquote>
 
-        <p>The numbers don't judge you. Stop fighting your gear, embrace your actual swing speed, and watch how much easier this stupid, beautiful game becomes.</p>
+        <p>The bottom line is simple. The fastest way to lower your handicap isn't a swing overhaul — it's putting your ego in the boot and playing the equipment your actual swing demands. Get fit. Know your speed. Embrace Regular flex if that's what you are. The number on the shaft doesn't say anything about who you are as a golfer. Hitting fairways does.</p>
+
+        <nav class="tag-row" aria-label="Article tags">
+          <a href="#">Shaft Flex</a>
+          <a href="#">Swing Speed</a>
+          <a href="#">Equipment</a>
+          <a href="#">Gear Guide</a>
+          <a href="#">Launch Monitor</a>
+          <a href="#">Raw Guides</a>
+        </nav>
 
       </div><!-- .article-body -->
     </article>
@@ -239,25 +541,88 @@ blockquote.pull {
     <!-- ============ SIDEBAR ============ -->
     <aside class="article-aside" aria-label="Sidebar">
       <div class="aside-box">
-        <div class="ab-head">Related Analysis</div>
-        <a class="aside-item" href="./swing-guide.html"><span class="mono">SWING ANALYSIS</span>How to Swing a Golf Club: The Ultimate Guide</a>
-        <a class="aside-item" href="./scheffler-witb.html"><span class="mono">GEAR</span>Why Buying His Irons Will Ruin Your Game</a>
+        <div class="ab-head">In This Guide</div>
+        <a class="aside-item" href="#stop-guessing"><span class="mono">Section 01</span>Know Your Speed</a>
+        <a class="aside-item" href="#shaft-flex-matrix"><span class="mono">Section 02</span>The Shaft Flex Matrix</a>
+        <a class="aside-item" href="#swing-weight"><span class="mono">Section 03</span>Swing Weight Explained</a>
+        <a class="aside-item" href="#your-ball"><span class="mono">Section 04</span>The Right Ball</a>
+      </div>
+      <div class="aside-box">
+        <div class="ab-head">Related Guides</div>
+        <a class="aside-item" href="swing-guide.html"><span class="mono">Fundamentals</span>How to Swing a Golf Club: The Ultimate Guide</a>
+        <a class="aside-item" href="scheffler-witb.html"><span class="mono">Gear</span>Scheffler WITB: Why Buying His Irons Will Ruin Your Game</a>
+        <a class="aside-item" href="strokes-gained.html"><span class="mono">Data Desk</span>What Does Strokes Gained Actually Mean?</a>
       </div>
     </aside>
 
   </div><!-- .page-grid -->
 
+  <!-- ============ RELATED ============ -->
+  <section class="related" aria-labelledby="related-heading">
+    <div class="wrap">
+      <h2 id="related-heading"><span class="idx">SEE</span>Related Stories</h2>
+      <div class="rel-grid">
+        <a class="rel-card" href="swing-guide.html">
+          <div class="cat">Raw Guides · Fundamentals</div>
+          <h3>How to Swing a Golf Club: The Ultimate Guide</h3>
+          <div class="d">FRI 13 JUN · GOLF RAW STAFF</div>
+        </a>
+        <a class="rel-card" href="scheffler-witb.html">
+          <div class="cat">Gear · Reality Check</div>
+          <h3>Scottie Scheffler WITB: Why Buying His Irons Will Ruin Your Game</h3>
+          <div class="d">FRI 13 JUN · GOLF RAW STAFF</div>
+        </a>
+        <a class="rel-card" href="strokes-gained.html">
+          <div class="cat">Data · The Vault</div>
+          <h3>What Does Strokes Gained Mean? (The Explanation That Doesn't Suck)</h3>
+          <div class="d">THU 12 JUN · GOLF RAW DATA DESK</div>
+        </a>
+      </div>
+    </div>
+  </section>
 </main>
 
-<!-- ============ FOOTER ============ -->
-<footer class="site-footer">
+<!-- ============ FOOTER (identical to index.html) ============ -->
+<footer>
   <div class="wrap">
-    <span>© 2026 GOLFRAW.COM — ALL RATINGS FINAL</span>
-    <nav aria-label="Footer navigation" style="display:flex;gap:20px">
-      <a href="manifesto.html">MANIFESTO</a>
-      <a href="ratings-manual.html">HOW RATINGS WORK</a>
-      <a href="index.html">FRONT PAGE</a>
-    </nav>
+    <div class="foot-core">
+      <a href="manifesto.html" class="fc-link"><span class="fc-n">P-01</span><b>Golf Raw</b><span class="fc-d">The manifesto. Why we exist, why golf media broke, what we promise.</span></a>
+      <a href="ratings-manual.html" class="fc-link"><span class="fc-n">P-02</span><b>How Ratings Work</b><span class="fc-d">Document RG-001. The full method, weights and integrity rules.</span></a>
+      <a href="vault.html" class="fc-link"><span class="fc-n">P-03</span><b>The Vault</b><span class="fc-d">Golf history, replayed. Legendary rounds, forgotten collapses.</span></a>
+      <a href="corrections.html" class="fc-link"><span class="fc-n">P-04</span><b>Corrections Log</b><span class="fc-d">Every mistake we've made, in public, forever. Our trust ledger.</span></a>
+      <a href="contact.html" class="fc-link"><span class="fc-n">P-05</span><b>Contact</b><span class="fc-d">Tour leaks, tip-offs, and hate mail about our ratings.</span></a>
+    </div>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="f-logo">Golf<span class="raw">Raw</span></div>
+        <p>Golf news and player analysis with the press-release language removed. Ratings are locked before publication and never edited after.</p>
+      </div>
+      <div>
+        <h4>Coverage</h4>
+        <a href="news.html">Latest News</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="ratings.html">Player Ratings</a>
+        <a href="analysis.html">Swing Analysis</a>
+      </div>
+      <div>
+        <h4>Guides</h4>
+        <a href="guides.html">All Guides</a>
+        <a href="swing-guide.html">Swing Guide</a>
+        <a href="swing-speed-guide.html">Shaft Flex Guide</a>
+      </div>
+      <div>
+        <h4>About</h4>
+        <a href="manifesto.html">Manifesto</a>
+        <a href="corrections.html">Corrections</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 GOLFRAW.COM — ALL RATINGS FINAL</span>
+      <a href="privacy.html">PRIVACY POLICY</a>
+      <span>PLAY IT AS IT LIES</span>
+    </div>
   </div>
 </footer>
 
