@@ -12,101 +12,329 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Golf Raw Guides | The Archive</title>
+<meta name="description" content="The definitive Golf Raw instruction archive. Honest, mechanically sound guides on the golf swing, shaft flex, and more.">
+<link rel="canonical" href="https://golfraw.com/guides">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
+/* ============ TOKENS ============ */
 :root {
   --fairway: #14402A;
-  --fairway-deep: #0B2418;
-  --flag: #E03E2D;
-  --paper: #F3F4F0;
-  --white: #fff;
-  --ink: #101511;
-  --grey: #5B665E;
-  --maxw: 1180px;
+  --flag:    #E03E2D;
+  --paper:   #F3F4F0;
+  --white:   #fff;
+  --ink:     #101511;
+  --grey:    #5B665E;
+  --maxw:    1180px;
 }
 * { margin: 0; padding: 0; box-sizing: border-box }
 html { scroll-behavior: smooth }
-body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased }
+body {
+  font-family: 'Archivo', system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 a { color: inherit; text-decoration: none }
+img { display: block; max-width: 100%; height: auto }
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
-.mono { font-family: 'IBM Plex Mono', monospace }
 
-/* HEADER */
-.site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
-.nav { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+/* ============ HEADER ============ */
+.site-header {
+  position: sticky; top: 0; z-index: 60;
+  background: var(--paper); border-bottom: 3px solid var(--ink);
+}
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px;
+}
 .logo { font-weight: 900; font-size: 26px; letter-spacing: -.04em; text-transform: uppercase }
 .logo .raw { color: var(--flag) }
-.nav-links { display: flex; gap: 0 }
-.nav-links a { font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; padding: 8px 14px; transition: background .15s, color .15s }
+.nav-links { display: flex }
+.nav-links a {
+  font-weight: 700; font-size: 12.5px; text-transform: uppercase;
+  letter-spacing: .05em; padding: 8px 14px;
+  transition: background .15s, color .15s;
+}
 .nav-links a:hover { background: var(--ink); color: #fff }
-.nav-links a.hot { background: var(--flag); color: #fff; margin-left: 16px; border: none }
+.nav-links a.hot { background: var(--flag); color: #fff; margin-left: 16px }
 .nav-links a.hot:hover { background: var(--ink) }
 .burger { display: none; background: none; border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px }
 .burger span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0 }
 @media(max-width: 760px) {
-  .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
+  .nav-links {
+    display: none; position: absolute; top: 68px; left: 0; right: 0;
+    flex-direction: column; align-items: stretch;
+    background: var(--paper); border-bottom: 3px solid var(--ink);
+  }
   .nav-links.open { display: flex }
   .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+  .nav-links a.hot { margin-left: 0 }
   .burger { display: block }
 }
 
-/* GUIDES HEADER */
-.page-head { padding: 64px 0 32px; border-bottom: 3px solid var(--ink); margin-bottom: 48px; }
-.page-head h1 { font-weight: 900; font-size: clamp(34px, 4.6vw, 62px); text-transform: uppercase; letter-spacing: -.03em; line-height: 1; }
-.page-head p { font-size: 19px; color: var(--grey); margin-top: 12px; max-width: 60ch; }
-
-/* GRID */
-.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 2px solid var(--ink); margin-bottom: 80px; background: var(--white); }
-.news { padding: 32px; border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); display: flex; flex-direction: column; transition: background .15s; position: relative; }
-.news:nth-child(3n) { border-right: none; }
-.news:nth-last-child(-n+3) { border-bottom: none; }
-.news:hover { background: #FBFBF8; }
-.news:hover h3 { text-decoration: underline; text-decoration-color: var(--flag); text-decoration-thickness: 3px; text-underline-offset: 4px; }
-.news .cat { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--flag); margin-bottom: 14px; }
-.news h3 { font-weight: 800; font-size: 22px; line-height: 1.2; letter-spacing: -.015em; margin-bottom: 12px; }
-.news p { font-size: 15px; color: var(--grey); flex: 1; }
-.news .meta { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--grey); margin-top: 24px; padding-top: 16px; border-top: 1px solid #DADDD4; display: flex; justify-content: space-between; }
-
-/* PLACEHOLDERS */
-.news.locked { background: var(--paper); opacity: 0.6; }
-.news.locked:hover { background: var(--paper); }
-.news.locked:hover h3 { text-decoration: none; }
-.news.locked .cat { color: var(--grey); }
-.locked-badge { font-family: 'IBM Plex Mono', monospace; font-size: 10px; background: var(--ink); color: #fff; padding: 2px 8px; font-weight: 600; letter-spacing: .1em; }
-
-@media(max-width: 1020px) {
-  .news-grid { grid-template-columns: 1fr 1fr; }
-  .news:nth-child(3n) { border-right: 2px solid var(--ink); }
-  .news:nth-child(2n) { border-right: none; }
-  .news:nth-last-child(-n+2) { border-bottom: none; }
+/* ============ PAGE HEADER ============ */
+.page-head {
+  padding: 60px 0 36px;
+  border-bottom: 3px solid var(--ink);
+  margin-bottom: 56px;
 }
-@media(max-width: 680px) {
-  .news-grid { grid-template-columns: 1fr; }
-  .news { border-right: none !important; border-bottom: 2px solid var(--ink) !important; }
-  .news:last-child { border-bottom: none !important; }
+.page-head h1 {
+  font-weight: 900;
+  font-size: clamp(36px, 5vw, 66px);
+  text-transform: uppercase;
+  letter-spacing: -.03em;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.page-head p {
+  font-size: 18px;
+  color: var(--grey);
+  max-width: 58ch;
 }
 
-/* FOOTER */
-.site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em; margin-top: auto; }
-.site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-.site-footer a:hover { color: #fff; }
+/* ============ GUIDE CARDS GRID ============ */
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 2px solid var(--ink);
+  margin-bottom: 80px;
+}
+@media(max-width: 1000px) { .guide-grid { grid-template-columns: 1fr 1fr } }
+@media(max-width: 640px)  { .guide-grid { grid-template-columns: 1fr } }
+
+/* ============ GUIDE CARD ============ */
+.guide-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-right: 2px solid var(--ink);
+  transition: background .15s;
+  overflow: hidden;
+}
+.guide-card:last-child { border-right: none }
+@media(max-width: 1000px) {
+  .guide-card:nth-child(2n) { border-right: none }
+  .guide-card:nth-child(-n+2) { border-bottom: 2px solid var(--ink) }
+}
+@media(max-width: 640px) {
+  .guide-card { border-right: none !important; border-bottom: 2px solid var(--ink) }
+  .guide-card:last-child { border-bottom: none }
+}
+
+.guide-card:not(.locked):hover { background: #f9faf7 }
+
+/* Card thumbnail */
+.card-thumb {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+  border-bottom: 2px solid var(--ink);
+  display: block;
+}
+
+/* Placeholder thumbnail for coming-soon card */
+.card-thumb-placeholder {
+  width: 100%;
+  height: 220px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #E8EAE4,
+    #E8EAE4 10px,
+    #DDDFD9 10px,
+    #DDDFD9 20px
+  );
+  border-bottom: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #9aa59d;
+  font-weight: 600;
+}
+
+/* Card body */
+.card-body {
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Badge row */
+.badge-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: .14em;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 2px 8px;
+}
+.badge-red   { background: var(--flag); color: #fff }
+.badge-green { background: var(--fairway); color: #9CC9AE }
+.badge-grey  { background: #D0D4CC; color: #5B665E }
+
+/* Card title */
+.card-body h3 {
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+  margin-bottom: 12px;
+}
+.guide-card:not(.locked):hover h3 {
+  text-decoration: underline;
+  text-decoration-color: var(--flag);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+
+/* Card description */
+.card-body p {
+  font-size: 14.5px;
+  color: var(--grey);
+  flex: 1;
+  margin-bottom: 24px;
+}
+
+/* Card meta / CTA row */
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #DADDD4;
+  padding-top: 16px;
+  margin-top: auto;
+}
+.card-meta .author {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--grey);
+}
+.card-cta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border: 2px solid var(--ink);
+  background: var(--ink);
+  color: #fff;
+  transition: background .15s, color .15s;
+  white-space: nowrap;
+}
+.card-cta:hover { background: var(--flag); border-color: var(--flag) }
+.card-cta.disabled {
+  background: #D0D4CC;
+  border-color: #D0D4CC;
+  color: #8b958d;
+  pointer-events: none;
+}
+
+/* Locked / coming-soon card */
+.guide-card.locked { background: var(--paper); opacity: .65 }
+.guide-card.locked:hover { background: var(--paper) }
+.guide-card.locked h3 { color: var(--grey) }
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--ink);
+  color: #8b958d;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .06em;
+  margin-top: auto;
+}
+footer a:hover { color: #fff }
+.foot-core {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.fc-link {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 24px 20px;
+  border-right: 1px solid rgba(255,255,255,.08);
+  transition: background .15s;
+}
+.fc-link:last-child { border-right: none }
+.fc-link:hover { background: rgba(255,255,255,.04) }
+.fc-n { font-size: 10px; letter-spacing: .18em; color: var(--flag); font-weight: 600 }
+.fc-link b { color: #fff; font-family: 'Archivo', sans-serif; font-size: 14px; font-weight: 800 }
+.fc-d { font-size: 10.5px; color: #5c665e; line-height: 1.5 }
+.foot-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  padding: 40px 0;
+}
+.foot-grid > div { padding: 0 20px; border-right: 1px solid rgba(255,255,255,.08) }
+.foot-grid > div:last-child { border-right: none }
+.foot-grid h4 {
+  font-family: 'Archivo', sans-serif; font-size: 11px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .1em; color: #fff; margin-bottom: 14px;
+}
+.foot-grid a { display: block; margin-bottom: 8px; font-size: 11.5px; transition: color .15s }
+.foot-grid a:hover { color: #fff }
+.f-logo {
+  font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 22px;
+  letter-spacing: -.04em; text-transform: uppercase; color: #fff; margin-bottom: 12px;
+}
+.f-logo .raw { color: var(--flag) }
+.foot-brand p { font-size: 12px; line-height: 1.65; color: #5c665e; max-width: 22ch }
+.foot-bottom {
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 18px 0;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.foot-bottom a { font-size: 10.5px; letter-spacing: .1em; transition: color .15s }
+.foot-bottom a:hover { color: #fff }
+@media(max-width: 900px) {
+  .foot-core { grid-template-columns: 1fr 1fr }
+  .fc-link { border-bottom: 1px solid rgba(255,255,255,.08) }
+  .foot-grid { grid-template-columns: 1fr 1fr; row-gap: 32px }
+  .foot-grid > div { border-right: none }
+}
+@media(max-width: 560px) {
+  .foot-grid { grid-template-columns: 1fr }
+  .foot-core { grid-template-columns: 1fr }
+}
 </style>
 </head>
-<body style="display: flex; flex-direction: column; min-height: 100vh;">
+<body>
 
-<!-- HEADER -->
+<!-- ============ HEADER ============ -->
 <header class="site-header">
   <div class="nav">
     <a href="index.html" class="logo">Golf<span class="raw">Raw</span></a>
-    <nav class="nav-links" id="navLinks">
-      <a href="index.html#news">Latest News</a>
-      <a href="index.html#ratings">Player Ratings</a>
-      <a href="index.html#tournaments">Tournaments</a>
-      <a href="index.html#analysis">Swing Analysis</a>
-      <a href="index.html#vault">The Vault</a>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="./news.html">Latest News</a>
+      <a href="./ratings.html">Player Ratings</a>
+      <a href="./tournaments.html">Tournaments</a>
+      <a href="./analysis.html">Swing Analysis</a>
+      <a href="./vault.html">The Vault</a>
       <a href="guides.html">Golf Raw Guides</a>
+      <a href="./index.html#newsletter" class="hot">The Card</a>
     </nav>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -114,61 +342,125 @@ a { color: inherit; text-decoration: none }
   </div>
 </header>
 
-<main>
+<!-- ============ MAIN ============ -->
+<main style="flex:1">
   <div class="wrap">
     <div class="page-head">
       <h1>Golf Raw Guides</h1>
       <p>The definitive instruction archive. No fluff, no quick fixes — just honest, mechanically sound advice that actually translates to the course.</p>
     </div>
 
-    <div class="news-grid">
-      <!-- FEATURED GUIDE -->
-      <article class="news">
-        <div class="cat" style="display:flex;align-items:center;gap:8px;">
-          <span>Fundamentals</span>
-          <span style="background:var(--fairway);color:#9CC9AE;padding:1px 7px;font-size:9.5px;font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;font-weight:600;text-transform:uppercase;">EVERGREEN</span>
-        </div>
-        <h3><a href="swing-guide.html">How to Swing a Golf Club: The Ultimate Guide</a></h3>
-        <p>Forget the 30-point mental checklist. This no-fluff guide covers grip, posture, tempo drills, and the actual biomechanics of speed for golfers at every level.</p>
-        <div class="meta"><span>BY GOLF RAW STAFF</span><span class="mono">AVAILABLE</span></div>
-      </article>
+    <div class="guide-grid">
 
-      <!-- LATEST GEAR GUIDE -->
-      <article class="news">
-        <div class="cat" style="display:flex;align-items:center;gap:8px;">
-          <span>Gear & Specs</span>
-          <span style="background:var(--fairway);color:#9CC9AE;padding:1px 7px;font-size:9.5px;font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;font-weight:600;text-transform:uppercase;">NEW</span>
+      <!-- ====== CARD 1: SWING GUIDE ====== -->
+      <a class="guide-card" href="swing-guide.html">
+        <img
+          src="public/mechanics-of-golf-swing.webp"
+          alt="Golf swing mechanics"
+          class="card-thumb"
+          loading="lazy"
+        >
+        <div class="card-body">
+          <div class="badge-row">
+            <span class="badge badge-red">Fundamentals</span>
+            <span class="badge badge-green">Evergreen</span>
+          </div>
+          <h3>How to Swing a Golf Club: The Ultimate Guide</h3>
+          <p>Forget the 30-point mental checklist. This no-fluff guide covers grip, posture, tempo drills, and the actual biomechanics of speed — for golfers at every level.</p>
+          <div class="card-meta">
+            <span class="author">Golf Raw Staff</span>
+            <span class="card-cta">Read Guide →</span>
+          </div>
         </div>
-        <h3><a href="swing-speed-guide.html">The Brutal Truth About Swing Speed &amp; Shaft Flex</a></h3>
-        <p>Most amateurs buy gear meant for Pros, hoping the sticker price will fix their slice. Stop guessing your specs. Here is the raw truth about swing speed, shaft flex, and equipment ego.</p>
-        <div class="meta"><span>BY GOLF RAW STAFF</span><span class="mono" style="color:var(--flag)">AVAILABLE</span></div>
-      </article>
+      </a>
 
-      <!-- PLACEHOLDER 2 -->
-      <article class="news locked">
-        <div class="cat">Fixes</div>
-        <h3>How to Fix Your Slice: The Truth About Face Control</h3>
-        <p>Stop trying to swing more to the left. The actual mechanical truth about path and face angle that will fix your ball flight in one session.</p>
-        <div class="meta"><span>BY GOLF RAW STAFF</span><span class="locked-badge">COMING SOON</span></div>
-      </article>
-    </div>
-  </div>
+      <!-- ====== CARD 2: SWING SPEED / SHAFT FLEX ====== -->
+      <a class="guide-card" href="swing-speed-guide.html">
+        <img
+          src="public/golf-swing-speed-flex.webp"
+          alt="Golf club flex setup"
+          class="card-thumb"
+          loading="lazy"
+        >
+        <div class="card-body">
+          <div class="badge-row">
+            <span class="badge badge-red">Gear &amp; Specs</span>
+            <span class="badge badge-green">New</span>
+          </div>
+          <h3>The Brutal Truth About Swing Speed &amp; Shaft Flex</h3>
+          <p>Most amateurs buy gear meant for Pros, hoping the sticker price will fix their slice. Stop guessing your specs — here is the raw truth about swing speed, shaft flex, and equipment ego.</p>
+          <div class="card-meta">
+            <span class="author">Golf Raw Staff</span>
+            <span class="card-cta">Read Guide →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- ====== CARD 3: COMING SOON ====== -->
+      <div class="guide-card locked">
+        <div class="card-thumb-placeholder">Image Coming Soon</div>
+        <div class="card-body">
+          <div class="badge-row">
+            <span class="badge badge-grey">Fixes</span>
+          </div>
+          <h3>How to Fix Your Slice: The Truth About Face Control</h3>
+          <p>Stop trying to swing more to the left. The actual mechanical truth about path and face angle that will fix your ball flight in one session.</p>
+          <div class="card-meta">
+            <span class="author">Golf Raw Staff</span>
+            <span class="card-cta disabled">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- .guide-grid -->
+  </div><!-- .wrap -->
 </main>
 
-<!-- FOOTER -->
-<footer class="site-footer">
+<!-- ============ FOOTER ============ -->
+<footer>
   <div class="wrap">
-    <span>© 2026 GOLFRAW.COM — ALL RATINGS FINAL</span>
-    <nav aria-label="Footer navigation" style="display:flex;gap:20px">
-      <a href="manifesto.html">MANIFESTO</a>
-      <a href="ratings-manual.html">HOW RATINGS WORK</a>
-      <a href="index.html">FRONT PAGE</a>
-    </nav>
+    <div class="foot-core">
+      <a href="manifesto.html" class="fc-link"><span class="fc-n">P-01</span><b>Golf Raw</b><span class="fc-d">The manifesto. Why we exist, why golf media broke, what we promise.</span></a>
+      <a href="ratings-manual.html" class="fc-link"><span class="fc-n">P-02</span><b>How Ratings Work</b><span class="fc-d">Document RG-001. The full method, weights and integrity rules.</span></a>
+      <a href="vault.html" class="fc-link"><span class="fc-n">P-03</span><b>The Vault</b><span class="fc-d">Golf history, replayed. Legendary rounds, forgotten collapses.</span></a>
+      <a href="corrections.html" class="fc-link"><span class="fc-n">P-04</span><b>Corrections Log</b><span class="fc-d">Every mistake we've made, in public, forever. Our trust ledger.</span></a>
+      <a href="contact.html" class="fc-link"><span class="fc-n">P-05</span><b>Contact</b><span class="fc-d">Tour leaks, tip-offs, and hate mail about our ratings.</span></a>
+    </div>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="f-logo">Golf<span class="raw">Raw</span></div>
+        <p>Golf news and player analysis with the press-release language removed. Ratings are locked before publication and never edited after.</p>
+      </div>
+      <div>
+        <h4>Coverage</h4>
+        <a href="news.html">Latest News</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="ratings.html">Player Ratings</a>
+        <a href="analysis.html">Swing Analysis</a>
+      </div>
+      <div>
+        <h4>Guides</h4>
+        <a href="guides.html">All Guides</a>
+        <a href="swing-guide.html">Swing Guide</a>
+        <a href="swing-speed-guide.html">Shaft Flex Guide</a>
+      </div>
+      <div>
+        <h4>About</h4>
+        <a href="manifesto.html">Manifesto</a>
+        <a href="corrections.html">Corrections</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 GOLFRAW.COM — ALL RATINGS FINAL</span>
+      <a href="privacy.html">PRIVACY POLICY</a>
+      <span>PLAY IT AS IT LIES</span>
+    </div>
   </div>
 </footer>
 
 <script>
-// Mobile nav
 const burger = document.getElementById('burger'), links = document.getElementById('navLinks');
 if (burger && links) {
   burger.addEventListener('click', () => {
