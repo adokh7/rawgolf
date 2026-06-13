@@ -467,10 +467,20 @@
     }
 
     .rc-row .lbl {
+      display: block;
       font-weight: 700;
       font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: .04em
+      letter-spacing: .04em;
+      line-height: 1.2;
+    }
+
+    .rc-row .sub {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: var(--grey);
+      margin-top: 2px;
     }
 
     .bar {
@@ -1249,6 +1259,7 @@
         <a href="./tournaments.html">Tournaments</a>
         <a href="./analysis.html">Swing Analysis</a>
         <a href="./vault.html">The Vault</a>
+        <a href="./index.html#guides">Raw Guides</a>
         <a href="./index.html#newsletter" class="hot">The Card</a>
       </nav>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
@@ -1288,24 +1299,36 @@
           </div>
           <div class="rc-rows">
             <div class="rc-row">
-              <span class="lbl">Driving</span>
-              <div class="bar"><i data-w="85%"></i></div>
-              <span class="num">8.5</span>
+              <div>
+                <span class="lbl">Driving</span>
+                <span class="sub">SG: OTT +1.00</span>
+              </div>
+              <div class="bar"><i data-w="92%"></i></div>
+              <span class="num">9.2</span>
             </div>
             <div class="rc-row">
-              <span class="lbl">Approach</span>
-              <div class="bar"><i data-w="96%"></i></div>
-              <span class="num">9.6</span>
+              <div>
+                <span class="lbl">Approach</span>
+                <span class="sub">SG: APP +1.50 | Tour Rank: 1st</span>
+              </div>
+              <div class="bar"><i data-w="99%"></i></div>
+              <span class="num">9.9</span>
             </div>
             <div class="rc-row">
-              <span class="lbl">Putting</span>
-              <div class="bar"><i data-w="91%"></i></div>
-              <span class="num">9.1</span>
+              <div>
+                <span class="lbl">Putting</span>
+                <span class="sub">SG: PUTT +0.20</span>
+              </div>
+              <div class="bar"><i data-w="75%"></i></div>
+              <span class="num">7.5</span>
             </div>
             <div class="rc-row">
-              <span class="lbl">Mental</span>
-              <div class="bar low"><i data-w="70%"></i></div>
-              <span class="num">7.0</span>
+              <div>
+                <span class="lbl">Mental</span>
+                <span class="sub">DG Rank: #1 Overall</span>
+              </div>
+              <div class="bar"><i data-w="98%"></i></div>
+              <span class="num">9.8</span>
             </div>
           </div>
           <div class="rc-total">
@@ -1476,6 +1499,27 @@
     </div>
   </section>
 
+  <!-- ====== RAW GUIDES ====== -->
+  <section id="guides">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2><span class="idx">05</span>Raw Guides</h2>
+        <a href="#guides">All guides →</a>
+      </div>
+      <div class="news-grid reveal" style="grid-template-columns: 1fr;">
+        <article class="news">
+          <div class="cat" style="display:flex;align-items:center;gap:8px;">
+            <span>Instruction · Fundamentals</span>
+            <span style="background:var(--fairway);color:#9CC9AE;padding:1px 7px;font-size:9.5px;font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;font-weight:600;text-transform:uppercase;">EVERGREEN</span>
+          </div>
+          <h3><a href="./swing-guide.html">How to Swing a Golf Club: The Ultimate Guide (From Beginners to Speed Training)</a></h3>
+          <p>Forget the 30-point mental checklist. This no-fluff guide covers grip, posture, tempo drills, and the actual biomechanics of speed for golfers at every level. Here is how to build a swing that feels natural and repeats under pressure.</p>
+          <div class="meta"><span>BY RAWGOLF STAFF</span><span class="mono">FRI 13 JUN</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ====== NEWSLETTER ====== -->
   <section class="nl" id="newsletter" style="padding:56px 0">
     <div class="wrap nl-inner">
@@ -1519,6 +1563,7 @@
           <a href="./tournaments.html">Tournaments</a>
           <a href="./ratings.html">Player Ratings</a>
           <a href="./analysis.html">Swing Analysis</a>
+          <a href="./index.html#guides">Raw Guides</a>
         </div>
         <div>
           <h4>Follow</h4>
