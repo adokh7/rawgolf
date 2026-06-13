@@ -90,6 +90,29 @@ a{color:inherit;text-decoration:none}
 }
 .cs-back:hover{color:var(--ink)}
 
+/* RATINGS TABLE */
+.ratings-wrap{padding:64px 0 80px}
+.ratings-wrap .page-header{margin-bottom:3rem}
+.tag-badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;font-weight:700;text-transform:uppercase;padding:4px 12px}
+.tag-badge.bg-red{background:var(--flag);color:#fff}
+.ratings-wrap h1{font-weight:900;font-size:clamp(32px,5vw,3rem);text-transform:uppercase;letter-spacing:-.03em;margin-top:1rem;margin-bottom:.75rem}
+.ratings-wrap .intro{font-size:1.05rem;color:var(--grey);max-width:600px;line-height:1.65}
+.table-container{overflow-x:auto}
+.sg-table{width:100%;border-collapse:collapse;text-align:left;margin-bottom:4rem}
+.sg-table thead tr{border-bottom:2px solid var(--flag)}
+.sg-table th{padding:1rem 0.75rem;color:var(--flag);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;font-weight:700;text-transform:uppercase}
+.sg-table th:first-child{padding-left:0}
+.sg-table tbody tr{border-bottom:1px solid #D7DAD2;transition:background .12s}
+.sg-table tbody tr:hover{background:#eaede5}
+.sg-table td{padding:1.4rem 0.75rem;vertical-align:top}
+.sg-table td:first-child{padding-left:0}
+.sg-rank{font-weight:900;font-size:1.25rem;color:var(--ink)}
+.sg-player{font-weight:800;font-size:1.05rem;color:var(--ink)}
+.sg-total{font-weight:700;font-size:1rem;color:var(--ink)}
+.sg-metric-red{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--flag)}
+.sg-metric-green{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.06em;color:#3d8f5f}
+.sg-verdict{font-size:0.9rem;color:var(--grey);line-height:1.55}
+
 /* FOOTER */
 .site-footer{background:var(--ink);color:#8b958d;padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em}
 .site-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
@@ -101,7 +124,7 @@ a{color:inherit;text-decoration:none}
 
 <header class="site-header">
   <div class="nav">
-    <a href="./index.html" class="logo">Raw<span class="raw">Golf</span></a>
+    <a href="./index.html" class="logo">Golf<span class="raw">Raw</span></a>
     <nav class="nav-links" id="navLinks" aria-label="Main navigation">
       <a href="./news.html">Latest News</a>
       <a href="./ratings.html" class="active">Player Ratings</a>
@@ -117,20 +140,74 @@ a{color:inherit;text-decoration:none}
 
 <div class="hub-hero">
   <div class="wrap">
-    <div class="eyebrow">RAWGOLF · SECTION 03</div>
+    <div class="eyebrow">GOLF RAW · SECTION 03</div>
     <h1>Player Ratings</h1>
     <p>Every rating is locked before publication and never edited after. You scored what you scored.</p>
   </div>
 </div>
 
-<div class="hub-body">
+<div class="ratings-wrap">
   <div class="wrap">
-    <div class="coming-soon-box">
-      <div class="cs-label">Coming Soon</div>
-      <h2>Week 24 Ratings Board</h2>
-      <p>The full interactive ratings board is in development. In the meantime, the current week's top ratings appear in the hero panel on the front page.</p>
-      <a href="./index.html" class="cs-back">← Back to Front Page</a>
+
+    <div class="page-header">
+      <span class="tag-badge bg-red">JUNE 2026 DATA</span>
+      <h1>Raw Player Ratings</h1>
+      <p class="intro">
+        The TV broadcast talks about momentum and prestige. We talk about data. The Official World Golf Ranking tells you who won, but Strokes Gained (SG) tells you who is actually playing the best golf right now. Here is the raw truth.
+      </p>
     </div>
+
+    <div class="table-container">
+      <table class="sg-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>SG: Total</th>
+            <th>2026 Metric</th>
+            <th>The Raw Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="sg-rank">1</span></td>
+            <td><span class="sg-player">Scottie Scheffler</span></td>
+            <td><span class="sg-total">+2.22</span></td>
+            <td><span class="sg-metric-red">#1 Tee-To-Green</span></td>
+            <td><span class="sg-verdict">Playing a different sport. Leads the Tour by nearly half a stroke. A machine.</span></td>
+          </tr>
+          <tr>
+            <td><span class="sg-rank">2</span></td>
+            <td><span class="sg-player">Ludvig &#197;berg</span></td>
+            <td><span class="sg-total">+1.74</span></td>
+            <td><span class="sg-metric-green">+1.23 Jump</span></td>
+            <td><span class="sg-verdict">The biggest riser on Tour. Went from 0.51 at the end of 2025 to elite status in months.</span></td>
+          </tr>
+          <tr>
+            <td><span class="sg-rank">3</span></td>
+            <td><span class="sg-player">Matt Fitzpatrick</span></td>
+            <td><span class="sg-total">+0.86</span></td>
+            <td><span class="sg-metric-green">3 Wins in &#x27;26</span></td>
+            <td><span class="sg-verdict">Valspar, RBC Heritage, Zurich Classic. The most compelling story of the 2026 season so far.</span></td>
+          </tr>
+          <tr>
+            <td><span class="sg-rank">4</span></td>
+            <td><span class="sg-player">Rory McIlroy</span></td>
+            <td><span class="sg-total">+1.00</span></td>
+            <td><span class="sg-metric-red">#1 Off-The-Tee</span></td>
+            <td><span class="sg-verdict">Still the king of the driver (0.793 SG: OTT). If the putter gets hot, nobody can catch him.</span></td>
+          </tr>
+          <tr>
+            <td><span class="sg-rank">5</span></td>
+            <td><span class="sg-player">Cameron Young</span></td>
+            <td><span class="sg-total">+0.75</span></td>
+            <td><span class="sg-metric-green">OWGR #3</span></td>
+            <td><span class="sg-verdict">Quietly climbed to World No. 3. Striking the ball purely without the media noise.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </div>
 
