@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PMECW4VW66');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Player Ratings Board | RawGolf</title>
+<meta name="description" content="Complete, authentic Data Golf rankings and player ratings. No PR rewrites, just raw data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --fairway: #14402A;
+  --fairway-deep: #0B2418;
+  --flag: #E03E2D;
+  --paper: #F3F4F0;
+  --white: #fff;
+  --ink: #101511;
+  --grey: #5B665E;
+  --maxw: 1180px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box }
+body {
+  font-family: 'Archivo', system-ui, sans-serif;
+  background: var(--ink);
+  color: var(--white);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+.mono { font-family: 'IBM Plex Mono', monospace }
+
+/* HEADER / NAV */
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+.back-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--flag);
+  transition: color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.back-btn:hover {
+  color: #fff;
+}
+.logo {
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+}
+.logo .raw { color: var(--flag) }
+
+/* BOARD CONTAINER */
+.board-header {
+  padding: 64px 0 40px;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+  margin-bottom: 32px;
+}
+.board-header h1 {
+  font-weight: 900;
+  font-size: clamp(34px, 4vw, 54px);
+  text-transform: uppercase;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.board-header p {
+  color: #8b958d;
+  font-size: 16px;
+  max-width: 600px;
+}
+
+/* DATA TABLE */
+.table-wrapper {
+  overflow-x: auto;
+  padding-bottom: 64px;
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 900px;
+}
+.data-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #8b958d;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.data-table td {
+  padding: 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  vertical-align: middle;
+}
+.data-table tr:hover td {
+  background: rgba(255,255,255,0.03);
+}
+.rank-col {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--flag);
+}
+.name-col {
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+}
+.num-col {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 15px;
+}
+.muted {
+  color: #8b958d;
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="top-nav">
+    <a href="index.html" class="back-btn">← BACK TO HOMEPAGE</a>
+    <div class="logo">Raw<span class="raw">Golf</span></div>
+  </nav>
+
+  <header class="board-header">
+    <h1>Raw Player Ratings</h1>
+    <p>The definitive world order. Data Golf model rankings, OWGR, and FedEx Cup standings combined into a single board of truth. Updated weekly.</p>
+  </header>
+
+  <div class="table-wrapper">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player Name</th>
+          <th>DG Model Rank</th>
+          <th>Data Golf Points</th>
+          <th>OWGR</th>
+          <th>FedEx Cup</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rank-col">01</td>
+          <td class="name-col">S. Scheffler</td>
+          <td class="num-col">1</td>
+          <td class="num-col">1</td>
+          <td class="num-col">1</td>
+          <td class="num-col">1</td>
+        </tr>
+        <tr>
+          <td class="rank-col">02</td>
+          <td class="name-col">R. McIlroy</td>
+          <td class="num-col">2</td>
+          <td class="num-col">2</td>
+          <td class="num-col">2</td>
+          <td class="num-col">2</td>
+        </tr>
+        <tr>
+          <td class="rank-col">03</td>
+          <td class="name-col">J. Rahm</td>
+          <td class="num-col">3</td>
+          <td class="num-col">6</td>
+          <td class="num-col">8</td>
+          <td class="num-col muted">--</td>
+        </tr>
+        <tr>
+          <td class="rank-col">04</td>
+          <td class="name-col">C. Young</td>
+          <td class="num-col">4</td>
+          <td class="num-col">3</td>
+          <td class="num-col">3</td>
+          <td class="num-col">2</td>
+        </tr>
+        <tr>
+          <td class="rank-col">05</td>
+          <td class="name-col">T. Fleetwood</td>
+          <td class="num-col">5</td>
+          <td class="num-col">7</td>
+          <td class="num-col">7</td>
+          <td class="num-col muted">--</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>
