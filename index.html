@@ -1553,78 +1553,7 @@
     }), { threshold: .3 });
     document.querySelectorAll('.rating-card').forEach(el => bio.observe(el));
   </script>
-  <script>
-    // ============ COOKIE CONSENT (EU) ============
-    // Drop this block into every page template. Loads ad/analytics scripts ONLY after "accept".
-    (function () {
-      if (localStorage.getItem('rg_consent')) return; // already answered
-      const b = document.createElement('div');
-      b.id = 'rg-cookie';
-      b.innerHTML = `
-    <style>
-      #rg-cookie{
-        position:fixed;bottom:0;left:0;right:0;z-index:9999;
-        background:#101511;color:#fff;border-top:4px solid #E03E2D;
-        font-family:'Archivo',system-ui,sans-serif;
-        padding:18px 20px;
-        display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;
-        box-shadow:0 -8px 30px rgba(0,0,0,.35);
-      }
-      #rg-cookie .rg-c-txt{max-width:640px}
-      #rg-cookie .rg-c-kick{
-        font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;
-        text-transform:uppercase;color:#E03E2D;font-weight:600;margin-bottom:4px;
-      }
-      #rg-cookie p{font-size:14px;line-height:1.5;color:#c9d0ca;margin:0}
-      #rg-cookie p b{color:#fff}
-      #rg-cookie p a{color:#fff;font-weight:700;border-bottom:2px solid #E03E2D;text-decoration:none}
-      #rg-cookie p a:hover{color:#E03E2D}
-      #rg-cookie .rg-c-btns{display:flex;gap:12px;flex-shrink:0}
-      #rg-cookie button{
-        font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;
-        text-transform:uppercase;letter-spacing:.05em;padding:13px 22px;
-        cursor:pointer;border:2px solid #fff;transition:transform .1s;
-      }
-      #rg-cookie button:hover{transform:translateY(-2px)}
-      #rg-cookie .rg-accept{background:#E03E2D;color:#fff;border-color:#E03E2D}
-      #rg-cookie .rg-reject{background:transparent;color:#fff}
-      @media(max-width:680px){
-        #rg-cookie{flex-direction:column;align-items:stretch;text-align:left}
-        #rg-cookie .rg-c-btns{width:100%}
-        #rg-cookie button{flex:1}
-      }
-    </style>
-    <div class="rg-c-txt">
-      <div class="rg-c-kick">Cookie Disclosure · No Spin</div>
-      <p><b>Yeah, we use cookies.</b> They keep the lights on — analytics to see what you actually read, and Google AdSense ads that fund the journalism. Accept and the ads get relevant. Refuse and the site works exactly the same, the ads just get dumber. Your call, no guilt trip. The boring legal stuff: <a href="privacy.html">privacy policy</a>.</p>
-    </div>
-    <div class="rg-c-btns">
-      <button class="rg-reject">Refuse</button>
-      <button class="rg-accept">Accept</button>
-    </div>`;
-      document.body.appendChild(b);
-      function done(choice) {
-        localStorage.setItem('rg_consent', choice);
-        b.remove();
-        if (choice === 'accepted') {
-          loadTrackingScripts(); // ads + analytics load ONLY here
-        }
-      }
-      b.querySelector('.rg-accept').addEventListener('click', () => done('accepted'));
-      b.querySelector('.rg-reject').addEventListener('click', () => done('rejected'));
-    })();
-
-    // Placeholder: replace with real AdSense + analytics loaders at launch.
-    // Scripts MUST only be injected here (after consent), never in <head> directly, for EU compliance.
-    function loadTrackingScripts() {
-      /* Example at launch:
-      const s=document.createElement('script');
-      s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXX';
-      s.async=true; s.crossOrigin='anonymous';
-      document.head.appendChild(s);
-      */
-    }
-  </script>
+  <script src="./consent.js"></script>
 </body>
 
 </html>
