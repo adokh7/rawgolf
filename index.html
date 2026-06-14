@@ -59,6 +59,12 @@
       text-decoration: none
     }
 
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
     .wrap {
       max-width: var(--maxw);
       margin: 0 auto;
@@ -978,29 +984,7 @@
       color: #8b958d
     }
 
-    @media(max-width:1020px) {
-      .foot-core {
-        grid-template-columns: 1fr 1fr 1fr
-      }
 
-      .fc-link:nth-child(3n) {
-        border-right: none
-      }
-
-      .fc-link {
-        border-bottom: 1px solid rgba(255, 255, 255, .25)
-      }
-    }
-
-    @media(max-width:680px) {
-      .foot-core {
-        grid-template-columns: 1fr
-      }
-
-      .fc-link {
-        border-right: none
-      }
-    }
 
     .foot-grid {
       display: grid;
@@ -1080,7 +1064,7 @@
     }
 
     /* ============ RESPONSIVE ============ */
-    @media(max-width:1020px) {
+    @media(max-width:1024px) {
       .hero-grid {
         grid-template-columns: 1fr
       }
@@ -1088,7 +1072,8 @@
       .hero-main {
         border-right: none;
         border-bottom: 3px solid var(--ink);
-        min-height: 420px
+        min-height: 420px;
+        padding: 48px 32px
       }
 
       .news-grid {
@@ -1111,7 +1096,7 @@
         grid-template-columns: 1fr 1fr
       }
 
-      .r-card:nth-child(2) {
+      .r-card:nth-child(2n) {
         border-right: none
       }
 
@@ -1122,9 +1107,39 @@
       .split {
         grid-template-columns: 1fr
       }
+
+      .foot-core {
+        grid-template-columns: 1fr 1fr 1fr
+      }
+
+      .fc-link:nth-child(3n) {
+        border-right: none
+      }
+
+      .fc-link {
+        border-bottom: 1px solid rgba(255, 255, 255, .25)
+      }
+
+      .foot-grid {
+        grid-template-columns: 1fr 1fr
+      }
     }
 
-    @media(max-width:680px) {
+    @media(max-width:768px) {
+      section {
+        padding: 40px 0
+      }
+
+      .sec-head {
+        margin-bottom: 24px;
+        padding-bottom: 10px
+      }
+
+      .hero-main {
+        padding: 32px 20px;
+        min-height: 360px
+      }
+
       .nav-links {
         display: none;
         position: absolute;
@@ -1135,6 +1150,8 @@
         align-items: stretch;
         background: var(--paper);
         border-bottom: 3px solid var(--ink);
+        max-height: calc(100vh - 72px);
+        overflow-y: auto
       }
 
       .nav-links.open {
@@ -1178,11 +1195,26 @@
       }
 
       .news.lead h3 {
-        font-size: 24px
+        font-size: 24px;
+        max-width: none
+      }
+
+      .r-strip {
+        grid-template-columns: 1fr
+      }
+
+      .r-card:nth-child(n) {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, .2)
+      }
+
+      .r-card:last-child {
+        border-bottom: none
       }
 
       .nl-inner {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
+        gap: 24px
       }
 
       .nl-form {
@@ -1195,12 +1227,17 @@
         min-width: 0
       }
 
-      .foot-grid {
-        grid-template-columns: 1fr 1fr
+      .foot-core {
+        grid-template-columns: 1fr
       }
 
-      .hero-main {
-        padding: 40px 24px
+      .fc-link {
+        border-right: none
+      }
+
+      .foot-grid {
+        grid-template-columns: 1fr;
+        gap: 24px
       }
 
       .story {
@@ -1210,6 +1247,27 @@
 
       .story .d {
         grid-column: 2
+      }
+
+      .rc-total .big {
+        font-size: 36px
+      }
+
+      .hero-main h1 {
+        font-size: clamp(30px, 8vw, 44px);
+        max-width: none
+      }
+
+      .sec-head h2 {
+        font-size: clamp(22px, 6vw, 30px)
+      }
+
+      .news h3 {
+        font-size: 18px
+      }
+
+      .vault-box h3 {
+        font-size: 20px
       }
     }
   </style>
