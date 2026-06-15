@@ -81,7 +81,14 @@
 html{scroll-behavior:smooth}
 body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-img{max-width:100%;height:auto;display:block}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  /* Stops mobile scrolling flicker/jiggling */
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
 .mono{font-family:'IBM Plex Mono',monospace}
 
@@ -143,7 +150,18 @@ img{max-width:100%;height:auto;display:block}
 }
 .byline b{color:var(--ink);font-weight:600}
 
-figure.lead-img{margin-bottom:8px;border:2px solid var(--ink)}
+figure.lead-img {
+  margin-bottom: 8px;
+  border: 2px solid var(--ink);
+  overflow: hidden; /* Keeps image strictly contained */
+}
+
+figure.lead-img img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9; /* Prevents scroll jumping (CLS) before load */
+  object-fit: cover;
+}
 .img-ph{
   aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(135deg,#0e2418,#2a1408);font-size:60px;

@@ -112,7 +112,10 @@
     img {
       max-width: 100%;
       height: auto;
-      display: block
+      display: block;
+      /* Stops mobile scrolling flicker/jiggling */
+      backface-visibility: hidden;
+      transform: translateZ(0);
     }
 
     .wrap {
@@ -311,7 +314,15 @@
 
     figure.lead-img {
       margin-bottom: 8px;
-      border: 2px solid var(--ink)
+      border: 2px solid var(--ink);
+      overflow: hidden; /* Keeps image strictly contained */
+    }
+
+    figure.lead-img img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16/9; /* Prevents scroll jumping (CLS) before load */
+      object-fit: cover;
     }
 
     .img-ph {
