@@ -1270,6 +1270,110 @@
         font-size: 20px
       }
     }
+
+    /* Brand Manifesto Styles */
+    .brand-manifesto {
+      --red: var(--flag);
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 60px;
+      margin: 60px auto;
+      padding: 60px 20px;
+      border-top: 4px solid var(--ink);
+      border-bottom: 4px solid var(--ink);
+      align-items: center;
+      max-width: var(--maxw);
+    }
+
+    .manifesto-video {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .manifesto-video video {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      display: block;
+      border: 3px solid var(--ink);
+      box-shadow: 12px 12px 0 var(--ink);
+      background: #000;
+    }
+
+    .manifesto-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .manifesto-text h2 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      text-transform: uppercase;
+      background: var(--red);
+      color: #fff;
+      display: inline-block;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+    }
+
+    .manifesto-text p {
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    /* Tablet / iPad Landscape & Portrait */
+    @media (max-width: 992px) {
+      .brand-manifesto {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        padding: 50px 20px;
+      }
+
+      .manifesto-video {
+        justify-content: center;
+      }
+
+      .manifesto-video video {
+        box-shadow: 8px 8px 0 var(--ink);
+      }
+    }
+
+    /* Mobile Phones */
+    @media (max-width: 768px) {
+      .brand-manifesto {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        margin: 40px auto;
+        padding: 40px 15px;
+        text-align: center;
+      }
+
+      .manifesto-video {
+        justify-content: center;
+      }
+
+      .manifesto-video video {
+        max-width: 260px;
+        margin: 0 auto;
+      }
+
+      .manifesto-text {
+        align-items: center;
+      }
+
+      .manifesto-text h2 {
+        font-size: 2.2rem;
+        padding: 8px 15px;
+      }
+
+      .manifesto-text p {
+        font-size: 1.1rem;
+      }
+    }
   </style>
   <script src="https://cdn.tailwindcss.com"></script>
   <meta property="og:site_name" content="Golf Raw">
@@ -1483,6 +1587,17 @@
     </div>
   </section>
 
+  <!-- ====== BRAND MANIFESTO ====== -->
+  <section class="brand-manifesto">
+    <div class="manifesto-video">
+      <video src="public/rawgolf.webm" autoplay loop muted playsinline preload="auto"></video>
+    </div>
+    <div class="manifesto-text">
+      <h2>THIS IS RAW GOLF.</h2>
+      <p>No PR rewrites. Just the unvarnished truth.</p>
+    </div>
+  </section>
+
   <!-- ====== ANALYSIS + VAULT ====== -->
   <section id="analysis">
     <div class="wrap split">
@@ -1521,6 +1636,11 @@
           </a>
           -->
           <!-- COMING SOON PLACEHOLDER RETIRED — A-12 PUBLISHED -->
+          <a class="rel-card" href="fix-over-the-top.html">
+            <div class="cat">Swing Analysis</div>
+            <h3>How to Fix an Over the Top Golf Swing: The Honest Way to Kill Your Slice</h3>
+            <div class="d">TUE 16 JUN · S. OKAFOR</div>
+          </a>
           <a class="story" href="./scheffler-swing.html">
             <span class="n">A-12</span>
             <h3>Why Scheffler's "ugly" footwork is the most repeatable move on tour</h3>
