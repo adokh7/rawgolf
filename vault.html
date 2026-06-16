@@ -94,6 +94,220 @@ a{color:inherit;text-decoration:none}
 .site-footer{background:var(--ink);color:#8b958d;padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em}
 .site-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .site-footer a:hover{color:#fff}
+/* ============ GUIDE CARDS GRID ============ */
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 2px solid var(--ink);
+      margin-bottom: 80px;
+    }
+
+    @media(max-width: 1000px) {
+      .guide-grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    @media(max-width: 640px) {
+      .guide-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* ============ GUIDE CARD ============ */
+    .guide-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      border-right: 2px solid var(--ink);
+      transition: background .15s;
+      overflow: hidden;
+    }
+
+    .guide-card:last-child {
+      border-right: none
+    }
+
+    @media(max-width: 1000px) {
+      .guide-card:nth-child(2n) {
+        border-right: none
+      }
+
+      .guide-card:nth-child(-n+2) {
+        border-bottom: 2px solid var(--ink)
+      }
+    }
+
+    @media(max-width: 640px) {
+      .guide-card {
+        border-right: none !important;
+        border-bottom: 2px solid var(--ink)
+      }
+
+      .guide-card:last-child {
+        border-bottom: none
+      }
+    }
+
+    .guide-card:not(.locked):hover {
+      background: #f9faf7
+    }
+
+    /* Card thumbnail */
+    .card-thumb {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: center;
+      border-bottom: 2px solid var(--ink);
+      display: block;
+    }
+
+    /* Placeholder thumbnail for coming-soon card */
+    .card-thumb-placeholder {
+      width: 100%;
+      height: 220px;
+      background: repeating-linear-gradient(-45deg,
+          #E8EAE4,
+          #E8EAE4 10px,
+          #DDDFD9 10px,
+          #DDDFD9 20px);
+      border-bottom: 2px solid var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #9aa59d;
+      font-weight: 600;
+    }
+
+    /* Card body */
+    .card-body {
+      padding: 28px 28px 32px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    /* Badge row */
+    .badge-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: .14em;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 2px 8px;
+    }
+
+    .badge-red {
+      background: var(--flag);
+      color: #fff
+    }
+
+    .badge-green {
+      background: var(--fairway);
+      color: #9CC9AE
+    }
+
+    .badge-grey {
+      background: #D0D4CC;
+      color: #5B665E
+    }
+
+    /* Card title */
+    .card-body h3 {
+      font-weight: 900;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      margin-bottom: 12px;
+    }
+
+    .guide-card:not(.locked):hover h3 {
+      text-decoration: underline;
+      text-decoration-color: var(--flag);
+      text-decoration-thickness: 3px;
+      text-underline-offset: 4px;
+    }
+
+    /* Card description */
+    .card-body p {
+      font-size: 14.5px;
+      color: var(--grey);
+      flex: 1;
+      margin-bottom: 24px;
+    }
+
+    /* Card meta / CTA row */
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #DADDD4;
+      padding-top: 16px;
+      margin-top: auto;
+    }
+
+    .card-meta .author {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--grey);
+    }
+
+    .card-cta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 2px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+      transition: background .15s, color .15s;
+      white-space: nowrap;
+    }
+
+    .card-cta:hover {
+      background: var(--flag);
+      border-color: var(--flag)
+    }
+
+    .card-cta.disabled {
+      background: #D0D4CC;
+      border-color: #D0D4CC;
+      color: #8b958d;
+      pointer-events: none;
+    }
+
+    /* Locked / coming-soon card */
+    .guide-card.locked {
+      background: var(--paper);
+      opacity: .65
+    }
+
+    .guide-card.locked:hover {
+      background: var(--paper)
+    }
+
+    .guide-card.locked h3 {
+      color: var(--grey)
+    }
+
+
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -125,8 +339,24 @@ a{color:inherit;text-decoration:none}
 
 <div class="hub-body">
   <div class="wrap">
-    <div class="coming-soon-box">
-      <div class="cs-label">Coming Soon</div>
+    <div class="guide-grid">
+      <!-- ====== CARD: THE VAULT NEW ====== -->
+      <a class="guide-card" href="greg-norman-1996-masters.html">
+        <img src="public/greg-norman-1996-masters-vault.webp" alt="Greg Norman at the 1996 Masters" class="card-thumb" loading="lazy">
+        <div class="card-body">
+          <div class="badge-row">
+            <span class="badge badge-red">THE VAULT</span>
+            <span class="badge badge-green">NEW</span>
+          </div>
+          <h3>The Six Shots That Got Away: Greg Norman, 1996</h3>
+          <p>How a six-shot lead turned into the most famous collapse in golf, and the honest lesson every player can take from it.</p>
+          <div class="card-meta">
+            <span class="author">GOLF RAW STAFF</span>
+            <span class="card-cta">READ THE VAULT &rarr;</span>
+          </div>
+        </div>
+      </a>
+    </div>
       <h2>The Vault is Currently Sealed</h2>
       <p>Archival deep-dives and forgotten scorecard autopsies drop every Sunday. The first entries are being prepared now. Subscribe to The Card to be notified when The Vault opens.</p>
       <a href="./index.html" class="cs-back">← Back to Front Page</a>
