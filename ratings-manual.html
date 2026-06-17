@@ -206,6 +206,31 @@ footer a:hover{color:#fff}
   .nav-links a{border-left:none;border-top:1px solid #D7DAD2;padding:14px 20px}
   .burger{display:block}
 }
+
+/* === RAWGOLF RESPONSIVE OVERRIDES === */
+img { max-width: 100%; height: auto; }
+@media (max-width: 1024px) {
+  .wrap { padding-left: 20px; padding-right: 20px; }
+  .page-grid { grid-template-columns: 1fr; gap: 32px; }
+  .article-aside { display: block; }
+  .rel-grid { grid-template-columns: 1fr 1fr; }
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .wrap { padding-left: 16px; padding-right: 16px; }
+  .nav { padding: 0 16px; }
+  .page-grid { grid-template-columns: 1fr; gap: 28px; }
+  .article-aside { display: block; }
+  .rel-grid, .news-grid, .guide-grid, .stat-box,
+  .versus-grid, .contact-grid, .tally { grid-template-columns: 1fr; }
+  .article-head h1 { font-size: clamp(26px, 7vw, 34px); }
+  .standfirst { font-size: 16.5px; }
+  .article-body { font-size: 16.5px; }
+  .article-body h2 { font-size: clamp(20px, 5.5vw, 24px); }
+  .article-body h3 { font-size: 17px; }
+  blockquote.pull { font-size: clamp(18px, 5vw, 22px); padding: 20px 22px; }
+  figure.lead-img img { aspect-ratio: 4 / 3; }
+}
 </style>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
