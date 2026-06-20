@@ -315,13 +315,15 @@
     figure.lead-img {
       margin-bottom: 8px;
       border: 2px solid var(--ink);
-      overflow: hidden; /* Keeps image strictly contained */
+      overflow: hidden;
+      /* Keeps image strictly contained */
     }
 
     figure.lead-img img {
       width: 100%;
       height: auto;
-      aspect-ratio: 16/9; /* Prevents scroll jumping (CLS) before load */
+      aspect-ratio: 16/9;
+      /* Prevents scroll jumping (CLS) before load */
       object-fit: cover;
     }
 
@@ -689,35 +691,100 @@
         display: block
       }
     }
-  
-  /* === RAWGOLF RESPONSIVE OVERRIDES === */
-  img { max-width: 100%; height: auto; }
-  @media (max-width: 1024px) {
-    .wrap { padding-left: 20px; padding-right: 20px; }
-    .page-grid { grid-template-columns: 1fr; gap: 32px; }
-    .article-aside { display: block; }
-    .rel-grid { grid-template-columns: 1fr 1fr; }
-    .news-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 768px) {
-    .wrap { padding-left: 16px; padding-right: 16px; }
-    .nav { padding: 0 16px; }
-    .page-grid { grid-template-columns: 1fr; gap: 28px; }
-    .article-aside { display: block; }
-    .rel-grid, .news-grid, .guide-grid, .stat-box,
-    .versus-grid, .contact-grid, .tally { grid-template-columns: 1fr; }
-    .article-head h1 { font-size: clamp(26px, 7vw, 34px); }
-    .standfirst { font-size: 16.5px; }
-    .article-body { font-size: 16.5px; }
-    .article-body h2 { font-size: clamp(20px, 5.5vw, 24px); }
-    .article-body h3 { font-size: 17px; }
-    blockquote.pull { font-size: clamp(18px, 5vw, 22px); padding: 20px 22px; }
-    figure.lead-img img { aspect-ratio: 4 / 3; }
-  }
+
+    /* === RAWGOLF RESPONSIVE OVERRIDES === */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 1024px) {
+      .wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .page-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .article-aside {
+        display: block;
+      }
+
+      .rel-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .wrap {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .nav {
+        padding: 0 16px;
+      }
+
+      .page-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .article-aside {
+        display: block;
+      }
+
+      .rel-grid,
+      .news-grid,
+      .guide-grid,
+      .stat-box,
+      .versus-grid,
+      .contact-grid,
+      .tally {
+        grid-template-columns: 1fr;
+      }
+
+      .article-head h1 {
+        font-size: clamp(26px, 7vw, 34px);
+      }
+
+      .standfirst {
+        font-size: 16.5px;
+      }
+
+      .article-body {
+        font-size: 16.5px;
+      }
+
+      .article-body h2 {
+        font-size: clamp(20px, 5.5vw, 24px);
+      }
+
+      .article-body h3 {
+        font-size: 17px;
+      }
+
+      blockquote.pull {
+        font-size: clamp(18px, 5vw, 22px);
+        padding: 20px 22px;
+      }
+
+      figure.lead-img img {
+        aspect-ratio: 4 / 3;
+      }
+    }
   </style>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062"
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -753,7 +820,8 @@
         <header class="article-head">
           <span class="cat">TOURNAMENTS · NEWS</span>
           <h1>U.S. Open Round 1: Wyndham Clark Breaks the Shinnecock Record as the Wind Bares Its Teeth</h1>
-          <p class="standfirst">Clark's record 64 leads at Shinnecock after the wind split the draw in two. Dustin Johnson lurks, Scheffler grinds out a 72 to keep the Grand Slam alive, and an amateur briefly led.</p>
+          <p class="standfirst">Clark's record 64 leads at Shinnecock after the wind split the draw in two. Dustin
+            Johnson lurks, Scheffler grinds out a 72 to keep the Grand Slam alive, and an amateur briefly led.</p>
           <div class="byline">
             <span>BY <b><a href="#">S. OKAFOR</a></b></span>
             <span>PUBLISHED <b>FRI 19 JUN</b></span>
@@ -761,61 +829,117 @@
         </header>
 
         <figure class="lead-img">
-          <img src="public/us-open-round-1-shinnecock.webp" alt="Wyndham Clark playing a shot into the wind at Shinnecock Hills during U.S. Open Round 1">
+          <img src="public/us-open-round-1-shinnecock.webp"
+            alt="Wyndham Clark playing a shot into the wind at Shinnecock Hills during U.S. Open Round 1">
         </figure>
         <figcaption>WYNDHAM CLARK AT SHINNECOCK HILLS. PHOTO: RAWGOLF</figcaption>
 
         <div class="article-body">
-          <p>Shinnecock Hills was supposed to be a bloodbath. The forecast promised wind, the course promised pain, and for most of Thursday it delivered both. Then the sun started to drop, the wind quit, and Wyndham Clark went out and shot a number nobody had ever posted here.</p>
+          <p>Shinnecock Hills was supposed to be a bloodbath. The forecast promised wind, the course promised pain, and
+            for most of Thursday it delivered both. Then the sun started to drop, the wind quit, and Wyndham Clark went
+            out and shot a number nobody had ever posted here.</p>
 
-          <p>Clark's 6-under 64 is the lowest opening round in any U.S. Open ever played at Shinnecock Hills. It gave him a two-shot lead and flipped a brutal day into one of the more dramatic Round 1 finishes in recent memory. Here is everything that happened on a long, strange opening day at the 126th U.S. Open.</p>
+          <p>Clark's 6-under 64 is the lowest opening round in any U.S. Open ever played at Shinnecock Hills. It gave
+            him a two-shot lead and flipped a brutal day into one of the more dramatic Round 1 finishes in recent
+            memory. Here is everything that happened on a long, strange opening day at the 126th U.S. Open.</p>
 
           <h2>A Day Split in Two by the Weather</h2>
           <p>The story of Round 1 is really the story of the wind, and the fog that came before it.</p>
-          <p>Morning fog forced a two-hour delay, which pushed tee times back and set up a clean divide. The players who went out early ran straight into the teeth of it. Sustained winds near 25 mph, gusts topping 30, and to make it worse, the wind changed direction in the middle of the day. The scoring average climbed well above 74. Holes that looked fair on paper turned into survival tests.</p>
-          <p>Then, as the day wore on and the sun sank, the wind began to lay down. The late starters walked into a softer, kinder version of the same course. By the back stretch of the afternoon, players were aiming at flags instead of just trying to find the green. The afternoon wave played at least a full shot easier than the morning crowd. Same course, same setup, two completely different exams.</p>
+          <p>Morning fog forced a two-hour delay, which pushed tee times back and set up a clean divide. The players who
+            went out early ran straight into the teeth of it. Sustained winds near 25 mph, gusts topping 30, and to make
+            it worse, the wind changed direction in the middle of the day. The scoring average climbed well above 74.
+            Holes that looked fair on paper turned into survival tests.</p>
+          <p>Then, as the day wore on and the sun sank, the wind began to lay down. The late starters walked into a
+            softer, kinder version of the same course. By the back stretch of the afternoon, players were aiming at
+            flags instead of just trying to find the green. The afternoon wave played at least a full shot easier than
+            the morning crowd. Same course, same setup, two completely different exams.</p>
           <p>That luck of the draw matters at a U.S. Open, and Clark knew it the moment he saw his tee time.</p>
 
           <h2>Clark Times It Perfectly</h2>
-          <p>Clark admitted that when he got his tee times on Tuesday, his first thought was that he had drawn a tough slot. He turned out to be wrong in the best way. The fog delay nudged everything later, and by the time he reached his closing holes, the wind had gone quiet.</p>
-          <p>He did not waste the gift. Starting on the 10th, he opened with two quick birdies and made the turn in 32 to climb to the top of the board. After a cold stretch around the first and second, he caught fire again: a wedge to five feet for birdie, a 20-footer on the next, and then the shot of his day. From 207 yards on the par-5 fifth, with a little wind helping, he stuck his second to three feet and tapped in for eagle.</p>
-          <p>Darkness stopped him before he could finish, sitting at 6 under through 16 with a four-shot lead. He came back Friday morning to close it out, signing for that record 64 and a two-shot cushion. To put the number in context: the lowest opening round in the previous five U.S. Opens at Shinnecock was 66. Clark didn't just lead. He rewrote the page.</p>
+          <p>Clark admitted that when he got his tee times on Tuesday, his first thought was that he had drawn a tough
+            slot. He turned out to be wrong in the best way. The fog delay nudged everything later, and by the time he
+            reached his closing holes, the wind had gone quiet.</p>
+          <p>He did not waste the gift. Starting on the 10th, he opened with two quick birdies and made the turn in 32
+            to climb to the top of the board. After a cold stretch around the first and second, he caught fire again: a
+            wedge to five feet for birdie, a 20-footer on the next, and then the shot of his day. From 207 yards on the
+            par-5 fifth, with a little wind helping, he stuck his second to three feet and tapped in for eagle.</p>
+          <p>Darkness stopped him before he could finish, sitting at 6 under through 16 with a four-shot lead. He came
+            back Friday morning to close it out, signing for that record 64 and a two-shot cushion. To put the number in
+            context: the lowest opening round in the previous five U.S. Opens at Shinnecock was 66. Clark didn't just
+            lead. He rewrote the page.</p>
 
           <h2>Dustin Johnson Hangs Close</h2>
-          <p>The man chasing him is a familiar one. Dustin Johnson, playing his final year of exemption from the U.S. Open he won at Oakmont in 2016, put together a strong day of his own to sit two back.</p>
-          <p>Johnson ripped off four straight birdies and was actually tied with Clark through 13 holes. But the par-5 fifth bit him where it rewarded Clark. Johnson failed to get up and down for birdie there, then three-putted from close range for a double bogey on the sixth, and suddenly he trailed by four. He steadied himself, birdied two of his last three holes Friday morning, and clawed the gap back to two. For a player many had written off, it was a reminder that he can still show up when the majors come around.</p>
+          <p>The man chasing him is a familiar one. Dustin Johnson, playing his final year of exemption from the U.S.
+            Open he won at Oakmont in 2016, put together a strong day of his own to sit two back.</p>
+          <p>Johnson ripped off four straight birdies and was actually tied with Clark through 13 holes. But the par-5
+            fifth bit him where it rewarded Clark. Johnson failed to get up and down for birdie there, then three-putted
+            from close range for a double bogey on the sixth, and suddenly he trailed by four. He steadied himself,
+            birdied two of his last three holes Friday morning, and clawed the gap back to two. For a player many had
+            written off, it was a reminder that he can still show up when the majors come around.</p>
 
           <h2>Scheffler Grinds, the Grand Slam Bid Stays Alive</h2>
-          <p>The headline name coming into the week was Scottie Scheffler, who needs this U.S. Open to complete the career Grand Slam. Thursday was not pretty for him, and that is almost the point.</p>
-          <p>Scheffler drew the hard side of the weather and battled it for hours. His group needed nearly three hours just to play nine holes in the worst of the wind. He leaned hard on his short game to keep the round together and signed for a 72. It was his 10th straight U.S. Open round without breaking par, a stat that does not flatter the best player in the world.</p>
-          <p>And yet. A 72 on that side of the draw left him only four shots back of the lead. In a normal week, an even-par scramble feels like a wasted day. At a windswept Shinnecock, it kept his Grand Slam hopes very much alive. Sometimes the round that saves your week is the ugly one you fight for.</p>
+          <p>The headline name coming into the week was Scottie Scheffler, who needs this U.S. Open to complete the
+            career Grand Slam. Thursday was not pretty for him, and that is almost the point.</p>
+          <p>Scheffler drew the hard side of the weather and battled it for hours. His group needed nearly three hours
+            just to play nine holes in the worst of the wind. He leaned hard on his short game to keep the round
+            together and signed for a 72. It was his 10th straight U.S. Open round without breaking par, a stat that
+            does not flatter the best player in the world.</p>
+          <p>And yet. A 72 on that side of the draw left him only four shots back of the lead. In a normal week, an
+            even-par scramble feels like a wasted day. At a windswept Shinnecock, it kept his Grand Slam hopes very much
+            alive. Sometimes the round that saves your week is the ugly one you fight for.</p>
 
           <h2>The Amateur Who Briefly Led</h2>
-          <p>Every U.S. Open throws up a name nobody expected, and this year it was Ryder Cowan. The Oklahoma junior, playing his first major, birdied his last hole for a 68 and at one point briefly held the outright lead.</p>
-          <p>Cowan earned his spot the hard way, surviving a three-man playoff for two qualifier places in Florida. He admitted he peeked at the leaderboard and saw his own name up top through nine holes. His 68 matched the lowest round ever shot by an amateur at Shinnecock. He had company from the college ranks too, with former Oklahoma and Oklahoma State players also posting 68s, though only one of them had to survive the brutal morning wind to do it.</p>
+          <p>Every U.S. Open throws up a name nobody expected, and this year it was Ryder Cowan. The Oklahoma junior,
+            playing his first major, birdied his last hole for a 68 and at one point briefly held the outright lead.</p>
+          <p>Cowan earned his spot the hard way, surviving a three-man playoff for two qualifier places in Florida. He
+            admitted he peeked at the leaderboard and saw his own name up top through nine holes. His 68 matched the
+            lowest round ever shot by an amateur at Shinnecock. He had company from the college ranks too, with former
+            Oklahoma and Oklahoma State players also posting 68s, though only one of them had to survive the brutal
+            morning wind to do it.</p>
 
           <h2>Rahm Stays Clean, Others Fall Apart</h2>
           <p>A few more threads worth pulling from a busy day.</p>
-          <p>Jon Rahm was the only player in the entire field to finish Thursday bogey-free, capping it with a 60-foot birdie putt on the par-3 17th to reach 2 under. After nearly stealing the PGA Championship earlier this year, he is again lurking exactly where you would expect a great player to be.</p>
-          <p>The day had its wreckage too. Joaquín Niemann drove two balls out of bounds on the par-4 sixth and walked off with a disaster, later turned into an 11 after the USGA hit him with a two-shot penalty for serious misconduct, having thrown his club some 50 yards after being denied relief. He shot 78. And two-time U.S. Open runner-up Jason Day withdrew with a back injury, leaving the course in a cart at 7 over after 10 holes, visibly struggling to turn through his swing.</p>
+          <p>Jon Rahm was the only player in the entire field to finish Thursday bogey-free, capping it with a 60-foot
+            birdie putt on the par-3 17th to reach 2 under. After nearly stealing the PGA Championship earlier this
+            year, he is again lurking exactly where you would expect a great player to be.</p>
+          <p>The day had its wreckage too. Joaquín Niemann drove two balls out of bounds on the par-4 sixth and walked
+            off with a disaster, later turned into an 11 after the USGA hit him with a two-shot penalty for serious
+            misconduct, having thrown his club some 50 yards after being denied relief. He shot 78. And two-time U.S.
+            Open runner-up Jason Day withdrew with a back injury, leaving the course in a cart at 7 over after 10 holes,
+            visibly struggling to turn through his swing.</p>
 
           <h2>What the Numbers Tell Us Heading Into Friday</h2>
           <p>Here is the honest read on Round 1.</p>
           <ul>
-            <li><b>The course is beatable, but only on the right side of the draw.</b> When play stopped for darkness, 17 players sat under par. That is a strange sight at a Shinnecock U.S. Open, and most of those red numbers came in the calmer afternoon.</li>
-            <li><b>The USGA learned from past disasters.</b> After two Shinnecock Opens that spun out of control, they slowed the greens to a tame 10½ on the Stimpmeter and kept water on the putting surfaces. Players openly praised the setup. Several admitted that if the greens had been any firmer or faster in that wind, they might not have been able to play at all.</li>
-            <li><b>The leaders did it the U.S. Open way.</b> Clark and Johnson both put on ball-striking clinics and let the par-5 fifth decide things. Eagle for one, double for the other, four-shot swing on a single hole.</li>
+            <li><b>The course is beatable, but only on the right side of the draw.</b> When play stopped for darkness,
+              17 players sat under par. That is a strange sight at a Shinnecock U.S. Open, and most of those red numbers
+              came in the calmer afternoon.</li>
+            <li><b>The USGA learned from past disasters.</b> After two Shinnecock Opens that spun out of control, they
+              slowed the greens to a tame 10½ on the Stimpmeter and kept water on the putting surfaces. Players openly
+              praised the setup. Several admitted that if the greens had been any firmer or faster in that wind, they
+              might not have been able to play at all.</li>
+            <li><b>The leaders did it the U.S. Open way.</b> Clark and Johnson both put on ball-striking clinics and let
+              the par-5 fifth decide things. Eagle for one, double for the other, four-shot swing on a single hole.</li>
           </ul>
-          <p>The takeaway is simple. The wind, not the leaderboard, ran this golf course on Thursday, and the players who caught it at its weakest cashed in. Whether Clark's record number holds up depends entirely on what the sky does next.</p>
+          <p>The takeaway is simple. The wind, not the leaderboard, ran this golf course on Thursday, and the players
+            who caught it at its weakest cashed in. Whether Clark's record number holds up depends entirely on what the
+            sky does next.</p>
 
           <h2>The Raw Read</h2>
-          <p>For all the talk of carnage, Round 1 told an honest golf truth: the best score of the day belonged to the player who managed the conditions, not just the one who hit it the best. Clark earned his 64, but he also caught a break with the wind, and he was the first to say so. That is golf. You play the course you are given, and sometimes the course you are given at 5 p.m. is a different beast than the one your rivals fought at 9 a.m.</p>
+          <p>For all the talk of carnage, Round 1 told an honest golf truth: the best score of the day belonged to the
+            player who managed the conditions, not just the one who hit it the best. Clark earned his 64, but he also
+            caught a break with the wind, and he was the first to say so. That is golf. You play the course you are
+            given, and sometimes the course you are given at 5 p.m. is a different beast than the one your rivals fought
+            at 9 a.m.</p>
 
           <blockquote class="pull">
-            "The wind, not the leaderboard, ran this golf course on Thursday. The players who caught it at its weakest cashed in."
+            "The wind, not the leaderboard, ran this golf course on Thursday. The players who caught it at its weakest
+            cashed in."
           </blockquote>
 
-          <p>The race is wide open. A two-shot lead at a U.S. Open is nothing, especially with the weather holding the pen. Scheffler is lurking, Rahm is clean, Johnson is hungry, and Shinnecock has barely shown its teeth. Three rounds to go, and the wind has the final say.</p>
+          <p>The race is wide open. A two-shot lead at a U.S. Open is nothing, especially with the weather holding the
+            pen. Scheffler is lurking, Rahm is clean, Johnson is hungry, and Shinnecock has barely shown its teeth.
+            Three rounds to go, and the wind has the final say.</p>
 
           <nav class="tag-row" aria-label="Article tags">
             <a href="#">U.S. Open</a>
@@ -865,6 +989,50 @@
     </section>
   </main>
 
+
+  <!-- START NEWSLETTER SECTION -->
+  <div class="newsletter-section"
+    style="max-width: 650px; margin: 60px auto; padding: 40px 20px; background-color: #f9f9f9; border-top: 4px solid #cc0000; text-align: center;">
+    <h2
+      style="font-family: 'Archivo', sans-serif; text-transform: uppercase; font-weight: 800; font-size: 28px; margin-bottom: 10px; color: #111;">
+      Join RawGolf</h2>
+    <p style="font-family: 'Archivo', sans-serif; color: #444; font-size: 16px; margin-bottom: 25px;">Get the rawest
+      golf news and honest analysis straight to your inbox. No fluff.</p>
+    <style>
+      .hbspt-form,
+      .hs-form-frame {
+        font-family: 'Archivo', sans-serif !important;
+      }
+
+      div[data-form-id="f9b9028c-b648-4563-9b01-2b53b3caae13"] .hs-button {
+        background-color: #cc0000 !important;
+        border-color: #cc0000 !important;
+        background-image: none !important;
+        text-shadow: none !important;
+        border-radius: 2px !important;
+        font-weight: 800 !important;
+        text-transform: uppercase !important;
+        padding: 12px 30px !important;
+        color: #fff !important;
+        transition: background-color 0.3s ease;
+      }
+
+      div[data-form-id="f9b9028c-b648-4563-9b01-2b53b3caae13"] .hs-button:hover {
+        background-color: #990000 !important;
+      }
+
+      div[data-form-id="f9b9028c-b648-4563-9b01-2b53b3caae13"] input[type="email"] {
+        border-radius: 2px !important;
+        padding: 12px 15px !important;
+        border: 1px solid #ccc !important;
+        font-family: 'Archivo', sans-serif !important;
+      }
+    </style>
+    <script src="https://js-eu1.hsforms.net/forms/embed/148744463.js"></script>
+    <div class="hbspt-form hs-form-frame" data-region="eu1" data-form-id="f9b9028c-b648-4563-9b01-2b53b3caae13"
+      data-portal-id="148744463"></div>
+  </div>
+  <!-- END NEWSLETTER SECTION -->
   <!-- ============ FOOTER ============ -->
   <footer class="site-footer">
     <div class="wrap">
