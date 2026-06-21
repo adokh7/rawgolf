@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PMECW4VW66');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search | RawGolf</title>
+<meta name="description" content="Search every RawGolf article — players, tournaments, swing analysis, guides, and the vault. Fast, no clutter.">
+<link rel="canonical" href="https://rawgolf.com/search">
+<meta name="robots" content="noindex, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RawGolf">
+<meta property="og:title" content="Search | RawGolf">
+<meta property="og:description" content="Search every RawGolf article — players, tournaments, swing analysis, guides, and the vault.">
+<meta property="og:url" content="https://rawgolf.com/search">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fairway:#14402A;--fairway-deep:#0B2418;--flag:#E03E2D;
+  --paper:#F3F4F0;--white:#fff;--ink:#101511;--grey:#5B665E;--maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+/* HEADER */
+.site-header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:3px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.logo{font-weight:900;font-size:26px;letter-spacing:-.04em;text-transform:uppercase}
+.logo .raw{color:var(--flag)}
+.nav-links{display:flex;gap:0}
+.nav-links a{font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;padding:8px 14px;transition:background .15s,color .15s}
+.nav-links a:hover{background:var(--ink);color:#fff}
+.nav-links a.active{background:var(--ink);color:#fff}
+.burger{display:none;background:none;border:2px solid var(--ink);cursor:pointer;padding:8px 10px}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+@media(max-width:760px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--paper);border-bottom:3px solid var(--ink);}
+  .nav-links.open{display:flex}
+  .nav-links a{border-left:none;border-top:1px solid #D7DAD2;padding:14px 20px}
+  .burger{display:block}
+}
+
+/* HUB PAGE */
+.hub-hero{
+  background:var(--ink);color:#fff;border-bottom:4px solid var(--flag);
+  padding:72px 0 64px;
+}
+.hub-hero .eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--flag);font-weight:600;margin-bottom:18px;
+}
+.hub-hero h1{
+  font-weight:900;font-size:clamp(40px,6vw,80px);line-height:.95;
+  letter-spacing:-.04em;text-transform:uppercase;margin-bottom:20px;
+}
+.hub-hero p{font-size:18px;color:#9CC9AE;max-width:52ch;line-height:1.6}
+
+.hub-body{padding:64px 0}
+.coming-soon-box{
+  border:2px solid var(--ink);background:var(--white);padding:48px 40px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:18px;
+}
+.coming-soon-box .cs-label{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--flag);font-weight:600;
+}
+.coming-soon-box h2{
+  font-weight:900;font-size:clamp(24px,3vw,38px);text-transform:uppercase;
+  letter-spacing:-.03em;line-height:1.1;
+}
+.coming-soon-box p{font-size:16px;color:var(--grey);max-width:58ch;line-height:1.7}
+.cs-back{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;font-weight:700;color:var(--flag);
+  border-bottom:2px solid var(--flag);padding-bottom:2px;
+  transition:color .15s;
+}
+.cs-back:hover{color:var(--ink)}
+
+/* GUIDE GRID */
+.guide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:2px solid var(--ink);margin-bottom:40px}
+@media(max-width:640px){.guide-grid{grid-template-columns:1fr}}
+
+/* GUIDE CARD */
+.guide-card{display:flex;flex-direction:column;background:var(--white);border-right:2px solid var(--ink);transition:background .15s;overflow:hidden}
+.guide-card:last-child{border-right:none}
+@media(max-width:640px){.guide-card{border-right:none !important;border-bottom:2px solid var(--ink)}.guide-card:last-child{border-bottom:none}}
+.guide-card:hover{background:#f9faf7}
+.card-thumb{width:100%;height:220px;object-fit:cover;object-position:center;border-bottom:2px solid var(--ink);display:block}
+.card-body{padding:28px 28px 32px;display:flex;flex-direction:column;flex:1}
+.badge-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;font-weight:600;text-transform:uppercase;padding:2px 8px}
+.badge-red{background:var(--flag);color:#fff}
+.badge-grey{background:#D0D4CC;color:#5B665E}
+.card-body h3{font-weight:900;font-size:20px;line-height:1.2;letter-spacing:-.02em;margin-bottom:12px}
+.guide-card:hover h3{text-decoration:underline;text-decoration-color:var(--flag);text-decoration-thickness:3px;text-underline-offset:4px}
+.card-body p{font-size:14.5px;color:var(--grey);flex:1;margin-bottom:24px}
+.card-meta{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #DADDD4;padding-top:16px;margin-top:auto}
+.card-meta .author{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--grey)}
+.card-cta{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border:2px solid var(--ink);background:var(--ink);color:#fff;transition:background .15s,color .15s;white-space:nowrap}
+.card-cta:hover{background:var(--flag);border-color:var(--flag)}
+
+/* SEARCH UI */
+.search-wrap{padding:64px 0 24px}
+.search-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--flag);font-weight:600;margin-bottom:18px}
+.search-box{position:relative;border-bottom:3px solid var(--ink);display:flex;align-items:center;gap:16px;padding-bottom:10px}
+.search-box .icon{font-size:28px;line-height:1;color:var(--grey);flex-shrink:0}
+#search-input{flex:1;border:none;outline:none;background:transparent;font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,5vw,46px);letter-spacing:-.03em;color:var(--ink);padding:6px 0}
+#search-input::placeholder{color:#b8bdb3;font-weight:800}
+.search-hint{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);margin-top:14px}
+.search-hint b{color:var(--flag)}
+.search-count{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);font-weight:600;margin:36px 0 18px}
+.search-empty{border:2px dashed #c4c9bf;padding:56px 32px;text-align:center;color:var(--grey);font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-top:36px}
+@media(max-width:640px){.search-wrap{padding:40px 0 16px}}
+
+/* FOOTER */
+.site-footer{background:var(--ink);color:#8b958d;padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em}
+.site-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.site-footer a:hover{color:#fff}
+
+/* === RAWGOLF RESPONSIVE OVERRIDES === */
+img { max-width: 100%; height: auto; }
+@media (max-width: 1024px) {
+  .wrap { padding-left: 20px; padding-right: 20px; }
+  .page-grid { grid-template-columns: 1fr; gap: 32px; }
+  .article-aside { display: block; }
+  .rel-grid { grid-template-columns: 1fr 1fr; }
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .wrap { padding-left: 16px; padding-right: 16px; }
+  .nav { padding: 0 16px; }
+  .page-grid { grid-template-columns: 1fr; gap: 28px; }
+  .article-aside { display: block; }
+  .rel-grid, .news-grid, .guide-grid, .stat-box,
+  .versus-grid, .contact-grid, .tally { grid-template-columns: 1fr; }
+  .article-head h1 { font-size: clamp(26px, 7vw, 34px); }
+  .standfirst { font-size: 16.5px; }
+  .article-body { font-size: 16.5px; }
+  .article-body h2 { font-size: clamp(20px, 5.5vw, 24px); }
+  .article-body h3 { font-size: 17px; }
+  blockquote.pull { font-size: clamp(18px, 5vw, 22px); padding: 20px 22px; }
+  figure.lead-img img { aspect-ratio: 4 / 3; }
+}
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav">
+    <a href="./index.html" class="logo">Golf<span class="raw">Raw</span></a>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="./news.html">Latest News</a>
+      <a href="./ratings.html">Player Ratings</a>
+      <a href="./tournaments.html">Tournaments</a>
+      <a href="./analysis.html">Swing Analysis</a>
+      <a href="./vault.html">The Vault</a>
+      <a href="./search.html" class="active">🔍 Search</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="hub-hero">
+  <div class="wrap">
+    <div class="eyebrow">RAWGOLF · SEARCH</div>
+    <h1>Search</h1>
+    <p>Every published story, one box. Players, tournaments, swing breakdowns, guides, and the vault.</p>
+  </div>
+</div>
+
+<div class="hub-body">
+  <div class="wrap">
+
+    <div class="search-wrap">
+      <label class="search-box" for="search-input">
+        <span class="icon" aria-hidden="true">&#128269;</span>
+        <input id="search-input" type="search" autocomplete="off" autofocus
+          placeholder="Search players, tournaments, or type 'all'..." aria-label="Search articles">
+      </label>
+      <div class="search-hint">Tip: type <b>all</b> to browse every article.</div>
+    </div>
+
+    <div class="search-count" id="search-count" hidden></div>
+    <div class="guide-grid" id="search-results" hidden></div>
+    <div class="search-empty" id="search-empty">Type to start searching&hellip;</div>
+
+  </div>
+</div>
+
+<script>
+/* ====== RAWGOLF SEARCH INDEX ====== */
+const ARTICLES = [
+  {t:"2026 U.S. Open Round 2 Highlights & Best Moments", l:"us-open-round-2-highlights.html", img:"public/us-open-round-2-highlights.webp", cat:"TOURNAMENTS", date:"SAT 20 JUN", author:"Golf Raw Staff", x:"Friday's best and worst at Shinnecock: record-setting moments, brutal collapses, and the shots that defined Round 2."},
+  {t:"2026 U.S. Open Friday: Clark Sets Record, DJ Collapses", l:"us-open-round-2-shinnecock.html", img:"public/us-open-round-2-shinnecock.webp", cat:"TOURNAMENTS", date:"SAT 20 JUN", author:"Golf Raw Staff", x:"Wyndham Clark sets a Shinnecock scoring record while Dustin Johnson collapses. The full Round 2 recap."},
+  {t:"Joaquín Niemann Breaks Silence on U.S. Open Penalty", l:"joaquin-niemann-us-open-penalty.html", img:"public/joaquin-niemann-us-open-penalty.webp", cat:"TOURNAMENTS", date:"SAT 20 JUN", author:"Golf Raw Staff", x:"Niemann breaks his silence on the two-shot misconduct penalty that turned his sixth hole into an 11."},
+  {t:"U.S. Open Round 1: Wyndham Clark Breaks the Shinnecock Record", l:"us-open-round-1-shinnecock.html", img:"public/us-open-round-1-shinnecock.webp", cat:"TOURNAMENTS", date:"FRI 19 JUN", author:"S. Okafor", x:"Clark's record 64 leads as the wind splits the draw and Scheffler grinds out a 72 to keep the Grand Slam alive."},
+  {t:"Did the USGA Take the Teeth Out of Shinnecock?", l:"us-open-shinnecock-setup-debate.html", img:"public/shinnecock-setup-2026.webp", cat:"TOURNAMENTS", date:"FRI 19 JUN", author:"Golf Raw Staff", x:"Soft greens and a record 64 raise the question: did the USGA make Shinnecock Hills too easy in 2026?"},
+  {t:"Why Is the U.S. Open the Hardest Major in Golf?", l:"why-us-open-is-hardest-major.html", img:"public/us-open-hardest-major.webp", cat:"TOURNAMENTS", date:"SAT 20 JUN", author:"Golf Raw Staff", x:"Thick rough, pinched fairways, baked greens. Why the U.S. Open is built to find the player who cracks the least."},
+  {t:"The 2026 U.S. Open at Shinnecock: What Actually Matters", l:"us-open-2026-shinnecock.html", img:"public/us-open-2026-shinnecock.webp", cat:"TOURNAMENTS", date:"TUE 16 JUN", author:"S. Okafor", x:"The setup, the contenders, and Scheffler's Grand Slam shot at the toughest test in golf."},
+  {t:"What Are the Major Tournaments in Golf? The Four Majors", l:"golf-majors-guide.html", img:"public/golf-majors-guide.webp", cat:"TOURNAMENTS", date:"THU 18 JUN", author:"S. Okafor", x:"A simple guide to the four majors: the Masters, PGA Championship, U.S. Open, and The Open, and why they matter."},
+  {t:"Your First Amateur Golf Tournament: How to Play It Real", l:"amateur-tournament-guide.html", img:"public/proper-golf-swing-mechanics.webp", cat:"TOURNAMENTS", date:"FRI 13 JUN", author:"Golf Raw Staff", x:"How to play your first amateur tournament for real: nerves, rules, and prep without the fluff."},
+
+  {t:"The Six Shots That Got Away: Greg Norman, 1996 Masters", l:"greg-norman-1996-masters.html", img:"public/greg-norman-1996-masters-vault.webp", cat:"THE VAULT", date:"FRI 13 JUN", author:"Archive", x:"A tactical autopsy of Greg Norman's 1996 Masters collapse and the six shots that handed Faldo the green jacket."},
+  {t:"One Hole, Seven Shots: Jean van de Velde, 1999 Open", l:"jean-van-de-velde-1999-open.html", img:"public/jean-van-de-velde-1999-open-vault.webp", cat:"THE VAULT", date:"FRI 13 JUN", author:"Archive", x:"How Jean van de Velde lost the 1999 Open at Carnoustie on the 72nd hole. A shot-by-shot breakdown."},
+
+  {t:"Swing Analysis: Scheffler's \"Ugly\" Footwork Explained", l:"scottie-scheffler-footwork.html", img:"public/scottie-scheffler-footwork.webp", cat:"SWING ANALYSIS", date:"THU 18 JUN", author:"S. Okafor", x:"Scheffler's footwork looks broken, but the data says it's the most powerful move on tour. A frame-by-frame breakdown."},
+  {t:"How to Fix an Over the Top Golf Swing", l:"fix-over-the-top.html", img:"public/fix-over-the-top-lead.webp", cat:"SWING ANALYSIS", date:"TUE 16 JUN", author:"Golf Raw Staff", x:"Tired of slicing? What an over-the-top move is, why you do it, and the simple drills that fix your path."},
+  {t:"Golf Swing Drills That Actually Work", l:"golf-swing-drills.html", img:"public/towel-drill-golf.webp", cat:"SWING ANALYSIS", date:"WED 17 JUN", author:"Golf Raw Staff", x:"Simple tempo, sequence, and path drills you can do at home to fix your swing and hit it straighter for good."},
+  {t:"How to Swing a Golf Club: The Ultimate Guide", l:"swing-guide.html", img:"public/mechanics-of-golf-swing.webp", cat:"SWING ANALYSIS", date:"FRI 13 JUN", author:"Golf Raw Staff", x:"Grip, posture, tempo drills, and the actual biomechanics of speed. The no-fluff guide to the golf swing."},
+  {t:"Scottie Scheffler's Swing Speed: Why the Ugly Footwork Works", l:"scheffler-swing.html", img:"public/scottie-scheffler-swing-speed.webp", cat:"SWING ANALYSIS", date:"FRI 13 JUN", author:"Golf Raw Staff", x:"Why golf's ugliest footwork produces elite, repeatable speed. A breakdown of Scheffler's move."},
+
+  {t:"What Does LPGA Stand For?", l:"what-does-lpga-stand-for.html", img:"public/what-is-lpga.webp", cat:"GUIDES", date:"SUN 21 JUN", author:"Golf Raw Staff", x:"The Ladies Professional Golf Association, founded in 1950, runs the top women's tour. How it works and how it differs from the PGA."},
+  {t:"How Far Do LPGA Players Drive the Ball?", l:"how-far-lpga-players-drive.html", img:"public/lpga-driving-distance.webp", cat:"DATA · GUIDES", date:"SAT 20 JUN", author:"Golf Raw Data Desk", x:"The LPGA average is 256 yards. How their TrackMan numbers expose the biggest flaw in the average amateur's swing."},
+  {t:"Topgolf for First-Timers: Honest Answers to Every Question", l:"topgolf-first-timers.html", img:"public/topgolf-first-timers.webp", cat:"GUIDES", date:"WED 17 JUN", author:"S. Okafor", x:"Is it heated, can you play in the rain, do they supply clubs? Honest answers to every first-timer question."},
+  {t:"What to Wear to Topgolf: A Simple, No-Stress Guide", l:"what-to-wear-to-topgolf.html", img:"public/what-to-wear-to-topgolf-guide.webp", cat:"GUIDES", date:"WED 17 JUN", author:"S. Okafor", x:"There's no real dress code. What to wear to Topgolf for any visit, date, or event."},
+  {t:"What Is Topgolf? An Honest Guide for Beginners", l:"what-is-topgolf.html", img:"public/topgolf-beginners-guide.webp", cat:"GUIDES", date:"TUE 16 JUN", author:"S. Okafor", x:"How it works, what it costs, and whether it actually helps your golf game. No clubs needed."},
+  {t:"Golf Clubs for Beginners: What You Actually Need", l:"golf-clubs-for-beginners.html", img:"public/beginner-golf-clubs-guide.webp", cat:"GUIDES", date:"TUE 16 JUN", author:"Golf Raw Staff", x:"How many clubs you really need, new versus used, and where to save your money as a beginner."},
+  {t:"The Best Golf Swing Analysis Apps", l:"golf-swing-analysis-apps.html", img:"public/golf-swing-analysis-app.webp", cat:"GUIDES · GEAR", date:"TUE 16 JUN", author:"Golf Raw Staff", x:"Which swing analysis apps matter, which free tools actually work, and when it's worth paying for an upgrade."},
+  {t:"The Brutal Truth About Swing Speed & Shaft Flex", l:"swing-speed-guide.html", img:"public/golf-swing-speed-flex.webp", cat:"GUIDES · GEAR", date:"FRI 13 JUN", author:"Golf Raw Staff", x:"Most amateurs buy gear meant for pros. The raw truth about swing speed, shaft flex, and equipment ego."},
+  {t:"Raw Golf: How to Get Better Without Faking It", l:"raw-golf-mindset.html", img:"public/raw-golf-practice.webp", cat:"GUIDES", date:"FRI 13 JUN", author:"Golf Raw Staff", x:"The raw mindset for real improvement. How to actually get better at golf instead of chasing quick fixes."},
+
+  {t:"Scottie Scheffler WITB: Why Buying His Irons Will Ruin Your Game", l:"scheffler-witb.html", img:"public/scottie-scheffler-witb.webp", cat:"GEAR", date:"FRI 13 JUN", author:"Golf Raw Staff", x:"Brands want you to buy his exact setup. The brutal truth about why tour-level blades wreck your scorecard."},
+
+  {t:"What Does Strokes Gained Mean? Strokes Gained Explained", l:"strokes-gained.html", img:"public/strokes-gained-explained.webp", cat:"PLAYER RATINGS", date:"THU 12 JUN", author:"Golf Raw Data Desk", x:"The stat that powers every rating. What Strokes Gained measures and how to read a leaderboard with it in five minutes."},
+
+  {t:"Match Play vs Stroke Play in Golf: Which Format Exposes the Frauds?", l:"match-play.html", img:"public/match-play-vs-stroke-play.webp", cat:"RULES · GUIDES", date:"FRI 13 JUN", author:"Golf Raw Staff", x:"One is a 72-hole mental math test, the other is a street fight. Why the PGA Tour is terrified of match play."}
+];
+
+(function(){
+  const input  = document.getElementById('search-input');
+  const results= document.getElementById('search-results');
+  const count  = document.getElementById('search-count');
+  const empty  = document.getElementById('search-empty');
+
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function cardHTML(a){
+    return ''+
+      '<a class="guide-card" href="'+esc(a.l)+'">'+
+        '<img src="'+esc(a.img)+'" alt="'+esc(a.t)+'" class="card-thumb" loading="lazy">'+
+        '<div class="card-body">'+
+          '<div class="badge-row">'+
+            '<span class="badge badge-red">'+esc(a.cat)+'</span>'+
+            '<span class="badge badge-grey">'+esc(a.date)+'</span>'+
+          '</div>'+
+          '<h3>'+esc(a.t)+'</h3>'+
+          '<p>'+esc(a.x)+'</p>'+
+          '<div class="card-meta">'+
+            '<span class="author">'+esc(a.author)+'</span>'+
+            '<span class="card-cta">Read &rarr;</span>'+
+          '</div>'+
+        '</div>'+
+      '</a>';
+  }
+
+  function render(list){
+    if(!list.length){
+      results.hidden = true; results.innerHTML='';
+      count.hidden = true;
+      empty.hidden = false;
+      empty.textContent = 'No articles match that search.';
+      return;
+    }
+    results.innerHTML = list.map(cardHTML).join('');
+    results.hidden = false;
+    empty.hidden = true;
+    count.hidden = false;
+    count.textContent = list.length + (list.length===1?' result':' results');
+  }
+
+  function run(){
+    const q = input.value.trim().toLowerCase();
+    if(q===''){
+      results.hidden = true; results.innerHTML='';
+      count.hidden = true;
+      empty.hidden = false;
+      empty.textContent = 'Type to start searching…';
+      return;
+    }
+    if(q==='all'){ render(ARTICLES); return; }
+    const matches = ARTICLES.filter(a =>
+      (a.t+' '+a.cat+' '+a.x).toLowerCase().includes(q)
+    );
+    render(matches);
+  }
+
+  input.addEventListener('input', run);
+})();
+</script>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 RAWGOLF.COM — ALL RATINGS FINAL</span>
+    <nav aria-label="Footer navigation" style="display:flex;gap:20px">
+      <a href="./manifesto.html">MANIFESTO</a>
+      <a href="./ratings-manual.html">HOW RATINGS WORK</a>
+      <a href="./corrections.html">CORRECTIONS</a>
+      <a href="./privacy.html">PRIVACY</a>
+      <a href="./index.html">← FRONT PAGE</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+const burger=document.getElementById('burger'),links=document.getElementById('navLinks');
+if(burger&&links){
+  burger.addEventListener('click',()=>{const open=links.classList.toggle('open');burger.setAttribute('aria-expanded',open)});
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+}
+</script>
+</body>
+</html>

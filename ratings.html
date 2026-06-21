@@ -82,6 +82,29 @@ a{color:inherit;text-decoration:none}
   letter-spacing:-.03em;line-height:1.1;
 }
 .coming-soon-box p{font-size:16px;color:var(--grey);max-width:58ch;line-height:1.7}
+
+/* GUIDE GRID (article cards) */
+.further-head{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--flag);font-weight:600;margin:8px 0 18px}
+.guide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:2px solid var(--ink);margin-bottom:40px}
+@media(max-width:640px){.guide-grid{grid-template-columns:1fr}}
+.guide-card{display:flex;flex-direction:column;background:var(--white);border-right:2px solid var(--ink);transition:background .15s;overflow:hidden}
+.guide-card:last-child{border-right:none}
+@media(max-width:640px){.guide-card{border-right:none !important;border-bottom:2px solid var(--ink)}.guide-card:last-child{border-bottom:none}}
+.guide-card:hover{background:#f9faf7}
+.card-thumb{width:100%;height:220px;object-fit:cover;object-position:center;border-bottom:2px solid var(--ink);display:block}
+.card-body{padding:28px 28px 32px;display:flex;flex-direction:column;flex:1}
+.badge-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;font-weight:600;text-transform:uppercase;padding:2px 8px}
+.badge-red{background:var(--flag);color:#fff}
+.badge-green{background:#1f7a44;color:#fff}
+.badge-grey{background:#D0D4CC;color:#5B665E}
+.card-body h3{font-weight:900;font-size:20px;line-height:1.2;letter-spacing:-.02em;margin-bottom:12px}
+.guide-card:hover h3{text-decoration:underline;text-decoration-color:var(--flag);text-decoration-thickness:3px;text-underline-offset:4px}
+.card-body p{font-size:14.5px;color:var(--grey);flex:1;margin-bottom:24px}
+.card-meta{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #DADDD4;padding-top:16px;margin-top:auto}
+.card-meta .author{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--grey)}
+.card-cta{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border:2px solid var(--ink);background:var(--ink);color:#fff;transition:background .15s,color .15s;white-space:nowrap}
+.card-cta:hover{background:var(--flag);border-color:var(--flag)}
 .cs-back{
   font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;
   text-transform:uppercase;font-weight:700;color:var(--flag);
@@ -158,6 +181,7 @@ img { max-width: 100%; height: auto; }
       <a href="./tournaments.html">Tournaments</a>
       <a href="./analysis.html">Swing Analysis</a>
       <a href="./vault.html">The Vault</a>
+    <a href="search.html">🔍 Search</a>
     </nav>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -233,6 +257,28 @@ img { max-width: 100%; height: auto; }
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="further-head">Further Reading · The Data</div>
+    <div class="guide-grid">
+
+      <!-- ====== CARD: STROKES GAINED EXPLAINED ====== -->
+      <a class="guide-card" href="strokes-gained.html">
+        <img src="public/strokes-gained-explained.webp" alt="Strokes Gained data explained" class="card-thumb" loading="lazy">
+        <div class="card-body">
+          <div class="badge-row">
+            <span class="badge badge-red">Player Ratings</span>
+            <span class="badge badge-grey">Data</span>
+          </div>
+          <h3>What Does SG Mean in Golf? Strokes Gained Explained</h3>
+          <p>The stat that powers every rating on this page. How Strokes Gained measures who is actually playing the best golf — not just who won.</p>
+          <div class="card-meta">
+            <span class="author">Golf Raw Staff</span>
+            <span class="card-cta">Read Breakdown →</span>
+          </div>
+        </div>
+      </a>
+
     </div>
 
   </div>
