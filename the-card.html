@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PMECW4VW66');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Card — Sign Up for the Golf Raw Newsletter | RawGolf</title>
+<meta name="description" content="Sign up for The Card, the Golf Raw newsletter. No PR rewrites — just raw golf news and ratings delivered straight to your inbox.">
+<link rel="canonical" href="https://rawgolf.com/the-card">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RawGolf">
+<meta property="og:title" content="The Card — Sign Up for the Golf Raw Newsletter">
+<meta property="og:description" content="No PR rewrites — just raw golf news and ratings delivered straight to your inbox.">
+<meta property="og:url" content="https://rawgolf.com/the-card">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fairway:#14402A;--fairway-deep:#0B2418;--flag:#E03E2D;
+  --paper:#F3F4F0;--white:#fff;--ink:#101511;--grey:#5B665E;--maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+/* HEADER */
+.site-header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:3px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.logo{font-weight:900;font-size:26px;letter-spacing:-.04em;text-transform:uppercase}
+.logo .raw{color:var(--flag)}
+.nav-links{display:flex;gap:0}
+.nav-links a{font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;padding:8px 14px;transition:background .15s,color .15s}
+.nav-links a:hover{background:var(--ink);color:#fff}
+.nav-links a.active{background:var(--ink);color:#fff}
+.burger{display:none;background:none;border:2px solid var(--ink);cursor:pointer;padding:8px 10px}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+@media(max-width:760px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--paper);border-bottom:3px solid var(--ink);}
+  .nav-links.open{display:flex}
+  .nav-links a{border-left:none;border-top:1px solid #D7DAD2;padding:14px 20px}
+  .burger{display:block}
+}
+
+/* HUB PAGE */
+.hub-hero{
+  background:var(--ink);color:#fff;border-bottom:4px solid var(--flag);
+  padding:72px 0 64px;
+}
+.hub-hero .eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--flag);font-weight:600;margin-bottom:18px;
+}
+.hub-hero h1{
+  font-weight:900;font-size:clamp(40px,6vw,80px);line-height:.95;
+  letter-spacing:-.04em;text-transform:uppercase;margin-bottom:20px;
+}
+.hub-hero p{font-size:18px;color:#9CC9AE;max-width:52ch;line-height:1.6}
+
+.hub-body{padding:64px 0}
+.coming-soon-box{
+  border:2px solid var(--ink);background:var(--white);padding:48px 40px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:18px;
+}
+.coming-soon-box .cs-label{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--flag);font-weight:600;
+}
+.coming-soon-box h2{
+  font-weight:900;font-size:clamp(24px,3vw,38px);text-transform:uppercase;
+  letter-spacing:-.03em;line-height:1.1;
+}
+.coming-soon-box p{font-size:16px;color:var(--grey);max-width:58ch;line-height:1.7}
+.cs-back{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;font-weight:700;color:var(--flag);
+  border-bottom:2px solid var(--flag);padding-bottom:2px;
+  transition:color .15s;
+}
+.cs-back:hover{color:var(--ink)}
+
+/* GUIDE GRID */
+.guide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:2px solid var(--ink);margin-bottom:40px}
+@media(max-width:640px){.guide-grid{grid-template-columns:1fr}}
+
+/* GUIDE CARD */
+.guide-card{display:flex;flex-direction:column;background:var(--white);border-right:2px solid var(--ink);transition:background .15s;overflow:hidden}
+.guide-card:last-child{border-right:none}
+@media(max-width:640px){.guide-card{border-right:none !important;border-bottom:2px solid var(--ink)}.guide-card:last-child{border-bottom:none}}
+.guide-card:hover{background:#f9faf7}
+.card-thumb{width:100%;height:220px;object-fit:cover;object-position:center;border-bottom:2px solid var(--ink);display:block}
+.card-body{padding:28px 28px 32px;display:flex;flex-direction:column;flex:1}
+.badge-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;font-weight:600;text-transform:uppercase;padding:2px 8px}
+.badge-red{background:var(--flag);color:#fff}
+.badge-grey{background:#D0D4CC;color:#5B665E}
+.card-body h3{font-weight:900;font-size:20px;line-height:1.2;letter-spacing:-.02em;margin-bottom:12px}
+.guide-card:hover h3{text-decoration:underline;text-decoration-color:var(--flag);text-decoration-thickness:3px;text-underline-offset:4px}
+.card-body p{font-size:14.5px;color:var(--grey);flex:1;margin-bottom:24px}
+.card-meta{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #DADDD4;padding-top:16px;margin-top:auto}
+.card-meta .author{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--grey)}
+.card-cta{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border:2px solid var(--ink);background:var(--ink);color:#fff;transition:background .15s,color .15s;white-space:nowrap}
+.card-cta:hover{background:var(--flag);border-color:var(--flag)}
+
+/* FOOTER */
+.site-footer{background:var(--ink);color:#8b958d;padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em}
+.site-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.site-footer a:hover{color:#fff}
+
+/* === RAWGOLF RESPONSIVE OVERRIDES === */
+img { max-width: 100%; height: auto; }
+@media (max-width: 1024px) {
+  .wrap { padding-left: 20px; padding-right: 20px; }
+  .page-grid { grid-template-columns: 1fr; gap: 32px; }
+  .article-aside { display: block; }
+  .rel-grid { grid-template-columns: 1fr 1fr; }
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .wrap { padding-left: 16px; padding-right: 16px; }
+  .nav { padding: 0 16px; }
+  .page-grid { grid-template-columns: 1fr; gap: 28px; }
+  .article-aside { display: block; }
+  .rel-grid, .news-grid, .guide-grid, .stat-box,
+  .versus-grid, .contact-grid, .tally { grid-template-columns: 1fr; }
+  .article-head h1 { font-size: clamp(26px, 7vw, 34px); }
+  .standfirst { font-size: 16.5px; }
+  .article-body { font-size: 16.5px; }
+  .article-body h2 { font-size: clamp(20px, 5.5vw, 24px); }
+  .article-body h3 { font-size: 17px; }
+  blockquote.pull { font-size: clamp(18px, 5vw, 22px); padding: 20px 22px; }
+  figure.lead-img img { aspect-ratio: 4 / 3; }
+}
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav">
+    <a href="./index.html" class="logo">Golf<span class="raw">Raw</span></a>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="./news.html">Latest News</a>
+      <a href="./ratings.html">Player Ratings</a>
+      <a href="./tournaments.html">Tournaments</a>
+      <a href="./analysis.html">Swing Analysis</a>
+      <a href="./vault.html">The Vault</a>
+    <a href="search.html">🔍 Search</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section style="background: var(--ink); min-height: 60vh; display: flex; align-items: center; justify-content: center;">
+  <div style="padding: 100px 20px; text-align: center; color: white; max-width: 600px; margin: 0 auto;">
+      <h1 style="font-size: 3rem; margin-bottom: 10px; color: #ff3333;">· THE CARD</h1>
+      <p style="font-size: 1.2rem; color: #aaa; margin-bottom: 30px;">Sign up for our newsletter. No PR rewrites, just raw golf news and ratings delivered straight to your inbox.</p>
+      <form style="display: flex; gap: 10px; justify-content: center;">
+          <input type="email" placeholder="you@email.com" style="padding: 15px; width: 60%; border: none; outline: none; font-size: 1rem;">
+          <button type="submit" style="padding: 15px 30px; background-color: #d11013; color: white; border: none; font-weight: bold; font-size: 1rem; cursor: pointer;">SIGN UP</button>
+      </form>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 RAWGOLF.COM — ALL RATINGS FINAL</span>
+    <nav aria-label="Footer navigation" style="display:flex;gap:20px">
+      <a href="./manifesto.html">MANIFESTO</a>
+      <a href="./ratings-manual.html">HOW RATINGS WORK</a>
+      <a href="./corrections.html">CORRECTIONS</a>
+      <a href="./privacy.html">PRIVACY</a>
+      <a href="./index.html">← FRONT PAGE</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+const burger=document.getElementById('burger'),links=document.getElementById('navLinks');
+if(burger&&links){
+  burger.addEventListener('click',()=>{const open=links.classList.toggle('open');burger.setAttribute('aria-expanded',open)});
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+}
+</script>
+</body>
+</html>
