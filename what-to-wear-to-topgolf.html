@@ -68,6 +68,40 @@
 }
 </script>
 
+  <!-- ============ FAQ STRUCTURED DATA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I wear sandals or flip flops to TopGolf?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but closed-toe shoes are highly recommended for safety and better swing grip."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a strict dress code at TopGolf?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, TopGolf has a very casual, relaxed dress code. Dress for comfort and the weather."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I wear golf cleats to TopGolf?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Soft spikes are generally allowed, but metal spikes are strictly prohibited."
+      }
+    }
+  ]
+}
+</script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -385,6 +419,63 @@
     .article-body h3::before {
       content: "— ";
       color: var(--flag)
+    }
+
+    /* QUICK-ANSWER TABLE */
+    .fact-table {
+      width: 100%;
+      border: 2px solid var(--ink);
+      border-collapse: collapse;
+      margin: 30px 0;
+      font-size: 15px;
+    }
+
+    .fact-table th {
+      background: var(--ink);
+      color: #fff;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .fact-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #DADDD4;
+      vertical-align: top;
+    }
+
+    .fact-table tr:last-child td {
+      border-bottom: none
+    }
+
+    .fact-table tr:hover td {
+      background: #FBFBF8
+    }
+
+    .fact-table td:first-child {
+      font-weight: 800;
+      font-size: 13px;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--flag);
+    }
+
+    .fact-table .yes {
+      color: var(--fairway);
+      font-weight: 800;
+    }
+
+    .fact-table .no {
+      color: var(--flag);
+      font-weight: 800;
+    }
+
+    @media(max-width:560px) {
+      .fact-table { font-size: 13px }
+      .fact-table th, .fact-table td { padding: 10px 10px }
     }
 
     blockquote.pull {
@@ -771,6 +862,22 @@
           <p>Here is the short answer, right up front. Topgolf has no real dress code. Wear what is comfortable and lets you swing. Jeans, a t-shirt, and sneakers are completely fine. That is it. You can stop worrying now.</p>
 
           <p>This is raw golf. Below is the honest, simple guide to what to wear to Topgolf, so you can spend zero energy on your outfit and all of it on having fun.</p>
+
+          <table class="fact-table" aria-label="TopGolf dress code quick answers">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Allowed?</th>
+                <th>Recommendation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Sneakers</td><td><span class="yes">Yes</span></td><td>Best choice</td></tr>
+              <tr><td>Sandals / Flip Flops</td><td><span class="yes">Yes</span></td><td>Not recommended for swinging</td></tr>
+              <tr><td>Jeans / Shorts</td><td><span class="yes">Yes</span></td><td>Great choice</td></tr>
+              <tr><td>Metal Golf Spikes</td><td><span class="no">No</span></td><td>Prohibited</td></tr>
+            </tbody>
+          </table>
 
           <h2>The Honest Truth About the Topgolf Dress Code</h2>
           <p>Topgolf is not a country club. It is casual entertainment, part golf and part bar, built for normal people to have a good time. So it does not enforce the strict dress codes you find at private golf courses. No collared shirt required. No golf shoes needed. Nobody is checking your outfit at the door.</p>
