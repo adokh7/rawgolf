@@ -1,29 +1,5 @@
 {
     "cleanUrls": true,
-    "redirects": [
-        {
-            "source": "/:path*",
-            "has": [
-                {
-                    "type": "host",
-                    "value": "www.golfraw.com"
-                }
-            ],
-            "destination": "https://golfraw.com/:path*",
-            "permanent": true
-        }
-    ],
-    "headers": [
-        {
-            "source": "/public/(.*)\\.(webp|jpg|jpeg|png|gif|svg|avif)",
-            "headers": [
-                {
-                    "key": "X-Robots-Tag",
-                    "value": "noindex"
-                }
-            ]
-        }
-    ],
     "rewrites": [
         {
             "source": "/((?!.*\\.).*)",
