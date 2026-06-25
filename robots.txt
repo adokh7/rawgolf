@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /public/*.webp
+Disallow: /public/*.jpg
+Disallow: /public/*.png
+Allow: /
+
+Sitemap: https://www.golfraw.com/sitemap.xml
