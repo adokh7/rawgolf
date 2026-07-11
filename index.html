@@ -19,6 +19,20 @@
   <link rel="canonical" href="https://www.golfraw.com/">
   <meta name="description"
     content="Golf Raw delivers honest golf news, data-driven player ratings, and tournament analysis with no PR rewrites. Real numbers, real accountability.">
+  <!-- ===== OPEN GRAPH ===== -->
+  <meta property="og:site_name" content="Golf Raw">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Golf Raw — Golf News, Ratings &amp; Analysis">
+  <meta property="og:description" content="Golf Raw delivers honest golf news, data-driven player ratings, and tournament analysis with no PR rewrites. Real numbers, real accountability.">
+  <meta property="og:url" content="https://www.golfraw.com/">
+  <meta property="og:image" content="https://www.golfraw.com/public/favicon.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <!-- ===== TWITTER CARD ===== -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@GolfRaw0">
+  <meta name="twitter:title" content="Golf Raw — Golf News, Ratings &amp; Analysis">
+  <meta name="twitter:description" content="Golf Raw delivers honest golf news, data-driven player ratings, and tournament analysis with no PR rewrites. Real numbers, real accountability.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -1464,15 +1478,44 @@
     }
   </style>
   <script src="https://cdn.tailwindcss.com"></script>
-  <meta property="og:site_name" content="Golf Raw">
+  <!-- ===== STRUCTURED DATA: WebSite ===== -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Golf Raw",
-  "url": "https://www.golfraw.com/"
+  "alternateName": "GolfRaw",
+  "url": "https://www.golfraw.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.golfraw.com/search.html?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
 }
-</script>
+  </script>
+  <!-- ===== STRUCTURED DATA: Organization (logo signal for Google) ===== -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Golf Raw",
+  "alternateName": "GolfRaw",
+  "url": "https://www.golfraw.com/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://www.golfraw.com/public/favicon.png",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": [
+    "https://x.com/GolfRaw0",
+    "https://www.facebook.com/golfraw0/"
+  ]
+}
+  </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062"
     crossorigin="anonymous"></script>
 </head>
