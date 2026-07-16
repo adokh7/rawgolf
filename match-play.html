@@ -289,9 +289,12 @@ img { max-width: 100%; height: auto; }
   blockquote.pull { font-size: clamp(18px, 5vw, 22px); padding: 20px 22px; }
   figure.lead-img img { aspect-ratio: 4 / 3; }
 }
+/* === CLS / RESPONSIVE SAFETY === */
+html, body { max-width: 100%; overflow-x: clip; }
+img, video, iframe { max-width: 100%; }
+table { max-width: 100%; }
 </style>
-<script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -340,7 +343,7 @@ img { max-width: 100%; height: auto; }
 
       <figure class="lead-img">
         <div class="img-ph" role="img" aria-label="Two professional golfers glaring at each other during a match play tournament">
-          <img src="./public/match-play-vs-stroke-play.webp" alt="Two professional golfers glaring at each other during a match play tournament">
+          <img width="1536" height="1024" src="./public/match-play-vs-stroke-play.webp" alt="Two professional golfers glaring at each other during a match play tournament">
         </div>
       </figure>
       <figcaption>IN STROKE PLAY, YOUR OPPONENT IS THE FIELD. IN MATCH PLAY, YOUR OPPONENT IS RIGHT THERE. PHOTO: RAWGOLF</figcaption>

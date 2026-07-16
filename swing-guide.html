@@ -716,6 +716,10 @@
     blockquote.pull { font-size: clamp(18px, 5vw, 22px); padding: 20px 22px; }
     figure.lead-img img { aspect-ratio: 4 / 3; }
   }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
   <script type="application/ld+json">
 {
@@ -785,7 +789,7 @@
             form. Just the <strong>golf swing basics</strong> that real, busy players can actually use. This is raw
             golf, brought to your swing.</p>
 
-          <img src="https://golfraw.com/public/golf-swing-basics.webp"
+          <img width="2816" height="1536" src="public/golf-swing-basics.webp"
             alt="Amateur golfer practicing golf swing basics at the range" class="hero-image" loading="lazy">
 
           <!-- ============ H2: WHAT IT REALLY TAKES ============ -->

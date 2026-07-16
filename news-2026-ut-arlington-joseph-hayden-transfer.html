@@ -171,9 +171,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -220,7 +223,7 @@
         <div class="article-body">
           <p><b>Quick answer:</b> UT Arlington has signed Joseph Hayden, a graduate transfer from Santa Clara, to its men's golf roster for the 2026-27 season. The Dublin, California native spent four years with the Broncos, where he played 12 events and posted a career scoring average of 72.66 across 35 rounds. He brings experience and a low-round best of 4-under 68 to a Mavericks program that has been busy reshaping its lineup this offseason.</p>
 
-          <img src="public/news-ut-arlington-joseph-hayden-transfer.webp" alt="Joseph Hayden transfers to UT Arlington men's golf" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
+          <img width="2752" height="1536" src="public/news-ut-arlington-joseph-hayden-transfer.webp" alt="Joseph Hayden transfers to UT Arlington men's golf" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
 
           <h2>Maverick-Level Depth: Who is Joseph Hayden?</h2>
           <p>The modern college golf landscape is increasingly defined by the transfer portal, and the Western Athletic Conference (WAC) is no exception. In its latest roster-building move, UT Arlington (UTA) has added Dublin, California native Joseph Hayden. Hayden arrives in Arlington as a graduate student after a solid four-year career at Santa Clara, where he played alongside his younger brother. He logged real tournament reps against Division I fields on the West Coast, which is exactly the kind of seasoned profile needed to solidify a roster.</p>

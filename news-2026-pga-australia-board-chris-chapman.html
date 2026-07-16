@@ -161,9 +161,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -209,7 +212,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> The PGA of Australia has appointed former regulatory chief and corporate heavyweight Chris Chapman as an Independent Director to its board. Chapman, whose golf roots go back over 50 years at Royal Sydney Golf Club where he served as President, brings vast experience in sports media, venue management, and regulatory governance to the position. He replaces Ric Lazar, who steps down after 16 years of service.</p>
 
-          <img src="public/news-pga-australia-board-chris-chapman.webp" alt="Distinguished male executive sitting in a modern corporate boardroom representing corporate governance" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="2234" height="1252" src="public/news-pga-australia-board-chris-chapman.webp" alt="Distinguished male executive sitting in a modern corporate boardroom representing corporate governance" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
 
           <h2>A Strategic Changing of the Guard in Australian Golf</h2>
           <p>The PGA of Australia has announced a significant evolution in its administrative leadership with the appointment of Chris Chapman to its board as an Independent Director. Confirmed at the organization's recent Annual General Meeting, Chapman replaces Ric Lazar, who concluded an impressive 16-year term of service. A veteran corporate lawyer and highly respected sports administrator, Chapman represents a strategic addition to the governing body rather than a routine reshuffle, reflecting a clear institutional changing of the guard.</p>

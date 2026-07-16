@@ -179,9 +179,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -227,7 +230,7 @@
         <div class="article-body">
           <p><b>Quick answer:</b> Tiger Woods returned to the public eye at the Travelers Championship, introducing PGA Tour CEO Brian Rolapp ahead of the announcement of the Tour's sweeping new 2028 structure. It was Woods's first public appearance since his March DUI arrest and a stint in rehab. He kept it brief, reading a short introduction and releasing a statement praising the work of the Future Competition Committee he chairs. He did not take questions.</p>
 
-          <img src="public/tiger-woods-return-travelers-2026.webp" alt="Tiger Woods speaking at a PGA Tour podium" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
+          <img width="1024" height="1024" src="public/tiger-woods-return-travelers-2026.webp" alt="Tiger Woods speaking at a PGA Tour podium" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
 
           <p>It was a low-key return for golf's biggest name, in a role that was about the future of the Tour rather than his own game. Here is what happened and the context behind it.</p>
 

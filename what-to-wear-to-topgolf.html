@@ -821,9 +821,12 @@
     blockquote.pull { font-size: clamp(18px, 5vw, 22px); padding: 20px 22px; }
     figure.lead-img img { aspect-ratio: 4 / 3; }
   }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -868,7 +871,7 @@
         </header>
 
         <figure class="lead-img">
-          <img fetchpriority="high" loading="eager" decoding="sync" src="public/what-to-wear-to-topgolf-guide.webp" alt="A relaxed group at a Topgolf bay dressed in casual jeans, t-shirts, and sneakers">
+          <img width="1672" height="941" fetchpriority="high" loading="eager" decoding="sync" src="public/what-to-wear-to-topgolf-guide.webp" alt="A relaxed group at a Topgolf bay dressed in casual jeans, t-shirts, and sneakers">
         </figure>
         <figcaption>WHAT TO WEAR TO TOPGOLF. PHOTO: RAWGOLF</figcaption>
 

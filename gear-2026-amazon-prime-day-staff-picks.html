@@ -180,9 +180,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .rel-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(24px,7vw,32px) } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -230,7 +233,7 @@
 
           <p><b>Quick answer:</b> Amazon Prime Day 2026 is here, and the "deals" articles are screaming about 500 markdowns you don't need. Forget that. We combed through the chaos and found exactly three pieces of golf gear that are on a genuine sale, high quality, and actually useful. Our staff picks are the KVV 3-Wheel Lightweight Push Cart for easy walking, the Callaway Supersoft golf balls for massive savings on a beginner favorite, and a literal bucket of Titleist Pro V1 Refurbished balls for the ultimate pro-feel-at-used-price steal. If you're going to click 'Buy' on anything this week, make it one of these.</p>
 
-          <img src="public/gear-prime-day-staff-picks-2026.webp" alt="Amazon Prime Day 2026 Staff Picks Golf Gear Guide" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
+          <img width="1024" height="1024" src="public/gear-prime-day-staff-picks-2026.webp" alt="Amazon Prime Day 2026 Staff Picks Golf Gear Guide" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
 
           <h2>Why Listen to Us?</h2>
           <p>Because we're tired of seeing lists of "deals" that are just last year's junk nobody wanted. We have staff members who have used (and abused) push carts and lost hundreds of these exact balls. We know what a real price looks like, and we know when a 'was' price is inflated. This is the honest, no-hype map of where the actual value is, curated by people who actually play the game.</p>
@@ -241,7 +244,7 @@
             <h3>KVV 3-Wheel Ultra Lightweight Push Cart</h3>
             <div class="product-inner">
               <div class="product-img">
-                <img src="public/kvv-3-wheel-golf-push-cart.webp" alt="KVV 3-Wheel Ultra Lightweight Golf Push Cart" style="width: 100%; max-width: 150px;">
+                <img width="1024" height="1024" src="public/kvv-3-wheel-golf-push-cart.webp" alt="KVV 3-Wheel Ultra Lightweight Golf Push Cart" style="width: 100%; max-width: 150px;">
               </div>
               <div class="product-details">
                 <div class="pro-con-label pros">✓ Pros</div>
@@ -262,7 +265,7 @@
             <h3>Callaway Golf Supersoft Golf Balls (Pink Splatter)</h3>
             <div class="product-inner">
               <div class="product-img">
-                <img src="public/callaway-supersoft-golf-balls.webp" alt="Callaway Supersoft Golf Balls Pink Splatter" style="width: 100%; max-width: 150px;">
+                <img width="1024" height="1024" src="public/callaway-supersoft-golf-balls.webp" alt="Callaway Supersoft Golf Balls Pink Splatter" style="width: 100%; max-width: 150px;">
               </div>
               <div class="product-details">
                 <div class="pro-con-label pros">✓ Pros</div>
@@ -283,7 +286,7 @@
             <h3>Titleist 30 Pro V1 Mint Quality Refurbished Golf Balls Bucket</h3>
             <div class="product-inner">
               <div class="product-img">
-                <img src="public/titleist-pro-v1-refurbished-bucket.webp" alt="Titleist Pro V1 Refurbished Golf Balls Bucket 30 Pack" style="width: 100%; max-width: 150px;">
+                <img width="1024" height="1024" src="public/titleist-pro-v1-refurbished-bucket.webp" alt="Titleist Pro V1 Refurbished Golf Balls Bucket 30 Pack" style="width: 100%; max-width: 150px;">
               </div>
               <div class="product-details">
                 <div class="pro-con-label pros">✓ Pros</div>

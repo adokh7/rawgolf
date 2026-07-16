@@ -171,9 +171,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .rel-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(24px,7vw,32px) } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -224,7 +227,7 @@
             <p>A year ago, TPC River Highlands was the site of one of Tommy Fleetwood's most painful losses. Leading on the 72nd hole, a three-putt par allowed Keegan Bradley to snatch the title with a birdie. It felt like the definitive chapter of Fleetwood's reputation as the "best player without a win on the PGA Tour." But he returns this week as a changed man. Having broken through in spectacular fashion at the 2025 Tour Championship to claim the FedEx Cup, the heartbreak of River Highlands has its resolution. Here is the full psychological arc.</p>
           </div>
 
-          <img src="public/news-tommy-fleetwood-travelers-redemption.webp" alt="Tommy Fleetwood returns to the Travelers Championship seeking redemption" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="2752" height="1536" src="public/news-tommy-fleetwood-travelers-redemption.webp" alt="Tommy Fleetwood returns to the Travelers Championship seeking redemption" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
 
           <h2>The Heartbreak at TPC River Highlands</h2>
           <p>Walking onto the 72nd tee of the 2025 Travelers Championship, Tommy Fleetwood was one solid hole away from shedding the heaviest label in golf. Instead, the final green became a theater of agony. A misjudged approach left a long, treacherous putt, resulting in a devastating three-putt par. Behind him, Keegan Bradley seized the opening, rolling in a six-foot birdie to claim the title by a single shot.</p>

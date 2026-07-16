@@ -161,9 +161,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -209,7 +212,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> World No. 1 Scottie Scheffler missed the cut at the 2026 Genesis Scottish Open, firing rounds of 68 and 72 to finish at even par—two strokes outside the cut line. The early exit snaps his historic streak of 78 consecutive made cuts dating back to August 2022, the fifth-longest streak in PGA Tour history. As Scheffler mutters into a hot mic and heads to Royal Birkdale for his Open Championship defense, we analyze a rare, human glitch in golf's most dominant machine.</p>
 
-          <img src="public/news-rory-mcilroy-missing-first-cut-in-four-years.webp" alt="Scottie Scheffler looking contemplative under dramatic lighting at the Renaissance Club Tee Box" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="1536" height="1024" src="public/news-rory-mcilroy-missing-first-cut-in-four-years.webp" alt="Scottie Scheffler looking contemplative under dramatic lighting at the Renaissance Club Tee Box" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
 
           <h2>The Sputtering of the Machine: Scheffler's Friday Stumble</h2>
           <p>Even the most advanced golfing machine is subject to structural failure. At the Genesis Scottish Open, the golf world witnessed a glitch in the grid that was both jarring and strangely human. Scottie Scheffler, who has steamrolled professional golf with relentless, robotic consistency, missed a 36-hole cut for the first time in nearly four years. He finished his two rounds at even-par overall, failing to reach the 2-under cut line in North Berwick.</p>

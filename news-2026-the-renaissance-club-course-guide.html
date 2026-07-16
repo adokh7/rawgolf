@@ -162,9 +162,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -210,7 +213,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> The Renaissance Club is Tom Doak's modern par-71, 7,300-yard masterpiece in North Berwick, serving as the home of the Scottish Open since 2019. Despite the scenic coastal backdrop, this course rejects traditional links bump-and-run tactics, demanding a technical, high-trajectory aerial game to navigate raised greens and shifting Firth of Forth winds. We break down the architectural intricacies, course fit metrics, and the iconic 9th-to-11th coastal stretch.</p>
 
-          <img src="public/news-2026-the-renaissance-club-course-guide.webp" alt="Stunning seaside green at The Renaissance Club overlooking the Firth of Forth in Scotland" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="1988" height="1122" src="public/news-2026-the-renaissance-club-course-guide.webp" alt="Stunning seaside green at The Renaissance Club overlooking the Firth of Forth in Scotland" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
 
           <h2>The Pedigree and Genesis of Doak's Design</h2>
           <p>Drive along the East Lothian coast past North Berwick and you will find The Renaissance Club sitting shoulder-to-shoulder with Muirfield—a logistical positioning akin to building a modern house directly next to a historic cathedral. Designed by minimalist icon Tom Doak and opened in 2008, the course holds a unique distinction: it is Doak's only design in Scotland, the very country whose historic layouts shaped his design philosophy.</p>

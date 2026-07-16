@@ -162,9 +162,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -210,7 +213,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> The 2026 Genesis Scottish Open (July 9-12 at The Renaissance Club) draws a ferocious co-sanctioned field just one week before the final major at Royal Birkdale. Highlighting the return of LIV Golf's Jon Rahm in his first regular PGA Tour start since late 2023, defending champion Chris Gotterup entering with red-hot momentum, and a razor-thin margin separating betting favorite Scottie Scheffler and course specialist Rory McIlroy, North Berwick is set for a premier links showdown.</p>
 
-          <img src="public/news-2026-genesis-scottish-open-power-rankings.webp" alt="Professional golfer swinging on a windy Scottish coastal links course under dramatic stormy skies" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="1850" height="1102" src="public/news-2026-genesis-scottish-open-power-rankings.webp" alt="Professional golfer swinging on a windy Scottish coastal links course under dramatic stormy skies" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
 
           <h2>The Tactical Challenge of The Renaissance Club</h2>
           <p>The Renaissance Club in North Berwick represents a modern hybrid links challenge. Architect Tom Doak designed generous landing areas off the tee, but the course places a premium on controlled, long-iron play into massive, undulating greens. When the coastal wind begins to bite off the Firth of Forth, player execution becomes the ultimate metric. It is not as savage as a traditional Open layout, but it acts as the perfect final preparation before Royal Birkdale next week.</p>

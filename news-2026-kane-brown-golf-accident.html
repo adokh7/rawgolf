@@ -169,9 +169,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px; } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -217,7 +220,7 @@
         <div class="article-body">
           <p><b>Quick answer:</b> Country star Kane Brown was hit in the head by a golf ball, splitting his ear open and leaving him with 23 stitches and what he described as a slight concussion. The injury forced him to pull out at the last minute from a scheduled performance at the Tight Ends & Friends show in Nashville, part of Travis Kelce's Tight End University event. Brown shared photos and video of the injury with fans while recovering. He is expected to be okay.</p>
 
-          <img src="public/news-kane-brown-golf-accident.webp" alt="Dramatic high speed golf ball flying near concert stage" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
+          <img width="2752" height="1536" src="public/news-kane-brown-golf-accident.webp" alt="Dramatic high speed golf ball flying near concert stage" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
 
           <p>Here is what happened, and why a stray golf ball is more dangerous than most people realize.</p>
 

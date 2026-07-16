@@ -777,9 +777,12 @@
         aspect-ratio: 4 / 3;
       }
     }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062"
     crossorigin="anonymous"></script>
 </head>
@@ -824,7 +827,7 @@
           </div>
         </header>
 
-        <img src="public/lpga-driving-distance.webp" alt="Nelly Korda hitting a driver on the LPGA Tour" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
+        <img width="1672" height="941" src="public/lpga-driving-distance.webp" alt="Nelly Korda hitting a driver on the LPGA Tour" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
 
         <div class="article-body">
           <p><strong>Quick answer:</strong> The average LPGA Tour player drives it around 250 to 256 yards. The longest hitters average close to 290, the shortest sit near 238, and most of the field carries the actual drive about 223 yards through the air before it rolls out. That is roughly 40 yards shorter than the PGA Tour average, and a long way past what most amateurs hit.</p>

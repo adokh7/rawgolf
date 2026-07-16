@@ -169,9 +169,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px; } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -217,7 +220,7 @@
         <div class="article-body">
           <p><b>Quick answer:</b> The PGA Tour's new 2028 model is the biggest shake-up in decades, and the headline takeaways are clear: a two-tier system with promotion and relegation, cuts in every event, no more sponsor exemptions at the top, a match-play Tour Championship that leaves East Lake, and a schedule built around big U.S. markets. But a lot is still undecided, including which tournaments land in which tier, how the DP World Tour fits in, and what happens to the LIV Golf players. The vision is set. The hard details are not.</p>
 
-          <img src="public/pga-tour-2028-overhaul-analysis.webp" alt="PGA Tour 2028 restructure strategy analysis" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
+          <img width="2752" height="1536" src="public/pga-tour-2028-overhaul-analysis.webp" alt="PGA Tour 2028 restructure strategy analysis" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
 
           <p>Here is what we actually learned, and what nobody can answer yet.</p>
 

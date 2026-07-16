@@ -654,6 +654,10 @@
     blockquote.pull { font-size: clamp(18px, 5vw, 22px); padding: 20px 22px; }
     figure.lead-img img { aspect-ratio: 4 / 3; }
   }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
@@ -701,7 +705,7 @@
         </header>
 
         <figure class="lead-img">
-          <img src="./public/towel-drill-golf.webp"
+          <img width="2752" height="1536" src="./public/towel-drill-golf.webp"
             alt="Golfer doing towel drill to keep arms and body connected during swing">
         </figure>
         <figcaption>THE SIMPLEST PRACTICE ROUTINES TEND TO BE THE MOST EFFECTIVE. PHOTO/GRAPHIC: RAWGOLF</figcaption>

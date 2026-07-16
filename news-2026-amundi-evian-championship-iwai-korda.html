@@ -162,9 +162,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -210,7 +213,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> Japan's Aki Iwai fired a clinical bogey-free opening round of 8-under par and built a two-shot lead at the 2026 Amundi Evian Championship after Round 2. Meanwhile, world No. 1 Nelly Korda faces an intense, high-stakes battle just to survive the weekend, sitting dead level on the cut line at even par as she chases a career Grand Slam and LPGA Hall of Fame validation.</p>
 
-          <img src="public/news-2026-amundi-evian-championship-iwai-korda.webp" alt="Professional female golfer intensely focusing on her putting line at the Evian Championship with mountains in the background" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="2030" height="1134" src="public/news-2026-amundi-evian-championship-iwai-korda.webp" alt="Professional female golfer intensely focusing on her putting line at the Evian Championship with mountains in the background" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
 
           <h2>Nelly Korda’s Grand Slam Bid on the Brink</h2>
           <p>The scripts in professional golf are written with grandeur, but they are executed in the dirt. Nelly Korda arrived at the 2026 Amundi Evian Championship at the Evian Resort Golf Club chasing history. A victory in France would secure the final piece of her career Grand Slam and automatically stamp her ticket into the LPGA Hall of Fame. Not since Juli Inkster accomplished the feat in 1999 has an American female golfer occupied such a rarefied air. Throughout the week, the anticipation was palpable.</p>

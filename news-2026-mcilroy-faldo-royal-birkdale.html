@@ -185,9 +185,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -238,7 +241,7 @@
             <p>Days after a flat T-32 at the U.S. Open, Rory McIlroy skipped this week's Travelers Championship — a $20 million Signature Event — and flew to Royal Birkdale instead, scouting the course three weeks before The Open. While he was there, he ran into Nick Faldo, in England for Sky Sports' Open coverage, who pulled him aside for an impromptu interview. The detail that makes it more than a chance meeting: Faldo is the man McIlroy drew level with on six career majors at this year's Masters, and Birkdale is where Faldo played his very first Open 50 years ago.</p>
           </div>
 
-          <img src="public/news-mcilroy-faldo-birkdale-open.webp" alt="Rory McIlroy and Nick Faldo talking at Royal Birkdale" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
+          <img width="1536" height="1024" src="public/news-mcilroy-faldo-birkdale-open.webp" alt="Rory McIlroy and Nick Faldo talking at Royal Birkdale" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
 
           <h2>The Meeting That Wasn't Staged — and Why That Matters</h2>
           <p>It was a genuine bump-in, not a PR sit-down. McIlroy was at Royal Birkdale on Thursday getting early reps on the links, and Faldo happened to be there doing his own preparation for Sky Sports' Open coverage. The two crossed paths on the course, and Faldo — never one to waste a moment — grabbed his fellow major champion for a short, off-the-cuff interview that later went up on his social channels.</p>

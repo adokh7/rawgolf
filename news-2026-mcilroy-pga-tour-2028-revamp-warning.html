@@ -161,9 +161,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -209,7 +212,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> Rory McIlroy has issued a stark warning regarding the PGA Tour's 2028 schedule overhaul, calling out its existential threat to the Genesis Scottish Open. Under the proposed two-tier split, the co-sanctioned event would be excluded from the closed, elite "Championship Series." McIlroy's blunt message to Tiger Woods and Tour leadership highlights the growing structural tension between restricted corporate tiers and traditional, globally open National Opens.</p>
 
-          <img src="public/news-rory-mcilroy-pga-tour-2028-warning.webp" alt="Professional golfer giving a serious press conference under dramatic lights regarding PGA Tour politics" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="1596" height="854" src="public/news-rory-mcilroy-pga-tour-2028-warning.webp" alt="Professional golfer giving a serious press conference under dramatic lights regarding PGA Tour politics" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
 
           <h2>An Existential Threat to Golf's Finest Blueprint</h2>
           <p>Standing on the grounds of the Renaissance Club in East Lothian, Rory McIlroy looked out over a field that boasts 14 of the world’s top 20 players. It is, by all traditional metrics, one of the crown jewels of the global golf calendar. Yet, as McIlroy pointed out, under the PGA Tour's newly conceptualized 2028 schedule overhaul, the vast majority of these elite players would not even be permitted to tee it up. The Genesis Scottish Open—a tournament co-sanctioned by the PGA Tour and the DP World Tour—does not qualify for the closed, limited-field "Championship Series" tier under the proposed structural changes.</p>

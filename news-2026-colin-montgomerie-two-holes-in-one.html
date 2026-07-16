@@ -161,9 +161,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -209,7 +212,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> Scottish Hall of Famer Colin Montgomerie pulled off the absurd on Monday, carding two holes-in-one during the opening round of the Wee Course—the brand-new, community-focused par-3 layout he designed at Harbor Shores Golf Club in Benton Harbor, Michigan. While two aces in a single round is a statistical anomaly pushing into the millions-to-one odds, doing it at your own ribbon-cutting ceremony in front of local families and children elevates the feat to instant golf lore.</p>
 
-          <img src="public/news-colin-montgomerie-two-holes-in-one.webp" alt="Golfer celebrating a hole in one with fans and children at a short par 3 course" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="1280" height="720" src="public/news-colin-montgomerie-two-holes-in-one.webp" alt="Golfer celebrating a hole in one with fans and children at a short par 3 course" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
 
           <h2>A Legend Returns to Benton Harbor</h2>
           <p>Benton Harbor has long been a special venue for Colin Montgomerie. The 62-year-old World Golf Hall of Famer won the Senior PGA Championship at Harbor Shores back in 2014, earning the lifelong adoration of local Michigan golf fans. On Monday, he returned to cut the ribbon on a passion project: the Wee Course. The new layout is a short par-3 pitch-and-putt designed to introduce the next generation of players to the game.</p>

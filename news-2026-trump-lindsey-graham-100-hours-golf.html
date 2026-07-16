@@ -139,9 +139,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -189,7 +192,7 @@
             <p>Sen. Lindsey Graham and Donald Trump went from bitter political enemies to close allies, a turnaround largely forged over 100 hours of golf. The sheer time spent walking fairways without screens or rush reveals how the game acts as a powerful vehicle for raw connection and political influence.</p>
           </div>
 
-          <img src="public/news-2026-trump-lindsey-graham-100-hours-golf.webp" alt="Realistic candid press photo showing a wide shot of a high-end golf course fairway at Trump National in Virginia under a moody sky" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="2048" height="1366" src="public/news-2026-trump-lindsey-graham-100-hours-golf.webp" alt="Realistic candid press photo showing a wide shot of a high-end golf course fairway at Trump National in Virginia under a moody sky" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
 
           <p>Sen. Lindsey Graham died over the weekend, and the tributes have focused on politics. But buried in the story of how he and Donald Trump went from bitter enemies to close allies is something golfers will recognise instantly. They played a lot of golf together. More than 100 hours of it, by one estimate from a fellow senator.</p>
           <p>Set the politics aside for a moment and it's a striking case study in what the game actually does to people who spend four hours walking together.</p>

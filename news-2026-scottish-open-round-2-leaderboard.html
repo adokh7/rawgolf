@@ -167,9 +167,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -219,7 +222,7 @@
             <p><strong>A dramatic second round in North Berwick</strong> has rearranged the board at the 2026 Genesis Scottish Open. Rory McIlroy signed for a clinical 4-under 66 to grab a share of the 36-hole lead at 9-under par, sitting alongside Jordan Smith and Tom Kim. The shock of the day, however, belonged to world No. 1 Scottie Scheffler. Carding a frustrating 72, Scheffler missed the cut by two strokes, snapping his historic streak of 78 consecutive made cuts—the fifth-longest run in golf history. McIlroy's tactical wedge adjustments and links mastery now take center stage as the field heads into a high-stakes weekend.</p>
           </div>
 
-          <img src="public/news-2026-scottish-open-round-2-leaderboard.webp" alt="Vast windswept links fairway at the Scottish Open with a large tournament leaderboard in the background under heavy clouds" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="1536" height="1024" src="public/news-2026-scottish-open-round-2-leaderboard.webp" alt="Vast windswept links fairway at the Scottish Open with a large tournament leaderboard in the background under heavy clouds" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
 
           <h2>A Contrast of Fortunes at The Renaissance Club</h2>
           <p>Friday at the Genesis Scottish Open offered a stark study in competitive variance. One player walked off the 18th green at the Renaissance Club with a relaxed smile, his sights set on both a weekend trophy and next week's Open Championship at Royal Birkdale. The other headed straight for the parking lot and the airport, digesting a rare, early exit from a tour site. Rory McIlroy and Scottie Scheffler, the two focal points of modern professional golf, could not have had more divergent afternoons under the heavy, gray skies of East Lothian.</p>

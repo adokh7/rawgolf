@@ -168,9 +168,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -216,7 +219,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> Most amateur golfers overestimate their average golf club distances, leading to poor club selection and dropped shots on the course. In this realistic guide, we break down an honest golf club distance chart—noting that the average male amateur carries a driver about 215 meters (235 yards) and a 7-iron around 130 meters (140 yards). We examine why knowing your repeatable yardages, rather than your best smash, is the ultimate shortcut to lowering your scores.</p>
 
-          <img src="public/news-golf-club-distances-guide.webp" alt="Golfer using a laser rangefinder to measure distance on the fairway" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="2816" height="1536" src="public/news-golf-club-distances-guide.webp" alt="Golfer using a laser rangefinder to measure distance on the fairway" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
 
           <h2>A Realistic Golf Club Distance Chart: The Honest Averages</h2>
           <p>When looking at a standard golf club distance chart, it is easy to get caught up in inflated numbers published by gear manufacturers or boasted by players at your local club. To play smart course management, however, you need reference points built on average swing speeds rather than peak athletic smash factor. The list below represents carry-and-roll averages for a typical male amateur golfer swinging at moderate speeds under normal playing conditions:</p>

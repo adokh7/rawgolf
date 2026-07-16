@@ -714,9 +714,12 @@
     blockquote.pull { font-size: clamp(18px, 5vw, 22px); padding: 20px 22px; }
     figure.lead-img img { aspect-ratio: 4 / 3; }
   }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -761,7 +764,7 @@
         </header>
 
         <figure class="lead-img">
-          <img src="public/joaquin-niemann-us-open-penalty.webp" alt="Joaquín Niemann reacting at the U.S. Open at Shinnecock Hills">
+          <img width="1200" height="896" src="public/joaquin-niemann-us-open-penalty.webp" alt="Joaquín Niemann reacting at the U.S. Open at Shinnecock Hills">
         </figure>
         <figcaption>JOAQUÍN NIEMANN AT SHINNECOCK HILLS. PHOTO: RAWGOLF</figcaption>
 

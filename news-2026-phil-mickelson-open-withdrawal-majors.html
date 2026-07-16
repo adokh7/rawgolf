@@ -171,9 +171,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .rel-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(24px,7vw,32px) } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -224,7 +227,7 @@
             <p>Phil Mickelson has officially withdrawn from the 2026 Open Championship at Royal Birkdale, marking the first time in his legendary professional career that the six-time major champion will record a complete season of missed majors in 2026. While his representatives cite an ongoing private family health matter, the announcement coincided with a wave of misconduct allegations published by journalist Alan Shipnuck. However, official records confirm that Mickelson's withdrawal was submitted on June 18—weeks before the report emerged—establishing a clear separation between his stepping back from the tournament and the recent public controversy.</p>
           </div>
 
-          <img src="public/news-phil-mickelson-open-withdrawal-majors.webp" alt="Phil Mickelson absent from the 2026 Open Championship" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="1672" height="941" src="public/news-phil-mickelson-open-withdrawal-majors.webp" alt="Phil Mickelson absent from the 2026 Open Championship" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
 
           <h2>The Official Decision to Step Back from Royal Birkdale</h2>
           <p>Phil Mickelson has formally notified tournament organizers of his withdrawal from the 2026 Open Championship, scheduled for July 16–19 at Royal Birkdale. As a past champion who famously captured the Claret Jug at Muirfield in 2013, Mickelson possessed a lifetime exemption, making his absence a voluntary decision rather than an athletic shortcoming.</p>

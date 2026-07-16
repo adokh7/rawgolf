@@ -167,9 +167,12 @@
     img { max-width: 100%; height: auto }
     @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
     @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } blockquote.pull { font-size: clamp(18px,5vw,22px); padding: 20px 22px } }
+    /* === CLS / RESPONSIVE SAFETY === */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -273,7 +276,7 @@
           </div>
           <!-- ====== END LIVE R3 LEADERBOARD ====== -->
 
-          <img src="public/news-2026-scottish-open-round-3-mcilroy.webp" alt="Professional golfer executing a sharp drive on a windswept links course during a major tournament" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="1672" height="941" src="public/news-2026-scottish-open-round-3-mcilroy.webp" alt="Professional golfer executing a sharp drive on a windswept links course during a major tournament" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
 
           <h2>A Packed House at the Renaissance Club: Moving Day Gridlock</h2>
           <p>Rory McIlroy enters Saturday exactly where a pre-tournament favorite wants to be: sitting at the top of the board with a fine-tuned golf swing and with Scottie Scheffler already on a flight home. But any illusions of a comfortable cruise around the Renaissance Club are quickly dispelled by looking at the numbers stack below him. This is not a leaderboard with clear separation; it is a gridlocked freeway of elite talent ready to take advantage of any slip-up.</p>
