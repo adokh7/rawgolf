@@ -1479,11 +1479,15 @@
     /* ============ RAW TOOLS ============ */
     .tools-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 0;
       border: 2px solid var(--ink);
       margin-bottom: 56px;
     }
+
+    /* 4 tools sit as a balanced 2x2 on desktop */
+    .tools-grid .tool-card:nth-child(2n) { border-right: none }
+    .tools-grid .tool-card:nth-child(-n+2) { border-bottom: 2px solid rgba(255, 255, 255, .18) }
 
     .tool-card {
       display: flex;
@@ -1537,12 +1541,6 @@
       align-self: flex-start;
     }
 
-    @media(max-width: 1000px) {
-      .tools-grid { grid-template-columns: 1fr 1fr }
-      .tool-card:nth-child(2n) { border-right: none }
-      .tool-card:nth-child(-n+2) { border-bottom: 2px solid rgba(255, 255, 255, .18) }
-    }
-
     @media(max-width: 700px) {
       .tools-grid { grid-template-columns: 1fr }
       .tool-card { border-right: none !important; border-bottom: 2px solid rgba(255, 255, 255, .18) }
@@ -1553,6 +1551,10 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+    /* === NAV WRAP SAFETY (multi-tool nav) === */
+  .nav { height: auto; min-height: 68px; padding-top: 6px; padding-bottom: 6px; flex-wrap: wrap; row-gap: 4px; }
+  .nav-links { flex-wrap: wrap; row-gap: 2px; }
+  @media(min-width:761px){ .nav-links a { padding: 7px 10px; font-size: 11.5px; letter-spacing: .03em; } }
   </style>
 <!-- ===== STRUCTURED DATA: WebSite ===== -->
   <script type="application/ld+json">
@@ -1631,6 +1633,7 @@
       <a href="tools-settle-up-calculator.html">Settle Up</a>
       <a href="tools-round-autopsy.html">Round Autopsy</a>
       <a href="tools-tee-box-check.html">Tee Box Check</a>
+      <a href="tools-handicap-detector.html">Handicap Detector</a>
       </nav>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -1958,6 +1961,14 @@
             your ego has wandered, and roughly what it costs you every round. Most golfers do not enjoy the
             answer.</p>
           <span class="tc-cta">Check my tees →</span>
+        </a>
+        <a href="tools-handicap-detector.html" class="tool-card">
+          <div class="tc-kicker">Free · Runs in your browser</div>
+          <h3>What Are You, Actually?</h3>
+          <p>Real World Handicap System maths on your last 5 to 20 scores. Find out your actual index, why you
+            never shoot it, and whether the number you tell people makes you a vanity handicapper or a certified
+            bandit.</p>
+          <span class="tc-cta">Run the lie detector →</span>
         </a>
       </div>
     </div>

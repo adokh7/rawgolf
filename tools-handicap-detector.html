@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PMECW4VW66');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============ PRIMARY SEO ============ -->
+  <title>Handicap Calculator: What Are You, Actually? | Golf Raw</title>
+  <meta name="description"
+    content="Free WHS handicap calculator. Enter your last 5 to 20 scores and find out your real Handicap Index — and whether you are a vanity handicapper or a certified bandit.">
+  <link rel="canonical" href="https://www.golfraw.com/tools-handicap-detector">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Golf Raw Staff">
+
+  <!-- ============ OPEN GRAPH ============ -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RawGolf">
+  <meta property="og:title" content="The Handicap Lie Detector — What Are You, Actually?">
+  <meta property="og:description"
+    content="Enter your last 5 to 20 scores. Find out your real Handicap Index and whether you are a vanity handicapper or a certified bandit.">
+  <meta property="og:url" content="https://www.golfraw.com/tools-handicap-detector">
+
+  <!-- ============ TWITTER CARD ============ -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Handicap Lie Detector — What Are You, Actually?">
+  <meta name="twitter:description"
+    content="Enter your last 5 to 20 scores. Find out your real Handicap Index.">
+
+  <!-- ============ STRUCTURED DATA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "The Handicap Lie Detector",
+  "url": "https://www.golfraw.com/tools-handicap-detector",
+  "applicationCategory": "SportsApplication",
+  "operatingSystem": "Any modern browser",
+  "description": "A free client-side golf handicap calculator using the World Handicap System score differential formula, comparing a golfer's claimed handicap against their calculated Handicap Index.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "RawGolf",
+    "url": "https://www.golfraw.com/",
+    "logo": {"@type": "ImageObject", "url": "https://www.golfraw.com/img/rawgolf-logo.png"}
+  },
+  "isAccessibleForFree": true
+}
+  </script>
+
+  <!-- ============ FAQ SCHEMA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is a golf handicap calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each round produces a Score Differential of (113 / Slope Rating) x (Adjusted Gross Score - Course Rating). Your Handicap Index is the average of the lowest differentials from your most recent 20 scores, using 8 of 20 when you have a full record."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do I never shoot my handicap?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because a handicap measures your potential, not your average. It is built from your best 8 rounds out of 20, so most golfers only play to their Handicap Index roughly one round in five."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many scores do you need for a handicap?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A minimum of 54 holes, which is three 18-hole rounds. With 5 rounds only the single lowest differential is used, and the number of differentials counted rises as you post more scores until 8 of 20 is reached."
+      }
+    }
+  ]
+}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --fairway: #14402A;
+      --fairway-deep: #0B2418;
+      --flag: #E03E2D;
+      --paper: #F3F4F0;
+      --white: #fff;
+      --ink: #101511;
+      --grey: #5B665E;
+      --line: #DADDD4;
+      --maxw: 1180px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box }
+    html { scroll-behavior: smooth }
+    body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased }
+    a { color: inherit; text-decoration: none }
+    img { max-width: 100%; height: auto; display: block }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .mono { font-family: 'IBM Plex Mono', monospace }
+
+    /* HEADER */
+    .site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .logo { font-weight: 900; font-size: 26px; letter-spacing: -.04em; text-transform: uppercase }
+    .logo .raw { color: var(--flag) }
+    .nav-links { display: flex; gap: 0; flex-wrap: wrap }
+    .nav-links a { font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; padding: 8px 11px; transition: background .15s, color .15s }
+    .nav-links a:hover { background: var(--ink); color: #fff }
+    .nav-links a.active { background: var(--ink); color: #fff }
+    .burger { display: none; background: none; border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px }
+    .burger span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0 }
+    @media(max-width:900px) {
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
+      .nav-links.open { display: flex }
+      .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+      .burger { display: block }
+    }
+
+    /* HERO */
+    .hub-hero { background: var(--ink); color: #fff; border-bottom: 4px solid var(--flag); padding: 56px 0 48px }
+    .hub-hero .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
+    .hub-hero h1 { font-weight: 900; font-size: clamp(32px, 5.6vw, 64px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
+    .hub-hero p { font-size: 17px; color: #9CC9AE; max-width: 62ch; line-height: 1.6 }
+
+    /* PANELS */
+    .tool-body { padding: 40px 0 72px }
+    .panel { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
+    .panel-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .panel-head .step { color: var(--flag) }
+    .panel-in { padding: 24px 20px }
+
+    label.fld { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--grey); font-weight: 600; margin-bottom: 6px }
+    input[type=number] {
+      width: 100%; padding: 12px; border: 2px solid var(--ink); background: var(--white);
+      font-family: 'IBM Plex Mono', monospace; font-size: 17px; font-weight: 700; color: var(--ink); border-radius: 0;
+    }
+    input:focus { outline: 3px solid var(--flag); outline-offset: -1px }
+    input[type=number] { -moz-appearance: textfield }
+    input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0 }
+    .sub { font-size: 12.5px; color: var(--grey); margin-top: 7px; line-height: 1.5 }
+
+    .claim-wrap { max-width: 300px; margin-bottom: 6px }
+
+    /* ROUNDS TABLE */
+    .rounds-head { display: grid; grid-template-columns: 34px 1fr 1fr 1fr 40px; gap: 8px; padding: 0 0 8px; }
+    .rounds-head span { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--grey); font-weight: 600 }
+    .rnd { display: grid; grid-template-columns: 34px 1fr 1fr 1fr 40px; gap: 8px; align-items: center; margin-bottom: 8px }
+    .rnd .num { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 700; color: var(--grey); text-align: center }
+    .rnd input { padding: 11px 8px; font-size: 16px }
+    .rnd .kill { border: 2px solid var(--line); background: transparent; color: var(--flag); font-weight: 900; font-size: 16px; cursor: pointer; padding: 10px 0; font-family: inherit; line-height: 1 }
+    .rnd .kill:hover { background: var(--flag); color: #fff; border-color: var(--flag) }
+    .rnd .kill:disabled { opacity: .25; cursor: not-allowed }
+    .rnd.counted input { background: #F1F7F2 }
+    @media(max-width:560px) {
+      .rounds-head { grid-template-columns: 26px 1fr 1fr 1fr 36px; gap: 6px }
+      .rnd { grid-template-columns: 26px 1fr 1fr 1fr 36px; gap: 6px }
+      .rnd input { padding: 10px 4px; font-size: 15px }
+    }
+
+    .btn { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 14px 22px; border: 2px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; transition: background .15s, color .15s }
+    .btn:hover { background: var(--flag); border-color: var(--flag) }
+    .btn.ghost { background: transparent; color: var(--ink) }
+    .btn.ghost:hover { background: var(--ink); color: #fff }
+    .btn.sm { padding: 9px 14px; font-size: 10.5px }
+    .btn:disabled { opacity: .35; cursor: not-allowed }
+    .btn:disabled:hover { background: var(--ink); border-color: var(--ink) }
+    .btn.ghost:disabled:hover { background: transparent; color: var(--ink) }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px }
+
+    .err { border: 2px solid var(--flag); background: #FDF0EE; color: #8f2015; padding: 12px 14px; font-size: 13.5px; font-weight: 600; margin-bottom: 18px; display: none }
+    .err.show { display: block }
+
+    /* AD SLOT — isolated from all controls */
+    .ad-zone { border: 1px dashed var(--line); background: #EFF1EC; padding: 18px; margin: 30px 0; text-align: center; min-height: 96px; display: flex; align-items: center; justify-content: center }
+    .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #a8aea3 }
+
+    /* VERDICT */
+    .out-wrap { display: none }
+    .out-wrap.show { display: block }
+    .verdict-card { background: var(--ink); color: #fff; border: 3px solid var(--ink); padding: 32px 26px 0; overflow: hidden }
+    .vc-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 12px }
+    .vc-head { font-weight: 900; font-size: clamp(26px, 5.2vw, 42px); line-height: .98; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 14px }
+    .vc-sub { font-size: 16px; color: #d8ded6; line-height: 1.6; margin-bottom: 28px; max-width: 60ch }
+    .vc-sub b { color: #fff }
+
+    .idx-row { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(255,255,255,.18); margin-bottom: 24px }
+    .idx-row div { padding: 22px 14px; text-align: center; border-right: 1px solid rgba(255,255,255,.18) }
+    .idx-row div:last-child { border-right: none }
+    .idx-row .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(32px, 7vw, 46px); line-height: 1 }
+    .idx-row .real .n { color: #6FDB9A }
+    .idx-row .claim .n { color: #FF9486 }
+    .idx-row .l { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: #8b958d; margin-top: 9px; display: block }
+
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(255,255,255,.18); margin-bottom: 24px }
+    .stats div { padding: 14px 8px; text-align: center; border-right: 1px solid rgba(255,255,255,.18) }
+    .stats div:last-child { border-right: none }
+    .stats .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 19px; line-height: 1 }
+    .stats .l { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: .12em; text-transform: uppercase; color: #8b958d; margin-top: 6px; display: block }
+    @media(max-width:560px) { .stats { grid-template-columns: 1fr 1fr } .stats div { border-bottom: 1px solid rgba(255,255,255,.18) } }
+
+    .facts { display: grid; gap: 10px; margin-bottom: 26px }
+    .fact { border-left: 4px solid var(--flag); padding: 4px 0 4px 14px; font-size: 14.5px; color: #d8ded6; line-height: 1.55 }
+    .fact b { color: #fff }
+
+    .vc-foot { border-top: 1px solid rgba(255,255,255,.15); margin: 0 -26px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .vc-foot .mark { font-weight: 900; font-size: 17px; letter-spacing: -.03em; text-transform: uppercase }
+    .vc-foot .mark span { color: var(--flag) }
+    .vc-foot .url { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #8b958d }
+
+    .note { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--grey); line-height: 1.65; margin-top: 14px }
+
+    /* DIFF TABLE */
+    .diff-scroll { overflow-x: auto; border: 2px solid var(--ink); margin-top: 6px }
+    table.diffs { border-collapse: collapse; width: 100%; min-width: 420px; font-family: 'IBM Plex Mono', monospace; font-size: 13px }
+    table.diffs th { background: var(--ink); color: #fff; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; padding: 9px 10px; text-align: left; font-weight: 600 }
+    table.diffs td { padding: 9px 10px; border-bottom: 1px solid var(--line) }
+    table.diffs tr:last-child td { border-bottom: none }
+    table.diffs tr.used td { background: #F1F7F2; font-weight: 700 }
+    table.diffs .tick { color: var(--fairway); font-weight: 900 }
+
+    /* EXPLAINER */
+    .explain h2 { font-weight: 900; font-size: clamp(20px, 3vw, 26px); text-transform: uppercase; letter-spacing: -.02em; margin-bottom: 12px; padding-top: 16px; border-top: 3px solid var(--ink) }
+    .explain h3 { font-weight: 800; font-size: 17px; margin: 22px 0 8px }
+    .explain h3::before { content: "— "; color: var(--flag) }
+    .explain p { font-size: 15.5px; margin-bottom: 14px; max-width: 68ch; line-height: 1.65 }
+
+    /* FOOTER */
+    .site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
+    .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
+    .site-footer a:hover { color: #fff }
+
+    /* === CLS / RESPONSIVE SAFETY === */
+    html, body { max-width: 100%; overflow-x: clip; }
+    img, video, iframe { max-width: 100%; }
+    table { max-width: 100%; }
+    /* === NAV WRAP SAFETY (multi-tool nav) === */
+  .nav { height: auto; min-height: 68px; padding-top: 6px; padding-bottom: 6px; flex-wrap: wrap; row-gap: 4px; }
+  .nav-links { flex-wrap: wrap; row-gap: 2px; }
+  @media(min-width:761px){ .nav-links a { padding: 7px 10px; font-size: 11.5px; letter-spacing: .03em; } }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="nav">
+      <a href="./index.html" class="logo">Golf<span class="raw">Raw</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="./news.html">News</a>
+        <a href="./tournaments.html">Tournaments</a>
+        <a href="./vault.html">The Vault</a>
+        <a href="tools-settle-up-calculator.html">Settle Up</a>
+        <a href="tools-round-autopsy.html">Round Autopsy</a>
+        <a href="tools-tee-box-check.html">Tee Box Check</a>
+        <a href="tools-handicap-detector.html" class="active">Handicap Detector</a>
+        <a href="search.html">🔍 Search</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="hub-hero">
+    <div class="wrap">
+      <div class="eyebrow">RAWGOLF · TOOLS</div>
+      <h1>What Are You, Actually?</h1>
+      <p>Put in your last 5 to 20 scores and we will run the real World Handicap System maths on them. You will
+        find out your actual Handicap Index, why you never shoot it, and whether the number you tell people is a
+        vanity project or an outright con. Runs entirely in your browser — nothing is uploaded anywhere.</p>
+    </div>
+  </div>
+
+  <div class="tool-body">
+    <div class="wrap">
+
+      <!-- ============ INPUT ============ -->
+      <section class="panel">
+        <div class="panel-head"><span><span class="step">01 ·</span> The Claim</span>
+          <span id="tag" class="mono" style="font-size:10px;color:#9aa59d"></span>
+        </div>
+        <div class="panel-in">
+          <div class="err" id="err"></div>
+          <div class="claim-wrap">
+            <label class="fld" for="claimed">Handicap you tell people</label>
+            <input type="number" id="claimed" min="-10" max="54" step="0.1" inputmode="decimal" placeholder="12.4">
+            <p class="sub">The number you give on the first tee. Be honest about what you claim, we will handle
+              the rest.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><span><span class="step">02 ·</span> The Evidence</span>
+          <span class="mono" id="cntTag" style="font-size:10px;color:#9aa59d"></span>
+        </div>
+        <div class="panel-in">
+          <div class="rounds-head">
+            <span>#</span><span>Score</span><span>Course rating</span><span>Slope</span><span></span>
+          </div>
+          <div id="rounds"></div>
+          <div class="btn-row">
+            <button class="btn ghost sm" id="addRow" type="button">+ Add a round</button>
+            <button class="btn ghost sm" id="fillDefaults" type="button">Fill blanks with 72 / 113</button>
+            <button class="btn ghost sm" id="clearAll" type="button">Clear everything</button>
+          </div>
+          <p class="sub" style="margin-top:14px">Minimum 5 rounds, maximum 20 — that is what the World Handicap
+            System uses. Leave rating and slope blank and we will assume a standard par-72 course of 113 slope.</p>
+
+          <div class="btn-row">
+            <button class="btn" id="runBtn" type="button">Run the lie detector →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Future AdSense Slot -->
+      <div class="ad-zone" aria-hidden="true">
+        <span>Advertisement</span>
+      </div>
+      <!-- /Future AdSense Slot -->
+
+      <!-- ============ VERDICT ============ -->
+      <div class="out-wrap" id="outWrap">
+        <div class="verdict-card" id="verdictCard">
+          <div class="vc-eyebrow">The Handicap Lie Detector</div>
+          <h2 class="vc-head" id="vHead">—</h2>
+          <p class="vc-sub" id="vSub"></p>
+
+          <div class="idx-row">
+            <div class="claim"><span class="n" id="nClaim">—</span><span class="l">You claim</span></div>
+            <div class="real"><span class="n" id="nReal">—</span><span class="l">You actually are</span></div>
+          </div>
+
+          <div class="stats" id="stats"></div>
+
+          <div class="facts" id="facts"></div>
+
+          <div class="vc-foot">
+            <span class="mark">Golf<span>Raw</span></span>
+            <span class="url">golfraw.com · handicap lie detector</span>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn" id="copyBtn" type="button">Copy for group chat</button>
+          <button class="btn ghost" id="againBtn" type="button">Edit the evidence</button>
+        </div>
+        <p class="note" id="method"></p>
+
+        <div class="diff-scroll">
+          <table class="diffs" id="diffTable"></table>
+        </div>
+        <p class="note">Highlighted rows are the differentials actually counted toward your index.</p>
+      </div>
+
+      <!-- Future AdSense Slot -->
+      <div class="ad-zone" aria-hidden="true">
+        <span>Advertisement</span>
+      </div>
+      <!-- /Future AdSense Slot -->
+
+      <!-- ============ EXPLAINER ============ -->
+      <section class="panel explain">
+        <div class="panel-head"><span><span class="step">03 ·</span> How This Actually Works</span></div>
+        <div class="panel-in">
+          <h2>How is a golf handicap calculated?</h2>
+          <p>Every round becomes a Score Differential: <b>(113 ÷ Slope Rating) × (Score − Course Rating)</b>. That
+            converts a score shot on any course, of any difficulty, into a single comparable number. Your Handicap
+            Index is then the average of your <b>lowest</b> differentials — 8 of your last 20 once you have a full
+            record.</p>
+
+          <h3>Why you never shoot your handicap</h3>
+          <p>This is the part almost nobody understands. Your handicap is built from your <b>best</b> 8 rounds out
+            of 20. It is a measure of your potential, not your average. Most golfers play to their index roughly
+            one round in five. If you shoot it every week, you are not a good golfer — you are a bandit.</p>
+
+          <h3>Vanity handicap vs bandit</h3>
+          <p>A vanity handicapper claims a lower number than the maths supports, then quietly donates money every
+            Saturday. A bandit claims a higher number than the maths supports and takes it. Both are lying. Only
+            one of them is profiting.</p>
+
+          <h3>Fewer than 20 rounds</h3>
+          <p>The World Handicap System scales how many differentials it counts: with 5 rounds it uses your single
+            lowest, with 6 it uses the lowest 2 minus an adjustment, and it climbs from there until you reach the
+            full 8 of 20.</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 RAWGOLF.COM — ALL RATINGS FINAL</span>
+      <nav aria-label="Footer navigation" style="display:flex;gap:20px">
+        <a href="./manifesto.html">MANIFESTO</a>
+        <a href="./ratings-manual.html">HOW RATINGS WORK</a>
+        <a href="./corrections.html">CORRECTIONS</a>
+        <a href="./privacy.html">PRIVACY</a>
+        <a href="./index.html">← FRONT PAGE</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    /* ==================== NAV ==================== */
+    (function () {
+      var b = document.getElementById('burger'), l = document.getElementById('navLinks');
+      if (b && l) {
+        b.addEventListener('click', function () { b.setAttribute('aria-expanded', l.classList.toggle('open')); });
+        l.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () { l.classList.remove('open'); });
+        });
+      }
+    })();
+
+    /* ==================== WHS CONSTANTS ====================
+       Official World Handicap System lookup: how many of the lowest
+       differentials count, and any adjustment applied to the average.   */
+    var WHS_TABLE = {
+      5:  { use: 1, adj: 0 },
+      6:  { use: 2, adj: -1.0 },
+      7:  { use: 2, adj: 0 },
+      8:  { use: 2, adj: 0 },
+      9:  { use: 3, adj: 0 },
+      10: { use: 3, adj: 0 },
+      11: { use: 3, adj: 0 },
+      12: { use: 4, adj: 0 },
+      13: { use: 4, adj: 0 },
+      14: { use: 4, adj: 0 },
+      15: { use: 5, adj: 0 },
+      16: { use: 5, adj: 0 },
+      17: { use: 6, adj: 0 },
+      18: { use: 6, adj: 0 },
+      19: { use: 7, adj: 0 },
+      20: { use: 8, adj: 0 }
+    };
+    var MIN_ROUNDS = 5, MAX_ROUNDS = 20, HONEST_BAND = 2.5;
+    var DEF_CR = 72, DEF_SLOPE = 113;
+    var LS_KEY = 'golfraw_handicap_rounds';
+
+    var $ = function (id) { return document.getElementById(id); };
+    var r1 = function (n) { return Math.round(n * 10) / 10; };
+    var fx = function (n) { return (Math.round(n * 10) / 10).toFixed(1); };
+
+    /* ==================== ENGINE ==================== */
+
+    // WHS Score Differential, rounded to one decimal
+    function differential(score, cr, slope) {
+      return Math.round(((113 / slope) * (score - cr)) * 10) / 10;
+    }
+
+    // Handicap Index from a list of differentials
+    function indexFrom(diffs) {
+      var n = diffs.length;
+      if (n < MIN_ROUNDS) return null;
+      var capped = diffs.slice();
+      // only the most recent 20 count; caller passes at most 20
+      if (capped.length > MAX_ROUNDS) capped = capped.slice(-MAX_ROUNDS);
+      var rule = WHS_TABLE[capped.length];
+      if (!rule) return null;
+      var sorted = capped.slice().sort(function (a, b) { return a - b; });
+      var used = sorted.slice(0, rule.use);
+      var avg = used.reduce(function (a, b) { return a + b; }, 0) / used.length;
+      return {
+        index: Math.round((avg + rule.adj) * 10) / 10,
+        used: rule.use,
+        adj: rule.adj,
+        counted: used,
+        sorted: sorted
+      };
+    }
+
+    function stdev(arr) {
+      if (arr.length < 2) return 0;
+      var m = arr.reduce(function (a, b) { return a + b; }, 0) / arr.length;
+      var v = arr.reduce(function (a, b) { return a + Math.pow(b - m, 2); }, 0) / (arr.length - 1);
+      return Math.sqrt(v);
+    }
+
+    function analyse(claimed, rows) {
+      var diffs = rows.map(function (r) { return differential(r.score, r.cr, r.slope); });
+      var res = indexFrom(diffs);
+      if (!res) return null;
+
+      var avgDiff = diffs.reduce(function (a, b) { return a + b; }, 0) / diffs.length;
+      var delta = claimed - res.index;              // + means claims higher than real
+      var vol = stdev(diffs);
+      var scores = rows.map(function (r) { return r.score; });
+
+      return {
+        claimed: claimed, index: res.index, delta: delta,
+        used: res.used, adj: res.adj, counted: res.counted,
+        diffs: diffs, rows: rows, n: diffs.length,
+        avgDiff: avgDiff,
+        gapToPotential: avgDiff - res.index,
+        vol: vol,
+        best: Math.min.apply(null, scores),
+        worst: Math.max.apply(null, scores),
+        avgScore: scores.reduce(function (a, b) { return a + b; }, 0) / scores.length
+      };
+    }
+
+    /* ==================== VERDICTS ====================
+       NOTE ON SIGNS: delta = claimed - calculated.
+       A VANITY handicapper claims a LOWER number than reality  -> delta is NEGATIVE.
+       A BANDIT claims a HIGHER number than reality             -> delta is POSITIVE.
+       The thresholds below follow that meaning.                          */
+    function verdictFor(a) {
+      var d = a.delta;
+
+      if (d <= -HONEST_BAND) {
+        return {
+          head: 'Certified vanity handicap.',
+          sub: 'You claim to be a <b>' + fx(a.claimed) + '</b>. The maths says <b>' + fx(a.index) +
+            '</b>. You are talking yourself down by <b>' + fx(Math.abs(d)) + ' shots</b> that you have not ' +
+            'earned. Stop donating money to your friends and play off your real number.',
+          tone: 'vanity'
+        };
+      }
+
+      if (d >= HONEST_BAND) {
+        return {
+          head: 'Certified bandit.',
+          sub: 'You claim <b>' + fx(a.claimed) + '</b> and you play to <b>' + fx(a.index) + '</b>. That is ' +
+            '<b>' + fx(d) + ' shots</b> of padding you are carrying into every match. The whole group chat ' +
+            'knows what you are doing. They just cannot prove it. Until now.',
+          tone: 'bandit'
+        };
+      }
+
+      return {
+        head: 'Honest for once.',
+        sub: 'You claim <b>' + fx(a.claimed) + '</b> and the maths says <b>' + fx(a.index) + '</b>. Within ' +
+          HONEST_BAND + ' shots. Your handicap actually matches your real potential, which makes you rarer ' +
+          'than you think. Whatever is wrong with your golf, at least the number is not lying.',
+        tone: 'honest'
+      };
+    }
+
+    function factsFor(a) {
+      var f = [];
+      f.push('<b>The maths:</b> lowest <b>' + a.used + '</b> of your <b>' + a.n + '</b> differentials' +
+        (a.adj ? ', with a ' + a.adj.toFixed(1) + ' adjustment' : '') + ', averaged to <b>' + fx(a.index) + '</b>.');
+      f.push('<b>Why you never shoot it:</b> your average differential is <b>' + fx(a.avgDiff) +
+        '</b> but your index is <b>' + fx(a.index) + '</b>. That gap of <b>' + fx(a.gapToPotential) +
+        ' shots</b> is the difference between your potential and your normal Saturday. You will play to your ' +
+        'index roughly one round in five.');
+
+      if (a.vol >= 5) {
+        f.push('<b>Consistency:</b> your differentials swing by <b>' + fx(a.vol) +
+          '</b>. You are a coin flip. Nobody, including you, knows which golfer turns up.');
+      } else if (a.vol <= 2.5) {
+        f.push('<b>Consistency:</b> a spread of just <b>' + fx(a.vol) +
+          '</b>. You are a metronome. Dull, repeatable, and quietly very hard to beat in a match.');
+      } else {
+        f.push('<b>Consistency:</b> a spread of <b>' + fx(a.vol) + '</b>. Normal amateur variance.');
+      }
+
+      f.push('<b>The record:</b> best <b>' + a.best + '</b>, worst <b>' + a.worst + '</b>, average <b>' +
+        Math.round(a.avgScore) + '</b> across ' + a.n + ' rounds.');
+      return f;
+    }
+
+    /* ==================== ROWS UI ==================== */
+    var rowCount = 0;
+
+    function addRow(data) {
+      if (rowCount >= MAX_ROUNDS) return;
+      rowCount++;
+      var i = rowCount;
+      var d = document.createElement('div');
+      d.className = 'rnd';
+      d.innerHTML =
+        '<span class="num">' + i + '</span>' +
+        '<input type="number" class="sc" min="55" max="200" step="1" inputmode="numeric" placeholder="92" ' +
+        'aria-label="Round ' + i + ' score" value="' + (data && data.score != null ? data.score : '') + '">' +
+        '<input type="number" class="cr" min="55" max="80" step="0.1" inputmode="decimal" placeholder="72" ' +
+        'aria-label="Round ' + i + ' course rating" value="' + (data && data.cr != null ? data.cr : '') + '">' +
+        '<input type="number" class="sl" min="55" max="155" step="1" inputmode="numeric" placeholder="113" ' +
+        'aria-label="Round ' + i + ' slope" value="' + (data && data.slope != null ? data.slope : '') + '">' +
+        '<button type="button" class="kill" aria-label="Remove round ' + i + '">×</button>';
+      $('rounds').appendChild(d);
+      d.querySelector('.kill').addEventListener('click', function () { removeRow(d); });
+      d.querySelectorAll('input').forEach(function (inp) {
+        inp.addEventListener('input', save);
+        inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') run(); });
+      });
+      refresh();
+    }
+
+    function removeRow(el) {
+      if (rowCount <= MIN_ROUNDS) return;
+      el.remove(); rowCount--;
+      renumber(); refresh(); save();
+    }
+
+    function renumber() {
+      $('rounds').querySelectorAll('.rnd').forEach(function (r, i) {
+        r.querySelector('.num').textContent = i + 1;
+      });
+    }
+
+    function refresh() {
+      $('cntTag').textContent = rowCount + ' / ' + MAX_ROUNDS + ' rounds';
+      $('addRow').disabled = rowCount >= MAX_ROUNDS;
+      $('rounds').querySelectorAll('.kill').forEach(function (b) { b.disabled = rowCount <= MIN_ROUNDS; });
+    }
+
+    function readRows() {
+      var out = [], bad = 0;
+      $('rounds').querySelectorAll('.rnd').forEach(function (r) {
+        var s = parseFloat(r.querySelector('.sc').value);
+        var cr = parseFloat(r.querySelector('.cr').value);
+        var sl = parseFloat(r.querySelector('.sl').value);
+        if (isNaN(s)) return;                       // blank score = round ignored
+        if (s < 55 || s > 200) { bad++; return; }
+        if (isNaN(cr) || cr < 55 || cr > 80) cr = DEF_CR;
+        if (isNaN(sl) || sl < 55 || sl > 155) sl = DEF_SLOPE;
+        out.push({ score: s, cr: cr, slope: sl });
+      });
+      return { rows: out, bad: bad };
+    }
+
+    /* ==================== RENDER ==================== */
+    var last = null;
+
+    function run() {
+      var claimed = parseFloat($('claimed').value);
+      if (isNaN(claimed)) return err('Enter the handicap you tell people first.');
+      if (claimed < -10 || claimed > 54) return err('Handicap should be between -10 and 54.');
+
+      var rd = readRows();
+      if (rd.bad) return err('Some scores are outside 55–200. Fix those rows.');
+      if (rd.rows.length < MIN_ROUNDS)
+        return err('Only ' + rd.rows.length + ' valid rounds. The World Handicap System needs at least ' +
+          MIN_ROUNDS + ' to say anything meaningful.');
+
+      var use = rd.rows.slice(-MAX_ROUNDS);          // most recent 20
+      var a = analyse(claimed, use);
+      if (!a) return err('Could not calculate an index from those rounds.');
+      err('');
+      last = a;
+
+      var v = verdictFor(a);
+      $('vHead').textContent = v.head;
+      $('vSub').innerHTML = v.sub;
+      $('nClaim').textContent = fx(a.claimed);
+      $('nReal').textContent = fx(a.index);
+
+      $('stats').innerHTML =
+        st(a.n, 'Rounds used') +
+        st(a.used, 'Counted') +
+        st(fx(a.avgDiff), 'Avg differential') +
+        st((a.delta > 0 ? '+' : '') + fx(a.delta), 'Delta');
+
+      $('facts').innerHTML = factsFor(a).map(function (x) {
+        return '<div class="fact">' + x + '</div>';
+      }).join('');
+
+      // differential table, most recent first, counted rows highlighted
+      var countedCopy = a.counted.slice();
+      var rows = '<thead><tr><th>#</th><th>Score</th><th>CR / Slope</th><th>Differential</th><th>Counted</th></tr></thead><tbody>';
+      for (var i = a.diffs.length - 1; i >= 0; i--) {
+        var d = a.diffs[i];
+        var ci = countedCopy.indexOf(d);
+        var isUsed = ci !== -1;
+        if (isUsed) countedCopy.splice(ci, 1);      // each counted value consumed once
+        rows += '<tr class="' + (isUsed ? 'used' : '') + '"><td>' + (i + 1) + '</td><td>' +
+          a.rows[i].score + '</td><td>' + a.rows[i].cr + ' / ' + a.rows[i].slope + '</td><td>' +
+          fx(d) + '</td><td>' + (isUsed ? '<span class="tick">✓</span>' : '') + '</td></tr>';
+      }
+      $('diffTable').innerHTML = rows + '</tbody>';
+
+      $('method').textContent = 'Score Differential = (113 ÷ Slope) × (Score − Course Rating), rounded to one ' +
+        'decimal. With ' + a.n + ' rounds the World Handicap System counts your lowest ' + a.used +
+        (a.adj ? ' with a ' + a.adj.toFixed(1) + ' adjustment' : '') + '. This is an unofficial estimate — it ' +
+        'does not apply Playing Conditions Calculation, exceptional score reductions, or the soft and hard caps ' +
+        'that a licensed handicapping body would.';
+
+      $('outWrap').classList.add('show');
+      $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      save();
+    }
+
+    function st(n, l) { return '<div><span class="n">' + n + '</span><span class="l">' + l + '</span></div>'; }
+
+    function err(m) {
+      var e = $('err');
+      if (!m) { e.classList.remove('show'); e.textContent = ''; return; }
+      e.textContent = m; e.classList.add('show');
+      e.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    /* ==================== SHARE ==================== */
+    function copySummary() {
+      if (!last) return err('Run the lie detector first.');
+      var a = last, v = verdictFor(a);
+      var lines = ['THE HANDICAP LIE DETECTOR', '', v.head.toUpperCase(), ''];
+      lines.push('Claimed handicap: ' + fx(a.claimed));
+      lines.push('Actual index:     ' + fx(a.index));
+      lines.push('Difference:       ' + (a.delta > 0 ? '+' : '') + fx(a.delta) + ' shots');
+      lines.push('');
+      lines.push('Based on ' + a.n + ' rounds (lowest ' + a.used + ' counted)');
+      lines.push('Average differential: ' + fx(a.avgDiff));
+      lines.push('Best / worst: ' + a.best + ' / ' + a.worst);
+      lines.push('', 'Check yours: golfraw.com/tools-handicap-detector');
+      var txt = lines.join('\n');
+
+      var done = function () {
+        var b = $('copyBtn'), old = b.textContent;
+        b.textContent = 'Copied ✓';
+        setTimeout(function () { b.textContent = old; }, 1900);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(done, function () { fallbackCopy(txt, done); });
+      } else { fallbackCopy(txt, done); }
+    }
+
+    function fallbackCopy(txt, cb) {
+      var ta = document.createElement('textarea');
+      ta.value = txt; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); cb(); } catch (e) { }
+      document.body.removeChild(ta);
+    }
+
+    /* ==================== PERSIST ==================== */
+    function save() {
+      try {
+        var rows = [];
+        $('rounds').querySelectorAll('.rnd').forEach(function (r) {
+          rows.push({
+            score: r.querySelector('.sc').value,
+            cr: r.querySelector('.cr').value,
+            slope: r.querySelector('.sl').value
+          });
+        });
+        localStorage.setItem(LS_KEY, JSON.stringify({ claimed: $('claimed').value, rows: rows }));
+      } catch (e) { }
+    }
+
+    function restore() {
+      var d = null;
+      try { d = JSON.parse(localStorage.getItem(LS_KEY) || 'null'); } catch (e) { d = null; }
+      if (!d || !d.rows || !d.rows.length) {
+        for (var i = 0; i < MIN_ROUNDS; i++) addRow();
+        return false;
+      }
+      if (d.claimed) $('claimed').value = d.claimed;
+      d.rows.slice(0, MAX_ROUNDS).forEach(function (r) {
+        addRow({
+          score: r.score === '' ? null : r.score,
+          cr: r.cr === '' ? null : r.cr,
+          slope: r.slope === '' ? null : r.slope
+        });
+      });
+      while (rowCount < MIN_ROUNDS) addRow();
+      flash('Evidence restored');
+      return true;
+    }
+
+    function flash(m) {
+      var t = $('tag'); t.textContent = m;
+      setTimeout(function () { t.textContent = ''; }, 2200);
+    }
+
+    /* ==================== WIRE UP ==================== */
+    $('addRow').addEventListener('click', function () { addRow(); save(); });
+    $('runBtn').addEventListener('click', run);
+    $('copyBtn').addEventListener('click', copySummary);
+    $('againBtn').addEventListener('click', function () {
+      $('outWrap').classList.remove('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    $('fillDefaults').addEventListener('click', function () {
+      $('rounds').querySelectorAll('.rnd').forEach(function (r) {
+        if (!r.querySelector('.cr').value) r.querySelector('.cr').value = DEF_CR;
+        if (!r.querySelector('.sl').value) r.querySelector('.sl').value = DEF_SLOPE;
+      });
+      save(); flash('Blanks filled');
+    });
+    $('clearAll').addEventListener('click', function () {
+      $('rounds').innerHTML = ''; rowCount = 0;
+      for (var i = 0; i < MIN_ROUNDS; i++) addRow();
+      $('claimed').value = '';
+      $('outWrap').classList.remove('show');
+      err('');
+      try { localStorage.removeItem(LS_KEY); } catch (e) { }
+      flash('Cleared');
+    });
+    $('claimed').addEventListener('input', save);
+    $('claimed').addEventListener('keydown', function (e) { if (e.key === 'Enter') run(); });
+
+    restore();
+    refresh();
+  </script>
+</body>
+
+</html>
