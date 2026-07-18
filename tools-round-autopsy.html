@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PMECW4VW66');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============ PRIMARY SEO ============ -->
+  <title>The Round Autopsy: Free Golf Stats Analyser &amp; Diagnostic | Golf Raw</title>
+  <meta name="description"
+    content="Free golf round analyser. Enter 18 holes of scores, fairways, greens and putts, and get a blunt diagnosis of exactly where your strokes went — tee, approach, short game or putting.">
+  <link rel="canonical" href="https://www.golfraw.com/tools-round-autopsy">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Golf Raw Staff">
+
+  <!-- ============ OPEN GRAPH ============ -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RawGolf">
+  <meta property="og:title" content="The Round Autopsy: Free Golf Stats Analyser &amp; Diagnostic">
+  <meta property="og:description"
+    content="Enter 18 holes. Get a blunt, no-excuses breakdown of exactly where your strokes went and what is actually costing you shots.">
+  <meta property="og:url" content="https://www.golfraw.com/tools-round-autopsy">
+
+  <!-- ============ TWITTER CARD ============ -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Round Autopsy: Free Golf Stats Analyser">
+  <meta name="twitter:description"
+    content="Enter 18 holes. Get a blunt breakdown of exactly where your strokes went.">
+
+  <!-- ============ STRUCTURED DATA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "The Round Autopsy — Golf Round Diagnostic",
+  "url": "https://www.golfraw.com/tools-round-autopsy",
+  "applicationCategory": "SportsApplication",
+  "operatingSystem": "Any modern browser",
+  "description": "A free client-side golf round analyser that breaks an 18-hole round into strokes lost off the tee, on approach, around the green and on the putting surface, measured against handicap-tier benchmarks.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "RawGolf",
+    "url": "https://www.golfraw.com/",
+    "logo": {"@type": "ImageObject", "url": "https://www.golfraw.com/img/rawgolf-logo.png"}
+  },
+  "isAccessibleForFree": true
+}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --fairway: #14402A;
+      --fairway-deep: #0B2418;
+      --flag: #E03E2D;
+      --paper: #F3F4F0;
+      --white: #fff;
+      --ink: #101511;
+      --grey: #5B665E;
+      --line: #DADDD4;
+      --maxw: 1180px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box }
+    html { scroll-behavior: smooth }
+    body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased }
+    a { color: inherit; text-decoration: none }
+    img { max-width: 100%; height: auto; display: block }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .mono { font-family: 'IBM Plex Mono', monospace }
+
+    /* HEADER */
+    .site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .logo { font-weight: 900; font-size: 26px; letter-spacing: -.04em; text-transform: uppercase }
+    .logo .raw { color: var(--flag) }
+    .nav-links { display: flex; gap: 0 }
+    .nav-links a { font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; padding: 8px 14px; transition: background .15s, color .15s }
+    .nav-links a:hover { background: var(--ink); color: #fff }
+    .nav-links a.active { background: var(--ink); color: #fff }
+    .burger { display: none; background: none; border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px }
+    .burger span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0 }
+    @media(max-width:760px) {
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
+      .nav-links.open { display: flex }
+      .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+      .burger { display: block }
+    }
+
+    /* HERO */
+    .hub-hero { background: var(--ink); color: #fff; border-bottom: 4px solid var(--flag); padding: 56px 0 48px }
+    .hub-hero .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
+    .hub-hero h1 { font-weight: 900; font-size: clamp(34px, 6vw, 68px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
+    .hub-hero p { font-size: 17px; color: #9CC9AE; max-width: 62ch; line-height: 1.6 }
+
+    /* PANELS */
+    .tool-body { padding: 40px 0 72px }
+    .panel { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
+    .panel-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .panel-head .step { color: var(--flag) }
+    .panel-in { padding: 22px 18px }
+
+    label.fld { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--grey); font-weight: 600; margin-bottom: 6px }
+    input[type=text], input[type=number], select {
+      width: 100%; padding: 11px 12px; border: 2px solid var(--ink); background: var(--white);
+      font-family: 'Archivo', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); border-radius: 0;
+    }
+    input:focus, select:focus { outline: 3px solid var(--flag); outline-offset: -1px }
+    input[type=number] { -moz-appearance: textfield }
+    input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0 }
+
+    .row { display: grid; gap: 14px; margin-bottom: 18px }
+    .row.c2 { grid-template-columns: repeat(2, 1fr) }
+    .row.c3 { grid-template-columns: repeat(3, 1fr) }
+    @media(max-width:640px) { .row.c3 { grid-template-columns: 1fr } .row.c2 { grid-template-columns: 1fr } }
+
+    .btn { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 12px 18px; border: 2px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; transition: background .15s, color .15s }
+    .btn:hover { background: var(--flag); border-color: var(--flag) }
+    .btn.ghost { background: transparent; color: var(--ink) }
+    .btn.ghost:hover { background: var(--ink); color: #fff }
+    .btn.sm { padding: 8px 12px; font-size: 10.5px }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap }
+
+    /* GRID */
+    .card-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 2px solid var(--ink) }
+    table.rd { border-collapse: collapse; width: 100%; min-width: 620px; font-family: 'IBM Plex Mono', monospace; font-size: 14px }
+    table.rd th, table.rd td { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); padding: 0; text-align: center }
+    table.rd th { background: var(--ink); color: #fff; font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; padding: 10px 4px; position: sticky; top: 0; z-index: 2 }
+    table.rd th:first-child, table.rd td:first-child { position: sticky; left: 0; z-index: 1; background: var(--paper); font-weight: 700; width: 50px; min-width: 50px; font-size: 12px }
+    table.rd th:first-child { background: var(--ink); z-index: 3 }
+    table.rd tr.turn td { background: #ECEFE8; font-weight: 800 }
+    table.rd tr.turn td:first-child { background: #ECEFE8 }
+    table.rd input { border: none; text-align: center; padding: 11px 2px; font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600; background: transparent; width: 100% }
+    table.rd input:focus { outline: 2px solid var(--flag); outline-offset: -2px; background: #fff }
+    table.rd td.parcell input { color: var(--grey); font-size: 13px }
+
+    .yn { width: 100%; border: none; background: transparent; cursor: pointer; padding: 11px 2px; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 800; color: var(--grey) }
+    .yn[data-v="1"] { background: #E3F2E8; color: var(--fairway) }
+    .yn[data-v="0"] { background: #FBEBE9; color: var(--flag) }
+    .yn[disabled] { color: #c2c7bd; cursor: default; background: #F5F6F2 }
+
+    /* AUTOPSY CARD */
+    .out-wrap { display: none }
+    .out-wrap.show { display: block }
+    .autopsy { background: var(--ink); color: #fff; border: 3px solid var(--ink); padding: 30px 26px 0; position: relative; overflow: hidden }
+    .autopsy .ap-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
+    .autopsy .cod-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #8b958d; margin-bottom: 8px }
+    .autopsy h2 { font-weight: 900; font-size: clamp(26px, 5.4vw, 42px); line-height: 1; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 14px }
+    .verdict { font-size: 16px; color: #d8ded6; line-height: 1.6; margin-bottom: 26px; max-width: 60ch }
+    .verdict b { color: #fff }
+
+    .score-strip { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(255,255,255,.16); margin-bottom: 26px }
+    .score-strip div { padding: 14px 10px; text-align: center; border-right: 1px solid rgba(255,255,255,.16) }
+    .score-strip div:last-child { border-right: none }
+    .score-strip .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 22px; line-height: 1 }
+    .score-strip .l { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase; color: #8b958d; margin-top: 6px; display: block }
+    @media(max-width:560px) { .score-strip { grid-template-columns: repeat(2, 1fr) } .score-strip div { border-bottom: 1px solid rgba(255,255,255,.16) } }
+
+    .bars { margin-bottom: 26px }
+    .bar-row { margin-bottom: 14px }
+    .bar-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 6px }
+    .bar-top .bl { font-weight: 800; font-size: 14.5px }
+    .bar-top .bv { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #FF9486; font-weight: 700 }
+    .bar-track { height: 12px; background: rgba(255,255,255,.09); overflow: hidden }
+    .bar-fill { height: 100%; background: var(--flag); transition: width .5s ease }
+    .bar-fill.worst { background: #FF9486 }
+    .bar-note { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #8b958d; margin-top: 5px; line-height: 1.5 }
+
+    .fix-list { border-top: 1px solid rgba(255,255,255,.15); padding-top: 20px; margin-bottom: 26px }
+    .fix-list h3 { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 12px }
+    .fix { border-left: 4px solid rgba(255,255,255,.2); padding: 4px 0 4px 14px; margin-bottom: 12px; font-size: 14.5px; color: #d8ded6; line-height: 1.55 }
+    .fix b { color: #fff }
+
+    .ap-foot { border-top: 1px solid rgba(255,255,255,.15); margin: 0 -26px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .ap-foot .mark { font-weight: 900; font-size: 17px; letter-spacing: -.03em; text-transform: uppercase }
+    .ap-foot .mark span { color: var(--flag) }
+    .ap-foot .url { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #8b958d }
+
+    /* HISTORY */
+    .hist-table { width: 100%; border-collapse: collapse; font-family: 'IBM Plex Mono', monospace; font-size: 13px }
+    .hist-table th { text-align: left; background: var(--ink); color: #fff; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; padding: 9px 10px; font-weight: 600 }
+    .hist-table td { padding: 10px; border-bottom: 1px solid var(--line) }
+    .hist-table tr:last-child td { border-bottom: none }
+    .hist-table .del { color: var(--flag); cursor: pointer; font-weight: 800; background: none; border: none; font-family: inherit; font-size: 14px }
+    .trend { display: flex; align-items: flex-end; gap: 5px; height: 70px; padding: 12px 0 0; margin-bottom: 18px }
+    .trend .t { flex: 1; background: var(--fairway); min-height: 4px; position: relative }
+    .trend .t:last-child { background: var(--flag) }
+    .trend .t span { position: absolute; bottom: -18px; left: 0; right: 0; text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--grey) }
+    .empty { text-align: center; padding: 28px 12px; color: var(--grey); font-size: 14px }
+
+    .err { border: 2px solid var(--flag); background: #FDF0EE; color: #8f2015; padding: 12px 14px; font-size: 13.5px; font-weight: 600; margin-bottom: 16px; display: none }
+    .err.show { display: block }
+    .hint { font-size: 12.5px; color: var(--grey); margin-top: 10px; line-height: 1.55 }
+    .note { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--grey); line-height: 1.6; margin-top: 12px }
+
+    /* FOOTER */
+    .site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
+    .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
+    .site-footer a:hover { color: #fff }
+
+    /* === CLS / RESPONSIVE SAFETY === */
+    html, body { max-width: 100%; overflow-x: clip; }
+    img, video, iframe { max-width: 100%; }
+    table { max-width: 100%; }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="nav">
+      <a href="./index.html" class="logo">Golf<span class="raw">Raw</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="./news.html">Latest News</a>
+        <a href="./ratings.html">Player Ratings</a>
+        <a href="./tournaments.html">Tournaments</a>
+        <a href="./analysis.html">Swing Analysis</a>
+        <a href="./vault.html">The Vault</a>
+        <a href="tools-settle-up-calculator.html">Settle Up</a>
+        <a href="tools-round-autopsy.html" class="active">Round Autopsy</a>
+        <a href="search.html">🔍 Search</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="hub-hero">
+    <div class="wrap">
+      <div class="eyebrow">RAWGOLF · TOOLS</div>
+      <h1>The Round Autopsy</h1>
+      <p>Put in 18 holes of scores, fairways, greens and putts. Get a blunt, no-excuses breakdown of exactly where
+        your strokes went and which part of your game is actually costing you. Runs entirely in your browser —
+        nothing is uploaded anywhere.</p>
+    </div>
+  </div>
+
+  <div class="tool-body">
+    <div class="wrap">
+
+      <!-- ============ STEP 1: SETUP ============ -->
+      <section class="panel">
+        <div class="panel-head"><span><span class="step">01 ·</span> The Round</span>
+          <span id="tag" class="mono" style="font-size:10px;color:#9aa59d"></span>
+        </div>
+        <div class="panel-in">
+          <div class="row c3">
+            <div>
+              <label class="fld" for="goal">You are trying to break…</label>
+              <select id="goal">
+                <option value="100">100 — beginner / high handicap</option>
+                <option value="90" selected>90 — bogey golfer</option>
+                <option value="85">85 — mid handicap</option>
+                <option value="80">80 — low handicap</option>
+                <option value="75">75 — scratch chaser</option>
+              </select>
+            </div>
+            <div>
+              <label class="fld" for="courseName">Course (optional)</label>
+              <input type="text" id="courseName" maxlength="30" placeholder="Sunday morning muni">
+            </div>
+            <div>
+              <label class="fld" for="roundDate">Date</label>
+              <input type="text" id="roundDate" maxlength="14" placeholder="e.g. 18 Jul">
+            </div>
+          </div>
+          <p class="hint">The benchmarks below are rough averages for each scoring tier. They tell you where you
+            sit relative to the level you are chasing, not where you sit against a tour pro.</p>
+          <div class="btn-row" style="margin-top:18px">
+            <button class="btn ghost sm" id="fillPar" type="button">Reset card to standard par</button>
+            <button class="btn ghost sm" id="clearRound" type="button">Clear the card</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ STEP 2: THE CARD ============ -->
+      <section class="panel">
+        <div class="panel-head"><span><span class="step">02 ·</span> The Card</span>
+          <span class="mono" style="font-size:10px;color:#9aa59d">Tap Y/N · scroll sideways on mobile</span>
+        </div>
+        <div class="panel-in">
+          <div class="err" id="err"></div>
+          <div class="card-scroll">
+            <table class="rd" id="rdTable" aria-label="Hole by hole round entry"></table>
+          </div>
+          <p class="hint">FIR is disabled on par 3s — there is no fairway to hit. Leave a hole blank and it is
+            excluded from the analysis.</p>
+          <div class="btn-row" style="margin-top:20px">
+            <button class="btn" id="runBtn" type="button">Run the autopsy →</button>
+            <button class="btn ghost sm" id="saveBtn" type="button">Save round to history</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ STEP 3: THE AUTOPSY ============ -->
+      <div class="out-wrap" id="outWrap">
+        <div class="autopsy" id="autopsyCard">
+          <div class="ap-eyebrow">The Round Autopsy</div>
+          <div class="cod-label">Cause of death</div>
+          <h2 id="cod">—</h2>
+          <p class="verdict" id="verdict"></p>
+
+          <div class="score-strip" id="strip"></div>
+
+          <div class="bars" id="bars"></div>
+
+          <div class="fix-list">
+            <h3>What to actually work on</h3>
+            <div id="fixes"></div>
+          </div>
+
+          <div class="ap-foot">
+            <span class="mark">Golf<span>Raw</span></span>
+            <span class="url">golfraw.com · the round autopsy</span>
+          </div>
+        </div>
+        <p class="note" id="method"></p>
+      </div>
+
+      <!-- ============ STEP 4: HISTORY ============ -->
+      <section class="panel" style="margin-top:28px">
+        <div class="panel-head"><span><span class="step">03 ·</span> History &amp; Trend</span>
+          <button class="btn ghost sm" id="wipeHist" type="button"
+            style="border-color:#8b958d;color:#fff">Wipe history</button>
+        </div>
+        <div class="panel-in">
+          <div id="trendWrap"></div>
+          <div id="histWrap"></div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 RAWGOLF.COM — ALL RATINGS FINAL</span>
+      <nav aria-label="Footer navigation" style="display:flex;gap:20px">
+        <a href="./manifesto.html">MANIFESTO</a>
+        <a href="./ratings-manual.html">HOW RATINGS WORK</a>
+        <a href="./corrections.html">CORRECTIONS</a>
+        <a href="./privacy.html">PRIVACY</a>
+        <a href="./index.html">← FRONT PAGE</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    /* ==================== NAV ==================== */
+    (function () {
+      var b = document.getElementById('burger'), l = document.getElementById('navLinks');
+      if (b && l) {
+        b.addEventListener('click', function () { b.setAttribute('aria-expanded', l.classList.toggle('open')); });
+        l.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () { l.classList.remove('open'); });
+        });
+      }
+    })();
+
+    /* ==================== BENCHMARKS (static, no API) ====================
+       Rough per-round averages for each scoring tier. fir/gir/scramble are
+       rates; putts and pen are round totals.                              */
+    var TIERS = {
+      100: { label: 'Breaking 100', fir: 0.32, gir: 0.14, putts: 36, ppg: 2.10, pen: 3.5, scramble: 0.10 },
+      90:  { label: 'Breaking 90',  fir: 0.43, gir: 0.28, putts: 34, ppg: 2.05, pen: 2.0, scramble: 0.18 },
+      85:  { label: 'Breaking 85',  fir: 0.50, gir: 0.39, putts: 32, ppg: 2.00, pen: 1.2, scramble: 0.25 },
+      80:  { label: 'Breaking 80',  fir: 0.57, gir: 0.50, putts: 31, ppg: 1.95, pen: 0.8, scramble: 0.33 },
+      75:  { label: 'Breaking 75',  fir: 0.62, gir: 0.61, putts: 30, ppg: 1.90, pen: 0.4, scramble: 0.42 }
+    };
+
+    // Putts expected on a hole where the green was MISSED (you chip on, then putt).
+    // Kept close to 2.0 on purpose: a poor chip that leads to two putts is already
+    // charged to the short game via scrambling, so a low number here would bill the
+    // same mistake twice.
+    var PUTTS_OFF_GREEN = 1.95;
+
+    // Strokes-lost weightings (how costly each shortfall is, in strokes)
+    var W = { tee: 0.28, approach: 0.55, short: 0.85, putt: 1.0, pen: 1.0 };
+
+    var HOLES = 18;
+    var DEFAULT_PARS = [4, 4, 3, 5, 4, 4, 3, 4, 5, 4, 3, 4, 5, 4, 4, 3, 4, 5];
+    var LS_ROUND = 'golfraw_autopsy_round';
+    var LS_HIST = 'golfraw_autopsy_history';
+
+    var state = {
+      pars: DEFAULT_PARS.slice(),
+      score: new Array(HOLES).fill(null),
+      fir: new Array(HOLES).fill(null),   // 1 hit, 0 missed, null n/a
+      gir: new Array(HOLES).fill(null),
+      putts: new Array(HOLES).fill(null),
+      pen: new Array(HOLES).fill(null)
+    };
+
+    var $ = function (id) { return document.getElementById(id); };
+    var esc = function (s) {
+      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    };
+    var r1 = function (n) { return Math.round(n * 10) / 10; };
+
+    /* ==================== BUILD CARD ==================== */
+    function buildTable() {
+      var t = $('rdTable');
+      var head = '<thead><tr><th>Hole</th><th>Par</th><th>Score</th><th>FIR</th><th>GIR</th><th>Putts</th><th>Pen</th></tr></thead><tbody>';
+      var body = '';
+      for (var h = 0; h < HOLES; h++) {
+        var turn = (h === 8 || h === 17) ? ' class="turn"' : '';
+        body += '<tr' + turn + '><td>' + (h + 1) + '</td>';
+        body += '<td class="parcell"><input type="number" class="par" data-h="' + h + '" min="3" max="6" inputmode="numeric" aria-label="Par hole ' + (h + 1) + '"></td>';
+        body += '<td><input type="number" class="sc" data-h="' + h + '" min="1" max="20" inputmode="numeric" aria-label="Score hole ' + (h + 1) + '"></td>';
+        body += '<td><button type="button" class="yn fir" data-h="' + h + '" aria-label="Fairway hit hole ' + (h + 1) + '">–</button></td>';
+        body += '<td><button type="button" class="yn gir" data-h="' + h + '" aria-label="Green in regulation hole ' + (h + 1) + '">–</button></td>';
+        body += '<td><input type="number" class="pt" data-h="' + h + '" min="0" max="10" inputmode="numeric" aria-label="Putts hole ' + (h + 1) + '"></td>';
+        body += '<td><input type="number" class="pn" data-h="' + h + '" min="0" max="9" inputmode="numeric" aria-label="Penalties hole ' + (h + 1) + '"></td>';
+        body += '</tr>';
+      }
+      t.innerHTML = head + body + '</tbody>';
+
+      t.querySelectorAll('input.par').forEach(function (i) {
+        i.addEventListener('input', function () {
+          var h = +i.dataset.h, v = parseInt(i.value, 10);
+          state.pars[h] = isNaN(v) ? 4 : v;
+          syncFirDisabled(); persist();
+        });
+      });
+      [['sc', 'score'], ['pt', 'putts'], ['pn', 'pen']].forEach(function (pair) {
+        t.querySelectorAll('input.' + pair[0]).forEach(function (i) {
+          i.addEventListener('input', function () {
+            var h = +i.dataset.h, v = i.value === '' ? null : parseInt(i.value, 10);
+            state[pair[1]][h] = (v === null || isNaN(v)) ? null : v;
+            persist();
+          });
+        });
+      });
+      t.querySelectorAll('button.yn').forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (b.disabled) return;
+          var h = +b.dataset.h, key = b.classList.contains('fir') ? 'fir' : 'gir';
+          var cur = state[key][h];
+          state[key][h] = cur === null ? 1 : (cur === 1 ? 0 : null);
+          paintYN(b, state[key][h]);
+          persist();
+        });
+      });
+      paintAll();
+    }
+
+    function paintYN(btn, v) {
+      if (v === 1) { btn.textContent = 'Y'; btn.dataset.v = '1'; }
+      else if (v === 0) { btn.textContent = 'N'; btn.dataset.v = '0'; }
+      else { btn.textContent = '–'; btn.removeAttribute('data-v'); }
+    }
+
+    function syncFirDisabled() {
+      document.querySelectorAll('button.yn.fir').forEach(function (b) {
+        var h = +b.dataset.h;
+        var isPar3 = state.pars[h] === 3;
+        b.disabled = isPar3;
+        if (isPar3) { state.fir[h] = null; b.textContent = '—'; b.removeAttribute('data-v'); }
+        else if (!b.textContent.match(/[YN]/)) { paintYN(b, state.fir[h]); }
+      });
+    }
+
+    function paintAll() {
+      var t = $('rdTable');
+      t.querySelectorAll('input.par').forEach(function (i) { i.value = state.pars[+i.dataset.h]; });
+      t.querySelectorAll('input.sc').forEach(function (i) { var v = state.score[+i.dataset.h]; i.value = v === null ? '' : v; });
+      t.querySelectorAll('input.pt').forEach(function (i) { var v = state.putts[+i.dataset.h]; i.value = v === null ? '' : v; });
+      t.querySelectorAll('input.pn').forEach(function (i) { var v = state.pen[+i.dataset.h]; i.value = v === null ? '' : v; });
+      t.querySelectorAll('button.yn.fir').forEach(function (b) { paintYN(b, state.fir[+b.dataset.h]); });
+      t.querySelectorAll('button.yn.gir').forEach(function (b) { paintYN(b, state.gir[+b.dataset.h]); });
+      syncFirDisabled();
+    }
+
+    /* ==================== DIAGNOSTIC ENGINE ==================== */
+    function analyse() {
+      var goal = $('goal').value;
+      var T = TIERS[goal];
+
+      var played = 0, gross = 0, parTotal = 0;
+      var firOpp = 0, firHit = 0, girHit = 0, putts = 0, pen = 0;
+      var scrOpp = 0, scrWin = 0, threePutts = 0, girPutts = 0, girPuttHoles = 0;
+
+      for (var h = 0; h < HOLES; h++) {
+        var s = state.score[h];
+        if (s === null) continue;
+        played++;
+        gross += s;
+        parTotal += state.pars[h];
+        if (state.pars[h] !== 3) { firOpp++; if (state.fir[h] === 1) firHit++; }
+        if (state.gir[h] === 1) girHit++;
+        if (state.putts[h] !== null) {
+          putts += state.putts[h];
+          if (state.putts[h] >= 3) threePutts++;
+          if (state.gir[h] === 1) { girPutts += state.putts[h]; girPuttHoles++; }
+        }
+        if (state.pen[h] !== null) pen += state.pen[h];
+        // scrambling: missed green, did you still make par or better?
+        if (state.gir[h] === 0) { scrOpp++; if (s <= state.pars[h]) scrWin++; }
+      }
+
+      if (played === 0) return null;
+
+      var scale = played / HOLES;                 // pro-rate benchmarks to holes played
+      var firRate = firOpp ? firHit / firOpp : null;
+      var girRate = girHit / played;
+      var scrRate = scrOpp ? scrWin / scrOpp : null;
+
+      // --- strokes lost vs the tier the player is chasing ---
+      var lost = { tee: 0, approach: 0, short: 0, putt: 0 };
+
+      if (firRate !== null) {
+        lost.tee = Math.max(0, (T.fir - firRate)) * firOpp * W.tee;
+      }
+      var penExtra = Math.max(0, pen - T.pen * scale);
+      lost.tee += penExtra * W.pen;               // trouble off the tee lands here
+
+      lost.approach = Math.max(0, (T.gir - girRate)) * played * W.approach;
+
+      if (scrRate !== null) {
+        lost.short = Math.max(0, (T.scramble - scrRate)) * scrOpp * W.short;
+      }
+
+      // Putting is measured against greens actually hit. Hitting more greens
+      // naturally means more putts, so a raw putt total would punish good
+      // ball-strikers. Expected = (greens hit x tier putts-per-green) +
+      // (greens missed x putts expected after a chip).
+      var expPutts = girHit * T.ppg + (played - girHit) * PUTTS_OFF_GREEN;
+      lost.putt = Math.max(0, putts - expPutts) * W.putt;
+
+      var total = lost.tee + lost.approach + lost.short + lost.putt;
+
+      // dominant category
+      var order = [
+        { k: 'tee', n: 'Off the Tee', v: lost.tee },
+        { k: 'approach', n: 'Approach Play', v: lost.approach },
+        { k: 'short', n: 'Short Game', v: lost.short },
+        { k: 'putt', n: 'Putting', v: lost.putt }
+      ].sort(function (a, b) { return b.v - a.v; });
+
+      return {
+        goal: goal, T: T, played: played, gross: gross, parTotal: parTotal,
+        firOpp: firOpp, firHit: firHit, firRate: firRate,
+        girHit: girHit, girRate: girRate, putts: putts, expPutts: expPutts, pen: pen, penExtra: penExtra,
+        scrOpp: scrOpp, scrWin: scrWin, scrRate: scrRate, threePutts: threePutts,
+        girPuttAvg: girPuttHoles ? girPutts / girPuttHoles : null,
+        lost: lost, total: total, order: order, scale: scale
+      };
+    }
+
+    /* ==================== VERDICTS (blunt) ==================== */
+    function verdictFor(a) {
+      var top = a.order[0];
+      var pct = a.total > 0 ? Math.round(top.v / a.total * 100) : 0;
+
+      // penalty override — the loudest problem on the card
+      if (a.penExtra >= 3) {
+        return {
+          cod: 'Death by hero shot',
+          text: 'You gave away <b>' + r1(a.penExtra) + ' shots</b> to penalties alone. That is not a swing fault, ' +
+            'that is decision making. Every time the sensible shot was a wedge back to the fairway, you took ' +
+            'driver at a gap you had no business aiming at. Stop playing like a hero and you drop ' +
+            r1(a.penExtra) + ' shots without changing a single thing about your technique.'
+        };
+      }
+      if (a.total < 2) {
+        return {
+          cod: 'No cause of death found',
+          text: 'Nothing here is bleeding badly. You are already at or around the standard for ' +
+            a.T.label.toLowerCase() + '. Either push the goal up a tier and re-run this, or accept that ' +
+            'the only thing left is grinding, which is a much less fun answer.'
+        };
+      }
+
+      var map = {
+        tee: {
+          cod: 'Killed off the tee',
+          text: 'You hit <b>' + a.firHit + ' of ' + a.firOpp + ' fairways</b>. Playing your second shot from ' +
+            'trouble means you are not attacking greens, you are apologising to them. Your swing might be fine — ' +
+            'your ball is just never in a position to use it. Club down off the tee for a fortnight and watch ' +
+            'the score fall without a single lesson.'
+        },
+        approach: {
+          cod: 'Your irons are the problem',
+          text: 'You hit <b>' + a.girHit + ' of ' + a.played + ' greens</b>. Every missed green hands the job to a ' +
+            'short game that then has to be brilliant just to save par. That is a terrible business model. ' +
+            'This is the least glamorous fix in golf and the one that will actually move your handicap.'
+        },
+        short: {
+          cod: 'You cannot get up and down',
+          text: 'You missed <b>' + a.scrOpp + ' greens</b> and rescued par on only <b>' + a.scrWin + '</b> of them. ' +
+            'Everybody misses greens. Better players just do not turn a miss into a double. You are losing shots ' +
+            'in the fifty yards where practice is free and nobody bothers.'
+        },
+        putt: {
+          cod: 'Death by three-putt',
+          text: 'You took <b>' + a.putts + ' putts</b>' + (a.threePutts ? ' with <b>' + a.threePutts + ' three-putts</b>' : '') +
+            '. You are working hard enough to reach greens and then throwing it away from twenty feet. ' +
+            'This is the cheapest fix on the list, which is exactly why it is so annoying that you have not done it.'
+        }
+      };
+      var v = map[top.k];
+      v.text += ' It accounts for roughly <b>' + pct + '%</b> of the shots you are giving away.';
+      return v;
+    }
+
+    function fixesFor(a) {
+      var out = [];
+      var byK = {};
+      a.order.forEach(function (o) { byK[o.k] = o.v; });
+
+      if (a.penExtra >= 1.5) out.push('<b>Kill the penalties.</b> ' + r1(a.penExtra) +
+        ' shots went to trouble. One rule for the next five rounds: if the smart shot and the hero shot disagree, take the smart one.');
+      if (byK.tee > 1 && a.firRate !== null) out.push('<b>Find the fairway.</b> ' +
+        Math.round(a.firRate * 100) + '% hit versus ' + Math.round(a.T.fir * 100) +
+        '% for ' + a.T.label.toLowerCase() + '. Hit whatever club puts it in play, even if it is a 5-iron.');
+      if (byK.approach > 1) out.push('<b>Aim at the middle.</b> ' + a.girHit + '/' + a.played +
+        ' greens versus a target of about ' + Math.round(a.T.gir * a.played) +
+        '. Take one more club and stop firing at tucked flags.');
+      if (byK.short > 1 && a.scrRate !== null) out.push('<b>Learn one chip.</b> Scrambling ' +
+        Math.round(a.scrRate * 100) + '% versus ' + Math.round(a.T.scramble * 100) +
+        '% target. One club, one motion, get it on the green and rolling.');
+      if (byK.putt > 1) out.push('<b>Kill the three-putt.</b> ' + a.putts + ' putts' +
+        (a.threePutts ? ' including ' + a.threePutts + ' three-putts' : '') + ' versus about ' +
+        r1(a.expPutts) + ' expected for the greens you hit. Spend the whole session inside six feet and on lag pace.');
+      if (!out.length) out.push('<b>Nothing is broken.</b> Set the goal a tier lower and run it again — you have outgrown this benchmark.');
+      return out;
+    }
+
+    /* ==================== RENDER ==================== */
+    function run() {
+      var a = analyse();
+      if (!a) { return showErr('Put at least one hole in the card before running the autopsy.'); }
+      if (a.played < 9) { showErr('Only ' + a.played + ' holes entered — the read-out will be rough. Fill the card for a proper autopsy.'); }
+      else showErr('');
+
+      var v = verdictFor(a);
+      $('cod').textContent = v.cod;
+      $('verdict').innerHTML = v.text;
+
+      var toPar = a.gross - a.parTotal;
+      $('strip').innerHTML =
+        strip(a.gross, 'Gross (' + a.played + ' holes)') +
+        strip((toPar > 0 ? '+' : '') + toPar, 'To par') +
+        strip(a.firOpp ? a.firHit + '/' + a.firOpp : '—', 'Fairways') +
+        strip(a.girHit + '/' + a.played, 'Greens') +
+        strip(a.putts, 'Putts') +
+        strip(a.pen, 'Penalties') +
+        strip(a.scrOpp ? a.scrWin + '/' + a.scrOpp : '—', 'Scrambles') +
+        strip(a.threePutts, '3-putts');
+
+      var max = Math.max.apply(null, a.order.map(function (o) { return o.v; })) || 1;
+      $('bars').innerHTML = a.order.map(function (o, i) {
+        var w = Math.max(2, (o.v / max) * 100);
+        return '<div class="bar-row"><div class="bar-top"><span class="bl">' + o.n +
+          '</span><span class="bv">−' + r1(o.v) + ' shots</span></div>' +
+          '<div class="bar-track"><div class="bar-fill' + (i === 0 ? ' worst' : '') +
+          '" style="width:' + w + '%"></div></div>' +
+          '<div class="bar-note">' + barNote(o.k, a) + '</div></div>';
+      }).join('');
+
+      $('fixes').innerHTML = fixesFor(a).map(function (f) {
+        return '<div class="fix">' + f + '</div>';
+      }).join('');
+
+      $('method').textContent = 'Measured against ' + a.T.label.toLowerCase() +
+        ' benchmarks (' + Math.round(a.T.fir * 100) + '% fairways, ' + Math.round(a.T.gir * 100) +
+        '% greens, ' + Math.round(a.T.scramble * 100) + '% scrambling, ' + a.T.pen +
+        ' penalties a round), pro-rated to the ' + a.played + ' holes you entered. Putting is judged ' +
+        'against the greens you actually hit (' + a.T.ppg + ' putts per green), not a flat total. ' +
+        'Total leak: ' + r1(a.total) + ' shots.';
+
+      $('outWrap').classList.add('show');
+      $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      persist();
+      return a;
+    }
+
+    function strip(n, l) { return '<div><span class="n">' + n + '</span><span class="l">' + l + '</span></div>'; }
+
+    function barNote(k, a) {
+      if (k === 'tee') return a.firOpp
+        ? 'You ' + Math.round(a.firRate * 100) + '% · target ' + Math.round(a.T.fir * 100) + '%' +
+          (a.penExtra > 0 ? ' · ' + r1(a.penExtra) + ' shots to penalties' : '')
+        : 'No fairway data entered';
+      if (k === 'approach') return 'You ' + Math.round(a.girRate * 100) + '% greens · target ' + Math.round(a.T.gir * 100) + '%';
+      if (k === 'short') return a.scrOpp
+        ? 'You ' + Math.round(a.scrRate * 100) + '% scrambling · target ' + Math.round(a.T.scramble * 100) + '%'
+        : 'You hit every green — nothing to scramble';
+      return 'You ' + a.putts + ' putts · expected ' + r1(a.expPutts) + ' for ' + a.girHit + ' greens hit' +
+        (a.girPuttAvg ? ' · ' + r1(a.girPuttAvg) + ' putts per green hit' : '');
+    }
+
+    function showErr(m) {
+      var e = $('err');
+      if (!m) { e.classList.remove('show'); e.textContent = ''; return; }
+      e.textContent = m; e.classList.add('show');
+    }
+
+    /* ==================== HISTORY ==================== */
+    function readHist() {
+      try { return JSON.parse(localStorage.getItem(LS_HIST) || '[]'); } catch (e) { return []; }
+    }
+    function writeHist(h) {
+      try { localStorage.setItem(LS_HIST, JSON.stringify(h)); } catch (e) { }
+    }
+
+    function saveRound() {
+      var a = run();
+      if (!a) return;
+      var h = readHist();
+      h.push({
+        date: ($('roundDate').value || new Date().toLocaleDateString()).slice(0, 14),
+        course: ($('courseName').value || '—').slice(0, 30),
+        gross: a.gross, played: a.played, goal: a.goal,
+        fir: a.firOpp ? a.firHit + '/' + a.firOpp : '—',
+        gir: a.girHit + '/' + a.played,
+        putts: a.putts, pen: a.pen,
+        worst: a.order[0].n, total: r1(a.total)
+      });
+      if (h.length > 30) h = h.slice(-30);
+      writeHist(h);
+      renderHist();
+      flash('Round saved ✓');
+    }
+
+    function renderHist() {
+      var h = readHist();
+      var hw = $('histWrap'), tw = $('trendWrap');
+      if (!h.length) {
+        tw.innerHTML = '';
+        hw.innerHTML = '<div class="empty">No rounds saved yet. Run an autopsy and hit “Save round to history”.</div>';
+        return;
+      }
+      // trend bars (scores, most recent last)
+      var scores = h.map(function (r) { return r.gross; });
+      var mx = Math.max.apply(null, scores), mn = Math.min.apply(null, scores);
+      var span = Math.max(1, mx - mn);
+      tw.innerHTML = '<div class="trend">' + h.map(function (r) {
+        var pctH = 20 + ((mx - r.gross) / span) * 80;   // lower score = taller bar
+        return '<div class="t" style="height:' + pctH + '%" title="' + esc(r.date) + ': ' + r.gross +
+          '"><span>' + r.gross + '</span></div>';
+      }).join('') + '</div><p class="hint" style="margin-bottom:18px">Taller bar = lower score. Most recent round in red.</p>';
+
+      var rows = '<thead><tr><th>Date</th><th>Course</th><th>Score</th><th>FIR</th><th>GIR</th><th>Putts</th><th>Biggest leak</th><th></th></tr></thead><tbody>';
+      h.slice().reverse().forEach(function (r, i) {
+        var realIdx = h.length - 1 - i;
+        rows += '<tr><td>' + esc(r.date) + '</td><td>' + esc(r.course) + '</td><td><b>' + r.gross +
+          '</b></td><td>' + esc(r.fir) + '</td><td>' + esc(r.gir) + '</td><td>' + r.putts +
+          '</td><td>' + esc(r.worst) + ' (−' + r.total + ')</td>' +
+          '<td><button class="del" data-i="' + realIdx + '" aria-label="Delete round">×</button></td></tr>';
+      });
+      hw.innerHTML = '<div class="card-scroll" style="border:2px solid var(--ink)"><table class="hist-table" style="min-width:640px">' + rows + '</tbody></table></div>';
+      hw.querySelectorAll('.del').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var arr = readHist(); arr.splice(+b.dataset.i, 1); writeHist(arr); renderHist();
+        });
+      });
+    }
+
+    /* ==================== PERSIST CURRENT CARD ==================== */
+    function persist() {
+      try {
+        localStorage.setItem(LS_ROUND, JSON.stringify({
+          state: state, goal: $('goal').value,
+          course: $('courseName').value, date: $('roundDate').value
+        }));
+      } catch (e) { }
+    }
+
+    function restore() {
+      var raw;
+      try { raw = localStorage.getItem(LS_ROUND); } catch (e) { raw = null; }
+      if (!raw) return;
+      try {
+        var d = JSON.parse(raw);
+        if (d.state && d.state.pars && d.state.pars.length === HOLES) state = d.state;
+        if (d.goal) $('goal').value = d.goal;
+        if (d.course) $('courseName').value = d.course;
+        if (d.date) $('roundDate').value = d.date;
+        paintAll();
+        flash('Card restored');
+      } catch (e) { }
+    }
+
+    function clearRound() {
+      state = {
+        pars: DEFAULT_PARS.slice(),
+        score: new Array(HOLES).fill(null), fir: new Array(HOLES).fill(null),
+        gir: new Array(HOLES).fill(null), putts: new Array(HOLES).fill(null),
+        pen: new Array(HOLES).fill(null)
+      };
+      try { localStorage.removeItem(LS_ROUND); } catch (e) { }
+      paintAll();
+      $('outWrap').classList.remove('show');
+      showErr('');
+      flash('Card cleared');
+    }
+
+    function flash(m) {
+      var t = $('tag'); t.textContent = m;
+      setTimeout(function () { t.textContent = ''; }, 2200);
+    }
+
+    /* ==================== WIRE UP ==================== */
+    $('runBtn').addEventListener('click', run);
+    $('saveBtn').addEventListener('click', saveRound);
+    $('clearRound').addEventListener('click', clearRound);
+    $('fillPar').addEventListener('click', function () {
+      state.pars = DEFAULT_PARS.slice(); paintAll(); persist(); flash('Pars reset');
+    });
+    $('goal').addEventListener('change', persist);
+    $('courseName').addEventListener('input', persist);
+    $('roundDate').addEventListener('input', persist);
+    $('wipeHist').addEventListener('click', function () {
+      writeHist([]); renderHist(); flash('History wiped');
+    });
+
+    buildTable();
+    restore();
+    renderHist();
+  </script>
+</body>
+
+</html>

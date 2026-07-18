@@ -1476,6 +1476,73 @@
         aspect-ratio: 4 / 3;
       }
     }
+    /* ============ RAW TOOLS ============ */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 2px solid var(--ink);
+      margin-bottom: 56px;
+    }
+
+    .tool-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--ink);
+      color: #fff;
+      padding: 32px 28px;
+      border-right: 2px solid rgba(255, 255, 255, .18);
+      transition: background .15s;
+    }
+
+    .tool-card:last-child { border-right: none }
+    .tool-card:hover { background: #1a221b }
+
+    .tool-card .tc-kicker {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--flag);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .tool-card h3 {
+      font-weight: 900;
+      font-size: clamp(24px, 3.2vw, 36px);
+      line-height: 1;
+      letter-spacing: -.03em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .tool-card p {
+      font-size: 15px;
+      color: #9CC9AE;
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .tool-card .tc-cta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #fff;
+      border-bottom: 2px solid var(--flag);
+      padding-bottom: 3px;
+      align-self: flex-start;
+    }
+
+    @media(max-width: 760px) {
+      .tools-grid { grid-template-columns: 1fr }
+      .tool-card { border-right: none; border-bottom: 2px solid rgba(255, 255, 255, .18) }
+      .tool-card:last-child { border-bottom: none }
+    }
+
     /* === CLS / RESPONSIVE SAFETY === */
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
@@ -1556,6 +1623,7 @@
         <a href="./index.html#newsletter" class="hot">The Card</a>
       <a href="search.html">🔍 Search</a>
       <a href="tools-settle-up-calculator.html">Settle Up</a>
+      <a href="tools-round-autopsy.html">Round Autopsy</a>
       </nav>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -1858,20 +1926,25 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <h2><span class="idx">05</span>Raw Tools</h2>
-        <a href="tools-settle-up-calculator.html">Open the tool →</a>
+        <a href="tools-round-autopsy.html">All tools →</a>
       </div>
-      <a href="tools-settle-up-calculator.html" class="reveal"
-        style="display:block;border:2px solid var(--ink);background:var(--ink);color:#fff;padding:34px 30px;margin-bottom:56px;transition:background .15s">
-        <div
-          style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--flag);font-weight:700;margin-bottom:12px">
-          Free · Runs in your browser</div>
-        <h3
-          style="font-weight:900;font-size:clamp(26px,4vw,40px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;margin-bottom:12px">
-          The Settle Up</h3>
-        <p style="font-size:15.5px;color:#9CC9AE;max-width:62ch;line-height:1.6">Nassau, skins with carryovers,
-          automatic 2-down presses and junk. Put the scores in, get a clean who-owes-who card built for the group
-          chat — plus the Biggest Choker and Bandit of the Day awards nobody asked for.</p>
-      </a>
+      <div class="tools-grid reveal">
+        <a href="tools-settle-up-calculator.html" class="tool-card">
+          <div class="tc-kicker">Free · Runs in your browser</div>
+          <h3>The Settle Up</h3>
+          <p>Nassau, skins with carryovers, automatic 2-down presses and junk. Put the scores in, get a clean
+            who-owes-who card built for the group chat — plus the Biggest Choker and Bandit of the Day awards
+            nobody asked for.</p>
+          <span class="tc-cta">Settle the money →</span>
+        </a>
+        <a href="tools-round-autopsy.html" class="tool-card">
+          <div class="tc-kicker">Free · Runs in your browser</div>
+          <h3>The Round Autopsy</h3>
+          <p>Enter 18 holes of scores, fairways, greens and putts and find out exactly where the shots went. A
+            blunt cause-of-death verdict, a strokes-lost breakdown, and no comfortable excuses about your swing.</p>
+          <span class="tc-cta">Run the autopsy →</span>
+        </a>
+      </div>
     </div>
   </section>
 
