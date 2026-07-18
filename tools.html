@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PMECW4VW66');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============ PRIMARY SEO ============ -->
+  <title>Free Golf Tools: Betting, Handicap &amp; Round Analysis | Golf Raw</title>
+  <meta name="description"
+    content="Four free golf calculators that run entirely in your browser. Settle bets, diagnose your round, find your correct tees, and calculate your real handicap index. No signup, no tracking.">
+  <link rel="canonical" href="https://www.golfraw.com/tools">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Golf Raw Staff">
+
+  <!-- ============ OPEN GRAPH ============ -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RawGolf">
+  <meta property="og:title" content="Raw Golf Tools Suite — Four Free Golf Calculators">
+  <meta property="og:description"
+    content="Settle bets, diagnose your round, find your correct tees, and calculate your real handicap. All free, all running locally in your browser.">
+  <meta property="og:url" content="https://www.golfraw.com/tools">
+
+  <!-- ============ TWITTER CARD ============ -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Raw Golf Tools Suite — Four Free Golf Calculators">
+  <meta name="twitter:description"
+    content="Settle bets, diagnose your round, find your correct tees, calculate your real handicap. Free, no signup.">
+
+  <!-- ============ STRUCTURED DATA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Raw Golf Tools Suite",
+  "url": "https://www.golfraw.com/tools",
+  "description": "A suite of four free client-side golf calculators covering betting settlement, round diagnostics, tee box selection and handicap index calculation.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "RawGolf",
+    "url": "https://www.golfraw.com/",
+    "logo": {"@type": "ImageObject", "url": "https://www.golfraw.com/img/rawgolf-logo.png"}
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem", "position": 1,
+        "item": {
+          "@type": "WebApplication", "name": "The Settle Up",
+          "url": "https://www.golfraw.com/tools-settle-up-calculator",
+          "applicationCategory": "SportsApplication",
+          "description": "Golf betting calculator for Nassau, skins with carryovers, automatic presses and junk.",
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+        }
+      },
+      {
+        "@type": "ListItem", "position": 2,
+        "item": {
+          "@type": "WebApplication", "name": "The Round Autopsy",
+          "url": "https://www.golfraw.com/tools-round-autopsy",
+          "applicationCategory": "SportsApplication",
+          "description": "Round diagnostic that breaks 18 holes into strokes lost off the tee, on approach, around the green and putting.",
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+        }
+      },
+      {
+        "@type": "ListItem", "position": 3,
+        "item": {
+          "@type": "WebApplication", "name": "The Tee Box Reality Check",
+          "url": "https://www.golfraw.com/tools-tee-box-check",
+          "applicationCategory": "SportsApplication",
+          "description": "Calculates the correct tee box yardage from driver carry distance and the strokes lost by playing too far back.",
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+        }
+      },
+      {
+        "@type": "ListItem", "position": 4,
+        "item": {
+          "@type": "WebApplication", "name": "The Handicap Lie Detector",
+          "url": "https://www.golfraw.com/tools-handicap-detector",
+          "applicationCategory": "SportsApplication",
+          "description": "World Handicap System index calculator that compares a claimed handicap against the real calculated index.",
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+        }
+      }
+    ]
+  }
+}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --fairway: #14402A;
+      --fairway-deep: #0B2418;
+      --flag: #E03E2D;
+      --paper: #F3F4F0;
+      --white: #fff;
+      --ink: #101511;
+      --grey: #5B665E;
+      --line: #DADDD4;
+      --maxw: 1180px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box }
+    html { scroll-behavior: smooth }
+    body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased }
+    a { color: inherit; text-decoration: none }
+    img { max-width: 100%; height: auto; display: block }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .mono { font-family: 'IBM Plex Mono', monospace }
+
+    /* HEADER */
+    .site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .logo { font-weight: 900; font-size: 26px; letter-spacing: -.04em; text-transform: uppercase }
+    .logo .raw { color: var(--flag) }
+    .nav-links { display: flex; gap: 0 }
+    .nav-links a { font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; padding: 8px 14px; transition: background .15s, color .15s }
+    .nav-links a:hover { background: var(--ink); color: #fff }
+    .nav-links a.active { background: var(--ink); color: #fff }
+    .burger { display: none; background: none; border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px }
+    .burger span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0 }
+    @media(max-width:760px) {
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
+      .nav-links.open { display: flex }
+      .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+      .burger { display: block }
+    }
+
+    /* EDITORIAL MASTHEAD */
+    .masthead { background: var(--ink); color: #fff; border-bottom: 4px solid var(--flag); padding: 64px 0 56px }
+    .masthead .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 18px }
+    .masthead h1 { font-weight: 900; font-size: clamp(36px, 7vw, 78px); line-height: .92; letter-spacing: -.045em; text-transform: uppercase; margin-bottom: 20px }
+    .masthead p { font-size: 18px; color: #9CC9AE; max-width: 60ch; line-height: 1.6 }
+    .masthead p b { color: #fff }
+
+    .facts-strip { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(255,255,255,.18); margin-top: 34px }
+    .facts-strip div { padding: 16px 12px; text-align: center; border-right: 1px solid rgba(255,255,255,.18) }
+    .facts-strip div:last-child { border-right: none }
+    .facts-strip .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 22px; line-height: 1; color: #fff }
+    .facts-strip .l { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase; color: #8b958d; margin-top: 7px; display: block }
+    @media(max-width:620px) {
+      .facts-strip { grid-template-columns: 1fr 1fr }
+      .facts-strip div { border-bottom: 1px solid rgba(255,255,255,.18) }
+      .facts-strip div:nth-child(2n) { border-right: none }
+    }
+
+    /* HUB BODY */
+    .hub-body { padding: 56px 0 72px }
+    .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-bottom: 3px solid var(--ink); padding-bottom: 14px; margin-bottom: 28px }
+    .sec-head h2 { font-weight: 900; font-size: clamp(22px, 3.2vw, 34px); text-transform: uppercase; letter-spacing: -.03em; line-height: 1 }
+    .sec-head h2 .idx { font-family: 'IBM Plex Mono', monospace; font-size: .5em; color: var(--flag); vertical-align: top; margin-right: 8px; font-weight: 600 }
+    .sec-head .hint { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--grey) }
+
+    /* 2x2 TOOL GRID */
+    .tool-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 2px solid var(--ink); margin-bottom: 20px }
+    .t-card {
+      display: flex; flex-direction: column; background: var(--ink); color: #fff;
+      padding: 34px 30px 30px; border-right: 2px solid rgba(255,255,255,.16);
+      transition: background .18s ease;
+    }
+    .t-card:nth-child(2n) { border-right: none }
+    .t-card:nth-child(-n+2) { border-bottom: 2px solid rgba(255,255,255,.16) }
+    .t-card:hover { background: #1a221b }
+    .t-card:hover .t-cta { background: var(--flag); border-color: var(--flag); color: #fff }
+    .t-card:hover h3 { color: #fff }
+
+    .t-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 14px }
+    .t-card h3 { font-weight: 900; font-size: clamp(24px, 3.4vw, 34px); line-height: 1; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 8px; transition: color .18s }
+    .t-tagline { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: #6FDB9A; margin-bottom: 14px }
+    .t-card p { font-size: 15px; color: #9CC9AE; line-height: 1.6; flex: 1; margin-bottom: 24px }
+    .t-cta {
+      align-self: flex-start; font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+      font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      padding: 11px 18px; border: 2px solid #fff; color: #fff; background: transparent;
+      transition: background .18s, border-color .18s, color .18s;
+    }
+    @media(max-width:760px) {
+      .tool-grid { grid-template-columns: 1fr }
+      .t-card { border-right: none !important; border-bottom: 2px solid rgba(255,255,255,.16); padding: 28px 22px 26px }
+      .t-card:last-child { border-bottom: none }
+    }
+
+    /* PRIVACY NOTE */
+    .privacy-note { border: 2px solid var(--ink); background: var(--white); padding: 24px 22px; margin-bottom: 34px }
+    .privacy-note .pn-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
+    .privacy-note h3 { font-weight: 900; font-size: 20px; text-transform: uppercase; letter-spacing: -.02em; margin-bottom: 10px }
+    .privacy-note p { font-size: 15px; color: var(--grey); line-height: 1.65; max-width: 70ch }
+    .privacy-note p b { color: var(--ink) }
+
+    /* AD SLOT — isolated, away from all CTAs */
+    .ad-zone { border: 1px dashed var(--line); background: #EFF1EC; padding: 18px; margin: 34px 0 0; text-align: center; min-height: 110px; display: flex; align-items: center; justify-content: center }
+    .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #a8aea3 }
+
+    /* FOOTER */
+    .site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
+    .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
+    .site-footer a:hover { color: #fff }
+
+    /* === CLS / RESPONSIVE SAFETY === */
+    html, body { max-width: 100%; overflow-x: clip; }
+    img, video, iframe { max-width: 100%; }
+    table { max-width: 100%; }
+
+    /* === NAV WRAP SAFETY (multi-tool nav) === */
+    .nav { height: auto; min-height: 68px; padding-top: 6px; padding-bottom: 6px; flex-wrap: wrap; row-gap: 4px; }
+    .nav-links { flex-wrap: wrap; row-gap: 2px; }
+    @media(min-width:761px){ .nav-links a { padding: 7px 10px; font-size: 11.5px; letter-spacing: .03em; } }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="nav">
+      <a href="./index.html" class="logo">Golf<span class="raw">Raw</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="./news.html">Latest News</a>
+        <a href="./ratings.html">Player Ratings</a>
+        <a href="./tournaments.html">Tournaments</a>
+        <a href="./analysis.html">Swing Analysis</a>
+        <a href="./vault.html">The Vault</a>
+        <a href="tools.html" class="active">Tools</a>
+        <a href="search.html">🔍 Search</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ MASTHEAD ============ -->
+  <div class="masthead">
+    <div class="wrap">
+      <div class="eyebrow">RAWGOLF · UTILITIES</div>
+      <h1>Raw Golf Tools Suite</h1>
+      <p>Four calculators that do the jobs golf software charges you for. Every one of them runs
+        <b>100% inside your browser</b> — no account, no signup, no round data uploaded anywhere, nothing tracked.
+        Close the tab and it is gone.</p>
+
+      <div class="facts-strip">
+        <div><span class="n">4</span><span class="l">Tools live</span></div>
+        <div><span class="n">$0</span><span class="l">Cost, forever</span></div>
+        <div><span class="n">0</span><span class="l">Accounts needed</span></div>
+        <div><span class="n">0</span><span class="l">Data uploaded</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hub-body">
+    <div class="wrap">
+
+      <div class="sec-head">
+        <h2><span class="idx">01</span>The Suite</h2>
+        <span class="hint">Pick your poison</span>
+      </div>
+
+      <!-- ============ 2x2 TOOL GRID ============ -->
+      <div class="tool-grid">
+
+        <a href="tools-settle-up-calculator.html" class="t-card">
+          <div class="t-num">Tool 01</div>
+          <h3>The Settle Up</h3>
+          <div class="t-tagline">Betting · Nassau · Skins</div>
+          <p>Nassau, skins with carryovers, automatic 2-down presses and junk, all settled in one place. Enter the
+            scores and it produces a clean who-owes-who card built for the group chat, so nobody has to do
+            arithmetic in a car park at nine at night.</p>
+          <span class="t-cta">Settle the money →</span>
+        </a>
+
+        <a href="tools-round-autopsy.html" class="t-card">
+          <div class="t-num">Tool 02</div>
+          <h3>The Round Autopsy</h3>
+          <div class="t-tagline">Diagnostic · Strokes Lost</div>
+          <p>Enter 18 holes of scores, fairways, greens and putts and find out exactly where the shots went. It
+            delivers a blunt cause-of-death verdict, a strokes-lost breakdown by category, and no comfortable
+            excuses about your equipment.</p>
+          <span class="t-cta">Run the autopsy →</span>
+        </a>
+
+        <a href="tools-tee-box-check.html" class="t-card">
+          <div class="t-num">Tool 03</div>
+          <h3>The Tee Box Reality Check</h3>
+          <div class="t-tagline">Ego · Course Management</div>
+          <p>Three honest numbers tell us the course length you have actually earned, and how far back your ego has
+            wandered. Most golfers find out they are handing away six shots a round before they have even hit a
+            ball.</p>
+          <span class="t-cta">Check my tees →</span>
+        </a>
+
+        <a href="tools-handicap-detector.html" class="t-card">
+          <div class="t-num">Tool 04</div>
+          <h3>The Handicap Lie Detector</h3>
+          <div class="t-tagline">WHS Index · Call-Out</div>
+          <p>Real World Handicap System maths on your last 5 to 20 scores, giving you your actual index and finally
+            explaining why you never shoot it. Then it decides whether the number you tell people makes you a
+            vanity handicapper or a certified bandit.</p>
+          <span class="t-cta">Run the lie detector →</span>
+        </a>
+
+      </div>
+
+      <div class="sec-head" style="margin-top:44px">
+        <h2><span class="idx">02</span>The Small Print</h2>
+      </div>
+
+      <div class="privacy-note">
+        <div class="pn-label">How these actually work</div>
+        <h3>Nothing leaves your phone</h3>
+        <p>Every calculation happens in JavaScript on your own device. There is <b>no server, no database and no
+            account</b>. Where a tool remembers your group or your last round, it uses your browser's local
+          storage, which stays on your device and which you can wipe from inside each tool. We cannot see your
+          scores, your bets or your handicap — and we would rather not know.</p>
+      </div>
+
+      <!-- Future AdSense Slot -->
+      <div class="ad-zone" aria-hidden="true">
+        <span>Advertisement</span>
+      </div>
+      <!-- /Future AdSense Slot -->
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 RAWGOLF.COM — ALL RATINGS FINAL</span>
+      <nav aria-label="Footer navigation" style="display:flex;gap:20px">
+        <a href="./manifesto.html">MANIFESTO</a>
+        <a href="./ratings-manual.html">HOW RATINGS WORK</a>
+        <a href="./corrections.html">CORRECTIONS</a>
+        <a href="./privacy.html">PRIVACY</a>
+        <a href="./index.html">← FRONT PAGE</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var b = document.getElementById('burger'), l = document.getElementById('navLinks');
+      if (b && l) {
+        b.addEventListener('click', function () { b.setAttribute('aria-expanded', l.classList.toggle('open')); });
+        l.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () { l.classList.remove('open'); });
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>
