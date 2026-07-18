@@ -1479,7 +1479,7 @@
     /* ============ RAW TOOLS ============ */
     .tools-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 0;
       border: 2px solid var(--ink);
       margin-bottom: 56px;
@@ -1537,9 +1537,15 @@
       align-self: flex-start;
     }
 
-    @media(max-width: 760px) {
+    @media(max-width: 1000px) {
+      .tools-grid { grid-template-columns: 1fr 1fr }
+      .tool-card:nth-child(2n) { border-right: none }
+      .tool-card:nth-child(-n+2) { border-bottom: 2px solid rgba(255, 255, 255, .18) }
+    }
+
+    @media(max-width: 700px) {
       .tools-grid { grid-template-columns: 1fr }
-      .tool-card { border-right: none; border-bottom: 2px solid rgba(255, 255, 255, .18) }
+      .tool-card { border-right: none !important; border-bottom: 2px solid rgba(255, 255, 255, .18) }
       .tool-card:last-child { border-bottom: none }
     }
 
@@ -1624,6 +1630,7 @@
       <a href="search.html">🔍 Search</a>
       <a href="tools-settle-up-calculator.html">Settle Up</a>
       <a href="tools-round-autopsy.html">Round Autopsy</a>
+      <a href="tools-tee-box-check.html">Tee Box Check</a>
       </nav>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -1943,6 +1950,14 @@
           <p>Enter 18 holes of scores, fairways, greens and putts and find out exactly where the shots went. A
             blunt cause-of-death verdict, a strokes-lost breakdown, and no comfortable excuses about your swing.</p>
           <span class="tc-cta">Run the autopsy →</span>
+        </a>
+        <a href="tools-tee-box-check.html" class="tool-card">
+          <div class="tc-kicker">Free · Runs in your browser</div>
+          <h3>Wrong Tees?</h3>
+          <p>Three numbers, thirty seconds. We work out the course length you have actually earned, how far back
+            your ego has wandered, and roughly what it costs you every round. Most golfers do not enjoy the
+            answer.</p>
+          <span class="tc-cta">Check my tees →</span>
         </a>
       </div>
     </div>

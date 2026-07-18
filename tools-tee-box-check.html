@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PMECW4VW66');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============ PRIMARY SEO ============ -->
+  <title>What Tees Should I Play? The Tee Box Reality Check | Golf Raw</title>
+  <meta name="description"
+    content="Free tee box calculator. Enter your driver carry and we will tell you exactly which tees you should be playing — and how many shots your ego is costing you.">
+  <link rel="canonical" href="https://www.golfraw.com/tools-tee-box-check">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Golf Raw Staff">
+
+  <!-- ============ OPEN GRAPH ============ -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RawGolf">
+  <meta property="og:title" content="You're Playing the Wrong Tees — The Tee Box Reality Check">
+  <meta property="og:description"
+    content="Enter your honest driver carry. Find out how far back you are playing and what it is costing you every round.">
+  <meta property="og:url" content="https://www.golfraw.com/tools-tee-box-check">
+
+  <!-- ============ TWITTER CARD ============ -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="You're Playing the Wrong Tees — The Tee Box Reality Check">
+  <meta name="twitter:description"
+    content="Enter your honest driver carry. Find out how far back you are playing and what it costs you.">
+
+  <!-- ============ STRUCTURED DATA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "The Tee Box Reality Check",
+  "url": "https://www.golfraw.com/tools-tee-box-check",
+  "applicationCategory": "SportsApplication",
+  "operatingSystem": "Any modern browser",
+  "description": "A free client-side calculator that recommends the correct tee box yardage from a golfer's driver carry distance and estimates the strokes lost by playing tees that are too long.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "RawGolf",
+    "url": "https://www.golfraw.com/",
+    "logo": {"@type": "ImageObject", "url": "https://www.golfraw.com/img/rawgolf-logo.png"}
+  },
+  "isAccessibleForFree": true
+}
+  </script>
+
+  <!-- ============ FAQ SCHEMA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What tees should I play?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiply your driver carry distance by 28 to get your ideal course yardage. A player who carries their driver 220 yards should be playing a course of roughly 6,160 yards."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many shots does playing the wrong tees cost you?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Roughly 1.5 shots for every 200 yards you play beyond your ideal course yardage. Playing 800 yards too far back costs about six shots a round."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is moving up a tee box cheating?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Tee boxes are designed so that players of different distances face the same approach shots. Playing tees that are too long means hitting long irons into greens built for wedges."
+      }
+    }
+  ]
+}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --fairway: #14402A;
+      --fairway-deep: #0B2418;
+      --flag: #E03E2D;
+      --paper: #F3F4F0;
+      --white: #fff;
+      --ink: #101511;
+      --grey: #5B665E;
+      --line: #DADDD4;
+      --maxw: 1180px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box }
+    html { scroll-behavior: smooth }
+    body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased }
+    a { color: inherit; text-decoration: none }
+    img { max-width: 100%; height: auto; display: block }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .mono { font-family: 'IBM Plex Mono', monospace }
+
+    /* HEADER */
+    .site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .logo { font-weight: 900; font-size: 26px; letter-spacing: -.04em; text-transform: uppercase }
+    .logo .raw { color: var(--flag) }
+    .nav-links { display: flex; gap: 0 }
+    .nav-links a { font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; padding: 8px 14px; transition: background .15s, color .15s }
+    .nav-links a:hover { background: var(--ink); color: #fff }
+    .nav-links a.active { background: var(--ink); color: #fff }
+    .burger { display: none; background: none; border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px }
+    .burger span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0 }
+    @media(max-width:760px) {
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
+      .nav-links.open { display: flex }
+      .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+      .burger { display: block }
+    }
+
+    /* HERO */
+    .hub-hero { background: var(--ink); color: #fff; border-bottom: 4px solid var(--flag); padding: 56px 0 48px }
+    .hub-hero .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
+    .hub-hero h1 { font-weight: 900; font-size: clamp(32px, 5.6vw, 64px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
+    .hub-hero p { font-size: 17px; color: #9CC9AE; max-width: 62ch; line-height: 1.6 }
+
+    /* PANELS */
+    .tool-body { padding: 40px 0 72px }
+    .panel { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
+    .panel-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .panel-head .step { color: var(--flag) }
+    .panel-in { padding: 24px 20px }
+
+    label.fld { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--grey); font-weight: 600; margin-bottom: 6px }
+    input[type=number], select {
+      width: 100%; padding: 13px 12px; border: 2px solid var(--ink); background: var(--white);
+      font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 700; color: var(--ink); border-radius: 0;
+    }
+    input:focus, select:focus { outline: 3px solid var(--flag); outline-offset: -1px }
+    input[type=number] { -moz-appearance: textfield }
+    input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0 }
+    .sub { font-size: 12.5px; color: var(--grey); margin-top: 7px; line-height: 1.5 }
+
+    .row { display: grid; gap: 18px; margin-bottom: 6px; grid-template-columns: repeat(3, 1fr) }
+    @media(max-width:760px) { .row { grid-template-columns: 1fr } }
+
+    .quick { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 9px }
+    .quick button { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: .06em; padding: 6px 10px; border: 2px solid var(--line); background: var(--white); cursor: pointer; transition: border-color .15s, background .15s }
+    .quick button:hover { border-color: var(--ink); background: #FBFBF8 }
+
+    .btn { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 14px 22px; border: 2px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; transition: background .15s, color .15s }
+    .btn:hover { background: var(--flag); border-color: var(--flag) }
+    .btn.ghost { background: transparent; color: var(--ink) }
+    .btn.ghost:hover { background: var(--ink); color: #fff }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px }
+
+    .err { border: 2px solid var(--flag); background: #FDF0EE; color: #8f2015; padding: 12px 14px; font-size: 13.5px; font-weight: 600; margin-bottom: 18px; display: none }
+    .err.show { display: block }
+
+    /* AD SLOT — deliberately isolated from all interactive controls */
+    .ad-zone { border: 1px dashed var(--line); background: #EFF1EC; padding: 18px; margin: 30px 0; text-align: center; min-height: 96px; display: flex; align-items: center; justify-content: center }
+    .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #a8aea3 }
+
+    /* VERDICT CARD */
+    .out-wrap { display: none }
+    .out-wrap.show { display: block }
+    .verdict-card { background: var(--ink); color: #fff; border: 3px solid var(--ink); padding: 32px 26px 0; overflow: hidden }
+    .vc-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 12px }
+    .vc-head { font-weight: 900; font-size: clamp(26px, 5.4vw, 44px); line-height: .98; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 14px }
+    .vc-sub { font-size: 16px; color: #d8ded6; line-height: 1.6; margin-bottom: 28px; max-width: 60ch }
+    .vc-sub b { color: #fff }
+
+    .big-num { border: 1px solid rgba(255,255,255,.18); padding: 22px 20px; text-align: center; margin-bottom: 24px }
+    .big-num .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(38px, 9vw, 62px); line-height: 1; color: #FF9486 }
+    .big-num .n.good { color: #6FDB9A }
+    .big-num .l { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #8b958d; margin-top: 10px; display: block }
+
+    .compare { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(255,255,255,.18); margin-bottom: 24px }
+    .compare div { padding: 18px 14px; text-align: center; border-right: 1px solid rgba(255,255,255,.18) }
+    .compare div:last-child { border-right: none }
+    .compare .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 24px; line-height: 1 }
+    .compare .l { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #8b958d; margin-top: 7px; display: block }
+    .compare .good .n { color: #6FDB9A }
+
+    .facts { display: grid; gap: 10px; margin-bottom: 26px }
+    .fact { border-left: 4px solid var(--flag); padding: 4px 0 4px 14px; font-size: 14.5px; color: #d8ded6; line-height: 1.55 }
+    .fact b { color: #fff }
+
+    .vc-foot { border-top: 1px solid rgba(255,255,255,.15); margin: 0 -26px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .vc-foot .mark { font-weight: 900; font-size: 17px; letter-spacing: -.03em; text-transform: uppercase }
+    .vc-foot .mark span { color: var(--flag) }
+    .vc-foot .url { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #8b958d }
+
+    .note { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--grey); line-height: 1.65; margin-top: 14px }
+
+    /* EXPLAINER */
+    .explain h2 { font-weight: 900; font-size: clamp(20px, 3vw, 26px); text-transform: uppercase; letter-spacing: -.02em; margin-bottom: 12px; padding-top: 16px; border-top: 3px solid var(--ink) }
+    .explain h3 { font-weight: 800; font-size: 17px; margin: 22px 0 8px }
+    .explain h3::before { content: "— "; color: var(--flag) }
+    .explain p { font-size: 15.5px; margin-bottom: 14px; max-width: 68ch; line-height: 1.65 }
+
+    /* FOOTER */
+    .site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
+    .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
+    .site-footer a:hover { color: #fff }
+
+    /* === CLS / RESPONSIVE SAFETY === */
+    html, body { max-width: 100%; overflow-x: clip; }
+    img, video, iframe { max-width: 100%; }
+    table { max-width: 100%; }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="nav">
+      <a href="./index.html" class="logo">Golf<span class="raw">Raw</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="./news.html">Latest News</a>
+        <a href="./ratings.html">Player Ratings</a>
+        <a href="./tournaments.html">Tournaments</a>
+        <a href="./vault.html">The Vault</a>
+        <a href="tools-settle-up-calculator.html">Settle Up</a>
+        <a href="tools-round-autopsy.html">Round Autopsy</a>
+        <a href="tools-tee-box-check.html" class="active">Tee Box Check</a>
+        <a href="search.html">🔍 Search</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="hub-hero">
+    <div class="wrap">
+      <div class="eyebrow">RAWGOLF · TOOLS</div>
+      <h1>You're Playing the Wrong Tees</h1>
+      <p>Three numbers and thirty seconds. We will tell you the course length you should actually be playing, how
+        far back you have wandered, and roughly what your ego is costing you every single round. Runs entirely in
+        your browser — nothing is uploaded anywhere.</p>
+    </div>
+  </div>
+
+  <div class="tool-body">
+    <div class="wrap">
+
+      <!-- ============ INPUT ============ -->
+      <section class="panel">
+        <div class="panel-head"><span><span class="step">01 ·</span> The Honest Numbers</span></div>
+        <div class="panel-in">
+          <div class="err" id="err"></div>
+
+          <div class="row">
+            <div>
+              <label class="fld" for="carry">Driver carry (yards)</label>
+              <input type="number" id="carry" min="50" max="400" step="1" inputmode="numeric" placeholder="220">
+              <p class="sub">The number you would admit to under oath, not the one you tell the lads in the car
+                park.</p>
+              <div class="quick" id="carryQuick"></div>
+            </div>
+            <div>
+              <label class="fld" for="score">Typical 18-hole score</label>
+              <input type="number" id="score" min="55" max="200" step="1" inputmode="numeric" placeholder="95">
+              <p class="sub">Your realistic average, including the holes you would rather forget.</p>
+            </div>
+            <div>
+              <label class="fld" for="yards">Tees you currently play (yards)</label>
+              <input type="number" id="yards" min="3000" max="8500" step="10" inputmode="numeric" placeholder="6700">
+              <p class="sub">Total scorecard yardage of the tees you tee off from.</p>
+              <div class="quick" id="yardQuick"></div>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn" id="runBtn" type="button">Check my tees →</button>
+            <button class="btn ghost" id="resetBtn" type="button">Reset</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Future AdSense Slot -->
+      <div class="ad-zone" aria-hidden="true">
+        <span>Advertisement</span>
+      </div>
+      <!-- /Future AdSense Slot -->
+
+      <!-- ============ VERDICT ============ -->
+      <div class="out-wrap" id="outWrap">
+        <div class="verdict-card" id="verdictCard">
+          <div class="vc-eyebrow">The Tee Box Reality Check</div>
+          <h2 class="vc-head" id="vHead">—</h2>
+          <p class="vc-sub" id="vSub"></p>
+
+          <div class="big-num">
+            <span class="n" id="bigN">—</span>
+            <span class="l" id="bigL">yards too far back</span>
+          </div>
+
+          <div class="compare" id="compare"></div>
+
+          <div class="facts" id="facts"></div>
+
+          <div class="vc-foot">
+            <span class="mark">Golf<span>Raw</span></span>
+            <span class="url">golfraw.com · tee box check</span>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn" id="copyBtn" type="button">Copy for group chat</button>
+          <button class="btn ghost" id="againBtn" type="button">Run it again</button>
+        </div>
+        <p class="note" id="method"></p>
+      </div>
+
+      <!-- Future AdSense Slot -->
+      <div class="ad-zone" aria-hidden="true">
+        <span>Advertisement</span>
+      </div>
+      <!-- /Future AdSense Slot -->
+
+      <!-- ============ EXPLAINER (SEO / dwell time) ============ -->
+      <section class="panel explain">
+        <div class="panel-head"><span><span class="step">02 ·</span> Why This Matters</span></div>
+        <div class="panel-in">
+          <h2>What tees should I play?</h2>
+          <p>The simplest rule in golf: multiply your driver carry by 28. Carry it 220 and you belong on roughly a
+            6,160-yard course. Carry it 250 and you have earned 7,000 yards. Most amateurs are playing a course
+            built for someone who hits it 40 yards past them.</p>
+
+          <h3>The approach shot is the whole argument</h3>
+          <p>Tee boxes exist so that different players face the same second shot. A par 4 is designed to be a drive
+            and a mid-iron. If you are standing over 190 yards on every par 4 while the course architect intended a
+            9-iron, you are not playing the hole as designed — you are playing a much harder hole that nobody built.</p>
+
+          <h3>Moving up is not cheating</h3>
+          <p>It is the single cheapest improvement available to you. No lesson, no new driver, no range sessions.
+            Just teeing off 500 yards further forward and suddenly hitting wedges into greens. Your handicap does
+            not care which coloured post you started from.</p>
+
+          <h3>How many shots is it really worth?</h3>
+          <p>About 1.5 shots for every 200 yards you play beyond your ideal length. Play 800 yards too far back and
+            you are handing away six shots before you hit a ball. That is more than most golfers gain from a winter
+            of lessons.</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 RAWGOLF.COM — ALL RATINGS FINAL</span>
+      <nav aria-label="Footer navigation" style="display:flex;gap:20px">
+        <a href="./manifesto.html">MANIFESTO</a>
+        <a href="./ratings-manual.html">HOW RATINGS WORK</a>
+        <a href="./corrections.html">CORRECTIONS</a>
+        <a href="./privacy.html">PRIVACY</a>
+        <a href="./index.html">← FRONT PAGE</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    /* ==================== NAV ==================== */
+    (function () {
+      var b = document.getElementById('burger'), l = document.getElementById('navLinks');
+      if (b && l) {
+        b.addEventListener('click', function () { b.setAttribute('aria-expanded', l.classList.toggle('open')); });
+        l.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () { l.classList.remove('open'); });
+        });
+      }
+    })();
+
+    /* ==================== CONSTANTS (hardcoded heuristics) ==================== */
+    var YARD_MULTIPLIER = 28;      // industry standard: driver carry x 28 = ideal course yardage
+    var SHOTS_PER_200 = 1.5;       // 1.5 shots lost per 200 yards played over ideal
+    var PAR4_SHARE = 0.0594;       // an average par 4 is ~5.94% of total course yardage
+    var LS_KEY = 'golfraw_teebox_last';
+
+    var $ = function (id) { return document.getElementById(id); };
+    var r1 = function (n) { return Math.round(n * 10) / 10; };
+    var comma = function (n) { return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); };
+
+    /* ==================== ENGINE ==================== */
+    function clubFor(y) {
+      if (y <= 0) return 'a tap-in';
+      if (y < 105) return 'a wedge';
+      if (y < 120) return 'a 9-iron';
+      if (y < 135) return 'an 8-iron';
+      if (y < 150) return 'a 7-iron';
+      if (y < 165) return 'a 6-iron';
+      if (y < 180) return 'a 5-iron';
+      if (y < 200) return 'a 4-iron';
+      if (y < 225) return 'a hybrid';
+      return 'a 3-wood';
+    }
+
+    function analyse(carry, score, yards) {
+      var optimal = carry * YARD_MULTIPLIER;
+      var overage = yards - optimal;
+      var shotsLost = Math.max(0, (overage / 200) * SHOTS_PER_200);
+
+      // approach shot into an average par 4, now vs from the right tees
+      var avgPar4Now = yards * PAR4_SHARE;
+      var avgPar4Ideal = optimal * PAR4_SHARE;
+      var approachNow = Math.max(0, avgPar4Now - carry);
+      var approachIdeal = Math.max(0, avgPar4Ideal - carry);
+
+      return {
+        carry: carry, score: score, yards: yards,
+        optimal: optimal, overage: overage, shotsLost: shotsLost,
+        approachNow: approachNow, approachIdeal: approachIdeal,
+        clubNow: clubFor(approachNow), clubIdeal: clubFor(approachIdeal),
+        projectedScore: Math.max(18, score - shotsLost)
+      };
+    }
+
+    /* ==================== VERDICTS ==================== */
+    function verdictFor(a) {
+      var over = a.overage;
+
+      // Playing far too short is also a wrong answer — the brief only covers
+      // the ego direction, but staying silent here would be dishonest.
+      if (over < -300) {
+        return {
+          head: "You're playing too far forward.",
+          sub: 'You carry it <b>' + a.carry + ' yards</b> and you are playing a course ' +
+            comma(Math.abs(over)) + ' yards shorter than you have earned. Nothing wrong with an easy day, ' +
+            'but you are hitting wedge into everything and calling it a score. Move back a set and give ' +
+            'yourself an actual test.',
+          tone: 'forward'
+        };
+      }
+
+      if (over > 800) {
+        return {
+          head: 'You are playing far too far back.',
+          sub: 'You belong on a shorter course. You carry your driver <b>' + a.carry + ' yards</b> and you have ' +
+            'signed up for <b>' + comma(a.yards) + '</b>. That is <b>' + comma(over) + ' yards</b> of pure ego. ' +
+            "You're not a golfer here, you're a tourist.",
+          tone: 'bad'
+        };
+      }
+
+      if (over >= 300) {
+        return {
+          head: "You're hitting " + a.clubNow + ' into par 4s. Nobody is impressed.',
+          sub: 'You are <b>' + comma(over) + ' yards</b> too far back. The greens you are firing at were ' +
+            'designed to be attacked with ' + a.clubIdeal + ', and you are standing over ' +
+            Math.round(a.approachNow) + ' yards. Move up a tee box.',
+          tone: 'mid'
+        };
+      }
+
+      return {
+        head: 'Honest tee choice. Genuinely.',
+        sub: 'You carry it <b>' + a.carry + ' yards</b> and you are playing <b>' + comma(a.yards) + '</b>. ' +
+          'That is within touching distance of where you should be. Rare. Whatever is wrong with your golf, ' +
+          'it is not the tee box — so you will have to blame the swing like everyone else.',
+        tone: 'good'
+      };
+    }
+
+    function factsFor(a) {
+      var f = [];
+      if (a.overage >= 300) {
+        f.push('<b>Right now:</b> average par 4 leaves you ' + Math.round(a.approachNow) + ' yards — ' +
+          a.clubNow + '.');
+        f.push('<b>From the right tees:</b> ' + Math.round(a.approachIdeal) + ' yards — ' + a.clubIdeal +
+          '. Same hole, completely different game.');
+        f.push('<b>The cost:</b> roughly <b>' + r1(a.shotsLost) + ' shots a round</b>. Over a season that is ' +
+          'more than any lesson you have ever paid for.');
+        f.push('<b>Projected score from the correct tees:</b> around <b>' + Math.round(a.projectedScore) +
+          '</b>, without changing a single thing about your swing.');
+      } else if (a.overage < -300) {
+        f.push('<b>Right now:</b> average par 4 leaves you ' + Math.round(a.approachNow) + ' yards — ' +
+          a.clubNow + '. Too easy to learn anything.');
+        f.push('<b>Your earned yardage:</b> ' + comma(a.optimal) + ' yards.');
+      } else {
+        f.push('<b>Your ideal course length:</b> ' + comma(a.optimal) + ' yards. You are playing ' +
+          comma(a.yards) + '.');
+        f.push('<b>Average par 4 approach:</b> ' + Math.round(a.approachNow) + ' yards — ' + a.clubNow +
+          '. That is exactly what the architect had in mind.');
+        f.push('<b>Shots left on the table by tee choice:</b> ' + r1(a.shotsLost) +
+          '. There is nothing to gain here. The problem is elsewhere.');
+      }
+      return f;
+    }
+
+    /* ==================== RENDER ==================== */
+    var last = null;
+
+    function run() {
+      var carry = parseInt($('carry').value, 10);
+      var score = parseInt($('score').value, 10);
+      var yards = parseInt($('yards').value, 10);
+
+      if (isNaN(carry) || isNaN(score) || isNaN(yards)) return err('Fill in all three numbers first.');
+      if (carry < 50 || carry > 400) return err('Driver carry should be between 50 and 400 yards. Be honest.');
+      if (score < 55 || score > 200) return err('Typical score should be between 55 and 200.');
+      if (yards < 3000 || yards > 8500) return err('Course yardage should be between 3,000 and 8,500.');
+      err('');
+
+      var a = analyse(carry, score, yards);
+      last = a;
+      var v = verdictFor(a);
+
+      $('vHead').textContent = v.head;
+      $('vSub').innerHTML = v.sub;
+
+      var bn = $('bigN'), bl = $('bigL');
+      if (a.overage > 0) {
+        bn.textContent = comma(a.overage); bn.className = 'n';
+        bl.textContent = 'yards too far back';
+      } else if (a.overage < 0) {
+        bn.textContent = comma(Math.abs(a.overage)); bn.className = 'n good';
+        bl.textContent = 'yards inside your limit';
+      } else {
+        bn.textContent = '0'; bn.className = 'n good';
+        bl.textContent = 'yards out — bang on';
+      }
+
+      $('compare').innerHTML =
+        '<div><span class="n">' + comma(a.yards) + '</span><span class="l">Tees you play</span></div>' +
+        '<div class="good"><span class="n">' + comma(a.optimal) + '</span><span class="l">Tees you have earned</span></div>';
+
+      $('facts').innerHTML = factsFor(a).map(function (x) {
+        return '<div class="fact">' + x + '</div>';
+      }).join('');
+
+      $('method').textContent = 'Ideal yardage = driver carry × ' + YARD_MULTIPLIER + ' (' + a.carry + ' × ' +
+        YARD_MULTIPLIER + ' = ' + comma(a.optimal) + '). Shots lost estimated at ' + SHOTS_PER_200 +
+        ' per 200 yards over that figure. Approach numbers assume an average par 4 is about 6% of total ' +
+        'course yardage. Heuristics, not laser measurements — but the direction of travel is not up for debate.';
+
+      $('outWrap').classList.add('show');
+      $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      save();
+    }
+
+    function err(m) {
+      var e = $('err');
+      if (!m) { e.classList.remove('show'); e.textContent = ''; return; }
+      e.textContent = m; e.classList.add('show');
+      e.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    /* ==================== SHARE ==================== */
+    function copySummary() {
+      if (!last) return err('Run the check first.');
+      var a = last, v = verdictFor(a);
+      var lines = ['THE TEE BOX REALITY CHECK', '', v.head.toUpperCase(), ''];
+      lines.push('Driver carry: ' + a.carry + ' yds');
+      lines.push('Tees I play: ' + comma(a.yards) + ' yds');
+      lines.push('Tees I have earned: ' + comma(a.optimal) + ' yds');
+      if (a.overage > 0) {
+        lines.push('Too far back by: ' + comma(a.overage) + ' yds');
+        lines.push('Estimated cost: ' + r1(a.shotsLost) + ' shots a round');
+        lines.push('Average par 4 approach: ' + Math.round(a.approachNow) + ' yds (' + a.clubNow + ')');
+      } else {
+        lines.push('Verdict: correct tees.');
+      }
+      lines.push('', 'Check yours: golfraw.com/tools-tee-box-check');
+      var txt = lines.join('\n');
+
+      var done = function () {
+        var b = $('copyBtn'), old = b.textContent;
+        b.textContent = 'Copied ✓';
+        setTimeout(function () { b.textContent = old; }, 1900);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(done, function () { fallbackCopy(txt, done); });
+      } else { fallbackCopy(txt, done); }
+    }
+
+    function fallbackCopy(txt, cb) {
+      var ta = document.createElement('textarea');
+      ta.value = txt; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); cb(); } catch (e) { }
+      document.body.removeChild(ta);
+    }
+
+    /* ==================== PERSIST ==================== */
+    function save() {
+      try {
+        localStorage.setItem(LS_KEY, JSON.stringify({
+          carry: $('carry').value, score: $('score').value, yards: $('yards').value
+        }));
+      } catch (e) { }
+    }
+
+    function restore() {
+      try {
+        var d = JSON.parse(localStorage.getItem(LS_KEY) || 'null');
+        if (!d) return;
+        if (d.carry) $('carry').value = d.carry;
+        if (d.score) $('score').value = d.score;
+        if (d.yards) $('yards').value = d.yards;
+      } catch (e) { }
+    }
+
+    function reset() {
+      $('carry').value = ''; $('score').value = ''; $('yards').value = '';
+      $('outWrap').classList.remove('show');
+      err('');
+      try { localStorage.removeItem(LS_KEY); } catch (e) { }
+      $('carry').focus();
+    }
+
+    /* ==================== QUICK PICKS ==================== */
+    (function buildQuick() {
+      var carries = [180, 200, 220, 240, 260, 280];
+      $('carryQuick').innerHTML = carries.map(function (c) {
+        return '<button type="button" data-c="' + c + '">' + c + '</button>';
+      }).join('');
+      $('carryQuick').querySelectorAll('button').forEach(function (b) {
+        b.addEventListener('click', function () { $('carry').value = b.dataset.c; save(); });
+      });
+
+      var tees = [5200, 5800, 6200, 6500, 6700, 7040];
+      $('yardQuick').innerHTML = tees.map(function (y) {
+        return '<button type="button" data-y="' + y + '">' + comma(y) + '</button>';
+      }).join('');
+      $('yardQuick').querySelectorAll('button').forEach(function (b) {
+        b.addEventListener('click', function () { $('yards').value = b.dataset.y; save(); });
+      });
+    })();
+
+    /* ==================== WIRE UP ==================== */
+    $('runBtn').addEventListener('click', run);
+    $('copyBtn').addEventListener('click', copySummary);
+    $('resetBtn').addEventListener('click', reset);
+    $('againBtn').addEventListener('click', function () {
+      $('outWrap').classList.remove('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      $('carry').focus();
+    });
+    ['carry', 'score', 'yards'].forEach(function (id) {
+      $(id).addEventListener('keydown', function (e) { if (e.key === 'Enter') run(); });
+      $(id).addEventListener('input', save);
+    });
+
+    restore();
+  </script>
+</body>
+
+</html>
