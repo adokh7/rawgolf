@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PMECW4VW66');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============ PRIMARY SEO ============ -->
+  <title>The Settle Up: Free Golf Betting &amp; Skins Calculator | Golf Raw</title>
+  <meta name="description"
+    content="Free golf betting calculator. Work out Nassau, skins with carryovers, automatic 2-down presses and junk, then get a clean who-owes-who card for the group chat.">
+  <link rel="canonical" href="https://www.golfraw.com/tools-settle-up-calculator">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Golf Raw Staff">
+
+  <!-- ============ OPEN GRAPH ============ -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RawGolf">
+  <meta property="og:title" content="The Settle Up: Free Golf Betting &amp; Skins Calculator">
+  <meta property="og:description"
+    content="Nassau, skins with carryovers, auto presses and junk. Enter the scores, get a clean who-owes-who card built for the group chat.">
+  <meta property="og:url" content="https://www.golfraw.com/tools-settle-up-calculator">
+
+  <!-- ============ TWITTER CARD ============ -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Settle Up: Free Golf Betting &amp; Skins Calculator">
+  <meta name="twitter:description"
+    content="Nassau, skins with carryovers, auto presses and junk. Enter the scores, get a clean who-owes-who card.">
+
+  <!-- ============ STRUCTURED DATA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "The Settle Up — Golf Betting & Skins Calculator",
+  "url": "https://www.golfraw.com/tools-settle-up-calculator",
+  "applicationCategory": "SportsApplication",
+  "operatingSystem": "Any modern browser",
+  "description": "A free client-side golf betting calculator for Nassau, skins with carryovers, automatic 2-down presses and per-hole junk, producing a shareable settlement summary.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "RawGolf",
+    "url": "https://www.golfraw.com/",
+    "logo": {"@type": "ImageObject", "url": "https://www.golfraw.com/img/rawgolf-logo.png"}
+  },
+  "isAccessibleForFree": true
+}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --fairway: #14402A;
+      --fairway-deep: #0B2418;
+      --flag: #E03E2D;
+      --paper: #F3F4F0;
+      --white: #fff;
+      --ink: #101511;
+      --grey: #5B665E;
+      --line: #DADDD4;
+      --green: #1f7a44;
+      --maxw: 1180px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box }
+    html { scroll-behavior: smooth }
+    body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased }
+    a { color: inherit; text-decoration: none }
+    img { max-width: 100%; height: auto; display: block }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .mono { font-family: 'IBM Plex Mono', monospace }
+
+    /* HEADER */
+    .site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .logo { font-weight: 900; font-size: 26px; letter-spacing: -.04em; text-transform: uppercase }
+    .logo .raw { color: var(--flag) }
+    .nav-links { display: flex; gap: 0 }
+    .nav-links a { font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; padding: 8px 14px; transition: background .15s, color .15s }
+    .nav-links a:hover { background: var(--ink); color: #fff }
+    .nav-links a.active { background: var(--ink); color: #fff }
+    .burger { display: none; background: none; border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px }
+    .burger span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0 }
+    @media(max-width:760px) {
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
+      .nav-links.open { display: flex }
+      .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+      .burger { display: block }
+    }
+
+    /* HERO */
+    .hub-hero { background: var(--ink); color: #fff; border-bottom: 4px solid var(--flag); padding: 56px 0 48px }
+    .hub-hero .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
+    .hub-hero h1 { font-weight: 900; font-size: clamp(34px, 6vw, 68px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
+    .hub-hero p { font-size: 17px; color: #9CC9AE; max-width: 60ch; line-height: 1.6 }
+
+    /* PANELS */
+    .tool-body { padding: 40px 0 72px }
+    .panel { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
+    .panel-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .panel-head .step { color: var(--flag) }
+    .panel-in { padding: 22px 18px }
+
+    label.fld { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--grey); font-weight: 600; margin-bottom: 6px }
+    input[type=text], input[type=number], select {
+      width: 100%; padding: 11px 12px; border: 2px solid var(--ink); background: var(--white);
+      font-family: 'Archivo', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); border-radius: 0;
+    }
+    input:focus, select:focus { outline: 3px solid var(--flag); outline-offset: -1px }
+    input[type=number] { -moz-appearance: textfield }
+    input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0 }
+
+    .row { display: grid; gap: 14px; margin-bottom: 18px }
+    .row.c3 { grid-template-columns: repeat(3, 1fr) }
+    .row.c4 { grid-template-columns: repeat(4, 1fr) }
+    @media(max-width:700px) { .row.c3, .row.c4 { grid-template-columns: 1fr 1fr } }
+    @media(max-width:420px) { .row.c3, .row.c4 { grid-template-columns: 1fr } }
+
+    .players-list { display: grid; gap: 10px; margin-bottom: 16px }
+    .player-row { display: grid; grid-template-columns: 1fr 96px 40px; gap: 8px; align-items: center }
+    @media(max-width:520px) { .player-row { grid-template-columns: 1fr 76px 38px } }
+
+    .btn { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 12px 18px; border: 2px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; transition: background .15s, color .15s }
+    .btn:hover { background: var(--flag); border-color: var(--flag) }
+    .btn.ghost { background: transparent; color: var(--ink) }
+    .btn.ghost:hover { background: var(--ink); color: #fff }
+    .btn.sm { padding: 8px 12px; font-size: 10.5px }
+    .btn.x { background: transparent; color: var(--flag); border-color: var(--line); padding: 10px 0; font-weight: 900 }
+    .btn.x:hover { background: var(--flag); color: #fff; border-color: var(--flag) }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap }
+
+    /* TOGGLES */
+    .toggles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px }
+    @media(max-width:600px) { .toggles { grid-template-columns: 1fr } }
+    .toggle { display: flex; align-items: flex-start; gap: 10px; border: 2px solid var(--line); padding: 12px 14px; cursor: pointer; transition: border-color .15s, background .15s }
+    .toggle:hover { border-color: var(--ink) }
+    .toggle input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--flag); flex-shrink: 0 }
+    .toggle b { display: block; font-size: 14px }
+    .toggle span { font-size: 12.5px; color: var(--grey); line-height: 1.45 }
+    .toggle.on { border-color: var(--ink); background: #FBFBF8 }
+
+    /* SCORECARD */
+    .card-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 2px solid var(--ink) }
+    table.sc { border-collapse: collapse; width: 100%; min-width: 480px; font-family: 'IBM Plex Mono', monospace; font-size: 14px }
+    table.sc th, table.sc td { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); padding: 0; text-align: center }
+    table.sc th { background: var(--ink); color: #fff; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; padding: 10px 6px; position: sticky; top: 0; z-index: 2 }
+    table.sc th:first-child, table.sc td:first-child { position: sticky; left: 0; z-index: 1; background: var(--paper); font-weight: 700; width: 62px; min-width: 62px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase }
+    table.sc th:first-child { background: var(--ink); z-index: 3 }
+    table.sc tr.turn td { background: #ECEFE8; font-weight: 800 }
+    table.sc tr.turn td:first-child { background: #ECEFE8 }
+    table.sc input, table.sc select { border: none; text-align: center; padding: 11px 2px; font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600; background: transparent }
+    table.sc input:focus { outline: 2px solid var(--flag); outline-offset: -2px; background: #fff }
+    table.sc td.parcell input { color: var(--grey); font-size: 13px }
+
+    /* JUNK */
+    .junk-grid { display: grid; gap: 12px }
+    .junk-row { border: 2px solid var(--line); padding: 12px 14px; display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center }
+    @media(max-width:560px) { .junk-row { grid-template-columns: 1fr; gap: 10px } }
+    .junk-name { font-weight: 800; font-size: 15px }
+    .stepper { display: flex; align-items: center; gap: 8px }
+    .stepper .lbl { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--grey); min-width: 58px }
+    .stepper button { width: 34px; height: 34px; border: 2px solid var(--ink); background: var(--white); font-weight: 900; font-size: 16px; cursor: pointer; line-height: 1 }
+    .stepper button:hover { background: var(--ink); color: #fff }
+    .stepper .val { font-family: 'IBM Plex Mono', monospace; font-weight: 700; min-width: 22px; text-align: center; font-size: 16px }
+
+    /* OUTPUT CARD */
+    .out-wrap { display: none }
+    .out-wrap.show { display: block }
+    .settle-card { background: var(--ink); color: #fff; border: 3px solid var(--ink); padding: 30px 26px 0; position: relative; overflow: hidden }
+    .settle-card .sc-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
+    .settle-card h2 { font-weight: 900; font-size: clamp(28px, 6vw, 44px); line-height: .98; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 6px }
+    .settle-card .sc-sub { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .1em; color: #9CC9AE; text-transform: uppercase; margin-bottom: 26px }
+
+    .owe-list { display: grid; gap: 10px; margin-bottom: 26px }
+    .owe { display: flex; align-items: center; justify-content: space-between; gap: 14px; background: rgba(255,255,255,.05); border-left: 5px solid var(--flag); padding: 14px 16px }
+    .owe .who { font-weight: 800; font-size: 16px; line-height: 1.3 }
+    .owe .who i { font-style: normal; color: #9CC9AE; font-weight: 600 }
+    .owe .amt { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 20px; color: #6FDB9A; white-space: nowrap }
+    .all-square { text-align: center; padding: 26px 12px; background: rgba(255,255,255,.05); font-weight: 800; font-size: 17px }
+
+    .net-table { width: 100%; border-collapse: collapse; margin-bottom: 26px; font-family: 'IBM Plex Mono', monospace; font-size: 13px }
+    .net-table th { text-align: left; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: #8b958d; font-weight: 600; padding: 0 8px 8px 0; border-bottom: 1px solid rgba(255,255,255,.15) }
+    .net-table th:last-child, .net-table td:last-child { text-align: right; padding-right: 0 }
+    .net-table td { padding: 9px 8px 9px 0; border-bottom: 1px solid rgba(255,255,255,.08) }
+    .net-table td.nm { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 14.5px }
+    .pos { color: #6FDB9A; font-weight: 700 }
+    .neg { color: #FF9486; font-weight: 700 }
+    .zero { color: #8b958d }
+
+    .badges { display: grid; gap: 10px; margin-bottom: 26px }
+    .badge-item { border: 1px dashed rgba(255,255,255,.28); padding: 13px 15px }
+    .badge-item .bt { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 4px }
+    .badge-item .bn { font-weight: 900; font-size: 17px; letter-spacing: -.01em }
+    .badge-item .bd { font-size: 12.5px; color: #9aa59d; line-height: 1.5; margin-top: 3px }
+
+    .sc-foot { border-top: 1px solid rgba(255,255,255,.15); margin: 0 -26px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .sc-foot .mark { font-weight: 900; font-size: 17px; letter-spacing: -.03em; text-transform: uppercase }
+    .sc-foot .mark span { color: var(--flag) }
+    .sc-foot .url { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #8b958d }
+
+    .note { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--grey); line-height: 1.6; margin-top: 12px }
+    .err { border: 2px solid var(--flag); background: #FDF0EE; color: #8f2015; padding: 12px 14px; font-size: 13.5px; font-weight: 600; margin-bottom: 16px; display: none }
+    .err.show { display: block }
+    .hint { font-size: 12.5px; color: var(--grey); margin-top: 8px; line-height: 1.5 }
+
+    /* FOOTER */
+    .site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
+    .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
+    .site-footer a:hover { color: #fff }
+
+    /* === CLS / RESPONSIVE SAFETY === */
+    html, body { max-width: 100%; overflow-x: clip; }
+    img, video, iframe { max-width: 100%; }
+    table { max-width: 100%; }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="nav">
+      <a href="./index.html" class="logo">Golf<span class="raw">Raw</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="./news.html">Latest News</a>
+        <a href="./ratings.html">Player Ratings</a>
+        <a href="./tournaments.html">Tournaments</a>
+        <a href="./analysis.html">Swing Analysis</a>
+        <a href="./vault.html">The Vault</a>
+        <a href="./tools-settle-up-calculator.html" class="active">Settle Up</a>
+        <a href="search.html">🔍 Search</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="hub-hero">
+    <div class="wrap">
+      <div class="eyebrow">RAWGOLF · TOOLS</div>
+      <h1>The Settle Up</h1>
+      <p>Nassau, skins with carryovers, automatic 2-down presses and junk. Put the scores in, get a clean
+        who-owes-who card you can screenshot straight into the group chat. Runs entirely in your browser — nothing
+        is uploaded anywhere.</p>
+    </div>
+  </div>
+
+  <div class="tool-body">
+    <div class="wrap">
+
+      <!-- ============ STEP 1: SETUP ============ -->
+      <section class="panel">
+        <div class="panel-head"><span><span class="step">01 ·</span> The Game</span>
+          <span id="groupTag" class="mono" style="font-size:10px;color:#9aa59d"></span>
+        </div>
+        <div class="panel-in">
+
+          <label class="fld" for="playerCount">Players (2–6)</label>
+          <div class="row c3" style="margin-bottom:14px">
+            <select id="playerCount" aria-label="Number of players">
+              <option value="2">2 players</option>
+              <option value="3">3 players</option>
+              <option value="4" selected>4 players</option>
+              <option value="5">5 players</option>
+              <option value="6">6 players</option>
+            </select>
+          </div>
+
+          <label class="fld">Names &amp; Handicaps</label>
+          <div class="players-list" id="playersList"></div>
+          <p class="hint">Handicap is optional — it only feeds the "Bandit of the Day" badge. Leave at 0 if you
+            play straight up.</p>
+
+          <hr style="border:none;border-top:2px solid var(--line);margin:22px 0">
+
+          <label class="fld">Stakes ($ per bet)</label>
+          <div class="row c3">
+            <div>
+              <label class="fld" for="stakeNassau">Nassau / press</label>
+              <input type="number" id="stakeNassau" value="5" min="0" step="1" inputmode="decimal">
+            </div>
+            <div>
+              <label class="fld" for="stakeSkins">Per skin</label>
+              <input type="number" id="stakeSkins" value="2" min="0" step="1" inputmode="decimal">
+            </div>
+            <div>
+              <label class="fld" for="stakeJunk">Per junk</label>
+              <input type="number" id="stakeJunk" value="1" min="0" step="1" inputmode="decimal">
+            </div>
+          </div>
+
+          <label class="fld">Games in play</label>
+          <div class="toggles">
+            <label class="toggle on" id="tgNassauWrap">
+              <input type="checkbox" id="tgNassau" checked>
+              <span><b>Nassau</b><span>Front 9, back 9 and total, played head-to-head between every pair in the
+                  group.</span></span>
+            </label>
+            <label class="toggle on" id="tgPressWrap">
+              <input type="checkbox" id="tgPress" checked>
+              <span><b>Auto press at 2-down</b><span>Opens a fresh bet for the rest of that nine the moment
+                  someone goes two down. Presses can be pressed.</span></span>
+            </label>
+            <label class="toggle on" id="tgSkinsWrap">
+              <input type="checkbox" id="tgSkins" checked>
+              <span><b>Skins with carryover</b><span>Low outright score wins the hole. Ties carry the skin
+                  forward and stack the value.</span></span>
+            </label>
+            <label class="toggle on" id="tgJunkWrap">
+              <input type="checkbox" id="tgJunk" checked>
+              <span><b>Junk (greenies &amp; sandies)</b><span>Side payments tallied per player. Each one is
+                  collected from everybody else.</span></span>
+            </label>
+          </div>
+
+          <div class="btn-row" style="margin-top:22px">
+            <button class="btn" id="buildCard" type="button">Build the scorecard →</button>
+            <button class="btn ghost sm" id="saveGroup" type="button">Save this group</button>
+            <button class="btn ghost sm" id="loadGroup" type="button">Load saved group</button>
+            <button class="btn ghost sm" id="clearAll" type="button">Reset everything</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ STEP 2: SCORECARD ============ -->
+      <section class="panel" id="cardPanel" style="display:none">
+        <div class="panel-head"><span><span class="step">02 ·</span> The Card</span>
+          <span class="mono" style="font-size:10px;color:#9aa59d">Scroll sideways on mobile</span>
+        </div>
+        <div class="panel-in">
+          <div class="err" id="scoreErr"></div>
+          <div class="card-scroll">
+            <table class="sc" id="scoreTable" aria-label="Hole by hole scorecard"></table>
+          </div>
+          <p class="hint">Leave a hole blank and it is simply skipped. Par only matters for the scorecard read-out,
+            not the maths.</p>
+        </div>
+      </section>
+
+      <!-- ============ STEP 3: JUNK ============ -->
+      <section class="panel" id="junkPanel" style="display:none">
+        <div class="panel-head"><span><span class="step">03 ·</span> The Junk</span></div>
+        <div class="panel-in">
+          <div class="junk-grid" id="junkGrid"></div>
+          <p class="hint">Greenie: closest to the pin on a par 3. Sandie: up and down out of a bunker. Each one is
+            paid by every other player in the group.</p>
+        </div>
+      </section>
+
+      <!-- ============ CALCULATE ============ -->
+      <div class="btn-row" id="calcRow" style="display:none;margin-bottom:28px">
+        <button class="btn" id="calcBtn" type="button">Settle up →</button>
+        <button class="btn ghost sm" id="copyBtn" type="button">Copy for group chat</button>
+      </div>
+
+      <!-- ============ STEP 4: OUTPUT ============ -->
+      <div class="out-wrap" id="outWrap">
+        <div class="settle-card" id="settleCard">
+          <div class="sc-eyebrow">The Settle Up</div>
+          <h2 id="outTitle">Who Owes Who</h2>
+          <div class="sc-sub" id="outSub"></div>
+
+          <div class="owe-list" id="oweList"></div>
+
+          <table class="net-table" id="netTable"></table>
+
+          <div class="badges" id="badgeList"></div>
+
+          <div class="sc-foot">
+            <span class="mark">Golf<span>Raw</span></span>
+            <span class="url">golfraw.com · the settle up</span>
+          </div>
+        </div>
+        <p class="note" id="mathNote"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 RAWGOLF.COM — ALL RATINGS FINAL</span>
+      <nav aria-label="Footer navigation" style="display:flex;gap:20px">
+        <a href="./manifesto.html">MANIFESTO</a>
+        <a href="./ratings-manual.html">HOW RATINGS WORK</a>
+        <a href="./corrections.html">CORRECTIONS</a>
+        <a href="./privacy.html">PRIVACY</a>
+        <a href="./index.html">← FRONT PAGE</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    /* ==================== NAV ==================== */
+    (function () {
+      var b = document.getElementById('burger'), l = document.getElementById('navLinks');
+      if (b && l) {
+        b.addEventListener('click', function () {
+          var o = l.classList.toggle('open');
+          b.setAttribute('aria-expanded', o);
+        });
+        l.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () { l.classList.remove('open'); });
+        });
+      }
+    })();
+
+    /* ==================== STATE ==================== */
+    var HOLES = 18;
+    var DEFAULT_PARS = [4, 4, 3, 5, 4, 4, 3, 4, 5, 4, 3, 4, 5, 4, 4, 3, 4, 5];
+    var LS_GROUP = 'golfraw_settleup_group';
+    var LS_ROUND = 'golfraw_settleup_round';
+
+    var state = {
+      players: [],           // {name, hcp}
+      pars: DEFAULT_PARS.slice(),
+      scores: [],            // scores[p][hole] = number|null
+      junk: [],              // junk[p] = {greenies:n, sandies:n}
+      stakes: { nassau: 5, skins: 2, junk: 1 },
+      games: { nassau: true, press: true, skins: true, junk: true }
+    };
+
+    var $ = function (id) { return document.getElementById(id); };
+    var money = function (n) {
+      var s = (Math.round(Math.abs(n) * 100) / 100).toFixed(2).replace(/\.00$/, '');
+      return '$' + s;
+    };
+    var esc = function (s) {
+      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    };
+
+    /* ==================== SETUP UI ==================== */
+    function defaultName(i) { return 'Player ' + (i + 1); }
+
+    function renderPlayers() {
+      var n = parseInt($('playerCount').value, 10);
+      var list = $('playersList');
+      var existing = [];
+      list.querySelectorAll('.player-row').forEach(function (r) {
+        existing.push({
+          name: r.querySelector('.pname').value,
+          hcp: r.querySelector('.phcp').value
+        });
+      });
+      list.innerHTML = '';
+      for (var i = 0; i < n; i++) {
+        var prev = existing[i] || {};
+        var row = document.createElement('div');
+        row.className = 'player-row';
+        row.innerHTML =
+          '<input type="text" class="pname" maxlength="18" placeholder="' + defaultName(i) + '" value="' +
+          esc(prev.name || '') + '" aria-label="Player ' + (i + 1) + ' name">' +
+          '<input type="number" class="phcp" value="' + (prev.hcp !== undefined ? esc(prev.hcp) : '0') +
+          '" min="0" max="54" step="1" inputmode="numeric" aria-label="Player ' + (i + 1) + ' handicap">' +
+          '<span class="mono" style="font-size:9px;letter-spacing:.1em;color:var(--grey);text-align:center">HCP</span>';
+        list.appendChild(row);
+      }
+    }
+
+    function readSetup() {
+      var rows = document.querySelectorAll('#playersList .player-row');
+      state.players = [];
+      rows.forEach(function (r, i) {
+        var nm = r.querySelector('.pname').value.trim() || defaultName(i);
+        var h = parseFloat(r.querySelector('.phcp').value);
+        state.players.push({ name: nm, hcp: isNaN(h) ? 0 : h });
+      });
+      state.stakes.nassau = Math.max(0, parseFloat($('stakeNassau').value) || 0);
+      state.stakes.skins = Math.max(0, parseFloat($('stakeSkins').value) || 0);
+      state.stakes.junk = Math.max(0, parseFloat($('stakeJunk').value) || 0);
+      state.games.nassau = $('tgNassau').checked;
+      state.games.press = $('tgPress').checked;
+      state.games.skins = $('tgSkins').checked;
+      state.games.junk = $('tgJunk').checked;
+    }
+
+    ['tgNassau', 'tgPress', 'tgSkins', 'tgJunk'].forEach(function (id) {
+      $(id).addEventListener('change', function () {
+        $(id + 'Wrap').classList.toggle('on', $(id).checked);
+      });
+    });
+    $('playerCount').addEventListener('change', renderPlayers);
+
+    /* ==================== SCORECARD ==================== */
+    function buildScorecard() {
+      readSetup();
+      var P = state.players.length;
+      if (state.scores.length !== P) {
+        state.scores = [];
+        for (var i = 0; i < P; i++) state.scores.push(new Array(HOLES).fill(null));
+      }
+      if (state.junk.length !== P) {
+        state.junk = [];
+        for (var j = 0; j < P; j++) state.junk.push({ greenies: 0, sandies: 0 });
+      }
+
+      var t = $('scoreTable');
+      var head = '<thead><tr><th>Hole</th><th>Par</th>';
+      state.players.forEach(function (p) { head += '<th>' + esc(p.name) + '</th>'; });
+      head += '</tr></thead>';
+
+      var body = '<tbody>';
+      for (var h = 0; h < HOLES; h++) {
+        var turn = (h === 8 || h === 17) ? ' class="turn"' : '';
+        body += '<tr' + turn + '><td>' + (h + 1) + '</td>';
+        body += '<td class="parcell"><input type="number" class="par" data-h="' + h + '" value="' +
+          state.pars[h] + '" min="3" max="6" inputmode="numeric" aria-label="Par for hole ' + (h + 1) + '"></td>';
+        for (var p = 0; p < P; p++) {
+          var v = state.scores[p][h];
+          body += '<td><input type="number" class="scr" data-p="' + p + '" data-h="' + h + '" value="' +
+            (v === null || v === undefined ? '' : v) + '" min="1" max="20" inputmode="numeric" ' +
+            'aria-label="' + esc(state.players[p].name) + ' hole ' + (h + 1) + '"></td>';
+        }
+        body += '</tr>';
+      }
+      body += '</tbody>';
+      t.innerHTML = head + body;
+
+      t.querySelectorAll('input.scr').forEach(function (inp) {
+        inp.addEventListener('input', function () {
+          var p = +inp.dataset.p, h = +inp.dataset.h;
+          var val = inp.value === '' ? null : parseInt(inp.value, 10);
+          state.scores[p][h] = (val === null || isNaN(val)) ? null : val;
+          persistRound();
+        });
+      });
+      t.querySelectorAll('input.par').forEach(function (inp) {
+        inp.addEventListener('input', function () {
+          var v = parseInt(inp.value, 10);
+          state.pars[+inp.dataset.h] = isNaN(v) ? 4 : v;
+          persistRound();
+        });
+      });
+
+      buildJunk();
+      $('cardPanel').style.display = '';
+      $('junkPanel').style.display = state.games.junk ? '' : 'none';
+      $('calcRow').style.display = '';
+      $('cardPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      persistRound();
+    }
+
+    function buildJunk() {
+      var g = $('junkGrid');
+      g.innerHTML = '';
+      state.players.forEach(function (p, i) {
+        var row = document.createElement('div');
+        row.className = 'junk-row';
+        row.innerHTML =
+          '<span class="junk-name">' + esc(p.name) + '</span>' +
+          stepperHTML(i, 'greenies', 'Greenies') +
+          stepperHTML(i, 'sandies', 'Sandies');
+        g.appendChild(row);
+      });
+      g.querySelectorAll('button[data-act]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var i = +b.dataset.i, k = b.dataset.k, d = b.dataset.act === 'up' ? 1 : -1;
+          state.junk[i][k] = Math.max(0, state.junk[i][k] + d);
+          g.querySelector('[data-val="' + i + '-' + k + '"]').textContent = state.junk[i][k];
+          persistRound();
+        });
+      });
+    }
+
+    function stepperHTML(i, key, label) {
+      return '<span class="stepper"><span class="lbl">' + label + '</span>' +
+        '<button type="button" data-act="down" data-i="' + i + '" data-k="' + key + '" aria-label="Decrease ' + label + '">–</button>' +
+        '<span class="val" data-val="' + i + '-' + key + '">' + state.junk[i][key] + '</span>' +
+        '<button type="button" data-act="up" data-i="' + i + '" data-k="' + key + '" aria-label="Increase ' + label + '">+</button></span>';
+    }
+
+    /* ==================== BETTING MATHS ==================== */
+
+    // Match play over a set of hole indexes, with optional automatic 2-down presses.
+    // Returns net UNITS player A wins from player B (negative = A loses).
+    function segmentUnits(a, b, idxs, pressOn) {
+      var margins = [0];      // running margin of each live bet (main bet + presses)
+      var starts = [0];       // index within idxs at which each bet begins
+      for (var i = 0; i < idxs.length; i++) {
+        var h = idxs[i];
+        var sa = a[h], sb = b[h];
+        if (sa === null || sb === null) continue;
+        var res = sa < sb ? 1 : (sa > sb ? -1 : 0);
+        for (var m = 0; m < margins.length; m++) {
+          if (i >= starts[m]) margins[m] += res;
+        }
+        if (pressOn) {
+          var last = margins.length - 1;
+          // a new press opens once the newest bet reaches 2 down, and only if holes remain
+          if (Math.abs(margins[last]) >= 2 && i < idxs.length - 1) {
+            margins.push(0);
+            starts.push(i + 1);
+          }
+        }
+      }
+      var units = 0;
+      for (var k = 0; k < margins.length; k++) {
+        units += margins[k] > 0 ? 1 : (margins[k] < 0 ? -1 : 0);
+      }
+      return units;
+    }
+
+    function range(from, to) { var r = []; for (var i = from; i <= to; i++) r.push(i); return r; }
+
+    function calculate() {
+      readSetup();
+      var P = state.players.length;
+      var net = new Array(P).fill(0);
+      var detail = { nassauUnits: 0, skins: [], presses: 0 };
+      var skinWins = new Array(P).fill(0);
+
+      // ---- NASSAU (round robin, every pair) ----
+      if (state.games.nassau && state.stakes.nassau > 0) {
+        var front = range(0, 8), back = range(9, 17), all = range(0, 17);
+        for (var a = 0; a < P; a++) {
+          for (var b = a + 1; b < P; b++) {
+            var u = 0;
+            u += segmentUnits(state.scores[a], state.scores[b], front, state.games.press);
+            u += segmentUnits(state.scores[a], state.scores[b], back, state.games.press);
+            u += segmentUnits(state.scores[a], state.scores[b], all, false); // total: straight bet
+            net[a] += u * state.stakes.nassau;
+            net[b] -= u * state.stakes.nassau;
+            detail.nassauUnits += Math.abs(u);
+          }
+        }
+      }
+
+      // ---- SKINS (carryover) ----
+      if (state.games.skins && state.stakes.skins > 0 && P > 1) {
+        var carry = 1;
+        for (var h = 0; h < HOLES; h++) {
+          var vals = [], complete = true;
+          for (var p = 0; p < P; p++) {
+            var s = state.scores[p][h];
+            if (s === null) { complete = false; break; }
+            vals.push(s);
+          }
+          if (!complete) continue;
+          var min = Math.min.apply(null, vals);
+          var winners = [];
+          for (var q = 0; q < P; q++) if (vals[q] === min) winners.push(q);
+          if (winners.length === 1) {
+            var w = winners[0];
+            var pot = carry * state.stakes.skins;
+            net[w] += pot * (P - 1);
+            for (var o = 0; o < P; o++) if (o !== w) net[o] -= pot;
+            skinWins[w] += carry;
+            detail.skins.push({ hole: h + 1, player: w, value: carry });
+            carry = 1;
+          } else {
+            carry++;
+          }
+        }
+      }
+
+      // ---- JUNK ----
+      if (state.games.junk && state.stakes.junk > 0 && P > 1) {
+        for (var jp = 0; jp < P; jp++) {
+          var count = state.junk[jp].greenies + state.junk[jp].sandies;
+          if (!count) continue;
+          var amt = count * state.stakes.junk;
+          net[jp] += amt * (P - 1);
+          for (var jo = 0; jo < P; jo++) if (jo !== jp) net[jo] -= amt;
+        }
+      }
+
+      return { net: net, skinWins: skinWins, detail: detail };
+    }
+
+    // Greedy debt simplification -> fewest transactions
+    function settle(net) {
+      var cred = [], debt = [];
+      net.forEach(function (v, i) {
+        var r = Math.round(v * 100) / 100;
+        if (r > 0.004) cred.push({ i: i, v: r });
+        else if (r < -0.004) debt.push({ i: i, v: -r });
+      });
+      cred.sort(function (x, y) { return y.v - x.v; });
+      debt.sort(function (x, y) { return y.v - x.v; });
+      var out = [], ci = 0, di = 0;
+      while (ci < cred.length && di < debt.length) {
+        var amt = Math.min(cred[ci].v, debt[di].v);
+        amt = Math.round(amt * 100) / 100;
+        if (amt > 0.004) out.push({ from: debt[di].i, to: cred[ci].i, amt: amt });
+        cred[ci].v -= amt; debt[di].v -= amt;
+        if (cred[ci].v <= 0.004) ci++;
+        if (debt[di].v <= 0.004) di++;
+      }
+      return out;
+    }
+
+    /* ==================== BADGES ==================== */
+    function nineTotal(p, from, to) {
+      var t = 0, n = 0;
+      for (var h = from; h <= to; h++) {
+        var s = state.scores[p][h];
+        if (s !== null) { t += s; n++; }
+      }
+      return { total: t, count: n };
+    }
+
+    function buildBadges(res) {
+      var P = state.players.length;
+      var out = [];
+
+      // Biggest Choker — worst back-nine vs front-nine swing
+      var worst = null;
+      for (var p = 0; p < P; p++) {
+        var f = nineTotal(p, 0, 8), b = nineTotal(p, 9, 17);
+        if (f.count === 9 && b.count === 9) {
+          var swing = b.total - f.total;
+          if (worst === null || swing > worst.swing) worst = { p: p, swing: swing, f: f.total, b: b.total };
+        }
+      }
+      if (worst && worst.swing > 0) {
+        out.push({
+          t: 'Biggest Choker',
+          n: state.players[worst.p].name,
+          d: 'Went out in ' + worst.f + ', came home in ' + worst.b + '. That is ' + worst.swing +
+            ' shot' + (worst.swing === 1 ? '' : 's') + ' worse on the back nine.'
+        });
+      }
+
+      // Bandit of the Day — beat their handicap by the most
+      var bandit = null, anyHcp = state.players.some(function (p) { return p.hcp > 0; });
+      for (var q = 0; q < P; q++) {
+        var tot = nineTotal(q, 0, 17);
+        if (tot.count !== 18) continue;
+        var val = anyHcp ? (tot.total - state.players[q].hcp) : tot.total;
+        if (bandit === null || val < bandit.val) bandit = { p: q, val: val, gross: tot.total };
+      }
+      if (bandit) {
+        out.push({
+          t: 'Bandit of the Day',
+          n: state.players[bandit.p].name,
+          d: anyHcp
+            ? 'Shot ' + bandit.gross + ' off a handicap of ' + state.players[bandit.p].hcp +
+              ' for a net ' + bandit.val + '. Check that card twice.'
+            : 'Low round of the day at ' + bandit.gross + '. Suspiciously tidy.'
+        });
+      }
+
+      // Skin Collector
+      var topSkin = -1, topSkinIdx = -1;
+      res.skinWins.forEach(function (v, i) { if (v > topSkin) { topSkin = v; topSkinIdx = i; } });
+      if (topSkin > 0) {
+        out.push({
+          t: 'Skin Collector',
+          n: state.players[topSkinIdx].name,
+          d: 'Took ' + topSkin + ' skin' + (topSkin === 1 ? '' : 's') + ' off the group.'
+        });
+      }
+
+      // Today's ATM — biggest loser
+      var lowIdx = -1, lowVal = 0;
+      res.net.forEach(function (v, i) { if (v < lowVal) { lowVal = v; lowIdx = i; } });
+      if (lowIdx >= 0) {
+        out.push({
+          t: "Today's ATM",
+          n: state.players[lowIdx].name,
+          d: 'Down ' + money(lowVal) + ' on the day. Drinks are presumably also on him.'
+        });
+      }
+
+      return out;
+    }
+
+    /* ==================== RENDER OUTPUT ==================== */
+    function render() {
+      var P = state.players.length;
+      if (P < 2) { return showErr('Add at least two players before settling up.'); }
+
+      var anyScore = state.scores.some(function (row) { return row.some(function (v) { return v !== null; }); });
+      if (!anyScore) { return showErr('Put some scores in the card first — nothing to settle yet.'); }
+      showErr('');
+
+      var res = calculate();
+      var moves = settle(res.net);
+
+      // headline
+      var holesPlayed = 0;
+      for (var h = 0; h < HOLES; h++) {
+        var full = true;
+        for (var p = 0; p < P; p++) if (state.scores[p][h] === null) { full = false; break; }
+        if (full) holesPlayed++;
+      }
+      var games = [];
+      if (state.games.nassau) games.push('Nassau' + (state.games.press ? ' + presses' : ''));
+      if (state.games.skins) games.push('skins');
+      if (state.games.junk) games.push('junk');
+      $('outSub').textContent = P + ' players · ' + holesPlayed + ' complete holes · ' +
+        (games.join(' · ') || 'no games selected');
+
+      // who owes who
+      var ol = $('oweList');
+      if (!moves.length) {
+        ol.innerHTML = '<div class="all-square">All square. Nobody owes anybody a thing.</div>';
+      } else {
+        ol.innerHTML = moves.map(function (m) {
+          return '<div class="owe"><span class="who">' + esc(state.players[m.from].name) +
+            ' <i>pays</i> ' + esc(state.players[m.to].name) + '</span><span class="amt">' +
+            money(m.amt) + '</span></div>';
+        }).join('');
+      }
+
+      // net table
+      var rows = '<thead><tr><th>Player</th><th>Gross</th><th>Skins</th><th>Net</th></tr></thead><tbody>';
+      for (var i = 0; i < P; i++) {
+        var g = nineTotal(i, 0, 17);
+        var v = Math.round(res.net[i] * 100) / 100;
+        var cls = v > 0.004 ? 'pos' : (v < -0.004 ? 'neg' : 'zero');
+        var sign = v > 0.004 ? '+' : (v < -0.004 ? '−' : '');
+        rows += '<tr><td class="nm">' + esc(state.players[i].name) + '</td>' +
+          '<td>' + (g.count ? g.total : '—') + '</td>' +
+          '<td>' + res.skinWins[i] + '</td>' +
+          '<td class="' + cls + '">' + sign + money(v) + '</td></tr>';
+      }
+      rows += '</tbody>';
+      $('netTable').innerHTML = rows;
+
+      // badges
+      var badges = buildBadges(res);
+      $('badgeList').innerHTML = badges.map(function (b) {
+        return '<div class="badge-item"><div class="bt">' + esc(b.t) + '</div><div class="bn">' +
+          esc(b.n) + '</div><div class="bd">' + esc(b.d) + '</div></div>';
+      }).join('');
+
+      // maths note
+      var bits = [];
+      if (state.games.nassau) {
+        bits.push('Nassau played head-to-head between all ' + (P * (P - 1) / 2) + ' pairings at ' +
+          money(state.stakes.nassau) + ' a bet (front, back, total)' +
+          (state.games.press ? ', with a fresh bet opened every time someone went two down' : '') + '.');
+      }
+      if (state.games.skins) bits.push('Skins at ' + money(state.stakes.skins) +
+        ' a hole, ties carried forward and stacked.');
+      if (state.games.junk) bits.push('Junk at ' + money(state.stakes.junk) +
+        ' a pop, collected from every other player.');
+      $('mathNote').textContent = bits.join(' ');
+
+      $('outWrap').classList.add('show');
+      $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      persistRound();
+    }
+
+    function showErr(msg) {
+      var e = $('scoreErr');
+      if (!msg) { e.classList.remove('show'); e.textContent = ''; return; }
+      e.textContent = msg;
+      e.classList.add('show');
+      e.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    /* ==================== COPY FOR CHAT ==================== */
+    function copySummary() {
+      var P = state.players.length;
+      if (P < 2) return showErr('Add at least two players first.');
+      var res = calculate();
+      var moves = settle(res.net);
+      var lines = ['THE SETTLE UP — golfraw.com', ''];
+      if (!moves.length) lines.push('All square. Nobody owes anybody.');
+      else moves.forEach(function (m) {
+        lines.push(state.players[m.from].name + ' pays ' + state.players[m.to].name + ' ' + money(m.amt));
+      });
+      lines.push('', 'NET:');
+      res.net.forEach(function (v, i) {
+        var r = Math.round(v * 100) / 100;
+        lines.push('  ' + state.players[i].name + ': ' + (r > 0 ? '+' : r < 0 ? '-' : '') + money(r));
+      });
+      var badges = buildBadges(res);
+      if (badges.length) {
+        lines.push('');
+        badges.forEach(function (b) { lines.push(b.t.toUpperCase() + ': ' + b.n); });
+      }
+      var txt = lines.join('\n');
+
+      var done = function () {
+        var btn = $('copyBtn'), old = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        setTimeout(function () { btn.textContent = old; }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(done, function () { fallbackCopy(txt, done); });
+      } else { fallbackCopy(txt, done); }
+    }
+
+    function fallbackCopy(txt, cb) {
+      var ta = document.createElement('textarea');
+      ta.value = txt;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); cb(); } catch (e) { /* no-op */ }
+      document.body.removeChild(ta);
+    }
+
+    /* ==================== LOCALSTORAGE ==================== */
+    function persistRound() {
+      try {
+        localStorage.setItem(LS_ROUND, JSON.stringify({
+          players: state.players, pars: state.pars, scores: state.scores,
+          junk: state.junk, stakes: state.stakes, games: state.games
+        }));
+      } catch (e) { /* storage unavailable — tool still works */ }
+    }
+
+    function saveGroup() {
+      readSetup();
+      try {
+        localStorage.setItem(LS_GROUP, JSON.stringify({
+          players: state.players, stakes: state.stakes, games: state.games
+        }));
+        flashTag('Group saved ✓');
+      } catch (e) { flashTag('Storage blocked'); }
+    }
+
+    function loadGroup() {
+      var raw;
+      try { raw = localStorage.getItem(LS_GROUP); } catch (e) { raw = null; }
+      if (!raw) return flashTag('No saved group yet');
+      try {
+        var g = JSON.parse(raw);
+        applySetup(g);
+        flashTag('Group loaded ✓');
+      } catch (e) { flashTag('Saved group unreadable'); }
+    }
+
+    function applySetup(g) {
+      if (g.players && g.players.length) {
+        $('playerCount').value = String(Math.min(6, Math.max(2, g.players.length)));
+        renderPlayers();
+        var rows = document.querySelectorAll('#playersList .player-row');
+        rows.forEach(function (r, i) {
+          if (g.players[i]) {
+            r.querySelector('.pname').value = g.players[i].name || '';
+            r.querySelector('.phcp').value = g.players[i].hcp || 0;
+          }
+        });
+      }
+      if (g.stakes) {
+        $('stakeNassau').value = g.stakes.nassau;
+        $('stakeSkins').value = g.stakes.skins;
+        $('stakeJunk').value = g.stakes.junk;
+      }
+      if (g.games) {
+        ['nassau', 'press', 'skins', 'junk'].forEach(function (k) {
+          var id = 'tg' + k.charAt(0).toUpperCase() + k.slice(1);
+          $(id).checked = !!g.games[k];
+          $(id + 'Wrap').classList.toggle('on', !!g.games[k]);
+        });
+      }
+    }
+
+    function restoreRound() {
+      var raw;
+      try { raw = localStorage.getItem(LS_ROUND); } catch (e) { raw = null; }
+      if (!raw) return false;
+      try {
+        var r = JSON.parse(raw);
+        if (!r.players || !r.players.length) return false;
+        applySetup(r);
+        state.pars = (r.pars && r.pars.length === HOLES) ? r.pars : DEFAULT_PARS.slice();
+        state.scores = r.scores || [];
+        state.junk = r.junk || [];
+        buildScorecard();
+        flashTag('Round in progress restored');
+        return true;
+      } catch (e) { return false; }
+    }
+
+    function clearAll() {
+      try { localStorage.removeItem(LS_ROUND); localStorage.removeItem(LS_GROUP); } catch (e) { }
+      state.scores = []; state.junk = []; state.pars = DEFAULT_PARS.slice();
+      $('outWrap').classList.remove('show');
+      $('cardPanel').style.display = 'none';
+      $('junkPanel').style.display = 'none';
+      $('calcRow').style.display = 'none';
+      renderPlayers();
+      flashTag('Cleared');
+    }
+
+    function flashTag(msg) {
+      var t = $('groupTag');
+      t.textContent = msg;
+      setTimeout(function () { t.textContent = ''; }, 2400);
+    }
+
+    /* ==================== WIRE UP ==================== */
+    $('buildCard').addEventListener('click', buildScorecard);
+    $('calcBtn').addEventListener('click', render);
+    $('copyBtn').addEventListener('click', copySummary);
+    $('saveGroup').addEventListener('click', saveGroup);
+    $('loadGroup').addEventListener('click', loadGroup);
+    $('clearAll').addEventListener('click', clearAll);
+
+    renderPlayers();
+    restoreRound();
+  </script>
+</body>
+
+</html>
