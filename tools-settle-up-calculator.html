@@ -143,6 +143,12 @@
     .btn.x:hover { background: var(--flag); color: #fff; border-color: var(--flag) }
     .btn-row { display: flex; gap: 10px; flex-wrap: wrap }
 
+    /* ===== ENGINE UPGRADE: action utility bar ===== */
+    .act-bar { margin-top: 18px; padding-top: 16px; border-top: 2px solid rgba(16,21,17,.12); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between }
+    .act-lab { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--grey) }
+    .act-btns { display: flex; gap: 10px; flex-wrap: wrap }
+    @media (max-width:520px){ .act-bar { justify-content: flex-start } .act-btns .btn { flex: 1 1 auto; min-height: 44px } }
+
     /* TOGGLES */
     .toggles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px }
     @media(max-width:600px) { .toggles { grid-template-columns: 1fr } }
@@ -390,6 +396,14 @@
           </div>
         </div>
         <p class="note" id="mathNote"></p>
+        <div class="act-bar">
+          <span class="act-lab">Take it with you</span>
+          <div class="act-btns">
+            <button class="btn sm" id="pngBtn" type="button">Download card (.png)</button>
+            <button class="btn ghost sm" id="shareBtn" type="button">Share result</button>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -407,6 +421,10 @@
       </nav>
     </div>
   </footer>
+
+
+  <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
+  <script src="./rawgolf-tools.js"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -784,6 +802,8 @@
     }
 
     /* ==================== RENDER OUTPUT ==================== */
+    var lastResult = null;
+
     function render() {
       var P = state.players.length;
       if (P < 2) { return showErr('Add at least two players before settling up.'); }
@@ -856,9 +876,11 @@
         ' a pop, collected from every other player.');
       $('mathNote').textContent = bits.join(' ');
 
+      lastResult = { res: res, moves: moves, holes: holesPlayed, badges: badges };
       $('outWrap').classList.add('show');
       $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
       persistRound();
+      if (window.RawGolf) RawGolf.save(cardData());
     }
 
     function showErr(msg) {
@@ -1005,10 +1027,61 @@
       setTimeout(function () { t.textContent = ''; }, 2400);
     }
 
+    /* ============ ENGINE UPGRADE: history · PNG card · Web Share ============ */
+    function cardData() {
+      var L = lastResult, moves = L.moves, m = [];
+      var headline = moves.length
+        ? state.players[moves[0].from].name + ' pays ' + state.players[moves[0].to].name + ' ' + money(moves[0].amt)
+        : 'All square. Nobody owes anybody.';
+
+      for (var i = 0; i < moves.length && i < 4; i++) {
+        m.push({
+          k: state.players[moves[i].from].name + ' → ' + state.players[moves[i].to].name,
+          v: money(moves[i].amt)
+        });
+      }
+      if (!moves.length) m.push({ k: 'Result', v: 'All square' });
+      m.push({ k: 'Holes settled', v: String(L.holes) });
+      if (L.badges.length) m.push({ k: L.badges[0].t, v: L.badges[0].n });
+
+      return {
+        tool: 'The Settle Up',
+        slug: 'tools-settle-up-calculator',
+        eyebrow: 'The Settle Up',
+        verdict: headline,
+        big: moves.length ? String(moves.length) : '0',
+        bigLabel: moves.length === 1 ? 'Payment to make' : 'Payments to make',
+        filename: 'settle-up',
+        metrics: m
+      };
+    }
+
+    function doPng() {
+      if (!lastResult) return showErr('Settle up first.');
+      var c = cardData();
+      RawGolf.downloadCard({
+        eyebrow: c.eyebrow, headline: c.verdict, big: c.big,
+        bigLabel: c.bigLabel, lines: c.metrics, filename: c.filename
+      });
+    }
+
+    function doShare() {
+      if (!lastResult) return showErr('Settle up first.');
+      var c = cardData(), moves = lastResult.moves;
+      var text = moves.length
+        ? 'Settled up: ' + moves.map(function (x) {
+            return state.players[x.from].name + ' pays ' + state.players[x.to].name + ' ' + money(x.amt);
+          }).join('; ') + '.'
+        : 'Settled up: all square, nobody owes anybody.';
+      RawGolf.shareResult({ title: c.tool, text: text, url: 'https://www.golfraw.com/' + c.slug });
+    }
+
     /* ==================== WIRE UP ==================== */
     $('buildCard').addEventListener('click', buildScorecard);
     $('calcBtn').addEventListener('click', render);
     $('copyBtn').addEventListener('click', copySummary);
+    $('pngBtn').addEventListener('click', doPng);
+    $('shareBtn').addEventListener('click', doShare);
     $('saveGroup').addEventListener('click', saveGroup);
     $('loadGroup').addEventListener('click', loadGroup);
     $('clearAll').addEventListener('click', clearAll);

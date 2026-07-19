@@ -135,6 +135,12 @@
     .btn.sm { padding: 8px 12px; font-size: 10.5px }
     .btn-row { display: flex; gap: 10px; flex-wrap: wrap }
 
+    /* ===== ENGINE UPGRADE: action utility bar ===== */
+    .act-bar { margin-top: 18px; padding-top: 16px; border-top: 2px solid rgba(16,21,17,.12); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between }
+    .act-lab { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--grey) }
+    .act-btns { display: flex; gap: 10px; flex-wrap: wrap }
+    @media (max-width:520px){ .act-bar { justify-content: flex-start } .act-btns .btn { flex: 1 1 auto; min-height: 44px } }
+
     /* GRID */
     .card-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 2px solid var(--ink) }
     table.rd { border-collapse: collapse; width: 100%; min-width: 620px; font-family: 'IBM Plex Mono', monospace; font-size: 14px }
@@ -333,6 +339,14 @@
           </div>
         </div>
         <p class="note" id="method"></p>
+        <div class="act-bar">
+          <span class="act-lab">Take it with you</span>
+          <div class="act-btns">
+            <button class="btn sm" id="pngBtn" type="button">Download card (.png)</button>
+            <button class="btn ghost sm" id="shareBtn" type="button">Share result</button>
+          </div>
+        </div>
+
       </div>
 
       <!-- ============ STEP 4: HISTORY ============ -->
@@ -362,6 +376,10 @@
       </nav>
     </div>
   </footer>
+
+
+  <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
+  <script src="./rawgolf-tools.js"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -687,10 +705,57 @@
         'against the greens you actually hit (' + a.T.ppg + ' putts per green), not a flat total. ' +
         'Total leak: ' + r1(a.total) + ' shots.';
 
+      lastRound = a;
       $('outWrap').classList.add('show');
       $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
       persist();
+      if (window.RawGolf) RawGolf.save(cardData());
       return a;
+    }
+
+    /* ============ ENGINE UPGRADE: history · PNG card · Web Share ============ */
+    var lastRound = null;
+
+    function cardData() {
+      var a = lastRound, v = verdictFor(a), toPar = a.gross - a.parTotal;
+      return {
+        tool: 'The Round Autopsy',
+        slug: 'tools-round-autopsy',
+        eyebrow: 'The Round Autopsy',
+        verdict: 'Cause of death: ' + v.cod,
+        big: String(a.gross),
+        bigLabel: 'Gross · ' + a.played + ' holes',
+        filename: 'round-autopsy',
+        metrics: [
+          { k: 'To par', v: (toPar > 0 ? '+' : '') + toPar },
+          { k: 'Biggest leak', v: a.order[0].n + ' · −' + r1(a.order[0].v) },
+          { k: 'Total leak', v: r1(a.total) + ' shots' },
+          { k: 'Fairways', v: a.firOpp ? a.firHit + '/' + a.firOpp : '—' },
+          { k: 'Greens', v: a.girHit + '/' + a.played },
+          { k: 'Putts', v: a.putts + ' · ' + a.threePutts + ' three-putts' }
+        ]
+      };
+    }
+
+    function doPng() {
+      if (!lastRound) return showErr('Run the autopsy first.');
+      var c = cardData();
+      RawGolf.downloadCard({
+        eyebrow: c.eyebrow, headline: c.verdict, big: c.big,
+        bigLabel: c.bigLabel, lines: c.metrics, filename: c.filename
+      });
+    }
+
+    function doShare() {
+      if (!lastRound) return showErr('Run the autopsy first.');
+      var c = cardData(), a = lastRound;
+      RawGolf.shareResult({
+        title: c.tool,
+        text: 'Shot ' + a.gross + ' over ' + a.played + ' holes. Cause of death: ' +
+          verdictFor(a).cod + ' — ' + r1(a.order[0].v) + ' shots lost to ' +
+          a.order[0].n.toLowerCase() + '.',
+        url: 'https://www.golfraw.com/' + c.slug
+      });
     }
 
     function strip(n, l) { return '<div><span class="n">' + n + '</span><span class="l">' + l + '</span></div>'; }
@@ -821,6 +886,8 @@
 
     /* ==================== WIRE UP ==================== */
     $('runBtn').addEventListener('click', run);
+    $('pngBtn').addEventListener('click', doPng);
+    $('shareBtn').addEventListener('click', doShare);
     $('saveBtn').addEventListener('click', saveRound);
     $('clearRound').addEventListener('click', clearRound);
     $('fillPar').addEventListener('click', function () {

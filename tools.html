@@ -220,6 +220,63 @@
     .ad-zone { border: 1px dashed var(--line); background: #EFF1EC; padding: 18px; margin: 34px 0 0; text-align: center; min-height: 110px; display: flex; align-items: center; justify-content: center }
     .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #a8aea3 }
 
+    /* ===================== ENGINE UPGRADE: DASHBOARD ===================== */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .02em; padding: 12px 18px; border: 2px solid var(--ink); background: var(--ink); color: var(--paper); cursor: pointer; text-decoration: none; transition: background .14s ease, color .14s ease }
+    .btn:hover { background: var(--flag); border-color: var(--flag) }
+    .btn.ghost { background: transparent; color: var(--ink) }
+    .btn.ghost:hover { background: var(--ink); color: var(--paper); border-color: var(--ink) }
+    .btn.danger { border-color: #a2483c; color: #a2483c }
+    .btn.danger:hover { background: #a2483c; color: #fff; border-color: #a2483c }
+
+    .dash { border: 2px solid var(--ink); background: #fff; margin-top: 22px }
+    .dash-head { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; justify-content: space-between; padding: 20px 22px; border-bottom: 2px solid var(--ink) }
+    .dash-head h3 { font-size: 20px; line-height: 1.15; margin: 0 }
+    .dash-sub { font-size: 13.5px; color: var(--grey); margin: 6px 0 0; max-width: 56ch }
+    .dash-count { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--grey); white-space: nowrap; padding-top: 4px }
+
+    .dash-row { display: grid; grid-template-columns: 128px 1fr auto; gap: 16px; align-items: start; padding: 18px 22px; border-bottom: 1px solid var(--line) }
+    .dash-row:last-child { border-bottom: none }
+    .dash-when { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--grey); line-height: 1.5; padding-top: 2px }
+    .dash-tool { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--flag); display: block; margin-bottom: 5px }
+    .dash-verdict { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15.5px; line-height: 1.32; margin: 0 }
+    .dash-metrics { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px }
+    .dash-metrics span { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--grey); border: 1px solid var(--line); padding: 3px 8px; white-space: nowrap }
+    .dash-metrics b { color: var(--ink); font-weight: 600 }
+    .dash-del { background: none; border: 1px solid var(--line); color: var(--grey); font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 7px 11px; cursor: pointer; transition: all .14s ease }
+    .dash-del:hover { border-color: var(--flag); color: var(--flag) }
+    .dash-empty { padding: 40px 22px; text-align: center; color: var(--grey); font-size: 14px }
+    .dash-empty b { display: block; font-family: 'Archivo', sans-serif; font-size: 16px; color: var(--ink); margin-bottom: 7px }
+
+    /* ===================== ENGINE UPGRADE: PASSPORT ===================== */
+    .passport { border: 2px solid var(--ink); background: var(--fairway); color: #fff; padding: 26px 24px; margin-top: 22px }
+    .pp-label { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); margin-bottom: 10px }
+    .passport h3 { font-size: 22px; line-height: 1.15; margin: 0 0 8px; color: #fff }
+    .passport p { font-size: 14px; line-height: 1.6; color: #c8d2c9; margin: 0; max-width: 62ch }
+    .pp-row { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 20px }
+    .pp-row .btn { border-color: #fff; background: #fff; color: var(--ink) }
+    .pp-row .btn:hover { background: var(--flag); border-color: var(--flag); color: #fff }
+    .pp-row .btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.5) }
+    .pp-row .btn.ghost:hover { background: #fff; color: var(--ink); border-color: #fff }
+    .pp-row .btn.danger { border-color: rgba(224,62,45,.75); color: #f0a79f; background: transparent }
+    .pp-row .btn.danger:hover { background: var(--flag); color: #fff; border-color: var(--flag) }
+    /* file input is visually replaced by its styled label */
+    .pp-row label.btn { position: relative; overflow: hidden }
+    .pp-row label.btn input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; font-size: 0 }
+    .pp-note { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #a9b7ab; margin-top: 14px; min-height: 16px }
+    .pp-note.ok { color: #9fe6b8 }
+    .pp-note.bad { color: #ffb3a9 }
+
+    /* Keep the ad zone well clear of the dashboard's delete/export controls */
+    .passport + .sec-head, .dash + .sec-head { margin-top: 46px }
+
+    @media (max-width:640px) {
+      .dash-row { grid-template-columns: 1fr; gap: 10px }
+      .dash-when { order: -1 }
+      /* Delete is destructive — give it a full 44px tap target on touch screens */
+      .dash-del { justify-self: start; min-height: 44px; padding: 12px 18px }
+      .pp-row .btn { flex: 1 1 auto; min-height: 44px }
+    }
+
     /* FOOTER */
     .site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
     .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
@@ -338,8 +395,40 @@
 
       </div>
 
+      <!-- ============ 02 · THE RAW DASHBOARD ============ -->
       <div class="sec-head" style="margin-top:44px">
-        <h2><span class="idx">02</span>The Small Print</h2>
+        <h2><span class="idx">02</span>Your Raw Dashboard</h2>
+      </div>
+
+      <section class="dash" aria-labelledby="dashTitle">
+        <div class="dash-head">
+          <div>
+            <h3 id="dashTitle">Everything you have run</h3>
+            <p class="dash-sub">Every result from all five tools, in order, saved in this browser only. No account,
+              no upload, no way for us to see it.</p>
+          </div>
+          <span class="dash-count" id="dashCount">—</span>
+        </div>
+        <div id="dashBody"></div>
+      </section>
+
+      <section class="passport">
+        <div class="pp-label">The Golf Passport</div>
+        <h3>Back it up before your browser eats it</h3>
+        <p>Local storage is not forever — clearing site data, switching phones or using private mode will wipe
+          your history. Export a passport file to keep it safe, then import it anywhere to pick up where you
+          left off. It is a plain text file; it never touches a server.</p>
+        <div class="pp-row">
+          <button class="btn" id="expBtn" type="button">Export Golf Passport (.json)</button>
+          <label class="btn ghost" for="impFile">Import Passport
+            <input type="file" id="impFile" accept="application/json,.json"></label>
+          <button class="btn ghost danger" id="wipeBtn" type="button">Wipe history</button>
+        </div>
+        <p class="pp-note" id="ppNote" role="status" aria-live="polite"></p>
+      </section>
+
+      <div class="sec-head" style="margin-top:44px">
+        <h2><span class="idx">03</span>The Small Print</h2>
       </div>
 
       <div class="privacy-note">
@@ -373,6 +462,9 @@
     </div>
   </footer>
 
+  <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
+  <script src="./rawgolf-tools.js"></script>
+
   <script>
     (function () {
       var b = document.getElementById('burger'), l = document.getElementById('navLinks');
@@ -382,6 +474,98 @@
           a.addEventListener('click', function () { l.classList.remove('open'); });
         });
       }
+    })();
+
+    /* ==================== THE RAW DASHBOARD ==================== */
+    (function () {
+      var $ = function (id) { return document.getElementById(id); };
+      var body = $('dashBody'), count = $('dashCount'), note = $('ppNote');
+      if (!body || !window.RawGolf) return;
+
+      function esc(s) {
+        return String(s).replace(/[&<>"]/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+        });
+      }
+
+      function say(msg, kind) {
+        if (!note) return;
+        note.textContent = msg;
+        note.className = 'pp-note' + (kind ? ' ' + kind : '');
+      }
+
+      function render() {
+        var rows = RawGolf.read();
+        count.textContent = rows.length
+          ? rows.length + (rows.length === 1 ? ' result saved' : ' results saved')
+          : 'Nothing saved yet';
+
+        if (!rows.length) {
+          body.innerHTML = '<div class="dash-empty"><b>No results yet.</b>' +
+            'Run any of the five tools above and it will show up here automatically — ' +
+            'no sign-up, no setup.</div>';
+          return;
+        }
+
+        body.innerHTML = rows.map(function (r) {
+          var chips = (r.metrics || []).slice(0, 4).map(function (m) {
+            return '<span>' + esc(m.k) + ' <b>' + esc(m.v) + '</b></span>';
+          }).join('');
+          return '<div class="dash-row">' +
+            '<div class="dash-when">' + esc(RawGolf.when(r.ts)) + '</div>' +
+            '<div><span class="dash-tool">' + esc(r.tool) + '</span>' +
+            '<p class="dash-verdict">' + esc(r.verdict) + '</p>' +
+            (chips ? '<div class="dash-metrics">' + chips + '</div>' : '') + '</div>' +
+            '<button class="dash-del" type="button" data-id="' + esc(r.id) +
+            '" aria-label="Delete this result">Delete</button>' +
+            '</div>';
+        }).join('');
+      }
+
+      /* delegated so it survives every re-render */
+      body.addEventListener('click', function (e) {
+        var b = e.target.closest ? e.target.closest('.dash-del') : null;
+        if (!b) return;
+        RawGolf.remove(b.getAttribute('data-id'));
+        render();
+        say('Result deleted.', 'ok');
+      });
+
+      $('expBtn').addEventListener('click', function () {
+        var n = RawGolf.read().length;
+        if (!n) return say('Nothing to export yet — run a tool first.', 'bad');
+        RawGolf.exportPassport();
+        say('Passport exported — ' + n + (n === 1 ? ' result' : ' results') + ' saved to your downloads.', 'ok');
+      });
+
+      $('impFile').addEventListener('change', function (e) {
+        var f = e.target.files && e.target.files[0];
+        if (!f) return;
+        say('Reading passport…');
+        RawGolf.importPassport(f, function (err, n) {
+          e.target.value = '';                 /* allow re-importing the same file */
+          if (err) return say(err, 'bad');
+          render();
+          say('Passport restored — ' + n + (n === 1 ? ' result' : ' results') + ' loaded.', 'ok');
+        });
+      });
+
+      $('wipeBtn').addEventListener('click', function () {
+        if (!RawGolf.read().length) return say('History is already empty.', 'bad');
+        if (!window.confirm('Delete every saved result? Export a passport first if you want to keep them.')) return;
+        RawGolf.clear();
+        render();
+        say('History wiped.', 'ok');
+      });
+
+      /* Keep the dashboard honest: another tab writing a result, or a back-navigation
+         served from the bfcache, would otherwise leave a stale list on screen. */
+      window.addEventListener('storage', function (e) {
+        if (!e.key || e.key === RawGolf.KEY) render();
+      });
+      window.addEventListener('pageshow', function (e) { if (e.persisted) render(); });
+
+      render();
     })();
   </script>
 </body>

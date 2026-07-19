@@ -178,6 +178,14 @@
     .ad-zone { border: 1px dashed var(--line); background: #EFF1EC; padding: 18px; margin: 30px 0; text-align: center; min-height: 96px; display: flex; align-items: center; justify-content: center }
     .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #a8aea3 }
 
+    /* ===== ENGINE UPGRADE: action utility bar (kept clear of ad zones) ===== */
+    .act-bar { margin-top: 18px; padding-top: 16px; border-top: 2px solid rgba(16,21,17,.12); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between }
+    .act-lab { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--grey) }
+    .act-btns { display: flex; gap: 10px; flex-wrap: wrap }
+    /* Dead-zone so a mis-tap on an action button can never land on an ad */
+    .out-wrap + .ad-zone, .act-bar + .ad-zone { margin-top: 46px }
+    @media (max-width:520px){ .act-bar { justify-content: flex-start } .act-btns .btn { flex: 1 1 auto; min-height: 44px } }
+
     /* VERDICT CARD */
     .out-wrap { display: none }
     .out-wrap.show { display: block }
@@ -331,6 +339,14 @@
           <button class="btn ghost" id="againBtn" type="button">Run it again</button>
         </div>
         <p class="note" id="method"></p>
+        <div class="act-bar">
+          <span class="act-lab">Take it with you</span>
+          <div class="act-btns">
+            <button class="btn sm" id="pngBtn" type="button">Download card (.png)</button>
+            <button class="btn ghost sm" id="shareBtn" type="button">Share result</button>
+          </div>
+        </div>
+
       </div>
 
       <!-- Future AdSense Slot -->
@@ -380,6 +396,10 @@
       </nav>
     </div>
   </footer>
+
+
+  <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
+  <script src="./rawgolf-tools.js"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -556,6 +576,7 @@
         'course yardage. Heuristics, not laser measurements — but the direction of travel is not up for debate.';
 
       $('outWrap').classList.add('show');
+      if (window.RawGolf) RawGolf.save(cardData());
       $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
       save();
     }
@@ -650,9 +671,60 @@
       });
     })();
 
+    /* ============ ENGINE UPGRADE: history · PNG card · Web Share ============ */
+    function cardData() {
+      var a = last, v = verdictFor(a);
+      var m = [
+        { k: 'Driver carry', v: a.carry + ' yds' },
+        { k: 'Tees played', v: comma(a.yards) + ' yds' },
+        { k: 'Tees earned', v: comma(a.optimal) + ' yds' }
+      ];
+      if (a.overage > 0) {
+        m.push({ k: 'Too far back', v: comma(a.overage) + ' yds' });
+        m.push({ k: 'Costing you', v: r1(a.shotsLost) + ' shots' });
+        m.push({ k: 'Avg approach', v: Math.round(a.approachNow) + ' yds · ' + a.clubNow });
+      } else {
+        m.push({ k: 'Verdict', v: 'Correct tees' });
+      }
+      return {
+        tool: 'The Tee Box Reality Check',
+        slug: 'tools-tee-box-check',
+        eyebrow: 'The Tee Box Reality Check',
+        verdict: v.head,
+        big: a.overage > 0 ? comma(a.overage) : 'OK',
+        bigLabel: a.overage > 0 ? 'Yards too far back' : 'You are on the right tees',
+        filename: 'tee-box-check',
+        metrics: m
+      };
+    }
+
+    function doPng() {
+      if (!last) return err('Run the check first.');
+      var c = cardData();
+      RawGolf.downloadCard({
+        eyebrow: c.eyebrow, headline: c.verdict, big: c.big,
+        bigLabel: c.bigLabel, lines: c.metrics, filename: c.filename
+      });
+    }
+
+    function doShare() {
+      if (!last) return err('Run the check first.');
+      var c = cardData(), a = last;
+      RawGolf.shareResult({
+        title: c.tool,
+        text: a.overage > 0
+          ? 'I am playing tees ' + comma(a.overage) + ' yards too far back — costing me about ' +
+            r1(a.shotsLost) + ' shots a round.'
+          : 'Checked it: I am playing the right tees.',
+        url: 'https://www.golfraw.com/' + c.slug
+      });
+    }
+
     /* ==================== WIRE UP ==================== */
     $('runBtn').addEventListener('click', run);
     $('copyBtn').addEventListener('click', copySummary);
+    $('pngBtn').addEventListener('click', doPng);
+    $('shareBtn').addEventListener('click', doShare);
     $('resetBtn').addEventListener('click', reset);
     $('againBtn').addEventListener('click', function () {
       $('outWrap').classList.remove('show');

@@ -193,6 +193,14 @@
     .ad-zone { border: 1px dashed var(--line); background: #EFF1EC; padding: 18px; margin: 30px 0; text-align: center; min-height: 96px; display: flex; align-items: center; justify-content: center }
     .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #a8aea3 }
 
+    /* ===== ENGINE UPGRADE: action utility bar (kept clear of ad zones) ===== */
+    .act-bar { margin-top: 18px; padding-top: 16px; border-top: 2px solid rgba(16,21,17,.12); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between }
+    .act-lab { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--grey) }
+    .act-btns { display: flex; gap: 10px; flex-wrap: wrap }
+    /* Dead-zone so a mis-tap on an action button can never land on an ad */
+    .out-wrap + .ad-zone, .act-bar + .ad-zone { margin-top: 46px }
+    @media (max-width:520px){ .act-bar { justify-content: flex-start } .act-btns .btn { flex: 1 1 auto; min-height: 44px } }
+
     /* VERDICT */
     .out-wrap { display: none }
     .out-wrap.show { display: block }
@@ -362,6 +370,14 @@
           <button class="btn ghost" id="againBtn" type="button">Edit the evidence</button>
         </div>
         <p class="note" id="method"></p>
+        <div class="act-bar">
+          <span class="act-lab">Take it with you</span>
+          <div class="act-btns">
+            <button class="btn sm" id="pngBtn" type="button">Download card (.png)</button>
+            <button class="btn ghost sm" id="shareBtn" type="button">Share result</button>
+          </div>
+        </div>
+
 
         <div class="diff-scroll">
           <table class="diffs" id="diffTable"></table>
@@ -417,6 +433,10 @@
       </nav>
     </div>
   </footer>
+
+
+  <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
+  <script src="./rawgolf-tools.js"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -695,6 +715,7 @@
         'that a licensed handicapping body would.';
 
       $('outWrap').classList.add('show');
+      if (window.RawGolf) RawGolf.save(cardData());
       $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
       save();
     }
@@ -782,10 +803,53 @@
       setTimeout(function () { t.textContent = ''; }, 2200);
     }
 
+    /* ============ ENGINE UPGRADE: history · PNG card · Web Share ============ */
+    function cardData() {
+      var a = last, v = verdictFor(a);
+      return {
+        tool: 'The Handicap Lie Detector',
+        slug: 'tools-handicap-detector',
+        eyebrow: 'The Handicap Lie Detector',
+        verdict: v.head,
+        big: (a.delta > 0 ? '+' : '') + fx(a.delta),
+        bigLabel: 'Shots off the truth',
+        filename: 'handicap-lie-detector',
+        metrics: [
+          { k: 'Claimed', v: fx(a.claimed) },
+          { k: 'Actual index', v: fx(a.index) },
+          { k: 'Difference', v: (a.delta > 0 ? '+' : '') + fx(a.delta) + ' shots' },
+          { k: 'Rounds used', v: a.used + ' of ' + a.n },
+          { k: 'Avg differential', v: fx(a.avgDiff) },
+          { k: 'Best / worst', v: a.best + ' / ' + a.worst }
+        ]
+      };
+    }
+
+    function doPng() {
+      if (!last) return err('Run the lie detector first.');
+      var c = cardData();
+      RawGolf.downloadCard({
+        eyebrow: c.eyebrow, headline: c.verdict, big: c.big,
+        bigLabel: c.bigLabel, lines: c.metrics, filename: c.filename
+      });
+    }
+
+    function doShare() {
+      if (!last) return err('Run the lie detector first.');
+      var c = cardData(), a = last;
+      RawGolf.shareResult({
+        title: c.tool,
+        text: 'Claimed handicap ' + fx(a.claimed) + '. Actual index ' + fx(a.index) + '. ' + c.verdict,
+        url: 'https://www.golfraw.com/' + c.slug
+      });
+    }
+
     /* ==================== WIRE UP ==================== */
     $('addRow').addEventListener('click', function () { addRow(); save(); });
     $('runBtn').addEventListener('click', run);
     $('copyBtn').addEventListener('click', copySummary);
+    $('pngBtn').addEventListener('click', doPng);
+    $('shareBtn').addEventListener('click', doShare);
     $('againBtn').addEventListener('click', function () {
       $('outWrap').classList.remove('show');
       window.scrollTo({ top: 0, behavior: 'smooth' });
