@@ -16,7 +16,7 @@
   <!-- ============ PRIMARY SEO ============ -->
   <title>Free Golf Tools: Betting, Handicap, Wind &amp; Round Analysis | Golf Raw</title>
   <meta name="description"
-    content="Five free golf calculators that run entirely in your browser. Settle bets, diagnose your round, find your correct tees, and calculate your real handicap index. No signup, no tracking.">
+    content="Six free golf calculators that run entirely in your browser. Settle bets, diagnose your round, find your correct tees, calculate your real handicap index and measure how badly you tilt. No signup, no tracking.">
   <link rel="canonical" href="https://www.golfraw.com/tools">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Golf Raw Staff">
@@ -24,14 +24,14 @@
   <!-- ============ OPEN GRAPH ============ -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RawGolf">
-  <meta property="og:title" content="Raw Golf Tools Suite — Five Free Golf Calculators">
+  <meta property="og:title" content="Raw Golf Tools Suite — Six Free Golf Calculators">
   <meta property="og:description"
     content="Settle bets, diagnose your round, find your correct tees, and calculate your real handicap. All free, all running locally in your browser.">
   <meta property="og:url" content="https://www.golfraw.com/tools">
 
   <!-- ============ TWITTER CARD ============ -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Raw Golf Tools Suite — Five Free Golf Calculators">
+  <meta name="twitter:title" content="Raw Golf Tools Suite — Six Free Golf Calculators">
   <meta name="twitter:description"
     content="Settle bets, diagnose your round, find your correct tees, calculate your real handicap. Free, no signup.">
 
@@ -42,7 +42,7 @@
   "@type": "CollectionPage",
   "name": "Raw Golf Tools Suite",
   "url": "https://www.golfraw.com/tools",
-  "description": "A suite of five free client-side golf calculators covering betting settlement, round diagnostics, tee box selection, handicap index calculation and playing-conditions distance adjustment.",
+  "description": "A suite of six free client-side golf calculators covering betting settlement, round diagnostics, tee box selection, handicap index calculation, playing-conditions distance adjustment and on-course tilt measurement.",
   "publisher": {
     "@type": "Organization",
     "name": "RawGolf",
@@ -99,6 +99,16 @@
           "url": "https://www.golfraw.com/tools-plays-like",
           "applicationCategory": "SportsApplication",
           "description": "Adjusts a target yardage for temperature, wind, altitude, slope and humidity to produce the distance a golf shot is actually playing.",
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+        }
+      },
+      {
+        "@type": "ListItem", "position": 6,
+        "item": {
+          "@type": "WebApplication", "name": "The Tilt Meter",
+          "url": "https://www.golfraw.com/tools-tilt-meter",
+          "applicationCategory": "SportsApplication",
+          "description": "Golf psychology calculator that measures the strokes lost in the three holes following a blow-up hole, plus bounce-back rate against tour benchmarks.",
           "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
         }
       }
@@ -184,11 +194,11 @@
       padding: 34px 30px 30px; border-right: 2px solid rgba(255,255,255,.16);
       transition: background .18s ease;
     }
-    /* Featured (newest) tool spans the full width, remaining four form a 2x2 below */
-    .t-card.featured { grid-column: 1 / -1; border-right: none }
-    .t-card:nth-child(1), .t-card:nth-child(2), .t-card:nth-child(3) { border-bottom: 2px solid rgba(255,255,255,.16) }
-    .t-card:nth-child(2), .t-card:nth-child(4) { border-right: 2px solid rgba(255,255,255,.16) }
-    .t-card:nth-child(3), .t-card:nth-child(5) { border-right: none }
+    /* Six tools divide evenly into a 3x2 — no featured row needed.
+       Rules are positional, so the grid stays balanced if a 7th or 8th is added. */
+    .t-card { border-bottom: 2px solid rgba(255,255,255,.16) }
+    .t-card:nth-child(even) { border-right: none }
+    .t-card:nth-last-child(-n+2) { border-bottom: none }
     .t-card:hover { background: #1a221b }
     .t-card:hover .t-cta { background: var(--flag); border-color: var(--flag); color: #fff }
     .t-card:hover h3 { color: #fff }
@@ -205,8 +215,9 @@
     }
     @media(max-width:760px) {
       .tool-grid { grid-template-columns: 1fr }
-      .t-card { border-right: none !important; border-bottom: 2px solid rgba(255,255,255,.16); padding: 28px 22px 26px }
-      .t-card:last-child { border-bottom: none }
+      /* single column — every card needs its divider back except the final one */
+      .t-card { border-right: none !important; border-bottom: 2px solid rgba(255,255,255,.16) !important; padding: 28px 22px 26px }
+      .t-card:last-child { border-bottom: none !important }
     }
 
     /* PRIVACY NOTE */
@@ -319,12 +330,12 @@
     <div class="wrap">
       <div class="eyebrow">RAWGOLF · UTILITIES</div>
       <h1>Raw Golf Tools Suite</h1>
-      <p>Five calculators that do the jobs golf software charges you for. Every one of them runs
+      <p>Six calculators that do the jobs golf software charges you for. Every one of them runs
         <b>100% inside your browser</b> — no account, no signup, no round data uploaded anywhere, nothing tracked.
         Close the tab and it is gone.</p>
 
       <div class="facts-strip">
-        <div><span class="n">5</span><span class="l">Tools live</span></div>
+        <div><span class="n">6</span><span class="l">Tools live</span></div>
         <div><span class="n">$0</span><span class="l">Cost, forever</span></div>
         <div><span class="n">0</span><span class="l">Accounts needed</span></div>
         <div><span class="n">0</span><span class="l">Data uploaded</span></div>
@@ -340,11 +351,21 @@
         <span class="hint">Pick your poison</span>
       </div>
 
-      <!-- ============ 2x2 TOOL GRID ============ -->
+      <!-- ============ TOOL GRID ============ -->
       <div class="tool-grid">
 
-        <a href="tools-plays-like.html" class="t-card featured">
-          <div class="t-num">Tool 05 · Newest</div>
+        <a href="tools-tilt-meter.html" class="t-card">
+          <div class="t-num">Tool 06 · Newest</div>
+          <h3>The Tilt Meter</h3>
+          <div class="t-tagline">Psychological · Amateur Meltdown Index</div>
+          <p>Everyone remembers the triple. Almost nobody notices it was the three holes after it that actually cost
+            them the round. Enter 18 holes relative to par and this works out exactly how many shots your temper
+            threw away, then measures your bounce-back against a tour pro's.</p>
+          <span class="t-cta">How badly do I tilt? →</span>
+        </a>
+
+        <a href="tools-plays-like.html" class="t-card">
+          <div class="t-num">Tool 05</div>
           <h3>The "Plays Like" Calculator</h3>
           <div class="t-tagline">Environmental · Use it on the course</div>
           <p>The only tool here you open mid-round. Feed it the yardage, temperature, wind, altitude and slope and
@@ -404,7 +425,7 @@
         <div class="dash-head">
           <div>
             <h3 id="dashTitle">Everything you have run</h3>
-            <p class="dash-sub">Every result from all five tools, in order, saved in this browser only. No account,
+            <p class="dash-sub">Every result from all six tools, in order, saved in this browser only. No account,
               no upload, no way for us to see it.</p>
           </div>
           <span class="dash-count" id="dashCount">—</span>
@@ -502,7 +523,7 @@
 
         if (!rows.length) {
           body.innerHTML = '<div class="dash-empty"><b>No results yet.</b>' +
-            'Run any of the five tools above and it will show up here automatically — ' +
+            'Run any of the six tools above and it will show up here automatically — ' +
             'no sign-up, no setup.</div>';
           return;
         }

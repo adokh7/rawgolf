@@ -1485,15 +1485,11 @@
       margin-bottom: 56px;
     }
 
-    /* Newest tool spans full width, the other four form a balanced 2x2 below */
-    .tools-grid .tool-card.featured { grid-column: 1 / -1; border-right: none }
-    .tools-grid .tool-card:nth-child(1),
-    .tools-grid .tool-card:nth-child(2),
-    .tools-grid .tool-card:nth-child(3) { border-bottom: 2px solid rgba(255, 255, 255, .18) }
-    .tools-grid .tool-card:nth-child(2),
-    .tools-grid .tool-card:nth-child(4) { border-right: 2px solid rgba(255, 255, 255, .18) }
-    .tools-grid .tool-card:nth-child(3),
-    .tools-grid .tool-card:nth-child(5) { border-right: none }
+    /* Six tools divide evenly into a 3x2 — no featured row needed.
+       Positional rules, so the grid stays balanced if a 7th or 8th is added. */
+    .tools-grid .tool-card { border-bottom: 2px solid rgba(255, 255, 255, .18) }
+    .tools-grid .tool-card:nth-child(even) { border-right: none }
+    .tools-grid .tool-card:nth-last-child(-n+2) { border-bottom: none }
 
     .tool-card {
       display: flex;
@@ -1549,8 +1545,9 @@
 
     @media(max-width: 700px) {
       .tools-grid { grid-template-columns: 1fr }
-      .tool-card { border-right: none !important; border-bottom: 2px solid rgba(255, 255, 255, .18) }
-      .tool-card:last-child { border-bottom: none }
+      /* single column — every card needs its divider back except the final one */
+      .tool-card { border-right: none !important; border-bottom: 2px solid rgba(255, 255, 255, .18) !important }
+      .tool-card:last-child { border-bottom: none !important }
     }
 
     /* === CLS / RESPONSIVE SAFETY === */
@@ -1942,8 +1939,16 @@
         <a href="tools.html">All tools →</a>
       </div>
       <div class="tools-grid reveal">
-        <a href="tools-plays-like.html" class="tool-card featured">
-          <div class="tc-kicker">New · Use it on the course</div>
+        <a href="tools-tilt-meter.html" class="tool-card">
+          <div class="tc-kicker">New · The Amateur Meltdown Index</div>
+          <h3>The Tilt Meter</h3>
+          <p>Everyone remembers the triple. Nobody notices it was the three holes after it that actually cost them
+            the round. Eighteen holes in, and out comes the exact number of shots your temper threw away — plus
+            your bounce-back rate against a tour pro's.</p>
+          <span class="tc-cta">How badly do I tilt? →</span>
+        </a>
+        <a href="tools-plays-like.html" class="tool-card">
+          <div class="tc-kicker">Free · Use it on the course</div>
           <h3>The "Plays Like" Calculator</h3>
           <p>Yardage, temperature, wind, altitude and slope in — the distance your shot is genuinely playing out,
             plus the club that number demands. The only tool here you open mid-round, and it settles the

@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PMECW4VW66');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============ PRIMARY SEO ============ -->
+  <title>The Tilt Meter: Amateur Meltdown Index &amp; Bounce-Back Calculator | Golf Raw</title>
+  <meta name="description"
+    content="Free golf tilt calculator. Enter 18 holes relative to par and find out exactly how many shots your temper cost you after your blow-up hole, plus your real bounce-back rate.">
+  <link rel="canonical" href="https://www.golfraw.com/tools-tilt-meter">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Golf Raw Staff">
+
+  <!-- ============ OPEN GRAPH ============ -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RawGolf">
+  <meta property="og:title" content="The Tilt Meter — The Amateur Meltdown Index">
+  <meta property="og:description"
+    content="You did not have a bad course. You had a bad mood. Find out exactly what your temper cost you after the blow-up hole.">
+  <meta property="og:url" content="https://www.golfraw.com/tools-tilt-meter">
+
+  <!-- ============ TWITTER CARD ============ -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Tilt Meter — The Amateur Meltdown Index">
+  <meta name="twitter:description"
+    content="You did not have a bad course. You had a bad mood. Work out your real tilt index.">
+
+  <!-- ============ STRUCTURED DATA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "The Tilt Meter — Amateur Meltdown Index",
+  "url": "https://www.golfraw.com/tools-tilt-meter",
+  "applicationCategory": "SportsApplication",
+  "operatingSystem": "Any modern browser",
+  "description": "A free client-side golf psychology calculator that measures how many strokes a golfer loses in the three holes following their worst hole, and calculates their bounce-back rate against tour benchmarks.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "RawGolf",
+    "url": "https://www.golfraw.com/",
+    "logo": {"@type": "ImageObject", "url": "https://www.golfraw.com/img/rawgolf-logo.png"}
+  },
+  "isAccessibleForFree": true
+}
+  </script>
+
+  <!-- ============ FAQ SCHEMA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does tilt mean in golf?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tilt is a poker term that describes playing worse because you are emotionally rattled rather than because the challenge got harder. In golf it shows up as the extra shots you drop in the holes immediately after a blow-up, when the hole in front of you is no harder than the ones you were parring an hour earlier."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good bounce-back rate in golf?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bounce-back measures how often you follow a double bogey or worse with a par or better. Tour professionals sit around 20 percent and club amateurs are closer to 10 percent. Anything above 20 percent means you reset faster than most people who play golf for a living."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you stop tilting on the golf course?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The measurable fix is to treat the next tee shot as the most conservative shot of your round. Most meltdown damage comes from trying to win the lost shots straight back with an aggressive line off the following tee, which turns one bad hole into three."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is the Tilt Index calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Tilt Index combines two measurements. First, the strokes you dropped across the three holes after your worst hole compared with your median hole for the round, excluding that worst hole. Second, your bounce-back rate across every double bogey or worse in the round. The two are weighted 55 and 45 percent and scaled to a score out of ten."
+      }
+    }
+  ]
+}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --fairway: #14402A;
+      --fairway-deep: #0B2418;
+      --flag: #E03E2D;
+      --paper: #F3F4F0;
+      --white: #fff;
+      --ink: #101511;
+      --grey: #5B665E;
+      --line: #DADDD4;
+      --maxw: 1180px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box }
+    html { scroll-behavior: smooth }
+    body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased }
+    a { color: inherit; text-decoration: none }
+    img { max-width: 100%; height: auto; display: block }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .mono { font-family: 'IBM Plex Mono', monospace }
+
+    /* HEADER */
+    .site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .logo { font-weight: 900; font-size: 26px; letter-spacing: -.04em; text-transform: uppercase }
+    .logo .raw { color: var(--flag) }
+    .nav-links { display: flex; gap: 0 }
+    .nav-links a { font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; padding: 8px 14px; transition: background .15s, color .15s }
+    .nav-links a:hover { background: var(--ink); color: #fff }
+    .nav-links a.active { background: var(--ink); color: #fff }
+    .burger { display: none; background: none; border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px }
+    .burger span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0 }
+    @media(max-width:760px) {
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
+      .nav-links.open { display: flex }
+      .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+      .burger { display: block }
+    }
+
+    /* HERO */
+    .hub-hero { background: var(--ink); color: #fff; border-bottom: 4px solid var(--flag); padding: 56px 0 48px }
+    .hub-hero .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
+    .hub-hero h1 { font-weight: 900; font-size: clamp(32px, 5.6vw, 64px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
+    .hub-hero p { font-size: 17px; color: #9CC9AE; max-width: 62ch; line-height: 1.6 }
+
+    /* PANELS */
+    .tool-body { padding: 40px 0 72px }
+    .panel { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
+    .panel-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .panel-head .step { color: var(--flag) }
+    .panel-in { padding: 24px 20px }
+
+    input[type=number] {
+      width: 100%; padding: 12px 6px; border: 2px solid var(--ink); background: var(--white);
+      font-family: 'IBM Plex Mono', monospace; font-size: 17px; font-weight: 700; color: var(--ink);
+      border-radius: 0; text-align: center;
+    }
+    input:focus { outline: 3px solid var(--flag); outline-offset: -1px; position: relative; z-index: 2 }
+    input[type=number] { -moz-appearance: textfield }
+    input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0 }
+
+    /* ============ THE CARD: 18 HOLE INPUTS ============ */
+    .card-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px }
+    @media(max-width:820px) { .card-grid { grid-template-columns: repeat(4, 1fr) } }
+    @media(max-width:520px) { .card-grid { grid-template-columns: repeat(3, 1fr); gap: 8px } }
+
+    .hole { display: flex; flex-direction: column; gap: 5px }
+    .hole label { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--grey); text-align: center }
+    .hole.is-blow input { border-color: var(--flag); box-shadow: inset 0 0 0 2px var(--flag); color: var(--flag) }
+    .hole.is-blow label { color: var(--flag) }
+    .hole.is-window input { background: #FFF6F4 }
+
+    .card-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 18px; border-top: 2px solid var(--line) }
+    .tally { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey) }
+    .tally b { color: var(--ink); font-size: 15px }
+    .tally b.over { color: var(--flag) }
+    .tally b.under { color: #1f7a44 }
+
+    .legend { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--grey); line-height: 1.7; margin-top: 14px }
+    .legend b { color: var(--ink) }
+
+    .btn { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 14px 22px; border: 2px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; transition: background .15s, color .15s }
+    .btn:hover { background: var(--flag); border-color: var(--flag) }
+    .btn.ghost { background: transparent; color: var(--ink) }
+    .btn.ghost:hover { background: var(--ink); color: #fff }
+    .btn.sm { padding: 10px 14px; font-size: 10.5px }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px }
+
+    .err { border: 2px solid var(--flag); background: #FDF0EE; color: #8f2015; padding: 12px 14px; font-size: 13.5px; font-weight: 600; margin-bottom: 18px; display: none }
+    .err.show { display: block }
+
+    /* AD SLOT — isolated from controls */
+    .ad-zone { border: 1px dashed var(--line); background: #EFF1EC; padding: 18px; margin: 30px 0; text-align: center; min-height: 96px; display: flex; align-items: center; justify-content: center }
+    .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #a8aea3 }
+
+    /* ===== action utility bar (kept clear of ad zones) ===== */
+    .act-bar { margin-top: 18px; padding-top: 16px; border-top: 2px solid rgba(16,21,17,.12); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between }
+    .act-lab { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--grey) }
+    .act-btns { display: flex; gap: 10px; flex-wrap: wrap }
+    /* Dead-zone so a mis-tap on an action button can never land on an ad */
+    .out-wrap + .ad-zone, .act-bar + .ad-zone { margin-top: 46px }
+    @media (max-width:520px){ .act-bar { justify-content: flex-start } .act-btns .btn { flex: 1 1 auto; min-height: 44px } }
+
+    /* ============ VERDICT CARD ============ */
+    .out-wrap { display: none }
+    .out-wrap.show { display: block }
+    .verdict-card { background: var(--ink); color: #fff; border: 3px solid var(--ink); padding: 32px 26px 0; overflow: hidden }
+    .vc-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 12px }
+    .vc-head { font-weight: 900; font-size: clamp(24px, 5vw, 40px); line-height: 1; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 14px }
+    .vc-sub { font-size: 16px; color: #d8ded6; line-height: 1.6; margin-bottom: 28px; max-width: 60ch }
+    .vc-sub b { color: #fff }
+
+    /* the index dial */
+    .dial { border: 1px solid rgba(255,255,255,.18); padding: 26px 20px; text-align: center; margin-bottom: 24px }
+    .dial .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(46px, 13vw, 84px); line-height: 1; color: #FF9486 }
+    .dial .n.cool { color: #6FDB9A }
+    .dial .n .of { font-size: .34em; color: #8b958d; letter-spacing: .04em }
+    .dial .tier { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: #fff; margin-top: 14px; display: block; font-weight: 700 }
+    .meter { height: 8px; background: rgba(255,255,255,.14); margin-top: 18px; position: relative; overflow: hidden }
+    .meter i { position: absolute; inset: 0 auto 0 0; background: var(--flag); display: block }
+    .meter i.cool { background: #6FDB9A }
+
+    /* ============ THE HOLE STRIP (pure CSS, no images) ============ */
+    .strip-wrap { border: 1px solid rgba(255,255,255,.18); padding: 18px 14px 12px; margin-bottom: 24px }
+    .strip-lab { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: #8b958d; margin-bottom: 14px; display: block }
+    .strip { display: flex; align-items: flex-end; gap: 3px; height: 92px }
+    .strip .col { flex: 1 1 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; height: 100%; position: relative }
+    .strip .bar { background: #4a5a4f; min-height: 3px; transition: height .2s ease }
+    .strip .col.good .bar { background: #6FDB9A }
+    .strip .col.bad .bar { background: #FF9486 }
+    .strip .col.blow .bar { background: var(--flag); box-shadow: 0 0 0 1px #fff }
+    .strip .col.win .bar { background: #FFC7BF }
+    .strip .col.empty .bar { background: rgba(255,255,255,.08) }
+    .strip .h { font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: #6f7a72; text-align: center; margin-top: 5px }
+    .strip .col.blow .h { color: var(--flag); font-weight: 700 }
+    .strip-key { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: #8b958d }
+    .strip-key span { display: flex; align-items: center; gap: 6px }
+    .strip-key i { width: 10px; height: 10px; display: block }
+
+    /* ============ BREAKDOWN ============ */
+    .brk { border: 1px solid rgba(255,255,255,.18); margin-bottom: 24px }
+    .brk-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 16px; border-bottom: 1px solid rgba(255,255,255,.1) }
+    .brk-row:last-child { border-bottom: none }
+    .brk-row.total { background: rgba(255,255,255,.06); font-weight: 800 }
+    .brk-row .k { font-size: 14px; color: #d8ded6 }
+    .brk-row .k small { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8b958d; letter-spacing: .06em; margin-top: 2px }
+    .brk-row .v { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 16px; white-space: nowrap }
+    .v.plus { color: #FF9486 }
+    .v.minus { color: #6FDB9A }
+    .v.zero { color: #8b958d }
+
+    /* benchmark bar */
+    .bench { border-left: 4px solid #6FDB9A; padding: 12px 0 12px 14px; margin-bottom: 26px; font-size: 14.5px; color: #d8ded6; line-height: 1.55 }
+    .bench b { color: #6FDB9A }
+    .bench.cold { border-left-color: var(--flag) }
+    .bench.cold b { color: #FF9486 }
+
+    .vc-foot { border-top: 1px solid rgba(255,255,255,.15); margin: 0 -26px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .vc-foot .mark { font-weight: 900; font-size: 17px; letter-spacing: -.03em; text-transform: uppercase }
+    .vc-foot .mark span { color: var(--flag) }
+    .vc-foot .url { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #8b958d }
+
+    .note { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--grey); line-height: 1.65; margin-top: 14px }
+
+    /* EXPLAINER */
+    .explain h2 { font-weight: 900; font-size: clamp(20px, 3vw, 26px); text-transform: uppercase; letter-spacing: -.02em; margin-bottom: 12px; padding-top: 16px; border-top: 3px solid var(--ink) }
+    .explain h3 { font-weight: 800; font-size: 17px; margin: 22px 0 8px }
+    .explain h3::before { content: "— "; color: var(--flag) }
+    .explain p { font-size: 15.5px; margin-bottom: 14px; max-width: 68ch; line-height: 1.65 }
+
+    /* FOOTER */
+    .site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
+    .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
+    .site-footer a:hover { color: #fff }
+
+    /* === CLS / RESPONSIVE SAFETY === */
+    html, body { max-width: 100%; overflow-x: clip; }
+    img, video, iframe { max-width: 100%; }
+    table { max-width: 100%; }
+
+    /* === NAV WRAP SAFETY === */
+    .nav { height: auto; min-height: 68px; padding-top: 6px; padding-bottom: 6px; flex-wrap: wrap; row-gap: 4px; }
+    .nav-links { flex-wrap: wrap; row-gap: 2px; }
+    @media(min-width:761px){ .nav-links a { padding: 7px 10px; font-size: 11.5px; letter-spacing: .03em; } }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="nav">
+      <a href="./index.html" class="logo">Golf<span class="raw">Raw</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="./news.html">Latest News</a>
+        <a href="./ratings.html">Player Ratings</a>
+        <a href="./tournaments.html">Tournaments</a>
+        <a href="./analysis.html">Swing Analysis</a>
+        <a href="./vault.html">The Vault</a>
+        <a href="search.html">🔍 Search</a>
+        <a href="tools.html" class="active">Tools</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="hub-hero">
+    <div class="wrap">
+      <div class="eyebrow">RAWGOLF · TOOLS</div>
+      <h1>The Amateur Meltdown Index</h1>
+      <p>Everybody has one hole that ruins a card. Almost nobody notices it is the three holes <em>after</em> it that
+        actually cost them the round. Put your 18 holes in relative to par and this works out exactly how many shots
+        your temper threw away — and whether you reset faster or slower than a tour pro. Runs entirely in your
+        browser. Nothing uploaded, nothing tracked.</p>
+    </div>
+  </div>
+
+  <div class="tool-body">
+    <div class="wrap">
+
+      <!-- ============ STEP 1: THE CARD ============ -->
+      <section class="panel">
+        <div class="panel-head">
+          <span><span class="step">01 ·</span> Your Card, Relative To Par</span>
+          <button class="btn ghost sm" id="sampleBtn" type="button"
+            style="border-color:#8b958d;color:#fff">Load a sample meltdown</button>
+        </div>
+        <div class="panel-in">
+          <div class="err" id="err" role="alert"></div>
+
+          <div class="card-grid" id="cardGrid"></div>
+
+          <p class="legend">
+            <b>0</b> = par &nbsp;·&nbsp; <b>1</b> = bogey &nbsp;·&nbsp; <b>2</b> = double &nbsp;·&nbsp;
+            <b>3</b> = triple &nbsp;·&nbsp; <b>-1</b> = birdie.<br>
+            Leave a hole blank and it is left out of the analysis. You need at least 6 holes for the maths to mean
+            anything.
+          </p>
+
+          <div class="card-tools">
+            <span class="tally" id="tally">Holes entered: <b>0</b> &nbsp;·&nbsp; To par: <b>E</b></span>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn ghost sm" id="clearBtn" type="button">Clear card</button>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn" id="runBtn" type="button">Run the meltdown index →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ STEP 2: THE VERDICT ============ -->
+      <div class="out-wrap" id="outWrap">
+        <div class="verdict-card" id="verdictCard">
+          <div class="vc-eyebrow">The Tilt Meter · Amateur Meltdown Index</div>
+          <h2 class="vc-head" id="vHead">—</h2>
+          <p class="vc-sub" id="vSub"></p>
+
+          <div class="dial">
+            <div class="n" id="bigN">0<span class="of">/10</span></div>
+            <span class="tier" id="tier"></span>
+            <div class="meter"><i id="meterFill" style="width:0%"></i></div>
+          </div>
+
+          <div class="strip-wrap">
+            <span class="strip-lab" id="stripLab">The round, hole by hole</span>
+            <div class="strip" id="strip"></div>
+            <div class="strip-key">
+              <span><i style="background:#6FDB9A"></i> Par or better</span>
+              <span><i style="background:#4a5a4f"></i> Bogey</span>
+              <span><i style="background:#FF9486"></i> Double+</span>
+              <span><i style="background:#E03E2D"></i> Blow-up</span>
+              <span><i style="background:#FFC7BF"></i> Tilt window</span>
+            </div>
+          </div>
+
+          <div class="brk" id="brk"></div>
+
+          <div class="bench" id="bench"></div>
+
+          <div class="vc-foot">
+            <span class="mark">Golf<span>Raw</span></span>
+            <span class="url">golfraw.com · the tilt meter</span>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn" id="copyBtn" type="button">Copy for group chat</button>
+          <button class="btn ghost" id="againBtn" type="button">Edit the card</button>
+        </div>
+
+        <div class="act-bar">
+          <span class="act-lab">Take it with you</span>
+          <div class="act-btns">
+            <button class="btn sm" id="pngBtn" type="button">Download card (.png)</button>
+            <button class="btn ghost sm" id="shareBtn" type="button">Share result</button>
+          </div>
+        </div>
+
+        <p class="note" id="method"></p>
+      </div>
+
+      <!-- Future AdSense Slot -->
+      <div class="ad-zone" aria-hidden="true">
+        <span>Advertisement</span>
+      </div>
+      <!-- /Future AdSense Slot -->
+
+      <!-- ============ EXPLAINER ============ -->
+      <section class="panel explain">
+        <div class="panel-head"><span><span class="step">02 ·</span> What The Number Actually Means</span></div>
+        <div class="panel-in">
+          <h2>Tilt is a measurable thing, not a personality trait</h2>
+          <p>Tilt is borrowed from poker. It describes playing worse because you are rattled, rather than because
+            the game in front of you got harder. Golf is the most tiltable sport ever invented: there is a five
+            minute gap between the disaster and your next chance to do anything about it, and nobody to blame.</p>
+
+          <h3>The baseline</h3>
+          <p>Your baseline is the <b>median</b> hole of your round with your single worst hole removed. Median rather
+            than average, because one nine on a par four drags an average so far off that every other hole starts to
+            look like good golf. Removing the blow-up matters too — otherwise the disaster you are measuring quietly
+            raises the bar you are being measured against, and everyone looks calm.</p>
+
+          <h3>The tilt window</h3>
+          <p>The three holes immediately after your worst hole. If you were a robot, those three would cost you three
+            times your baseline. Anything above that is the meltdown cost: shots you dropped on holes that were no
+            harder than the ones you had been handling all day.</p>
+
+          <h3>Bounce-back</h3>
+          <p>The tour stat. What share of your double bogeys or worse were followed straight away by a par or better?
+            Tour professionals live around <b>20%</b>. Club golfers are nearer <b>10%</b>. It is the cleanest single
+            measure of whether a bad hole stays one bad hole.</p>
+
+          <h3>The honest limitation</h3>
+          <p>This tool does not know your course. A blow-up on the 7th followed by three holes into a stiff breeze
+            will read as tilt when it was really the wind, and a run of short par fours after your disaster will
+            flatter you. Over a single card it is a conversation starter. Over ten cards, the pattern is real —
+            which is why every run you do is saved to your dashboard.</p>
+        </div>
+      </section>
+
+      <!-- Future AdSense Slot -->
+      <div class="ad-zone" aria-hidden="true">
+        <span>Advertisement</span>
+      </div>
+      <!-- /Future AdSense Slot -->
+
+      <section class="panel">
+        <div class="panel-head"><span><span class="step">03 ·</span> The Rest Of The Suite</span></div>
+        <div class="panel-in">
+          <p style="font-size:15.5px;margin-bottom:14px;max-width:68ch">Found your leak? The
+            <a href="tools-round-autopsy.html" style="border-bottom:2px solid var(--flag)">Round Autopsy</a> tells you
+            which part of your game actually bled the shots, the
+            <a href="tools-handicap-detector.html" style="border-bottom:2px solid var(--flag)">Handicap Lie
+              Detector</a> works out what you really play off, and the
+            <a href="tools-tee-box-check.html" style="border-bottom:2px solid var(--flag)">Tee Box Reality Check</a>
+            asks whether you have been making the game harder than it needs to be all along.</p>
+          <p style="font-size:15.5px;max-width:68ch"><a href="tools.html"
+              style="border-bottom:2px solid var(--flag)">See all six tools and your saved history →</a></p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 RAWGOLF.COM — ALL RATINGS FINAL</span>
+      <nav aria-label="Footer navigation" style="display:flex;gap:20px">
+        <a href="./manifesto.html">MANIFESTO</a>
+        <a href="./ratings-manual.html">HOW RATINGS WORK</a>
+        <a href="./corrections.html">CORRECTIONS</a>
+        <a href="./privacy.html">PRIVACY</a>
+        <a href="./index.html">← FRONT PAGE</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
+  <script src="./rawgolf-tools.js"></script>
+
+  <script>
+    /* ==================== NAV ==================== */
+    (function () {
+      var b = document.getElementById('burger'), l = document.getElementById('navLinks');
+      if (b && l) {
+        b.addEventListener('click', function () {
+          var o = l.classList.toggle('open');
+          b.setAttribute('aria-expanded', o);
+        });
+        l.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () { l.classList.remove('open'); });
+        });
+      }
+    })();
+
+    var $ = function (id) { return document.getElementById(id); };
+
+    /* ==================== ENGINE CONSTANTS ==================== */
+    var HOLES = 18;
+    var COST_SCALE = 1.85;     /* extra shots per window hole that equals maximum meltdown */
+    var ICE_RECOVERY = 0.25;   /* bounce-back rate at which tilt contribution reaches zero */
+    var W_MELT = 5.5;          /* weight: the 3 holes after the blow-up */
+    var W_REC = 4.5;           /* weight: bounce-back across the whole round */
+    var PRO_RECOVERY = 0.20;
+    var AM_RECOVERY = 0.10;
+    var MIN_HOLES = 6;
+    var LS_CARD = 'golfraw_tilt_card';
+
+    function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
+    function r1(n) { return Math.round(n * 10) / 10; }
+    function sign(n) { return (n > 0 ? '+' : '') + r1(n); }
+
+    function median(arr) {
+      if (!arr.length) return 0;
+      var a = arr.slice().sort(function (x, y) { return x - y; });
+      var m = Math.floor(a.length / 2);
+      return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2;
+    }
+
+    function label(v) {
+      if (v <= -2) return 'eagle';
+      if (v === -1) return 'birdie';
+      if (v === 0) return 'par';
+      if (v === 1) return 'bogey';
+      if (v === 2) return 'double';
+      if (v === 3) return 'triple';
+      if (v === 4) return 'quadruple';
+      return '+' + v;
+    }
+
+    /* ==================== THE MELTDOWN ENGINE ==================== */
+    /* holes: [{h:holeNumber, v:strokesOverPar}] for ENTERED holes only */
+    function analyse(holes) {
+      var n = holes.length, i;
+      if (n < MIN_HOLES) return null;
+
+      /* the blow-up hole: worst score relative to par, earliest on a tie */
+      var wi = 0;
+      for (i = 1; i < n; i++) if (holes[i].v > holes[wi].v) wi = i;
+      var blow = holes[wi];
+
+      /* baseline: median over-par EXCLUDING that single worst hole */
+      var rest = [];
+      for (i = 0; i < n; i++) if (i !== wi) rest.push(holes[i].v);
+      var baseline = median(rest);
+
+      /* the tilt window: the 3 holes immediately after the blow-up */
+      var win = holes.slice(wi + 1, wi + 4);
+      var winSum = 0;
+      for (i = 0; i < win.length; i++) winSum += win[i].v;
+      var expected = baseline * win.length;
+      var cost = win.length ? winSum - expected : 0;   /* negative means you bounced back */
+      var costPerHole = win.length ? cost / win.length : 0;
+
+      /* bounce-back: doubles-or-worse followed immediately by a par or better */
+      var opp = 0, rec = 0;
+      for (i = 0; i < n - 1; i++) {
+        if (holes[i].v >= 2) { opp++; if (holes[i + 1].v <= 0) rec++; }
+      }
+      var recRate = opp ? rec / opp : null;
+
+      /* the index */
+      var meltComp = clamp(costPerHole / COST_SCALE, 0, 1);
+      var recComp = recRate === null ? null : clamp(1 - recRate / ICE_RECOVERY, 0, 1);
+      var index = recComp === null
+        ? clamp(meltComp * 6, 0, 10)                   /* nothing to bounce back from */
+        : clamp(meltComp * W_MELT + recComp * W_REC, 0, 10);
+
+      var total = 0;
+      for (i = 0; i < n; i++) total += holes[i].v;
+
+      return {
+        holes: holes, n: n, total: total,
+        blow: blow, blowIdx: wi,
+        baseline: baseline,
+        win: win, winSum: winSum, cost: cost, costPerHole: costPerHole,
+        hasWindow: win.length > 0,
+        opp: opp, rec: rec, recRate: recRate,
+        index: r1(index)
+      };
+    }
+
+    /* ==================== VERDICT COPY ==================== */
+    function verdictFor(a) {
+      var idx = a.index;
+      var pct = a.recRate === null ? null : Math.round(a.recRate * 100);
+      var cost = r1(a.cost);
+      var abs = r1(Math.abs(cost));
+      var shots = abs === 1 ? 'shot' : 'shots';
+      var bigHole = a.blow.v >= 2;
+
+      /* `punch` is the short line the PNG share card uses. The canvas renderer wraps to
+         4 lines and clips, so the on-page `sub` is far too long to survive intact —
+         and the punchline is the whole reason anyone shares one of these. */
+      if (!a.hasWindow) {
+        return {
+          tier: 'NO TILT WINDOW',
+          head: 'Your blow-up was the last hole.',
+          punch: 'Your blow-up came too late to do any damage.',
+          sub: 'Your ' + label(a.blow.v) + ' came on hole ' + a.blow.h + ', so there were no holes left for it to ' +
+            'poison. ' + (pct === null
+              ? 'Nothing else in the round to judge you on either.'
+              : 'Across the rest of the round you bounced back on <b>' + pct + '%</b> of your bad holes.')
+        };
+      }
+      if (idx >= 7.5) {
+        return {
+          tier: 'CERTIFIED TILTER',
+          head: 'Certified tilter.',
+          punch: 'You did not have a bad course. You had a bad mood.',
+          sub: 'Your ' + label(a.blow.v) + ' on hole ' + a.blow.h + ' cost you <b>' + abs + ' extra ' + shots +
+            '</b> over the next three holes. You did not have a bad course, you had a bad mood.'
+        };
+      }
+      if (idx >= 5.5) {
+        return {
+          tier: 'SHORT FUSE',
+          head: 'Short fuse.',
+          punch: 'One bad hole. Then three more paying for it.',
+          sub: 'The ' + label(a.blow.v) + ' on hole ' + a.blow.h + ' bled into the holes after it — <b>' + abs +
+            ' extra ' + shots + '</b> you did not need to drop. You do reset, just three holes too late.'
+        };
+      }
+      if (idx >= 3.5) {
+        return {
+          tier: 'MILDLY RATTLED',
+          head: 'Mildly rattled.',
+          punch: 'A wobble, not a meltdown.',
+          sub: 'Your ' + label(a.blow.v) + ' on hole ' + a.blow.h + ' knocked you sideways for a hole or two' +
+            (pct === null ? '' : ', and you bounced back on <b>' + pct + '%</b> of your bad holes') +
+            '. Not a meltdown. A wobble.'
+        };
+      }
+      return {
+        tier: 'ICE IN THE VEINS',
+        head: 'Ice in the veins.',
+        punch: pct === null
+          ? 'Nothing rattled you all day.'
+          : 'You bounce back better than most tour pros.',
+        sub: (pct === null
+          ? 'You never made a double bogey, so there was nothing to tilt about.'
+          : 'Recovery rate <b>' + pct + '%</b>. You bounce back better than most tour pros.') +
+          ' Your ' + (bigHole ? label(a.blow.v) : 'worst hole') + ' on ' + a.blow.h +
+          ' stayed exactly where it happened.'
+      };
+    }
+
+    /* ==================== CARD UI ==================== */
+    (function buildCard() {
+      var html = '';
+      for (var h = 1; h <= HOLES; h++) {
+        html += '<div class="hole" id="hole' + h + '">' +
+          '<label for="h' + h + '">Hole ' + h + '</label>' +
+          '<input type="number" id="h' + h + '" class="hv" data-h="' + h + '" min="-4" max="12" step="1" ' +
+          'inputmode="numeric" placeholder="–" aria-label="Hole ' + h + ' strokes relative to par"></div>';
+      }
+      $('cardGrid').innerHTML = html;
+    })();
+
+    function readCard() {
+      var out = [];
+      for (var h = 1; h <= HOLES; h++) {
+        var raw = $('h' + h).value.trim();
+        if (raw === '') continue;
+        var v = parseInt(raw, 10);
+        if (isNaN(v)) continue;
+        out.push({ h: h, v: v });
+      }
+      return out;
+    }
+
+    function updateTally() {
+      var holes = readCard(), total = 0;
+      for (var i = 0; i < holes.length; i++) total += holes[i].v;
+      var cls = total > 0 ? 'over' : total < 0 ? 'under' : '';
+      $('tally').innerHTML = 'Holes entered: <b>' + holes.length + '</b> &nbsp;·&nbsp; To par: <b class="' +
+        cls + '">' + (total === 0 ? 'E' : sign(total)) + '</b>';
+    }
+
+    function persist() {
+      try {
+        var v = [];
+        for (var h = 1; h <= HOLES; h++) v.push($('h' + h).value);
+        localStorage.setItem(LS_CARD, JSON.stringify(v));
+      } catch (e) { /* private mode — the tool still works, it just will not remember */ }
+    }
+
+    function restore() {
+      try {
+        var raw = localStorage.getItem(LS_CARD);
+        if (!raw) return;
+        var v = JSON.parse(raw);
+        if (Object.prototype.toString.call(v) !== '[object Array]') return;
+        for (var h = 1; h <= HOLES && h <= v.length; h++) $('h' + h).value = v[h - 1] || '';
+      } catch (e) { /* ignore a corrupt card rather than blocking the tool */ }
+    }
+
+    function err(m) {
+      var e = $('err');
+      if (!m) { e.classList.remove('show'); e.textContent = ''; return; }
+      e.textContent = m; e.classList.add('show');
+      e.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    /* ==================== RENDER ==================== */
+    var last = null;
+
+    function run() {
+      var holes = readCard();
+      if (holes.length < MIN_HOLES) {
+        return err('Enter at least ' + MIN_HOLES + ' holes — below that there is no pattern to read, just noise.');
+      }
+      for (var i = 0; i < holes.length; i++) {
+        if (holes[i].v < -4 || holes[i].v > 12) {
+          return err('Hole ' + holes[i].h + ' is outside -4 to +12. Enter the score relative to par, not the score.');
+        }
+      }
+      err('');
+
+      var a = analyse(holes);
+      if (!a) return err('Something went wrong reading that card. Try clearing it and entering the holes again.');
+      last = a;
+      var v = verdictFor(a);
+      var cool = a.index < 3.5;
+
+      $('vHead').textContent = v.head;
+      $('vSub').innerHTML = v.sub;
+
+      $('bigN').innerHTML = r1(a.index) + '<span class="of">/10</span>';
+      $('bigN').className = 'n' + (cool ? ' cool' : '');
+      $('tier').textContent = v.tier;
+      var fill = $('meterFill');
+      fill.style.width = (a.index * 10) + '%';
+      fill.className = cool ? 'cool' : '';
+
+      /* ---- the hole strip ---- */
+      var byHole = {};
+      for (i = 0; i < a.holes.length; i++) byHole[a.holes[i].h] = a.holes[i].v;
+      var winHoles = {};
+      for (i = 0; i < a.win.length; i++) winHoles[a.win[i].h] = true;
+
+      var maxV = 1;
+      for (i = 0; i < a.holes.length; i++) maxV = Math.max(maxV, a.holes[i].v);
+
+      var strip = '';
+      for (var h = 1; h <= HOLES; h++) {
+        var has = byHole.hasOwnProperty(h);
+        var val = has ? byHole[h] : null;
+        var cls = 'col';
+        if (!has) cls += ' empty';
+        else if (h === a.blow.h) cls += ' blow';
+        else if (winHoles[h]) cls += ' win';
+        else if (val <= 0) cls += ' good';
+        else if (val >= 2) cls += ' bad';
+        /* height is relative to the worst hole; par or better still shows a floor stub */
+        var pct = has ? clamp((Math.max(val, 0) / maxV) * 100, 6, 100) : 6;
+        strip += '<div class="' + cls + '"><div class="bar" style="height:' + pct + '%"></div>' +
+          '<div class="h">' + h + '</div></div>';
+      }
+      $('strip').innerHTML = strip;
+      $('stripLab').textContent = a.hasWindow
+        ? 'The round, hole by hole — blow-up on ' + a.blow.h + ', tilt window ' +
+          a.win.map(function (w) { return w.h; }).join(', ')
+        : 'The round, hole by hole — blow-up on ' + a.blow.h + ' (no holes left after it)';
+
+      /* ---- breakdown ---- */
+      var costCls = a.cost > 0 ? 'plus' : a.cost < 0 ? 'minus' : 'zero';
+      var rows = '';
+      rows += brkRow('The blow-up hole',
+        'Hole ' + a.blow.h + ', your worst of the round',
+        label(a.blow.v) + ' (' + sign(a.blow.v) + ')', 'plus');
+      rows += brkRow('Your baseline hole',
+        'Median of the other ' + (a.n - 1) + ' holes',
+        sign(a.baseline) + ' a hole', 'zero');
+      if (a.hasWindow) {
+        rows += brkRow('The tilt window',
+          'Hole' + (a.win.length > 1 ? 's ' : ' ') + a.win.map(function (w) { return w.h; }).join(', ') +
+          ' — ' + a.win.map(function (w) { return sign(w.v); }).join(', '),
+          sign(a.winSum) + ' total', a.winSum > 0 ? 'plus' : 'zero');
+        rows += brkRow('Meltdown cost',
+          'Against a baseline round you would have shot ' + sign(a.baseline * a.win.length),
+          sign(a.cost) + ' ' + (Math.abs(r1(a.cost)) === 1 ? 'shot' : 'shots'), costCls);
+      } else {
+        rows += brkRow('The tilt window', 'No holes were played after your blow-up', 'n/a', 'zero');
+      }
+      rows += brkRow('Bounce-back rate',
+        a.opp ? a.rec + ' of ' + a.opp + ' doubles-or-worse followed by par or better'
+              : 'No double bogeys — nothing to bounce back from',
+        a.recRate === null ? 'n/a' : Math.round(a.recRate * 100) + '%',
+        a.recRate === null ? 'zero' : (a.recRate >= PRO_RECOVERY ? 'minus' : 'plus'));
+      rows += '<div class="brk-row total"><div class="k">Tilt Index</div><div class="v ' +
+        (cool ? 'minus' : 'plus') + '">' + r1(a.index) + ' / 10</div></div>';
+      $('brk').innerHTML = rows;
+
+      /* ---- benchmark line ---- */
+      if (a.recRate === null) {
+        $('bench').className = 'bench';
+        $('bench').innerHTML = 'You did not make a single double bogey or worse, so there was no bounce-back to ' +
+          'measure. Tour pros recover from about <b>20%</b> of theirs; club golfers manage roughly <b>10%</b>.';
+      } else {
+        var pct2 = Math.round(a.recRate * 100);
+        var beatsPro = a.recRate >= PRO_RECOVERY;
+        $('bench').className = 'bench' + (beatsPro ? '' : ' cold');
+        $('bench').innerHTML = 'You bounced back on <b>' + pct2 + '%</b> of your bad holes. Tour professionals ' +
+          'sit around <b>' + Math.round(PRO_RECOVERY * 100) + '%</b>, club amateurs nearer <b>' +
+          Math.round(AM_RECOVERY * 100) + '%</b>. ' +
+          (beatsPro
+            ? 'You reset faster than the people who do this for a living.'
+            : (a.recRate >= AM_RECOVERY
+              ? 'You are a normal, mortal amateur. The gap to tour level is entirely in the next tee shot.'
+              : 'Every bad hole is currently costing you two.'));
+      }
+
+      $('method').textContent = 'Baseline is the median of your ' + (a.n - 1) + ' non-blow-up holes (' +
+        sign(a.baseline) + ' a hole). The tilt window is the ' + a.win.length + ' hole' +
+        (a.win.length === 1 ? '' : 's') + ' immediately after hole ' + a.blow.h +
+        '. Meltdown cost is that window measured against your own baseline, not against par. The Index weights ' +
+        'meltdown cost ' + Math.round(W_MELT * 10) + '% and bounce-back ' + Math.round(W_REC * 10) +
+        '%, scaled to 10. Judged on the ' + a.n + ' holes you entered.';
+
+      $('outWrap').classList.add('show');
+      $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      persist();
+      if (window.RawGolf) RawGolf.save(cardData());
+    }
+
+    function brkRow(k, sub, v, cls) {
+      return '<div class="brk-row"><div class="k">' + k + '<small>' + sub + '</small></div>' +
+        '<div class="v ' + cls + '">' + v + '</div></div>';
+    }
+
+    /* ==================== SHARED ENGINE: history · PNG · Web Share ==================== */
+    function cardData() {
+      var a = last, v = verdictFor(a);
+      var m = [
+        { k: 'Tilt Index', v: r1(a.index) + '/10' },
+        { k: 'Blow-up', v: 'Hole ' + a.blow.h + ' · ' + label(a.blow.v) },
+        { k: 'Baseline', v: sign(a.baseline) + ' a hole' }
+      ];
+      if (a.hasWindow) m.push({ k: 'Meltdown cost', v: sign(a.cost) + ' shots' });
+      m.push({ k: 'Bounce-back', v: a.recRate === null ? 'n/a' : Math.round(a.recRate * 100) + '%' });
+      m.push({ k: 'Round', v: (a.total === 0 ? 'E' : sign(a.total)) + ' over ' + a.n + ' holes' });
+
+      return {
+        tool: 'The Tilt Meter',
+        slug: 'tools-tilt-meter',
+        eyebrow: 'The Amateur Meltdown Index',
+        verdict: v.tier + ' — ' + v.sub.replace(/<[^>]+>/g, ''),
+        big: r1(a.index) + '/10',
+        bigLabel: 'Tilt index · ' + v.tier,
+        filename: 'tilt-meter',
+        metrics: m
+      };
+    }
+
+    function doPng() {
+      if (!last) return err('Run the meltdown index first.');
+      var c = cardData();
+      RawGolf.downloadCard({
+        eyebrow: c.eyebrow, headline: verdictFor(last).punch,
+        big: c.big, bigLabel: c.bigLabel, lines: c.metrics, filename: c.filename
+      });
+    }
+
+    function doShare() {
+      if (!last) return err('Run the meltdown index first.');
+      var a = last, c = cardData();
+      var txt = 'Tilt Index ' + r1(a.index) + '/10 — ' + verdictFor(a).tier + '. ' +
+        (a.hasWindow && a.cost > 0
+          ? 'My ' + label(a.blow.v) + ' on hole ' + a.blow.h + ' cost me ' + r1(a.cost) +
+            ' extra shots over the next three holes.'
+          : 'Blow-up on hole ' + a.blow.h + ' and it stayed there.');
+      RawGolf.shareResult({ title: 'The Tilt Meter', text: txt, url: 'https://www.golfraw.com/' + c.slug });
+    }
+
+    /* ==================== COPY FOR GROUP CHAT ==================== */
+    function copySummary() {
+      if (!last) return err('Run the meltdown index first.');
+      var a = last, v = verdictFor(a);
+      var lines = ['THE TILT METER — AMATEUR MELTDOWN INDEX', '', 'TILT INDEX: ' + r1(a.index) + '/10 — ' + v.tier, ''];
+      lines.push('Blow-up hole:   ' + a.blow.h + ' (' + label(a.blow.v) + ')');
+      lines.push('Baseline hole:  ' + sign(a.baseline));
+      if (a.hasWindow) {
+        lines.push('Tilt window:    holes ' + a.win.map(function (w) { return w.h; }).join(', '));
+        lines.push('Meltdown cost:  ' + sign(a.cost) + ' shots');
+      }
+      lines.push('Bounce-back:    ' + (a.recRate === null ? 'n/a' : Math.round(a.recRate * 100) + '%') +
+        '  (pros ~20%, amateurs ~10%)');
+      lines.push('Round:          ' + (a.total === 0 ? 'E' : sign(a.total)) + ' over ' + a.n + ' holes');
+      lines.push('', 'Work out yours: golfraw.com/tools-tilt-meter');
+      var txt = lines.join('\n');
+
+      var done = function () {
+        var b = $('copyBtn'), old = b.textContent;
+        b.textContent = 'Copied ✓';
+        setTimeout(function () { b.textContent = old; }, 1900);
+      };
+      if (window.RawGolf) RawGolf.copyText(txt).then(done, function () { err('Could not copy on this device.'); });
+    }
+
+    /* ==================== SAMPLE ROUND ==================== */
+    function loadSample() {
+      /* a classic amateur meltdown: cruising, triple on 7, three holes of damage, then settles */
+      var s = [0, 1, 0, 0, 1, 0, 3, 2, 2, 1, 1, 0, 1, 0, 1, 1, 0, 1];
+      for (var h = 1; h <= HOLES; h++) $('h' + h).value = s[h - 1];
+      updateTally(); persist(); err('');
+      $('cardGrid').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function clearCard() {
+      for (var h = 1; h <= HOLES; h++) $('h' + h).value = '';
+      updateTally(); persist(); err('');
+      $('outWrap').classList.remove('show');
+      last = null;
+    }
+
+    /* ==================== WIRE UP ==================== */
+    $('runBtn').addEventListener('click', run);
+    $('copyBtn').addEventListener('click', copySummary);
+    $('pngBtn').addEventListener('click', doPng);
+    $('shareBtn').addEventListener('click', doShare);
+    $('sampleBtn').addEventListener('click', loadSample);
+    $('clearBtn').addEventListener('click', clearCard);
+    $('againBtn').addEventListener('click', function () {
+      $('outWrap').classList.remove('show');
+      $('cardGrid').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      $('h1').focus();
+    });
+
+    $('cardGrid').addEventListener('input', function () { updateTally(); persist(); });
+
+    /* Enter moves to the next hole — the whole card can be filled without lifting a thumb */
+    $('cardGrid').addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      var h = parseInt(e.target.dataset.h, 10);
+      if (h && h < HOLES) $('h' + (h + 1)).focus();
+      else run();
+    });
+
+    restore();
+    updateTally();
+  </script>
+</body>
+
+</html>
