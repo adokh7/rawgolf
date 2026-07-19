@@ -16,7 +16,7 @@
   <!-- ============ PRIMARY SEO ============ -->
   <title>Free Golf Tools: Betting, Handicap, Wind &amp; Round Analysis | Golf Raw</title>
   <meta name="description"
-    content="Seven free golf calculators that run entirely in your browser. Settle bets, diagnose your round, find your correct tees, calculate your real handicap index, measure how badly you tilt and audit the dead wood in your bag. No signup, no tracking.">
+    content="Eight free golf calculators that run entirely in your browser. Settle bets, diagnose your round, find your correct tees, calculate your real handicap index, measure how badly you tilt, audit the dead wood in your bag and find out what you actually shot. No signup, no tracking.">
   <link rel="canonical" href="https://www.golfraw.com/tools">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Golf Raw Staff">
@@ -24,14 +24,14 @@
   <!-- ============ OPEN GRAPH ============ -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RawGolf">
-  <meta property="og:title" content="Raw Golf Tools Suite — Seven Free Golf Calculators">
+  <meta property="og:title" content="Raw Golf Tools Suite — Eight Free Golf Calculators">
   <meta property="og:description"
     content="Settle bets, diagnose your round, find your correct tees, and calculate your real handicap. All free, all running locally in your browser.">
   <meta property="og:url" content="https://www.golfraw.com/tools">
 
   <!-- ============ TWITTER CARD ============ -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Raw Golf Tools Suite — Seven Free Golf Calculators">
+  <meta name="twitter:title" content="Raw Golf Tools Suite — Eight Free Golf Calculators">
   <meta name="twitter:description"
     content="Settle bets, diagnose your round, find your correct tees, calculate your real handicap. Free, no signup.">
 
@@ -42,7 +42,7 @@
   "@type": "CollectionPage",
   "name": "Raw Golf Tools Suite",
   "url": "https://www.golfraw.com/tools",
-  "description": "A suite of seven free client-side golf calculators covering betting settlement, round diagnostics, tee box selection, handicap index calculation, playing-conditions distance adjustment, on-course tilt measurement and equipment gap analysis.",
+  "description": "A suite of eight free client-side golf calculators covering betting settlement, round diagnostics, tee box selection, handicap index calculation, playing-conditions distance adjustment, on-course tilt measurement, equipment gap analysis and conceded-putt score correction.",
   "publisher": {
     "@type": "Organization",
     "name": "RawGolf",
@@ -121,6 +121,16 @@
           "description": "Golf equipment diagnostic that scores each club on usage and confidence, maps distance gaps and overlaps across the set, and recommends which clubs to remove or replace.",
           "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
         }
+      },
+      {
+        "@type": "ListItem", "position": 8,
+        "item": {
+          "@type": "WebApplication", "name": "The Gimme Audit",
+          "url": "https://www.golfraw.com/tools-gimme-audit",
+          "applicationCategory": "SportsApplication",
+          "description": "Applies putting make rates by distance and handicap to conceded putts, producing the score a golfer would have shot had they holed out every hole.",
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+        }
       }
     ]
   }
@@ -197,37 +207,48 @@
     .sec-head h2 .idx { font-family: 'IBM Plex Mono', monospace; font-size: .5em; color: var(--flag); vertical-align: top; margin-right: 8px; font-weight: 600 }
     .sec-head .hint { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--grey) }
 
-    /* 2x2 TOOL GRID */
-    .tool-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 2px solid var(--ink); margin-bottom: 20px }
+    /* ===== BALANCED 8-TOOL GRID — 4 across, 2 down ===== */
+    .tool-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 2px solid var(--ink); margin-bottom: 20px }
     .t-card {
       display: flex; flex-direction: column; background: var(--ink); color: #fff;
-      padding: 34px 30px 30px; border-right: 2px solid rgba(255,255,255,.16);
+      padding: 26px 22px 24px;
+      border-right: 2px solid rgba(255,255,255,.16);
+      border-bottom: 2px solid rgba(255,255,255,.16);
       transition: background .18s ease;
     }
-    /* Seven tools: the newest spans the full width, the other six form a 3x2 beneath.
-       The featured card occupies position 1, which flips the column parity — the left
-       column is then the EVEN children (2,4,6) and the right column the odd (3,5,7). */
-    .t-card { border-bottom: 2px solid rgba(255,255,255,.16) }
-    .t-card.featured { grid-column: 1 / -1 }
-    .t-card:nth-child(odd) { border-right: none }
-    .t-card:nth-last-child(-n+2) { border-bottom: none }
+    /* Rules are positional, so the grid stays sealed at any multiple of the column count */
+    .t-card:nth-child(4n) { border-right: none }
+    .t-card:nth-last-child(-n+4) { border-bottom: none }
     .t-card:hover { background: #1a221b }
     .t-card:hover .t-cta { background: var(--flag); border-color: var(--flag); color: #fff }
     .t-card:hover h3 { color: #fff }
 
-    .t-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 14px }
-    .t-card h3 { font-weight: 900; font-size: clamp(24px, 3.4vw, 34px); line-height: 1; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 8px; transition: color .18s }
-    .t-tagline { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: #6FDB9A; margin-bottom: 14px }
-    .t-card p { font-size: 15px; color: #9CC9AE; line-height: 1.6; flex: 1; margin-bottom: 24px }
+    .t-num { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 11px }
+    .t-card h3 { font-weight: 900; font-size: clamp(18px, 1.8vw, 22px); line-height: 1.05; letter-spacing: -.02em; text-transform: uppercase; margin-bottom: 7px; transition: color .18s }
+    .t-tagline { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: #6FDB9A; margin-bottom: 12px; line-height: 1.5 }
+    .t-card p { font-size: 13.5px; color: #9CC9AE; line-height: 1.55; flex: 1; margin-bottom: 20px }
     .t-cta {
-      align-self: flex-start; font-family: 'IBM Plex Mono', monospace; font-size: 11px;
-      font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-      padding: 11px 18px; border: 2px solid #fff; color: #fff; background: transparent;
+      align-self: flex-start; font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+      font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: 10px 14px; border: 2px solid #fff; color: #fff; background: transparent;
       transition: background .18s, border-color .18s, color .18s;
     }
-    @media(max-width:760px) {
+
+    /* TABLET — 2 across. Reset the 4-column border rules, then reseal for 2. */
+    @media(max-width:1000px) {
+      .tool-grid { grid-template-columns: repeat(2, 1fr) }
+      .t-card:nth-child(4n) { border-right: 2px solid rgba(255,255,255,.16) }
+      .t-card:nth-child(2n) { border-right: none }
+      .t-card:nth-last-child(-n+4) { border-bottom: 2px solid rgba(255,255,255,.16) }
+      .t-card:nth-last-child(-n+2) { border-bottom: none }
+      .t-card h3 { font-size: clamp(20px, 3vw, 26px) }
+      .t-card p { font-size: 14.5px }
+      .t-card { padding: 30px 24px 26px }
+    }
+
+    /* MOBILE — single column; every card keeps its divider except the last */
+    @media(max-width:620px) {
       .tool-grid { grid-template-columns: 1fr }
-      /* single column — every card needs its divider back except the final one */
       .t-card { border-right: none !important; border-bottom: 2px solid rgba(255,255,255,.16) !important; padding: 28px 22px 26px }
       .t-card:last-child { border-bottom: none !important }
     }
@@ -342,12 +363,12 @@
     <div class="wrap">
       <div class="eyebrow">RAWGOLF · UTILITIES</div>
       <h1>Raw Golf Tools Suite</h1>
-      <p>Seven calculators that do the jobs golf software charges you for. Every one of them runs
+      <p>Eight calculators that do the jobs golf software charges you for. Every one of them runs
         <b>100% inside your browser</b> — no account, no signup, no round data uploaded anywhere, nothing tracked.
         Close the tab and it is gone.</p>
 
       <div class="facts-strip">
-        <div><span class="n">7</span><span class="l">Tools live</span></div>
+        <div><span class="n">8</span><span class="l">Tools live</span></div>
         <div><span class="n">$0</span><span class="l">Cost, forever</span></div>
         <div><span class="n">0</span><span class="l">Accounts needed</span></div>
         <div><span class="n">0</span><span class="l">Data uploaded</span></div>
@@ -366,34 +387,39 @@
       <!-- ============ TOOL GRID ============ -->
       <div class="tool-grid">
 
-        <a href="tools-bag-audit.html" class="t-card featured">
-          <div class="t-num">Tool 07 · Newest</div>
+        <a href="tools-gimme-audit.html" class="t-card">
+          <div class="t-num">Tool 08 · Newest</div>
+          <h3>The Gimme Audit</h3>
+          <div class="t-tagline">Delusion · The Honest Card</div>
+          <p>You have never holed out a round in your life. Real make rates by distance and handicap turn the putts
+            you picked up into the score you actually shot.</p>
+          <span class="t-cta">What did I really shoot? →</span>
+        </a>
+
+        <a href="tools-bag-audit.html" class="t-card">
+          <div class="t-num">Tool 07</div>
           <h3>The Bag Audit</h3>
-          <div class="t-tagline">Equipment · Dead Wood Report</div>
-          <p>You get fourteen slots and the rules do not care what any of them cost. Score every club on how often
-            you use it and how much you trust it, map the gaps and overlaps across the set, and find out which
-            clubs are passengers, which two are quietly doing the same job, and which distance you have no club
-            for at all.</p>
+          <div class="t-tagline">Equipment · Dead Wood</div>
+          <p>Fourteen slots and some of them are luggage. Finds the passengers, the two clubs doing one job, and the
+            distance you have no club for.</p>
           <span class="t-cta">Find the dead wood →</span>
         </a>
 
         <a href="tools-tilt-meter.html" class="t-card">
           <div class="t-num">Tool 06</div>
           <h3>The Tilt Meter</h3>
-          <div class="t-tagline">Psychological · Amateur Meltdown Index</div>
-          <p>Everyone remembers the triple. Almost nobody notices it was the three holes after it that actually cost
-            them the round. Enter 18 holes relative to par and this works out exactly how many shots your temper
-            threw away, then measures your bounce-back against a tour pro's.</p>
+          <div class="t-tagline">Psychological · Meltdown Index</div>
+          <p>Everyone remembers the triple. Nobody notices the three holes after it. Works out exactly what your
+            temper threw away.</p>
           <span class="t-cta">How badly do I tilt? →</span>
         </a>
 
         <a href="tools-plays-like.html" class="t-card">
           <div class="t-num">Tool 05</div>
-          <h3>The "Plays Like" Calculator</h3>
-          <div class="t-tagline">Environmental · Use it on the course</div>
-          <p>The only tool here you open mid-round. Feed it the yardage, temperature, wind, altitude and slope and
-            it returns the distance your shot is genuinely playing, plus the club that number demands. It also
-            settles the humid-air argument permanently: heavy air is a feeling, not a force.</p>
+          <h3>The Plays Like Calculator</h3>
+          <div class="t-tagline">Environmental · On the course</div>
+          <p>Wind, cold, altitude and slope in. The distance your shot is genuinely playing out, plus the club that
+            number demands.</p>
           <span class="t-cta">What does it play? →</span>
         </a>
 
@@ -401,9 +427,8 @@
           <div class="t-num">Tool 01</div>
           <h3>The Settle Up</h3>
           <div class="t-tagline">Betting · Nassau · Skins</div>
-          <p>Nassau, skins with carryovers, automatic 2-down presses and junk, all settled in one place. Enter the
-            scores and it produces a clean who-owes-who card built for the group chat, so nobody has to do
-            arithmetic in a car park at nine at night.</p>
+          <p>Nassau, skins with carryovers, automatic presses and junk. One clean who-owes-who card, built for the
+            group chat.</p>
           <span class="t-cta">Settle the money →</span>
         </a>
 
@@ -411,9 +436,8 @@
           <div class="t-num">Tool 02</div>
           <h3>The Round Autopsy</h3>
           <div class="t-tagline">Diagnostic · Strokes Lost</div>
-          <p>Enter 18 holes of scores, fairways, greens and putts and find out exactly where the shots went. It
-            delivers a blunt cause-of-death verdict, a strokes-lost breakdown by category, and no comfortable
-            excuses about your equipment.</p>
+          <p>Eighteen holes in. A blunt cause-of-death verdict, a strokes-lost breakdown, and no comfortable excuses
+            about your equipment.</p>
           <span class="t-cta">Run the autopsy →</span>
         </a>
 
@@ -421,9 +445,8 @@
           <div class="t-num">Tool 03</div>
           <h3>The Tee Box Reality Check</h3>
           <div class="t-tagline">Ego · Course Management</div>
-          <p>Three honest numbers tell us the course length you have actually earned, and how far back your ego has
-            wandered. Most golfers find out they are handing away six shots a round before they have even hit a
-            ball.</p>
+          <p>Three honest numbers reveal the course length you have earned, and how far back your ego has
+            wandered.</p>
           <span class="t-cta">Check my tees →</span>
         </a>
 
@@ -431,9 +454,8 @@
           <div class="t-num">Tool 04</div>
           <h3>The Handicap Lie Detector</h3>
           <div class="t-tagline">WHS Index · Call-Out</div>
-          <p>Real World Handicap System maths on your last 5 to 20 scores, giving you your actual index and finally
-            explaining why you never shoot it. Then it decides whether the number you tell people makes you a
-            vanity handicapper or a certified bandit.</p>
+          <p>Real WHS maths on your last 5 to 20 scores. Your actual index, and whether you are a vanity
+            handicapper or a bandit.</p>
           <span class="t-cta">Run the lie detector →</span>
         </a>
 
@@ -448,7 +470,7 @@
         <div class="dash-head">
           <div>
             <h3 id="dashTitle">Everything you have run</h3>
-            <p class="dash-sub">Every result from all seven tools, in order, saved in this browser only. No account,
+            <p class="dash-sub">Every result from all eight tools, in order, saved in this browser only. No account,
               no upload, no way for us to see it.</p>
           </div>
           <span class="dash-count" id="dashCount">—</span>
@@ -546,7 +568,7 @@
 
         if (!rows.length) {
           body.innerHTML = '<div class="dash-empty"><b>No results yet.</b>' +
-            'Run any of the seven tools above and it will show up here automatically — ' +
+            'Run any of the eight tools above and it will show up here automatically — ' +
             'no sign-up, no setup.</div>';
           return;
         }

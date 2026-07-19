@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PMECW4VW66');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============ PRIMARY SEO ============ -->
+  <title>The Gimme Audit: What Did You Actually Shoot? | Golf Raw</title>
+  <meta name="description"
+    content="Free gimme calculator. Enter your score and the putts you conceded yourself, and find out what you actually shot using real putting make rates by distance and handicap.">
+  <link rel="canonical" href="https://www.golfraw.com/tools-gimme-audit">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Golf Raw Staff">
+
+  <!-- ============ OPEN GRAPH ============ -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RawGolf">
+  <meta property="og:title" content="The Gimme Audit — What Did You Actually Shoot?">
+  <meta property="og:description"
+    content="You have never holed out a round of golf in your life. Here is the number you should have been telling people.">
+  <meta property="og:url" content="https://www.golfraw.com/tools-gimme-audit">
+
+  <!-- ============ TWITTER CARD ============ -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Gimme Audit — What Did You Actually Shoot?">
+  <meta name="twitter:description"
+    content="You have never holed out a round in your life. Here is your real number.">
+
+  <!-- ============ STRUCTURED DATA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "The Gimme Audit — Conceded Putt Score Calculator",
+  "url": "https://www.golfraw.com/tools-gimme-audit",
+  "applicationCategory": "SportsApplication",
+  "operatingSystem": "Any modern browser",
+  "description": "A free client-side golf calculator that applies putting make rates by distance and handicap to the putts a golfer conceded themselves, producing the score they would have shot had they holed out every hole.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "RawGolf",
+    "url": "https://www.golfraw.com/",
+    "logo": {"@type": "ImageObject", "url": "https://www.golfraw.com/img/rawgolf-logo.png"}
+  },
+  "isAccessibleForFree": true
+}
+  </script>
+
+  <!-- ============ FAQ SCHEMA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a gimme in golf?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A gimme is a short putt conceded by your playing partners, so you pick the ball up rather than hole it. Concessions are legal in match play, where an opponent may concede a stroke at any time. In stroke play they are not permitted at all, so any score containing gimmes is not a valid stroke play score."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many short putts do amateur golfers miss?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "More than they think. Tour professionals hole roughly 96 percent from three feet, 88 percent from four and 77 percent from five. A mid handicap amateur is closer to 83 percent from four feet and only about 52 percent from five, which means a conceded five footer is close to a coin toss."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do gimmes count towards your handicap?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A score containing conceded putts is not acceptable for handicap purposes in stroke play formats, because you did not complete the hole. In match play you record a most likely score for the hole, which should include the putt you would probably have needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much do gimmes actually cost your score?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Less than people assume, because most conceded putts would have been holed anyway. Five gimmes in the two to five foot range costs a mid handicapper roughly one and a half strokes. The damage comes from conceding longer putts, where a single conceded five footer is worth about half a stroke on its own."
+      }
+    }
+  ]
+}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --fairway: #14402A;
+      --fairway-deep: #0B2418;
+      --flag: #E03E2D;
+      --paper: #F3F4F0;
+      --white: #fff;
+      --ink: #101511;
+      --grey: #5B665E;
+      --line: #DADDD4;
+      --maxw: 1180px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box }
+    html { scroll-behavior: smooth }
+    body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased }
+    a { color: inherit; text-decoration: none }
+    img { max-width: 100%; height: auto; display: block }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .mono { font-family: 'IBM Plex Mono', monospace }
+
+    /* HEADER */
+    .site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .logo { font-weight: 900; font-size: 26px; letter-spacing: -.04em; text-transform: uppercase }
+    .logo .raw { color: var(--flag) }
+    .nav-links { display: flex; gap: 0 }
+    .nav-links a { font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; padding: 8px 14px; transition: background .15s, color .15s }
+    .nav-links a:hover { background: var(--ink); color: #fff }
+    .nav-links a.active { background: var(--ink); color: #fff }
+    .burger { display: none; background: none; border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px }
+    .burger span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0 }
+    @media(max-width:760px) {
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
+      .nav-links.open { display: flex }
+      .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+      .burger { display: block }
+    }
+
+    /* HERO */
+    .hub-hero { background: var(--ink); color: #fff; border-bottom: 4px solid var(--flag); padding: 56px 0 48px }
+    .hub-hero .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
+    .hub-hero h1 { font-weight: 900; font-size: clamp(32px, 5.6vw, 64px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
+    .hub-hero p { font-size: 17px; color: #9CC9AE; max-width: 62ch; line-height: 1.6 }
+
+    /* PANELS */
+    .tool-body { padding: 40px 0 72px }
+    .panel { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
+    .panel-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .panel-head .step { color: var(--flag) }
+    .panel-in { padding: 24px 20px }
+
+    label.fld { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--grey); font-weight: 600; margin-bottom: 6px }
+    input[type=number], select {
+      width: 100%; padding: 13px 12px; border: 2px solid var(--ink); background: var(--white);
+      font-family: 'IBM Plex Mono', monospace; font-size: 17px; font-weight: 700; color: var(--ink); border-radius: 0;
+    }
+    input:focus, select:focus { outline: 3px solid var(--flag); outline-offset: -1px }
+    input[type=number] { -moz-appearance: textfield; text-align: center }
+    input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0 }
+    .sub { font-size: 12px; color: var(--grey); margin-top: 6px; line-height: 1.5 }
+
+    .row { display: grid; gap: 18px; margin-bottom: 24px; grid-template-columns: 1fr 1fr }
+    @media(max-width:560px) { .row { grid-template-columns: 1fr } }
+
+    /* ============ GIMME STEPPERS ============ */
+    .buckets { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px }
+    @media(max-width:560px) { .buckets { grid-template-columns: 1fr } }
+    .bucket { border: 2px solid var(--ink); padding: 14px 14px 12px; background: #FBFBF8 }
+    .bucket .bk-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 10px }
+    .bucket .bk-name { font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: .06em; color: var(--ink) }
+    .bucket .bk-rate { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; color: var(--grey); text-align: right }
+    .bucket .bk-rate b { color: var(--flag) }
+    .stepper { display: grid; grid-template-columns: 52px 1fr 52px; gap: 8px; align-items: stretch }
+    .stepper button {
+      border: 2px solid var(--ink); background: var(--white); cursor: pointer; font-family: 'IBM Plex Mono', monospace;
+      font-size: 20px; font-weight: 700; line-height: 1; color: var(--ink); min-height: 46px;
+      transition: background .14s, color .14s;
+    }
+    .stepper button:hover { background: var(--ink); color: #fff }
+    .stepper button:active { background: var(--flag); border-color: var(--flag); color: #fff }
+
+    .totals { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 18px; border-top: 2px solid var(--line) }
+    .tally { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--grey) }
+    .tally b { color: var(--ink); font-size: 15px }
+    .tally b.warn { color: var(--flag) }
+
+    .legend { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--grey); line-height: 1.7; margin-top: 14px }
+    .legend b { color: var(--ink) }
+
+    .btn { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 14px 22px; border: 2px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; transition: background .15s, color .15s }
+    .btn:hover { background: var(--flag); border-color: var(--flag) }
+    .btn.ghost { background: transparent; color: var(--ink) }
+    .btn.ghost:hover { background: var(--ink); color: #fff }
+    .btn.sm { padding: 10px 14px; font-size: 10.5px }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px }
+
+    .err { border: 2px solid var(--flag); background: #FDF0EE; color: #8f2015; padding: 12px 14px; font-size: 13.5px; font-weight: 600; margin-bottom: 18px; display: none }
+    .err.show { display: block }
+
+    /* AD SLOT — isolated from controls */
+    .ad-zone { border: 1px dashed var(--line); background: #EFF1EC; padding: 18px; margin: 30px 0; text-align: center; min-height: 96px; display: flex; align-items: center; justify-content: center }
+    .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #a8aea3 }
+
+    /* ===== action utility bar (kept clear of ad zones) ===== */
+    .act-bar { margin-top: 18px; padding-top: 16px; border-top: 2px solid rgba(16,21,17,.12); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between }
+    .act-lab { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--grey) }
+    .act-btns { display: flex; gap: 10px; flex-wrap: wrap }
+    /* Dead-zone so a mis-tap on an action button can never land on an ad */
+    .out-wrap + .ad-zone, .act-bar + .ad-zone { margin-top: 46px }
+    @media (max-width:520px){ .act-bar { justify-content: flex-start } .act-btns .btn { flex: 1 1 auto; min-height: 44px } }
+
+    /* ============ VERDICT CARD ============ */
+    .out-wrap { display: none }
+    .out-wrap.show { display: block }
+    .verdict-card { background: var(--ink); color: #fff; border: 3px solid var(--ink); padding: 32px 26px 0; overflow: hidden }
+    .vc-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 12px }
+    .vc-head { font-weight: 900; font-size: clamp(24px, 5vw, 40px); line-height: 1; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 14px }
+    .vc-sub { font-size: 16px; color: #d8ded6; line-height: 1.6; margin-bottom: 26px; max-width: 60ch }
+    .vc-sub b { color: #fff }
+
+    /* the money shot: reported -> actual */
+    .swap { border: 1px solid rgba(255,255,255,.18); display: grid; grid-template-columns: 1fr 56px 1fr; align-items: center; margin-bottom: 22px }
+    .swap .side { padding: 24px 14px; text-align: center }
+    .swap .side .l { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: #8b958d; display: block; margin-bottom: 10px }
+    .swap .side .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(40px, 11vw, 64px); line-height: 1; color: #d8ded6 }
+    .swap .side.real .n { color: #FF9486 }
+    .swap .side.real.clean .n { color: #6FDB9A }
+    .swap .arrow { text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 24px; color: var(--flag); border-left: 1px solid rgba(255,255,255,.18); border-right: 1px solid rgba(255,255,255,.18); align-self: stretch; display: flex; align-items: center; justify-content: center }
+    .tier-badge { text-align: center; border: 1px solid rgba(255,255,255,.18); border-top: none; padding: 14px 12px; margin: -22px 0 22px }
+    .tier-badge .t { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(12px, 3vw, 16px); letter-spacing: .14em; text-transform: uppercase; color: #FF9486 }
+    .tier-badge .t.clean { color: #6FDB9A }
+    .tier-badge .p { font-size: 14px; color: #d8ded6; margin-top: 7px }
+
+    /* ============ BREAKDOWN TABLE ============ */
+    .brk { border: 1px solid rgba(255,255,255,.18); margin-bottom: 22px }
+    .brk-h, .brk-row { display: grid; grid-template-columns: 1fr 62px 74px 74px; gap: 8px; padding: 11px 14px; align-items: center }
+    .brk-h { border-bottom: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.05) }
+    .brk-h span { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: .13em; text-transform: uppercase; color: #8b958d }
+    .brk-h span:not(:first-child), .brk-row span:not(:first-child) { text-align: right }
+    .brk-row { border-bottom: 1px solid rgba(255,255,255,.09) }
+    .brk-row:last-child { border-bottom: none }
+    .brk-row.none { opacity: .4 }
+    .brk-row .k { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #fff }
+    .brk-row .v { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #d8ded6 }
+    .brk-row .v.cost { color: #FF9486; font-weight: 700 }
+    .brk-row .v.cost.zero { color: #8b958d; font-weight: 400 }
+    .brk-tot { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 13px 14px; background: rgba(255,255,255,.06); border-top: 1px solid rgba(255,255,255,.18) }
+    .brk-tot .k { font-weight: 800; font-size: 14px }
+    .brk-tot .v { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 17px; color: #FF9486 }
+    .brk-tot .v.zero { color: #6FDB9A }
+
+    /* ============ THE CHAIN CTA ============ */
+    .chain { border: 2px solid var(--flag); background: rgba(224,62,45,.10); padding: 20px 18px; margin-bottom: 26px }
+    .chain .c-lab { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 8px }
+    .chain h3 { font-size: 19px; line-height: 1.2; margin-bottom: 8px; color: #fff; font-weight: 800 }
+    .chain p { font-size: 13.5px; color: #d8ded6; line-height: 1.55; margin-bottom: 14px }
+    .chain a.c-btn {
+      display: inline-flex; align-items: center; gap: 8px; font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: 13px 18px; border: 2px solid var(--flag); background: var(--flag); color: #fff;
+      transition: background .15s, color .15s; min-height: 44px;
+    }
+    .chain a.c-btn:hover { background: transparent; color: #fff }
+
+    .vc-foot { border-top: 1px solid rgba(255,255,255,.15); margin: 0 -26px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .vc-foot .mark { font-weight: 900; font-size: 17px; letter-spacing: -.03em; text-transform: uppercase }
+    .vc-foot .mark span { color: var(--flag) }
+    .vc-foot .url { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #8b958d }
+
+    .note { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--grey); line-height: 1.65; margin-top: 14px }
+
+    /* EXPLAINER */
+    .explain h2 { font-weight: 900; font-size: clamp(20px, 3vw, 26px); text-transform: uppercase; letter-spacing: -.02em; margin-bottom: 12px; padding-top: 16px; border-top: 3px solid var(--ink) }
+    .explain h3 { font-weight: 800; font-size: 17px; margin: 22px 0 8px }
+    .explain h3::before { content: "— "; color: var(--flag) }
+    .explain p { font-size: 15.5px; margin-bottom: 14px; max-width: 68ch; line-height: 1.65 }
+    .rate-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px }
+    .rate-table th, .rate-table td { border: 1px solid var(--line); padding: 9px 8px; text-align: center }
+    .rate-table th { background: var(--ink); color: #fff; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600 }
+    .rate-table td:first-child, .rate-table th:first-child { text-align: left }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch }
+
+    /* FOOTER */
+    .site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
+    .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
+    .site-footer a:hover { color: #fff }
+
+    /* === CLS / RESPONSIVE SAFETY === */
+    html, body { max-width: 100%; overflow-x: clip; }
+    img, video, iframe { max-width: 100%; }
+    table { max-width: 100%; }
+
+    /* === NAV WRAP SAFETY === */
+    .nav { height: auto; min-height: 68px; padding-top: 6px; padding-bottom: 6px; flex-wrap: wrap; row-gap: 4px; }
+    .nav-links { flex-wrap: wrap; row-gap: 2px; }
+    @media(min-width:761px){ .nav-links a { padding: 7px 10px; font-size: 11.5px; letter-spacing: .03em; } }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="nav">
+      <a href="./index.html" class="logo">Golf<span class="raw">Raw</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="./news.html">Latest News</a>
+        <a href="./ratings.html">Player Ratings</a>
+        <a href="./tournaments.html">Tournaments</a>
+        <a href="./analysis.html">Swing Analysis</a>
+        <a href="./vault.html">The Vault</a>
+        <a href="search.html">🔍 Search</a>
+        <a href="tools.html" class="active">Tools</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="hub-hero">
+    <div class="wrap">
+      <div class="eyebrow">RAWGOLF · TOOLS</div>
+      <h1>The Honest Card</h1>
+      <p>You have almost certainly never holed out a full round of golf in your life. Everybody picks up the short
+        ones, and everybody then writes down the total as though they made them all. Put in what you conceded
+        yourself and this works out — using real make rates by distance and handicap — the number you should have
+        been telling people. Runs entirely in your browser.</p>
+    </div>
+  </div>
+
+  <div class="tool-body">
+    <div class="wrap">
+
+      <!-- ============ STEP 1: THE CARD ============ -->
+      <section class="panel">
+        <div class="panel-head">
+          <span><span class="step">01 ·</span> What You Wrote Down</span>
+          <button class="btn ghost sm" id="sampleBtn" type="button"
+            style="border-color:#8b958d;color:#fff">Load a typical round</button>
+        </div>
+        <div class="panel-in">
+          <div class="err" id="err" role="alert"></div>
+
+          <div class="row">
+            <div>
+              <label class="fld" for="score">Reported gross score</label>
+              <input type="number" id="score" min="40" max="200" step="1" inputmode="numeric" placeholder="85">
+              <p class="sub">The number you told everyone in the bar.</p>
+            </div>
+            <div>
+              <label class="fld" for="tier">Your handicap</label>
+              <select id="tier">
+                <option value="scratch">Scratch to 5</option>
+                <option value="low">6 to 12</option>
+                <option value="mid" selected>13 to 20</option>
+                <option value="high">21 to 28</option>
+                <option value="beginner">28 or above</option>
+              </select>
+              <p class="sub">Sets how often you would actually have holed them.</p>
+            </div>
+          </div>
+
+          <label class="fld" style="margin-bottom:10px">Putts you picked up — by length</label>
+          <div class="buckets" id="buckets"></div>
+
+          <p class="legend">
+            Count every putt you did not actually hole, including the ones nobody formally gave you.
+            <b>Be honest about the length</b> — a "two-footer" is usually three and a half.
+          </p>
+
+          <div class="totals">
+            <span class="tally" id="tally">Gimmes taken: <b>0</b></span>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn ghost sm" id="clearBtn" type="button">Reset</button>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn" id="runBtn" type="button">What did I actually shoot? →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ STEP 2: THE VERDICT ============ -->
+      <div class="out-wrap" id="outWrap">
+        <div class="verdict-card" id="verdictCard">
+          <div class="vc-eyebrow">The Gimme Audit · The Honest Card</div>
+          <h2 class="vc-head" id="vHead">—</h2>
+          <p class="vc-sub" id="vSub"></p>
+
+          <div class="swap">
+            <div class="side"><span class="l">You said</span><span class="n" id="nReported">—</span></div>
+            <div class="arrow">→</div>
+            <div class="side real" id="realSide"><span class="l">You shot</span><span class="n" id="nReal">—</span></div>
+          </div>
+          <div class="tier-badge">
+            <div class="t" id="tierName"></div>
+            <div class="p" id="tierPunch"></div>
+          </div>
+
+          <div class="brk">
+            <div class="brk-h">
+              <span>Conceded from</span><span>Taken</span><span>You'd make</span><span>Cost</span>
+            </div>
+            <div id="brkRows"></div>
+            <div class="brk-tot">
+              <span class="k">Strokes you never actually took</span>
+              <span class="v" id="totCost">0</span>
+            </div>
+          </div>
+
+          <!-- ============ DATA CHAIN ============ -->
+          <div class="chain">
+            <div class="c-lab">Chain it</div>
+            <h3>Now find out what that does to your handicap</h3>
+            <p id="chainCopy">Your corrected score is the one that should have gone on the card. Send it straight
+              into the Handicap Lie Detector and see whether the number you tell people still holds up.</p>
+            <a class="c-btn" id="chainBtn" href="tools-handicap-detector.html">Feed corrected score to Handicap
+              Detector →</a>
+          </div>
+
+          <div class="vc-foot">
+            <span class="mark">Golf<span>Raw</span></span>
+            <span class="url">golfraw.com · the gimme audit</span>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn" id="copyBtn" type="button">Copy for group chat</button>
+          <button class="btn ghost" id="againBtn" type="button">Edit the card</button>
+        </div>
+
+        <div class="act-bar">
+          <span class="act-lab">Take it with you</span>
+          <div class="act-btns">
+            <button class="btn sm" id="pngBtn" type="button">Download card (.png)</button>
+            <button class="btn ghost sm" id="shareBtn" type="button">Share result</button>
+          </div>
+        </div>
+
+        <p class="note" id="method"></p>
+      </div>
+
+      <!-- Future AdSense Slot -->
+      <div class="ad-zone" aria-hidden="true">
+        <span>Advertisement</span>
+      </div>
+      <!-- /Future AdSense Slot -->
+
+      <!-- ============ EXPLAINER ============ -->
+      <section class="panel explain">
+        <div class="panel-head"><span><span class="step">02 ·</span> The Numbers Behind It</span></div>
+        <div class="panel-in">
+          <h2>Most gimmes would have gone in. Some would not.</h2>
+          <p>The instinct is that conceding five putts a round means your score is five shots light. It is not,
+            and pretending otherwise makes the whole exercise easy to dismiss. Most short putts get holed. The
+            damage lives almost entirely in the long ones — the "that's good" from four or five feet that you
+            would genuinely miss about half the time.</p>
+
+          <h3>Where the rates come from</h3>
+          <p>Tour make rates are the baseline: roughly <b>96% from three feet</b>, <b>88% from four</b>,
+            <b>77% from five</b> and <b>66% from six</b>. Amateurs are worse, but not uniformly worse — a
+            twenty-handicapper is nearly as good as a professional from two feet and dramatically worse from
+            five. So the model scales the <b>miss rate</b>, not the make rate. That keeps tap-ins near certain,
+            degrades the longer putts properly, and can never produce a make rate above 100%.</p>
+
+          <div class="table-scroll">
+            <table class="rate-table" id="rateTable" aria-label="Make rates by distance and handicap"></table>
+          </div>
+
+          <h3>The arithmetic</h3>
+          <p>For each putt you picked up, the cost is simply the chance you would have missed it. A conceded
+            five-footer for a mid-handicapper is worth about <b>half a stroke</b>. A conceded two-footer is worth
+            about <b>four hundredths of one</b>. Add them up and that is the number that should have been on the
+            card.</p>
+
+          <h3>Why this is not pedantry</h3>
+          <p>Under the Rules, concessions only exist in match play. A stroke play score containing putts you did
+            not hole is not a valid score, which means it is also not a valid score for handicap purposes. Nobody
+            is suggesting you putt out a six-incher in a Sunday fourball. But if you are going to quote the
+            number, it is worth knowing what the number actually is.</p>
+
+          <h3>The honest limitation</h3>
+          <p>This depends entirely on you being truthful about length, and golfers are famously bad at that. The
+            putt you remember as two feet was very often four. If anything, run it again with every bucket bumped
+            up one and see what happens — that version is usually closer to the truth.</p>
+        </div>
+      </section>
+
+      <!-- Future AdSense Slot -->
+      <div class="ad-zone" aria-hidden="true">
+        <span>Advertisement</span>
+      </div>
+      <!-- /Future AdSense Slot -->
+
+      <section class="panel">
+        <div class="panel-head"><span><span class="step">03 ·</span> The Rest Of The Suite</span></div>
+        <div class="panel-in">
+          <p style="font-size:15.5px;margin-bottom:14px;max-width:68ch">Corrected your score? Run it through the
+            <a href="tools-handicap-detector.html" style="border-bottom:2px solid var(--flag)">Handicap Lie
+              Detector</a> to see what your real index is, use the
+            <a href="tools-round-autopsy.html" style="border-bottom:2px solid var(--flag)">Round Autopsy</a> to
+            find where the rest of the shots went, or take the
+            <a href="tools-tilt-meter.html" style="border-bottom:2px solid var(--flag)">Tilt Meter</a> and work
+            out what your temper is costing you.</p>
+          <p style="font-size:15.5px;max-width:68ch"><a href="tools.html"
+              style="border-bottom:2px solid var(--flag)">See all eight tools and your saved history →</a></p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 RAWGOLF.COM — ALL RATINGS FINAL</span>
+      <nav aria-label="Footer navigation" style="display:flex;gap:20px">
+        <a href="./manifesto.html">MANIFESTO</a>
+        <a href="./ratings-manual.html">HOW RATINGS WORK</a>
+        <a href="./corrections.html">CORRECTIONS</a>
+        <a href="./privacy.html">PRIVACY</a>
+        <a href="./index.html">← FRONT PAGE</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
+  <script src="./rawgolf-tools.js"></script>
+
+  <script>
+    /* ==================== NAV ==================== */
+    (function () {
+      var b = document.getElementById('burger'), l = document.getElementById('navLinks');
+      if (b && l) {
+        b.addEventListener('click', function () {
+          var o = l.classList.toggle('open');
+          b.setAttribute('aria-expanded', o);
+        });
+        l.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () { l.classList.remove('open'); });
+        });
+      }
+    })();
+
+    var $ = function (id) { return document.getElementById(id); };
+
+    /* ==================== ENGINE CONSTANTS ==================== */
+    /* Tour make rates at each bucket's representative distance.
+       Anchors: 3ft 96%, 4ft 88%, 5ft 77%, 6ft 66%. */
+    var BUCKETS = [
+      { id: 'b12', label: '1–2 ft', short: '1-2ft', mid: 1.5, tourMake: 0.995 },
+      { id: 'b23', label: '2–3 ft', short: '2-3ft', mid: 2.5, tourMake: 0.980 },
+      { id: 'b34', label: '3–4 ft', short: '3-4ft', mid: 3.5, tourMake: 0.920 },
+      { id: 'b46', label: '4–6 ft', short: '4-6ft', mid: 5.0, tourMake: 0.770 }
+    ];
+
+    /* Amateurs do not make a fixed percentage fewer putts — they MISS a multiple
+       more often. Scaling the miss rate rather than the make rate keeps tap-ins
+       near-certain, degrades long putts properly, and can never exceed 100%. */
+    var TIERS = [
+      { id: 'scratch', label: 'Scratch to 5', factor: 1.5 },
+      { id: 'low', label: '6 to 12', factor: 1.8 },
+      { id: 'mid', label: '13 to 20', factor: 2.1 },
+      { id: 'high', label: '21 to 28', factor: 2.4 },
+      { id: 'beginner', label: '28 or above', factor: 2.7 }
+    ];
+
+    var MISS_CAP = 0.95;
+    var LS_CARD = 'golfraw_gimme_card';
+
+    function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
+    function r1(n) { return Math.round(n * 10) / 10; }
+    function r2(n) { return Math.round(n * 100) / 100; }
+    function pct(n) { return Math.round(n * 100) + '%'; }
+
+    function tierById(id) {
+      for (var i = 0; i < TIERS.length; i++) if (TIERS[i].id === id) return TIERS[i];
+      return TIERS[2];
+    }
+
+    /* ==================== THE MAKE-RATE ENGINE ==================== */
+    function analyse(reported, tierId, counts) {
+      if (!isFinite(reported) || reported < 40 || reported > 200) return null;
+      var tier = tierById(tierId);
+      var rows = [], total = 0, expMiss = 0, footage = 0;
+
+      for (var i = 0; i < BUCKETS.length; i++) {
+        var b = BUCKETS[i];
+        var n = counts[b.id];
+        n = (isFinite(n) && n > 0) ? Math.floor(n) : 0;
+
+        var tourMiss = 1 - b.tourMake;
+        var adjMiss = clamp(tourMiss * tier.factor, 0, MISS_CAP);
+        var cost = n * adjMiss;
+
+        rows.push({
+          id: b.id, label: b.label, short: b.short, mid: b.mid, n: n,
+          tourMake: b.tourMake, adjMake: 1 - adjMiss, adjMiss: adjMiss, cost: cost
+        });
+        total += n;
+        expMiss += cost;
+        footage += n * b.mid;
+      }
+
+      var real = reported + expMiss;
+      return {
+        reported: reported, tier: tier, rows: rows,
+        gimmes: total, expMiss: expMiss, real: real,
+        realRounded: Math.round(real),
+        footage: footage,
+        honest: Math.round(real) === reported
+      };
+    }
+
+    /* ==================== VERDICT COPY ==================== */
+    /* NOTE: the tier NAMES are fixed, but every figure quoted is computed.
+       "4-6 gimmes" does not equal "four shots" — a realistic five-gimme round
+       costs about 1.3 strokes, because most conceded putts would have gone in. */
+    function verdictFor(a) {
+      var g = a.gimmes, shots = r1(a.expMiss);
+      var word = shots === 1 ? 'shot' : 'shots';
+
+      if (g === 0) {
+        return {
+          tier: 'HOLED OUT',
+          head: 'You holed out.',
+          punch: 'Nobody does this.',
+          sub: 'Not one putt picked up. Your card is exactly what happened, which makes you the only honest man in the fourball.'
+        };
+      }
+      if (g <= 1) {
+        return {
+          tier: 'HOLED OUT',
+          head: 'Effectively honest.',
+          punch: 'The only honest man in the fourball.',
+          sub: 'One putt conceded all round, worth <b>' + shots + '</b> of a stroke. Your number stands exactly as written.'
+        };
+      }
+      if (g <= 3) {
+        return {
+          tier: 'MOSTLY LEGITIMATE',
+          head: 'Close enough to the truth.',
+          punch: shots + ' ' + word + ' between you and the card.',
+          sub: '<b>' + g + '</b> putts picked up, worth <b>' + shots + '</b> ' + word +
+            '. Everybody does this, and at that volume your number holds up.'
+        };
+      }
+      if (g <= 6) {
+        return {
+          tier: 'CREATIVE ACCOUNTING',
+          head: 'Creative accounting.',
+          punch: shots + ' ' + word + ' of fiction a round.',
+          sub: '<b>' + g + '</b> concessions, and <b>' + shots + '</b> ' + word +
+            ' you never actually holed. Not cheating. Not quite golf either.'
+        };
+      }
+      return {
+        tier: 'YOUR SCORECARD IS A NOVEL',
+        head: 'Your scorecard is a novel.',
+        punch: 'You have not finished a hole since 2019.',
+        sub: '<b>' + g + '</b> putts picked up in a single round, worth <b>' + shots + '</b> ' + word +
+          '. You conceded yourself <b>' + r1(a.footage) + ' feet</b> of putting and wrote the total down as ' +
+          'though you made every one.'
+      };
+    }
+
+    /* ==================== BUCKET STEPPER UI ==================== */
+    (function buildBuckets() {
+      var html = '';
+      for (var i = 0; i < BUCKETS.length; i++) {
+        var b = BUCKETS[i];
+        html += '<div class="bucket">' +
+          '<div class="bk-top"><span class="bk-name">' + b.label + '</span>' +
+          '<span class="bk-rate" id="rate_' + b.id + '"></span></div>' +
+          '<div class="stepper">' +
+          '<button type="button" data-b="' + b.id + '" data-d="-1" aria-label="One fewer from ' + b.short + '">−</button>' +
+          '<input type="number" id="' + b.id + '" min="0" max="18" step="1" value="0" inputmode="numeric" ' +
+          'aria-label="Putts conceded from ' + b.short + '">' +
+          '<button type="button" data-b="' + b.id + '" data-d="1" aria-label="One more from ' + b.short + '">+</button>' +
+          '</div></div>';
+      }
+      $('buckets').innerHTML = html;
+
+      $('buckets').addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('button[data-b]') : null;
+        if (!btn) return;
+        var el = $(btn.dataset.b);
+        var v = parseInt(el.value, 10);
+        if (!isFinite(v)) v = 0;
+        el.value = clamp(v + parseInt(btn.dataset.d, 10), 0, 18);
+        updateTally(); persist();
+      });
+    })();
+
+    function readCounts() {
+      var c = {};
+      for (var i = 0; i < BUCKETS.length; i++) {
+        var v = parseInt($(BUCKETS[i].id).value, 10);
+        c[BUCKETS[i].id] = isFinite(v) && v > 0 ? v : 0;
+      }
+      return c;
+    }
+
+    /* live make-rate hints on each bucket, so the model is visible before you run it */
+    function updateRates() {
+      var tier = tierById($('tier').value);
+      for (var i = 0; i < BUCKETS.length; i++) {
+        var b = BUCKETS[i];
+        var adjMake = 1 - clamp((1 - b.tourMake) * tier.factor, 0, MISS_CAP);
+        $('rate_' + b.id).innerHTML = 'you make <b>' + pct(adjMake) + '</b>';
+      }
+    }
+
+    function updateTally() {
+      var c = readCounts(), n = 0;
+      for (var k in c) if (c.hasOwnProperty(k)) n += c[k];
+      $('tally').innerHTML = 'Gimmes taken: <b' + (n >= 7 ? ' class="warn"' : '') + '>' + n + '</b>';
+    }
+
+    function persist() {
+      try {
+        var v = { s: $('score').value, t: $('tier').value };
+        for (var i = 0; i < BUCKETS.length; i++) v[BUCKETS[i].id] = $(BUCKETS[i].id).value;
+        localStorage.setItem(LS_CARD, JSON.stringify(v));
+      } catch (e) { /* private mode — the tool still works, it just will not remember */ }
+    }
+
+    function restore() {
+      try {
+        var raw = localStorage.getItem(LS_CARD);
+        if (!raw) return;
+        var v = JSON.parse(raw);
+        if (!v || typeof v !== 'object') return;
+        if (v.s) $('score').value = v.s;
+        if (v.t) $('tier').value = v.t;
+        for (var i = 0; i < BUCKETS.length; i++) {
+          if (v[BUCKETS[i].id] !== undefined) $(BUCKETS[i].id).value = v[BUCKETS[i].id];
+        }
+      } catch (e) { /* ignore a corrupt card rather than blocking the tool */ }
+    }
+
+    function err(m) {
+      var e = $('err');
+      if (!m) { e.classList.remove('show'); e.textContent = ''; return; }
+      e.textContent = m; e.classList.add('show');
+      e.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    /* ==================== RENDER ==================== */
+    var last = null;
+
+    function run() {
+      var reported = parseInt($('score').value, 10);
+      if (!isFinite(reported)) return err('Put your reported gross score in first.');
+      if (reported < 40 || reported > 200) return err('Gross score should be between 40 and 200.');
+
+      var a = analyse(reported, $('tier').value, readCounts());
+      if (!a) return err('Gross score should be between 40 and 200.');
+      err('');
+      last = a;
+
+      var v = verdictFor(a);
+      var clean = a.gimmes <= 1;
+
+      $('vHead').textContent = v.head;
+      $('vSub').innerHTML = v.sub;
+
+      $('nReported').textContent = a.reported;
+      /* if rounding would collapse the two numbers, show one decimal so the delta stays visible */
+      $('nReal').textContent = a.honest ? r1(a.real).toFixed(1) : a.realRounded;
+      $('realSide').className = 'side real' + (clean ? ' clean' : '');
+
+      $('tierName').textContent = v.tier;
+      $('tierName').className = 't' + (clean ? ' clean' : '');
+      $('tierPunch').textContent = v.punch;
+
+      $('brkRows').innerHTML = a.rows.map(function (r) {
+        return '<div class="brk-row' + (r.n === 0 ? ' none' : '') + '">' +
+          '<span class="k">' + r.label + '</span>' +
+          '<span class="v">' + r.n + '</span>' +
+          '<span class="v">' + pct(r.adjMake) + '</span>' +
+          '<span class="v cost' + (r.cost === 0 ? ' zero' : '') + '">' +
+          (r.cost === 0 ? '—' : '+' + r2(r.cost)) + '</span></div>';
+      }).join('');
+
+      $('totCost').textContent = a.expMiss === 0 ? '0' : '+' + r1(a.expMiss);
+      $('totCost').className = 'v' + (a.expMiss === 0 ? ' zero' : '');
+
+      /* ---- the data chain ---- */
+      var chained = a.realRounded;
+      $('chainBtn').setAttribute('href',
+        'tools-handicap-detector.html?score=' + chained + '&from=gimme-audit');
+      $('chainBtn').textContent = 'Feed ' + chained + ' to the Handicap Detector →';
+      $('chainCopy').textContent = a.honest
+        ? 'Your card holds up, so ' + chained + ' is the number either way. Send it through and see what your ' +
+          'real index actually is.'
+        : 'Your corrected score is ' + chained + ', not ' + a.reported + '. That is the number that should have ' +
+          'gone on the card — send it through and see whether the handicap you tell people still holds up.';
+
+      $('method').textContent = 'Tour make rates (96% from 3ft, 88% from 4ft, 77% from 5ft, 66% from 6ft) scaled ' +
+        'for a ' + a.tier.label.toLowerCase() + ' handicap by multiplying the miss rate ' + a.tier.factor +
+        'x. Each conceded putt costs the probability you would have missed it. ' + a.gimmes + ' putt' +
+        (a.gimmes === 1 ? '' : 's') + ' conceded across ' + r1(a.footage) + ' feet, costing ' + r1(a.expMiss) +
+        ' strokes. Concessions are legal in match play only — a stroke play card containing them is not a valid score.';
+
+      $('outWrap').classList.add('show');
+      $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      persist();
+      if (window.RawGolf) RawGolf.save(cardData());
+    }
+
+    /* ==================== SHARED ENGINE: history · PNG · Web Share ==================== */
+    function cardData() {
+      var a = last, v = verdictFor(a);
+      var m = [
+        { k: 'You reported', v: String(a.reported) },
+        { k: 'You actually shot', v: a.honest ? r1(a.real).toFixed(1) : String(a.realRounded) },
+        { k: 'Gimmes taken', v: String(a.gimmes) },
+        { k: 'Strokes of fiction', v: '+' + r1(a.expMiss) },
+        { k: 'Feet conceded', v: r1(a.footage) + ' ft' },
+        { k: 'Handicap band', v: a.tier.label }
+      ];
+      return {
+        tool: 'The Gimme Audit',
+        slug: 'tools-gimme-audit',
+        eyebrow: 'The Gimme Audit · The Honest Card',
+        verdict: v.tier + ' — you said ' + a.reported + ', you actually shot ' +
+          (a.honest ? r1(a.real).toFixed(1) : a.realRounded) + '.',
+        big: a.honest ? r1(a.real).toFixed(1) : String(a.realRounded),
+        bigLabel: 'What you actually shot',
+        filename: 'gimme-audit',
+        metrics: m
+      };
+    }
+
+    function doPng() {
+      if (!last) return err('Run the audit first.');
+      var a = last, c = cardData();
+      RawGolf.downloadCard({
+        eyebrow: c.eyebrow,
+        headline: 'You shot ' + a.reported + '. You actually shot ' +
+          (a.honest ? r1(a.real).toFixed(1) : a.realRounded) + '.',
+        big: c.big, bigLabel: c.bigLabel, lines: c.metrics, filename: c.filename
+      });
+    }
+
+    function doShare() {
+      if (!last) return err('Run the audit first.');
+      var a = last, c = cardData(), v = verdictFor(a);
+      var txt = a.gimmes === 0
+        ? 'Holed out every hole. ' + a.reported + ' is exactly what I shot.'
+        : 'I said I shot ' + a.reported + '. I actually shot ' +
+          (a.honest ? r1(a.real).toFixed(1) : a.realRounded) + ' — ' + v.tier + '.';
+      RawGolf.shareResult({ title: 'The Gimme Audit', text: txt, url: 'https://www.golfraw.com/' + c.slug });
+    }
+
+    /* ==================== COPY FOR GROUP CHAT ==================== */
+    function copySummary() {
+      if (!last) return err('Run the audit first.');
+      var a = last, v = verdictFor(a);
+      var lines = ['THE GIMME AUDIT — THE HONEST CARD', '', v.tier, ''];
+      lines.push('You said:        ' + a.reported);
+      lines.push('You actually shot: ' + (a.honest ? r1(a.real).toFixed(1) : a.realRounded));
+      lines.push('');
+      for (var i = 0; i < a.rows.length; i++) {
+        var r = a.rows[i];
+        if (!r.n) continue;
+        lines.push('  ' + r.short + ':  ' + r.n + ' picked up  (you make ' + pct(r.adjMake) + ')  +' + r2(r.cost));
+      }
+      lines.push('');
+      lines.push('Gimmes taken:    ' + a.gimmes + '  (' + r1(a.footage) + ' feet conceded)');
+      lines.push('Strokes of fiction: +' + r1(a.expMiss));
+      lines.push('', 'Check yours: golfraw.com/tools-gimme-audit');
+      var txt = lines.join('\n');
+
+      var done = function () {
+        var b = $('copyBtn'), old = b.textContent;
+        b.textContent = 'Copied ✓';
+        setTimeout(function () { b.textContent = old; }, 1900);
+      };
+      if (window.RawGolf) RawGolf.copyText(txt).then(done, function () { err('Could not copy on this device.'); });
+    }
+
+    /* ==================== RATE TABLE (explainer) ==================== */
+    (function buildRateTable() {
+      var h = '<thead><tr><th>From</th><th>Tour</th>';
+      for (var i = 0; i < TIERS.length; i++) h += '<th>' + TIERS[i].label.replace(' to ', '–') + '</th>';
+      h += '</tr></thead><tbody>';
+      for (i = 0; i < BUCKETS.length; i++) {
+        var b = BUCKETS[i];
+        h += '<tr><td>' + b.label + '</td><td>' + pct(b.tourMake) + '</td>';
+        for (var j = 0; j < TIERS.length; j++) {
+          var m = 1 - clamp((1 - b.tourMake) * TIERS[j].factor, 0, MISS_CAP);
+          h += '<td>' + pct(m) + '</td>';
+        }
+        h += '</tr>';
+      }
+      $('rateTable').innerHTML = h + '</tbody>';
+    })();
+
+    /* ==================== SAMPLE / RESET ==================== */
+    function loadSample() {
+      $('score').value = 88;
+      $('tier').value = 'mid';
+      $('b12').value = 1; $('b23').value = 2; $('b34').value = 2; $('b46').value = 2;
+      updateRates(); updateTally(); persist(); err('');
+      $('score').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function clearCard() {
+      $('score').value = '';
+      $('tier').value = 'mid';
+      for (var i = 0; i < BUCKETS.length; i++) $(BUCKETS[i].id).value = 0;
+      updateRates(); updateTally(); persist(); err('');
+      $('outWrap').classList.remove('show');
+      last = null;
+    }
+
+    /* ==================== WIRE UP ==================== */
+    $('runBtn').addEventListener('click', run);
+    $('copyBtn').addEventListener('click', copySummary);
+    $('pngBtn').addEventListener('click', doPng);
+    $('shareBtn').addEventListener('click', doShare);
+    $('sampleBtn').addEventListener('click', loadSample);
+    $('clearBtn').addEventListener('click', clearCard);
+    $('againBtn').addEventListener('click', function () {
+      $('outWrap').classList.remove('show');
+      $('score').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      $('score').focus();
+    });
+
+    $('tier').addEventListener('change', function () { updateRates(); persist(); });
+    $('score').addEventListener('input', persist);
+    $('buckets').addEventListener('input', function () { updateTally(); persist(); });
+
+    restore();
+    updateRates();
+    updateTally();
+  </script>
+</body>
+
+</html>

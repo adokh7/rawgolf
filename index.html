@@ -1479,31 +1479,27 @@
     /* ============ RAW TOOLS ============ */
     .tools-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 0;
       border: 2px solid var(--ink);
       margin-bottom: 56px;
     }
 
-    /* Seven tools: the newest spans the full width, the other six form a 3x2 beneath.
-       The featured card takes position 1, flipping column parity — the left column is
-       then the EVEN children (2,4,6) and the right column the odd (3,5,7). */
+    /* Balanced 8-tool grid — 4 across, 2 down. Positional rules, so the grid stays
+       sealed at any multiple of the column count. */
     .tools-grid .tool-card { border-bottom: 2px solid rgba(255, 255, 255, .18) }
-    .tools-grid .tool-card.featured { grid-column: 1 / -1 }
-    .tools-grid .tool-card:nth-child(odd) { border-right: none }
-    .tools-grid .tool-card:nth-last-child(-n+2) { border-bottom: none }
+    .tools-grid .tool-card:nth-child(4n) { border-right: none }
+    .tools-grid .tool-card:nth-last-child(-n+4) { border-bottom: none }
 
     .tool-card {
       display: flex;
       flex-direction: column;
       background: var(--ink);
       color: #fff;
-      padding: 32px 28px;
+      padding: 26px 20px 24px;
       border-right: 2px solid rgba(255, 255, 255, .18);
       transition: background .15s;
     }
-
-    .tool-card:last-child { border-right: none }
     .tool-card:hover { background: #1a221b }
 
     .tool-card .tc-kicker {
@@ -1518,19 +1514,19 @@
 
     .tool-card h3 {
       font-weight: 900;
-      font-size: clamp(24px, 3.2vw, 36px);
-      line-height: 1;
-      letter-spacing: -.03em;
+      font-size: clamp(18px, 1.8vw, 22px);
+      line-height: 1.05;
+      letter-spacing: -.02em;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 9px;
     }
 
     .tool-card p {
-      font-size: 15px;
+      font-size: 13.5px;
       color: #9CC9AE;
-      line-height: 1.6;
+      line-height: 1.55;
       flex: 1;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .tool-card .tc-cta {
@@ -1545,9 +1541,21 @@
       align-self: flex-start;
     }
 
-    @media(max-width: 700px) {
+    /* TABLET — 2 across. Reset the 4-column rules, then reseal for 2. */
+    @media(max-width: 1000px) {
+      .tools-grid { grid-template-columns: repeat(2, 1fr) }
+      .tools-grid .tool-card:nth-child(4n) { border-right: 2px solid rgba(255, 255, 255, .18) }
+      .tools-grid .tool-card:nth-child(2n) { border-right: none }
+      .tools-grid .tool-card:nth-last-child(-n+4) { border-bottom: 2px solid rgba(255, 255, 255, .18) }
+      .tools-grid .tool-card:nth-last-child(-n+2) { border-bottom: none }
+      .tool-card { padding: 30px 24px 26px }
+      .tool-card h3 { font-size: clamp(20px, 3vw, 26px) }
+      .tool-card p { font-size: 14.5px }
+    }
+
+    /* MOBILE — single column; every card keeps its divider except the last */
+    @media(max-width: 640px) {
       .tools-grid { grid-template-columns: 1fr }
-      /* single column — every card needs its divider back except the final one */
       .tool-card { border-right: none !important; border-bottom: 2px solid rgba(255, 255, 255, .18) !important }
       .tool-card:last-child { border-bottom: none !important }
     }
@@ -1941,59 +1949,60 @@
         <a href="tools.html">All tools →</a>
       </div>
       <div class="tools-grid reveal">
-        <a href="tools-bag-audit.html" class="tool-card featured">
-          <div class="tc-kicker">New · The Dead Wood Report</div>
+        <a href="tools-gimme-audit.html" class="tool-card">
+          <div class="tc-kicker">New · The Honest Card</div>
+          <h3>The Gimme Audit</h3>
+          <p>You have never holed out a round in your life. Real make rates by distance turn the putts you picked
+            up into the score you actually shot.</p>
+          <span class="tc-cta">What did I really shoot? →</span>
+        </a>
+        <a href="tools-bag-audit.html" class="tool-card">
+          <div class="tc-kicker">Free · The Dead Wood Report</div>
           <h3>The Bag Audit</h3>
-          <p>Fourteen slots, and the rules do not care what any of them cost. Score every club on how often you
-            use it and how much you trust it, and out come the passengers, the two clubs quietly doing the same
-            job, and the distance you have no club for at all.</p>
+          <p>Fourteen slots and some of them are luggage. Finds the passengers, the two clubs doing one job, and
+            the distance you have no club for.</p>
           <span class="tc-cta">Find the dead wood →</span>
         </a>
         <a href="tools-tilt-meter.html" class="tool-card">
-          <div class="tc-kicker">Free · The Amateur Meltdown Index</div>
+          <div class="tc-kicker">Free · Meltdown Index</div>
           <h3>The Tilt Meter</h3>
-          <p>Everyone remembers the triple. Nobody notices it was the three holes after it that actually cost them
-            the round. Eighteen holes in, and out comes the exact number of shots your temper threw away — plus
-            your bounce-back rate against a tour pro's.</p>
+          <p>Everyone remembers the triple. Nobody notices the three holes after it. Works out exactly what your
+            temper threw away.</p>
           <span class="tc-cta">How badly do I tilt? →</span>
         </a>
         <a href="tools-plays-like.html" class="tool-card">
           <div class="tc-kicker">Free · Use it on the course</div>
-          <h3>The "Plays Like" Calculator</h3>
-          <p>Yardage, temperature, wind, altitude and slope in — the distance your shot is genuinely playing out,
-            plus the club that number demands. The only tool here you open mid-round, and it settles the
-            humid-air argument permanently.</p>
+          <h3>The Plays Like Calculator</h3>
+          <p>Wind, cold, altitude and slope in. The distance your shot is genuinely playing out, plus the club
+            that number demands.</p>
           <span class="tc-cta">What does it play? →</span>
         </a>
         <a href="tools-settle-up-calculator.html" class="tool-card">
           <div class="tc-kicker">Free · Runs in your browser</div>
           <h3>The Settle Up</h3>
-          <p>Nassau, skins with carryovers, automatic 2-down presses and junk. Put the scores in, get a clean
-            who-owes-who card built for the group chat — plus the Biggest Choker and Bandit of the Day awards
-            nobody asked for.</p>
+          <p>Nassau, skins with carryovers, automatic presses and junk. One clean who-owes-who card, built for the
+            group chat.</p>
           <span class="tc-cta">Settle the money →</span>
         </a>
         <a href="tools-round-autopsy.html" class="tool-card">
           <div class="tc-kicker">Free · Runs in your browser</div>
           <h3>The Round Autopsy</h3>
-          <p>Enter 18 holes of scores, fairways, greens and putts and find out exactly where the shots went. A
-            blunt cause-of-death verdict, a strokes-lost breakdown, and no comfortable excuses about your swing.</p>
+          <p>Eighteen holes in. A blunt cause-of-death verdict, a strokes-lost breakdown, and no comfortable
+            excuses about your swing.</p>
           <span class="tc-cta">Run the autopsy →</span>
         </a>
         <a href="tools-tee-box-check.html" class="tool-card">
           <div class="tc-kicker">Free · Runs in your browser</div>
           <h3>Wrong Tees?</h3>
-          <p>Three numbers, thirty seconds. We work out the course length you have actually earned, how far back
-            your ego has wandered, and roughly what it costs you every round. Most golfers do not enjoy the
-            answer.</p>
+          <p>Three numbers, thirty seconds. The course length you have earned, and how far back your ego has
+            wandered. Most golfers dislike the answer.</p>
           <span class="tc-cta">Check my tees →</span>
         </a>
         <a href="tools-handicap-detector.html" class="tool-card">
           <div class="tc-kicker">Free · Runs in your browser</div>
           <h3>What Are You, Actually?</h3>
-          <p>Real World Handicap System maths on your last 5 to 20 scores. Find out your actual index, why you
-            never shoot it, and whether the number you tell people makes you a vanity handicapper or a certified
-            bandit.</p>
+          <p>Real WHS maths on your last 5 to 20 scores. Your actual index, and whether you are a vanity
+            handicapper or a certified bandit.</p>
           <span class="tc-cta">Run the lie detector →</span>
         </a>
       </div>

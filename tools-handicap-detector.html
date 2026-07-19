@@ -875,6 +875,64 @@
 
     restore();
     refresh();
+
+    /* ============ DATA CHAIN: accept a corrected score from The Gimme Audit ============
+       Arrives as ?score=89&from=gimme-audit. Dropped into the first empty score row, or
+       a new row if the card is already full. The URL is scrubbed afterwards so a refresh
+       cannot silently add the same score twice. */
+    (function receiveChainedScore() {
+      var params;
+      try { params = new URLSearchParams(window.location.search); }
+      catch (e) { return; }
+
+      var raw = params.get('score');
+      if (!raw) return;
+
+      var score = parseInt(raw, 10);
+      if (!isFinite(score) || score < 55 || score > 200) return;   // ignore anything odd
+
+      var from = (params.get('from') || '').replace(/[^a-z0-9-]/gi, '').slice(0, 30);
+
+      /* find the first empty score box */
+      var target = null;
+      var boxes = document.querySelectorAll('#rounds .sc');
+      for (var i = 0; i < boxes.length; i++) {
+        if (!boxes[i].value.trim()) { target = boxes[i]; break; }
+      }
+      if (!target) {
+        addRow();
+        var all = document.querySelectorAll('#rounds .sc');
+        target = all[all.length - 1];
+      }
+      if (!target) return;
+
+      target.value = score;
+      if (!target.closest('.rnd').querySelector('.cr').value) {
+        target.closest('.rnd').querySelector('.cr').value = DEF_CR;
+      }
+      if (!target.closest('.rnd').querySelector('.sl').value) {
+        target.closest('.rnd').querySelector('.sl').value = DEF_SLOPE;
+      }
+      save(); refresh();
+
+      var banner = document.createElement('div');
+      banner.setAttribute('role', 'status');
+      banner.style.cssText =
+        'border:2px solid #E03E2D;background:rgba(224,62,45,.08);padding:13px 15px;margin-bottom:18px;' +
+        'font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.6;color:#8f2015';
+      banner.innerHTML = 'Corrected score <b>' + score + '</b> imported' +
+        (from === 'gimme-audit' ? ' from <b>The Gimme Audit</b>' : '') +
+        '. It has been added to your card below — fill in the course rating and slope, then run the detector.';
+      var host = $('rounds');
+      if (host && host.parentNode) host.parentNode.insertBefore(banner, host);
+
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      /* scrub the query string so a reload does not re-import */
+      try {
+        window.history.replaceState({}, '', window.location.pathname);
+      } catch (e) { /* older browsers just keep the URL — the import already happened */ }
+    })();
   </script>
 </body>
 
