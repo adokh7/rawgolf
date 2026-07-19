@@ -1485,9 +1485,15 @@
       margin-bottom: 56px;
     }
 
-    /* 4 tools sit as a balanced 2x2 on desktop */
-    .tools-grid .tool-card:nth-child(2n) { border-right: none }
-    .tools-grid .tool-card:nth-child(-n+2) { border-bottom: 2px solid rgba(255, 255, 255, .18) }
+    /* Newest tool spans full width, the other four form a balanced 2x2 below */
+    .tools-grid .tool-card.featured { grid-column: 1 / -1; border-right: none }
+    .tools-grid .tool-card:nth-child(1),
+    .tools-grid .tool-card:nth-child(2),
+    .tools-grid .tool-card:nth-child(3) { border-bottom: 2px solid rgba(255, 255, 255, .18) }
+    .tools-grid .tool-card:nth-child(2),
+    .tools-grid .tool-card:nth-child(4) { border-right: 2px solid rgba(255, 255, 255, .18) }
+    .tools-grid .tool-card:nth-child(3),
+    .tools-grid .tool-card:nth-child(5) { border-right: none }
 
     .tool-card {
       display: flex;
@@ -1936,6 +1942,14 @@
         <a href="tools.html">All tools →</a>
       </div>
       <div class="tools-grid reveal">
+        <a href="tools-plays-like.html" class="tool-card featured">
+          <div class="tc-kicker">New · Use it on the course</div>
+          <h3>The "Plays Like" Calculator</h3>
+          <p>Yardage, temperature, wind, altitude and slope in — the distance your shot is genuinely playing out,
+            plus the club that number demands. The only tool here you open mid-round, and it settles the
+            humid-air argument permanently.</p>
+          <span class="tc-cta">What does it play? →</span>
+        </a>
         <a href="tools-settle-up-calculator.html" class="tool-card">
           <div class="tc-kicker">Free · Runs in your browser</div>
           <h3>The Settle Up</h3>

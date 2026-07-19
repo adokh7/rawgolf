@@ -14,9 +14,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ============ PRIMARY SEO ============ -->
-  <title>Free Golf Tools: Betting, Handicap &amp; Round Analysis | Golf Raw</title>
+  <title>Free Golf Tools: Betting, Handicap, Wind &amp; Round Analysis | Golf Raw</title>
   <meta name="description"
-    content="Four free golf calculators that run entirely in your browser. Settle bets, diagnose your round, find your correct tees, and calculate your real handicap index. No signup, no tracking.">
+    content="Five free golf calculators that run entirely in your browser. Settle bets, diagnose your round, find your correct tees, and calculate your real handicap index. No signup, no tracking.">
   <link rel="canonical" href="https://www.golfraw.com/tools">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Golf Raw Staff">
@@ -24,14 +24,14 @@
   <!-- ============ OPEN GRAPH ============ -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RawGolf">
-  <meta property="og:title" content="Raw Golf Tools Suite — Four Free Golf Calculators">
+  <meta property="og:title" content="Raw Golf Tools Suite — Five Free Golf Calculators">
   <meta property="og:description"
     content="Settle bets, diagnose your round, find your correct tees, and calculate your real handicap. All free, all running locally in your browser.">
   <meta property="og:url" content="https://www.golfraw.com/tools">
 
   <!-- ============ TWITTER CARD ============ -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Raw Golf Tools Suite — Four Free Golf Calculators">
+  <meta name="twitter:title" content="Raw Golf Tools Suite — Five Free Golf Calculators">
   <meta name="twitter:description"
     content="Settle bets, diagnose your round, find your correct tees, calculate your real handicap. Free, no signup.">
 
@@ -42,7 +42,7 @@
   "@type": "CollectionPage",
   "name": "Raw Golf Tools Suite",
   "url": "https://www.golfraw.com/tools",
-  "description": "A suite of four free client-side golf calculators covering betting settlement, round diagnostics, tee box selection and handicap index calculation.",
+  "description": "A suite of five free client-side golf calculators covering betting settlement, round diagnostics, tee box selection, handicap index calculation and playing-conditions distance adjustment.",
   "publisher": {
     "@type": "Organization",
     "name": "RawGolf",
@@ -89,6 +89,16 @@
           "url": "https://www.golfraw.com/tools-handicap-detector",
           "applicationCategory": "SportsApplication",
           "description": "World Handicap System index calculator that compares a claimed handicap against the real calculated index.",
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+        }
+      },
+      {
+        "@type": "ListItem", "position": 5,
+        "item": {
+          "@type": "WebApplication", "name": "The Plays Like Calculator",
+          "url": "https://www.golfraw.com/tools-plays-like",
+          "applicationCategory": "SportsApplication",
+          "description": "Adjusts a target yardage for temperature, wind, altitude, slope and humidity to produce the distance a golf shot is actually playing.",
           "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
         }
       }
@@ -174,8 +184,11 @@
       padding: 34px 30px 30px; border-right: 2px solid rgba(255,255,255,.16);
       transition: background .18s ease;
     }
-    .t-card:nth-child(2n) { border-right: none }
-    .t-card:nth-child(-n+2) { border-bottom: 2px solid rgba(255,255,255,.16) }
+    /* Featured (newest) tool spans the full width, remaining four form a 2x2 below */
+    .t-card.featured { grid-column: 1 / -1; border-right: none }
+    .t-card:nth-child(1), .t-card:nth-child(2), .t-card:nth-child(3) { border-bottom: 2px solid rgba(255,255,255,.16) }
+    .t-card:nth-child(2), .t-card:nth-child(4) { border-right: 2px solid rgba(255,255,255,.16) }
+    .t-card:nth-child(3), .t-card:nth-child(5) { border-right: none }
     .t-card:hover { background: #1a221b }
     .t-card:hover .t-cta { background: var(--flag); border-color: var(--flag); color: #fff }
     .t-card:hover h3 { color: #fff }
@@ -249,12 +262,12 @@
     <div class="wrap">
       <div class="eyebrow">RAWGOLF · UTILITIES</div>
       <h1>Raw Golf Tools Suite</h1>
-      <p>Four calculators that do the jobs golf software charges you for. Every one of them runs
+      <p>Five calculators that do the jobs golf software charges you for. Every one of them runs
         <b>100% inside your browser</b> — no account, no signup, no round data uploaded anywhere, nothing tracked.
         Close the tab and it is gone.</p>
 
       <div class="facts-strip">
-        <div><span class="n">4</span><span class="l">Tools live</span></div>
+        <div><span class="n">5</span><span class="l">Tools live</span></div>
         <div><span class="n">$0</span><span class="l">Cost, forever</span></div>
         <div><span class="n">0</span><span class="l">Accounts needed</span></div>
         <div><span class="n">0</span><span class="l">Data uploaded</span></div>
@@ -272,6 +285,16 @@
 
       <!-- ============ 2x2 TOOL GRID ============ -->
       <div class="tool-grid">
+
+        <a href="tools-plays-like.html" class="t-card featured">
+          <div class="t-num">Tool 05 · Newest</div>
+          <h3>The "Plays Like" Calculator</h3>
+          <div class="t-tagline">Environmental · Use it on the course</div>
+          <p>The only tool here you open mid-round. Feed it the yardage, temperature, wind, altitude and slope and
+            it returns the distance your shot is genuinely playing, plus the club that number demands. It also
+            settles the humid-air argument permanently: heavy air is a feeling, not a force.</p>
+          <span class="t-cta">What does it play? →</span>
+        </a>
 
         <a href="tools-settle-up-calculator.html" class="t-card">
           <div class="t-num">Tool 01</div>
