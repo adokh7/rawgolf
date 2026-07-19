@@ -26,6 +26,10 @@
 html{scroll-behavior:smooth}
 body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
+/* clickable contact emails — inherits type, flag-red underline as the affordance */
+.mail{color:inherit;text-decoration:underline;text-decoration-color:var(--flag);text-decoration-thickness:2px;text-underline-offset:3px;transition:background .14s ease,color .14s ease}
+.mail:hover,.mail:focus-visible{background:var(--flag);color:#fff;text-decoration-color:transparent;outline:none}
+
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
 .mono{font-family:'IBM Plex Mono',monospace}
 
@@ -181,7 +185,7 @@ table { max-width: 100%; }
         <div class="ch-body">
           <h2>Tour Leaks & Tips</h2>
           <p>Locker-room politics, contract whispers, setup intel, anything the press tent won't print. Sources stay confidential — that one's non-negotiable.</p>
-          <div class="addr">tips@golfraw.com</div>
+          <div class="addr"><a class="mail" href="mailto:tips@golfraw.com">tips@golfraw.com</a></div>
         </div>
       </div>
 
@@ -190,7 +194,7 @@ table { max-width: 100%; }
         <div class="ch-body">
           <h2>Corrections & Rating Disputes</h2>
           <p>Think a number is wrong? Bring data, not vibes. If you're right, the correction runs with your name on it. If you're wrong, we'll show you the math. Either way, somebody learns something.</p>
-          <div class="addr">corrections@golfraw.com</div>
+          <div class="addr"><a class="mail" href="mailto:corrections@golfraw.com">corrections@golfraw.com</a></div>
         </div>
       </div>
 
@@ -199,7 +203,7 @@ table { max-width: 100%; }
         <div class="ch-body">
           <h2>Hate Mail & Everything Else</h2>
           <p>Disagree with a rating? Furious about a take? Good — that means you read it. General questions, press, and partnership inquiries land here too.</p>
-          <div class="addr">hello@golfraw.com</div>
+          <div class="addr"><a class="mail" href="mailto:hello@golfraw.com">hello@golfraw.com</a></div>
         </div>
       </div>
 

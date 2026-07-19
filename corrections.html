@@ -26,6 +26,10 @@
 html{scroll-behavior:smooth}
 body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
+/* clickable contact emails — inherits type, flag-red underline as the affordance */
+.mail{color:inherit;text-decoration:underline;text-decoration-color:var(--flag);text-decoration-thickness:2px;text-underline-offset:3px;transition:background .14s ease,color .14s ease}
+.mail:hover,.mail:focus-visible{background:var(--flag);color:#fff;text-decoration-color:transparent;outline:none}
+
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
 .mono{font-family:'IBM Plex Mono',monospace}
 
@@ -171,7 +175,7 @@ table { max-width: 100%; }
 
   <div class="ledger-note">
     <span class="mono">How this ledger works</span>
-    Errors are logged within 24 hours of confirmation. The original mistake stays visible, struck through — memory-holing is the coward's edit (Tenet T3). Severity is graded: <b>FACTUAL</b> (wrong stat, wrong quote, wrong claim) or <b>MINOR</b> (typos, broken links, mislabeled dates). Whoever catches it gets named, unless they'd rather not be. Catch one yourself: corrections@golfraw.com — best catch of the month gets your name on the fix.
+    Errors are logged within 24 hours of confirmation. The original mistake stays visible, struck through — memory-holing is the coward's edit (Tenet T3). Severity is graded: <b>FACTUAL</b> (wrong stat, wrong quote, wrong claim) or <b>MINOR</b> (typos, broken links, mislabeled dates). Whoever catches it gets named, unless they'd rather not be. Catch one yourself: <a class="mail" href="mailto:corrections@golfraw.com">corrections@golfraw.com</a> — best catch of the month gets your name on the fix.
   </div>
 
   <!-- ENTRY 003 -->
