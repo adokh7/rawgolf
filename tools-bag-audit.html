@@ -45,14 +45,54 @@
   "applicationCategory": "SportsApplication",
   "operatingSystem": "Any modern browser",
   "description": "A free client-side golf equipment diagnostic that scores every club on usage and confidence, maps distance gaps and overlaps across the set, and recommends which clubs to remove or replace.",
-  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "priceValidUntil": "2030-12-31"
+  },
   "publisher": {
     "@type": "Organization",
     "name": "RawGolf",
     "url": "https://www.golfraw.com/",
-    "logo": {"@type": "ImageObject", "url": "https://www.golfraw.com/img/rawgolf-logo.png"}
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.golfraw.com/img/rawgolf-logo.png"
+    }
   },
-  "isAccessibleForFree": true
+  "isAccessibleForFree": true,
+  "applicationSubCategory": "Golf equipment gapping and set composition auditor",
+  "browserRequirements": "Requires JavaScript. Runs in any modern browser; no installation.",
+  "softwareVersion": "1.0",
+  "inLanguage": "en",
+  "featureList": [
+    "Fourteen editable club slots",
+    "Dead wood score from usage and confidence",
+    "Distance gap and overlap detection",
+    "Swap recommendations",
+    "Rule 4.1b fourteen club warning",
+    "Visual yardage ladder"
+  ],
+  "keywords": "golf club gapping, what clubs to carry, 14 club rule, club distance gaps, should i replace my 3 wood, golf bag setup",
+  "permissions": "none",
+  "storageRequirement": "Uses browser local storage only. No account, no server, and no data leaves the device.",
+  "audience": {
+    "@type": "PeopleAudience",
+    "audienceType": "Amateur and club golfers"
+  },
+  "isFamilyFriendly": true,
+  "potentialAction": {
+    "@type": "UseAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.golfraw.com/tools-bag-audit",
+      "actionPlatform": [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/MobileWebPlatform"
+      ]
+    }
+  }
 }
   </script>
 
@@ -93,6 +133,57 @@
         "@type": "Answer",
         "text": "Multiply how many times you use a club in a round by how much you trust it out of five. The lowest scores are your passengers. A club you hit once a round and do not trust is occupying a slot that a wedge or a hybrid would earn."
       }
+    }
+  ]
+}
+  </script>
+
+  <!-- ============ HOWTO SCHEMA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to audit your golf bag and find the clubs you do not use",
+  "description": "Score every club on usage and confidence, map the distance gaps across the set, and identify which clubs to remove.",
+  "totalTime": "PT5M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": "0"
+  },
+  "supply": [
+    {
+      "@type": "HowToSupply",
+      "name": "Your fourteen clubs and their real carry distances"
+    }
+  ],
+  "tool": [
+    {
+      "@type": "HowToTool",
+      "name": "Any modern web browser"
+    }
+  ],
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "List your clubs and their carry distances",
+      "text": "Carry rather than total, and the distance you hit it on a normal day. The audit is only ever as honest as the numbers you feed it.",
+      "url": "https://www.golfraw.com/tools-bag-audit#step-1"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Add how often you use each club and how much you trust it",
+      "text": "Uses per round, and a confidence score from one to five. These two numbers alone are enough to expose which clubs are along for the ride.",
+      "url": "https://www.golfraw.com/tools-bag-audit#step-2"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Run the audit and read the dead wood report",
+      "text": "The tool returns the passengers, the pairs of clubs doing the same job, the distances you have no club for, and a specific recommendation for each problem.",
+      "url": "https://www.golfraw.com/tools-bag-audit#step-3"
     }
   ]
 }
@@ -276,6 +367,28 @@
     .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
     .site-footer a:hover { color: #fff }
 
+
+    /* ===================== AEO/GEO: DIRECT ANSWER + FAQ ===================== */
+    .answer-block { border: 2px solid var(--ink); background: var(--white); padding: 26px 24px 24px; margin-bottom: 28px }
+    .ab-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
+    .answer-block h2 { font-weight: 900; font-size: clamp(19px, 2.6vw, 27px); line-height: 1.15; letter-spacing: -.02em; margin-bottom: 14px }
+    .ab-answer { font-size: clamp(16px, 2vw, 18.5px); line-height: 1.5; font-weight: 700; color: var(--ink); border-left: 4px solid var(--flag); padding: 2px 0 2px 15px; margin-bottom: 16px }
+    .ab-body { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
+    .ab-body b { color: var(--ink); font-weight: 700 }
+    .ab-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line) }
+    .ab-facts li { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); border: 1px solid var(--line); padding: 5px 10px }
+    .ab-facts li b { color: var(--ink) }
+
+    .faq-block { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
+    .faq-block > .panel-head { margin: 0 }
+    .faq-in { padding: 8px 22px 22px }
+    .faq-item { border-bottom: 1px solid var(--line); padding: 20px 0 }
+    .faq-item:last-child { border-bottom: none }
+    .faq-item h3 { font-weight: 800; font-size: 17px; line-height: 1.3; margin-bottom: 8px }
+    .faq-item h3::before { content: "— "; color: var(--flag) }
+    .faq-item p { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
+    @media(max-width:560px) { .answer-block { padding: 22px 18px } .faq-in { padding: 8px 16px 18px } }
+
     /* === CLS / RESPONSIVE SAFETY === */
     html, body { max-width: 100%; overflow-x: clip; }
     img, video, iframe { max-width: 100%; }
@@ -320,6 +433,15 @@
 
   <div class="tool-body">
     <div class="wrap">
+
+      <!-- ============ AEO: DIRECT ANSWER ============ -->
+      <section class="answer-block" aria-labelledby="aeo-q">
+        <div class="ab-tag">The short answer</div>
+        <h2 id="aeo-q">How do you know which golf clubs to take out of your bag?</h2>
+        <p class="ab-answer">Score each club on how often you use it times how much you trust it — this free club gapping calculator flags the passengers and the 20-yard holes.</p>
+        <p class="ab-body">The Bag Audit is a <b>free online golf club gapping calculator</b> that audits all fourteen slots at once. Every club is scored on usage multiplied by confidence, then the whole set is sorted by carry distance so the gaps and overlaps become visible. If you want to <b>audit your golf bag now</b> before spending money on new equipment, this costs nothing and takes five minutes. If you are <b>understanding golf club distance gaps</b>, the target is 10 to 15 yards between clubs: over 20 leaves a distance you cannot cover, and under 8 means you are carrying the same club twice.</p>
+        <ul class="ab-facts"><li><b>Free</b> forever</li><li><b>No</b> signup</li><li><b>0</b> data uploaded</li><li><b>100%</b> in your browser</li></ul>
+      </section>
 
       <!-- ============ STEP 1: THE BAG ============ -->
       <section class="panel">
@@ -466,6 +588,30 @@
             tells you what those carry numbers are worth on a cold, windy morning.</p>
           <p style="font-size:15.5px;max-width:68ch"><a href="tools.html"
               style="border-bottom:2px solid var(--flag)">See all seven tools and your saved history →</a></p>
+        </div>
+      </section>
+
+
+      <!-- ============ AEO: VISIBLE FAQ (mirrors FAQPage schema) ============ -->
+      <section class="faq-block panel" aria-labelledby="faq-h">
+        <div class="panel-head"><span id="faq-h"><span class="step">FAQ ·</span> Questions Golfers Actually Ask</span></div>
+        <div class="faq-in">
+          <div class="faq-item">
+            <h3>What is a good distance gap between golf clubs?</h3>
+            <p>Between 10 and 15 yards is the target through the set. Anything over 20 yards leaves a distance you have no club for, and anything under 8 yards means you are carrying two clubs that do the same job and wasting one of your fourteen slots.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How many clubs are you allowed in a golf bag?</h3>
+            <p>Fourteen, and the putter counts as one of them. Under Rule 4.1b carrying more costs two strokes for each hole where the breach happened, capped at four strokes per round.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Should I replace my 3-wood with a 7-wood?</h3>
+            <p>If you rarely use the 3-wood and do not trust it, yes. A 3-wood needs a tight lie and high clubhead speed to work. Higher-lofted woods and hybrids launch easier from more lies, which is why a club you actually hit is worth more than a club that goes further on paper.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How do I know which golf club to take out of my bag?</h3>
+            <p>Multiply how many times you use a club in a round by how much you trust it out of five. The lowest scores are your passengers. A club you hit once a round and do not trust is occupying a slot that a wedge or a hybrid would earn.</p>
+          </div>
         </div>
       </section>
 

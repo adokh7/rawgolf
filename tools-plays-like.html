@@ -45,14 +45,54 @@
   "applicationCategory": "SportsApplication",
   "operatingSystem": "Any modern browser",
   "description": "A free client-side golf calculator that adjusts a target yardage for temperature, altitude, wind, slope and humidity to produce the distance a shot is actually playing.",
-  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "priceValidUntil": "2030-12-31"
+  },
   "publisher": {
     "@type": "Organization",
     "name": "RawGolf",
     "url": "https://www.golfraw.com/",
-    "logo": {"@type": "ImageObject", "url": "https://www.golfraw.com/img/rawgolf-logo.png"}
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.golfraw.com/img/rawgolf-logo.png"
+    }
   },
-  "isAccessibleForFree": true
+  "isAccessibleForFree": true,
+  "applicationSubCategory": "Golf playing-conditions distance calculator",
+  "browserRequirements": "Requires JavaScript. Runs in any modern browser; no installation.",
+  "softwareVersion": "1.0",
+  "inLanguage": "en",
+  "featureList": [
+    "Temperature adjustment",
+    "Head and tail wind adjustment",
+    "Altitude adjustment",
+    "Uphill and downhill elevation",
+    "Club recommendation",
+    "Humidity myth correction"
+  ],
+  "keywords": "golf yardage calculator, plays like distance, wind adjustment golf, cold weather golf distance, altitude golf, humidity golf myth",
+  "permissions": "none",
+  "storageRequirement": "Uses browser local storage only. No account, no server, and no data leaves the device.",
+  "audience": {
+    "@type": "PeopleAudience",
+    "audienceType": "Amateur and club golfers"
+  },
+  "isFamilyFriendly": true,
+  "potentialAction": {
+    "@type": "UseAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.golfraw.com/tools-plays-like",
+      "actionPlatform": [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/MobileWebPlatform"
+      ]
+    }
+  }
 }
   </script>
 
@@ -93,6 +133,57 @@
         "@type": "Answer",
         "text": "Around 2 percent extra carry for every 1,000 feet of elevation. In Denver at roughly 5,280 feet a 150 yard shot plays about 16 yards shorter."
       }
+    }
+  ]
+}
+  </script>
+
+  <!-- ============ HOWTO SCHEMA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to adjust your golf yardage for wind, cold and elevation",
+  "description": "Convert a target yardage into the distance the shot is actually playing under real course conditions.",
+  "totalTime": "PT1M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": "0"
+  },
+  "supply": [
+    {
+      "@type": "HowToSupply",
+      "name": "The yardage to your target and the current conditions"
+    }
+  ],
+  "tool": [
+    {
+      "@type": "HowToTool",
+      "name": "Any modern web browser"
+    }
+  ],
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Enter the yardage to your target",
+      "text": "The raw number from the sprinkler head, the rangefinder or the yardage book, before any adjustment for what the weather is doing.",
+      "url": "https://www.golfraw.com/tools-plays-like#step-1"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Set the conditions",
+      "text": "Temperature, wind speed and direction, altitude above sea level, and how far the green sits above or below you. Quick-pick chips cover the common cases in a couple of taps.",
+      "url": "https://www.golfraw.com/tools-plays-like#step-2"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Read the plays-like number and take the club it names",
+      "text": "The tool returns the effective yardage, a factor-by-factor breakdown of where every yard came from, and how many clubs more or less to take.",
+      "url": "https://www.golfraw.com/tools-plays-like#step-3"
     }
   ]
 }
@@ -256,6 +347,28 @@
     .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
     .site-footer a:hover { color: #fff }
 
+
+    /* ===================== AEO/GEO: DIRECT ANSWER + FAQ ===================== */
+    .answer-block { border: 2px solid var(--ink); background: var(--white); padding: 26px 24px 24px; margin-bottom: 28px }
+    .ab-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
+    .answer-block h2 { font-weight: 900; font-size: clamp(19px, 2.6vw, 27px); line-height: 1.15; letter-spacing: -.02em; margin-bottom: 14px }
+    .ab-answer { font-size: clamp(16px, 2vw, 18.5px); line-height: 1.5; font-weight: 700; color: var(--ink); border-left: 4px solid var(--flag); padding: 2px 0 2px 15px; margin-bottom: 16px }
+    .ab-body { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
+    .ab-body b { color: var(--ink); font-weight: 700 }
+    .ab-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line) }
+    .ab-facts li { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); border: 1px solid var(--line); padding: 5px 10px }
+    .ab-facts li b { color: var(--ink) }
+
+    .faq-block { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
+    .faq-block > .panel-head { margin: 0 }
+    .faq-in { padding: 8px 22px 22px }
+    .faq-item { border-bottom: 1px solid var(--line); padding: 20px 0 }
+    .faq-item:last-child { border-bottom: none }
+    .faq-item h3 { font-weight: 800; font-size: 17px; line-height: 1.3; margin-bottom: 8px }
+    .faq-item h3::before { content: "— "; color: var(--flag) }
+    .faq-item p { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
+    @media(max-width:560px) { .answer-block { padding: 22px 18px } .faq-in { padding: 8px 16px 18px } }
+
     /* === CLS / RESPONSIVE SAFETY === */
     html, body { max-width: 100%; overflow-x: clip; }
     img, video, iframe { max-width: 100%; }
@@ -300,6 +413,15 @@
 
   <div class="tool-body">
     <div class="wrap">
+
+      <!-- ============ AEO: DIRECT ANSWER ============ -->
+      <section class="answer-block" aria-labelledby="aeo-q">
+        <div class="ab-tag">The short answer</div>
+        <h2 id="aeo-q">How far does a golf ball actually fly in cold weather and into the wind?</h2>
+        <p class="ab-answer">Cold costs roughly 2 yards per 10°F and a headwind about 1 yard per mph — this free plays-like calculator turns conditions into the club to pull.</p>
+        <p class="ab-body">The Plays Like Calculator is a <b>free online golf yardage calculator</b> that converts temperature, wind, altitude and elevation change into the distance a shot is genuinely playing. It is the only tool in this suite designed to be opened mid-round. If you need to <b>calculate your adjusted golf yardage now</b>, enter the target number and the conditions. If you are <b>understanding how weather affects golf ball distance</b>, it also settles the humid-air argument permanently: humid air is less dense than dry air, so the ball flies marginally further, not shorter.</p>
+        <ul class="ab-facts"><li><b>Free</b> forever</li><li><b>No</b> signup</li><li><b>0</b> data uploaded</li><li><b>100%</b> in your browser</li></ul>
+      </section>
 
       <!-- ============ INPUT ============ -->
       <section class="panel">
@@ -449,6 +571,30 @@
             not. A water molecule is <b>lighter</b> than the nitrogen and oxygen it displaces, so humid air is
             marginally <b>less</b> dense and the ball flies a fraction <b>further</b>. The effect is small enough
             to ignore entirely — but it is certainly not costing you distance.</p>
+        </div>
+      </section>
+
+
+      <!-- ============ AEO: VISIBLE FAQ (mirrors FAQPage schema) ============ -->
+      <section class="faq-block panel" aria-labelledby="faq-h">
+        <div class="panel-head"><span id="faq-h"><span class="step">FAQ ·</span> Questions Golfers Actually Ask</span></div>
+        <div class="faq-in">
+          <div class="faq-item">
+            <h3>How much does cold weather affect golf ball distance?</h3>
+            <p>Roughly 2 yards for every 10 degrees Fahrenheit below a 70 degree baseline. At 40 degrees a 150 yard shot plays about 6 yards longer, because both the ball and the denser cold air cost you carry.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How much club should I take into the wind?</h3>
+            <p>About 1 yard per mph into a headwind, and roughly half a yard per mph downwind. A 10 mph headwind makes a 150 yard shot play around 160 yards, which is usually one extra club.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Does humid air make the golf ball fly shorter?</h3>
+            <p>No. This is a myth. Water vapour is lighter than dry air, so humid air is actually less dense and the ball flies marginally further, not shorter. The effect is small enough to ignore.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How much further does a golf ball travel at altitude?</h3>
+            <p>Around 2 percent extra carry for every 1,000 feet of elevation. In Denver at roughly 5,280 feet a 150 yard shot plays about 16 yards shorter.</p>
+          </div>
         </div>
       </section>
 

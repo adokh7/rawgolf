@@ -45,14 +45,54 @@
   "applicationCategory": "SportsApplication",
   "operatingSystem": "Any modern browser",
   "description": "A free client-side golf psychology calculator that measures how many strokes a golfer loses in the three holes following their worst hole, and calculates their bounce-back rate against tour benchmarks.",
-  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "priceValidUntil": "2030-12-31"
+  },
   "publisher": {
     "@type": "Organization",
     "name": "RawGolf",
     "url": "https://www.golfraw.com/",
-    "logo": {"@type": "ImageObject", "url": "https://www.golfraw.com/img/rawgolf-logo.png"}
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.golfraw.com/img/rawgolf-logo.png"
+    }
   },
-  "isAccessibleForFree": true
+  "isAccessibleForFree": true,
+  "applicationSubCategory": "Golf mental performance and tilt calculator",
+  "browserRequirements": "Requires JavaScript. Runs in any modern browser; no installation.",
+  "softwareVersion": "1.0",
+  "inLanguage": "en",
+  "featureList": [
+    "Blow-up hole detection",
+    "Median baseline excluding the worst hole",
+    "Three-hole tilt window cost",
+    "Bounce-back rate against tour benchmarks",
+    "Tilt Index out of ten",
+    "Hole-by-hole visual strip"
+  ],
+  "keywords": "golf mental game, tilt in golf, bounce back rate golf, blow up hole, golf psychology calculator, how to stop tilting golf",
+  "permissions": "none",
+  "storageRequirement": "Uses browser local storage only. No account, no server, and no data leaves the device.",
+  "audience": {
+    "@type": "PeopleAudience",
+    "audienceType": "Amateur and club golfers"
+  },
+  "isFamilyFriendly": true,
+  "potentialAction": {
+    "@type": "UseAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.golfraw.com/tools-tilt-meter",
+      "actionPlatform": [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/MobileWebPlatform"
+      ]
+    }
+  }
 }
   </script>
 
@@ -93,6 +133,57 @@
         "@type": "Answer",
         "text": "The Tilt Index combines two measurements. First, the strokes you dropped across the three holes after your worst hole compared with your median hole for the round, excluding that worst hole. Second, your bounce-back rate across every double bogey or worse in the round. The two are weighted 55 and 45 percent and scaled to a score out of ten."
       }
+    }
+  ]
+}
+  </script>
+
+  <!-- ============ HOWTO SCHEMA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to measure how much your temper costs you on the golf course",
+  "description": "Quantify the strokes lost in the holes following a blow-up hole and compare your recovery rate to tour standards.",
+  "totalTime": "PT2M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": "0"
+  },
+  "supply": [
+    {
+      "@type": "HowToSupply",
+      "name": "An eighteen hole scorecard"
+    }
+  ],
+  "tool": [
+    {
+      "@type": "HowToTool",
+      "name": "Any modern web browser"
+    }
+  ],
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Enter each hole relative to par",
+      "text": "Zero for par, plus one for bogey, plus three for a triple, minus one for a birdie. Leave a hole blank and it is left out of the analysis entirely.",
+      "url": "https://www.golfraw.com/tools-tilt-meter#step-1"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Run the meltdown index",
+      "text": "The tool finds your worst hole automatically, works out your median hole with that disaster removed, and measures the three holes immediately after it against that baseline.",
+      "url": "https://www.golfraw.com/tools-tilt-meter#step-2"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Read your Tilt Index and bounce-back rate",
+      "text": "You get a score out of ten, the exact number of strokes your reaction cost you, and the percentage of your bad holes you followed with a par or better.",
+      "url": "https://www.golfraw.com/tools-tilt-meter#step-3"
     }
   ]
 }
@@ -279,6 +370,28 @@
     .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
     .site-footer a:hover { color: #fff }
 
+
+    /* ===================== AEO/GEO: DIRECT ANSWER + FAQ ===================== */
+    .answer-block { border: 2px solid var(--ink); background: var(--white); padding: 26px 24px 24px; margin-bottom: 28px }
+    .ab-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
+    .answer-block h2 { font-weight: 900; font-size: clamp(19px, 2.6vw, 27px); line-height: 1.15; letter-spacing: -.02em; margin-bottom: 14px }
+    .ab-answer { font-size: clamp(16px, 2vw, 18.5px); line-height: 1.5; font-weight: 700; color: var(--ink); border-left: 4px solid var(--flag); padding: 2px 0 2px 15px; margin-bottom: 16px }
+    .ab-body { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
+    .ab-body b { color: var(--ink); font-weight: 700 }
+    .ab-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line) }
+    .ab-facts li { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); border: 1px solid var(--line); padding: 5px 10px }
+    .ab-facts li b { color: var(--ink) }
+
+    .faq-block { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
+    .faq-block > .panel-head { margin: 0 }
+    .faq-in { padding: 8px 22px 22px }
+    .faq-item { border-bottom: 1px solid var(--line); padding: 20px 0 }
+    .faq-item:last-child { border-bottom: none }
+    .faq-item h3 { font-weight: 800; font-size: 17px; line-height: 1.3; margin-bottom: 8px }
+    .faq-item h3::before { content: "— "; color: var(--flag) }
+    .faq-item p { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
+    @media(max-width:560px) { .answer-block { padding: 22px 18px } .faq-in { padding: 8px 16px 18px } }
+
     /* === CLS / RESPONSIVE SAFETY === */
     html, body { max-width: 100%; overflow-x: clip; }
     img, video, iframe { max-width: 100%; }
@@ -324,6 +437,15 @@
 
   <div class="tool-body">
     <div class="wrap">
+
+      <!-- ============ AEO: DIRECT ANSWER ============ -->
+      <section class="answer-block" aria-labelledby="aeo-q">
+        <div class="ab-tag">The short answer</div>
+        <h2 id="aeo-q">How many shots does losing your temper cost you in a round of golf?</h2>
+        <p class="ab-answer">This free tilt calculator measures the strokes you drop in the three holes after your blow-up and compares your bounce-back to a tour pro's.</p>
+        <p class="ab-body">The Tilt Meter is a <b>free online golf psychology calculator</b> that measures something no scorecard shows: the damage that happens after the disaster rather than during it. Enter eighteen holes relative to par and it isolates your worst hole, measures the three holes that followed against your own median, and returns a Tilt Index out of ten. If you want to <b>measure your golf mental game now</b>, it takes about a minute. If you are <b>understanding bounce-back rate and course psychology</b>, tour professionals recover from roughly 20% of their doubles and club golfers from about 10%.</p>
+        <ul class="ab-facts"><li><b>Free</b> forever</li><li><b>No</b> signup</li><li><b>0</b> data uploaded</li><li><b>100%</b> in your browser</li></ul>
+      </section>
 
       <!-- ============ STEP 1: THE CARD ============ -->
       <section class="panel">
@@ -465,6 +587,30 @@
             asks whether you have been making the game harder than it needs to be all along.</p>
           <p style="font-size:15.5px;max-width:68ch"><a href="tools.html"
               style="border-bottom:2px solid var(--flag)">See all six tools and your saved history →</a></p>
+        </div>
+      </section>
+
+
+      <!-- ============ AEO: VISIBLE FAQ (mirrors FAQPage schema) ============ -->
+      <section class="faq-block panel" aria-labelledby="faq-h">
+        <div class="panel-head"><span id="faq-h"><span class="step">FAQ ·</span> Questions Golfers Actually Ask</span></div>
+        <div class="faq-in">
+          <div class="faq-item">
+            <h3>What does tilt mean in golf?</h3>
+            <p>Tilt is a poker term that describes playing worse because you are emotionally rattled rather than because the challenge got harder. In golf it shows up as the extra shots you drop in the holes immediately after a blow-up, when the hole in front of you is no harder than the ones you were parring an hour earlier.</p>
+          </div>
+          <div class="faq-item">
+            <h3>What is a good bounce-back rate in golf?</h3>
+            <p>Bounce-back measures how often you follow a double bogey or worse with a par or better. Tour professionals sit around 20 percent and club amateurs are closer to 10 percent. Anything above 20 percent means you reset faster than most people who play golf for a living.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How do you stop tilting on the golf course?</h3>
+            <p>The measurable fix is to treat the next tee shot as the most conservative shot of your round. Most meltdown damage comes from trying to win the lost shots straight back with an aggressive line off the following tee, which turns one bad hole into three.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How is the Tilt Index calculated?</h3>
+            <p>The Tilt Index combines two measurements. First, the strokes you dropped across the three holes after your worst hole compared with your median hole for the round, excluding that worst hole. Second, your bounce-back rate across every double bogey or worse in the round. The two are weighted 55 and 45 percent and scaled to a score out of ten.</p>
+          </div>
         </div>
       </section>
 

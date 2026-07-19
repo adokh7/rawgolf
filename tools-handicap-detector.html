@@ -45,14 +45,54 @@
   "applicationCategory": "SportsApplication",
   "operatingSystem": "Any modern browser",
   "description": "A free client-side golf handicap calculator using the World Handicap System score differential formula, comparing a golfer's claimed handicap against their calculated Handicap Index.",
-  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "priceValidUntil": "2030-12-31"
+  },
   "publisher": {
     "@type": "Organization",
     "name": "RawGolf",
     "url": "https://www.golfraw.com/",
-    "logo": {"@type": "ImageObject", "url": "https://www.golfraw.com/img/rawgolf-logo.png"}
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.golfraw.com/img/rawgolf-logo.png"
+    }
   },
-  "isAccessibleForFree": true
+  "isAccessibleForFree": true,
+  "applicationSubCategory": "World Handicap System index calculator",
+  "browserRequirements": "Requires JavaScript. Runs in any modern browser; no installation.",
+  "softwareVersion": "1.0",
+  "inLanguage": "en",
+  "featureList": [
+    "Official WHS score differential formula",
+    "5 to 20 round lookup table",
+    "Claimed versus calculated index comparison",
+    "Vanity and bandit detection",
+    "Per-round differential breakdown",
+    "Accepts a corrected score from The Gimme Audit"
+  ],
+  "keywords": "handicap calculator, whs handicap index, score differential formula, sandbagger, vanity handicap, golf handicap explained",
+  "permissions": "none",
+  "storageRequirement": "Uses browser local storage only. No account, no server, and no data leaves the device.",
+  "audience": {
+    "@type": "PeopleAudience",
+    "audienceType": "Amateur and club golfers"
+  },
+  "isFamilyFriendly": true,
+  "potentialAction": {
+    "@type": "UseAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.golfraw.com/tools-handicap-detector",
+      "actionPlatform": [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/MobileWebPlatform"
+      ]
+    }
+  }
 }
   </script>
 
@@ -85,6 +125,57 @@
         "@type": "Answer",
         "text": "A minimum of 54 holes, which is three 18-hole rounds. With 5 rounds only the single lowest differential is used, and the number of differentials counted rises as you post more scores until 8 of 20 is reached."
       }
+    }
+  ]
+}
+  </script>
+
+  <!-- ============ HOWTO SCHEMA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to calculate your World Handicap System index",
+  "description": "Turn your recent golf scores into an official-style WHS Handicap Index and compare it against the handicap you claim.",
+  "totalTime": "PT3M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": "0"
+  },
+  "supply": [
+    {
+      "@type": "HowToSupply",
+      "name": "Your last 5 to 20 scores with course rating and slope"
+    }
+  ],
+  "tool": [
+    {
+      "@type": "HowToTool",
+      "name": "Any modern web browser"
+    }
+  ],
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Enter your recent rounds",
+      "text": "For each round add the adjusted gross score, the course rating and the slope rating from the tee you played. Five rounds is the minimum the World Handicap System will work from.",
+      "url": "https://www.golfraw.com/tools-handicap-detector#step-1"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "State the handicap you tell people",
+      "text": "This is the number you give in the pro shop or on the first tee. It is not used in the calculation, only in the comparison at the end.",
+      "url": "https://www.golfraw.com/tools-handicap-detector#step-2"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Run the detector and compare the two numbers",
+      "text": "The tool averages your lowest differentials according to the official lookup table, returns your real index, and tells you whether the number you claim makes you a vanity handicapper or a bandit.",
+      "url": "https://www.golfraw.com/tools-handicap-detector#step-3"
     }
   ]
 }
@@ -256,6 +347,28 @@
     .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
     .site-footer a:hover { color: #fff }
 
+
+    /* ===================== AEO/GEO: DIRECT ANSWER + FAQ ===================== */
+    .answer-block { border: 2px solid var(--ink); background: var(--white); padding: 26px 24px 24px; margin-bottom: 28px }
+    .ab-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
+    .answer-block h2 { font-weight: 900; font-size: clamp(19px, 2.6vw, 27px); line-height: 1.15; letter-spacing: -.02em; margin-bottom: 14px }
+    .ab-answer { font-size: clamp(16px, 2vw, 18.5px); line-height: 1.5; font-weight: 700; color: var(--ink); border-left: 4px solid var(--flag); padding: 2px 0 2px 15px; margin-bottom: 16px }
+    .ab-body { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
+    .ab-body b { color: var(--ink); font-weight: 700 }
+    .ab-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line) }
+    .ab-facts li { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); border: 1px solid var(--line); padding: 5px 10px }
+    .ab-facts li b { color: var(--ink) }
+
+    .faq-block { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
+    .faq-block > .panel-head { margin: 0 }
+    .faq-in { padding: 8px 22px 22px }
+    .faq-item { border-bottom: 1px solid var(--line); padding: 20px 0 }
+    .faq-item:last-child { border-bottom: none }
+    .faq-item h3 { font-weight: 800; font-size: 17px; line-height: 1.3; margin-bottom: 8px }
+    .faq-item h3::before { content: "— "; color: var(--flag) }
+    .faq-item p { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
+    @media(max-width:560px) { .answer-block { padding: 22px 18px } .faq-in { padding: 8px 16px 18px } }
+
     /* === CLS / RESPONSIVE SAFETY === */
     html, body { max-width: 100%; overflow-x: clip; }
     img, video, iframe { max-width: 100%; }
@@ -297,6 +410,15 @@
 
   <div class="tool-body">
     <div class="wrap">
+
+      <!-- ============ AEO: DIRECT ANSWER ============ -->
+      <section class="answer-block" aria-labelledby="aeo-q">
+        <div class="ab-tag">The short answer</div>
+        <h2 id="aeo-q">How do you calculate your real golf handicap index from your scores?</h2>
+        <p class="ab-answer">Enter your last 5 to 20 rounds and this free WHS handicap calculator returns your true index from the average of your best score differentials.</p>
+        <p class="ab-body">The Handicap Lie Detector is a <b>free online WHS handicap calculator</b> that applies the official World Handicap System score differential formula — (113 ÷ slope) × (adjusted gross − course rating) — to your recent rounds. It then compares the number you tell people against the number your scorecards support. If you want to <b>calculate your golf handicap now</b>, you need five rounds minimum. If you are <b>understanding how handicap index is calculated</b> and why you never seem to play to it, the lookup table and full method are shown below the result.</p>
+        <ul class="ab-facts"><li><b>Free</b> forever</li><li><b>No</b> signup</li><li><b>0</b> data uploaded</li><li><b>100%</b> in your browser</li></ul>
+      </section>
 
       <!-- ============ INPUT ============ -->
       <section class="panel">
@@ -415,6 +537,26 @@
           <p>The World Handicap System scales how many differentials it counts: with 5 rounds it uses your single
             lowest, with 6 it uses the lowest 2 minus an adjustment, and it climbs from there until you reach the
             full 8 of 20.</p>
+        </div>
+      </section>
+
+
+      <!-- ============ AEO: VISIBLE FAQ (mirrors FAQPage schema) ============ -->
+      <section class="faq-block panel" aria-labelledby="faq-h">
+        <div class="panel-head"><span id="faq-h"><span class="step">FAQ ·</span> Questions Golfers Actually Ask</span></div>
+        <div class="faq-in">
+          <div class="faq-item">
+            <h3>How is a golf handicap calculated?</h3>
+            <p>Each round produces a Score Differential of (113 / Slope Rating) x (Adjusted Gross Score - Course Rating). Your Handicap Index is the average of the lowest differentials from your most recent 20 scores, using 8 of 20 when you have a full record.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Why do I never shoot my handicap?</h3>
+            <p>Because a handicap measures your potential, not your average. It is built from your best 8 rounds out of 20, so most golfers only play to their Handicap Index roughly one round in five.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How many scores do you need for a handicap?</h3>
+            <p>A minimum of 54 holes, which is three 18-hole rounds. With 5 rounds only the single lowest differential is used, and the number of differentials counted rises as you post more scores until 8 of 20 is reached.</p>
+          </div>
         </div>
       </section>
 
