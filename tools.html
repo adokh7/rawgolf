@@ -16,7 +16,7 @@
   <!-- ============ PRIMARY SEO ============ -->
   <title>Free Golf Tools: Betting, Handicap, Wind &amp; Round Analysis | Golf Raw</title>
   <meta name="description"
-    content="Six free golf calculators that run entirely in your browser. Settle bets, diagnose your round, find your correct tees, calculate your real handicap index and measure how badly you tilt. No signup, no tracking.">
+    content="Seven free golf calculators that run entirely in your browser. Settle bets, diagnose your round, find your correct tees, calculate your real handicap index, measure how badly you tilt and audit the dead wood in your bag. No signup, no tracking.">
   <link rel="canonical" href="https://www.golfraw.com/tools">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Golf Raw Staff">
@@ -24,14 +24,14 @@
   <!-- ============ OPEN GRAPH ============ -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RawGolf">
-  <meta property="og:title" content="Raw Golf Tools Suite — Six Free Golf Calculators">
+  <meta property="og:title" content="Raw Golf Tools Suite — Seven Free Golf Calculators">
   <meta property="og:description"
     content="Settle bets, diagnose your round, find your correct tees, and calculate your real handicap. All free, all running locally in your browser.">
   <meta property="og:url" content="https://www.golfraw.com/tools">
 
   <!-- ============ TWITTER CARD ============ -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Raw Golf Tools Suite — Six Free Golf Calculators">
+  <meta name="twitter:title" content="Raw Golf Tools Suite — Seven Free Golf Calculators">
   <meta name="twitter:description"
     content="Settle bets, diagnose your round, find your correct tees, calculate your real handicap. Free, no signup.">
 
@@ -42,7 +42,7 @@
   "@type": "CollectionPage",
   "name": "Raw Golf Tools Suite",
   "url": "https://www.golfraw.com/tools",
-  "description": "A suite of six free client-side golf calculators covering betting settlement, round diagnostics, tee box selection, handicap index calculation, playing-conditions distance adjustment and on-course tilt measurement.",
+  "description": "A suite of seven free client-side golf calculators covering betting settlement, round diagnostics, tee box selection, handicap index calculation, playing-conditions distance adjustment, on-course tilt measurement and equipment gap analysis.",
   "publisher": {
     "@type": "Organization",
     "name": "RawGolf",
@@ -109,6 +109,16 @@
           "url": "https://www.golfraw.com/tools-tilt-meter",
           "applicationCategory": "SportsApplication",
           "description": "Golf psychology calculator that measures the strokes lost in the three holes following a blow-up hole, plus bounce-back rate against tour benchmarks.",
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+        }
+      },
+      {
+        "@type": "ListItem", "position": 7,
+        "item": {
+          "@type": "WebApplication", "name": "The Bag Audit",
+          "url": "https://www.golfraw.com/tools-bag-audit",
+          "applicationCategory": "SportsApplication",
+          "description": "Golf equipment diagnostic that scores each club on usage and confidence, maps distance gaps and overlaps across the set, and recommends which clubs to remove or replace.",
           "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
         }
       }
@@ -194,10 +204,12 @@
       padding: 34px 30px 30px; border-right: 2px solid rgba(255,255,255,.16);
       transition: background .18s ease;
     }
-    /* Six tools divide evenly into a 3x2 — no featured row needed.
-       Rules are positional, so the grid stays balanced if a 7th or 8th is added. */
+    /* Seven tools: the newest spans the full width, the other six form a 3x2 beneath.
+       The featured card occupies position 1, which flips the column parity — the left
+       column is then the EVEN children (2,4,6) and the right column the odd (3,5,7). */
     .t-card { border-bottom: 2px solid rgba(255,255,255,.16) }
-    .t-card:nth-child(even) { border-right: none }
+    .t-card.featured { grid-column: 1 / -1 }
+    .t-card:nth-child(odd) { border-right: none }
     .t-card:nth-last-child(-n+2) { border-bottom: none }
     .t-card:hover { background: #1a221b }
     .t-card:hover .t-cta { background: var(--flag); border-color: var(--flag); color: #fff }
@@ -330,12 +342,12 @@
     <div class="wrap">
       <div class="eyebrow">RAWGOLF · UTILITIES</div>
       <h1>Raw Golf Tools Suite</h1>
-      <p>Six calculators that do the jobs golf software charges you for. Every one of them runs
+      <p>Seven calculators that do the jobs golf software charges you for. Every one of them runs
         <b>100% inside your browser</b> — no account, no signup, no round data uploaded anywhere, nothing tracked.
         Close the tab and it is gone.</p>
 
       <div class="facts-strip">
-        <div><span class="n">6</span><span class="l">Tools live</span></div>
+        <div><span class="n">7</span><span class="l">Tools live</span></div>
         <div><span class="n">$0</span><span class="l">Cost, forever</span></div>
         <div><span class="n">0</span><span class="l">Accounts needed</span></div>
         <div><span class="n">0</span><span class="l">Data uploaded</span></div>
@@ -354,8 +366,19 @@
       <!-- ============ TOOL GRID ============ -->
       <div class="tool-grid">
 
+        <a href="tools-bag-audit.html" class="t-card featured">
+          <div class="t-num">Tool 07 · Newest</div>
+          <h3>The Bag Audit</h3>
+          <div class="t-tagline">Equipment · Dead Wood Report</div>
+          <p>You get fourteen slots and the rules do not care what any of them cost. Score every club on how often
+            you use it and how much you trust it, map the gaps and overlaps across the set, and find out which
+            clubs are passengers, which two are quietly doing the same job, and which distance you have no club
+            for at all.</p>
+          <span class="t-cta">Find the dead wood →</span>
+        </a>
+
         <a href="tools-tilt-meter.html" class="t-card">
-          <div class="t-num">Tool 06 · Newest</div>
+          <div class="t-num">Tool 06</div>
           <h3>The Tilt Meter</h3>
           <div class="t-tagline">Psychological · Amateur Meltdown Index</div>
           <p>Everyone remembers the triple. Almost nobody notices it was the three holes after it that actually cost
@@ -425,7 +448,7 @@
         <div class="dash-head">
           <div>
             <h3 id="dashTitle">Everything you have run</h3>
-            <p class="dash-sub">Every result from all six tools, in order, saved in this browser only. No account,
+            <p class="dash-sub">Every result from all seven tools, in order, saved in this browser only. No account,
               no upload, no way for us to see it.</p>
           </div>
           <span class="dash-count" id="dashCount">—</span>
@@ -523,7 +546,7 @@
 
         if (!rows.length) {
           body.innerHTML = '<div class="dash-empty"><b>No results yet.</b>' +
-            'Run any of the six tools above and it will show up here automatically — ' +
+            'Run any of the seven tools above and it will show up here automatically — ' +
             'no sign-up, no setup.</div>';
           return;
         }

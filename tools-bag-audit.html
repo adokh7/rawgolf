@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PMECW4VW66');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============ PRIMARY SEO ============ -->
+  <title>The Bag Audit: Golf Club Gapping &amp; Dead Wood Calculator | Golf Raw</title>
+  <meta name="description"
+    content="Free golf club gapping calculator. Enter your carry distances, how often you use each club and how much you trust it, and find out which clubs are passengers, which are redundant, and where the holes are.">
+  <link rel="canonical" href="https://www.golfraw.com/tools-bag-audit">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Golf Raw Staff">
+
+  <!-- ============ OPEN GRAPH ============ -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RawGolf">
+  <meta property="og:title" content="The Bag Audit — Find The Dead Wood In Your Golf Bag">
+  <meta property="og:description"
+    content="Fourteen slots, and some of them are luggage. Find the passengers, the redundancy and the gaping holes in your set.">
+  <meta property="og:url" content="https://www.golfraw.com/tools-bag-audit">
+
+  <!-- ============ TWITTER CARD ============ -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Bag Audit — Find The Dead Wood In Your Golf Bag">
+  <meta name="twitter:description"
+    content="Fourteen slots, and some of them are luggage. Find the passengers and the gaping holes.">
+
+  <!-- ============ STRUCTURED DATA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "The Bag Audit — Golf Club Gapping and Dead Wood Calculator",
+  "url": "https://www.golfraw.com/tools-bag-audit",
+  "applicationCategory": "SportsApplication",
+  "operatingSystem": "Any modern browser",
+  "description": "A free client-side golf equipment diagnostic that scores every club on usage and confidence, maps distance gaps and overlaps across the set, and recommends which clubs to remove or replace.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "RawGolf",
+    "url": "https://www.golfraw.com/",
+    "logo": {"@type": "ImageObject", "url": "https://www.golfraw.com/img/rawgolf-logo.png"}
+  },
+  "isAccessibleForFree": true
+}
+  </script>
+
+  <!-- ============ FAQ SCHEMA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a good distance gap between golf clubs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Between 10 and 15 yards is the target through the set. Anything over 20 yards leaves a distance you have no club for, and anything under 8 yards means you are carrying two clubs that do the same job and wasting one of your fourteen slots."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many clubs are you allowed in a golf bag?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fourteen, and the putter counts as one of them. Under Rule 4.1b carrying more costs two strokes for each hole where the breach happened, capped at four strokes per round."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I replace my 3-wood with a 7-wood?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you rarely use the 3-wood and do not trust it, yes. A 3-wood needs a tight lie and high clubhead speed to work. Higher-lofted woods and hybrids launch easier from more lies, which is why a club you actually hit is worth more than a club that goes further on paper."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know which golf club to take out of my bag?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiply how many times you use a club in a round by how much you trust it out of five. The lowest scores are your passengers. A club you hit once a round and do not trust is occupying a slot that a wedge or a hybrid would earn."
+      }
+    }
+  ]
+}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --fairway: #14402A;
+      --fairway-deep: #0B2418;
+      --flag: #E03E2D;
+      --paper: #F3F4F0;
+      --white: #fff;
+      --ink: #101511;
+      --grey: #5B665E;
+      --line: #DADDD4;
+      --maxw: 1180px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box }
+    html { scroll-behavior: smooth }
+    body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased }
+    a { color: inherit; text-decoration: none }
+    img { max-width: 100%; height: auto; display: block }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .mono { font-family: 'IBM Plex Mono', monospace }
+
+    /* HEADER */
+    .site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .logo { font-weight: 900; font-size: 26px; letter-spacing: -.04em; text-transform: uppercase }
+    .logo .raw { color: var(--flag) }
+    .nav-links { display: flex; gap: 0 }
+    .nav-links a { font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; padding: 8px 14px; transition: background .15s, color .15s }
+    .nav-links a:hover { background: var(--ink); color: #fff }
+    .nav-links a.active { background: var(--ink); color: #fff }
+    .burger { display: none; background: none; border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px }
+    .burger span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0 }
+    @media(max-width:760px) {
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
+      .nav-links.open { display: flex }
+      .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+      .burger { display: block }
+    }
+
+    /* HERO */
+    .hub-hero { background: var(--ink); color: #fff; border-bottom: 4px solid var(--flag); padding: 56px 0 48px }
+    .hub-hero .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
+    .hub-hero h1 { font-weight: 900; font-size: clamp(32px, 5.6vw, 64px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
+    .hub-hero p { font-size: 17px; color: #9CC9AE; max-width: 62ch; line-height: 1.6 }
+
+    /* PANELS */
+    .tool-body { padding: 40px 0 72px }
+    .panel { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
+    .panel-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .panel-head .step { color: var(--flag) }
+    .panel-in { padding: 24px 20px }
+
+    input[type=text], input[type=number], select {
+      width: 100%; padding: 11px 10px; border: 2px solid var(--ink); background: var(--white);
+      font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 700; color: var(--ink); border-radius: 0;
+    }
+    input[type=number] { text-align: center }
+    input:focus, select:focus { outline: 3px solid var(--flag); outline-offset: -1px; position: relative; z-index: 2 }
+    input[type=number] { -moz-appearance: textfield }
+    input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0 }
+
+    /* ============ THE BAG: 14 CLUB ROWS ============ */
+    .bag-head, .club-row { display: grid; grid-template-columns: minmax(110px, 1.7fr) 92px 92px 106px; gap: 10px; align-items: center }
+    .bag-head { padding: 0 0 8px; border-bottom: 2px solid var(--line); margin-bottom: 12px }
+    .bag-head span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--grey) }
+    .bag-head span:not(:first-child) { text-align: center }
+    .club-row { margin-bottom: 9px }
+    .club-row .cr-lab { display: none; font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--grey); margin-bottom: 4px }
+
+    @media(max-width:760px) {
+      .bag-head { display: none }
+      .club-row {
+        grid-template-columns: repeat(3, 1fr); gap: 8px;
+        border: 2px solid var(--line); padding: 12px; margin-bottom: 12px; background: #FBFBF8;
+      }
+      .club-row > :first-child { grid-column: 1 / -1 }
+      .club-row .cr-lab { display: block }
+    }
+
+    .bag-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 18px; border-top: 2px solid var(--line) }
+    .tally { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--grey) }
+    .tally b { color: var(--ink); font-size: 15px }
+    .tally b.warn { color: var(--flag) }
+
+    .legend { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--grey); line-height: 1.7; margin-top: 14px }
+    .legend b { color: var(--ink) }
+
+    .btn { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 14px 22px; border: 2px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; transition: background .15s, color .15s }
+    .btn:hover { background: var(--flag); border-color: var(--flag) }
+    .btn.ghost { background: transparent; color: var(--ink) }
+    .btn.ghost:hover { background: var(--ink); color: #fff }
+    .btn.sm { padding: 10px 14px; font-size: 10.5px }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px }
+
+    .err { border: 2px solid var(--flag); background: #FDF0EE; color: #8f2015; padding: 12px 14px; font-size: 13.5px; font-weight: 600; margin-bottom: 18px; display: none }
+    .err.show { display: block }
+
+    /* AD SLOT — isolated from controls */
+    .ad-zone { border: 1px dashed var(--line); background: #EFF1EC; padding: 18px; margin: 30px 0; text-align: center; min-height: 96px; display: flex; align-items: center; justify-content: center }
+    .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #a8aea3 }
+
+    /* ===== action utility bar (kept clear of ad zones) ===== */
+    .act-bar { margin-top: 18px; padding-top: 16px; border-top: 2px solid rgba(16,21,17,.12); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between }
+    .act-lab { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--grey) }
+    .act-btns { display: flex; gap: 10px; flex-wrap: wrap }
+    /* Dead-zone so a mis-tap on an action button can never land on an ad */
+    .out-wrap + .ad-zone, .act-bar + .ad-zone { margin-top: 46px }
+    @media (max-width:520px){ .act-bar { justify-content: flex-start } .act-btns .btn { flex: 1 1 auto; min-height: 44px } }
+
+    /* ============ VERDICT CARD ============ */
+    .out-wrap { display: none }
+    .out-wrap.show { display: block }
+    .verdict-card { background: var(--ink); color: #fff; border: 3px solid var(--ink); padding: 32px 26px 0; overflow: hidden }
+    .vc-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 12px }
+    .vc-head { font-weight: 900; font-size: clamp(24px, 5vw, 40px); line-height: 1; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 14px }
+    .vc-sub { font-size: 16px; color: #d8ded6; line-height: 1.6; margin-bottom: 26px; max-width: 60ch }
+    .vc-sub b { color: #fff }
+
+    .badge-strip { border: 1px solid rgba(255,255,255,.18); padding: 20px; margin-bottom: 24px; text-align: center }
+    .badge-strip .bs-badge { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(13px, 3.1vw, 18px); letter-spacing: .06em; line-height: 1.5; color: #FF9486; text-transform: uppercase }
+    .badge-strip .bs-badge.clean { color: #6FDB9A }
+    .counts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.15); margin-top: 18px; padding-top: 16px }
+    .counts div { text-align: center; border-right: 1px solid rgba(255,255,255,.12) }
+    .counts div:last-child { border-right: none }
+    .counts .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 30px; line-height: 1; color: #fff }
+    .counts .n.zero { color: #6FDB9A }
+    .counts .l { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase; color: #8b958d; margin-top: 7px; display: block }
+
+    /* ============ THE YARDAGE LADDER (pure CSS) ============ */
+    .ladder-wrap { border: 1px solid rgba(255,255,255,.18); padding: 18px 16px 14px; margin-bottom: 24px }
+    .ladder-lab { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: #8b958d; margin-bottom: 16px; display: block }
+    .lad-row { display: grid; grid-template-columns: 92px 1fr 58px; gap: 10px; align-items: center; padding: 3px 0 }
+    .lad-row .ln { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #d8ded6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+    .lad-row .ln.dead { color: #FF9486; text-decoration: line-through }
+    .lad-row .lb { height: 13px; background: #4a5a4f; min-width: 3px }
+    .lad-row .lb.dead { background: var(--flag) }
+    .lad-row .ly { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b958d; text-align: right }
+    .gap-row { display: grid; grid-template-columns: 92px 1fr 58px; gap: 10px; align-items: center; padding: 1px 0 }
+    .gap-row .gtxt { grid-column: 2 / 4; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; padding-left: 2px }
+    .gap-row.hole .gtxt { color: #FF9486 }
+    .gap-row.overlap .gtxt { color: #FFC97A }
+    .lad-key { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.12); font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: #8b958d }
+    .lad-key span { display: flex; align-items: center; gap: 6px }
+    .lad-key i { width: 10px; height: 10px; display: block }
+
+    /* ============ RECOMMENDATIONS ============ */
+    .recs { margin-bottom: 26px }
+    .rec { border-left: 4px solid var(--flag); padding: 12px 0 12px 14px; margin-bottom: 14px }
+    .rec:last-child { margin-bottom: 0 }
+    .rec.good { border-left-color: #6FDB9A }
+    .rec .rt { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 5px }
+    .rec.good .rt { color: #6FDB9A }
+    .rec p { font-size: 14.5px; color: #d8ded6; line-height: 1.55 }
+
+    .vc-foot { border-top: 1px solid rgba(255,255,255,.15); margin: 0 -26px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .vc-foot .mark { font-weight: 900; font-size: 17px; letter-spacing: -.03em; text-transform: uppercase }
+    .vc-foot .mark span { color: var(--flag) }
+    .vc-foot .url { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #8b958d }
+
+    .note { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--grey); line-height: 1.65; margin-top: 14px }
+
+    /* EXPLAINER */
+    .explain h2 { font-weight: 900; font-size: clamp(20px, 3vw, 26px); text-transform: uppercase; letter-spacing: -.02em; margin-bottom: 12px; padding-top: 16px; border-top: 3px solid var(--ink) }
+    .explain h3 { font-weight: 800; font-size: 17px; margin: 22px 0 8px }
+    .explain h3::before { content: "— "; color: var(--flag) }
+    .explain p { font-size: 15.5px; margin-bottom: 14px; max-width: 68ch; line-height: 1.65 }
+
+    /* FOOTER */
+    .site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
+    .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
+    .site-footer a:hover { color: #fff }
+
+    /* === CLS / RESPONSIVE SAFETY === */
+    html, body { max-width: 100%; overflow-x: clip; }
+    img, video, iframe { max-width: 100%; }
+    table { max-width: 100%; }
+
+    /* === NAV WRAP SAFETY === */
+    .nav { height: auto; min-height: 68px; padding-top: 6px; padding-bottom: 6px; flex-wrap: wrap; row-gap: 4px; }
+    .nav-links { flex-wrap: wrap; row-gap: 2px; }
+    @media(min-width:761px){ .nav-links a { padding: 7px 10px; font-size: 11.5px; letter-spacing: .03em; } }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="nav">
+      <a href="./index.html" class="logo">Golf<span class="raw">Raw</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="./news.html">Latest News</a>
+        <a href="./ratings.html">Player Ratings</a>
+        <a href="./tournaments.html">Tournaments</a>
+        <a href="./analysis.html">Swing Analysis</a>
+        <a href="./vault.html">The Vault</a>
+        <a href="search.html">🔍 Search</a>
+        <a href="tools.html" class="active">Tools</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="hub-hero">
+    <div class="wrap">
+      <div class="eyebrow">RAWGOLF · TOOLS</div>
+      <h1>The Bag Audit</h1>
+      <p>You get fourteen slots and the rules do not care how much you paid for any of them. This works out which
+        clubs are actually earning their place, which two are quietly doing the same job, and which distance you
+        have no club for at all. Runs entirely in your browser — nothing uploaded, nothing sold to you.</p>
+    </div>
+  </div>
+
+  <div class="tool-body">
+    <div class="wrap">
+
+      <!-- ============ STEP 1: THE BAG ============ -->
+      <section class="panel">
+        <div class="panel-head">
+          <span><span class="step">01 ·</span> What Is Actually In There</span>
+          <button class="btn ghost sm" id="sampleBtn" type="button"
+            style="border-color:#8b958d;color:#fff">Load a typical bag</button>
+        </div>
+        <div class="panel-in">
+          <div class="err" id="err" role="alert"></div>
+
+          <div class="bag-head" aria-hidden="true">
+            <span>Club</span><span>Carry (yds)</span><span>Uses / round</span><span>Trust (1–5)</span>
+          </div>
+
+          <div id="bagList"></div>
+
+          <p class="legend">
+            <b>Carry</b> is how far it actually flies, not the number on the receipt.
+            <b>Uses</b> is honestly how many times it comes out in a round.
+            <b>Trust</b> is 1 (fear) to 5 (would hit it to win a match).<br>
+            Leave a club blank and it is skipped. Leave <b>Uses</b> blank and that club is measured for gapping
+            only, never flagged as dead wood.
+          </p>
+
+          <div class="bag-tools">
+            <span class="tally" id="tally">Clubs in play: <b>0</b></span>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn ghost sm" id="clearBtn" type="button">Clear the bag</button>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn" id="runBtn" type="button">Audit the bag →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ STEP 2: THE VERDICT ============ -->
+      <div class="out-wrap" id="outWrap">
+        <div class="verdict-card" id="verdictCard">
+          <div class="vc-eyebrow">The Bag Audit · Dead Wood Report</div>
+          <h2 class="vc-head" id="vHead">—</h2>
+          <p class="vc-sub" id="vSub"></p>
+
+          <div class="badge-strip">
+            <div class="bs-badge" id="badge"></div>
+            <div class="counts">
+              <div><span class="n" id="cDead">0</span><span class="l">Dead wood</span></div>
+              <div><span class="n" id="cRed">0</span><span class="l">Redundant</span></div>
+              <div><span class="n" id="cHole">0</span><span class="l">Gaping holes</span></div>
+            </div>
+          </div>
+
+          <div class="ladder-wrap">
+            <span class="ladder-lab" id="ladLab">The yardage ladder, longest to shortest</span>
+            <div id="ladder"></div>
+            <div class="lad-key">
+              <span><i style="background:#4a5a4f"></i> Earning its place</span>
+              <span><i style="background:#E03E2D"></i> Dead wood</span>
+              <span><i style="background:#FF9486"></i> Gaping hole</span>
+              <span><i style="background:#FFC97A"></i> Redundant</span>
+            </div>
+          </div>
+
+          <div class="recs" id="recs"></div>
+
+          <div class="vc-foot">
+            <span class="mark">Golf<span>Raw</span></span>
+            <span class="url">golfraw.com · the bag audit</span>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn" id="copyBtn" type="button">Copy for group chat</button>
+          <button class="btn ghost" id="againBtn" type="button">Edit the bag</button>
+        </div>
+
+        <div class="act-bar">
+          <span class="act-lab">Take it with you</span>
+          <div class="act-btns">
+            <button class="btn sm" id="pngBtn" type="button">Download card (.png)</button>
+            <button class="btn ghost sm" id="shareBtn" type="button">Share result</button>
+          </div>
+        </div>
+
+        <p class="note" id="method"></p>
+      </div>
+
+      <!-- Future AdSense Slot -->
+      <div class="ad-zone" aria-hidden="true">
+        <span>Advertisement</span>
+      </div>
+      <!-- /Future AdSense Slot -->
+
+      <!-- ============ EXPLAINER ============ -->
+      <section class="panel explain">
+        <div class="panel-head"><span><span class="step">02 ·</span> How The Audit Works</span></div>
+        <div class="panel-in">
+          <h2>Fourteen slots, and no sentimentality</h2>
+          <p>Most golfers do not choose fourteen clubs. They accumulate them. A set gets bought, a driver gets
+            upgraded, a hybrid arrives at Christmas, and the club that got replaced never quite leaves the bag.
+            This is the audit nobody performs on themselves.</p>
+
+          <h3>Dead wood score</h3>
+          <p>Uses per round multiplied by trust out of five. A driver you hit twelve times and rate 4 scores 48.
+            A 3-wood you hit once and rate 2 scores 2. Anything scoring <b>4 or less is a passenger</b> — and a club
+            you never take out at all is not a club, it is luggage. It is deliberately crude, because the honest
+            version of this question only needs two inputs.</p>
+
+          <h3>Gapping</h3>
+          <p>Your clubs get sorted longest to shortest and the distance between each pair is measured. Over
+            <b>20 yards</b> is a hole you have no club for. Under <b>8 yards</b> is two clubs doing one job, which
+            means one of your fourteen slots is being wasted on a spare. Between 10 and 15 is where you want to
+            live.</p>
+
+          <h3>Why the gaps matter more than the gear</h3>
+          <p>A 20-yard hole in your set does not show up as a bad shot. It shows up as a decision you cannot make
+            properly — a club you have to hit soft or force, several times a round, every round. That costs more
+            over a season than whichever driver you are being told to buy next.</p>
+
+          <h3>The honest limitation</h3>
+          <p>This audit only knows what you tell it, and golfers are famously generous about their own carry
+            distances. If your numbers come from the one you caught flush downwind, the ladder will look tidier
+            than your bag actually is. Use carry, not total, and use the number you hit on a normal day.</p>
+        </div>
+      </section>
+
+      <!-- Future AdSense Slot -->
+      <div class="ad-zone" aria-hidden="true">
+        <span>Advertisement</span>
+      </div>
+      <!-- /Future AdSense Slot -->
+
+      <section class="panel">
+        <div class="panel-head"><span><span class="step">03 ·</span> The Rest Of The Suite</span></div>
+        <div class="panel-in">
+          <p style="font-size:15.5px;margin-bottom:14px;max-width:68ch">Gaps sorted? The
+            <a href="tools-round-autopsy.html" style="border-bottom:2px solid var(--flag)">Round Autopsy</a> finds
+            which part of your game is actually leaking shots, the
+            <a href="tools-tilt-meter.html" style="border-bottom:2px solid var(--flag)">Tilt Meter</a> works out
+            what your temper costs you after a blow-up, and the
+            <a href="tools-plays-like.html" style="border-bottom:2px solid var(--flag)">Plays Like Calculator</a>
+            tells you what those carry numbers are worth on a cold, windy morning.</p>
+          <p style="font-size:15.5px;max-width:68ch"><a href="tools.html"
+              style="border-bottom:2px solid var(--flag)">See all seven tools and your saved history →</a></p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 RAWGOLF.COM — ALL RATINGS FINAL</span>
+      <nav aria-label="Footer navigation" style="display:flex;gap:20px">
+        <a href="./manifesto.html">MANIFESTO</a>
+        <a href="./ratings-manual.html">HOW RATINGS WORK</a>
+        <a href="./corrections.html">CORRECTIONS</a>
+        <a href="./privacy.html">PRIVACY</a>
+        <a href="./index.html">← FRONT PAGE</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
+  <script src="./rawgolf-tools.js"></script>
+
+  <script>
+    /* ==================== NAV ==================== */
+    (function () {
+      var b = document.getElementById('burger'), l = document.getElementById('navLinks');
+      if (b && l) {
+        b.addEventListener('click', function () {
+          var o = l.classList.toggle('open');
+          b.setAttribute('aria-expanded', o);
+        });
+        l.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () { l.classList.remove('open'); });
+        });
+      }
+    })();
+
+    var $ = function (id) { return document.getElementById(id); };
+
+    /* ==================== ENGINE CONSTANTS ==================== */
+    var SLOTS = 14;
+    var DEAD_SCORE = 4;      /* uses x trust at or below this = passenger */
+    var GAP_BIG = 20;        /* yards between clubs above this = gaping hole */
+    var GAP_TIGHT = 8;       /* yards between clubs below this = redundancy */
+    var LEGAL_LIMIT = 14;    /* Rule 4.1b — the putter counts as one of the fourteen */
+    var LS_BAG = 'golfraw_bag_audit';
+
+    var DEFAULT_NAMES = ['Driver', '3-Wood', '5-Wood', '3-Hybrid', '4-Hybrid', '5-iron', '6-iron',
+      '7-iron', '8-iron', '9-iron', 'PW', 'GW', 'SW', 'LW'];
+    var SAMPLE = [
+      ['Driver', 245, 12, 4], ['3-Wood', 228, 1, 2], ['5-Wood', 212, 2, 3], ['3-Hybrid', 205, 0, 2],
+      ['4-Hybrid', 196, 4, 4], ['5-iron', 185, 3, 3], ['6-iron', 173, 5, 4], ['7-iron', 161, 7, 5],
+      ['8-iron', 149, 7, 5], ['9-iron', 137, 6, 5], ['PW', 124, 8, 5], ['GW', 118, 3, 3],
+      ['SW', 95, 6, 4], ['LW', 78, 4, 3]
+    ];
+
+    function r1(n) { return Math.round(n * 10) / 10; }
+
+    /* Order matters: wedges are tested before woods, because "SW" and "PW" both
+       end in a w and would otherwise be classified as fairway woods. */
+    function typeOf(name) {
+      var n = String(name).toLowerCase().trim();
+      if (/driver|^1\s*-?\s*wood$|^1w$/.test(n)) return 'driver';
+      if (/wedge|^[pgasl]\s*-?\s*w$|\b(pw|gw|aw|sw|lw)\b/.test(n)) return 'wedge';
+      if (/hybrid|rescue|^\d\s*-?\s*h$/.test(n)) return 'hybrid';
+      if (/wood|^\d\s*-?\s*w$/.test(n)) return 'wood';
+      if (/iron|^\d\s*-?\s*i$/.test(n)) return 'iron';
+      return 'other';
+    }
+
+    /* ==================== THE AUDIT ENGINE ==================== */
+    function analyse(rows) {
+      var clubs = [], i, j;
+      for (i = 0; i < rows.length; i++) {
+        var r = rows[i];
+        if (!r.name || !String(r.name).trim()) continue;
+        if (!isFinite(r.carry) || r.carry <= 0) continue;
+        clubs.push({
+          name: String(r.name).trim(),
+          carry: r.carry,
+          usage: r.usage,            /* null when the field was left blank */
+          conf: isFinite(r.conf) && r.conf >= 1 ? r.conf : 3,
+          type: typeOf(r.name)
+        });
+      }
+      if (clubs.length < 3) return null;
+
+      /* dead wood — only judged where the golfer actually told us the usage */
+      var unscored = 0;
+      for (i = 0; i < clubs.length; i++) {
+        var c = clubs[i];
+        if (c.usage === null || !isFinite(c.usage)) {
+          c.scored = false; c.score = null; c.never = false; c.dead = false;
+          unscored++;
+        } else {
+          c.scored = true;
+          c.score = c.usage * c.conf;
+          c.never = c.usage === 0;
+          c.dead = c.never || c.score <= DEAD_SCORE;
+        }
+      }
+
+      var ladder = clubs.slice().sort(function (a, b) { return b.carry - a.carry; });
+
+      var gaps = [];
+      for (i = 0; i < ladder.length - 1; i++) {
+        var d = ladder[i].carry - ladder[i + 1].carry;
+        gaps.push({
+          hi: ladder[i], lo: ladder[i + 1], yards: d,
+          kind: d > GAP_BIG ? 'hole' : (d < GAP_TIGHT ? 'overlap' : 'ok')
+        });
+      }
+
+      var holes = gaps.filter(function (g) { return g.kind === 'hole'; });
+      var overlaps = gaps.filter(function (g) { return g.kind === 'overlap'; });
+      var dead = clubs.filter(function (c) { return c.dead; })
+        .sort(function (a, b) { return a.score - b.score; });
+
+      return {
+        clubs: clubs, ladder: ladder, gaps: gaps,
+        dead: dead, overlaps: overlaps, holes: holes,
+        n: clubs.length, unscored: unscored,
+        problems: dead.length + overlaps.length + holes.length,
+        illegal: clubs.length >= LEGAL_LIMIT,
+        longest: ladder[0], shortest: ladder[ladder.length - 1],
+        spread: ladder[0].carry - ladder[ladder.length - 1].carry
+      };
+    }
+
+    /* ==================== SWAP RECOMMENDATIONS ==================== */
+    function useWord(c) {
+      if (c.usage === 0) return 'you never hit it';
+      return 'you hit it ' + c.usage + ' time' + (c.usage === 1 ? '' : 's') + ' a round';
+    }
+
+    function recommend(a) {
+      var out = [], i, j;
+
+      if (a.illegal) {
+        out.push({
+          tag: 'Rule 4.1b',
+          text: 'You have listed ' + a.n + ' clubs. Add a putter and you are over the fourteen limit — two ' +
+            'strokes for every hole where you carried them, capped at four. Something here has to go before it ' +
+            'costs you a card.'
+        });
+      }
+
+      for (i = 0; i < a.dead.length; i++) {
+        var c = a.dead[i];
+        var below = null;
+        for (j = 0; j < a.holes.length; j++) if (a.holes[j].hi.name === c.name) below = a.holes[j];
+
+        if ((c.type === 'wood' || c.type === 'hybrid') && below) {
+          out.push({
+            tag: c.name,
+            text: 'Your ' + c.name + ' is a passenger — ' + useWord(c) + ' and you rate it ' + c.conf +
+              ' out of 5. Bin it and put something you will actually swing into that slot: there is a ' +
+              below.yards + '-yard hole sitting directly underneath it.'
+          });
+        } else if (c.never) {
+          out.push({
+            tag: c.name,
+            text: 'Your ' + c.name + ' did not come out of the bag once. That is not a club, that is luggage, and ' +
+              'it is occupying one of your fourteen.'
+          });
+        } else if (c.type === 'wood') {
+          out.push({
+            tag: c.name,
+            text: 'Your ' + c.name + ' scores ' + c.score + ' on uses times trust. A 3-wood needs a tight lie and ' +
+              'real speed to be worth carrying — a higher-lofted wood in that slot gets hit twice as often from ' +
+              'twice as many lies.'
+          });
+        } else if (c.type === 'hybrid' || c.type === 'iron') {
+          out.push({
+            tag: c.name,
+            text: 'Your ' + c.name + ' scores ' + c.score + ' on uses times trust. Long irons are the easiest ' +
+              'clubs in the bag to replace with something more forgiving, and you clearly do not fancy this one.'
+          });
+        } else {
+          out.push({
+            tag: c.name,
+            text: 'Your ' + c.name + ' scores ' + c.score + ' on uses times trust. It is holding a slot that a ' +
+              'club you trust could be using.'
+          });
+        }
+      }
+
+      for (i = 0; i < a.overlaps.length; i++) {
+        var o = a.overlaps[i];
+        out.push({
+          tag: o.hi.name + ' / ' + o.lo.name,
+          text: 'Your ' + o.hi.name + ' and your ' + o.lo.name + ' are ' + o.yards + ' yard' +
+            (o.yards === 1 ? '' : 's') + ' apart. That is not a gap, that is the same club twice. You are ' +
+            'paying to carry a spare, and it is costing you a slot somewhere else in the set.'
+        });
+      }
+
+      for (i = 0; i < a.holes.length; i++) {
+        var h = a.holes[i];
+        var covered = false;
+        for (j = 0; j < a.dead.length; j++) if (a.dead[j].name === h.hi.name) covered = true;
+        if (covered) continue;
+        out.push({
+          tag: h.hi.name + ' → ' + h.lo.name,
+          text: h.yards + ' yards between your ' + h.hi.name + ' and your ' + h.lo.name + '. Every shot that ' +
+            'lands in there is a guess — either a soft one or a forced one — and you will face it more often ' +
+            'than you would like to admit.'
+        });
+      }
+
+      if (!out.length) {
+        out.push({
+          good: true,
+          tag: 'Nothing to cut',
+          text: 'No passengers, no redundancy, no holes. Every club you entered is earning its place, which is ' +
+            'considerably rarer than it should be.'
+        });
+      }
+      return out;
+    }
+
+    /* ==================== VERDICT ==================== */
+    function verdictFor(a) {
+      var d = a.dead.length, o = a.overlaps.length, h = a.holes.length;
+      var bits = [];
+      if (d) bits.push(d + ' dead club' + (d === 1 ? '' : 's'));
+      if (o) bits.push(o + ' redundant');
+      if (h) bits.push(h + ' gaping hole' + (h === 1 ? '' : 's'));
+
+      var tier, punch, sub;
+      if (a.problems === 0) {
+        tier = 'CLEAN BAG';
+        punch = 'Nothing in here is dead weight.';
+        sub = 'Every club you entered is being used, trusted, and properly spaced from the one next to it. ' +
+          'That is a set someone actually chose rather than accumulated.';
+      } else if (a.problems <= 2) {
+        tier = 'MINOR SURGERY';
+        punch = 'Two changes and this bag is honest.';
+        sub = 'Almost everything in here is earning its place. There is a short list below of what is not.';
+      } else if (a.problems <= 4) {
+        tier = 'NEEDS A CLEAR-OUT';
+        punch = 'You are carrying more than you are using.';
+        sub = 'There is real dead weight in this bag, and at least one distance you have no proper club for.';
+      } else {
+        tier = 'BAG OF SHAME';
+        punch = 'Half of this bag is along for the ride.';
+        sub = 'This is not a set, it is an archive. The good news is that fixing it costs less than the driver ' +
+          'you were about to buy.';
+      }
+
+      var badge = bits.length
+        ? tier + ': ' + bits.join(', ').toUpperCase()
+        : tier + ': ALL ' + a.n + ' CLUBS EARNING THEIR PLACE';
+
+      return { tier: tier, badge: badge, punch: punch, head: tier + '.', sub: sub };
+    }
+
+    /* ==================== BAG UI ==================== */
+    (function buildBag() {
+      var html = '';
+      for (var i = 0; i < SLOTS; i++) {
+        html += '<div class="club-row">' +
+          '<div><span class="cr-lab">Club</span>' +
+          '<input type="text" id="n' + i + '" class="cn" value="' + DEFAULT_NAMES[i] +
+          '" maxlength="18" aria-label="Club ' + (i + 1) + ' name"></div>' +
+          '<div><span class="cr-lab">Carry</span>' +
+          '<input type="number" id="y' + i + '" class="cy" min="1" max="400" step="1" inputmode="numeric" ' +
+          'placeholder="–" aria-label="Carry yardage for club ' + (i + 1) + '"></div>' +
+          '<div><span class="cr-lab">Uses</span>' +
+          '<input type="number" id="u' + i + '" class="cu" min="0" max="30" step="1" inputmode="numeric" ' +
+          'placeholder="–" aria-label="Uses per round for club ' + (i + 1) + '"></div>' +
+          '<div><span class="cr-lab">Trust</span>' +
+          '<select id="c' + i + '" class="cc" aria-label="Confidence in club ' + (i + 1) + '">' +
+          '<option value="1">1</option><option value="2">2</option>' +
+          '<option value="3" selected>3</option>' +
+          '<option value="4">4</option><option value="5">5</option></select></div>' +
+          '</div>';
+      }
+      $('bagList').innerHTML = html;
+    })();
+
+    function readBag() {
+      var rows = [];
+      for (var i = 0; i < SLOTS; i++) {
+        var uRaw = $('u' + i).value.trim();
+        rows.push({
+          name: $('n' + i).value,
+          carry: parseFloat($('y' + i).value),
+          usage: uRaw === '' ? null : parseInt(uRaw, 10),
+          conf: parseInt($('c' + i).value, 10)
+        });
+      }
+      return rows;
+    }
+
+    function updateTally() {
+      var rows = readBag(), n = 0;
+      for (var i = 0; i < rows.length; i++) {
+        if (rows[i].name && String(rows[i].name).trim() && isFinite(rows[i].carry) && rows[i].carry > 0) n++;
+      }
+      $('tally').innerHTML = 'Clubs in play: <b' + (n >= LEGAL_LIMIT ? ' class="warn"' : '') + '>' + n + '</b>' +
+        (n >= LEGAL_LIMIT ? ' &nbsp;·&nbsp; <b class="warn">putter makes 15</b>' : '');
+    }
+
+    function persist() {
+      try {
+        var v = [];
+        for (var i = 0; i < SLOTS; i++) v.push([$('n' + i).value, $('y' + i).value, $('u' + i).value, $('c' + i).value]);
+        localStorage.setItem(LS_BAG, JSON.stringify(v));
+      } catch (e) { /* private mode — the tool still works, it just will not remember */ }
+    }
+
+    function restore() {
+      try {
+        var raw = localStorage.getItem(LS_BAG);
+        if (!raw) return;
+        var v = JSON.parse(raw);
+        if (Object.prototype.toString.call(v) !== '[object Array]') return;
+        for (var i = 0; i < SLOTS && i < v.length; i++) {
+          if (!v[i]) continue;
+          $('n' + i).value = v[i][0] || '';
+          $('y' + i).value = v[i][1] || '';
+          $('u' + i).value = v[i][2] || '';
+          if (v[i][3]) $('c' + i).value = v[i][3];
+        }
+      } catch (e) { /* ignore a corrupt bag rather than blocking the tool */ }
+    }
+
+    function err(m) {
+      var e = $('err');
+      if (!m) { e.classList.remove('show'); e.textContent = ''; return; }
+      e.textContent = m; e.classList.add('show');
+      e.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function esc(s) {
+      return String(s).replace(/[&<>"]/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+      });
+    }
+
+    /* ==================== RENDER ==================== */
+    var last = null;
+
+    function run() {
+      var rows = readBag();
+
+      for (var i = 0; i < rows.length; i++) {
+        var r = rows[i];
+        if (!r.name || !String(r.name).trim()) continue;
+        if (r.carry !== undefined && isFinite(r.carry) && (r.carry < 1 || r.carry > 400)) {
+          return err(String(r.name).trim() + ': carry should be between 1 and 400 yards.');
+        }
+        if (r.usage !== null && isFinite(r.usage) && (r.usage < 0 || r.usage > 30)) {
+          return err(String(r.name).trim() + ': uses per round should be between 0 and 30.');
+        }
+      }
+
+      var a = analyse(rows);
+      if (!a) return err('Enter a carry distance for at least three clubs — below that there is no set to audit.');
+      err('');
+      last = a;
+
+      var v = verdictFor(a);
+      var clean = a.problems === 0;
+
+      $('vHead').textContent = v.head;
+      $('vSub').textContent = v.sub;
+
+      $('badge').textContent = v.badge;
+      $('badge').className = 'bs-badge' + (clean ? ' clean' : '');
+      $('cDead').textContent = a.dead.length;
+      $('cDead').className = 'n' + (a.dead.length === 0 ? ' zero' : '');
+      $('cRed').textContent = a.overlaps.length;
+      $('cRed').className = 'n' + (a.overlaps.length === 0 ? ' zero' : '');
+      $('cHole').textContent = a.holes.length;
+      $('cHole').className = 'n' + (a.holes.length === 0 ? ' zero' : '');
+
+      /* ---- the yardage ladder ---- */
+      var maxC = a.longest.carry || 1;
+      var html = '';
+      for (i = 0; i < a.ladder.length; i++) {
+        var c = a.ladder[i];
+        var w = Math.max(3, (c.carry / maxC) * 100);
+        html += '<div class="lad-row">' +
+          '<span class="ln' + (c.dead ? ' dead' : '') + '" title="' + esc(c.name) + '">' + esc(c.name) + '</span>' +
+          '<span class="lb' + (c.dead ? ' dead' : '') + '" style="width:' + w + '%"></span>' +
+          '<span class="ly">' + c.carry + '</span></div>';
+
+        if (i < a.gaps.length) {
+          var g = a.gaps[i];
+          if (g.kind !== 'ok') {
+            html += '<div class="gap-row ' + g.kind + '"><span class="gtxt">' +
+              (g.kind === 'hole'
+                ? '↕ ' + g.yards + ' yard gap — nothing covers this'
+                : '↕ ' + g.yards + ' yards — same club twice') +
+              '</span></div>';
+          }
+        }
+      }
+      $('ladder').innerHTML = html;
+      $('ladLab').textContent = 'The yardage ladder — ' + a.n + ' clubs, ' + a.longest.carry + ' down to ' +
+        a.shortest.carry + ' yards';
+
+      /* ---- recommendations ---- */
+      var recs = recommend(a);
+      $('recs').innerHTML = recs.map(function (rc) {
+        return '<div class="rec' + (rc.good ? ' good' : '') + '"><div class="rt">' + esc(rc.tag) +
+          '</div><p>' + esc(rc.text) + '</p></div>';
+      }).join('');
+
+      $('method').textContent = 'Dead wood score is uses per round multiplied by trust out of 5; ' +
+        DEAD_SCORE + ' or below is a passenger, and a club never used is always flagged. Gaps over ' + GAP_BIG +
+        ' yards are holes, under ' + GAP_TIGHT + ' yards is redundancy. Audited ' + a.n + ' club' +
+        (a.n === 1 ? '' : 's') +
+        (a.unscored ? ', of which ' + a.unscored + ' had no usage entered and were measured for gapping only' : '') +
+        '. Carry distances are whatever you told it — the audit is only as honest as the numbers.';
+
+      $('outWrap').classList.add('show');
+      $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      persist();
+      if (window.RawGolf) RawGolf.save(cardData());
+    }
+
+    /* ==================== SHARED ENGINE: history · PNG · Web Share ==================== */
+    function cardData() {
+      var a = last, v = verdictFor(a);
+      var m = [
+        { k: 'Dead wood', v: String(a.dead.length) },
+        { k: 'Redundant', v: String(a.overlaps.length) },
+        { k: 'Gaping holes', v: String(a.holes.length) },
+        { k: 'Clubs audited', v: String(a.n) }
+      ];
+      if (a.dead.length) m.push({ k: 'Worst passenger', v: a.dead[0].name });
+      if (a.holes.length) m.push({ k: 'Biggest gap', v: a.holes[0].yards + ' yds' });
+
+      return {
+        tool: 'The Bag Audit',
+        slug: 'tools-bag-audit',
+        eyebrow: 'The Bag Audit · Dead Wood Report',
+        verdict: v.badge,
+        big: String(a.problems),
+        bigLabel: a.problems === 1 ? 'Problem found' : 'Problems found',
+        filename: 'bag-audit',
+        metrics: m
+      };
+    }
+
+    function doPng() {
+      if (!last) return err('Audit the bag first.');
+      var c = cardData();
+      RawGolf.downloadCard({
+        eyebrow: c.eyebrow, headline: verdictFor(last).punch,
+        big: c.big, bigLabel: c.bigLabel, lines: c.metrics, filename: c.filename
+      });
+    }
+
+    function doShare() {
+      if (!last) return err('Audit the bag first.');
+      var a = last, c = cardData();
+      var txt = verdictFor(a).badge + '.' +
+        (a.dead.length ? ' My ' + a.dead[0].name + ' is a passenger.' : ' Not a passenger in there.');
+      RawGolf.shareResult({ title: 'The Bag Audit', text: txt, url: 'https://www.golfraw.com/' + c.slug });
+    }
+
+    /* ==================== COPY FOR GROUP CHAT ==================== */
+    function copySummary() {
+      if (!last) return err('Audit the bag first.');
+      var a = last, v = verdictFor(a), i;
+      var lines = ['THE BAG AUDIT — DEAD WOOD REPORT', '', v.badge, ''];
+      lines.push('Clubs audited:  ' + a.n);
+      lines.push('Dead wood:      ' + a.dead.length + (a.dead.length ? '  (' + a.dead.map(function (c) { return c.name; }).join(', ') + ')' : ''));
+      lines.push('Redundant:      ' + a.overlaps.length + (a.overlaps.length ? '  (' + a.overlaps.map(function (o) { return o.hi.name + '/' + o.lo.name; }).join(', ') + ')' : ''));
+      lines.push('Gaping holes:   ' + a.holes.length + (a.holes.length ? '  (' + a.holes.map(function (h) { return h.yards + 'y'; }).join(', ') + ')' : ''));
+      lines.push('');
+      var recs = recommend(a);
+      for (i = 0; i < recs.length && i < 4; i++) lines.push('- ' + recs[i].text);
+      lines.push('', 'Audit yours: golfraw.com/tools-bag-audit');
+      var txt = lines.join('\n');
+
+      var done = function () {
+        var b = $('copyBtn'), old = b.textContent;
+        b.textContent = 'Copied ✓';
+        setTimeout(function () { b.textContent = old; }, 1900);
+      };
+      if (window.RawGolf) RawGolf.copyText(txt).then(done, function () { err('Could not copy on this device.'); });
+    }
+
+    /* ==================== SAMPLE / CLEAR ==================== */
+    function loadSample() {
+      for (var i = 0; i < SLOTS; i++) {
+        $('n' + i).value = SAMPLE[i][0];
+        $('y' + i).value = SAMPLE[i][1];
+        $('u' + i).value = SAMPLE[i][2];
+        $('c' + i).value = SAMPLE[i][3];
+      }
+      updateTally(); persist(); err('');
+      $('bagList').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function clearBag() {
+      for (var i = 0; i < SLOTS; i++) {
+        $('n' + i).value = DEFAULT_NAMES[i];
+        $('y' + i).value = '';
+        $('u' + i).value = '';
+        $('c' + i).value = '3';
+      }
+      updateTally(); persist(); err('');
+      $('outWrap').classList.remove('show');
+      last = null;
+    }
+
+    /* ==================== WIRE UP ==================== */
+    $('runBtn').addEventListener('click', run);
+    $('copyBtn').addEventListener('click', copySummary);
+    $('pngBtn').addEventListener('click', doPng);
+    $('shareBtn').addEventListener('click', doShare);
+    $('sampleBtn').addEventListener('click', loadSample);
+    $('clearBtn').addEventListener('click', clearBag);
+    $('againBtn').addEventListener('click', function () {
+      $('outWrap').classList.remove('show');
+      $('bagList').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      $('y0').focus();
+    });
+
+    $('bagList').addEventListener('input', function () { updateTally(); persist(); });
+    $('bagList').addEventListener('change', function () { updateTally(); persist(); });
+
+    restore();
+    updateTally();
+  </script>
+</body>
+
+</html>

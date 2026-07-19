@@ -1485,10 +1485,12 @@
       margin-bottom: 56px;
     }
 
-    /* Six tools divide evenly into a 3x2 — no featured row needed.
-       Positional rules, so the grid stays balanced if a 7th or 8th is added. */
+    /* Seven tools: the newest spans the full width, the other six form a 3x2 beneath.
+       The featured card takes position 1, flipping column parity — the left column is
+       then the EVEN children (2,4,6) and the right column the odd (3,5,7). */
     .tools-grid .tool-card { border-bottom: 2px solid rgba(255, 255, 255, .18) }
-    .tools-grid .tool-card:nth-child(even) { border-right: none }
+    .tools-grid .tool-card.featured { grid-column: 1 / -1 }
+    .tools-grid .tool-card:nth-child(odd) { border-right: none }
     .tools-grid .tool-card:nth-last-child(-n+2) { border-bottom: none }
 
     .tool-card {
@@ -1939,8 +1941,16 @@
         <a href="tools.html">All tools →</a>
       </div>
       <div class="tools-grid reveal">
+        <a href="tools-bag-audit.html" class="tool-card featured">
+          <div class="tc-kicker">New · The Dead Wood Report</div>
+          <h3>The Bag Audit</h3>
+          <p>Fourteen slots, and the rules do not care what any of them cost. Score every club on how often you
+            use it and how much you trust it, and out come the passengers, the two clubs quietly doing the same
+            job, and the distance you have no club for at all.</p>
+          <span class="tc-cta">Find the dead wood →</span>
+        </a>
         <a href="tools-tilt-meter.html" class="tool-card">
-          <div class="tc-kicker">New · The Amateur Meltdown Index</div>
+          <div class="tc-kicker">Free · The Amateur Meltdown Index</div>
           <h3>The Tilt Meter</h3>
           <p>Everyone remembers the triple. Nobody notices it was the three holes after it that actually cost them
             the round. Eighteen holes in, and out comes the exact number of shots your temper threw away — plus
