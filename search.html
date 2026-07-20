@@ -221,6 +221,7 @@ table { max-width: 100%; }
 <script>
 /* ====== RAWGOLF SEARCH INDEX - Image Paths Verified ====== */
 const ARTICLES = [
+  {t:"Si Woo Kim Had The Open Lead. Then He Said “Choke.”", l:"/news-2026-si-woo-kim-open-choke", img:"/public/si-woo-kim-open-championship-choke-birkdale.webp?v=1", cat:"NEWS · THE OPEN", date:"MON 20 JUL", author:"Golf Raw Staff", x:"Si Woo Kim called his Sunday at the 2026 Open Championship 'another choke' after leading alone at Royal Birkdale.", k:"Si Woo Kim, The Open, Birkdale, choke, Ryan Fox, PGA Tour"},
   {t:"Did Bryson Try the Trump Card to Beat an Open Penalty?", l:"news-2026-bryson-dechambeau-open-penalty-trump.html", img:"public/bryson-dechambeau-open-penalty-trump-claim.webp", cat:"NEWS · THE OPEN", date:"MON 20 JUL", author:"Golf Raw Staff", x:"A two-shot penalty. A late-night standoff. Now Bryson DeChambeau is accused of invoking President Trump in the fight."},
   {t:"Jon Rahm Snaps After Another Brutal Open Start", l:"news-2026-rahm-open-birkdale-meltdown.html", img:"public/jon-rahm-open-championship-glove-meltdown.webp", cat:"NEWS · THE OPEN", date:"SUN 19 JUL", author:"Golf Raw Staff", x:"Jon Rahm opened with another ball out of bounds, tore his glove apart, and watched his Open hopes fade in seconds."},
   {t:"Rory Finally Said What Golf Won’t Say About Bryson", l:"news-2026-rory-bryson-open-verdict.html", img:"public/news-2026-rory-bryson-open-verdict.webp", cat:"NEWS · THE OPEN", date:"SUN 19 JUL", author:"Golf Raw Staff", x:"Bryson’s two-shot Open penalty sparked a late-night standoff. Rory McIlroy’s response was colder—and far more damaging."},
@@ -398,7 +399,7 @@ const ARTICLES = [
     }
     if(q==='all'){ render(ARTICLES); return; }
     const matches = ARTICLES.filter(a =>
-      (a.t+' '+a.cat+' '+a.x).toLowerCase().includes(q)
+      (a.t+' '+a.cat+' '+a.x+(a.k?' '+a.k:'')).toLowerCase().includes(q)
     );
     render(matches);
   }
