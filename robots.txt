@@ -1,7 +1,16 @@
+# robots.txt — golfraw.com
+# Images are intentionally crawlable. Do NOT re-add Disallow rules for
+# /public/*.webp, *.png or *.jpg — that blocks Google Images and strips
+# image thumbnails from news and article rich results.
+
 User-agent: *
-Disallow: /public/*.webp
-Disallow: /public/*.jpg
-Disallow: /public/*.png
 Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /public/
 
 Sitemap: https://www.golfraw.com/sitemap.xml
