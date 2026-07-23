@@ -969,7 +969,7 @@
 
     .foot-core {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       border: 1px solid rgba(255, 255, 255, .25);
       margin-bottom: 44px;
     }
@@ -977,14 +977,19 @@
     .fc-link {
       padding: 20px 18px;
       border-right: 1px solid rgba(255, 255, 255, .25);
+      border-bottom: 1px solid rgba(255, 255, 255, .25);
       display: flex;
       flex-direction: column;
       gap: 6px;
       transition: background .15s;
     }
 
-    .fc-link:last-child {
+    .fc-link:nth-child(3n) {
       border-right: none
+    }
+
+    .fc-link:nth-last-child(-n+3) {
+      border-bottom: none
     }
 
     .fc-link:hover {
@@ -1265,7 +1270,16 @@
       }
 
       .fc-link {
-        border-right: none
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, .25)
+      }
+
+      .fc-link:nth-last-child(-n+3) {
+        border-bottom: 1px solid rgba(255, 255, 255, .25)
+      }
+
+      .fc-link:last-child {
+        border-bottom: none
       }
 
       .foot-grid {
@@ -2070,7 +2084,7 @@
 
   
   <!-- START NEWSLETTER SECTION -->
-  <div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #111; color: #fff; text-align: left; border-left: 8px solid #cc0000;">
+  <div id="newsletter" class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #111; color: #fff; text-align: left; border-left: 8px solid #cc0000;">
       <h2 style="font-family: 'Archivo', sans-serif; text-transform: uppercase; font-weight: 900; font-size: 32px; margin-bottom: 10px; color: #fff;">THE STORIES THE GOLF MEDIA WON'T PUBLISH</h2>
       <p style="font-family: 'Archivo', sans-serif; color: #aaa; font-size: 16px; margin-bottom: 30px;">Every Friday, we drop <strong>The Card</strong>: Unfiltered player ratings, tour leaks, and the exact stories PR reps tried to kill. Join the inner circle. No spam, just the raw truth.</p>
     
@@ -2121,7 +2135,7 @@
   <footer>
     <div class="wrap">
       <div class="foot-core">
-        <a href="manifesto.html" class="fc-link"><span class="fc-n">P-01</span><b>Golf Raw</b><span class="fc-d">The
+        <a href="manifesto.html" class="fc-link"><span class="fc-n">P-01</span><b>GOLFRAW</b><span class="fc-d">The
             manifesto. Why we exist, why golf media broke, what we promise.</span></a>
         <a href="ratings-manual.html" class="fc-link"><span class="fc-n">P-02</span><b>How Ratings Work</b><span
             class="fc-d">Document RG-001. The full method, weights and integrity rules.</span></a>
@@ -2132,6 +2146,8 @@
             class="fc-d">Every mistake we've made, in public, forever. Our trust ledger.</span></a>
         <a href="contact.html" class="fc-link"><span class="fc-n">P-05</span><b>Contact</b><span class="fc-d">Tour
             leaks, tip-offs, and hate mail about our ratings.</span></a>
+        <a href="about.html" class="fc-link"><span class="fc-n">P-06</span><b>About</b><span class="fc-d">Who
+            publishes this, how it's funded, how to reach the desk.</span></a>
       </div>
       <div class="foot-grid">
         <div class="foot-brand">
@@ -2161,6 +2177,7 @@
       <div class="foot-bottom">
         <span>© 2026 GOLFRAW — ALL RATINGS FINAL</span>
         <a href="privacy.html">PRIVACY POLICY</a>
+        <a href="terms.html">TERMS OF USE</a>
         <span>PLAY IT AS IT LIES</span>
       </div>
     </div>

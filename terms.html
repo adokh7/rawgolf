@@ -15,9 +15,16 @@
   <link rel="alternate icon" type="image/png" sizes="192x192" href="/public/favicon-192.png">
   <link rel="apple-touch-icon" href="/public/favicon-192.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — The Straight Version | GOLFRAW</title>
-<meta name="description" content="GOLFRAW's privacy policy, written like a human wrote it: what we collect, why, what Google AdSense does with cookies, and your rights. No legal fog.">
-<link rel="canonical" href="https://www.golfraw.com/privacy">
+<title>Terms of Use — The Straight Version | GOLFRAW</title>
+<meta name="description" content="GOLFRAW's terms of use: what the site is, what the free tools are (and are not), content rights, and the rules for using golfraw.com. No legal fog.">
+<link rel="canonical" href="https://www.golfraw.com/terms">
+<meta name="robots" content="index, follow">
+<meta name="author" content="GOLFRAW Editorial">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GOLFRAW">
+<meta property="og:title" content="Terms of Use — The Straight Version | GOLFRAW">
+<meta property="og:description" content="What GOLFRAW is, what the free tools are and are not, content rights, and the rules for using the site.">
+<meta property="og:url" content="https://www.golfraw.com/terms">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -30,7 +37,6 @@
 html{scroll-behavior:smooth}
 body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-/* clickable contact emails — inherits type, flag-red underline as the affordance */
 .mail{color:inherit;text-decoration:underline;text-decoration-color:var(--flag);text-decoration-thickness:2px;text-underline-offset:3px;transition:background .14s ease,color .14s ease}
 .mail:hover,.mail:focus-visible{background:var(--flag);color:#fff;text-decoration-color:transparent;outline:none}
 
@@ -84,25 +90,10 @@ footer a:hover{color:#fff}
 img { max-width: 100%; height: auto; }
 @media (max-width: 1024px) {
   .wrap { padding-left: 20px; padding-right: 20px; }
-  .page-grid { grid-template-columns: 1fr; gap: 32px; }
-  .article-aside { display: block; }
-  .rel-grid { grid-template-columns: 1fr 1fr; }
-  .news-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
   .wrap { padding-left: 16px; padding-right: 16px; }
   .nav { padding: 0 16px; }
-  .page-grid { grid-template-columns: 1fr; gap: 28px; }
-  .article-aside { display: block; }
-  .rel-grid, .news-grid, .guide-grid, .stat-box,
-  .versus-grid, .contact-grid, .tally { grid-template-columns: 1fr; }
-  .article-head h1 { font-size: clamp(26px, 7vw, 34px); }
-  .standfirst { font-size: 16.5px; }
-  .article-body { font-size: 16.5px; }
-  .article-body h2 { font-size: clamp(20px, 5.5vw, 24px); }
-  .article-body h3 { font-size: 17px; }
-  blockquote.pull { font-size: clamp(18px, 5vw, 22px); padding: 20px 22px; }
-  figure.lead-img img { aspect-ratio: 4 / 3; }
 }
 /* === CLS / RESPONSIVE SAFETY === */
 html, body { max-width: 100%; overflow-x: clip; }
@@ -124,73 +115,79 @@ table { max-width: 100%; }
 <div class="doc-hero">
   <div class="wrap">
     <div class="doc-id">
-      <span>DOCUMENT <b>L-01</b></span>
-      <span>LAST UPDATED <b>13 JUN 2026</b></span>
-      <span>READING TIME <b>4 MIN, HONESTLY</b></span>
+      <span>DOCUMENT <b>L-02</b></span>
+      <span>LAST UPDATED <b>24 JUL 2026</b></span>
+      <span>READING TIME <b>5 MIN, HONESTLY</b></span>
     </div>
-    <h1>Privacy Policy: <mark>the straight version</mark></h1>
-    <p>We rate golfers for a living — we're not about to start spinning our own legal page. Here's what we collect, why, and what you can do about it. Plain English first, the formal bits where the law requires them.</p>
+    <h1>Terms of Use: <mark>the straight version</mark></h1>
+    <p>The rules for using golfraw.com, written the way we'd explain them across a table rather than the way a law firm would print them. The formal bits are here because they have to be — everything else is here because you'd actually want to know it.</p>
   </div>
 </div>
 
 <main class="body wrap">
 
   <section class="sec">
-    <div class="sec-h"><span class="n">§1</span><h2>The short version</h2></div>
-    <p>We track basic stats to make the site better, not to sell your soul. We run ads through Google AdSense to keep the lights on, and Google uses cookies to do that — we'll explain exactly how below. We don't sell your personal data to anyone. We never have, and if that ever changed, it would be the lead story on our own Corrections Log.</p>
+    <div class="sec-h"><span class="n">§1</span><h2>What you're agreeing to</h2></div>
+    <p>By using golfraw.com — reading a story, running a tool, signing up for the newsletter — you're agreeing to these terms. If you don't agree, the straightforward option is to not use the site. Nobody's making you.</p>
+    <p>We may update these terms as the site grows. If a change is material, we'll flag it the same way we handle every other correction: openly, with a new date at the top and a note in the newsletter. No silent rewrites.</p>
   </section>
 
   <section class="sec">
-    <div class="sec-h"><span class="n">§2</span><h2>What we collect, and why</h2></div>
-    <ul>
-      <li><b>Analytics data</b> — pages visited, time on page, rough location (country/city level), device and browser type. We use this to learn which stories you actually read, so we write more of those and less of what bores you. This data is aggregated; we're looking at crowds, not at you.</li>
-      <li><b>Newsletter email</b> — if you sign up for The Card, we store your email address for exactly one purpose: sending you The Card. Unsubscribe anytime with one click, and we delete it.</li>
-      <li><b>Contact submissions</b> — if you send us a tip, a correction, or hate mail, we keep the message. Tips may be kept confidential indefinitely to protect sources — that one's non-negotiable, it's how journalism works.</li>
-      <li><b>Server logs</b> — IP addresses and request data, kept briefly for security (stopping bots, scrapers, and denial-of-service nonsense), then rotated out.</li>
-    </ul>
+    <div class="sec-h"><span class="n">§2</span><h2>What GOLFRAW actually is</h2></div>
+    <p>GOLFRAW is an independent golf publication: news, player ratings, tournament analysis, and a suite of free browser-based calculators, all produced by <b>GOLFRAW Editorial</b>. We are not affiliated with the PGA Tour, LPGA, DP World Tour, the R&amp;A, the USGA, or any player, team, or brand we cover. Player and tournament names appear because we report on them, not because we represent them.</p>
+    <p>The site is funded by advertising (Google AdSense) and, eventually, reader newsletter engagement. It costs nothing to read, and the tools cost nothing to use — see <a href="privacy.html" class="mail">Privacy Policy</a> for exactly what that means for your data.</p>
   </section>
 
   <section class="sec">
-    <div class="sec-h"><span class="n">§3</span><h2>Advertising & cookies (the Google part)</h2></div>
-    <p>This site is funded by advertising served through <b>Google AdSense</b>. Here's the honest mechanics of that:</p>
+    <div class="sec-h"><span class="n">§3</span><h2>The tools: what they are, and what they are not</h2></div>
+    <p>Every calculator in the <a href="tools.html" class="mail">Raw Tools suite</a> — The Settle Up, The Round Autopsy, The Tee Box Reality Check, The Handicap Lie Detector, The Plays Like Calculator, The Tilt Meter, The Bag Audit, The Gimme Audit — runs entirely in your browser. No account, no server-side processing, no data uploaded. Full technical detail is in the <a href="privacy.html" class="mail">Privacy Policy</a>.</p>
     <ul>
-      <li>Google and its certified ad partners use <b>cookies</b> (including the DoubleClick cookie) to serve ads based on your visits to this site and other sites across the internet.</li>
-      <li>These cookies allow Google to show you <b>personalized ads</b> based on your interests. We don't see your individual profile — Google handles that on their side.</li>
-      <li>You can opt out of personalized advertising at any time via <b>Google's Ads Settings</b> (adssettings.google.com), or opt out of many third-party ad cookies at aboutads.info/choices.</li>
-      <li>If you're in the EU/EEA or UK (like a lot of our readers), you'll see a <b>consent banner</b> before any non-essential cookies load, and you can refuse them. The site works fine either way — refusing just means the ads get dumber, not fewer.</li>
+      <li><b>The tools are estimates, not professional advice.</b> They apply published formulas and reasonable models to the numbers you enter. They are not a substitute for a certified coach, a fitting session, a handicap committee, or a doctor.</li>
+      <li><b>The betting calculator settles money between consenting adults playing a friendly game.</b> It does not facilitate wagering, does not process payments, and is not gambling software. What your group does with the numbers it produces is between you and your group, and your local laws.</li>
+      <li><b>Handicap-related tools are informational only.</b> The Handicap Lie Detector applies the published World Handicap System differential formula for entertainment and self-audit purposes. It is not a substitute for an official handicap issued through a recognised golf association, and we make no claim that its output is valid for handicap purposes.</li>
+      <li><b>We are not liable for decisions made using tool output.</b> If The Tee Box Reality Check tells you to move up a tee and your Saturday four-ball has opinions about that, that's between you and your four-ball.</li>
     </ul>
     <div class="plain">
       <span class="mono">Plain English</span>
-      Ads pay for the journalism. Cookies make the ads relevant. You can switch the tracking off and we won't guilt-trip you about it.
+      The tools do real math on numbers you give them. Use the answers as a starting point for a conversation, not as the final word from an authority.
     </div>
   </section>
 
   <section class="sec">
-    <div class="sec-h"><span class="n">§4</span><h2>Your rights (GDPR & friends)</h2></div>
-    <p>If you're in the EU/EEA, UK, or anywhere with similar laws, you have the right to:</p>
+    <div class="sec-h"><span class="n">§4</span><h2>Content, ownership, and fair use</h2></div>
     <ul>
-      <li><b>Access</b> — ask what data we hold about you (spoiler: probably just an email address, if that).</li>
-      <li><b>Correction</b> — fix anything we've got wrong. We run a whole public log for our mistakes; yours get fixed quietly and faster.</li>
-      <li><b>Deletion</b> — ask us to erase your data. Newsletter emails are wiped on unsubscribe automatically.</li>
-      <li><b>Objection & portability</b> — object to processing or take your data elsewhere.</li>
-      <li><b>Complaint</b> — escalate to your local data protection authority if you think we've mishandled something. We'd rather you email us first so we can fix it, but that's your call.</li>
+      <li>Articles, ratings, the ratings methodology, and the tool calculators (including their underlying logic) are original work by GOLFRAW Editorial and are protected by copyright.</li>
+      <li>You're welcome to quote us, link to us, and screenshot a result card from one of the tools to share with your group — that's what the share buttons are for. Attribution to golfraw.com is appreciated and, for anything beyond a short quote, required.</li>
+      <li>Republishing full articles, scraping the site programmatically, or presenting our ratings as your own work is not permitted without written permission. Ask first: <b><a class="mail" href="mailto:hello@golfraw.com">hello@golfraw.com</a></b>.</li>
+      <li>Player names, tournament names, and brand names mentioned in our coverage belong to their respective owners. We use them descriptively, under fair use, to report and comment on matters of public interest.</li>
     </ul>
-    <p>To exercise any of these: email <b><a class="mail" href="mailto:privacy@golfraw.com">privacy@golfraw.com</a></b>. A human reads it. We respond within 30 days, usually much faster.</p>
   </section>
 
   <section class="sec">
-    <div class="sec-h"><span class="n">§5</span><h2>What we don't do</h2></div>
+    <div class="sec-h"><span class="n">§5</span><h2>Using the site properly</h2></div>
+    <p>Don't do anything that breaks the site for other people or breaks the law. Specifically:</p>
     <ul>
-      <li>We don't sell your personal data. Not to brokers, not to brands, not to tours.</li>
-      <li>We don't run hidden trackers beyond what's declared here and in the consent banner.</li>
-      <li>We don't email you anything you didn't sign up for.</li>
-      <li>We don't knowingly collect data from children under 16. This is a site about tour drama and strokes gained — if you're under 16 and reading us anyway, respect, but we're not tracking you.</li>
+      <li>No automated scraping, crawling, or bulk-downloading the site outside of normal search engine indexing.</li>
+      <li>No attempting to interfere with, disable, or overload the site or its tools.</li>
+      <li>No submitting false or malicious information through the contact form, corrections channel, or newsletter signup.</li>
+      <li>No using the site for anything illegal in your jurisdiction.</li>
     </ul>
   </section>
 
+  <section class="sec">
+    <div class="sec-h"><span class="n">§6</span><h2>Advertising and third-party links</h2></div>
+    <p>The site carries advertising served through Google AdSense — full detail on cookies and tracking is in the <a href="privacy.html" class="mail">Privacy Policy</a>. Articles sometimes link to outside sites (source material, official tour pages, other coverage). We don't control those sites and aren't responsible for their content, their availability, or what they do with your data once you leave golfraw.com. A link is not an endorsement.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><span class="n">§7</span><h2>No warranty, limited liability</h2></div>
+    <p>We work hard to get the facts right, and when we don't, it goes in the <a href="corrections.html" class="mail">Corrections Log</a> — publicly, permanently. But the site, its articles, its ratings, and its tools are provided <b>"as is,"</b> without warranty of any kind. Player ratings are editorial opinion built on a stated methodology, not statements of objective fact. Tool calculations are only as accurate as the inputs you give them and the models they're built on.</p>
+    <p>To the fullest extent the law allows, GOLFRAW and GOLFRAW Editorial are not liable for any loss or damage arising from your use of the site — including decisions made from an article, a rating, or a tool result. If that feels like a lot of legal distance for a golf website, it is, and it's standard for a reason: nobody should be making tee-time decisions based solely on a website they read for free.</p>
+  </section>
+
   <section class="sec" style="margin-bottom:0">
-    <div class="sec-h"><span class="n">§6</span><h2>Changes to this policy</h2></div>
-    <p>If this policy changes in any way that matters, we'll update the date at the top and flag it in the newsletter. No silent edits — that's Rule 4.1 energy, applied to legal pages. Questions about any of this: <b><a class="mail" href="mailto:privacy@golfraw.com">privacy@golfraw.com</a></b>.</p>
+    <div class="sec-h"><span class="n">§8</span><h2>Contact and governing law</h2></div>
+    <p>Questions about these terms: <b><a class="mail" href="mailto:hello@golfraw.com">hello@golfraw.com</a></b>. These terms are governed by the laws applicable to the operator of golfraw.com, without regard to conflict-of-law principles. If any part of these terms turns out to be unenforceable, the rest still stands.</p>
   </section>
 
 </main>
@@ -200,28 +197,28 @@ table { max-width: 100%; }
 <div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #111; color: #fff; text-align: left; border-left: 8px solid #cc0000;">
     <h2 style="font-family: 'Archivo', sans-serif; text-transform: uppercase; font-weight: 900; font-size: 32px; margin-bottom: 10px; color: #fff;">THE STORIES THE GOLF MEDIA WON'T PUBLISH</h2>
     <p style="font-family: 'Archivo', sans-serif; color: #aaa; font-size: 16px; margin-bottom: 30px;">Every Friday, we drop <strong>The Card</strong>: Unfiltered player ratings, tour leaks, and the exact stories PR reps tried to kill. Join the inner circle. No spam, just the raw truth.</p>
-    
+
     <form id="rawgolf-newsletter-form" style="display: flex; gap: 0; width: 100%; max-width: 600px; flex-wrap: wrap;">
         <input type="email" id="rawgolf-email" placeholder="you@email.com" required style="flex: 1; padding: 18px; border: none; font-family: 'Archivo', sans-serif; font-size: 16px; background: #fff; color: #111; outline: none; border-radius: 0; min-width: 250px;">
         <button type="submit" style="background-color: #cc0000; color: #fff; border: none; padding: 18px 40px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; border-radius: 0;">✓ SIGNED</button>
     </form>
     <p id="rawgolf-form-message" style="display: none; font-family: 'Archivo', sans-serif; margin-top: 15px; font-weight: bold; color: #fff;"></p>
-    
+
     <script>
     document.getElementById('rawgolf-newsletter-form').addEventListener('submit', function(e) {
         e.preventDefault();
         var email = document.getElementById('rawgolf-email').value;
         var messageEl = document.getElementById('rawgolf-form-message');
         var btn = this.querySelector('button');
-        
+
         btn.innerText = 'SENDING...';
-        
+
         var data = {
             "fields": [
                 { "name": "email", "value": email }
             ]
         };
-        
+
         // Sending directly to HubSpot Forms API
         fetch('https://api.hsforms.com/submissions/v3/integration/submit/148744463/f9b9028c-b648-4563-9b01-2b53b3caae13', {
             method: 'POST',
@@ -246,12 +243,11 @@ table { max-width: 100%; }
 <!-- END NEWSLETTER SECTION -->
 <footer>
   <div class="wrap">
-    <span>© 2026 GOLFRAW — DOCUMENT L-01</span>
+    <span>© 2026 GOLFRAW — DOCUMENT L-02</span>
     <nav aria-label="Footer navigation" style="display:flex;gap:20px;flex-wrap:wrap">
       <a href="manifesto.html">MANIFESTO</a>
       <a href="about.html">ABOUT</a>
       <a href="privacy.html">PRIVACY</a>
-      <a href="terms.html">TERMS</a>
       <a href="corrections.html">CORRECTIONS</a>
       <a href="contact.html">CONTACT</a>
       <a href="index.html">← FRONT PAGE</a>

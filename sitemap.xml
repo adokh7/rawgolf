@@ -10,6 +10,37 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- ============ POLICY & TRUST PAGES ============ -->
+  <url>
+    <loc>https://www.golfraw.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.golfraw.com/manifesto</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.golfraw.com/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.golfraw.com/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.golfraw.com/contact</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.golfraw.com/corrections</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.4</priority>
+  </url>
   <!-- ============ TOOLS SUITE ============ -->
   <url>
     <loc>https://www.golfraw.com/tools</loc>
