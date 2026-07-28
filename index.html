@@ -20,15 +20,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="p:domain_verify" content="b7225cf07b728cc1691b9a4c7a938dbe"/>
   <meta name="ahrefs-site-verification" content="027e0774ab2eaec1091149c1a84cb8fedd64a0dee6b972a2114d3820b90f43f6">
-  <title>GOLFRAW — Golf News, Ratings & Analysis</title>
+  <title>GolfRaw | Golf News, Course Guides &amp; PGA Tour Analytics</title>
   <link rel="canonical" href="https://www.golfraw.com/">
-  <meta name="description"
-    content="GOLFRAW delivers honest golf news, data-driven player ratings, and tournament analysis with no PR rewrites. Real numbers, real accountability.">
+  <meta name="description" content="Straight-talking PGA Tour news, independent course breakdowns, and data-backed tournament analysis. No country-club fluff—just real golf coverage.">
   <!-- ===== OPEN GRAPH ===== -->
-  <meta property="og:site_name" content="GOLFRAW">
+  <meta property="og:site_name" content="GolfRaw">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="GOLFRAW — Unfiltered Golf News, Performance Tools &amp; Player Ratings">
-  <meta property="og:description" content="GOLFRAW delivers honest golf news, data-driven player ratings, free client-side performance tools, and tournament analysis with no PR rewrites. Real numbers, real accountability.">
+  <meta property="og:title" content="GolfRaw | Golf News, Course Guides &amp; PGA Tour Analytics">
+  <meta property="og:description" content="Straight-talking PGA Tour news, independent course breakdowns, and data-backed tournament analysis. No country-club fluff—just real golf coverage.">
   <meta property="og:url" content="https://www.golfraw.com/">
   <meta property="og:image" content="https://www.golfraw.com/public/raw-golf-practice.webp">
   <meta property="og:image:type" content="image/webp">
@@ -38,14 +37,14 @@
   <!-- ===== TWITTER CARD ===== -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@GolfRaw0">
-  <meta name="twitter:title" content="GOLFRAW — Unfiltered Golf News, Performance Tools &amp; Player Ratings">
-  <meta name="twitter:description" content="GOLFRAW delivers honest golf news, data-driven player ratings, free client-side performance tools, and tournament analysis with no PR rewrites. Real numbers, real accountability.">
+  <meta name="twitter:title" content="GolfRaw | Golf News, Course Guides &amp; PGA Tour Analytics">
+  <meta name="twitter:description" content="Straight-talking PGA Tour news, independent course breakdowns, and data-backed tournament analysis. No country-club fluff—just real golf coverage.">
   <meta name="twitter:image" content="https://www.golfraw.com/public/raw-golf-practice.webp">
   <meta name="twitter:image:alt" content="A golfer practising at a driving range at dusk — GOLFRAW">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
     rel="stylesheet">
   <style>
     :root {
@@ -334,19 +333,23 @@
       font-weight: 600
     }
 
-    /* topic H1 — the crawler-facing site headline; sits above the brand punch line */
+    /* Primary homepage promise */
     .hero-main h1.hero-topic {
-      font-weight: 800;
-      font-size: clamp(15px, 1.7vw, 20px);
-      line-height: 1.3;
-      letter-spacing: .01em;
+      font-weight: 900;
+      font-size: clamp(38px, 5vw, 68px);
+      line-height: .96;
+      letter-spacing: -.04em;
       text-transform: uppercase;
-      color: #9FC4AC;
-      margin-bottom: 14px;
-      max-width: 34ch;
+      color: #fff;
+      margin-bottom: 22px;
+      max-width: 13ch;
     }
 
-    .hero-main h1.hero-topic .b { color: #fff }
+    .hero-main h1.hero-topic .b {
+      color: #fff;
+      background: var(--flag);
+      padding: 0 .1em;
+    }
 
     /* brand punch line (formerly the H1) — keeps the big hero visual */
     .hero-main .hero-punch {
@@ -576,6 +579,341 @@
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 600;
       letter-spacing: 0
+    }
+
+    .evidence-card .rc-player {
+      background: #FBFBF8
+    }
+
+    .evidence-card .rc-player .nm {
+      max-width: 16ch;
+      line-height: 1.02
+    }
+
+    .evidence-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column
+    }
+
+    .evidence-item {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 12px;
+      padding: 15px 22px;
+      border-bottom: 1px solid #DADDD4
+    }
+
+    .evidence-item .evidence-no {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--flag);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em
+    }
+
+    .evidence-item b {
+      display: block;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      line-height: 1.2
+    }
+
+    .evidence-item small {
+      display: block;
+      margin-top: 4px;
+      color: var(--grey);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      line-height: 1.45
+    }
+
+    .evidence-total a {
+      color: #fff;
+      border-bottom: 2px solid var(--flag);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase
+    }
+
+    /* ============ TRUST / COVERAGE / AEO ============ */
+    .section-kicker {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--flag);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase
+    }
+
+    .trust-hub {
+      background: var(--white);
+      border-bottom: 3px solid var(--ink)
+    }
+
+    .trust-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr);
+      gap: 48px;
+      align-items: start
+    }
+
+    .trust-copy h2,
+    .faq-intro h2 {
+      max-width: 15ch;
+      margin-bottom: 22px;
+      font-size: clamp(30px, 4.2vw, 54px);
+      font-weight: 900;
+      letter-spacing: -.04em;
+      line-height: .98;
+      text-transform: uppercase
+    }
+
+    .trust-copy > p {
+      max-width: 68ch;
+      margin-bottom: 16px;
+      color: #344139;
+      font-size: 17px;
+      line-height: 1.7
+    }
+
+    .trust-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      margin-top: 26px
+    }
+
+    .trust-links a {
+      border-bottom: 2px solid var(--flag);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase
+    }
+
+    .trust-proof {
+      border: 2px solid var(--ink);
+      background: var(--paper)
+    }
+
+    .trust-proof article {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 14px;
+      padding: 22px;
+      border-bottom: 2px solid var(--ink)
+    }
+
+    .trust-proof article:last-child {
+      border-bottom: none
+    }
+
+    .trust-proof .proof-label {
+      color: var(--flag);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase
+    }
+
+    .trust-proof h3 {
+      margin-bottom: 6px;
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 1.15;
+      text-transform: uppercase
+    }
+
+    .trust-proof p {
+      color: var(--grey);
+      font-size: 13.5px;
+      line-height: 1.55
+    }
+
+    .coverage-hubs {
+      background: var(--paper)
+    }
+
+    .coverage-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 2px solid var(--ink)
+    }
+
+    .coverage-card {
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
+      padding: 30px;
+      border-right: 2px solid var(--ink);
+      background: var(--white)
+    }
+
+    .coverage-card:last-child {
+      border-right: none
+    }
+
+    .coverage-card .hub-no {
+      margin-bottom: 28px;
+      color: var(--flag);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em
+    }
+
+    .coverage-card h3 {
+      max-width: 14ch;
+      margin-bottom: 14px;
+      font-size: clamp(23px, 2.6vw, 32px);
+      font-weight: 900;
+      letter-spacing: -.03em;
+      line-height: 1.02;
+      text-transform: uppercase
+    }
+
+    .coverage-card > p {
+      flex: 1;
+      margin-bottom: 24px;
+      color: var(--grey);
+      font-size: 15px;
+      line-height: 1.65
+    }
+
+    .coverage-card .hub-example {
+      padding-top: 16px;
+      border-top: 1px solid #DADDD4
+    }
+
+    .coverage-card .hub-example span {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--flag);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase
+    }
+
+    .coverage-card .hub-example a {
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.35
+    }
+
+    .coverage-card .hub-example a:hover {
+      text-decoration: underline;
+      text-decoration-color: var(--flag);
+      text-decoration-thickness: 2px
+    }
+
+    .aeo-faq {
+      background: var(--fairway-deep);
+      color: #fff;
+      border-top: 3px solid var(--ink);
+      border-bottom: 3px solid var(--ink)
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr);
+      gap: 54px;
+      align-items: start
+    }
+
+    .faq-intro {
+      position: sticky;
+      top: 100px
+    }
+
+    .faq-intro p {
+      max-width: 34ch;
+      color: #B9D2C2;
+      font-size: 15px;
+      line-height: 1.65
+    }
+
+    .faq-list {
+      border-top: 2px solid rgba(255, 255, 255, .28)
+    }
+
+    .faq-item {
+      padding: 24px 0;
+      border-bottom: 2px solid rgba(255, 255, 255, .28)
+    }
+
+    .faq-item h3 {
+      margin-bottom: 10px;
+      font-size: clamp(19px, 2.1vw, 25px);
+      font-weight: 900;
+      line-height: 1.15
+    }
+
+    .faq-item p {
+      max-width: 68ch;
+      color: #CFE3D6;
+      font-size: 15.5px;
+      line-height: 1.7
+    }
+
+    .faq-item a {
+      color: #fff;
+      text-decoration: underline;
+      text-decoration-color: var(--flag);
+      text-decoration-thickness: 2px
+    }
+
+    @media(max-width:1024px) {
+      .trust-layout,
+      .faq-layout {
+        grid-template-columns: 1fr
+      }
+
+      .faq-intro {
+        position: static
+      }
+
+      .coverage-grid {
+        grid-template-columns: 1fr
+      }
+
+      .coverage-card {
+        border-right: none;
+        border-bottom: 2px solid var(--ink)
+      }
+
+      .coverage-card:last-child {
+        border-bottom: none
+      }
+    }
+
+    @media(max-width:640px) {
+      .hero-main h1.hero-topic {
+        max-width: 14ch;
+        font-size: clamp(34px, 11vw, 48px)
+      }
+
+      .trust-layout {
+        gap: 30px
+      }
+
+      .trust-proof article {
+        grid-template-columns: 1fr;
+        gap: 7px
+      }
+
+      .coverage-card {
+        padding: 24px 20px
+      }
     }
 
     /* ============ SECTION HEADS ============ */
@@ -1612,12 +1950,40 @@
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "GOLFRAW",
+  "@id": "https://www.golfraw.com/#website",
+  "name": "GolfRaw",
   "alternateName": [
-    "GolfRaw",
+    "GOLFRAW",
     "Golf Raw"
   ],
   "url": "https://www.golfraw.com/",
+  "description": "Straight-talking PGA Tour news, independent course breakdowns, and data-backed tournament analysis.",
+  "inLanguage": "en",
+  "publisher": {
+    "@id": "https://www.golfraw.com/#organization"
+  },
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Golf news"
+    },
+    {
+      "@type": "Thing",
+      "name": "PGA Tour analysis"
+    },
+    {
+      "@type": "Thing",
+      "name": "Golf course architecture"
+    },
+    {
+      "@type": "Thing",
+      "name": "Player performance analytics"
+    },
+    {
+      "@type": "Thing",
+      "name": "Tournament previews"
+    }
+  ],
   "potentialAction": {
     "@type": "SearchAction",
     "target": {
@@ -1625,32 +1991,43 @@
       "urlTemplate": "https://www.golfraw.com/search.html?q={search_term_string}"
     },
     "query-input": "required name=search_term_string"
-  },
-  "inLanguage": "en",
-  "publisher": {
-    "@type": "Organization",
-    "name": "GOLFRAW",
-    "url": "https://www.golfraw.com/"
   }
 }
   </script>
-  <!-- ===== STRUCTURED DATA: Organization (logo signal for Google) ===== -->
+  <!-- ===== STRUCTURED DATA: NewsMediaOrganization ===== -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "GOLFRAW",
+  "@type": "NewsMediaOrganization",
+  "@id": "https://www.golfraw.com/#organization",
+  "name": "GOLFRAW Editorial",
   "alternateName": [
     "GolfRaw",
-    "Golf Raw"
+    "GOLFRAW",
+    "Golf Raw Editorial"
   ],
   "url": "https://www.golfraw.com/",
+  "description": "Independent golf journalism covering PGA Tour news, course architecture, player performance and tournament analysis.",
   "logo": {
     "@type": "ImageObject",
     "url": "https://www.golfraw.com/public/favicon-192.png",
     "width": 192,
     "height": 192
   },
+  "email": "hello@golfraw.com",
+  "masthead": "https://www.golfraw.com/about",
+  "publishingPrinciples": "https://www.golfraw.com/manifesto",
+  "ethicsPolicy": "https://www.golfraw.com/manifesto",
+  "correctionsPolicy": "https://www.golfraw.com/corrections",
+  "ownershipFundingInfo": "https://www.golfraw.com/about",
+  "knowsAbout": [
+    "PGA Tour news",
+    "Strokes gained analysis",
+    "ShotLink data",
+    "Golf course architecture",
+    "Golf tournament previews",
+    "Player performance analytics"
+  ],
   "sameAs": [
     "https://x.com/GolfRaw0",
     "https://www.facebook.com/golfraw0/"
@@ -1663,19 +2040,19 @@
 
 <body>
 
-  <!-- ====== LIVE TICKER ====== -->
-  <div class="ticker" aria-label="Live golf updates">
-    <div class="ticker-label"><span class="dot"></span>LIVE</div>
+  <!-- ====== COVERAGE TICKER ====== -->
+  <div class="ticker" role="region" aria-label="Latest verified golf coverage">
+    <div class="ticker-label"><span class="dot"></span>LATEST</div>
     <div class="ticker-view">
       <div class="ticker-track">
-        <span>• <b>LIVE:</b> Thrilling three-way tie at the top as McIlroy, Smith, and Kim share the -9 lead during a wild Moving Day shootout.</span>
-        <span>• <b>SCOTTISH OPEN R3:</b> <span class="pos">T1</span> J. Smith -9 &nbsp;|&nbsp; <span class="pos">T1</span> T. Kim -9 &nbsp;|&nbsp; <span class="pos">T1</span> R. McIlroy -9</span>
-        <span>• <b>SCOTTISH OPEN R3:</b> <span class="pos">T4</span> M. Fitzpatrick -8 &nbsp;|&nbsp; <span class="pos">T4</span> M. Lee -8 &nbsp;|&nbsp; <span class="pos">T6</span> N. Von Dellingshausen -7</span>
-        <span>• <b>STATUS:</b> R3 In Progress — Moving Day · Renaissance Club · Genesis Scottish Open 2026</span>
-        <span>• <b>LIVE:</b> Thrilling three-way tie at the top as McIlroy, Smith, and Kim share the -9 lead during a wild Moving Day shootout.</span>
-        <span>• <b>SCOTTISH OPEN R3:</b> <span class="pos">T1</span> J. Smith -9 &nbsp;|&nbsp; <span class="pos">T1</span> T. Kim -9 &nbsp;|&nbsp; <span class="pos">T1</span> R. McIlroy -9</span>
-        <span>• <b>SCOTTISH OPEN R3:</b> <span class="pos">T4</span> M. Fitzpatrick -8 &nbsp;|&nbsp; <span class="pos">T4</span> M. Lee -8 &nbsp;|&nbsp; <span class="pos">T6</span> N. Von Dellingshausen -7</span>
-        <span>• <b>STATUS:</b> R3 In Progress — Moving Day · Renaissance Club · Genesis Scottish Open 2026</span>
+        <span>• <b>ROCKET CLASSIC:</b> Detroit Golf Club debuts its $16 million restoration as a 7,328-yard par 70.</span>
+        <span>• <b>SCHEFFLER 2026:</b> True Strokes Gained at <span class="pos">+2.84</span>; five runner-up finishes after the 3M Open.</span>
+        <span>• <b>COURSE FILE:</b> Royal Birkdale strategy, renovation context, and the numbers that survive a routing change.</span>
+        <span>• <b>EDITORIAL STANDARD:</b> Primary sources first. Historical and current-season data kept separate.</span>
+        <span>• <b>ROCKET CLASSIC:</b> Detroit Golf Club debuts its $16 million restoration as a 7,328-yard par 70.</span>
+        <span>• <b>SCHEFFLER 2026:</b> True Strokes Gained at <span class="pos">+2.84</span>; five runner-up finishes after the 3M Open.</span>
+        <span>• <b>COURSE FILE:</b> Royal Birkdale strategy, renovation context, and the numbers that survive a routing change.</span>
+        <span>• <b>EDITORIAL STANDARD:</b> Primary sources first. Historical and current-season data kept separate.</span>
       </div>
     </div>
   </div>
@@ -1695,7 +2072,7 @@
       <a href="search.html">🔍 Search</a>
       <a href="tools.html">Tools</a>
       </nav>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -1705,75 +2082,212 @@
   <div class="hero">
     <div class="hero-grid">
       <article class="hero-main">
-        <div class="eyebrow"><span class="chip">GOLF RAW</span> The most honest game deserves honest coverage</div>
-        <h1 class="hero-topic"><span class="b">GOLFRAW</span> — Unfiltered Golf News, Performance Tools &amp;
-          Player Ratings</h1>
-        <h2 class="hero-punch">You shot <mark>what you shot.</mark></h2>
-        <p>Golf is the only sport that can't be spun. We cover it the same way — every number earned, every rating
-          final.</p>
+        <div class="eyebrow"><span class="chip">INDEPENDENT GOLF JOURNALISM</span> Evidence before narrative</div>
+        <h1 class="hero-topic"><span class="b">Golf news.</span> Course guides. PGA Tour analytics. No fluff.</h1>
+        <p>GolfRaw turns verified PGA Tour data, course changes, player form, and tournament reporting into clear,
+          straight-talking analysis. No corporate PR. No unsourced rumours. Just the story the evidence supports.</p>
         <div class="hero-cta-row">
-          <a href="./ratings.html" class="cta-btn">SEE THE RATINGS</a>
-          <a href="./news.html" class="cta-link">Latest stories ↓</a>
+          <a href="./news.html" class="cta-btn">Read Latest News</a>
+          <a href="./tournaments.html" class="cta-link">Explore Course Guides →</a>
         </div>
         <div class="hero-meta" style="margin-top:28px">
-          <span>RATINGS LOCKED <b>WK 25</b></span>
-          <span>STORIES THIS WEEK <b>4</b></span>
-          <span>PR REWRITES <b style="color:#FF9486">0</b></span>
+          <span>PUBLISHED BY <b>GOLFRAW EDITORIAL</b></span>
+          <span>SOURCE RULE <b>PRIMARY FIRST</b></span>
+          <span>UNSOURCED RUMOURS <b style="color:#FF9486">0</b></span>
         </div>
       </article>
 
       <aside class="hero-side">
-        <div class="rating-card">
+        <div class="rating-card evidence-card">
           <div class="rc-head">
-            <span>Raw Rating · Wk 25</span>
-            <span class="stamp">VERIFIED</span>
+            <span>The GolfRaw Method</span>
+            <span class="stamp">SOURCE-LED</span>
           </div>
           <div class="rc-player">
-            <div class="nm">WYNDHAM CLARK</div>
-            <div class="ev">US OPEN · CHAMPION · SHINNECOCK HILLS</div>
+            <div class="nm">Read the number. Check the context.</div>
+            <div class="ev">THE 2026 COVERAGE STANDARD</div>
           </div>
-          <div class="rc-rows">
-            <div class="rc-row">
+          <div class="evidence-list">
+            <div class="evidence-item">
+              <span class="evidence-no">01</span>
               <div>
-                <span class="lbl">Driving</span>
-                <span class="sub">Shaky down the stretch</span>
+                <b>Shot-level performance data</b>
+                <small>ShotLink-fed PGA Tour statistics and current strokes-gained splits.</small>
               </div>
-              <div class="bar"><i data-w="92%"></i></div>
-              <span class="num">9.2</span>
             </div>
-            <div class="rc-row">
+            <div class="evidence-item">
+              <span class="evidence-no">02</span>
               <div>
-                <span class="lbl">Approach</span>
-                <span class="sub">SG: APP +1.95 | Tour Rank: 1st</span>
+                <b>Verified course changes</b>
+                <small>Club, architect, tournament, and official media documentation.</small>
               </div>
-              <div class="bar"><i data-w="90%"></i></div>
-              <span class="num">9.0</span>
             </div>
-            <div class="rc-row">
+            <div class="evidence-item">
+              <span class="evidence-no">03</span>
               <div>
-                <span class="lbl">Putting</span>
-                <span class="sub">Clutch from 53 feet on the 72nd hole</span>
+                <b>Season-correct form analysis</b>
+                <small>Active 2026 performance kept separate from 2024–2025 history.</small>
               </div>
-              <div class="bar"><i data-w="99%"></i></div>
-              <span class="num">9.9</span>
             </div>
-            <div class="rc-row">
+            <div class="evidence-item">
+              <span class="evidence-no">04</span>
               <div>
-                <span class="lbl">Mental</span>
-                <span class="sub">Silenced a hostile New York crowd</span>
+                <b>Original-source reporting</b>
+                <small>Quotes traced back before headlines, aggregation, or opinion.</small>
               </div>
-              <div class="bar"><i data-w="100%"></i></div>
-              <span class="num">10.0</span>
             </div>
           </div>
-          <div class="rc-total">
-            <span class="lbl">Raw Score</span>
-            <span class="big">9.8<sup style="color:#6FDB9A">▲ +0.1</sup></span>
+          <div class="rc-total evidence-total">
+            <span class="lbl">Transparent by design</span>
+            <a href="ratings-manual.html">Read methodology →</a>
           </div>
         </div>
       </aside>
     </div>
   </div>
+
+  <!-- ====== BRAND MANIFESTO / E-E-A-T TRUST HUB ====== -->
+  <section class="trust-hub" id="methodology">
+    <div class="wrap trust-layout">
+      <div class="trust-copy reveal">
+        <span class="section-kicker">Who · How · Why</span>
+        <h2>Evidence first. Opinion labeled.</h2>
+        <p>GolfRaw is an independent golf news and PGA Tour analysis publication produced by
+          <b>GOLFRAW Editorial</b>. For performance stories, we start with official ShotLink-fed tour data and
+          current strokes-gained splits, then test the number against the correct season, field, and tournament
+          context. Course breakdowns are checked against tournament, club, and architect documentation, so Detroit’s
+          rebuilt 2026 par 70 is never treated as the old par 72. Quotes are traced to the original interview,
+          uncertainty is labeled, and confirmed errors stay visible in our public Corrections Log.</p>
+        <div class="trust-links">
+          <a href="about.html">Meet the editorial desk →</a>
+          <a href="ratings-manual.html">Read the data method →</a>
+          <a href="corrections.html">Open the corrections log →</a>
+        </div>
+      </div>
+      <div class="trust-proof reveal" role="region" aria-label="GolfRaw editorial trust standards">
+        <article>
+          <span class="proof-label">Who</span>
+          <div>
+            <h3>GOLFRAW Editorial</h3>
+            <p>The publishing organization is credited plainly across the site. No fabricated expert personas or
+              stock-photo bylines.</p>
+          </div>
+        </article>
+        <article>
+          <span class="proof-label">How</span>
+          <div>
+            <h3>Primary evidence before narrative</h3>
+            <p>Official scoring, ShotLink-fed statistics, tournament documents, course releases, and original
+              interviews come before interpretation.</p>
+          </div>
+        </article>
+        <article>
+          <span class="proof-label">Why</span>
+          <div>
+            <h3>Make the golf easier to understand</h3>
+            <p>Every page should clarify what changed, what the numbers prove, and where uncertainty remains—without
+              padding or PR language.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FEATURED CONTENT HUBS ====== -->
+  <section class="coverage-hubs" id="coverage">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Golf coverage built for context</h2>
+        <a href="news.html">Browse all coverage →</a>
+      </div>
+      <div class="coverage-grid reveal">
+        <article class="coverage-card">
+          <span class="hub-no">HUB 01 · NEWS</span>
+          <h3>PGA Tour news &amp; deep dives</h3>
+          <p>Follow the 2026 season without recycled press-release copy. We examine Scottie Scheffler’s +2.84
+            field-adjusted performance and conversion problems, then audit how quotes—such as Nick Faldo’s LIV Golf
+            comments—change between an original interview and a syndicated headline.</p>
+          <div class="hub-example">
+            <span>Current analysis</span>
+            <a href="news-2026-scottie-scheffler-season-analysis.html">Why Scheffler keeps contending but converts
+              less →</a>
+          </div>
+        </article>
+        <article class="coverage-card">
+          <span class="hub-no">HUB 02 · COURSES</span>
+          <h3>Course architecture &amp; renovations</h3>
+          <p>Course history only helps when the course has not changed. Our files map official yardages, pars,
+            routing, bunkers, and renovation records—from Detroit Golf Club’s $16 million par-70 restoration to
+            strategic decisions at Royal Birkdale—before making a course-fit claim.</p>
+          <div class="hub-example">
+            <span>Verified course file</span>
+            <a href="news-2026-rocket-classic-detroit-golf-club-par-70.html">What Detroit’s rebuilt par 70 changes
+              for 2026 →</a>
+          </div>
+        </article>
+        <article class="coverage-card">
+          <span class="hub-no">HUB 03 · ANALYTICS</span>
+          <h3>Player analytics &amp; tournament previews</h3>
+          <p>Odds are time-stamped market snapshots, not predictions dressed as certainty. We compare current form,
+            strokes-gained profiles, course changes, and historical performance to assess players such as Cameron
+            Young and Bryson DeChambeau without pretending a model can remove uncertainty.</p>
+          <div class="hub-example">
+            <span>Tournament outlook</span>
+            <a href="rocket-classic-odds-cameron-young-detroit-golf-club.html">Cameron Young, the market, and a new
+              Detroit test →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONVERSATIONAL AEO FAQ ====== -->
+  <section class="aeo-faq" id="golfraw-faq">
+    <div class="wrap faq-layout">
+      <div class="faq-intro reveal">
+        <span class="section-kicker">Direct answers</span>
+        <h2>GolfRaw, without the brochure copy.</h2>
+        <p>Clear definitions for readers, search engines, and answer systems. Every answer is written to stand on its
+          own and links back to the public evidence behind the claim.</p>
+      </div>
+      <div class="faq-list reveal">
+        <article class="faq-item">
+          <h3>What is GolfRaw?</h3>
+          <p>GolfRaw is an independent golf news and PGA Tour analytics publication produced by GOLFRAW Editorial.
+            It combines verified tour data, course research, player-form analysis, and direct reporting to explain
+            what happened, why it matters, and which popular narratives do not survive contact with the evidence.</p>
+        </article>
+        <article class="faq-item">
+          <h3>What golf coverage does GolfRaw provide?</h3>
+          <p>GolfRaw covers PGA Tour news, tournament previews, course architecture, renovations, player performance,
+            strokes-gained trends, golf betting odds outlooks, swing analysis, historical features, and practical golf
+            guides. Coverage focuses on active 2026 events while clearly separating current-season evidence from
+            historical statistics and prior course configurations.</p>
+        </article>
+        <article class="faq-item">
+          <h3>How does GolfRaw analyze PGA Tour courses?</h3>
+          <p>GolfRaw analyzes PGA Tour courses by checking official scorecards, tournament media, club releases, and
+            architect documentation before comparing player profiles. Yardage, par, routing, green shapes, hazards,
+            and renovations are treated as model inputs, so old course history is never presented as directly
+            comparable when the physical test has changed.</p>
+        </article>
+        <article class="faq-item">
+          <h3>How does GolfRaw verify player statistics and form?</h3>
+          <p>GolfRaw verifies player form with current PGA Tour statistics, ShotLink-fed data, official results, and
+            clearly identified third-party models when used. The editorial desk checks dates, field strength, sample
+            size, and season boundaries before drawing conclusions, and labels betting prices or projections as
+            time-sensitive rather than permanent facts.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Who writes and publishes GolfRaw?</h3>
+          <p>GolfRaw is written and published by <a href="about.html">GOLFRAW Editorial</a>, the site’s disclosed
+            editorial organization. The desk uses an organizational byline instead of inventing individual experts,
+            publishes its methodology and funding model, provides direct contact channels, and records confirmed
+            factual errors in a permanent public <a href="corrections.html">corrections log</a>.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <!-- ====== NEWS GRID ====== -->
   <section id="news">
@@ -1785,6 +2299,20 @@
         <a href="news.html">All stories →</a>
       </div>
       <div class="news-grid reveal">
+        <!-- Thomas Pieters Q School LIV Golf Story Card -->
+        <article class="news">
+          <a href="news-2026-thomas-pieters-q-school-liv-golf.html" style="display:block; margin-bottom:16px;">
+            <img fetchpriority="high" loading="eager" decoding="sync" src="/public/thomas-pieters-q-school-liv-golf-2026.webp" alt="Thomas Pieters preparing for a shot during a LIV Golf tournament." style="width: 100%; border-radius: 4px;">
+          </a>
+          <div class="cat" style="display:flex;align-items:center;gap:8px;">
+            <span>NEWS · LIV GOLF</span>
+            <span style="color:var(--flag);border:1px solid var(--flag);padding:1px 6px;font-size:9.5px;font-weight:900;font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;">NEW</span>
+          </div>
+          <h3><a href="news-2026-thomas-pieters-q-school-liv-golf.html">Thomas Pieters Would Go Back to Q School. He's Done It Before</a></h3>
+          <p>If LIV folds, Thomas Pieters has no DP World Tour status and no PGA Tour interest. His plan is Q School — the same test he passed at 21.</p>
+          <div class="meta"><span>BY GOLFRAW EDITORIAL</span><span class="mono">TUE 28 JUL</span></div>
+        </article>
+
         <!-- Tony Romo Texas State Open Withdrawal Story Card -->
         <article class="news">
           <a href="news-2026-tony-romo-withdraws-texas-state-open.html" style="display:block; margin-bottom:16px;">
@@ -1852,20 +2380,6 @@
           </div>
           <h3><a href="news-2026-scottie-scheffler-season-analysis.html">Scheffler Hasn't Stopped Winning. Look at This Stat</a></h3>
           <p>One win, five runner-ups, still top of the FedExCup. Three numbers explain what actually changed in Scottie Scheffler's 2026 — and one of them is brutal.</p>
-          <div class="meta"><span>BY GOLFRAW EDITORIAL</span><span class="mono">MON 27 JUL</span></div>
-        </article>
-
-        <!-- Bryson DeChambeau Week After The Open Assessed Story Card -->
-        <article class="news">
-          <a href="news-2026-bryson-dechambeau-week-after-the-open.html" style="display:block; margin-bottom:16px;">
-            <img fetchpriority="high" loading="eager" decoding="sync" src="/public/bryson-dechambeau-week-after-the-open-assessed.webp" alt="Bryson DeChambeau walking on the course during LIV Golf UK at JCB Golf and Country Club." style="width: 100%; border-radius: 4px;">
-          </a>
-          <div class="cat" style="display:flex;align-items:center;gap:8px;">
-            <span>NEWS · THE OPEN</span>
-            <span style="color:var(--flag);border:1px solid var(--flag);padding:1px 6px;font-size:9.5px;font-weight:900;font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;">NEW</span>
-          </div>
-          <h3><a href="news-2026-bryson-dechambeau-week-after-the-open.html">DeChambeau's Week Since The Open, Honestly Assessed</a></h3>
-          <p>The claim is that his conduct since Birkdale is worse than the meltdown itself. I checked the eight days. It mostly isn't — with one exception.</p>
           <div class="meta"><span>BY GOLFRAW EDITORIAL</span><span class="mono">MON 27 JUL</span></div>
         </article>
       </div>
