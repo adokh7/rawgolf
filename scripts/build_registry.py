@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+"""Build articles.json — the single source of truth for GolfRaw articles.
+
+Metadata comes from each article's own <head> (og:title, description,
+article:published_time, og:image); category comes from the live search index,
+with a keyword fallback for articles not yet indexed.
+"""
+import sys, os, json, re
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from extract import slugs, categories, extract
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Keyword fallback, only used when the search index has no category yet.
+RULES = [
+    ('LIV GOLF', r'\bliv\b|greg-norman|cam-smith|pieters-q-school'),
+    ('GUIDES',   r'guide|how-to|how-far|what-is|what-does|what-to-wear|beginner|drills|'
+                 r'swing|grip|distances|strokes-gained|witb|fitting|search|deals|topgolf|'
+                 r'majors|mindset|explained|winners-list|rules'),
+    ('PGA TOUR', r'.'),
+]
+
+# Within PGA TOUR, split event/major/venue coverage (tournaments.html) from
+# tour news, results and players (pga-tour.html).
+MAJOR = (r'us-open|the-open|open-championship|birkdale|masters|pga-championship|evian|'
+         r'aig-womens-open|womens-open|lytham|solheim|ryder-cup|kpmg|shinnecock|sahalee|'
+         r'major|course-guide|course-history|scorecard|yardage|setup|renovation|restoration|'
+         r'renaissance-club|teugega|donald-ross|venue')
+
+def section(a):
+    """Which category page owns this article."""
+    if a['category'] != 'PGA TOUR':
+        return a['category']
+    return 'TOURNAMENTS' if re.search(MAJOR, a['slug']) else 'PGA TOUR'
+
+def fallback(slug, title):
+    hay = (slug + ' ' + title).lower()
+    for cat, pat in RULES:
+        if re.search(pat, hay):
+            return cat
+    return 'PGA TOUR'
+
+def build():
+    catmap = categories(ROOT)
+    arts, gaps = [], []
+    for s in slugs(ROOT):
+        a = extract(s, ROOT, catmap)
+        if not a['category']:
+            a['category'] = fallback(s, a['title'])
+            a['category_source'] = 'keyword-fallback'
+        else:
+            a['category_source'] = 'search-index'
+        missing = [k for k in ('title','excerpt','date','image') if not a[k]]
+        if missing:
+            gaps.append((s, missing))
+        a['section'] = section(a)
+        arts.append(a)
+    arts.sort(key=lambda a: (a['date'] or '0000-00-00', a['slug']), reverse=True)
+    return arts, gaps
+
+if __name__ == '__main__':
+    arts, gaps = build()
+    out = {
+        'generated': '2026-08-05',
+        'count': len(arts),
+        'categories': sorted({a['category'] for a in arts}),
+        'sections': sorted({a['section'] for a in arts}),
+        'articles': arts,
+    }
+    with open(os.path.join(ROOT, 'articles.json'), 'w', encoding='utf-8') as f:
+        json.dump(out, f, indent=2, ensure_ascii=False)
+        f.write('\n')
+    print(f"articles.json: {len(arts)} articles")
+    from collections import Counter
+    for c, n in Counter(a['category'] for a in arts).most_common():
+        print(f"   {c:<10} {n}")
+    print(f"\nfallback-categorised: {sum(1 for a in arts if a['category_source']=='keyword-fallback')}")
+    print(f"INCOMPLETE METADATA: {len(gaps)}")
+    for s, m in gaps[:20]:
+        print(f"   {s}: missing {','.join(m)}")
