@@ -1,5 +1,12 @@
 {
     "cleanUrls": true,
+    "redirects": [
+        {
+            "source": "/what-beginners-actually-search",
+            "destination": "/news-2026-what-beginners-actually-search",
+            "permanent": true
+        }
+    ],
     "rewrites": [
         {
             "source": "/((?!.*\\.).*)",
