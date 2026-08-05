@@ -1,27 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+import re
 
-<head>
-  <!-- Google Funding Choices — EEA/UK consent management (required by Google's EU User Consent Policy) -->
-  <script async src="https://fundingchoicesmessages.google.com/i/pub-8933725159594062?ers=1"></script>
-  <script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-PMECW4VW66');
-  </script>
-  <meta charset="UTF-8">
-  <!-- ============ FAVICON / GOOGLE SEARCH LOGO ============ -->
-  <link rel="icon" type="image/webp" sizes="1254x1254" href="/public/favicon-192.webp">
-  <link rel="alternate icon" type="image/png" sizes="192x192" href="/public/favicon-192.png">
-  <link rel="apple-touch-icon" href="/public/favicon-192.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="p:domain_verify" content="b7225cf07b728cc1691b9a4c7a938dbe"/>
+with open("news-2026-solheim-cup-big-names-missing.html", "r", encoding="utf-8") as f:
+    template = f.read()
 
-  <!-- ============ PRIMARY SEO ============ -->
+# 1. Extract head start
+head_start = template[:template.find("<!-- ============ PRIMARY SEO ============ -->")]
+
+# 2. SEO block
+seo_block = """<!-- ============ PRIMARY SEO ============ -->
   <title>LIV Says It's Saved. It Won't Say By Whom. | GolfRaw</title>
   <meta name="description" content="LIV Golf says it has a signed lead investor and players will be majority owners. It won't name the investor or the amount. What was actually announced.">
   <link rel="canonical" href="https://www.golfraw.com/news-2026-liv-golf-secures-lead-investor">
@@ -80,130 +66,16 @@
   "mainEntityOfPage": "https://www.golfraw.com/news-2026-liv-golf-secures-lead-investor"
 }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+"""
 
-  <style>
-    :root {
-      --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
-      --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box }
-    html { scroll-behavior: smooth }
-    body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased }
-    a { color: inherit; text-decoration: none }
-    img { max-width: 100%; height: auto; display: block; backface-visibility: hidden; transform: translateZ(0) }
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
-    .mono { font-family: 'IBM Plex Mono', monospace }
+# 3. Head end to main article start
+head_end_idx = template.find('  <link rel="preconnect" href="https://fonts.googleapis.com">')
+main_start_idx = template.find('<article>')
 
-    /* HEADER */
-    .site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
-    .logo { font-weight: 900; font-size: 26px; letter-spacing: -.04em; text-transform: uppercase }
-    .logo .raw { color: var(--flag) }
-    .nav-links { display: flex; gap: 0 }
-    .nav-links a { font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; padding: 8px 14px; transition: background .15s, color .15s }
-    .nav-links a:hover { background: var(--ink); color: #fff }
+head_to_main = template[head_end_idx:main_start_idx]
 
-    /* LAYOUT */
-    .page-grid { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 48px; padding: 40px 0 64px }
-    @media(max-width:980px) { .page-grid { grid-template-columns: 1fr } .article-aside { display: none } }
-
-    /* BREADCRUMB */
-    .crumbs { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); margin-bottom: 20px }
-    .crumbs a { color: var(--flag); font-weight: 600 }
-    .crumbs a:hover { text-decoration: underline }
-
-    /* ARTICLE */
-    .article-head .cat { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; background: var(--flag); color: #fff; padding: 4px 12px; margin-bottom: 18px }
-    .article-head h1 { font-weight: 900; font-size: clamp(30px,4.4vw,52px); line-height: 1.02; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 18px }
-    .standfirst { font-size: 19px; color: var(--grey); max-width: 62ch; margin-bottom: 24px; font-weight: 500 }
-    .byline { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); padding: 14px 0; margin-bottom: 28px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--grey) }
-    .byline b { color: var(--ink); font-weight: 600 }
-    .article-body { font-size: 17.5px; max-width: 68ch }
-    .article-body p { margin-bottom: 22px }
-    .article-body p b { font-weight: 800 }
-    .article-body ul { margin: 0 0 22px 22px }
-    .article-body li { margin-bottom: 10px }
-    .article-body h2 { font-weight: 900; font-size: clamp(22px,2.8vw,30px); letter-spacing: -.02em; text-transform: uppercase; line-height: 1.1; margin: 44px 0 18px; padding-top: 18px; border-top: 3px solid var(--ink) }
-    .article-body h3 { font-weight: 800; font-size: 19px; letter-spacing: -.01em; margin: 30px 0 12px }
-    .article-body h3::before { content: "— "; color: var(--flag) }
-
-    /* TABLE STYLING */
-    .payout-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 15px; border: 2px solid var(--ink); background: var(--white); }
-    .payout-table th { background: var(--ink); color: #fff; text-align: left; padding: 12px 18px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
-    .payout-table td { padding: 12px 18px; border-bottom: 1px solid #DADDD4; font-weight: 500; color: var(--ink); }
-    .payout-table tr:last-child td { border-bottom: none; }
-    .payout-table tr:nth-child(even) { background-color: rgba(0,0,0,0.02); }
-
-    /* TAGS */
-    .tag-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 40px 0 0 }
-    .tag-row a { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; border: 2px solid var(--ink); padding: 6px 14px; transition: background .15s, color .15s }
-    .tag-row a:hover { background: var(--ink); color: #fff }
-
-    /* SIDEBAR */
-    .aside-box { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
-    .aside-box .ab-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600 }
-    .aside-item { display: block; padding: 14px 18px; border-bottom: 1px solid #DADDD4; font-weight: 700; font-size: 14px; line-height: 1.35 }
-    .aside-item:last-child { border-bottom: none }
-    .aside-item:hover { text-decoration: underline; text-decoration-color: var(--flag); text-decoration-thickness: 2px }
-    .aside-item .mono { display: block; font-weight: 500; font-size: 10.5px; color: var(--flag); letter-spacing: .12em; margin-bottom: 4px; text-transform: uppercase }
-
-    /* FOOTER */
-    .site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
-    .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
-    .site-footer a:hover { color: #fff }
-
-    .burger { display: none; background: none; border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px }
-    .burger span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0 }
-
-    @media(max-width:760px) {
-      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
-      .nav-links.open { display: flex }
-      .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
-      .burger { display: block }
-    }
-
-    /* RESPONSIVE */
-    img { max-width: 100%; height: auto }
-    @media(max-width:1024px) { .wrap { padding-left: 20px; padding-right: 20px } .page-grid { grid-template-columns: 1fr; gap: 32px } .article-aside { display: block } .rel-grid { grid-template-columns: 1fr 1fr } .news-grid { grid-template-columns: repeat(2,1fr) } }
-    @media(max-width:768px) { .wrap { padding-left: 16px; padding-right: 16px } .nav { padding: 0 16px } .page-grid { grid-template-columns: 1fr; gap: 28px } .article-aside { display: block } .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr } .article-head h1 { font-size: clamp(26px,7vw,34px) } .standfirst { font-size: 16.5px } .article-body { font-size: 16.5px } .article-body h2 { font-size: clamp(20px,5.5vw,24px) } .article-body h3 { font-size: 17px } }
-    /* === CLS / RESPONSIVE SAFETY === */
-    html, body { max-width: 100%; overflow-x: clip; }
-    img, video, iframe { max-width: 100%; }
-    table { max-width: 100%; }
-  </style>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
-</head>
-
-<body>
-
-  <!-- ============ SITE HEADER ============ -->
-  <header class="site-header">
-    <div class="nav">
-      <a href="/" class="logo">Golf<span class="raw">Raw</span></a>
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="/#news">Latest News</a>
-        <a href="/#ratings">Player Ratings</a>
-        <a href="/#tournaments">Tournaments</a>
-        <a href="/#analysis">Swing Analysis</a>
-        <a href="/#vault">The Vault</a>
-        <a href="search">🔍 Search</a>
-      </nav>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- ============ MAIN ============ -->
-  <main>
-    <div class="wrap page-grid">
-
-      <!-- ============ ARTICLE ============ -->
-      <article>
+# 4. New Article content
+article_block = """<article>
         <nav class="crumbs" aria-label="Breadcrumb">
           <a href="/">RawGolf</a> / <a href="news">Latest News</a> / <span>LIV Golf</span>
         </nav>
@@ -307,58 +179,14 @@
             <a href="search">GOLFRAW</a>
           </div>
         </div>
-      </article>
+      </article>"""
 
-      <!-- ============ SIDEBAR ============ -->
-      <aside class="article-aside">
-        <div class="aside-box">
-          <div class="ab-head">LATEST NEWS</div>
-          <a href="news-2026-who-is-jackson-koivun-explained" class="aside-item">
-            <span class="mono">PGA TOUR</span>
-            Who Is Jackson Koivun? The 21-Year-Old Explained
-          </a>
-          <a href="news-2026-lucas-herbert-liv-golf-uk-record-win" class="aside-item">
-            <span class="mono">LIV GOLF UK</span>
-            Lucas Herbert's 30-Under Breaks LIV Golf's Record
-          </a>
-          <a href="news-2026-jenny-shin-womens-scottish-open-winner" class="aside-item">
-            <span class="mono">WOMEN'S SCOTTISH OPEN</span>
-            Jenny Shin Wins Scottish Open After 3,738 Days
-          </a>
-          <a href="news-2026-muzzy-donohue-3m-open-wild-debut" class="aside-item">
-            <span class="mono">3M OPEN</span>
-            Grandma, A Vibes Caddie, And A 63: Muzzy's Wild Debut
-          </a>
-        </div>
-      </aside>
+# 5. Get the rest of the template
+rest_idx = template.find('<!-- ============ SIDEBAR ============ -->')
+rest = template[rest_idx:]
 
-    </div>
-  </main>
+final_html = head_start + seo_block + head_to_main + article_block + "\n\n      " + rest
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="site-footer">
-    <div class="wrap">
-      <span>© 2026 GOLFRAW — ALL RATINGS FINAL</span>
-      <nav aria-label="Footer navigation" style="display:flex;gap:20px;flex-wrap:wrap">
-        <a href="manifesto">MANIFESTO</a>
-        <a href="about">ABOUT</a>
-        <a href="ratings-manual">HOW RATINGS WORK</a>
-        <a href="corrections">CORRECTIONS</a>
-        <a href="privacy">PRIVACY</a>
-        <a href="terms">TERMS</a>
-        <a href="contact">CONTACT</a>
-        <a href="/">← FRONT PAGE</a>
-      </nav>
-    </div>
-  </footer>
+with open("news-2026-liv-golf-secures-lead-investor.html", "w", encoding="utf-8") as f:
+    f.write(final_html)
 
-  <script>
-    const burger = document.getElementById('burger'), links = document.getElementById('navLinks');
-    if (burger && links) {
-      burger.addEventListener('click', () => { const open = links.classList.toggle('open'); burger.setAttribute('aria-expanded', open) });
-      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-    }
-  </script>
-</body>
-
-</html>
