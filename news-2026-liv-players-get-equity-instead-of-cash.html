@@ -118,10 +118,10 @@
     /* ARTICLE */
     .article-head .cat { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; background: var(--flag); color: #fff; padding: 4px 12px; margin-bottom: 18px }
     .article-head h1 { font-weight: 900; font-size: clamp(30px,4.4vw,52px); line-height: 1.02; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 18px }
-    .standfirst { font-size: 19px; color: var(--grey); margin-bottom: 24px; font-weight: 500 }
+    .standfirst { font-size: 19px; color: var(--grey); max-width: 62ch; margin-bottom: 24px; font-weight: 500 }
     .byline { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); padding: 14px 0; margin-bottom: 28px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--grey) }
     .byline b { color: var(--ink); font-weight: 600 }
-    .article-body { font-size: 17.5px; max-width: 68ch; margin: 0 auto; }
+    .article-body { font-size: 17.5px; max-width: 68ch }
     .article-body p { margin-bottom: 22px }
     .article-body p b { font-weight: 800 }
     .article-body ul { margin: 0 0 22px 22px }
@@ -198,9 +198,10 @@
 </header>
 <!-- ============ MAIN ============ -->
 <main>
-<div class="wrap">
+<div class="wrap page-grid">
 <!-- ============ ARTICLE ============ -->
 
+<article>
 <nav aria-label="Breadcrumb" class="crumbs">
 <a href="/">RawGolf</a> / <a href="news">Latest News</a> / <span>LIV Golf</span>
 </nav>
@@ -213,7 +214,9 @@
 <span>PUBLISHED <b>AUG 06 2026</b></span>
 </div>
 </header>
-<img alt="LIV Golf Equity Instead of Cash" src="/public/liv-golf-equity-instead-of-cash.webp" style="width: 100%; border-radius: 4px; margin-bottom: 40px;"/>
+<figure class="lead-img">
+<img alt="LIV Golf Equity Instead of Cash" src="/public/liv-golf-equity-instead-of-cash.webp" />
+</figure>
 <div class="article-body">
 <h2>The Question Answered Out Loud</h2>
 <p>In our previous coverage of Wednesday's announcement, the biggest unresolved question was whether the "majority equity" for players was a windfall arriving on top of what they were owed, or a way of converting an unpayable debt into paper.</p>
@@ -252,7 +255,31 @@
 <a href="search">GOLFRAW</a>
 </div>
 </div>
+</div>
+</article>
 
+<!-- ============ SIDEBAR ============ -->
+<aside class="article-aside">
+<div class="aside-box">
+<div class="ab-head">LATEST NEWS</div>
+<a class="aside-item" href="news-2026-who-is-jackson-koivun-explained">
+<span class="mono">PGA TOUR</span>
+            Who Is Jackson Koivun? The 21-Year-Old Explained
+          </a>
+<a class="aside-item" href="news-2026-lucas-herbert-liv-golf-uk-record-win">
+<span class="mono">LIV GOLF UK</span>
+            Lucas Herbert's 30-Under Breaks LIV Golf's Record
+          </a>
+<a class="aside-item" href="news-2026-jenny-shin-womens-scottish-open-winner">
+<span class="mono">WOMEN'S SCOTTISH OPEN</span>
+            Jenny Shin Wins Scottish Open After 3,738 Days
+          </a>
+<a class="aside-item" href="news-2026-muzzy-donohue-3m-open-wild-debut">
+<span class="mono">3M OPEN</span>
+            Grandma, A Vibes Caddie, And A 63: Muzzy's Wild Debut
+          </a>
+</div>
+</aside>
 </div>
 </main>
 <!-- ============ FOOTER ============ -->
