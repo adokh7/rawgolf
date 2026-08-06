@@ -33,6 +33,13 @@ def section(a):
         return a['category']
     return 'TOURNAMENTS' if re.search(MAJOR, a['slug']) else 'PGA TOUR'
 
+# Explicit category overrides where the search-index tag is wrong.
+# swing-guide is evergreen swing instruction, not tour news; it already sits
+# on guides.html, so PGA TOUR left it cross-listed on two category pages.
+OVERRIDES = {
+    'swing-guide': 'GUIDES',
+}
+
 def fallback(slug, title):
     hay = (slug + ' ' + title).lower()
     for cat, pat in RULES:
@@ -53,6 +60,9 @@ def build():
         missing = [k for k in ('title','excerpt','date','image') if not a[k]]
         if missing:
             gaps.append((s, missing))
+        if a['slug'] in OVERRIDES:
+            a['category'] = OVERRIDES[a['slug']]
+            a['category_source'] = 'override'
         a['section'] = section(a)
         arts.append(a)
     arts.sort(key=lambda a: (a['date'] or '0000-00-00', a['slug']), reverse=True)

@@ -2217,11 +2217,11 @@
       "url": "/swing-guide",
       "title": "How to Swing a Golf Club: The Honest Basics",
       "excerpt": "How to swing a golf club without ten confusing swing thoughts. Real golf swing basics, drills, and tips that hold up under pressure.",
-      "category": "PGA TOUR",
+      "category": "GUIDES",
       "date": "2026-06-13",
       "image": "/public/golf-swing-basics.webp",
-      "category_source": "search-index",
-      "section": "PGA TOUR"
+      "category_source": "override",
+      "section": "GUIDES"
     },
     {
       "canonical": "/scheffler-witb",
