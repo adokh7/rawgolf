@@ -9,10 +9,23 @@
   "sections": [
     "GUIDES",
     "LIV GOLF",
-    "PGA TOUR",
     "TOURNAMENTS"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-liv-bedminster-purse-unknown",
+      "alias_of": "",
+      "slug": "news-2026-liv-bedminster-purse-unknown",
+      "url": "/news-2026-liv-bedminster-purse-unknown",
+      "title": "Nobody Can Confirm What This LIV Purse Is",
+      "excerpt": "LIV plays Bedminster at prize money reported as $25m to $30m — nobody can confirm which. From 2027 it's about $10m. What's actually verified this week.",
+      "category": "LIV GOLF",
+      "date": "2026-08-06",
+      "image": "/public/liv-golf-bedminster-purse-unknown.webp",
+      "category_source": "manual",
+      "section": "LIV GOLF",
+      "keywords": "liv golf new york, liv bedminster purse, liv golf new york field, trump national bedminster, scott oneil, jon rahm"
+    },
     {
       "canonical": "/news-2026-memphis-championship-series-fedexcup",
       "alias_of": "",
