@@ -37,7 +37,18 @@ def section(a):
 # swing-guide is evergreen swing instruction, not tour news; it already sits
 # on guides.html, so PGA TOUR left it cross-listed on two category pages.
 OVERRIDES = {
+    # Evergreen swing, drill and instructional content. These are how-to and
+    # explainer pieces, not tour reporting, so PGA TOUR stays strictly news,
+    # bubble updates and tournament results. analysis.html still curates the
+    # swing collection from these — it is a section, not a category page.
     'swing-guide': 'GUIDES',
+    'fix-over-the-top': 'GUIDES',
+    'golf-swing-drills': 'GUIDES',
+    'scottie-scheffler-footwork': 'GUIDES',
+    'scheffler-swing': 'GUIDES',
+    'scheffler-witb': 'GUIDES',
+    'strokes-gained': 'GUIDES',
+    'amateur-tournament-guide': 'GUIDES',
 }
 
 def fallback(slug, title):
