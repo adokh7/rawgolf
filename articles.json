@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 179,
+  "count": 180,
   "categories": [
     "GUIDES",
     "LIV GOLF",
@@ -13,6 +13,19 @@
     "TOURNAMENTS"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-liv-players-get-equity-instead-of-cash",
+      "alias_of": "",
+      "slug": "news-2026-liv-players-get-equity-instead-of-cash",
+      "url": "/news-2026-liv-players-get-equity-instead-of-cash",
+      "title": "Players Get Equity 'Instead of Cash,' Says LIV CEO",
+      "excerpt": "LIV Golf says players will become majority owners. Its CEO then said the equity comes 'instead of cash.' What that actually means for the league.",
+      "category": "LIV GOLF",
+      "date": "2026-08-06",
+      "image": "/public/liv-golf-equity-instead-of-cash.webp",
+      "category_source": "manual",
+      "section": "LIV GOLF"
+    },
     {
       "canonical": "/news-2026-liv-golf-secures-lead-investor",
       "alias_of": "",
