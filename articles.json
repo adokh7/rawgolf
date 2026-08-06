@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 180,
+  "count": 181,
   "categories": [
     "GUIDES",
     "LIV GOLF",
@@ -13,6 +13,19 @@
     "TOURNAMENTS"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-wyndham-fedexcup-bubble-koivun",
+      "alias_of": "",
+      "slug": "news-2026-wyndham-fedexcup-bubble-koivun",
+      "url": "/news-2026-wyndham-fedexcup-bubble-koivun",
+      "title": "A Razor-Thin Bubble at Sedgefield: 12 Points Decide a Rookie's Fate",
+      "excerpt": "Jackson Koivun enters the 2026 Wyndham Championship holding the 70th FedExCup spot by just 12 points. What Sedgefield's positional layout means for the playoff bubble.",
+      "category": "PGA TOUR",
+      "date": "2026-08-06",
+      "image": "/public/wyndham-fedexcup-bubble-koivun.webp",
+      "category_source": "manual",
+      "section": "PGA TOUR"
+    },
     {
       "canonical": "/news-2026-liv-players-get-equity-instead-of-cash",
       "alias_of": "",
