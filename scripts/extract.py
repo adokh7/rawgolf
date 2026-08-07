@@ -7,10 +7,23 @@ UTIL = {'index','search','news','guides','liv-golf','pga-tour','tournaments','an
 # match-play, strokes-gained and swing-guide are content pages, not utility chrome.
 
 def meta(s, key, attr='name'):
-    """Read a meta tag regardless of attribute order (both orders occur in this repo)."""
+    """Read a meta tag whatever the attribute order or quote style.
+
+    This repo contains all three variants: name-then-content, content-then-name,
+    and single-quoted values. Missing any of them silently blanks a field.
+    """
     k = re.escape(key)
-    for pat in (r'<meta\s+%s="%s"\s+content="([^"]*)"' % (attr, k),
-                r'<meta\s+content="([^"]*)"\s+%s="%s"' % (attr, k)):
+    # Each pattern uses a negated class matching the *same* quote character, so
+    # it can never run past the end of one tag into a later one.
+    # The key quote and the content quote vary independently in this repo
+    # (e.g. content='...' name="..."), so try every combination.
+    pats = []
+    for kq in ('"', "'"):
+        for cq in ('"', "'"):
+            v = '([^%s]*)' % cq
+            pats.append(r'<meta\s+%s=%s%s%s\s+content=%s%s%s' % (attr, kq, k, kq, cq, v, cq))
+            pats.append(r'<meta\s+content=%s%s%s\s+%s=%s%s%s' % (cq, v, cq, attr, kq, k, kq))
+    for pat in pats:
         m = re.search(pat, s)
         if m:
             return m.group(1).strip()

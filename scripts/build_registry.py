@@ -58,11 +58,43 @@ def fallback(slug, title):
             return cat
     return 'PGA TOUR'
 
+def existing_keywords():
+    """Collect hand-written search keywords so a rebuild never destroys them.
+
+    No article carries <meta name="keywords">, so these cannot be re-derived
+    from the HTML. The only sources are the current registry and the current
+    search index, both of which are hand-maintained. Registry wins on conflict.
+    """
+    kw = {}
+    search = os.path.join(ROOT, 'search.html')
+    if os.path.exists(search):
+        s = open(search, encoding='utf-8').read()
+        i = s.find('const ARTICLES = [')
+        if i >= 0:
+            for entry in re.findall(r'\{t:.*?\},', s[i:s.find('\n];', i)], re.S):
+                slug = re.search(r'l:"([^"]+)"', entry)
+                keys = re.search(r'k:"([^"]*)"', entry)
+                if slug and keys and keys.group(1).strip():
+                    kw[slug.group(1).lstrip('/')] = keys.group(1)
+    reg = os.path.join(ROOT, 'articles.json')
+    if os.path.exists(reg):
+        try:
+            for a in json.load(open(reg, encoding='utf-8'))['articles']:
+                slug = a.get('slug') or a.get('url', '').lstrip('/')
+                if slug and a.get('keywords', '').strip():
+                    kw[slug] = a['keywords']
+        except (ValueError, KeyError):
+            pass
+    return kw
+
+
 def build():
     catmap = categories(ROOT)
+    keywords = existing_keywords()
     arts, gaps = [], []
     for s in slugs(ROOT):
         a = extract(s, ROOT, catmap)
+        a['keywords'] = keywords.get(s, '')
         if not a['category']:
             a['category'] = fallback(s, a['title'])
             a['category_source'] = 'keyword-fallback'
@@ -92,6 +124,7 @@ if __name__ == '__main__':
         json.dump(out, f, indent=2, ensure_ascii=False)
         f.write('\n')
     print(f"articles.json: {len(arts)} articles")
+    print(f"   keywords preserved: {sum(1 for a in arts if a['keywords'])}")
     from collections import Counter
     for c, n in Counter(a['category'] for a in arts).most_common():
         print(f"   {c:<10} {n}")
