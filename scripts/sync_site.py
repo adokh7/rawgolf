@@ -132,6 +132,19 @@ NEWS_GRID_INDENT = '        '
 NEWS_GRID_CLOSE_INDENT = '      '
 
 
+def write_if_changed(path, text):
+    """Write only when the content actually differs.
+
+    Every generated file goes through here so a no-op sync leaves the tree
+    completely untouched — no rewrites, no mtime churn. Returns True if the
+    file was written.
+    """
+    if os.path.exists(path) and open(path, encoding='utf-8').read() == text:
+        return False
+    open(path, 'w', encoding='utf-8').write(text)
+    return True
+
+
 def inject_news_grid(page_file, articles):
     """Replace the <div class="news-grid">...</div> block before NEWSLETTER.
 
@@ -169,9 +182,7 @@ def inject_news_grid(page_file, articles):
     new_grid = (f'{NEWS_GRID_INDENT}<div class="news-grid">\n{cards}\n'
                 f'{NEWS_GRID_CLOSE_INDENT}</div>\n\n')
 
-    new_src = src[:start] + new_grid + src[end:]
-    if new_src != src:                       # a no-op run must not touch the file
-        open(path, 'w', encoding='utf-8').write(new_src)
+    write_if_changed(path, src[:start] + new_grid + src[end:])
     return True
 
 
@@ -220,9 +231,7 @@ def inject_guide_grid(page_file, articles):
     new_grid = (f'{GUIDE_GRID_INDENT}<div class="guide-grid">\n{cards}\n'
                 f'{GUIDE_GRID_INDENT}{GUIDE_GRID_CLOSE}')
 
-    new_src = src[:start] + new_grid + src[end:]
-    if new_src != src:                       # a no-op run must not touch the file
-        open(path, 'w', encoding='utf-8').write(new_src)
+    write_if_changed(path, src[:start] + new_grid + src[end:])
     return True
 
 
@@ -240,8 +249,7 @@ def inject_search_index(articles):
     entries = ',\n'.join(search_entry(a) for a in articles)
     new_block = f'const ARTICLES = [\n{entries}\n];'
 
-    new_src = src[:start_idx] + new_block + src[end_idx:]
-    open(path, 'w', encoding='utf-8').write(new_src)
+    write_if_changed(path, src[:start_idx] + new_block + src[end_idx:])
     return True
 
 
@@ -293,7 +301,7 @@ def write_sitemap(arts):
         out.append(f'  <url>\n    <loc>{base}{a["url"]}</loc>{lastmod}'
                    f'\n    <priority>0.9</priority>\n  </url>')
     out += ['</urlset>', '']
-    open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write('\n'.join(out))
+    write_if_changed(os.path.join(ROOT, 'sitemap.xml'), '\n'.join(out))
     return len(arts) + len(STATIC)
 
 
