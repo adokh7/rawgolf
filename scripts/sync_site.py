@@ -128,65 +128,101 @@ def search_entry(a):
 # Grid injection
 # ---------------------------------------------------------------------------
 
+NEWS_GRID_INDENT = '        '
+NEWS_GRID_CLOSE_INDENT = '      '
+
+
 def inject_news_grid(page_file, articles):
-    """Replace the <div class="news-grid">...</div> block before NEWSLETTER."""
+    """Replace the <div class="news-grid">...</div> block before NEWSLETTER.
+
+    Idempotent: running this twice must produce byte-identical output. The
+    previous version anchored at the tag itself rather than the start of its
+    indentation, so it prepended a further eight spaces on every run —
+    news.html had reached 168 — and its trailing '\\n\\n' stacked one more
+    blank line each time.
+    """
     path = os.path.join(ROOT, page_file)
     src = open(path, encoding='utf-8').read()
 
-    # Find the news-grid opening tag
-    grid_start_match = re.search(r'<div class="news-grid">', src)
-    if not grid_start_match:
+    # Match the leading whitespace too, so the tag is re-indented rather than
+    # pushed a further NEWS_GRID_INDENT to the right on every run.
+    opening = re.search(r'[ \t]*<div class="news-grid">', src)
+    if not opening:
         print(f"  WARNING: no news-grid found in {page_file}")
         return False
+    start = opening.start()
 
     # Find the NEWSLETTER marker that comes after the grid
     newsletter_idx = src.index('<!-- START NEWSLETTER SECTION -->')
 
     # Walk backwards from newsletter to find the closing </div> of the grid
-    # The grid is closed by </div> then some whitespace before the newsletter
-    grid_end = src.rfind('</div>', grid_start_match.start(), newsletter_idx)
+    grid_end = src.rfind('</div>', start, newsletter_idx)
     if grid_end == -1:
         print(f"  WARNING: couldn't find grid close in {page_file}")
         return False
+    end = grid_end + len('</div>')
+    # Swallow the blank lines that follow, so the '\n\n' below replaces them
+    # instead of adding one more each run.
+    end = re.compile(r'(?:[ \t]*\r?\n)*').match(src, end).end()
 
-    # Build new grid
     cards = '\n'.join(news_card(a) for a in articles)
-    new_grid = f'        <div class="news-grid">\n{cards}\n      </div>\n\n'
+    new_grid = (f'{NEWS_GRID_INDENT}<div class="news-grid">\n{cards}\n'
+                f'{NEWS_GRID_CLOSE_INDENT}</div>\n\n')
 
-    new_src = src[:grid_start_match.start()] + new_grid + src[grid_end + len('</div>') + 1:]
-    open(path, 'w', encoding='utf-8').write(new_src)
+    new_src = src[:start] + new_grid + src[end:]
+    if new_src != src:                       # a no-op run must not touch the file
+        open(path, 'w', encoding='utf-8').write(new_src)
     return True
 
 
+GUIDE_GRID_INDENT = '      '
+GUIDE_GRID_CLOSE = '</div><!-- /.guide-grid -->'
+
+# Matches the grid's closing </div> together with EVERY marker comment that
+# follows it, so repeated runs collapse back to a single marker instead of
+# stacking one more each time.
+GUIDE_GRID_CLOSE_RE = re.compile(
+    r'</div>[ \t]*(?:<!--\s*/?\.?\s*guide-grid\s*-->[ \t]*)+')
+
+
 def inject_guide_grid(page_file, articles):
-    """Replace the <div class="guide-grid">...</div> block before NEWSLETTER."""
+    """Replace the <div class="guide-grid">...</div> block before NEWSLETTER.
+
+    Idempotent: running this twice must produce byte-identical output.
+
+    The previous version was not. Its closing-marker regex was
+    `</div><!-- [./]?guide-grid -->`, and `[./]?` matches at most one
+    character, so it could never match the two in `/.guide-grid`. That match
+    silently failed on every run, fell through to a bare `</div>` search that
+    stopped short of the existing marker comments, and so preserved all of
+    them while appending one more — and re-indented the opening tag by four
+    extra spaces each time. Three pages had accumulated 17-18 stray comments.
+    """
     path = os.path.join(ROOT, page_file)
     src = open(path, encoding='utf-8').read()
 
-    # Find the guide-grid opening tag
-    grid_start_match = re.search(r'<div class="guide-grid">', src)
-    if not grid_start_match:
+    opening = re.search(r'[ \t]*<div class="guide-grid">', src)
+    if not opening:
         print(f"  WARNING: no guide-grid found in {page_file}")
         return False
+    start = opening.start()
 
-    # Find the closing comment for guide-grid or NEWSLETTER section
-    # Try to find a closing comment first
-    close_comment = re.search(r'</div><!-- [./]?guide-grid -->', src[grid_start_match.start():])
-    if close_comment:
-        grid_end_abs = grid_start_match.start() + close_comment.end()
+    m = GUIDE_GRID_CLOSE_RE.search(src, start)
+    if m:
+        end = m.end()
     else:
-        # Fall back to finding the NEWSLETTER marker
         newsletter_idx = src.index('<!-- START NEWSLETTER SECTION -->')
-        # Walk backwards to find the last </div> before newsletter
-        # We need to find the </div> that closes the guide-grid, then the wrapping </div> for wrap
-        grid_end_abs = src.rfind('</div>', grid_start_match.start(), newsletter_idx) + len('</div>')
+        end = src.rfind('</div>', start, newsletter_idx) + len('</div>')
 
-    # Build new grid
     cards = '\n'.join(guide_card(a) for a in articles)
-    new_grid = f'    <div class="guide-grid">\n{cards}\n      </div><!-- /.guide-grid -->'
+    # Indentation is fixed rather than copied from the file, so a previously
+    # over-indented tag is corrected instead of preserved.
+    new_grid = (f'{GUIDE_GRID_INDENT}<div class="guide-grid">\n{cards}\n'
+                f'{GUIDE_GRID_INDENT}{GUIDE_GRID_CLOSE}')
 
-    new_src = src[:grid_start_match.start()] + new_grid + src[grid_end_abs:]
-    open(path, 'w', encoding='utf-8').write(new_src)
+    new_src = src[:start] + new_grid + src[end:]
+    if new_src != src:                       # a no-op run must not touch the file
+        open(path, 'w', encoding='utf-8').write(new_src)
     return True
 
 
