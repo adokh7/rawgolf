@@ -27,6 +27,17 @@ that a second time.
 Safe to edit by hand: the article HTML files themselves, `index.html`,
 `analysis.html`, `vault.html`, `ratings.html`, and everything under `public/`.
 
+### This table is enforced, not just written down
+
+`sync_site.py --check` asserts the table above against what the script actually
+regenerates, derived from `SECTION_PAGE` and friends rather than from prose. It
+fails if a generated file is missing from the table, if the table names a file
+that is not generated, or if the safe-to-edit list above names a generated one.
+
+So if you extend the script to regenerate another page, `--check` fails until
+you add it here. That is deliberate: this document already went stale once and
+the silent mismatch is what made the keyword loss possible.
+
 ## Workflow when you add an article
 
 1. Write the article HTML as usual. Make sure its `<head>` carries

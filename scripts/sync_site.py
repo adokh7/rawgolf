@@ -265,6 +265,59 @@ def write_sitemap(arts):
 # Validation
 # ---------------------------------------------------------------------------
 
+README = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'README.md')
+
+
+def generated_files():
+    """Every file this script rewrites, derived from the real constants.
+
+    Anything listed here is regenerated wholesale from articles.json, so a
+    hand-edit to it is destroyed on the next sync.
+    """
+    return {'news.html', 'search.html', 'sitemap.xml'} | set(SECTION_PAGE.values())
+
+
+def documented_files(text):
+    """The generated-file list the README advertises, and its safe-to-edit list.
+
+    The 'edit articles.json, never search.html' rule is only useful while it
+    names the right files. The README already went stale once — it claimed the
+    grids were never regenerated, months after they were — and that mismatch is
+    what cost 63 keyword sets. So the doc is asserted against the code.
+    """
+    generated, safe = set(), set()
+    m = re.search(r'regenerates these files wholesale.*?\n\n(.*?)\n\n', text, re.S)
+    if m:
+        generated = set(re.findall(r'`([\w./-]+\.(?:html|xml))`', m.group(1)))
+    m = re.search(r'Safe to edit by hand:(.*?)(?:\n\n|\Z)', text, re.S)
+    if m:
+        safe = set(re.findall(r'`([\w./-]+\.(?:html|xml))`', m.group(1)))
+    return generated, safe
+
+
+def check_readme():
+    """Fail if README.md misdescribes which files are generated."""
+    problems = []
+    if not os.path.exists(README):
+        return [('README missing', 'scripts/README.md')]
+    text = open(README, encoding='utf-8').read()
+    actual = generated_files()
+    documented, safe = documented_files(text)
+    if not documented:
+        return [('README generated-file table not found',
+                 "expected a table after 'regenerates these files wholesale'")]
+    for f in sorted(actual - documented):
+        problems.append(('README missing generated file',
+                         f'{f} is regenerated but not documented'))
+    for f in sorted(documented - actual):
+        problems.append(('README lists a non-generated file',
+                         f'{f} is documented as generated but is not'))
+    for f in sorted(safe & actual):
+        problems.append(('README calls a generated file safe to edit',
+                         f'{f} is regenerated — hand-edits are destroyed'))
+    return problems
+
+
 def validate(arts):
     """Check for missing files and images."""
     problems = []
@@ -286,8 +339,8 @@ if __name__ == '__main__':
     arts = load()
     print(f"registry: {len(arts)} articles")
 
-    # Validate files exist
-    probs = validate(arts)
+    # Validate files exist, and that README.md still describes reality
+    probs = validate(arts) + check_readme()
     if probs:
         print(f"VALIDATION: {len(probs)} problem(s)")
         for kind, what in probs[:40]:
