@@ -213,6 +213,33 @@ def inject_search_index(articles):
 # Sitemap
 # ---------------------------------------------------------------------------
 
+MONTHS = {'JAN': '01', 'FEB': '02', 'MAR': '03', 'APR': '04', 'MAY': '05', 'JUN': '06',
+          'JUL': '07', 'AUG': '08', 'SEP': '09', 'OCT': '10', 'NOV': '11', 'DEC': '12'}
+
+
+def iso_date(value):
+    """Return a strict W3C YYYY-MM-DD date, or '' if it cannot be determined.
+
+    The registry's `date` field doubles as human-readable card text, so it can
+    arrive as either '2026-08-07' or 'AUG 07 2026'. <lastmod> must never carry
+    the latter — Search Console rejects the whole sitemap as an invalid date.
+    Returning '' lets the caller omit <lastmod> entirely, which is valid,
+    rather than emit something malformed.
+    """
+    d = (value or '').strip()
+    if re.fullmatch(r'\d{4}-\d{2}-\d{2}', d):
+        return d
+    m = re.fullmatch(r'([A-Za-z]{3})\s+(\d{1,2})\s+(\d{4})', d)      # AUG 07 2026
+    if m and m.group(1).upper() in MONTHS:
+        return f'{m.group(3)}-{MONTHS[m.group(1).upper()]}-{int(m.group(2)):02d}'
+    m = re.fullmatch(r'(\d{1,2})\s+([A-Za-z]{3})\s+(\d{4})', d)      # 07 AUG 2026
+    if m and m.group(2).upper() in MONTHS:
+        return f'{m.group(3)}-{MONTHS[m.group(2).upper()]}-{int(m.group(1)):02d}'
+    if re.match(r'\d{4}-\d{2}-\d{2}', d):                            # ISO + time
+        return d[:10]
+    return ''
+
+
 def write_sitemap(arts):
     base = 'https://www.golfraw.com'
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -222,8 +249,12 @@ def write_sitemap(arts):
     for u in STATIC[1:]:
         out.append(f'  <url>\n    <loc>{base}{u}</loc>\n    <changefreq>daily</changefreq>'
                    f'\n    <priority>0.8</priority>\n  </url>')
-    for a in sorted(arts, key=lambda x: x['date'], reverse=True):
-        out.append(f'  <url>\n    <loc>{base}{a["url"]}</loc>\n    <lastmod>{a["date"]}</lastmod>'
+    # Sort on the normalised date too — mixing 'AUG 07 2026' with '2026-08-07'
+    # sorts lexicographically and scrambles the order.
+    for a in sorted(arts, key=lambda x: iso_date(x.get('date')), reverse=True):
+        d = iso_date(a.get('date'))
+        lastmod = f'\n    <lastmod>{d}</lastmod>' if d else ''
+        out.append(f'  <url>\n    <loc>{base}{a["url"]}</loc>{lastmod}'
                    f'\n    <priority>0.9</priority>\n  </url>')
     out += ['</urlset>', '']
     open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write('\n'.join(out))
