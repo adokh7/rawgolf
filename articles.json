@@ -13,12 +13,21 @@
   ],
   "articles": [
     {
+      "url": "/news-2026-koepka-wyndham-fedexcup-returning-member",
+      "title": "On Wednesday He Needed to Win. By Friday He Was Projected 52nd.",
+      "category": "PGA TOUR",
+      "date": "AUG 07 2026",
+      "image": "/public/hossler-koepka-wyndham-fedexcup-bubble.webp",
+      "snippet": "Hossler went from 122nd to a projected 52nd in a single round. Koepka needs a top four for a spot that pays him nothing. Inside the Wyndham bubble.",
+      "keywords": "wyndham championship bubble, fedexcup top 70, brooks koepka fedexcup, jackson koivun bubble, keegan bradley playoff streak, beau hossler wyndham"
+    },
+    {
       "url": "/news-2026-bryson-dechambeau-water-bottle-bedminster",
       "title": "Bryson DeChambeau Threw a Water Bottle at a Bin and Missed",
       "category": "LIV GOLF",
       "date": "AUG 07 2026",
       "image": "/public/bryson-dechambeau-water-bottle-bedminster.webp",
-      "snippet": "DeChambeau shot 76 at Bedminster — his worst LIV round of the year — and lost it with a bin on the fifth tee. Why the clip is the least of his problems.",
+      "snippet": "DeChambeau shot 76 at Bedminster \u2014 his worst LIV round of the year \u2014 and lost it with a bin on the fifth tee. Why the clip is the least of his problems.",
       "keywords": "bryson dechambeau liv new york, dechambeau water bottle, dechambeau liv contract, liv golf new york leaderboard, dechambeau rahm individual title"
     },
     {
@@ -29,15 +38,6 @@
       "image": "/public/two-tournaments-one-thursday-sedgefield-bedminster.webp",
       "snippet": "Sedgefield gave up 36 rounds under 66. Bedminster's leader shot 64 and won by two. What 520 yards and course setup actually do to modern professional scores.",
       "keywords": "liv golf new york leaderboard, joaquin niemann bedminster, trump national bedminster yardage, wyndham championship sedgefield, beau hossler"
-    },
-    {
-      "url": "/news-2026-koepka-wyndham-fedexcup-returning-member",
-      "title": "The Man Who Got Out of LIV Is Fighting for a Playoff Place He Can't Get Paid For",
-      "category": "PGA TOUR",
-      "date": "AUG 07 2026",
-      "image": "/public/koepka-wyndham-fedexcup-returning-member.webp",
-      "snippet": "Koepka gave up his 2026 FedExCup bonus money to leave LIV. Now he's 86th, needing a top four to reach playoffs he can't get paid for. The full picture.",
-      "keywords": "brooks koepka fedexcup, wyndham championship bubble, returning member program pga tour, koepka playoff chances, beau hossler wyndham, jackson koivun bubble"
     },
     {
       "url": "/news-2026-travelers-championship-signature-events",
@@ -58,7 +58,7 @@
       "section": "LIV GOLF",
       "date": "AUG 06 2026",
       "image": "/public/liv-golf-bedminster-purse-unknown.webp",
-      "snippet": "LIV plays Bedminster at prize money reported as $25m to $30m — nobody can confirm which. From 2027 it's about $10m. What's actually verified this week.",
+      "snippet": "LIV plays Bedminster at prize money reported as $25m to $30m \u2014 nobody can confirm which. From 2027 it's about $10m. What's actually verified this week.",
       "keywords": "liv golf new york, liv bedminster purse, liv golf new york field, trump national bedminster, scott oneil, jon rahm"
     },
     {
