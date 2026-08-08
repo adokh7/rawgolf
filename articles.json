@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 191,
+  "count": 192,
   "categories": [
     "GUIDES",
     "LIV GOLF",
@@ -13,6 +13,19 @@
     "TOURNAMENTS"
   ],
   "articles": [
+    {
+      "url": "/news-2026-jason-day-wyndham-streak-ended",
+      "title": "Jason Day's Streak Ended on a Friday in Greensboro",
+      "category": "PGA TOUR",
+      "date": "AUG 08 2026",
+      "image": "/public/jason-day-wyndham-streak-ended.webp",
+      "snippet": "Jason Day missed the cut at Sedgefield and ended 18 consecutive FedExCup Playoffs appearances. Bradley and Finau survived on the number. Who needs what now.",
+      "keywords": "jason day fedexcup streak, wyndham championship cut line, keegan bradley playoffs, tony finau fedexcup, wyndham championship leaderboard",
+      "canonical": "/news-2026-jason-day-wyndham-streak-ended",
+      "alias_of": "",
+      "slug": "news-2026-jason-day-wyndham-streak-ended",
+      "excerpt": "Jason Day missed the cut at Sedgefield and ended 18 consecutive FedExCup Playoffs appearances. Bradley and Finau survived on the number. Who needs what now."
+    },
     {
       "url": "/news-2026-liv-golf-investor-bc-partners-dechambeau",
       "title": "The Mystery Investor Has a Name. It Lends Money to Bryson DeChambeau's Agency.",
