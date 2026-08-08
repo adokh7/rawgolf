@@ -1,0 +1,250 @@
+{
+  "summary": {
+    "health_score": 74,
+    "business_type": "Independent digital publisher — golf news, evergreen guides and free client-side tools (Publisher / Media, not local or e-commerce)",
+    "top_findings": [
+      "pga-tour.html declares rel=canonical and og:url pointing at /tournaments, telling Google the 92-article PGA Tour hub is a duplicate and should be de-indexed",
+      "Homepage ships ~5 MB (2.4 MB images + 2.5 MB autoplaying video) — the single biggest ranking and UX drag",
+      "56 images exceed 400 KB; two unoptimised AI exports at 1.7 MB and 1.4 MB",
+      "BreadcrumbList schema on 1 of 227 pages, forfeiting breadcrumb rich results sitewide",
+      "Only 2 of 196 content pages cite an external source, a weak E-E-A-T signal for a news publisher"
+    ],
+    "quick_wins": [
+      "Fix the pga-tour canonical and og:url (one-line change, restores a 92-article hub to the index)",
+      "Compress the 56 oversized images and drop or lazy-load the 2.5 MB homepage video",
+      "Add BreadcrumbList JSON-LD to article and tool templates",
+      "Add the 5 missing security headers via vercel.json",
+      "Publish /llms.txt to guide AI crawlers"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 72,
+      "what_works": [
+        "HTTPS with HSTS (max-age 63072000)",
+        "Single canonical host, apex and http both 308 to https://www",
+        "robots.txt correct, declares sitemap, images explicitly crawlable",
+        "sitemap.xml valid, 216 URLs, every one returns 200",
+        "Clean URLs via cleanUrls, no .html exposed anywhere",
+        "5,696 internal links, zero broken",
+        "Genuine 404 for unknown paths"
+      ],
+      "findings": [
+        {
+          "title": "pga-tour.html canonicalises itself to /tournaments",
+          "severity": "Critical",
+          "description": "pga-tour.html carries rel=canonical and og:url pointing at https://www.golfraw.com/tournaments. The page holds 92 PGA Tour articles and is linked from the main nav on all 227 pages, but it instructs Google to treat it as a duplicate of a different page. Left in place, /pga-tour drops out of the index and its link equity consolidates onto /tournaments. Introduced when the two pages were split apart; title, description and h1 were updated but the canonical was not.",
+          "recommendation": "Point both rel=canonical and og:url at https://www.golfraw.com/pga-tour."
+        },
+        {
+          "title": "Five security headers absent",
+          "severity": "Medium",
+          "description": "Only strict-transport-security is set. x-content-type-options, x-frame-options, content-security-policy, referrer-policy and permissions-policy are all missing.",
+          "recommendation": "Add a headers block to vercel.json. Not a direct ranking factor, but part of Google's page-experience signals and trivially cheap here."
+        },
+        {
+          "title": "Two-hop redirect from the http apex",
+          "severity": "Low",
+          "description": "http://golfraw.com/x redirects to https://golfraw.com/x and then to https://www.golfraw.com/x — two hops, both 308.",
+          "recommendation": "Collapse to a single hop straight to https://www. Minor crawl-budget saving."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 84,
+      "what_works": [
+        "Median 1,430 words per content page; zero thin pages under 300 words",
+        "100% of 196 content pages carry an author byline and published date",
+        "93% carry a modified date",
+        "Full trust-page set live: about, contact, privacy, terms, corrections, manifesto, ratings-manual",
+        "Distinctive editorial voice, genuinely differentiated from syndicated golf coverage"
+      ],
+      "findings": [
+        {
+          "title": "Almost no outbound citation",
+          "severity": "High",
+          "description": "Only 2 of 196 content pages link to an external source. For a publisher making factual claims about tours, purses and results, unsourced assertion is a weak trustworthiness signal for both Google and AI answer engines, which prefer citable, corroborated material.",
+          "recommendation": "Link the primary source when citing a figure — tour sites, official releases, governing-body pages. Two or three per article is enough."
+        },
+        {
+          "title": "FAQ schema on only 10% of content",
+          "severity": "Medium",
+          "description": "20 of 196 content pages carry FAQPage markup despite the house style already answering direct questions in prose.",
+          "recommendation": "Extend the FAQ block pattern already used on the tools to article templates."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 76,
+      "what_works": [
+        "Zero missing titles, descriptions, H1s or canonicals across 227 pages",
+        "Exactly one H1 per page on 226 of 227",
+        "Strong internal linking, 5,696 links with none broken",
+        "Only one orphan page, and it is a deliberate redirect alias"
+      ],
+      "findings": [
+        {
+          "title": "154 title tags exceed 60 characters",
+          "severity": "Medium",
+          "description": "68% of pages have titles long enough that Google will truncate them in the SERP, so the differentiating tail of the headline is often the part that gets cut.",
+          "recommendation": "Front-load the distinctive phrase and keep titles near 55-60 characters. Prioritise the highest-traffic articles rather than rewriting all 154."
+        },
+        {
+          "title": "68 meta descriptions exceed 160 characters",
+          "severity": "Low",
+          "description": "30% of descriptions will be truncated or rewritten by Google.",
+          "recommendation": "Trim to 150-160 characters, leading with the hook."
+        },
+        {
+          "title": "ratings.html has two H1 elements",
+          "severity": "Low",
+          "description": "Ambiguous primary heading on one page.",
+          "recommendation": "Demote the second to h2."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 80,
+      "what_works": [
+        "244 JSON-LD blocks and zero parse errors",
+        "NewsArticle on 163 pages, Article on 31 more",
+        "FAQPage on 23, WebApplication on all 9 tools, NewsMediaOrganization and WebSite present"
+      ],
+      "findings": [
+        {
+          "title": "BreadcrumbList on 1 page of 227",
+          "severity": "Medium",
+          "description": "Only the newest tool carries breadcrumb markup. The site has a clean two-level hierarchy that would qualify for breadcrumb rich results across every article and tool.",
+          "recommendation": "Add BreadcrumbList to the article and tool templates: Home > Section > Page."
+        },
+        {
+          "title": "No ImageObject on article schema",
+          "severity": "Low",
+          "description": "NewsArticle blocks reference images as bare URLs rather than ImageObject with dimensions.",
+          "recommendation": "Upgrade to ImageObject with width and height to strengthen rich-result eligibility."
+        }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 55,
+      "what_works": [
+        "Served over HTTP/2 from Vercel's CDN with cache HIT",
+        "WebP throughout, lazy loading on grid images",
+        "HTML compresses well — /news is 194 KB raw but 32 KB over the wire"
+      ],
+      "findings": [
+        {
+          "title": "Homepage ships roughly 5 MB",
+          "severity": "Critical",
+          "description": "Measured live: 11 image requests totalling 2,448 KB plus a single 2,529 KB video, against 20 KB of HTML. Load completes at 3.5s with TTFB at 1,091ms. On mobile connections this is the dominant obstacle to a good LCP.",
+          "recommendation": "Drop the homepage video or load it behind an interaction; compress hero images to under 200 KB and serve responsive srcset."
+        },
+        {
+          "title": "56 images exceed 400 KB",
+          "severity": "High",
+          "description": "public/ totals 77.5 MB. The worst offenders are a 1.7 MB PNG and a 1.4 MB WebP, both with raw AI-export filenames, plus multiple article heroes near 1 MB.",
+          "recommendation": "Re-encode at quality 78-82 and cap hero width at 1600px. Most of these should land under 200 KB."
+        },
+        {
+          "title": "No field data available",
+          "severity": "Info",
+          "description": "PageSpeed Insights returned a quota error and the browser did not expose paint timing, so LCP, INP and CLS could not be measured directly. Figures above are lab proxies.",
+          "recommendation": "Check Core Web Vitals in Search Console, which has field data this audit could not reach."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 68,
+      "what_works": [
+        "No AI crawler is blocked — GPTBot, ClaudeBot, PerplexityBot and CCBot all permitted",
+        "Direct-answer blocks on tool pages are well suited to extraction",
+        "Clean semantic HTML with no JS-rendering dependency",
+        "Strong entity signals via NewsMediaOrganization and consistent bylines"
+      ],
+      "findings": [
+        {
+          "title": "No llms.txt",
+          "severity": "Medium",
+          "description": "The site publishes no /llms.txt, so AI crawlers get no curated guide to the highest-value content.",
+          "recommendation": "Publish /llms.txt listing the tools, pillar guides and section hubs. Note that Google Search ignores it; this targets other answer engines."
+        },
+        {
+          "title": "Citability limited by absent sourcing",
+          "severity": "Medium",
+          "description": "AI answer engines preferentially cite material that itself cites sources. At 2 of 196 pages, the site reads as assertion rather than reporting.",
+          "recommendation": "Same fix as the E-E-A-T finding — outbound links to primary sources."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 70,
+      "what_works": [
+        "Every image on all 227 pages has alt text — zero exceptions",
+        "221 of 227 assets are WebP",
+        "Explicit width and height on card images, which protects CLS",
+        "loading=lazy on grid thumbnails"
+      ],
+      "findings": [
+        {
+          "title": "Oversized and unoptimised assets",
+          "severity": "High",
+          "description": "56 files over 400 KB across a 77.5 MB public directory, including two raw AI exports with spaces in their filenames.",
+          "recommendation": "Batch re-encode, rename the two AI exports to clean slugs, and audit whether the 2.5 MB webm earns its place."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Today",
+        "items": [
+          "Point pga-tour.html rel=canonical and og:url at /pga-tour",
+          "Remove or defer the 2.5 MB homepage video",
+          "Compress the 10 largest images"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Batch-compress the remaining 46 oversized images and rename the two AI exports",
+          "Add BreadcrumbList JSON-LD to article and tool templates",
+          "Add the 5 missing security headers to vercel.json",
+          "Trim the 40 longest title tags on the highest-traffic articles"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Introduce an outbound-citation habit: 2-3 primary sources per article",
+          "Extend FAQ schema from the tools to article templates",
+          "Publish /llms.txt",
+          "Submit the sitemap in Search Console — the 9 tool pages have never been crawled"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Run scripts/sync_site.py --check in CI to catch registry and doc drift",
+          "Watch Core Web Vitals in Search Console for real LCP once images are fixed",
+          "Re-audit after the image work lands"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}
