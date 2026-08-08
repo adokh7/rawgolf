@@ -284,6 +284,21 @@ def iso_date(value):
     return ''
 
 
+
+def tool_pages():
+    """Every individual /tools-* page on disk, sorted.
+
+    The tools are standalone HTML and deliberately absent from articles.json,
+    which is why they never reached the sitemap. Globbing keeps them in step
+    automatically instead of relying on someone remembering a list.
+    """
+    import glob
+    return sorted(
+        os.path.basename(p)[:-5]
+        for p in glob.glob(os.path.join(ROOT, 'tools-*.html'))
+    )
+
+
 def write_sitemap(arts):
     base = 'https://www.golfraw.com'
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -292,6 +307,13 @@ def write_sitemap(arts):
             f'\n    <priority>1.0</priority>\n  </url>']
     for u in STATIC[1:]:
         out.append(f'  <url>\n    <loc>{base}{u}</loc>\n    <changefreq>daily</changefreq>'
+                   f'\n    <priority>0.8</priority>\n  </url>')
+    # Individual tool pages. These were missing entirely — only /tools was
+    # listed — so none of the calculators were being crawled. Discovered from
+    # disk rather than hardcoded, so a new tool is indexed the moment it ships.
+    # They carry no published date, so <lastmod> is omitted rather than faked.
+    for slug in tool_pages():
+        out.append(f'  <url>\n    <loc>{base}/{slug}</loc>\n    <changefreq>monthly</changefreq>'
                    f'\n    <priority>0.8</priority>\n  </url>')
     # Sort on the normalised date too — mixing 'AUG 07 2026' with '2026-08-07'
     # sorts lexicographically and scrambles the order.
@@ -302,7 +324,7 @@ def write_sitemap(arts):
                    f'\n    <priority>0.9</priority>\n  </url>')
     out += ['</urlset>', '']
     write_if_changed(os.path.join(ROOT, 'sitemap.xml'), '\n'.join(out))
-    return len(arts) + len(STATIC)
+    return len(arts) + len(STATIC) + len(tool_pages())
 
 
 # ---------------------------------------------------------------------------

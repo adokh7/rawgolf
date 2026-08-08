@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Funding Choices — EEA/UK consent management (required by Google's EU User Consent Policy) -->
+  <script async src="https://fundingchoicesmessages.google.com/i/pub-8933725159594062?ers=1"></script>
+  <script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+<!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PMECW4VW66');
+  </script>
+  <meta charset="UTF-8">
+  <!-- ============ FAVICON / GOOGLE SEARCH LOGO ============ -->
+  <link rel="icon" type="image/webp" sizes="1254x1254" href="/public/favicon-192.webp">
+  <link rel="alternate icon" type="image/png" sizes="192x192" href="/public/favicon-192.png">
+  <link rel="apple-touch-icon" href="/public/favicon-192.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="p:domain_verify" content="b7225cf07b728cc1691b9a4c7a938dbe"/>
+
+  <!-- ============ PRIMARY SEO ============ -->
+  <title>The Grudge Match: Golf Match Simulator &amp; Fair Strokes Calculator | GOLFRAW</title>
+  <meta name="description"
+    content="Free golf match simulator. Enter two handicaps and it runs 10,000 matches to give you real win probability, blowout risk, and the exact number of strokes that make the game a coin flip.">
+  <link rel="canonical" href="https://www.golfraw.com/tools-the-grudge-match">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="GOLFRAW Editorial">
+
+  <!-- ============ OPEN GRAPH ============ -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GOLFRAW">
+  <meta property="og:title" content="The Grudge Match — 10,000 Rounds Settle It">
+  <meta property="og:description"
+    content="He says he'd beat you. You say the strokes are wrong. Ten thousand simulated matches settle it in half a second.">
+  <meta property="og:url" content="https://www.golfraw.com/tools-the-grudge-match">
+
+  <!-- ============ TWITTER CARD ============ -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Grudge Match — 10,000 Rounds Settle It">
+  <meta name="twitter:description"
+    content="Two handicaps in. Ten thousand matches out. Find out what the strokes should actually be.">
+
+  <!-- ============ STRUCTURED DATA ============ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "The Grudge Match",
+    "url": "https://www.golfraw.com/tools-the-grudge-match",
+    "applicationCategory": "SportsApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "description": "A free client-side Monte Carlo golf match simulator. Runs 10,000 simulated matches between two handicaps and reports win probability, blowout risk and the fair stroke allocation.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": { "@type": "ImageObject", "url": "https://www.golfraw.com/public/favicon-192.webp", "width": 1254, "height": 1254 }
+    },
+    "isAccessibleForFree": true
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many strokes should I give a higher handicapper?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The common default is the full difference between the two course handicaps, but that is a convention rather than a fair number. In matchplay the full difference already favours the higher handicapper, because a bad hole costs them the hole and nothing more. This simulator solves for the allocation that produces a genuine 50/50 match and shows how far the default sits from it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a lower handicap always win the match?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Over a single 18-hole match, variance is large enough that a two-shot handicap gap typically converts to roughly a 60/40 match, not a certainty. The gap only becomes reliable over many rounds, which is why one result proves very little."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a Monte Carlo golf simulation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It plays the same match thousands of times using a scoring distribution derived from each player's handicap, then counts the outcomes. Instead of one prediction it produces a probability, which is the only honest way to describe a single round of golf."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this golf match simulator free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. It is free, requires no signup, and runs entirely in your browser. Nothing is uploaded and nothing is tracked."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "GOLFRAW", "item": "https://www.golfraw.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.golfraw.com/tools" },
+      { "@type": "ListItem", "position": 3, "name": "The Grudge Match", "item": "https://www.golfraw.com/tools-the-grudge-match" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --fairway: #14402A;
+      --fairway-deep: #0B2418;
+      --flag: #E03E2D;
+      --paper: #F3F4F0;
+      --white: #fff;
+      --ink: #101511;
+      --grey: #5B665E;
+      --line: #DADDD4;
+      --maxw: 1180px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box }
+    html { scroll-behavior: smooth }
+    body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased }
+    a { color: inherit; text-decoration: none }
+    img { max-width: 100%; height: auto; display: block }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .mono { font-family: 'IBM Plex Mono', monospace }
+
+    /* HEADER */
+    .site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .logo { font-weight: 900; font-size: 26px; letter-spacing: -.04em; text-transform: uppercase }
+    .logo .raw { color: var(--flag) }
+    .nav-links { display: flex; gap: 0 }
+    .nav-links a { font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; padding: 8px 14px; transition: background .15s, color .15s }
+    .nav-links a:hover { background: var(--ink); color: #fff }
+    .nav-links a.active { background: var(--ink); color: #fff }
+    .burger { display: none; background: none; border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px }
+    .burger span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0 }
+    @media(max-width:760px) {
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
+      .nav-links.open { display: flex }
+      .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+      .burger { display: block }
+    }
+
+    /* HERO */
+    .hub-hero { background: var(--ink); color: #fff; border-bottom: 4px solid var(--flag); padding: 56px 0 48px }
+    .hub-hero .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
+    .hub-hero h1 { font-weight: 900; font-size: clamp(32px, 5.6vw, 64px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
+    .hub-hero p { font-size: 17px; color: #9CC9AE; max-width: 62ch; line-height: 1.6 }
+
+    /* PANELS */
+    .tool-body { padding: 40px 0 72px }
+    .panel { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
+    .panel-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .panel-head .step { color: var(--flag) }
+    .panel-in { padding: 24px 20px }
+
+    input[type=number] {
+      width: 100%; padding: 12px 6px; border: 2px solid var(--ink); background: var(--white);
+      font-family: 'IBM Plex Mono', monospace; font-size: 17px; font-weight: 700; color: var(--ink);
+      border-radius: 0; text-align: center;
+    }
+    input:focus { outline: 3px solid var(--flag); outline-offset: -1px; position: relative; z-index: 2 }
+    input[type=number] { -moz-appearance: textfield }
+    input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0 }
+
+    /* ============ THE CARD: 18 HOLE INPUTS ============ */
+    .card-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px }
+    @media(max-width:820px) { .card-grid { grid-template-columns: repeat(4, 1fr) } }
+    @media(max-width:520px) { .card-grid { grid-template-columns: repeat(3, 1fr); gap: 8px } }
+
+    .hole { display: flex; flex-direction: column; gap: 5px }
+    .hole label { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--grey); text-align: center }
+    .hole.is-blow input { border-color: var(--flag); box-shadow: inset 0 0 0 2px var(--flag); color: var(--flag) }
+    .hole.is-blow label { color: var(--flag) }
+    .hole.is-window input { background: #FFF6F4 }
+
+    .card-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 18px; border-top: 2px solid var(--line) }
+    .tally { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey) }
+    .tally b { color: var(--ink); font-size: 15px }
+    .tally b.over { color: var(--flag) }
+    .tally b.under { color: #1f7a44 }
+
+    .legend { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--grey); line-height: 1.7; margin-top: 14px }
+    .legend b { color: var(--ink) }
+
+    .btn { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 14px 22px; border: 2px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; transition: background .15s, color .15s }
+    .btn:hover { background: var(--flag); border-color: var(--flag) }
+    .btn.ghost { background: transparent; color: var(--ink) }
+    .btn.ghost:hover { background: var(--ink); color: #fff }
+    .btn.sm { padding: 10px 14px; font-size: 10.5px }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px }
+
+    .err { border: 2px solid var(--flag); background: #FDF0EE; color: #8f2015; padding: 12px 14px; font-size: 13.5px; font-weight: 600; margin-bottom: 18px; display: none }
+    .err.show { display: block }
+
+    /* AD SLOT — isolated from controls */
+    .ad-zone { border: 1px dashed var(--line); background: #EFF1EC; padding: 18px; margin: 30px 0; text-align: center; min-height: 96px; display: flex; align-items: center; justify-content: center }
+    .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #a8aea3 }
+
+    /* ===== action utility bar (kept clear of ad zones) ===== */
+    .act-bar { margin-top: 18px; padding-top: 16px; border-top: 2px solid rgba(16,21,17,.12); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between }
+    .act-lab { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--grey) }
+    .act-btns { display: flex; gap: 10px; flex-wrap: wrap }
+    /* Dead-zone so a mis-tap on an action button can never land on an ad */
+    .out-wrap + .ad-zone, .act-bar + .ad-zone { margin-top: 46px }
+    @media (max-width:520px){ .act-bar { justify-content: flex-start } .act-btns .btn { flex: 1 1 auto; min-height: 44px } }
+
+    /* ============ VERDICT CARD ============ */
+    .out-wrap { display: none }
+    .out-wrap.show { display: block }
+    .verdict-card { background: var(--ink); color: #fff; border: 3px solid var(--ink); padding: 32px 26px 0; overflow: hidden }
+    .vc-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 12px }
+    .vc-head { font-weight: 900; font-size: clamp(24px, 5vw, 40px); line-height: 1; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 14px }
+    .vc-sub { font-size: 16px; color: #d8ded6; line-height: 1.6; margin-bottom: 28px; max-width: 60ch }
+    .vc-sub b { color: #fff }
+
+    /* the index dial */
+    .dial { border: 1px solid rgba(255,255,255,.18); padding: 26px 20px; text-align: center; margin-bottom: 24px }
+    .dial .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(46px, 13vw, 84px); line-height: 1; color: #FF9486 }
+    .dial .n.cool { color: #6FDB9A }
+    .dial .n .of { font-size: .34em; color: #8b958d; letter-spacing: .04em }
+    .dial .tier { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: #fff; margin-top: 14px; display: block; font-weight: 700 }
+    .meter { height: 8px; background: rgba(255,255,255,.14); margin-top: 18px; position: relative; overflow: hidden }
+    .meter i { position: absolute; inset: 0 auto 0 0; background: var(--flag); display: block }
+    .meter i.cool { background: #6FDB9A }
+
+    /* ============ THE HOLE STRIP (pure CSS, no images) ============ */
+    .strip-wrap { border: 1px solid rgba(255,255,255,.18); padding: 18px 14px 12px; margin-bottom: 24px }
+    .strip-lab { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: #8b958d; margin-bottom: 14px; display: block }
+    .strip { display: flex; align-items: flex-end; gap: 3px; height: 92px }
+    .strip .col { flex: 1 1 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; height: 100%; position: relative }
+    .strip .bar { background: #4a5a4f; min-height: 3px; transition: height .2s ease }
+    .strip .col.good .bar { background: #6FDB9A }
+    .strip .col.bad .bar { background: #FF9486 }
+    .strip .col.blow .bar { background: var(--flag); box-shadow: 0 0 0 1px #fff }
+    .strip .col.win .bar { background: #FFC7BF }
+    .strip .col.empty .bar { background: rgba(255,255,255,.08) }
+    .strip .h { font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: #6f7a72; text-align: center; margin-top: 5px }
+    .strip .col.blow .h { color: var(--flag); font-weight: 700 }
+    .strip-key { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: #8b958d }
+    .strip-key span { display: flex; align-items: center; gap: 6px }
+    .strip-key i { width: 10px; height: 10px; display: block }
+
+    /* ============ BREAKDOWN ============ */
+    .brk { border: 1px solid rgba(255,255,255,.18); margin-bottom: 24px }
+    .brk-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 16px; border-bottom: 1px solid rgba(255,255,255,.1) }
+    .brk-row:last-child { border-bottom: none }
+    .brk-row.total { background: rgba(255,255,255,.06); font-weight: 800 }
+    .brk-row .k { font-size: 14px; color: #d8ded6 }
+    .brk-row .k small { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8b958d; letter-spacing: .06em; margin-top: 2px }
+    .brk-row .v { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 16px; white-space: nowrap }
+    .v.plus { color: #FF9486 }
+    .v.minus { color: #6FDB9A }
+    .v.zero { color: #8b958d }
+
+    /* benchmark bar */
+    .bench { border-left: 4px solid #6FDB9A; padding: 12px 0 12px 14px; margin-bottom: 26px; font-size: 14.5px; color: #d8ded6; line-height: 1.55 }
+    .bench b { color: #6FDB9A }
+    .bench.cold { border-left-color: var(--flag) }
+    .bench.cold b { color: #FF9486 }
+
+    .vc-foot { border-top: 1px solid rgba(255,255,255,.15); margin: 0 -26px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .vc-foot .mark { font-weight: 900; font-size: 17px; letter-spacing: -.03em; text-transform: uppercase }
+    .vc-foot .mark span { color: var(--flag) }
+    .vc-foot .url { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #8b958d }
+
+    .note { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--grey); line-height: 1.65; margin-top: 14px }
+
+    /* EXPLAINER */
+    .explain h2 { font-weight: 900; font-size: clamp(20px, 3vw, 26px); text-transform: uppercase; letter-spacing: -.02em; margin-bottom: 12px; padding-top: 16px; border-top: 3px solid var(--ink) }
+    .explain h3 { font-weight: 800; font-size: 17px; margin: 22px 0 8px }
+    .explain h3::before { content: "— "; color: var(--flag) }
+    .explain p { font-size: 15.5px; margin-bottom: 14px; max-width: 68ch; line-height: 1.65 }
+
+    /* FOOTER */
+    .site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
+    .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
+    .site-footer a:hover { color: #fff }
+
+
+    /* ===================== AEO/GEO: DIRECT ANSWER + FAQ ===================== */
+    .answer-block { border: 2px solid var(--ink); background: var(--white); padding: 26px 24px 24px; margin-bottom: 28px }
+    .ab-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
+    .answer-block h2 { font-weight: 900; font-size: clamp(19px, 2.6vw, 27px); line-height: 1.15; letter-spacing: -.02em; margin-bottom: 14px }
+    .ab-answer { font-size: clamp(16px, 2vw, 18.5px); line-height: 1.5; font-weight: 700; color: var(--ink); border-left: 4px solid var(--flag); padding: 2px 0 2px 15px; margin-bottom: 16px }
+    .ab-body { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
+    .ab-body b { color: var(--ink); font-weight: 700 }
+    .ab-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line) }
+    .ab-facts li { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); border: 1px solid var(--line); padding: 5px 10px }
+    .ab-facts li b { color: var(--ink) }
+
+    .faq-block { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
+    .faq-block > .panel-head { margin: 0 }
+    .faq-in { padding: 8px 22px 22px }
+    .faq-item { border-bottom: 1px solid var(--line); padding: 20px 0 }
+    .faq-item:last-child { border-bottom: none }
+    .faq-item h3 { font-weight: 800; font-size: 17px; line-height: 1.3; margin-bottom: 8px }
+    .faq-item h3::before { content: "— "; color: var(--flag) }
+    .faq-item p { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
+    @media(max-width:560px) { .answer-block { padding: 22px 18px } .faq-in { padding: 8px 16px 18px } }
+
+    /* === CLS / RESPONSIVE SAFETY === */
+    html, body { max-width: 100%; overflow-x: clip; }
+    img, video, iframe { max-width: 100%; }
+    table { max-width: 100%; }
+
+    /* === NAV WRAP SAFETY === */
+    .nav { height: auto; min-height: 68px; padding-top: 6px; padding-bottom: 6px; flex-wrap: wrap; row-gap: 4px; }
+    .nav-links { flex-wrap: wrap; row-gap: 2px; }
+    @media(min-width:761px){ .nav-links a { padding: 7px 10px; font-size: 11.5px; letter-spacing: .03em; } }
+
+    /* ==================== TOOL 09: THE GRUDGE MATCH ==================== */
+    .gm-players { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: stretch }
+    .gm-side { border: 2px solid var(--ink); background: #fff; padding: 16px }
+    .gm-side.them { border-color: var(--flag) }
+    .gm-side h4 { font-size: 11px; font-family: 'IBM Plex Mono', monospace; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--grey); margin-bottom: 10px; font-weight: 600 }
+    .gm-side.them h4 { color: var(--flag) }
+    .gm-name { width: 100%; border: 1px solid #cfd4cb; padding: 8px 10px; font: inherit; font-size: 14px;
+      font-weight: 700; margin-bottom: 10px; background: var(--paper) }
+    .gm-hcp { width: 100%; border: 2px solid var(--ink); padding: 10px; font-family: 'IBM Plex Mono', monospace;
+      font-size: 28px; font-weight: 600; text-align: center; -moz-appearance: textfield }
+    .gm-hcp::-webkit-outer-spin-button, .gm-hcp::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0 }
+    .gm-vs { display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px;
+      letter-spacing: -.03em; color: var(--grey); padding: 0 4px }
+    .gm-ctrl { margin-top: 14px }
+    .gm-ctrl label { display: flex; justify-content: space-between; align-items: baseline; font-size: 12px;
+      font-family: 'IBM Plex Mono', monospace; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--grey); font-weight: 600; margin-bottom: 6px }
+    .gm-ctrl label b { color: var(--ink); font-family: 'Archivo', sans-serif; font-size: 14px; letter-spacing: 0 }
+    .gm-ctrl input[type=range] { width: 100%; accent-color: var(--flag); height: 22px }
+    .gm-seg { display: flex; flex-wrap: wrap; gap: 6px }
+    .gm-seg button { flex: 1 1 auto; border: 2px solid var(--ink); background: #fff; padding: 9px 10px;
+      font: inherit; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
+      cursor: pointer; transition: background .12s, color .12s }
+    .gm-seg button[aria-pressed=true] { background: var(--ink); color: #fff }
+    .gm-seg button:hover { background: var(--flag); border-color: var(--flag); color: #fff }
+    .gm-odds { display: flex; height: 44px; border: 2px solid var(--ink); overflow: hidden; margin: 4px 0 10px }
+    .gm-odds span { display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace;
+      font-weight: 600; font-size: 13px; color: #fff; transition: width .35s cubic-bezier(.2,.7,.3,1); overflow: hidden;
+      white-space: nowrap }
+    .gm-odds .you { background: var(--fairway) }
+    .gm-odds .halve { background: #8b958d }
+    .gm-odds .them { background: var(--flag) }
+    .gm-big { font-family: 'IBM Plex Mono', monospace; font-size: clamp(40px, 9vw, 68px); font-weight: 600;
+      line-height: 1; letter-spacing: -.03em }
+    .gm-fair { border: 3px solid var(--flag); background: var(--ink); color: #fff; padding: 18px 20px; margin-top: 16px }
+    .gm-fair .lab { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 8px }
+    .gm-fair .num { font-size: clamp(24px, 5vw, 34px); font-weight: 900; letter-spacing: -.03em; line-height: 1.15 }
+    .gm-fair .sub { color: #9CC9AE; font-size: 14px; margin-top: 8px; line-height: 1.55 }
+    .gm-hist { width: 100%; height: 190px; display: block; border: 2px solid var(--ink); background: #fff }
+    .gm-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 14px }
+    .gm-stat { border: 2px solid var(--ink); padding: 12px; background: #fff }
+    .gm-stat .k { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--grey); font-weight: 600 }
+    .gm-stat .v { font-family: 'IBM Plex Mono', monospace; font-size: 26px; font-weight: 600; margin-top: 4px }
+    .gm-verdict { border-left: 6px solid var(--flag); padding: 14px 0 14px 16px; margin-top: 16px;
+      font-size: 17px; line-height: 1.6; font-weight: 700 }
+    .gm-runline { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--grey); margin-top: 10px }
+    @media (max-width:720px) {
+      .gm-players { grid-template-columns: 1fr; }
+      .gm-vs { padding: 2px 0 }
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0 0 0 0); white-space: nowrap; border: 0 }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="nav">
+      <a href="/" class="logo">Golf<span class="raw">Raw</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="/news">Latest News</a>
+        <a href="/pga-tour">PGA Tour</a>
+        <a href="/liv-golf">LIV Golf</a>
+        <a href="/tournaments">Tournaments</a>
+        <a href="/guides">Guides</a>
+        <a href="/search">🔍 Search</a>
+        <a href="/tools">Tools</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="hub-hero">
+    <div class="wrap">
+      <div class="eyebrow">RAWGOLF · TOOLS</div>
+      <h1>The Grudge Match</h1>
+      <p>He says he would beat you. You say the strokes are wrong. One round settles nothing, because one round is
+        mostly luck wearing a scorecard. So this plays the match <em>ten thousand times</em> and reports what actually
+        happens — including the number of strokes that would make it an honest game, which is almost never the number
+        you have been arguing about. Runs entirely in your browser. Nothing uploaded, nothing tracked.</p>
+    </div>
+  </div>
+
+  <div class="tool-body">
+    <div class="wrap">
+
+      <!-- ============ AEO: DIRECT ANSWER ============ -->
+      <section class="answer-block" aria-labelledby="aeo-q">
+        <div class="ab-tag">The short answer</div>
+        <h2 id="aeo-q">How many strokes should I give a higher handicapper?</h2>
+        <p class="ab-answer">Enter both handicaps and this free match simulator runs 10,000 matches to give you a real
+          win probability and the exact stroke allocation that makes the game a coin flip.</p>
+        <p class="ab-body">The Grudge Match is a <b>free online golf match simulator</b> that answers the argument on
+          the first tee with arithmetic instead of volume. Most groups hand over the full difference between two
+          handicaps because that is what everybody does, not because anybody checked. In matchplay that default
+          quietly favours the higher handicapper, because their disaster hole costs them one hole and nothing more,
+          while yours costs you strokes you never get back. This tool simulates every hole of every match, so if you
+          want to <b>calculate fair golf strokes now</b>, it takes about fifteen seconds and no signup.</p>
+        <ul class="ab-facts"><li><b>10,000</b> matches</li><li><b>No</b> signup</li><li><b>0</b> data uploaded</li><li><b>100%</b> in your browser</li></ul>
+      </section>
+
+      <!-- ============ STEP 1: THE COMBATANTS ============ -->
+      <section class="panel">
+        <div class="panel-head">
+          <span><span class="step">01 ·</span> The Combatants</span>
+          <button class="btn ghost sm" id="sampleBtn" type="button" style="border-color:#8b958d;color:#fff">Load a typical argument</button>
+        </div>
+        <div class="panel-in">
+          <div class="err" id="err" role="alert"></div>
+
+          <div class="gm-players">
+            <div class="gm-side">
+              <h4>You</h4>
+              <label class="sr-only" for="youName">Your name</label>
+              <input class="gm-name" id="youName" type="text" value="You" maxlength="14" aria-label="Your name">
+              <label class="sr-only" for="youHcp">Your handicap index</label>
+              <input class="gm-hcp" id="youHcp" type="number" value="12" min="-5" max="54" step="0.1" inputmode="decimal" aria-label="Your handicap index">
+            </div>
+            <div class="gm-vs">vs</div>
+            <div class="gm-side them">
+              <h4>Him</h4>
+              <label class="sr-only" for="themName">Opponent name</label>
+              <input class="gm-name" id="themName" type="text" value="Dave" maxlength="14" aria-label="Opponent name">
+              <label class="sr-only" for="themHcp">Opponent handicap index</label>
+              <input class="gm-hcp" id="themHcp" type="number" value="18" min="-5" max="54" step="0.1" inputmode="decimal" aria-label="Opponent handicap index">
+            </div>
+          </div>
+
+          <div class="gm-ctrl">
+            <label for="fmt"><span>Format</span></label>
+            <div class="gm-seg" id="fmt" role="group" aria-label="Match format">
+              <button type="button" data-fmt="match" aria-pressed="true">Matchplay</button>
+              <button type="button" data-fmt="stroke" aria-pressed="false">Strokeplay</button>
+              <button type="button" data-fmt="stable" aria-pressed="false">Stableford</button>
+            </div>
+          </div>
+
+          <div class="gm-ctrl">
+            <label for="shots"><span>Strokes you give him</span> <b id="shotsVal">6 of 6</b></label>
+            <input type="range" id="shots" min="0" max="36" step="1" value="6" aria-describedby="shotsHint">
+            <div class="note" id="shotsHint">Full difference is the default everyone uses. It is rarely the fair one.</div>
+          </div>
+
+          <div class="gm-ctrl">
+            <label for="vary"><span>Your consistency</span> <b id="varyVal">Normal</b></label>
+            <input type="range" id="vary" min="0" max="100" step="1" value="50">
+            <div class="note">Metronome on the left, coin flip on the right. Wild players win more blowouts and lose more matches.</div>
+          </div>
+
+          <div class="gm-ctrl">
+            <label for="diff"><span>Course difficulty</span> <b id="diffVal">Your average track</b></label>
+            <input type="range" id="diff" min="0" max="100" step="1" value="50">
+            <div class="note">Harder courses punish the wilder player. That is usually not the one who thinks it is.</div>
+          </div>
+
+          <div class="btn-row" style="margin-top:16px">
+            <button class="btn" id="runBtn" type="button">Run 10,000 matches</button>
+            <button class="btn ghost" id="swapBtn" type="button">Swap sides</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ STEP 2: THE VERDICT ============ -->
+      <section class="panel" id="outPanel" hidden>
+        <div class="panel-head"><span><span class="step">02 ·</span> What Actually Happens</span></div>
+        <div class="panel-in">
+
+          <div class="gm-odds" id="oddsBar" role="img" aria-label="Win probability split">
+            <span class="you" id="barYou"></span><span class="halve" id="barHalve"></span><span class="them" id="barThem"></span>
+          </div>
+
+          <div class="gm-big" id="bigNum">--%</div>
+          <div class="strip-lab" id="bigLab">Your win probability</div>
+
+          <div class="gm-verdict" id="verdict"></div>
+
+          <div class="gm-stats" id="stats"></div>
+
+          <div class="gm-ctrl" style="margin-top:20px">
+            <label><span>Margin distribution — 10,000 matches</span></label>
+            <canvas class="gm-hist" id="hist" width="900" height="380" role="img"
+              aria-label="Histogram of match margins across 10,000 simulations"></canvas>
+            <div class="note" id="histNote"></div>
+          </div>
+
+          <div class="gm-fair" id="fairBox">
+            <div class="lab">The fair number</div>
+            <div class="num" id="fairNum">--</div>
+            <div class="sub" id="fairSub"></div>
+          </div>
+
+          <div class="gm-runline" id="runline"></div>
+
+          <div class="act-bar">
+            <div class="act-lab">Take it to the group chat</div>
+            <div class="act-btns">
+              <button class="btn sm" id="copyBtn" type="button">Copy the verdict</button>
+              <button class="btn ghost sm" id="pngBtn" type="button">Download card</button>
+              <button class="btn ghost sm" id="shareBtn" type="button">Share</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FAQ ============ -->
+      <section class="faq-block">
+        <h2>Questions people actually ask</h2>
+        <div class="faq-item"><div class="faq-q">Does the lower handicap always win?</div>
+          <div class="faq-in"><p>No, and it is not close to always. Over one 18-hole match a two-shot gap is roughly a
+            60/40 proposition, not a formality. Golf has enough variance in it that a single result tells you almost
+            nothing about who is better — which is precisely why the loser always wants to go again, and why he is
+            statistically entitled to.</p></div></div>
+        <div class="faq-item"><div class="faq-q">Why is the fair number lower than the full difference?</div>
+          <div class="faq-in"><p>In matchplay a hole is a hole. When the higher handicapper makes a nine it costs him
+            one hole; when you make a six it costs you one hole. Giving the full difference hands him the upside of
+            his bad golf without the downside. In strokeplay the effect reverses, because there every one of those
+            extra shots stays on the card.</p></div></div>
+        <div class="faq-item"><div class="faq-q">What does the consistency slider actually change?</div>
+          <div class="faq-in"><p>The spread of your hole scores, not their average. A wild player and a steady player
+            with the same handicap shoot the same number over a season and win completely different matches. Wildness
+            wins you more blowouts and loses you more tight ones.</p></div></div>
+        <div class="faq-item"><div class="faq-q">Is this a real simulation or a lookup table?</div>
+          <div class="faq-in"><p>Real. Every run plays 180,000 individual holes in your browser, scoring each one from
+            a distribution built off the two handicaps, then counts the results. Run it twice and the numbers will
+            move slightly, because that is what probability looks like when nobody is rounding it for you.</p></div></div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 GOLFRAW — ALL RATINGS FINAL</span>
+      <nav aria-label="Footer navigation" style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="./manifesto">MANIFESTO</a>
+        <a href="./about">ABOUT</a>
+        <a href="./ratings-manual">HOW RATINGS WORK</a>
+        <a href="./corrections">CORRECTIONS</a>
+        <a href="./privacy">PRIVACY</a>
+        <a href="./terms">TERMS</a>
+        <a href="./contact">CONTACT</a>
+        <a href="/ratings">PLAYER RATINGS</a>
+        <a href="/analysis">SWING ANALYSIS</a>
+        <a href="/vault">THE VAULT</a>
+        <a href="/">← FRONT PAGE</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
+  <script src="./rawgolf-tools.js"></script>
+
+  <script>
+    /* ==================== NAV ==================== */
+    (function () {
+      var b = document.getElementById('burger'), l = document.getElementById('navLinks');
+      if (b && l) {
+        b.addEventListener('click', function () {
+          var o = l.classList.toggle('open');
+          b.setAttribute('aria-expanded', o);
+        });
+      }
+    })();
+
+    /* ==================== FAQ ==================== */
+    (function () {
+      var qs = document.querySelectorAll('.faq-q');
+      for (var i = 0; i < qs.length; i++) {
+        qs[i].addEventListener('click', function () {
+          this.parentNode.classList.toggle('open');
+        });
+      }
+    })();
+
+    /* ==================================================================
+       THE GRUDGE MATCH — Monte Carlo engine
+       10,000 matches, 18 holes, two players. Pure vanilla, no libraries.
+       ================================================================== */
+    (function () {
+      'use strict';
+
+      var RUNS = 10000, HOLES = 18;
+      /* Stroke index: hole difficulty order. Shots go to the hardest holes first. */
+      var SI = [1, 11, 5, 15, 3, 17, 7, 13, 9, 2, 12, 6, 16, 4, 18, 8, 14, 10];
+
+      var $ = function (id) { return document.getElementById(id); };
+      var clamp = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+      var pct = function (n) { return (n * 100).toFixed(1) + '%'; };
+      /* "You wins outright" is not a sentence. */
+      var verb = function (name, v) { return /^you$/i.test(name) ? v : v + 's'; };
+      var r1 = function (n) { return (Math.round(n * 10) / 10).toFixed(1); };
+
+      var state = { fmt: 'match', last: null };
+
+      /* ---------- Scoring model -------------------------------------------
+         Per hole, a player's score relative to par is drawn from a discrete
+         distribution built from their course handicap. Birdie chance falls as
+         the handicap rises; the bogey-and-worse tail decays geometrically.
+
+         The tail's fatness (decay) is what the consistency slider moves. We
+         then SOLVE for the par probability so the distribution's mean still
+         lands on handicap/18. That matters: a wild 12 and a steady 12 must
+         average the same score, or the handicap stops meaning anything —
+         they should simply lose in different ways.
+      --------------------------------------------------------------------- */
+      function buildCdf(courseHcp, wild, hard) {
+        var target = courseHcp / HOLES;
+        /* Harder course: everyone drops shots, the worse player drops more. */
+        target += hard * (0.05 + 0.02 * clamp(courseHcp / 18, 0, 2));
+
+        var pb = Math.max(0, 0.085 - 0.0045 * courseHcp) * (1 - 0.45 * hard);
+        var d = clamp(0.34 + 0.30 * wild + 0.10 * hard, 0.15, 0.80);
+
+        var K = 6, w = [], S = 0, i;
+        for (i = 0; i < K; i++) { w[i] = Math.pow(d, i); S += w[i]; }
+        var Ek = 0;
+        for (i = 0; i < K; i++) { w[i] /= S; Ek += (i + 1) * w[i]; }
+
+        /* mean = -pb + T*Ek  =>  T = (target + pb)/Ek,  pPar = 1 - pb - T */
+        var T = clamp((target + pb) / Ek, 0.02, 1 - pb - 0.02);
+        var pPar = 1 - pb - T;
+
+        var probs = [pb, pPar];
+        for (i = 0; i < K; i++) probs.push(T * w[i]);
+
+        var cdf = [], acc = 0;
+        for (i = 0; i < probs.length; i++) { acc += probs[i]; cdf.push(acc); }
+        cdf[cdf.length - 1] = 1;
+        return cdf;                      /* index 0 = -1 (birdie), 1 = par, 2 = +1 ... */
+      }
+
+      function draw(cdf) {
+        var r = Math.random(), i = 0;
+        while (i < cdf.length - 1 && r > cdf[i]) i++;
+        return i - 1;                    /* strokes relative to par */
+      }
+
+      /* Shots given: one per hole on the hardest holes, wrapping past 18. */
+      function shotMap(shots) {
+        var m = new Array(HOLES), i;
+        for (i = 0; i < HOLES; i++) m[i] = 0;
+        for (i = 0; i < shots; i++) m[SI.indexOf((i % HOLES) + 1)] += 1;
+        return m;
+      }
+
+      function stablefordPts(net) {           /* net relative to par */
+        var p = 2 - net;
+        return p > 0 ? p : 0;
+      }
+
+      /* One full simulation batch. Returns margins from YOUR point of view. */
+      function simulate(cdfYou, cdfThem, shots, fmt, runs) {
+        var map = shotMap(shots), margins = new Array(runs), h, n;
+        for (n = 0; n < runs; n++) {
+          var m = 0;
+          if (fmt === 'match') {
+            for (h = 0; h < HOLES; h++) {
+              var a = draw(cdfYou), b = draw(cdfThem) - map[h];
+              if (a < b) m++; else if (b < a) m--;
+            }
+          } else if (fmt === 'stroke') {
+            for (h = 0; h < HOLES; h++) m += (draw(cdfThem) - map[h]) - draw(cdfYou);
+          } else {
+            for (h = 0; h < HOLES; h++) {
+              m += stablefordPts(draw(cdfYou)) - stablefordPts(draw(cdfThem) - map[h]);
+            }
+          }
+          margins[n] = m;
+        }
+        return margins;
+      }
+
+      function tally(margins) {
+        var win = 0, halve = 0, i, sum = 0, blow = 0;
+        for (i = 0; i < margins.length; i++) {
+          var m = margins[i];
+          sum += m;
+          if (m > 0) win++; else if (m === 0) halve++;
+          if (m >= 5 || m <= -5) blow++;
+        }
+        var n = margins.length;
+        return {
+          win: win / n, halve: halve / n, lose: (n - win - halve) / n,
+          avg: sum / n, blow: blow / n, margins: margins
+        };
+      }
+
+      /* Binary search for the stroke allocation closest to a 50/50 match.
+         Win probability falls monotonically as you hand over more shots. */
+      function fairShots(cdfYou, cdfThem, fmt) {
+        var lo = 0, hi = 36, best = 0, bestGap = 1, probe = 2600, i;
+        for (i = 0; i < 7 && lo <= hi; i++) {
+          var mid = Math.floor((lo + hi) / 2);
+          var t = tally(simulate(cdfYou, cdfThem, mid, fmt, probe));
+          var p = t.win + t.halve / 2;
+          var gap = Math.abs(p - 0.5);
+          if (gap < bestGap) { bestGap = gap; best = mid; }
+          if (p > 0.5) lo = mid + 1; else hi = mid - 1;
+        }
+        return best;
+      }
+
+      /* ---------- Histogram ------------------------------------------ */
+      function drawHist(margins, fmt, youName, themName) {
+        var cv = $('hist'), ctx = cv.getContext('2d');
+        var W = cv.width, H = cv.height;
+        ctx.clearRect(0, 0, W, H);
+
+        var lo = Infinity, hi = -Infinity, i;
+        for (i = 0; i < margins.length; i++) {
+          if (margins[i] < lo) lo = margins[i];
+          if (margins[i] > hi) hi = margins[i];
+        }
+        var span = hi - lo + 1;
+        if (span > 40) { lo = Math.max(lo, -20); hi = Math.min(hi, 20); span = hi - lo + 1; }
+        var counts = new Array(span), max = 0;
+        for (i = 0; i < span; i++) counts[i] = 0;
+        for (i = 0; i < margins.length; i++) {
+          var k = clamp(margins[i], lo, hi) - lo;
+          counts[k]++;
+          if (counts[k] > max) max = counts[k];
+        }
+
+        var padB = 34, padT = 10, bw = W / span;
+        for (i = 0; i < span; i++) {
+          var v = lo + i, hgt = max ? (counts[i] / max) * (H - padB - padT) : 0;
+          ctx.fillStyle = v > 0 ? '#14402A' : (v === 0 ? '#8b958d' : '#E03E2D');
+          ctx.fillRect(i * bw + 1, H - padB - hgt, Math.max(1, bw - 2), hgt);
+        }
+        /* Axis */
+        ctx.strokeStyle = '#101511'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(0, H - padB); ctx.lineTo(W, H - padB); ctx.stroke();
+
+        ctx.fillStyle = '#101511';
+        ctx.font = '600 15px "IBM Plex Mono", monospace';
+        ctx.textAlign = 'left';
+        ctx.fillText(themName + ' by ' + Math.abs(lo), 6, H - 12);
+        ctx.textAlign = 'right';
+        ctx.fillText(youName + ' by ' + hi, W - 6, H - 12);
+        ctx.textAlign = 'center';
+        var zx = (0 - lo + 0.5) * bw;
+        if (zx > 40 && zx < W - 40) ctx.fillText('halved', zx, H - 12);
+      }
+
+      /* ---------- Verdict copy ---------------------------------------- */
+      function verdictFor(t, you, them, shots, fair, fmt) {
+        var p = t.win + t.halve / 2, gap = shots - fair;
+        var unit = fmt === 'match' ? 'holes' : (fmt === 'stable' ? 'points' : 'shots');
+        var head;
+        if (p >= 0.72) head = 'This is not a match. It is an appointment.';
+        else if (p >= 0.60) head = 'You are the favourite and you both know it.';
+        else if (p >= 0.53) head = 'You edge it. Barely. Do not celebrate in advance.';
+        else if (p > 0.47) head = 'A genuine coin flip. Whoever wins will claim they always knew.';
+        else if (p > 0.40) head = 'You are the underdog. Quietly.';
+        else if (p > 0.28) head = 'You are getting beaten. The strokes are doing him a favour.';
+        else head = 'You are the entertainment. Bring cash.';
+
+        var body;
+        if (gap >= 2) body = ' You are handing over ' + gap + ' shots more than the maths asks for. In matchplay a single shot is worth about seven points of win probability, so that is not generosity, it is a donation.';
+        else if (gap === 1) body = ' You are giving one shot more than the fair number, and that one shot is doing most of the damage above.';
+        else if (gap <= -2) body = ' You are ' + Math.abs(gap) + ' shots short of a fair game and he is right to complain.';
+        else if (gap === -1) body = ' You are one shot short of fair. He has a grievance, but only a small one.';
+        else body = ' The strokes are exactly where the maths puts them. Nobody has anything to complain about, which will not stop either of you.';
+
+        return { head: head, body: body, unit: unit, p: p };
+      }
+
+      /* ---------- Run ------------------------------------------------- */
+      function run() {
+        var errBox = $('err');
+        errBox.textContent = ''; errBox.classList.remove('on');
+
+        var yH = parseFloat($('youHcp').value), tH = parseFloat($('themHcp').value);
+        if (isNaN(yH) || isNaN(tH)) {
+          errBox.textContent = 'Two handicaps. Numbers. It is not a hard ask.';
+          errBox.classList.add('on'); return;
+        }
+        yH = clamp(yH, -5, 54); tH = clamp(tH, -5, 54);
+        $('youHcp').value = yH; $('themHcp').value = tH;
+
+        var youName = ($('youName').value || 'You').trim().slice(0, 14) || 'You';
+        var themName = ($('themName').value || 'Him').trim().slice(0, 14) || 'Him';
+        var wild = parseInt($('vary').value, 10) / 100;
+        var hard = parseInt($('diff').value, 10) / 100;
+        var shots = parseInt($('shots').value, 10);
+
+        var t0 = (window.performance && performance.now) ? performance.now() : Date.now();
+        var cdfYou = buildCdf(yH, wild, hard);
+        var cdfThem = buildCdf(tH, 0.5, hard);
+        var t = tally(simulate(cdfYou, cdfThem, shots, state.fmt, RUNS));
+        var fair = fairShots(cdfYou, cdfThem, state.fmt);
+        var ms = ((window.performance && performance.now) ? performance.now() : Date.now()) - t0;
+
+        var v = verdictFor(t, youName, themName, shots, fair, state.fmt);
+
+        $('outPanel').hidden = false;
+        $('barYou').style.width = (t.win * 100) + '%';
+        $('barHalve').style.width = (t.halve * 100) + '%';
+        $('barThem').style.width = (t.lose * 100) + '%';
+        $('barYou').textContent = t.win > 0.12 ? pct(t.win) : '';
+        $('barHalve').textContent = t.halve > 0.10 ? pct(t.halve) : '';
+        $('barThem').textContent = t.lose > 0.12 ? pct(t.lose) : '';
+
+        $('bigNum').textContent = pct(t.win);
+        $('bigLab').textContent = youName + ' ' + verb(youName, 'win') + ' outright · ' +
+          pct(t.halve) + ' halved · ' + pct(t.lose) + ' to ' + themName;
+        $('verdict').innerHTML = '<b>' + v.head + '</b>' + v.body;
+
+        var avgTxt = (t.avg >= 0 ? '+' : '') + r1(t.avg);
+        $('stats').innerHTML =
+          stat('Average margin', avgTxt) +
+          stat('Blowout risk', pct(t.blow)) +
+          stat('Halved', pct(t.halve)) +
+          stat('Matches run', RUNS.toLocaleString());
+
+        drawHist(t.margins, state.fmt, youName, themName);
+        $('histNote').textContent = 'Green is you. Red is ' + themName + '. Every bar is how often that ' +
+          v.unit.slice(0, -1) + ' margin came up across ten thousand matches.';
+
+        var diff = Math.abs(yH - tH), full = Math.round(diff);
+        var sh = function (n) { return n + (n === 1 ? ' shot' : ' shots'); };
+        $('fairNum').textContent = fair === 0
+          ? 'Give him nothing. Straight up.'
+          : fair === full
+            ? 'Give him ' + sh(fair) + '. The full difference is right.'
+            : 'Give him ' + sh(fair) + ', not ' + full + '.';
+        $('fairSub').textContent = fair === full
+          ? 'The full difference is genuinely fair here. Enjoy the novelty.'
+          : 'At ' + fair + ', it is as close to 50/50 as this matchup gets. You are currently playing off ' +
+            shots + '. The difference between those two numbers is the argument you have been having.';
+
+        $('runline').textContent = RUNS.toLocaleString() + ' matches · ' + (HOLES * 2 * RUNS).toLocaleString() +
+          ' holes simulated in ' + Math.max(1, Math.round(ms)) + 'ms · entirely in your browser';
+
+        state.last = {
+          t: t, you: youName, them: themName, yH: yH, tH: tH,
+          shots: shots, fair: fair, fmt: state.fmt, v: v
+        };
+        if (window.RawGolf) RawGolf.save(cardData());
+      }
+
+      function stat(k, v) {
+        return '<div class="gm-stat"><div class="k">' + k + '</div><div class="v">' + v + '</div></div>';
+      }
+
+      function cardData() {
+        var s = state.last;
+        return {
+          tool: 'The Grudge Match', slug: 'tools-the-grudge-match',
+          eyebrow: 'GOLFRAW · THE GRUDGE MATCH',
+          verdict: s.v.head,
+          big: pct(s.t.win), bigLabel: s.you + ' beats ' + s.them,
+          filename: 'grudge-match',
+          metrics: [
+            { k: 'Matchup', v: s.you + ' ' + s.yH + ' v ' + s.them + ' ' + s.tH },
+            { k: 'Win / halve / lose', v: pct(s.t.win) + ' / ' + pct(s.t.halve) + ' / ' + pct(s.t.lose) },
+            { k: 'Strokes given', v: String(s.shots) },
+            { k: 'Fair number', v: String(s.fair) },
+            { k: 'Blowout risk', v: pct(s.t.blow) }
+          ]
+        };
+      }
+
+      function summaryText() {
+        var s = state.last;
+        return s.you + ' ' + s.yH + ' v ' + s.them + ' ' + s.tH + ' — ' + pct(s.t.win) + ' to ' + s.you +
+          ', ' + pct(s.t.lose) + ' to ' + s.them + ' over 10,000 matches. ' +
+          'Fair strokes: ' + s.fair + '. You are playing off ' + s.shots + '. ' + s.v.head;
+      }
+
+      /* ---------- Wiring ---------------------------------------------- */
+      function syncLabels() {
+        var yH = parseFloat($('youHcp').value) || 0, tH = parseFloat($('themHcp').value) || 0;
+        var full = Math.round(Math.abs(yH - tH));
+        $('shotsVal').textContent = $('shots').value + ' of ' + full;
+        var w = parseInt($('vary').value, 10);
+        $('varyVal').textContent = w < 20 ? 'Metronome' : w < 40 ? 'Steady' : w < 62 ? 'Normal'
+          : w < 82 ? 'Streaky' : 'Coin flip';
+        var d = parseInt($('diff').value, 10);
+        $('diffVal').textContent = d < 20 ? 'Municipal, wide open' : d < 40 ? 'Friendly members club'
+          : d < 62 ? 'Your average track' : d < 82 ? 'Proper test' : 'Championship setup';
+      }
+
+      var ids = ['youHcp', 'themHcp', 'shots', 'vary', 'diff'], i;
+      for (i = 0; i < ids.length; i++) {
+        $(ids[i]).addEventListener('input', function () {
+          syncLabels();
+          if (state.last) run();          /* live re-run: change a knob, see it move */
+        });
+      }
+      $('youName').addEventListener('input', function () { if (state.last) run(); });
+      $('themName').addEventListener('input', function () { if (state.last) run(); });
+
+      var fmtBtns = $('fmt').querySelectorAll('button');
+      for (i = 0; i < fmtBtns.length; i++) {
+        fmtBtns[i].addEventListener('click', function () {
+          for (var j = 0; j < fmtBtns.length; j++) fmtBtns[j].setAttribute('aria-pressed', 'false');
+          this.setAttribute('aria-pressed', 'true');
+          state.fmt = this.getAttribute('data-fmt');
+          if (state.last) run();
+        });
+      }
+
+      $('runBtn').addEventListener('click', run);
+
+      $('swapBtn').addEventListener('click', function () {
+        var a = $('youHcp').value, b = $('themHcp').value;
+        var an = $('youName').value, bn = $('themName').value;
+        $('youHcp').value = b; $('themHcp').value = a;
+        $('youName').value = bn; $('themName').value = an;
+        syncLabels();
+        if (state.last) run();
+      });
+
+      $('sampleBtn').addEventListener('click', function () {
+        $('youName').value = 'You'; $('youHcp').value = 9;
+        $('themName').value = 'Dave'; $('themHcp').value = 16;
+        $('shots').value = 7; $('vary').value = 45; $('diff').value = 55;
+        syncLabels(); run();
+      });
+
+      $('copyBtn').addEventListener('click', function () {
+        if (!state.last) return;
+        if (window.RawGolf && RawGolf.copyText) RawGolf.copyText(summaryText());
+      });
+      $('pngBtn').addEventListener('click', function () {
+        if (!state.last || !window.RawGolf) return;
+        var c = cardData();
+        RawGolf.downloadCard({
+          eyebrow: c.eyebrow, headline: c.verdict, big: c.big,
+          bigLabel: c.bigLabel, lines: c.metrics, filename: c.filename
+        });
+      });
+      $('shareBtn').addEventListener('click', function () {
+        if (!state.last || !window.RawGolf) return;
+        RawGolf.shareResult({
+          title: 'The Grudge Match', text: summaryText(),
+          url: 'https://www.golfraw.com/tools-the-grudge-match'
+        });
+      });
+
+      syncLabels();
+    })();
+  </script>
+
+</body>
+
+</html>
