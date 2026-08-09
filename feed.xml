@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Michigan Had Two Elite Golf Tournaments This Year. Soon It May Have None.</title>
+      <link>https://www.golfraw.com/news-2026-michigan-golf-tournaments-rocket-classic-liv-cancelled</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-michigan-golf-tournaments-rocket-classic-liv-cancelled</guid>
+      <pubDate>Sun, 09 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>The Rocket Classic is gone and LIV&#x27;s Michigan finale is reportedly cancelled — four weeks apart, for entirely different reasons. What Detroit actually lost.</description>
+      <enclosure url="https://www.golfraw.com/public/michigan-golf-tournaments-rocket-classic-liv.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Lee Westwood Is 53, Four Back, and Done With Expectations</title>
       <link>https://www.golfraw.com/news-2026-lee-westwood-liv-golf-bedminster-expectations</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-lee-westwood-liv-golf-bedminster-expectations</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>Haeran Ryu shot a five-under 66 to finish seven strokes ahead of Nelly Korda in round one, although Jeeno Thitikul took the AIG Women’s Open lead.</description>
       <enclosure url="https://www.golfraw.com/public/haeran-ryu-nelly-korda-aig-womens-open-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>South Dakota State Women’s Golf 2026–27 Schedule</title>
-      <link>https://www.golfraw.com/south-dakota-state-womens-golf-2026-27-schedule</link>
-      <guid isPermaLink="true">https://www.golfraw.com/south-dakota-state-womens-golf-2026-27-schedule</guid>
-      <pubDate>Wed, 29 Jul 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>See South Dakota State women’s golf’s full 2026–27 schedule, dates, locations, roster turnover and path to defending its Summit League title.</description>
-      <enclosure url="https://www.golfraw.com/public/sdsu-womens-golf-schedule-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
