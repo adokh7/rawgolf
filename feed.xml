@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Lee Westwood Is 53, Four Back, and Done With Expectations</title>
+      <link>https://www.golfraw.com/news-2026-lee-westwood-liv-golf-bedminster-expectations</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-lee-westwood-liv-golf-bedminster-expectations</guid>
+      <pubDate>Sun, 09 Aug 2026 09:00:00 +0000</pubDate>
+      <category>LIV GOLF</category>
+      <description>Everyone ran the &#x27;brain-dead&#x27; quote. The one after it is better: Westwood on why he stopped setting expectations — and he&#x27;s four off the lead at 53.</description>
+      <enclosure url="https://www.golfraw.com/public/lee-westwood-liv-golf-bedminster.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Eighth in Iron Play, 116th in Putting: The Brutal Math Behind Brooks Koepka&#x27;s Wyndham Stand</title>
       <link>https://www.golfraw.com/news-2026-brooks-koepka-wyndham-putting-stat-injury</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-brooks-koepka-wyndham-putting-stat-injury</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>See South Dakota State women’s golf’s full 2026–27 schedule, dates, locations, roster turnover and path to defending its Summit League title.</description>
       <enclosure url="https://www.golfraw.com/public/sdsu-womens-golf-schedule-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>PGA Tour 2026: Schedule, Leaderboard &amp; TV in Australia</title>
-      <link>https://www.golfraw.com/pga-tour-schedule-leaderboard-australia</link>
-      <guid isPermaLink="true">https://www.golfraw.com/pga-tour-schedule-leaderboard-australia</guid>
-      <pubDate>Wed, 29 Jul 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Follow the 2026 PGA Tour with the latest schedule, official leaderboard links, FedExCup rankings and Australian TV and streaming information.</description>
-      <enclosure url="https://www.golfraw.com/public/pga-tour-australia-guide-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
