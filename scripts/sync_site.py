@@ -327,6 +327,115 @@ def write_sitemap(arts):
     return len(arts) + len(STATIC) + len(tool_pages())
 
 
+
+# ---------------------------------------------------------------------------
+# RSS feed (WebSub-enabled)
+# ---------------------------------------------------------------------------
+
+FEED_PATH  = 'feed.xml'
+FEED_URL   = 'https://www.golfraw.com/feed.xml'
+FEED_ITEMS = 40
+WEBSUB_HUBS = [
+    'https://pubsubhubbub.appspot.com/',
+    'https://pubsubhubbub.superfeedr.com/',
+]
+
+
+def rfc822(iso):
+    """RFC-822 date for RSS. Falls back to now when the date is unparseable."""
+    import datetime, email.utils
+    d = iso_date(iso)
+    if d:
+        try:
+            y, m, day = (int(x) for x in d.split('-'))
+            dt = datetime.datetime(y, m, day, 9, 0, 0, tzinfo=datetime.timezone.utc)
+            return email.utils.format_datetime(dt)
+        except ValueError:
+            pass
+    return email.utils.format_datetime(datetime.datetime.now(datetime.timezone.utc))
+
+
+def write_feed(arts):
+    """Write feed.xml — the newest FEED_ITEMS articles, with WebSub hub links.
+
+    The <atom:link rel="hub"> elements are what make this feed pushable: a hub
+    only accepts a publish ping for a feed that advertises it. rel="self" is
+    equally required — the hub uses it to identify the topic being published.
+    """
+    base = 'https://www.golfraw.com'
+    items = sorted(arts, key=lambda a: iso_date(get_date(a)), reverse=True)[:FEED_ITEMS]
+    # Derived from the newest item, NOT wall-clock time: a clock-based value
+    # rewrites feed.xml on every sync and dirties the tree even when nothing
+    # changed, which defeats write_if_changed.
+    now = rfc822(get_date(items[0])) if items else rfc822('')
+
+    out = ['<?xml version="1.0" encoding="UTF-8"?>',
+           '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" '
+           'xmlns:content="http://purl.org/rss/1.0/modules/content/">',
+           '  <channel>',
+           '    <title>GOLFRAW</title>',
+           f'    <link>{base}/</link>',
+           '    <description>Golf news without the press-release language. '
+           'Evidence first, opinion labeled.</description>',
+           '    <language>en</language>',
+           f'    <lastBuildDate>{now}</lastBuildDate>',
+           f'    <atom:link rel="self" href="{FEED_URL}" type="application/rss+xml"/>']
+    for hub in WEBSUB_HUBS:
+        out.append(f'    <atom:link rel="hub" href="{hub}"/>')
+    for a in items:
+        url = base + get_url(a)
+        img = get_image(a).split('?')[0]
+        out += ['    <item>',
+                f'      <title>{esc(get_title(a))}</title>',
+                f'      <link>{url}</link>',
+                f'      <guid isPermaLink="true">{url}</guid>',
+                f'      <pubDate>{rfc822(get_date(a))}</pubDate>',
+                f'      <category>{esc(get_category(a))}</category>',
+                f'      <description>{esc(get_excerpt(a))}</description>']
+        if img:
+            out.append(f'      <enclosure url="{base}{img}" type="image/webp"/>')
+        out.append('    </item>')
+    out += ['  </channel>', '</rss>', '']
+    write_if_changed(os.path.join(ROOT, FEED_PATH), '\n'.join(out))
+    return len(items)
+
+
+
+SEEN_PATH    = '.fast-index-seen.json'
+PENDING_PATH = '.fast-index-pending.json'
+
+
+def record_changed(arts):
+    """Diff this sync's URLs against the last one and stash what is new.
+
+    IndexNow wants the URLs that actually changed, not the whole site — a
+    full-site resubmit on every sync is how publishers get rate-limited.
+    """
+    seen_p = os.path.join(ROOT, SEEN_PATH)
+    current = sorted({get_url(a) for a in arts if get_url(a)})
+    try:
+        seen = set(json.load(open(seen_p, encoding='utf-8')).get('urls', []))
+    except (OSError, ValueError):
+        seen = set()
+    new = sorted(set(current) - seen)
+
+    first_run = not seen
+    if first_run:
+        new = []                      # never blast the archive on the first run
+
+    pend_p = os.path.join(ROOT, PENDING_PATH)
+    if new:
+        prev = []
+        try:
+            prev = json.load(open(pend_p, encoding='utf-8')).get('urls', [])
+        except (OSError, ValueError):
+            pass
+        merged = sorted(set(prev) | set(new))
+        json.dump({'urls': merged}, open(pend_p, 'w', encoding='utf-8'), indent=1)
+    json.dump({'urls': current}, open(seen_p, 'w', encoding='utf-8'), indent=1)
+    return new, first_run
+
+
 # ---------------------------------------------------------------------------
 # Validation
 # ---------------------------------------------------------------------------
@@ -441,6 +550,38 @@ if __name__ == '__main__':
     # 4. sitemap.xml
     n = write_sitemap(arts)
     print(f"  sitemap.xml regenerated: {n} URLs")
+
+    # 5. feed.xml — WebSub hubs are declared here, which is what makes the
+    #    hub ping in step 6 acceptable to the hub at all.
+    n = write_feed(arts)
+    print(f"  feed.xml regenerated: {n} items")
+
+    # 6. Fast indexing. Deliberately NOT fired by default: sync runs before
+    #    the deploy, so a ping now would make the hub fetch the *old* live
+    #    feed and find nothing new. The changed URLs are recorded instead, and
+    #    `python3 scripts/fast_index.py` sends them once the deploy is live.
+    changed, first_run = record_changed(arts)
+    if first_run:
+        print("  fast-index: baseline recorded (no ping on first run)")
+    elif changed:
+        print(f"  fast-index: {len(changed)} new URL(s) queued")
+        for u in changed[:5]:
+            print(f"      {u}")
+        if len(changed) > 5:
+            print(f"      ... +{len(changed)-5} more")
+    else:
+        print("  fast-index: no new URLs")
+
+    if '--notify' in sys.argv or os.environ.get('FAST_INDEX') == '1':
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        try:
+            import fast_index
+            print()
+            fast_index.notify()
+        except Exception as e:                 # indexing must never fail a sync
+            print(f"  fast-index: skipped ({type(e).__name__}: {e})")
+    elif changed:
+        print("  -> run `python3 scripts/fast_index.py` AFTER deploying")
 
     print()
     print("SYNC COMPLETE")
