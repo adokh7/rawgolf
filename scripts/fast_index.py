@@ -157,6 +157,55 @@ def pending_urls():
         return []
 
 
+def notify_google(urls, dry_run=False, verbose=True):
+    urls = [u if u.startswith('http') else SITE + ('' if u.startswith('/') else '/') + u for u in urls]
+    urls = [u for u in dict.fromkeys(urls) if u.startswith(SITE)]
+    if not urls:
+        if verbose:
+            print('  Google Indexing: nothing to submit')
+        return
+
+    key_path = os.path.join(ROOT, 'service_account.json')
+    if not os.path.exists(key_path):
+        if verbose:
+            print(f'  Google Indexing: SKIP - {key_path} not found')
+        return
+
+    try:
+        from google.oauth2 import service_account
+        from googleapiclient.discovery import build
+        
+        credentials = service_account.Credentials.from_service_account_file(
+            key_path, scopes=['https://www.googleapis.com/auth/indexing']
+        )
+        service = build('indexing', 'v3', credentials=credentials)
+    except ImportError:
+        if verbose:
+            print('  Google Indexing: SKIP - google-api-python-client not installed')
+        return
+    except Exception as e:
+        if verbose:
+            print(f'  Google Indexing: INIT FAIL - {e}')
+        return
+
+    for url in urls:
+        if dry_run:
+            if verbose:
+                print(f'  [dry-run] Google Indexing: URL_UPDATED {url}')
+            continue
+        try:
+            body = {
+                'url': url,
+                'type': 'URL_UPDATED'
+            }
+            response = service.urlNotifications().publish(body=body).execute()
+            if verbose:
+                print(f'  ok   Google Indexing {url} -> 200 OK')
+        except Exception as e:
+            if verbose:
+                print(f'  FAIL Google Indexing {url} -> {e}')
+
+
 def clear_pending():
     p = os.path.join(ROOT, '.fast-index-pending.json')
     if os.path.exists(p):
@@ -164,12 +213,13 @@ def clear_pending():
 
 
 def notify(urls=None, dry_run=False, verbose=True):
-    """Fire both channels. Never raises — indexing is best-effort."""
+    """Fire all channels. Never raises — indexing is best-effort."""
     urls = pending_urls() if urls is None else urls
     if verbose:
         print(f'fast-index: {len(urls)} changed URL(s)')
     ping_websub(dry_run=dry_run, verbose=verbose)
     submit_indexnow(urls, dry_run=dry_run, verbose=verbose)
+    notify_google(urls, dry_run=dry_run, verbose=verbose)
     if not dry_run:
         clear_pending()
 
