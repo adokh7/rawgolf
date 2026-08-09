@@ -19,8 +19,30 @@ Two independent channels, because no single one reaches everybody:
 
 Stdlib only: this runs in CI and on a bare machine with no pip install.
 """
-import sys, os, json, time
+import sys, os, json, ssl
 import urllib.request, urllib.parse, urllib.error
+
+
+def _ssl_context():
+    """Build a verifying SSL context that works on installs with no CA bundle.
+
+    A stock python.org install on macOS ships no root certificates until
+    `Install Certificates.command` is run, so urllib fails every HTTPS request
+    with CERTIFICATE_VERIFY_FAILED while curl (system trust store) succeeds.
+    Fall back to certifi's bundle. Verification stays ON either way — a
+    fast-indexing helper is not a reason to disable TLS checks.
+    """
+    paths = ssl.get_default_verify_paths()
+    if paths.cafile or paths.capath:
+        return ssl.create_default_context()
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        return ssl.create_default_context()
+
+
+SSL_CTX = _ssl_context()
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = 'https://www.golfraw.com'
@@ -45,7 +67,7 @@ UA = 'golfraw-fast-index/1.0 (+https://www.golfraw.com/)'
 def _post(url, data, headers, timeout=TIMEOUT):
     req = urllib.request.Request(url, data=data, headers=headers, method='POST')
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as r:
+        with urllib.request.urlopen(req, timeout=timeout, context=SSL_CTX) as r:
             return r.status, r.read(400).decode('utf-8', 'replace').strip()
     except urllib.error.HTTPError as e:
         return e.code, e.read(400).decode('utf-8', 'replace').strip()

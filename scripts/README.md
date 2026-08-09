@@ -13,6 +13,7 @@ the site: URL, title, excerpt, category, section, date, image and keywords.
 | `guides.html`, `liv-golf.html`, `pga-tour.html`, `tournaments.html` | filtered by `section` |
 | `search.html` | the whole `ARTICLES` array |
 | `sitemap.xml` | every article + static pages |
+| `feed.xml` | newest 40 articles, with WebSub hub links |
 
 Anything you hand-edit in those six files is **destroyed on the next sync**,
 silently and with no error. Change the registry and re-run instead.
@@ -102,3 +103,32 @@ malformed date makes Search Console reject the whole sitemap.
 style — this repo contains `name="x" content="y"`, `content="y" name="x"`, and
 mixed `content='y' name="x"`. A parser that assumes one form silently returns
 empty and blanks the field rather than failing, so keep it permissive.
+
+
+## Fast indexing (WebSub + IndexNow)
+
+Google retired its sitemap-ping endpoint, so new articles are pushed rather
+than waited on. Two channels, because neither reaches everyone:
+
+- **WebSub** — `scripts/fast_index.py --websub` POSTs `hub.mode=publish` to
+  both hubs, which then fetch `feed.xml` and fan it out. Google subscribes to
+  `pubsubhubbub.appspot.com`. A hub only accepts the ping because `feed.xml`
+  advertises it via `<atom:link rel="hub">`; strip those and pings start
+  failing silently.
+- **IndexNow** — `scripts/fast_index.py --indexnow <urls>` submits changed
+  URLs to Bing, Yandex, Seznam and Naver. **Google does not use IndexNow.**
+  Ownership is proved by `<key>.txt` at the site root, which must stay
+  deployed or every submission 403s.
+
+### Ordering matters
+
+`sync_site.py` does **not** fire the ping. Sync runs before the deploy, so a
+ping at that moment makes the hub fetch the *old* live feed and find nothing
+new. Sync records the changed URLs and prints the command instead:
+
+    python3 scripts/sync_site.py     # writes feed.xml, queues changed URLs
+    git push                          # deploy
+    python3 scripts/fast_index.py     # NOW ping — the feed is live
+
+Pass `--notify` or set `FAST_INDEX=1` to fire inline anyway. Failures never
+break a sync; indexing is best-effort by design.

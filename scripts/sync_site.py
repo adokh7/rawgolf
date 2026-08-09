@@ -449,7 +449,7 @@ def generated_files():
     Anything listed here is regenerated wholesale from articles.json, so a
     hand-edit to it is destroyed on the next sync.
     """
-    return {'news.html', 'search.html', 'sitemap.xml'} | set(SECTION_PAGE.values())
+    return {'news.html', 'search.html', 'sitemap.xml', 'feed.xml'} | set(SECTION_PAGE.values())
 
 
 def documented_files(text):
