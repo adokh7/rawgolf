@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>At 53, Lee Westwood Says He&#x27;s Playing a Different Golf Course</title>
+      <link>https://www.golfraw.com/news-2026-lee-westwood-liv-golf-bedminster-different-course</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-lee-westwood-liv-golf-bedminster-different-course</guid>
+      <pubDate>Sun, 09 Aug 2026 09:00:00 +0000</pubDate>
+      <category>LIV GOLF</category>
+      <description>Westwood is 53, third and four back at Bedminster — on a 7,651-yard course where, in his own words, he&#x27;s playing a different golf course to everyone else.</description>
+      <enclosure url="https://www.golfraw.com/public/lee-westwood-liv-golf-bedminster-53.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Scheffler Isn&#x27;t at a Disadvantage at the Tour Championship. He Just Has No Advantage.</title>
       <link>https://www.golfraw.com/news-2026-scheffler-tour-championship-fedexcup-format-east-lake</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-scheffler-tour-championship-fedexcup-format-east-lake</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>Haeran Ryu shot a 5-under 66 at Royal Lytham &amp; St Annes in Round 1 of the 2026 AIG Women&#x27;s Open, staying two shots off Jeeno Thitikul&#x27;s lead.</description>
       <enclosure url="https://www.golfraw.com/public/haeran-ryu-aig-womens-open-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Detroit Golf Club&#x27;s Full Scorecard: 12 Par 4s &amp; a 246-Yard Par 3</title>
-      <link>https://www.golfraw.com/news-2026-detroit-golf-club-full-scorecard-par-70</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-detroit-golf-club-full-scorecard-par-70</guid>
-      <pubDate>Thu, 30 Jul 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>The full hole-by-hole card for the rebuilt par-70 Detroit Golf Club is out. 12 par 4s averaging 450 yards, a 246-yard par 3, and a 1906 correction.</description>
-      <enclosure url="https://www.golfraw.com/public/detroit-golf-club-full-scorecard-par-70.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
