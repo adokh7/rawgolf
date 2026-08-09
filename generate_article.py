@@ -1,182 +1,104 @@
 import re
 
-with open("article-template.html", "r", encoding="utf-8") as f:
-    html = f.read()
+with open('/Users/adnan/Desktop/golf/article-template.html', 'r') as f:
+    template = f.read()
 
-# SEO block to replace
-seo_start = html.find("<!-- ============ PRIMARY SEO ============ -->")
-seo_end = html.find("</script>", html.find("<!-- ============ STRUCTURED DATA (NewsArticle) ============ -->")) + 9
+# Meta replacements
+template = re.sub(r'<title>.*?</title>', '<title>Eighth in Iron Play, 116th in Putting: The Brutal Math Behind Brooks Koepka\'s Wyndham Stand | GolfRaw</title>', template)
+template = re.sub(r'<meta name="description"\s*content=".*?">', '<meta name="description"\n    content="Koepka is 8th on Tour in approach play and 116th in putting. He withdrew from Detroit with a hand injury. Now he needs a massive week at Sedgefield.">', template)
+template = re.sub(r'<link rel="canonical" href=".*?">', '<link rel="canonical" href="https://www.golfraw.com/news-2026-brooks-koepka-wyndham-putting-stat-injury">', template)
+template = re.sub(r'<meta property="og:title" content=".*?" />', '<meta property="og:title" content="Eighth in Iron Play, 116th in Putting: The Brutal Math Behind Brooks Koepka\'s Wyndham Stand" />', template)
+template = re.sub(r'<meta property="og:description" content=".*?" />', '<meta property="og:description" content="Koepka is 8th on Tour in approach play and 116th in putting. He withdrew from Detroit with a hand injury. Now he needs a massive week at Sedgefield." />', template)
+template = re.sub(r'<meta property="og:url" content=".*?" />', '<meta property="og:url" content="https://www.golfraw.com/news-2026-brooks-koepka-wyndham-putting-stat-injury" />', template)
+template = re.sub(r'<meta property="og:image" content=".*?">', '<meta property="og:image" content="https://www.golfraw.com/public/brooks-koepka-wyndham-putting-pga-tour.webp">', template)
+template = re.sub(r'<meta name="twitter:title" content=".*?">', '<meta name="twitter:title" content="Eighth in Iron Play, 116th in Putting: The Brutal Math Behind Brooks Koepka\'s Wyndham Stand">', template)
+template = re.sub(r'<meta name="twitter:description"\s*content=".*?">', '<meta name="twitter:description"\n    content="Koepka is 8th on Tour in approach play and 116th in putting. He withdrew from Detroit with a hand injury. Now he needs a massive week at Sedgefield.">', template)
+template = re.sub(r'<meta name="twitter:image" content=".*?">', '<meta name="twitter:image" content="https://www.golfraw.com/public/brooks-koepka-wyndham-putting-pga-tour.webp">', template)
+template = re.sub(r'<meta property="article:published_time" content=".*?" />', '<meta property="article:published_time" content="2026-08-09T07:30:00+02:00" />', template)
 
-new_seo = """<!-- ============ PRIMARY SEO ============ -->
-  <title>LIV Says It's Saved. It Won't Say By Whom. | GolfRaw</title>
-  <meta name="description" content="LIV Golf says it has a signed lead investor and players will be majority owners. It won't name the investor or the amount. What was actually announced.">
-  <link rel="canonical" href="https://www.golfraw.com/news-2026-liv-golf-secures-lead-investor">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="author" content="GOLFRAW Editorial">
+# Article content replacement
+new_article = """<article>
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">RawGolf</a> / <a href="/#pga-tour">PGA Tour</a> / <span>FedExCup Playoffs</span>
+        </nav>
 
-  <!-- ============ OPEN GRAPH ============ -->
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="GolfRaw" />
-  <meta property="og:title" content="LIV Says It's Saved. It Won't Say By Whom. | GolfRaw" />
-  <meta property="og:description" content="LIV Golf says it has a signed lead investor and players will be majority owners. It won't name the investor or the amount. What was actually announced." />
-  <meta property="og:url" content="https://www.golfraw.com/news-2026-liv-golf-secures-lead-investor" />
-  <meta property="og:image" content="https://www.golfraw.com/public/liv-golf-lead-investor.webp">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="LIV Golf Lead Investor">
-  <meta property="article:published_time" content="2026-08-05T08:00:00+02:00" />
-  <meta property="article:modified_time" content="2026-08-05T08:00:00+02:00">
-  <meta property="article:author" content="GolfRaw Editorial" />
-  <meta property="article:section" content="News">
-  <meta property="article:tag" content="LIV Golf">
+        <header class="article-head">
+          <span class="cat">PGA Tour · Wyndham</span>
+          <h1>Eighth in Iron Play, 116th in Putting: The Brutal Math Behind Brooks Koepka's Wyndham Stand</h1>
+          <p class="standfirst">Brooks Koepka arrived at Sedgefield Country Club needing something close to a miracle to save his FedExCup season. The strange part is that his golf isn't broken — only one specific, maddening part of it.</p>
+          <div class="byline">
+            <span>BY <b><a href="#">GOLFRAW EDITORIAL</a></b></span>
+            <span>PUBLISHED <b>AUG 09 2026</b></span>
+          </div>
+        </header>
 
-  <!-- ============ TWITTER CARD ============ -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="LIV Says It's Saved. It Won't Say By Whom. | GolfRaw">
-  <meta name="twitter:description" content="LIV Golf says it has a signed lead investor and players will be majority owners. It won't name the investor or the amount. What was actually announced.">
-  <meta name="twitter:image" content="https://www.golfraw.com/public/liv-golf-lead-investor.webp">
-
-  <!-- ============ STRUCTURED DATA (NewsArticle) ============ -->
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "NewsArticle",
-  "headline": "LIV Golf Says It's Been Saved. It Won't Say By Whom, or For How Much.",
-  "description": "LIV Golf says it has a signed lead investor and players will be majority owners. It won't name the investor or the amount. What was actually announced.",
-  "image": [
-    "https://www.golfraw.com/public/liv-golf-lead-investor.webp"
-  ],
-  "datePublished": "2026-08-05T08:00:00+02:00",
-  "dateModified": "2026-08-05T08:00:00+02:00",
-  "author": {
-    "@type": "Organization",
-    "name": "GOLFRAW Editorial",
-    "url": "https://www.golfraw.com/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "GOLFRAW",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.golfraw.com/public/favicon-192.webp",
-      "width": 1254,
-      "height": 1254
-    }
-  },
-  "mainEntityOfPage": "https://www.golfraw.com/news-2026-liv-golf-secures-lead-investor"
-}
-  </script>"""
-
-html = html[:seo_start] + new_seo + html[seo_end:]
-
-# Article body replacement
-article_start = html.find('<article class="article-body">')
-article_end = html.find('</article>', article_start) + 10
-
-new_article = """<article class="article-body">
-      <div class="article-head">
-        <div class="eyebrow">
-          <a href="/news" class="cat-link">News</a>
-          <span class="sep">/</span>
-          <span class="cat-link">LIV Golf</span>
+        <div class="meta-callout" style="border-left: 4px solid #10b981; padding-left: 12px; margin: 16px 0;">
+          <strong>PGA Tour Dynamics:</strong> August 9, 2026 | FedExCup Playoff Bubble & Player Diagnostics
         </div>
-        <h1>LIV Golf Says It's Been Saved. It Won't Say By Whom, or For How Much.</h1>
-        <div class="meta-row">
-          <div class="author">By <span class="mono">GOLFRAW EDITORIAL</span></div>
-          <div class="date mono">AUG 05 2026</div>
+
+        <figure class="lead-img">
+          <img src="/public/brooks-koepka-wyndham-putting-pga-tour.webp" alt="Brooks Koepka Wyndham Championship Putting Injury" />
+        </figure>
+
+        <div class="article-body">
+          <p>Most coverage of Koepka’s 2026 PGA Tour campaign frames it as a classic narrative of decline: brief flashes of major-championship form buried under long stretches of irrelevance. But that framing misses a critical factor that reframes his entire posture entering the Wyndham Championship.</p>
+
+          <h2>The Injury That Shifted the Bubble</h2>
+          <p>Koepka arrived at the Rocket Classic in Detroit ranked 84th in FedExCup points and subsequently withdrew, struggling with a hand injury. That withdrawal cost him a vital week of points he had no way of making up, dropping him to 86th entering Greensboro.</p>
+
+          <p>The math at Sedgefield is unforgiving: he needs a solo fourth-place finish or better simply to climb into the top 70 and extend his season. The withdrawal didn't just cost him points; it altered field dynamics across the Tour. Players like Lanto Griffin and Justin Lower gained starts off that single opening in Detroit and Greensboro — proving once again that in late-summer tour golf, one player's bad month is another's career lifeline.</p>
+
+          <h2>Eighth in Irons, 116th on the Greens</h2>
+          <p>The most revealing detail of Koepka’s season isn't a decline in physical power or ball-striking capability. It is a single stark statistical contrast:</p>
+
+          <ul>
+            <li><strong>Strokes Gained: Approach the Green:</strong> 8th on the PGA Tour</li>
+            <li><strong>Strokes Gained: Putting:</strong> 116th on the PGA Tour</li>
+          </ul>
+
+          <p>Eighth in the world at hitting iron shots. A hundred and sixteenth at holing putts. That is not a man who has lost his swing; it’s a player carrying one flat-stick weakness into the one week he couldn't afford it.</p>
+
+          <p>Koepka has cycled through putters repeatedly throughout the season. He arrived at Sedgefield pulling another change out of the bag: a prototype Scotty Cameron Phantom 3 equipped with a Teryllium insert — the exact insert configuration he relied upon during his major championship runs. Every club golfer recognizes the pattern: when the ball-striking is pristine but the card won't reflect it, you start searching for answers at the grip end of the putter.</p>
+
+          <h2>What's Really at Stake at Sedgefield</h2>
+          <p>Entering the weekend rounds five shots off the lead before early Saturday bogeys stalled his momentum, Koepka faces a cliff far steeper than missing three playoff events.</p>
+
+          <p>Under the terms of his Returning Member agreement, Koepka cannot receive sponsor exemptions into Signature Events next season. To play in the Tour’s marquee $20M purse events in 2027, he must finish inside the top 50 in FedExCup points this season. That means simply scraping into the top 70 at Wyndham isn't enough — he needs to go deep into the playoffs once he gets there.</p>
+
+          <p>Sunday in Greensboro isn't merely about extending a 2026 schedule. It's about whether his entire 2027 campaign will look like this one.</p>
+
+          <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <h3>Why did Brooks Koepka withdraw from the Rocket Classic?</h3>
+            <p>Koepka withdrew from the Detroit event due to a hand injury, which dropped him from 84th to 86th in the FedExCup standings heading into the Wyndham Championship.</p>
+
+            <h3>What does Koepka need at the Wyndham Championship to make the playoffs?</h3>
+            <p>He needs a solo fourth-place finish or better at Sedgefield to break into the top 70 and qualify for the FedExCup Playoffs.</p>
+
+            <h3>What putter is Koepka using at Sedgefield?</h3>
+            <p>He put a prototype Scotty Cameron Phantom 3 with a Teryllium insert into play, mirroring the insert technology he used during his major victories.</p>
+
+            <h3>How do Koepka's 2026 PGA Tour stats compare?</h3>
+            <p>Koepka ranks 8th on Tour in Strokes Gained: Approach the Green, but struggles at 116th in Strokes Gained: Putting.</p>
+          </div>
+
+          <h2>The Raw Take</h2>
+          <p>Koepka’s dilemma is the ultimate reality check for modern tour golf. Being the eighth-best iron player on the planet used to guarantee you a comfortable Sunday anywhere. In 2026, paired with the 116th-ranked putter and a bad hand in July, it leaves a five-time major champion grinding at Sedgefield just to secure a job for next season's Signature Events.</p>
+
+          <nav class="tag-row" aria-label="Article tags">
+            <a href="#">Brooks Koepka</a>
+            <a href="#">Wyndham Championship</a>
+            <a href="#">FedExCup Playoffs</a>
+            <a href="#">PGA Tour</a>
+          </nav>
         </div>
-      </div>
+      </article>"""
 
-      <figure class="lead-img">
-        <img src="/public/liv-golf-lead-investor.webp" alt="LIV Golf announcement">
-        <figcaption>LIV Golf announced a lead investor, but crucial details remain unknown. (Credit: LIV Golf)</figcaption>
-      </figure>
+# Using regex to replace the <article>...</article> section
+template = re.sub(r'<article>.*?</article>', new_article, template, flags=re.DOTALL)
 
-      <p class="standfirst">Scott O'Neil stood up at Trump National Bedminster on Wednesday morning, hours before LIV Golf New York, and announced that the league has a signed lead investor. Terms are expected to be finalized in September, with players set to become majority equity holders. But crucial details—namely who the investor is and how much money was committed—remain completely unannounced.</p>
+with open('/Users/adnan/Desktop/golf/news-2026-brooks-koepka-wyndham-putting-stat-injury.html', 'w') as f:
+    f.write(template)
 
-      <h2>Take the Announcement Seriously, But Read What It Says</h2>
-      <p>A term sheet signed by both parties and approved by a board is a real development. It is considerably more than "we're in talks," which is where this story sat a week ago. Something concrete happened.</p>
-
-      <p>But it is not a closed deal, and the two facts a person would most want — the name and the number — were both withheld.</p>
-
-      <p>Here's how quickly that becomes a problem. Bleacher Report headlined the announcement as LIV securing a "$250M investment." That figure is nowhere in O'Neil's statement. The Washington Post, CBS, Forbes, Front Office Sports, and Yahoo all reported explicitly that the sum was not disclosed. What Forbes noted was that previous reports had put O'Neil's fundraising target at $250–300 million; Front Office Sports said he'd previously talked about seeking as much as $350 million.</p>
-
-      <p>A month-old fundraising ambition became today's confirmed investment figure in a headline within hours.</p>
-
-      <p>If you read one thing about LIV Golf this week, make it this: nobody outside the room knows how much money is coming, and anyone publishing a hard number is quoting an old target.</p>
-
-      <h2>What I Got Wrong and What I Got Right</h2>
-      <p>I wrote a piece on Sunday arguing that almost the whole LIV financial story traced back to one man with an X account — Tom Hobbs, who runs the Flushing It accounts — plus a handful of anonymous sources, and that outlets downstream were adding nothing while dropping caveats.</p>
-
-      <p>Two things happened since.</p>
-
-      <p>Hobbs was right. The player-equity story was his, reported days before anyone confirmed it, and LIV has now confirmed it on the record with the CEO's name attached. I flagged it at the time as single-origin and unconfirmed, which was the correct call to make with the evidence available. It was also, as it turns out, true. That's worth saying out loud: "not yet confirmed" is not the same as "wrong," and a well-sourced independent reporter can beat every newsroom in the sport.</p>
-
-      <p>And the caveat-stripping happened again, in the same news cycle. A number that belonged to a sentence about what someone was seeking got promoted into a headline about what they'd got.</p>
-
-      <h2>The Bit That Actually Tells You Something</h2>
-      <p>Front Office Sports noticed something nobody else built on. O'Neil spent part of Wednesday's pro-am playing golf with David Orlofsky of AlixPartners, LIV's financial adviser; Bradley Robins of Ducera Partners, its investment banker; and Michael Chaisanguanthum, a managing director of asset management at UBS.</p>
-
-      <p>I'm not going to tell you what that means, because I don't know and neither does anyone else writing about it. AlixPartners is a restructuring firm. Ducera is running the raise. A UBS asset-management executive on the same fourball on announcement day is either a coincidence or it isn't.</p>
-
-      <p>That's a genuine detail, obtained by a reporter being physically present, which is the sort of reporting that has been in short supply in this story.</p>
-
-      <h2>What LIV 2.0 Actually Looks Like</h2>
-      <p>Underneath the announcement is the shape of the league that survives, and it's smaller:</p>
-
-      <ul>
-        <li><strong>10 events across five continents</strong>, down from 13–14 in recent seasons.</li>
-        <li><strong>Purses of around $10 million</strong>, down from $30 million this year.</li>
-      </ul>
-
-      <p>That is a two-thirds cut in prize money. No 2027 schedule has been finalised.</p>
-
-      <p>O'Neil also said there's interest from more than a dozen additional parties as potential minority investors, which he framed as a multi-partner model.</p>
-
-      <h2>What Still Hasn't Been Answered</h2>
-      <p><strong>Who owns what:</strong> "Majority equity holders" is a phrase, not a cap table. Which players? What percentage? On what terms? And critically — what happens to the money LIV reportedly still owes players, Jon Rahm included, in nine figures? Swapping debt for stock is a very different proposition from receiving stock on top of being paid.</p>
-
-      <p><strong>Whether bankruptcy is off the table:</strong> Nothing on Wednesday withdrew the reporting that a filing has been under consideration to restructure debt. A company can take new investment and restructure at the same time. Those aren't opposites.</p>
-
-      <p><strong>Whether the Michigan team championship is happening:</strong> Many people expected Wednesday's press conference to be its cancellation. It wasn't. But nothing was said confirming it either, and a team captain publicly put it at around five per cent last week. Three events remain on the published schedule; that's a schedule, not a guarantee.</p>
-
-      <h2>What This Means If You Just Like Golf</h2>
-      <p>Nothing changes this month. There's golf at Bedminster from Thursday. Whatever happens to the corporate structure, DeChambeau and the rest are teeing off.</p>
-
-      <p>Player ownership is genuinely interesting, if it's real. Athletes owning the majority of the league they play in is unusual, and it's the one part of this that could outlast LIV itself as an idea. Whether it turns out to be ownership or a way of converting an unpayable debt into paper is the question, and we won't know until the terms are published.</p>
-
-      <p>And smaller purses might not be the disaster it sounds. Thirty million dollars per event with no cut was always the least sporting thing about LIV. Ten million and a league the players own is, on paper, closer to an actual sports league than a very expensive exhibition.</p>
-
-      <div class="faq-section" style="background:var(--white); border:2px solid var(--ink); padding:24px; margin:32px 0;">
-        <h2 style="margin-top:0;">Frequently Asked Questions</h2>
-
-        <h3 style="font-size:18px; margin-top:16px;">Has LIV Golf been saved?</h3>
-        <p>LIV Golf announced a signed, board-approved term sheet with a lead investor, targeting a September transaction. While a significant step, it is not a closed deal, and neither the investor's name nor the investment amount was disclosed.</p>
-
-        <h3 style="font-size:18px; margin-top:16px;">Who is investing in LIV Golf?</h3>
-        <p>The identity of the lead investor has not been disclosed. CEO Scott O'Neil declined to name the party, adding that over a dozen other groups have expressed interest as potential minority partners.</p>
-
-        <h3 style="font-size:18px; margin-top:16px;">How much money has LIV Golf secured?</h3>
-        <p>The sum has not been disclosed. Headline figures referencing $250 million or $350 million refer to previously reported fundraising targets rather than confirmed investment commitments.</p>
-
-        <h3 style="font-size:18px; margin-top:16px;">Will LIV Golf players own the league?</h3>
-        <p>LIV stated that players will become majority equity holders. However, specific details regarding equity distribution, player eligibility, and how this relates to existing contractual debts remain unannounced.</p>
-
-        <h3 style="font-size:18px; margin-top:16px;">What will LIV Golf look like in 2027?</h3>
-        <p>LIV 2.0 is expected to feature 10 events across five continents with purses reduced to approximately $10 million per tournament, down from $30 million in 2026.</p>
-
-        <h3 style="font-size:18px; margin-top:16px;">Is LIV Golf still facing bankruptcy?</h3>
-        <p>Wednesday's announcement did not refute earlier reports regarding potential debt restructuring or filing options. Securing new investment and executing debt restructuring can occur simultaneously.</p>
-      </div>
-
-      <h2>The Raw Take</h2>
-      <p>The most honest sentence anyone produced about all this came from Front Office Sports, whose headline noted that LIV had signed a lead investor but big questions remain.</p>
-
-      <p>That's the story. A real step, taken by a real company, with the two numbers that would let you judge it left out. Golf will find out in September whether any of this was real. Until then, the only thing anybody actually knows is that somebody signed something.</p>
-    </article>"""
-
-html = html[:article_start] + new_article + html[article_end:]
-
-with open("news-2026-liv-golf-secures-lead-investor.html", "w", encoding="utf-8") as f:
-    f.write(html)
-
+print("Article generated.")

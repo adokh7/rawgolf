@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 08 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Eighth in Iron Play, 116th in Putting: The Brutal Math Behind Brooks Koepka&#x27;s Wyndham Stand</title>
+      <link>https://www.golfraw.com/news-2026-brooks-koepka-wyndham-putting-stat-injury</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-brooks-koepka-wyndham-putting-stat-injury</guid>
+      <pubDate>Sun, 09 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Koepka is 8th on Tour in approach play and 116th in putting. He withdrew from Detroit with a hand injury. Now he needs a massive week at Sedgefield.</description>
+      <enclosure url="https://www.golfraw.com/public/brooks-koepka-wyndham-putting-pga-tour.webp" type="image/webp"/>
+    </item>
     <item>
       <title>DeChambeau Says He&#x27;d Play &quot;Wherever They&#x27;ll Let Me.&quot; The Man Who Decides Says No.</title>
       <link>https://www.golfraw.com/news-2026-bryson-dechambeau-pga-tour-return</link>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>Follow the 2026 PGA Tour with the latest schedule, official leaderboard links, FedExCup rankings and Australian TV and streaming information.</description>
       <enclosure url="https://www.golfraw.com/public/pga-tour-australia-guide-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Schauffele on Koivun: &#x27;It Makes Me Want to Work Harder&#x27;</title>
-      <link>https://www.golfraw.com/news-2026-xander-schauffele-jackson-koivun-reaction</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-xander-schauffele-jackson-koivun-reaction</guid>
-      <pubDate>Wed, 29 Jul 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Schauffele called him a world-beater in Detroit on Tuesday. Scheffler had said something almost identical two days earlier. Nobody&#x27;s put them together.</description>
-      <enclosure url="https://www.golfraw.com/public/xander-schauffele-jackson-koivun-reaction-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
