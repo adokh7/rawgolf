@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 09 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>One Player In, One Out. The Rest Ran Out of Season.</title>
+      <link>https://www.golfraw.com/news-2026-wyndham-championship-brennan-fedexcup-bubble-resolution</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-wyndham-championship-brennan-fedexcup-bubble-resolution</guid>
+      <pubDate>Mon, 10 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Michael Brennan won and jumped to 47th. Steven Fisk missed the cut and fell to 71st. Koepka, Day, Bradley and Finau are all out. The final FedExCup 70.</description>
+      <enclosure url="https://www.golfraw.com/public/michael-brennan-wyndham-championship-2026.webp" type="image/webp"/>
+    </item>
     <item>
       <title>At 53, Lee Westwood Says He&#x27;s Playing a Different Golf Course</title>
       <link>https://www.golfraw.com/news-2026-lee-westwood-liv-golf-bedminster-different-course</link>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>Nicklaus earned $5.73m across 73 PGA Tour wins. Jackson Koivun banked $1.58m in one afternoon last Sunday. The maths is genuinely absurd.</description>
       <enclosure url="https://www.golfraw.com/public/jack-nicklaus-career-earnings-vs-modern-pga-tour.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Haeran Ryu Opens With a 66 in Pursuit of Third Straight Major</title>
-      <link>https://www.golfraw.com/news-2026-haeran-ryu-aig-womens-open</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-haeran-ryu-aig-womens-open</guid>
-      <pubDate>Thu, 30 Jul 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Haeran Ryu shot a 5-under 66 at Royal Lytham &amp; St Annes in Round 1 of the 2026 AIG Women&#x27;s Open, staying two shots off Jeeno Thitikul&#x27;s lead.</description>
-      <enclosure url="https://www.golfraw.com/public/haeran-ryu-aig-womens-open-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
