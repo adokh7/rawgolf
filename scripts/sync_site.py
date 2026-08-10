@@ -25,8 +25,14 @@ NEWS_GRID_PAGES = {'news.html', 'liv-golf.html'}
 # Pages that use the guide-grid card format (a.guide-card)
 GUIDE_GRID_PAGES = {'pga-tour.html', 'guides.html', 'tournaments.html'}
 
+# Every publishable root-level non-article page. Keeping these here ensures the
+# sitemap agrees with the indexable canonicals applied by fix_seo_audit.py.
+# article-template.html is intentionally omitted because it is a development
+# scaffold, not a public destination.
 STATIC = ['/', '/news', '/guides', '/liv-golf', '/pga-tour', '/tournaments',
-          '/vault', '/ratings', '/tools', '/analysis', '/about', '/contact']
+          '/vault', '/ratings', '/tools', '/analysis', '/about', '/contact',
+          '/corrections', '/full-board', '/manifesto', '/past-issues',
+          '/privacy', '/ratings-manual', '/search', '/terms', '/the-card']
 
 # ---------------------------------------------------------------------------
 # Helpers
