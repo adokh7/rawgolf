@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>The Winning Team Finished Six Over Par</title>
+      <link>https://www.golfraw.com/news-2026-liv-golf-bedminster-crushers-six-over-par</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-bedminster-crushers-six-over-par</guid>
+      <pubDate>Mon, 10 Aug 2026 09:00:00 +0000</pubDate>
+      <category>LIV GOLF</category>
+      <description>Crushers GC won LIV New York at six over — the highest winning team score in league history. Niemann took the individual title wire to wire at 16 under.</description>
+      <enclosure url="https://www.golfraw.com/public/joaquin-niemann-liv-bedminster-win-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>One Player In, One Out. The Rest Ran Out of Season.</title>
       <link>https://www.golfraw.com/news-2026-wyndham-championship-brennan-fedexcup-bubble-resolution</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-wyndham-championship-brennan-fedexcup-bubble-resolution</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>Jeeno Thitikul opened with a bogey-free 64 to lead the AIG Women’s Open, while Charley Hull and Lottie Woad shot contrasting two-under 69s.</description>
       <enclosure url="https://www.golfraw.com/public/jeeno-thitikul-aig-womens-open-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Jack Nicklaus Won 73 Times for Less Than 4 Modern Wins</title>
-      <link>https://www.golfraw.com/news-2026-jack-nicklaus-career-earnings-vs-modern-pga-tour</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-jack-nicklaus-career-earnings-vs-modern-pga-tour</guid>
-      <pubDate>Thu, 30 Jul 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Nicklaus earned $5.73m across 73 PGA Tour wins. Jackson Koivun banked $1.58m in one afternoon last Sunday. The maths is genuinely absurd.</description>
-      <enclosure url="https://www.golfraw.com/public/jack-nicklaus-career-earnings-vs-modern-pga-tour.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
