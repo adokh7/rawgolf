@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>He Shot 59 and It Only Got Him Into a Playoff</title>
+      <link>https://www.golfraw.com/news-2026-pinnacle-bank-championship-frankie-harris-59</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-pinnacle-bank-championship-frankie-harris-59</guid>
+      <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
+      <category>KORN FERRY TOUR</category>
+      <description>Frankie Harris shot a 12-under 59 to win the Pinnacle Bank Championship — but Alistair Docherty birdied his last three to force extra holes.</description>
+      <enclosure url="https://www.golfraw.com/public/frankie-harris-59-pinnacle-bank-championship-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Montgomerie Has Been Right About This Since 2020</title>
       <link>https://www.golfraw.com/news-2026-golf-ball-rollback-paused-colin-montgomerie</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-golf-ball-rollback-paused-colin-montgomerie</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>Viktor Hovland, Kristoffer Reitan and the Højgaard twins are launching The Viking, a new Denmark–Norway team golf event. Here is what is confirmed for 2027.</description>
       <enclosure url="https://www.golfraw.com/public/the-viking-golf-event-denmark-norway-2027.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Trey Mullinax Banned 6 Months. That&#x27;s Not the Punishment.</title>
-      <link>https://www.golfraw.com/news-2026-trey-mullinax-pga-tour-suspension</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-trey-mullinax-pga-tour-suspension</guid>
-      <pubDate>Thu, 30 Jul 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>He tested positive, accepted a six-month ban, and hasn&#x27;t played since April. So the suspension costs him almost no golf. It costs him his card.</description>
-      <enclosure url="https://www.golfraw.com/public/trey-mullinax-pga-tour-suspension-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
