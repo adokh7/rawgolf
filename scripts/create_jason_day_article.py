@@ -8,8 +8,8 @@ target_file = "news-2026-jason-day-wyndham-streak-ended.html"
 with open(base_file, "r") as f:
     soup = BeautifulSoup(f.read(), "html.parser")
 
-title_str = "18 Straight Playoffs. Jason Day's Streak Just Ended. | GolfRaw"
-desc_str = "Jason Day missed the cut at Sedgefield and ended 18 consecutive FedExCup Playoffs appearances. Bradley and Finau survived on the number. Who needs what now."
+title_str = "19 Straight Playoffs. Jason Day's Streak Just Ended. | GolfRaw"
+desc_str = "Jason Day missed the cut at Sedgefield and ended 19 consecutive FedExCup Playoffs appearances. Bradley and Finau survived on the number. Who needs what now."
 url = "https://www.golfraw.com/news-2026-jason-day-wyndham-streak-ended"
 img_url = "https://www.golfraw.com/public/jason-day-wyndham-streak-ended.webp"
 date_pub = "2026-08-08T08:00:00+02:00"
@@ -54,7 +54,7 @@ if head:
     h1 = head.find("h1")
     if h1: h1.string = "Jason Day's Streak Ended on a Friday in Greensboro"
     sf = head.find("p", class_="standfirst")
-    if sf: sf.string = "Jason Day missed the cut at Sedgefield and ended 18 consecutive FedExCup Playoffs appearances. Bradley and Finau survived on the number. Who needs what now."
+    if sf: sf.string = "Jason Day missed the cut at Sedgefield and ended 19 consecutive FedExCup Playoffs appearances. Bradley and Finau survived on the number. Who needs what now."
     byline = head.find("div", class_="byline")
     if byline:
         # replace second span with PUBLISHED
@@ -121,7 +121,7 @@ body_content = """
   <h2 style="margin-top:0;">Frequently Asked Questions</h2>
 
   <h3 style="font-size:18px; margin-top:16px;">Did Jason Day make the cut at the Wyndham Championship?</h3>
-  <p>No. A second-round 73 left him at four over, and the cut fell at three under. It ends his streak of 18 consecutive FedExCup Playoffs appearances, in his 19th season.</p>
+  <p>No. A second-round 73 left him at four over, and the cut fell at three under. It ended his streak of 19 consecutive FedExCup Playoff seasons.</p>
 
   <h3 style="font-size:18px; margin-top:16px;">Did Keegan Bradley make the cut?</h3>
   <p>Yes, exactly on the number at three under, after playing his last six holes in three under. He's 73rd in the FedExCup and needs at least a two-way tie for 38th to reach Memphis.</p>

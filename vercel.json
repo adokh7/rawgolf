@@ -5,6 +5,11 @@
             "source": "/what-beginners-actually-search",
             "destination": "/news-2026-what-beginners-actually-search",
             "permanent": true
+        },
+        {
+            "source": "/news-2026-lee-westwood-liv-golf-bedminster-different-course",
+            "destination": "/guides-playing-golf-in-your-fifties-distance-loss",
+            "permanent": true
         }
     ],
     "rewrites": [

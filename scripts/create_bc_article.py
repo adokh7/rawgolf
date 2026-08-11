@@ -111,7 +111,7 @@ body_content = """
   <h2>What LIV 2.0 Is Supposed to Be</h2>
   <p>Ten events. Five in the United States, positioned in the weeks before the majors, and five overseas. Down from fourteen this season — or from what was meant to be fourteen, since New Orleans was cancelled and the Michigan team championship's status remains genuinely unresolved with three weeks to go and no build-out reported at the venue.</p>
   
-  <p>Purses around $10 million, against something between $25 and $30 million now, depending on which reported figure you use. Nobody has published one I can reconcile.</p>
+  <p>Purses around $10 million, against the $20 million individual purse used in 2026. That would be a cut of about half.</p>
   
   <h2>Where This Leaves Things</h2>
   <ul>

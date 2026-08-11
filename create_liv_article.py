@@ -78,9 +78,9 @@ article_html = """
 <h2>What LIV 2.0 Actually Looks Like</h2>
 <p>The financial realities of the surviving league are coming into sharper focus. Multiple reports confirm that purses are facing a severe haircut.</p>
 
-<p>While reports differ slightly on the exact starting point (some citing $30 million total, others separating $20 million individual plus $5 million team), the consensus is clear: purses of roughly $25–30 million are falling to around $10 million per event.</p>
+<p>The 2026 individual purse was $20 million, with $4 million paid to the winner. The proposed $10 million purse for 2027 would cut that amount by about half.</p>
 
-<p>That is roughly a two-thirds cut in prize money for the players holding the new equity.</p>
+<p>That is a cut of about half in prize money for the players holding the new equity.</p>
 
 <h2>Michigan Cancelled, and a Lesson from 2022</h2>
 <p>LIV Golf New York will serve as the penultimate individual event of the season, but the finale is in jeopardy. Multiple outlets now describe the Michigan team championship as reportedly cancelled, noting that preparations at the venue never actually started. While not officially confirmed dead by LIV, the weight of reporting has shifted heavily toward cancellation.</p>

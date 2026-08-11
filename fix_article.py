@@ -125,10 +125,10 @@ article_block = """<article>
 
           <ul>
             <li><strong>10 events across five continents</strong>, down from 13–14 in recent seasons.</li>
-            <li><strong>Purses of around $10 million</strong>, down from $30 million this year.</li>
+            <li><strong>Purses of around $10 million</strong>, down from $20 million in 2026.</li>
           </ul>
 
-          <p>That is a two-thirds cut in prize money. No 2027 schedule has been finalised.</p>
+          <p>That is a cut of about half in prize money. No 2027 schedule has been finalised.</p>
 
           <p>O'Neil also said there's interest from more than a dozen additional parties as potential minority investors, which he framed as a multi-partner model.</p>
 
@@ -144,7 +144,7 @@ article_block = """<article>
 
           <p>Player ownership is genuinely interesting, if it's real. Athletes owning the majority of the league they play in is unusual, and it's the one part of this that could outlast LIV itself as an idea. Whether it turns out to be ownership or a way of converting an unpayable debt into paper is the question, and we won't know until the terms are published.</p>
 
-          <p>And smaller purses might not be the disaster it sounds. Thirty million dollars per event with no cut was always the least sporting thing about LIV. Ten million and a league the players own is, on paper, closer to an actual sports league than a very expensive exhibition.</p>
+          <p>And smaller purses might not be the disaster it sounds. Twenty million dollars per event with no cut was always the least sporting thing about LIV. Ten million and a league the players own is, on paper, closer to an actual sports league than a very expensive exhibition.</p>
 
           <div class="faq-section" style="background:var(--white); border:2px solid var(--ink); padding:24px; margin:32px 0;">
             <h2 style="margin-top:0;">Frequently Asked Questions</h2>
@@ -162,7 +162,7 @@ article_block = """<article>
             <p>LIV stated that players will become majority equity holders. However, specific details regarding equity distribution, player eligibility, and how this relates to existing contractual debts remain unannounced.</p>
 
             <h3 style="font-size:18px; margin-top:16px;">What will LIV Golf look like in 2027?</h3>
-            <p>LIV 2.0 is expected to feature 10 events across five continents with purses reduced to approximately $10 million per tournament, down from $30 million in 2026.</p>
+            <p>LIV 2.0 is expected to feature 10 events across five continents with purses reduced to approximately $10 million per tournament, down from $20 million in 2026.</p>
 
             <h3 style="font-size:18px; margin-top:16px;">Is LIV Golf still facing bankruptcy?</h3>
             <p>Wednesday's announcement did not refute earlier reports regarding potential debt restructuring or filing options. Securing new investment and executing debt restructuring can occur simultaneously.</p>
@@ -189,4 +189,3 @@ final_html = head_start + seo_block + head_to_main + article_block + "\n\n      
 
 with open("news-2026-liv-golf-secures-lead-investor.html", "w", encoding="utf-8") as f:
     f.write(final_html)
-

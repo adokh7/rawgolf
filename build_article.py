@@ -121,7 +121,7 @@ article_content = """<article>
           <h2>The Business Behind the Departure</h2>
           <p>The two exits stem from completely separate financial shifts arriving four weeks apart:</p>
 
-          <p>The Rocket Classic ended over sponsorship pricing tiers. The PGA Tour is splitting into a two-tiered structure in 2028, and Rocket declined the rising price tag. Conversely, the LIV event faltered as league funding underwent structural changes in the spring, leading to purse reductions and a condensed 2027 schedule cut from 14 events down to 10.</p>
+          <p>The Rocket Classic ended over sponsorship pricing tiers. The PGA Tour is splitting into a two-tiered structure in 2028, and Rocket declined the rising price tag. Conversely, the LIV event faltered as league funding underwent structural changes in the spring, leading to purse reductions and a condensed 2027 schedule after 12 events were played in 2026.</p>
 
           <div class="faq-section">
             <h2>Frequently Asked Questions</h2>
