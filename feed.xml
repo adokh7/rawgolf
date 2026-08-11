@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>A Home Solheim Cup, and the Dutch Star Can&#x27;t Play</title>
+      <link>https://www.golfraw.com/news-2026-solheim-cup-dewi-weber-dutch-eligibility-let</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-solheim-cup-dewi-weber-dutch-eligibility-let</guid>
+      <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
+      <category>SOLHEIM CUP</category>
+      <description>Dewi Weber is ranked ahead of three of Europe&#x27;s captain&#x27;s picks. She can&#x27;t be selected for the Solheim Cup in her own country because of an LET rule.</description>
+      <enclosure url="https://www.golfraw.com/public/dewi-weber-solheim-cup-2026-eligibility.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>He Won at 25 Under. This Week Is the Opposite.</title>
       <link>https://www.golfraw.com/news-2026-jackson-koivun-tpc-southwind-fedex-st-jude</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-jackson-koivun-tpc-southwind-fedex-st-jude</guid>
@@ -359,15 +368,6 @@
       <category>GUIDES</category>
       <description>A comprehensive guide to golf&#x27;s four majors: The Masters, PGA Championship, U.S. Open, and The Open Championship. Includes 20-year winner tables and history.</description>
       <enclosure url="https://www.golfraw.com/public/golf-majors-guide.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>LIV Golf&#x27;s Bankruptcy Story Has One Source</title>
-      <link>https://www.golfraw.com/news-2026-liv-golf-bankruptcy-what-is-confirmed</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-bankruptcy-what-is-confirmed</guid>
-      <pubDate>Sun, 02 Aug 2026 09:00:00 +0000</pubDate>
-      <category>LIV GOLF</category>
-      <description>Six outlets reported LIV Golf may go bankrupt. All trace to one X account. Updated 4 Aug with layoff reports, term sheets, and what&#x27;s still unconfirmed.</description>
-      <enclosure url="https://www.golfraw.com/public/liv-golf-bankruptcy-update-august-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
