@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 10 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>The Tournament the Tour Demoted Is the Hardest One</title>
+      <link>https://www.golfraw.com/news-2026-fedex-st-jude-championship-tpc-southwind-demotion</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-fedex-st-jude-championship-tpc-southwind-demotion</guid>
+      <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Detroit gave up three 61s. Sedgefield gave up 36 rounds under 66. TPC Southwind is the same par and the hardest of the three — and it&#x27;s being relegated.</description>
+      <enclosure url="https://www.golfraw.com/public/tpc-southwind-fedex-st-jude-championship-2026.webp" type="image/webp"/>
+    </item>
     <item>
       <title>The Winning Team Finished Six Over Par</title>
       <link>https://www.golfraw.com/news-2026-liv-golf-bedminster-crushers-six-over-par</link>
@@ -359,15 +368,6 @@
       <category>LIV GOLF</category>
       <description>Written commitments aren&#x27;t money. And at LIV&#x27;s own burn rate, $250 million covers about two and a half months. The report, and the arithmetic nobody ran.</description>
       <enclosure url="https://www.golfraw.com/public/liv-golf-250m-lifeline-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Jeeno Thitikul Leads AIG Women’s Open After 64</title>
-      <link>https://www.golfraw.com/news-2026-jeeno-thitikul-aig-womens-open</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-jeeno-thitikul-aig-womens-open</guid>
-      <pubDate>Thu, 30 Jul 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Jeeno Thitikul opened with a bogey-free 64 to lead the AIG Women’s Open, while Charley Hull and Lottie Woad shot contrasting two-under 69s.</description>
-      <enclosure url="https://www.golfraw.com/public/jeeno-thitikul-aig-womens-open-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
