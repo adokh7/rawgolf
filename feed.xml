@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Brooks Koepka Gave Two Opposite Verdicts on His Season in the Same Interview</title>
+      <link>https://www.golfraw.com/news-2026-brooks-koepka-pga-tour-return-season-verdict</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-brooks-koepka-pga-tour-return-season-verdict</guid>
+      <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Koepka called his season pathetic and rated his happiness 10 out of 10, minutes apart. What his return from LIV actually cost, and what went wrong.</description>
+      <enclosure url="https://www.golfraw.com/public/brooks-koepka-wyndham-championship-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>A Home Solheim Cup, and the Dutch Star Can&#x27;t Play</title>
       <link>https://www.golfraw.com/news-2026-solheim-cup-dewi-weber-dutch-eligibility-let</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-solheim-cup-dewi-weber-dutch-eligibility-let</guid>
@@ -359,15 +368,6 @@
       <category>LIV GOLF</category>
       <description>LIV Golf has reportedly terminated staff contracts with 30 days&#x27; notice as the Saudi-backed league faces bankruptcy speculation and fights for survival beyond 2026.</description>
       <enclosure url="https://www.golfraw.com/public/liv-golf-staff-terminations-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>The 4 Golf Majors Explained: Winners, Venues &amp; Prestige</title>
-      <link>https://www.golfraw.com/golf-majors-guide</link>
-      <guid isPermaLink="true">https://www.golfraw.com/golf-majors-guide</guid>
-      <pubDate>Tue, 04 Aug 2026 09:00:00 +0000</pubDate>
-      <category>GUIDES</category>
-      <description>A comprehensive guide to golf&#x27;s four majors: The Masters, PGA Championship, U.S. Open, and The Open Championship. Includes 20-year winner tables and history.</description>
-      <enclosure url="https://www.golfraw.com/public/golf-majors-guide.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
