@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>The Three Feet That Decide Whether You Three-Putt</title>
+      <link>https://www.golfraw.com/guides-the-three-feet-that-decide-whether-you-three-putt</link>
+      <guid isPermaLink="true">https://www.golfraw.com/guides-the-three-feet-that-decide-whether-you-three-putt</guid>
+      <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
+      <category>GUIDES</category>
+      <description>Tour players hole 99.42% from three feet and 70.98% from six. Everything about three-putting is which one you leave yourself.</description>
+      <enclosure url="https://www.golfraw.com/public/lag-putting-three-putt-avoidance-guide.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>The Tournament the Tour Demoted Is the Hardest One</title>
       <link>https://www.golfraw.com/news-2026-fedex-st-jude-championship-tpc-southwind-demotion</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-fedex-st-jude-championship-tpc-southwind-demotion</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>Nelly Korda shot a 2-over 73 in Round 1 of the 2026 AIG Women&#x27;s Open, leaving her nine shots off the lead as she chases the career Grand Slam.</description>
       <enclosure url="https://www.golfraw.com/public/nelly-korda-aig-womens-open-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>LIV&#x27;s $250m Lifeline Buys It About Ten Weeks</title>
-      <link>https://www.golfraw.com/news-2026-liv-golf-250m-investment-rescue</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-250m-investment-rescue</guid>
-      <pubDate>Thu, 30 Jul 2026 09:00:00 +0000</pubDate>
-      <category>LIV GOLF</category>
-      <description>Written commitments aren&#x27;t money. And at LIV&#x27;s own burn rate, $250 million covers about two and a half months. The report, and the arithmetic nobody ran.</description>
-      <enclosure url="https://www.golfraw.com/public/liv-golf-250m-lifeline-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
