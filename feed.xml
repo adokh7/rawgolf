@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 11 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>The Best Man in College Golf Gets a PGA Tour Card. The Best Woman Gets an Invitation.</title>
+      <link>https://www.golfraw.com/news-2026-megha-ganne-lpga-debut-inkster-award</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-megha-ganne-lpga-debut-inkster-award</guid>
+      <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+      <category>LPGA TOUR</category>
+      <description>Megha Ganne won the Inkster Award and makes her LPGA debut in Portland. Men&#x27;s college golf&#x27;s top finishers get Tour cards. Hers gets one sponsor invite.</description>
+      <enclosure url="https://www.golfraw.com/public/megha-ganne-lpga-debut-inkster-award-2026.webp" type="image/webp"/>
+    </item>
     <item>
       <title>Lexi Thompson Is Expecting a Daughter. She&#x27;s the Fourth Name in Two Years.</title>
       <link>https://www.golfraw.com/news-2026-lexi-thompson-pregnant-baby-daughter-lpga</link>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>Team Europe&#x27;s 2027 Ryder Cup qualifying schedule is confirmed, starting at the British Masters. Key dates, points structure, eligibility rules and what it means for Adare Manor.</description>
       <enclosure url="https://www.golfraw.com/public/ryder-cup-2027-qualifying-schedule.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Players Get Equity &quot;Instead of Cash,&quot; Says LIV CEO</title>
-      <link>https://www.golfraw.com/news-2026-liv-players-get-equity-instead-of-cash</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-players-get-equity-instead-of-cash</guid>
-      <pubDate>Tue, 04 Aug 2026 09:00:00 +0000</pubDate>
-      <category>LIV GOLF</category>
-      <description>LIV Golf says players will become majority owners. Its CEO then said the equity comes &quot;instead of cash.&quot; What that actually means for the league.</description>
-      <enclosure url="https://www.golfraw.com/public/liv-golf-equity-instead-of-cash.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
