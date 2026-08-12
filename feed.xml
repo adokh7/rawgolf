@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>ESPN Last Showed the Tour Championship in 2006. It&#x27;s Back the Year the Whole Thing Went Up in the Air.</title>
+      <link>https://www.golfraw.com/news-2026-espn-pga-tour-playoffs-coverage-fedex-st-jude</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-espn-pga-tour-playoffs-coverage-fedex-st-jude</guid>
+      <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Scheffler and McIlroy are paired for two rounds in ESPN&#x27;s morning window. ESPN hasn&#x27;t shown the Tour Championship since 2006 — the year before the FedExCup.</description>
+      <enclosure url="https://www.golfraw.com/public/espn-pga-tour-playoffs-fedex-st-jude-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>The Best Man in College Golf Gets a PGA Tour Card. The Best Woman Gets an Invitation.</title>
       <link>https://www.golfraw.com/news-2026-megha-ganne-lpga-debut-inkster-award</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-megha-ganne-lpga-debut-inkster-award</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>From 0.9-point Heartbreaks to pregnancy and broken wrists, here are 8 major stars missing the 2026 Solheim Cup at Bernardus Golf and why.</description>
       <enclosure url="https://www.golfraw.com/public/solheim-cup-2026-missing-players.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>2027 Ryder Cup Europe Qualifying Schedule Confirmed</title>
-      <link>https://www.golfraw.com/news-2026-ryder-cup-qualifying-schedule</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-ryder-cup-qualifying-schedule</guid>
-      <pubDate>Tue, 04 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Team Europe&#x27;s 2027 Ryder Cup qualifying schedule is confirmed, starting at the British Masters. Key dates, points structure, eligibility rules and what it means for Adare Manor.</description>
-      <enclosure url="https://www.golfraw.com/public/ryder-cup-2027-qualifying-schedule.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
