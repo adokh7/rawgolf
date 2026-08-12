@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>McIlroy Didn&#x27;t Need to Be in Memphis. He Mentioned Talking to the CEO.</title>
+      <link>https://www.golfraw.com/news-2026-rory-mcilroy-fedex-st-jude-ceo-brian-rolapp</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-rory-mcilroy-fedex-st-jude-ceo-brian-rolapp</guid>
+      <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>McIlroy is 12th in the FedExCup and safe either way. He skipped Memphis last year and drew criticism. This time he mentioned talking to the Tour&#x27;s new CEO.</description>
+      <enclosure url="https://www.golfraw.com/public/rory-mcilroy-fedex-st-jude-brian-rolapp-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>The Most Valuable Golf Search in America Gets 40 Hits a Month</title>
       <link>https://www.golfraw.com/guides-most-valuable-golf-search-cpc-data</link>
       <guid isPermaLink="true">https://www.golfraw.com/guides-most-valuable-golf-search-cpc-data</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>Jason Day and Keegan Bradley arrive at the 2026 Wyndham Championship on the FedExCup bubble. Explore odds, playoff scenarios and Sedgefield course trends before you bet.</description>
       <enclosure url="https://www.golfraw.com/public/wyndham-championship-odds-day-bradley.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Why Golfers Are Abandoning Texas Scrambles</title>
-      <link>https://www.golfraw.com/news-2026-texas-scramble-golf-survey</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-texas-scramble-golf-survey</guid>
-      <pubDate>Tue, 04 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Why are golfers turning their backs on Texas Scrambles? New survey data exposes handicap manipulation, unfair scoring, and the real reasons players are losing interest.</description>
-      <enclosure url="https://www.golfraw.com/public/texas-scramble-golf-survey.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
