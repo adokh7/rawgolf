@@ -5,18 +5,21 @@ the site: URL, title, excerpt, category, section, date, image and keywords.
 
 ## The one rule: edit `articles.json`, never `search.html`
 
-`sync_site.py` **regenerates these files wholesale** from `articles.json`:
+`sync_site.py` **regenerates these files wholesale or in marked sections** from
+`articles.json`:
 
 | File | Rebuilt from registry |
 | --- | --- |
+| `index.html` | marked 15-story homepage feed; newest first with priority crawl targets |
 | `news.html` | every article, newest first |
 | `guides.html`, `liv-golf.html`, `pga-tour.html`, `tournaments.html` | filtered by `section` |
 | `search.html` | the whole `ARTICLES` array |
 | `sitemap.xml` | every article + static pages |
 | `feed.xml` | newest 40 articles, with WebSub hub links |
 
-Anything you hand-edit in those six files is **destroyed on the next sync**,
-silently and with no error. Change the registry and re-run instead.
+Anything you hand-edit in a generated file (or the marked homepage feed) is
+**destroyed on the next sync**, silently and with no error. Change the registry
+and re-run instead.
 
 This is not hypothetical. Commit `485dff9` regenerated `search.html` from a
 registry that did not yet carry a `keywords` field, and wiped 63 hand-written
@@ -25,8 +28,9 @@ found later by digging through git history. They were recovered from commit
 `de36ddf` — but only because the old file was still in history. Do not rely on
 that a second time.
 
-Safe to edit by hand: the article HTML files themselves, `index.html`,
-`analysis.html`, `vault.html`, `ratings.html`, and everything under `public/`.
+Safe to edit by hand: the article HTML files themselves, the non-generated
+homepage regions, `analysis.html`, `vault.html`, `ratings.html`, and everything
+under `public/`.
 
 ### This table is enforced, not just written down
 

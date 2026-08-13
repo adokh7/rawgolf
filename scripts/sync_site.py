@@ -4,8 +4,9 @@
   python3 scripts/sync_site.py --check    # report drift, exit 1 if any (use in CI)
   python3 scripts/sync_site.py            # rebuild all grids, search, and sitemap
 
-Regenerates: news.html, liv-golf.html, pga-tour.html, guides.html,
-             tournaments.html, search.html grids, and sitemap.xml.
+Regenerates: the latest-article feed in index.html; news.html, liv-golf.html,
+             pga-tour.html, guides.html, tournaments.html, search.html grids;
+             sitemap.xml; and feed.xml.
 """
 import sys, os, re, json, html as html_mod, hashlib
 
@@ -24,6 +25,17 @@ NEWS_GRID_PAGES = {'news.html', 'liv-golf.html'}
 
 # Pages that use the guide-grid card format (a.guide-card)
 GUIDE_GRID_PAGES = {'pga-tour.html', 'guides.html', 'tournaments.html'}
+
+# Keep the homepage useful as a crawl hub without turning it into a complete
+# archive. Priority URLs are guaranteed a slot even when they fall outside the
+# newest 15 by date (for example, a newly promoted evergreen guide).
+HOMEPAGE_ARTICLE_LIMIT = 15
+HOMEPAGE_PRIORITY_URLS = (
+    '/news-2026-7-wood-vs-3-iron-australian-golfers',
+    '/news-2026-golf-club-distances-guide',
+)
+HOMEPAGE_START = '<!-- START HOMEPAGE ARTICLE FEED -->'
+HOMEPAGE_END = '<!-- END HOMEPAGE ARTICLE FEED -->'
 
 # Every publishable root-level non-article page. Keeping these here ensures the
 # sitemap agrees with the indexable canonicals applied by fix_seo_audit.py.
@@ -128,6 +140,32 @@ def search_entry(a):
             f'author:"GOLFRAW Editorial", '
             f'x:"{js_esc(get_excerpt(a))}", '
             f'k:"{js_esc(get_keywords(a))}"}}')
+
+
+def homepage_articles(articles):
+    """Return 15 newest articles while guaranteeing priority crawl targets.
+
+    Sorting by normalized date avoids the mixed human/ISO date formats that
+    previously scrambled the sitemap. Priority stories replace the oldest
+    non-priority cards, so the visible feed remains capped at 15.
+    """
+    ordered = sorted(articles, key=lambda a: iso_date(get_date(a)), reverse=True)
+    selected = ordered[:HOMEPAGE_ARTICLE_LIMIT]
+    by_url = {get_url(a): a for a in articles}
+
+    for priority_url in HOMEPAGE_PRIORITY_URLS:
+        priority = by_url.get(priority_url)
+        if not priority or priority in selected:
+            continue
+        replace_at = next(
+            (i for i in range(len(selected) - 1, -1, -1)
+             if get_url(selected[i]) not in HOMEPAGE_PRIORITY_URLS),
+            None,
+        )
+        if replace_at is not None:
+            selected[replace_at] = priority
+
+    return selected
 
 
 # ---------------------------------------------------------------------------
@@ -257,6 +295,24 @@ def inject_search_index(articles):
 
     write_if_changed(path, src[:start_idx] + new_block + src[end_idx:])
     return True
+
+
+def inject_homepage_feed(articles):
+    """Replace the marked homepage feed with direct, crawlable HTML anchors."""
+    path = os.path.join(ROOT, 'index.html')
+    src = open(path, encoding='utf-8').read()
+    if HOMEPAGE_START not in src or HOMEPAGE_END not in src:
+        print('  WARNING: homepage article-feed markers are missing')
+        return False
+
+    start = src.index(HOMEPAGE_START)
+    end = src.index(HOMEPAGE_END, start) + len(HOMEPAGE_END)
+    cards = '\n'.join(news_card(a) for a in homepage_articles(articles))
+    block = (f'{HOMEPAGE_START}\n'
+             f'      <div class="news-grid reveal">\n{cards}\n'
+             f'      </div>\n'
+             f'      {HOMEPAGE_END}')
+    return write_if_changed(path, src[:start] + block + src[end:])
 
 
 # ---------------------------------------------------------------------------
@@ -439,7 +495,7 @@ def article_fingerprint(article):
     return digest.hexdigest()
 
 
-def record_changed(arts):
+def record_changed(arts, changed_hubs=()):
     """Diff URLs and content fingerprints, then queue new or changed pages.
 
     Older state files contain only ``urls``. That format is migrated without
@@ -465,7 +521,7 @@ def record_changed(arts):
         url for url in current_set & seen
         if previous_fingerprints and previous_fingerprints.get(url) != fingerprints[url]
     }
-    changed = sorted(new | changed_existing)
+    changed = sorted(new | changed_existing | set(changed_hubs))
 
     first_run = not seen
     if first_run:
@@ -495,10 +551,10 @@ README = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'README.md')
 def generated_files():
     """Every file this script rewrites, derived from the real constants.
 
-    Anything listed here is regenerated wholesale from articles.json, so a
-    hand-edit to it is destroyed on the next sync.
+    Anything listed here is regenerated in whole or in part from articles.json,
+    so hand-edits to generated regions are destroyed on the next sync.
     """
-    return {'news.html', 'search.html', 'sitemap.xml', 'feed.xml'} | set(SECTION_PAGE.values())
+    return {'index.html', 'news.html', 'search.html', 'sitemap.xml', 'feed.xml'} | set(SECTION_PAGE.values())
 
 
 def documented_files(text):
@@ -559,6 +615,43 @@ def validate(arts):
     return problems
 
 
+def direct_anchor_urls(page_file):
+    """Return literal href values from server-rendered anchor elements."""
+    path = os.path.join(ROOT, page_file)
+    try:
+        src = open(path, encoding='utf-8').read()
+    except OSError:
+        return set()
+    return set(re.findall(r'<a\b[^>]*\bhref=["\']([^"\']+)["\']', src, re.I))
+
+
+def validate_internal_links(arts):
+    """Require complete direct-anchor coverage on homepage and category hubs."""
+    problems = []
+    registry_urls = {get_url(a) for a in arts}
+    for priority_url in HOMEPAGE_PRIORITY_URLS:
+        if priority_url not in registry_urls:
+            problems.append(('homepage priority URL absent from registry', priority_url))
+
+    homepage_urls = direct_anchor_urls('index.html')
+    selected = homepage_articles(arts)
+    for article in selected:
+        if get_url(article) not in homepage_urls:
+            problems.append(('homepage article link missing', get_url(article)))
+
+    news_urls = direct_anchor_urls('news.html')
+    for article in arts:
+        if get_url(article) not in news_urls:
+            problems.append(('news hub article link missing', get_url(article)))
+
+    for section, page_file in SECTION_PAGE.items():
+        hub_urls = direct_anchor_urls(page_file)
+        for article in arts:
+            if get_section(article) == section and get_url(article) not in hub_urls:
+                problems.append((f'{page_file} article link missing', get_url(article)))
+    return problems
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -568,7 +661,11 @@ if __name__ == '__main__':
     print(f"registry: {len(arts)} articles")
 
     # Validate files exist, and that README.md still describes reality
+    # A normal sync repairs generated-link drift before checking it below.
+    # --check is read-only, so it must include internal-link drift up front.
     probs = validate(arts) + check_readme()
+    if '--check' in sys.argv:
+        probs += validate_internal_links(arts)
     if probs:
         print(f"VALIDATION: {len(probs)} problem(s)")
         for kind, what in probs[:40]:
@@ -581,6 +678,10 @@ if __name__ == '__main__':
 
     # ---- Rebuild all grids ----
     print()
+
+    # 0. index.html — 15 newest direct links, with priority crawl targets
+    homepage_changed = inject_homepage_feed(arts)
+    print(f"  index.html homepage feed rebuilt: {len(homepage_articles(arts))} articles")
 
     # 1. news.html — ALL articles
     if inject_news_grid('news.html', arts):
@@ -613,7 +714,7 @@ if __name__ == '__main__':
     #    the deploy, so a ping now would make the hub fetch the *old* live
     #    feed and find nothing new. The changed URLs are recorded instead, and
     #    `python3 scripts/fast_index.py` sends them once the deploy is live.
-    changed, first_run = record_changed(arts)
+    changed, first_run = record_changed(arts, ['/'] if homepage_changed else [])
     if first_run:
         print("  fast-index: baseline recorded (no ping on first run)")
     elif changed:
@@ -624,6 +725,14 @@ if __name__ == '__main__':
             print(f"      ... +{len(changed)-5} more")
     else:
         print("  fast-index: no new URLs")
+
+    link_problems = validate_internal_links(arts)
+    if link_problems:
+        print(f"  INTERNAL LINK VALIDATION: {len(link_problems)} problem(s)")
+        for kind, what in link_problems[:40]:
+            print(f"      [{kind}] {what}")
+        sys.exit(1)
+    print("  internal links: homepage and all category hubs complete")
 
     if '--notify' in sys.argv or os.environ.get('FAST_INDEX') == '1':
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
