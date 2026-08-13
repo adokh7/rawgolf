@@ -1,6 +1,8 @@
 {
+    "$schema": "https://openapi.vercel.sh/vercel.json",
     "outputDirectory": ".",
     "cleanUrls": true,
+    "trailingSlash": false,
     "redirects": [
         {
             "source": "/what-beginners-actually-search",
@@ -11,12 +13,6 @@
             "source": "/news-2026-lee-westwood-liv-golf-bedminster-different-course",
             "destination": "/guides-playing-golf-in-your-fifties-distance-loss",
             "permanent": true
-        }
-    ],
-    "rewrites": [
-        {
-            "source": "/((?!.*\\.).*)",
-            "destination": "/index.html"
         }
     ]
 }

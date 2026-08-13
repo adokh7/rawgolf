@@ -7,7 +7,7 @@
 Regenerates: news.html, liv-golf.html, pga-tour.html, guides.html,
              tournaments.html, search.html grids, and sitemap.xml.
 """
-import sys, os, re, json, html as html_mod
+import sys, os, re, json, html as html_mod, hashlib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -411,35 +411,78 @@ SEEN_PATH    = '.fast-index-seen.json'
 PENDING_PATH = '.fast-index-pending.json'
 
 
-def record_changed(arts):
-    """Diff this sync's URLs against the last one and stash what is new.
+def article_fingerprint(article):
+    """Hash registry metadata plus the published HTML source for change detection."""
+    url = get_url(article)
+    slug = article.get('slug') or url.lstrip('/')
+    page_path = os.path.join(ROOT, slug + '.html')
+    stable = {
+        'url': url,
+        'title': get_title(article),
+        'excerpt': get_excerpt(article),
+        'date': get_date(article),
+        'image': get_image(article),
+        'category': get_category(article),
+        'section': get_section(article),
+        'keywords': get_keywords(article),
+    }
+    digest = hashlib.sha256(
+        json.dumps(stable, sort_keys=True, ensure_ascii=False).encode('utf-8'))
+    try:
+        with open(page_path, 'rb') as page:
+            for chunk in iter(lambda: page.read(1024 * 1024), b''):
+                digest.update(chunk)
+    except OSError:
+        # validate() reports the missing page separately. Retaining a stable
+        # marker here still lets record_changed() complete and preserve state.
+        digest.update(b'\0MISSING_PAGE')
+    return digest.hexdigest()
 
-    IndexNow wants the URLs that actually changed, not the whole site — a
-    full-site resubmit on every sync is how publishers get rate-limited.
+
+def record_changed(arts):
+    """Diff URLs and content fingerprints, then queue new or changed pages.
+
+    Older state files contain only ``urls``. That format is migrated without
+    blasting the archive: existing pages become the fingerprint baseline and
+    only genuinely new URLs are queued during the migration run.
     """
     seen_p = os.path.join(ROOT, SEEN_PATH)
+    state = {}
     current = sorted({get_url(a) for a in arts if get_url(a)})
+    fingerprints = {get_url(a): article_fingerprint(a) for a in arts if get_url(a)}
     try:
-        seen = set(json.load(open(seen_p, encoding='utf-8')).get('urls', []))
+        state = json.load(open(seen_p, encoding='utf-8'))
+        seen = set(state.get('urls', []))
     except (OSError, ValueError):
         seen = set()
-    new = sorted(set(current) - seen)
+    previous_fingerprints = state.get('fingerprints', {})
+    if not isinstance(previous_fingerprints, dict):
+        previous_fingerprints = {}
+
+    current_set = set(current)
+    new = current_set - seen
+    changed_existing = {
+        url for url in current_set & seen
+        if previous_fingerprints and previous_fingerprints.get(url) != fingerprints[url]
+    }
+    changed = sorted(new | changed_existing)
 
     first_run = not seen
     if first_run:
-        new = []                      # never blast the archive on the first run
+        changed = []                  # never blast the archive on the first run
 
     pend_p = os.path.join(ROOT, PENDING_PATH)
-    if new:
+    if changed:
         prev = []
         try:
             prev = json.load(open(pend_p, encoding='utf-8')).get('urls', [])
         except (OSError, ValueError):
             pass
-        merged = sorted(set(prev) | set(new))
+        merged = sorted(set(prev) | set(changed))
         json.dump({'urls': merged}, open(pend_p, 'w', encoding='utf-8'), indent=1)
-    json.dump({'urls': current}, open(seen_p, 'w', encoding='utf-8'), indent=1)
-    return new, first_run
+    json.dump({'urls': current, 'fingerprints': fingerprints},
+              open(seen_p, 'w', encoding='utf-8'), indent=1)
+    return changed, first_run
 
 
 # ---------------------------------------------------------------------------
@@ -503,6 +546,10 @@ def validate(arts):
     """Check for missing files and images."""
     problems = []
     for a in arts:
+        url = a.get('url', '')
+        if (not url.startswith('/') or url.endswith('/') or url.endswith('.html') or
+                any(char in url for char in '[]?#') or re.search(r'\s', url)):
+            problems.append(('dirty article URL', repr(url)))
         slug = a.get('slug') or a['url'].lstrip('/')
         img = a.get('image', '').split('?')[0]
         if not img or not os.path.exists(os.path.join(ROOT, img.lstrip('/'))):
@@ -570,7 +617,7 @@ if __name__ == '__main__':
     if first_run:
         print("  fast-index: baseline recorded (no ping on first run)")
     elif changed:
-        print(f"  fast-index: {len(changed)} new URL(s) queued")
+        print(f"  fast-index: {len(changed)} new or changed URL(s) queued")
         for u in changed[:5]:
             print(f"      {u}")
         if len(changed) > 5:
