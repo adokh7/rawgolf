@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 12 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>The Last Man Into the Playoffs Hits the First Shot. On His Own.</title>
+      <link>https://www.golfraw.com/news-2026-fedex-st-jude-round-1-tee-times-jackson-koivun</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-fedex-st-jude-round-1-tee-times-jackson-koivun</guid>
+      <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Jackson Koivun plays as a single at 8:10 a.m. after Berger&#x27;s withdrawal. Scheffler and McIlroy go at 9:30. Full round one tee times from TPC Southwind.</description>
+      <enclosure url="https://www.golfraw.com/public/jackson-koivun-fedex-st-jude-2026.webp" type="image/webp"/>
+    </item>
     <item>
       <title>LIV Has Cancelled Its Biggest Event of the Year. It&#x27;s Still Selling Tickets For It.</title>
       <link>https://www.golfraw.com/news-2026-liv-golf-michigan-team-championship-cancelled</link>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>Detroit spent $16.1m to get harder and gave up three 61s. Sedgefield defends itself with a quarter-inch of rough and 12½-foot greens.</description>
       <enclosure url="https://www.golfraw.com/public/wyndham-championship-2026-sedgefield.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Wyndham Championship 2026 Preview: Odds, Picks &amp; Bubble Stakes</title>
-      <link>https://www.golfraw.com/news-2026-wyndham-championship-preview</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-wyndham-championship-preview</guid>
-      <pubDate>Tue, 04 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>2026 Wyndham Championship preview: Cameron Young defends at Sedgefield as FedExCup playoff race hits fever pitch. Betting tips, fantasy picks, course guide and key stats.</description>
-      <enclosure url="https://www.golfraw.com/public/wyndham-championship-2026-preview.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
