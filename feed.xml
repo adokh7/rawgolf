@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Jessica Bang, 2008–2026</title>
+      <link>https://www.golfraw.com/jessica-bang-2008-2026</link>
+      <guid isPermaLink="true">https://www.golfraw.com/jessica-bang-2008-2026</guid>
+      <pubDate>Sat, 15 Aug 2026 09:00:00 +0000</pubDate>
+      <category>NEWS</category>
+      <description>Jessica Bang, an 18-year-old Australian golfer in her rookie season on the WPGA Tour of Australasia, has died in Bangkok after suffering a brain haemorrhage.</description>
+      <enclosure url="https://www.golfraw.com/public/jessica-bang-2008-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Thursday He Took 33 Putts and Shot 68. Friday He Made 13 One-Putts and Shot 61.</title>
       <link>https://www.golfraw.com/news-2026-scottie-scheffler-61-tpc-southwind-course-record</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-scottie-scheffler-61-tpc-southwind-course-record</guid>
@@ -359,15 +368,6 @@
       <category>LIV GOLF</category>
       <description>Cam Smith says he&#x27;d &quot;100%&quot; return to the PGA Tour if LIV folded. But he turned down the exit route in February — and PIF pulled its funding in April.</description>
       <enclosure url="https://www.golfraw.com/public/cam-smith-liv-door-closed.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>7-Wood vs 3-Iron: What Aussie Golfers Actually Search</title>
-      <link>https://www.golfraw.com/news-2026-7-wood-vs-3-iron-australian-golfers</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-7-wood-vs-3-iron-australian-golfers</guid>
-      <pubDate>Wed, 05 Aug 2026 09:00:00 +0000</pubDate>
-      <category>GUIDES</category>
-      <description>Australians search for a 7-wood three times more than a 3-iron. The loft numbers, the one downside nobody mentions, and why the club has three names.</description>
-      <enclosure url="https://www.golfraw.com/public/7-wood-vs-3-iron-australian-golfers.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
