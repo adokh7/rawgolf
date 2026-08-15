@@ -36,6 +36,11 @@ def unescape(t):
 
 def slugs(root='.'):
     d = {f[:-5] for f in os.listdir(root) if f.endswith('.html')}
+    blog_dir = os.path.join(root, 'blog')
+    if os.path.exists(blog_dir) and os.path.isdir(blog_dir):
+        for f in os.listdir(blog_dir):
+            if f.endswith('.html'):
+                d.add('blog/' + f[:-5])
     return sorted(d - UTIL - {x for x in d if x.startswith('tools-')})
 
 def categories(root='.'):
