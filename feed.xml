@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 14 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Thursday He Took 33 Putts and Shot 68. Friday He Made 13 One-Putts and Shot 61.</title>
+      <link>https://www.golfraw.com/news-2026-scottie-scheffler-61-tpc-southwind-course-record</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-scottie-scheffler-61-tpc-southwind-course-record</guid>
+      <pubDate>Sat, 15 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Scheffler tied the TPC Southwind course record with a 61 and leads by three. The seven-shot swing from Thursday was almost entirely on the greens.</description>
+      <enclosure url="https://www.golfraw.com/public/scottie-scheffler-61-tpc-southwind-course-record-2026.webp" type="image/webp"/>
+    </item>
     <item>
       <title>LIV Is Offering Its Players Equity Instead of Cash. The DP World Tour Just Made That Very Expensive.</title>
       <link>https://www.golfraw.com/news-2026-liv-golf-equity-dp-world-tour-fines-2027</link>
@@ -359,15 +368,6 @@
       <category>GUIDES</category>
       <description>Australians search for a 7-wood three times more than a 3-iron. The loft numbers, the one downside nobody mentions, and why the club has three names.</description>
       <enclosure url="https://www.golfraw.com/public/7-wood-vs-3-iron-australian-golfers.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Wyndham Championship Bubble: Koivun Leads by 12 Points</title>
-      <link>https://www.golfraw.com/news-2026-wyndham-fedexcup-bubble-koivun</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-wyndham-fedexcup-bubble-koivun</guid>
-      <pubDate>Tue, 04 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Jackson Koivun enters the 2026 Wyndham Championship holding the 70th FedExCup spot by just 12 points. What Sedgefield&#x27;s positional layout means for the playoff bubble.</description>
-      <enclosure url="https://www.golfraw.com/public/wyndham-fedexcup-bubble-koivun.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
