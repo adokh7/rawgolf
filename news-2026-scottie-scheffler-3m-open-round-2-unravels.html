@@ -95,11 +95,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -243,7 +252,7 @@
         <div class="article-body">
           <p class="standfirst">Scottie Scheffler had this one going nicely until the 14th hole decided otherwise. Friday at the 3M Open started with real promise. He'd already fired a 65 on Thursday and pushed to nine-under midway through round two at TPC Twin Cities, the kind of position that usually ends in a Sunday coronation for this man. Instead, his back nine unraveled, and he finished the day at seven-under, seven shots behind leader Michael Kim. Scheffler only added this tournament to avoid a three-week gap between The Open Championship and the playoffs kicking off. That decision now looks like it's delivered a strange kind of clarity, because what happened on his back nine on Friday tells you almost everything about why his 2026 season has felt off despite the numbers saying otherwise.</p>
 
-          <img src="/public/scottie-scheffler-3m-open-round-2-hero.webp" alt="Scottie Scheffler reacts during round two of the 3M Open at TPC Twin Cities." style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img src="/public/scottie-scheffler-3m-open-round-2-hero.webp" alt="Scottie Scheffler reacts during round two of the 3M Open at TPC Twin Cities." style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>The stats don't lie, but they don't tell the full story either</h2>
           <p>Let's be straight about something first. Scheffler is still the best player on the PGA Tour this year, full stop. One win, ten top-5 finishes across 16 starts, and he's inside the top 14 in every major statistical category that matters. His putting has never been better, and he leads the stroke average category comfortably.</p>

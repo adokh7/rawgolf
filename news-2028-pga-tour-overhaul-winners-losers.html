@@ -93,13 +93,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A;
       --fairway-deep: #0B2418;
@@ -251,7 +258,7 @@
         <div class="article-body">
           <p><b>Quick answer:</b> The PGA Tour's 2028 restructure, with two tiers, promotion and relegation, cuts in every event, and a match-play finale, is good news for fans, young grinders trying to break in, and the case for true meritocracy. It is bad news for journeymen who liked guaranteed money, the LIV Golf players locked outside it, and arguably the DP World Tour. Some, like Tiger Woods and the casual fan, sit somewhere in between. Here is who comes out ahead and who gets squeezed.</p>
 
-          <img width="2752" height="1536" src="/public/news-pga-tour-2028-winners-losers.webp" alt="PGA Tour 2028 overhaul winners and losers" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
+          <img width="2752" height="1536" src="/public/news-pga-tour-2028-winners-losers.webp" alt="PGA Tour 2028 overhaul winners and losers" style="width: 100%; border-radius: 4px; margin-bottom: 30px;" loading="eager" fetchpriority="high">
 
           <p>This is opinion built on the confirmed framework, so treat it as a read on the likely fallout, not a finished scorecard. Plenty of the details that decide these things are still unwritten. But the lines are already clear, and the winners and losers tell you everything you need to know about the Tour's new priorities.</p>
 

@@ -90,10 +90,19 @@
 }
   </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
 <style>
 :root{
   --fairway:#14402A;
@@ -373,7 +382,7 @@ table { max-width: 100%; }
 
       <figure class="lead-img">
         <div class="img-ph" role="img" aria-label="Two professional golfers glaring at each other during a match play tournament">
-          <img width="1536" height="1024" src="./public/match-play-vs-stroke-play.webp" alt="Two professional golfers glaring at each other during a match play tournament">
+          <img width="1536" height="1024" src="./public/match-play-vs-stroke-play.webp" alt="Two professional golfers glaring at each other during a match play tournament" loading="eager" fetchpriority="high">
         </div>
       </figure>
       <figcaption>IN STROKE PLAY, YOUR OPPONENT IS THE FIELD. IN MATCH PLAY, YOUR OPPONENT IS RIGHT THERE. PHOTO: RAWGOLF</figcaption>

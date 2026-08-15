@@ -92,13 +92,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A;
       --fairway-deep: #0B2418;
@@ -257,7 +264,7 @@
             <p><strong>To hold a golf club correctly</strong>, focus on placing the handle in your fingers rather than burying it in your palms. Position your lead hand first so that two to three knuckles are visible when looking down. Next, place your trail hand directly below it, allowing the palm to cover your lead thumb. The "V" shapes formed by the thumb and index finger of each hand should point toward your trail shoulder. Maintain secure but light pressure—similar to holding a tube of toothpaste with the cap off.</p>
           </div>
 
-          <img width="2752" height="1536" src="/public/news-how-to-hold-golf-club-grip.webp" alt="Close-up of a golfer's hands properly gripping a golf club showing finger placement" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="2752" height="1536" src="/public/news-how-to-hold-golf-club-grip.webp" alt="Close-up of a golfer's hands properly gripping a golf club showing finger placement" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>Why the Golf Grip is Your Most Critical Fundamental</h2>
           <p>The golf grip is the single most important fundamental in the game because your hands represent the only physical connection between your body and the club. How you hold the club determines how the clubface behaves at impact. If your hands are positioned correctly, squaring the face becomes a natural movement. If they are placed incorrectly, you will spend your entire swing fighting a losing battle to prevent slices and hooks. For this reason, professional instructors prioritize the grip before adjusting any other aspect of a player's swing.</p>

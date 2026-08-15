@@ -93,11 +93,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -242,7 +251,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> Japan's Aki Iwai fired a clinical bogey-free opening round of 8-under par and built a two-shot lead at the 2026 Amundi Evian Championship after Round 2. Meanwhile, world No. 1 Nelly Korda faces an intense, high-stakes battle just to survive the weekend, sitting dead level on the cut line at even par as she chases a career Grand Slam and LPGA Hall of Fame validation.</p>
 
-          <img width="2030" height="1134" src="/public/news-2026-amundi-evian-championship-iwai-korda.webp" alt="Professional female golfer intensely focusing on her putting line at the Evian Championship with mountains in the background" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="2030" height="1134" src="/public/news-2026-amundi-evian-championship-iwai-korda.webp" alt="Professional female golfer intensely focusing on her putting line at the Evian Championship with mountains in the background" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>Nelly Korda’s Grand Slam Bid on the Brink</h2>
           <p>The scripts in professional golf are written with grandeur, but they are executed in the dirt. Nelly Korda arrived at the 2026 Amundi Evian Championship at the Evian Resort Golf Club chasing history. A victory in France would secure the final piece of her career Grand Slam and automatically stamp her ticket into the LPGA Hall of Fame. Not since Juli Inkster accomplished the feat in 1999 has an American female golfer occupied such a rarefied air. Throughout the week, the anticipation was palpable.</p>

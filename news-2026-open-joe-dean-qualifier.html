@@ -92,11 +92,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -220,7 +229,7 @@
             <p>Former Morrisons delivery driver Joe Dean won the 12-man, last-chance qualifier for the 154th Open Championship at Royal Birkdale. With his fiancée carrying his bag just eight days before their wedding, Dean shot a 2-under 68, highlighted by an eagle on the 14th, to secure the final spot in the field.</p>
           </div>
 
-          <img width="739" height="415" src="/public/news-2026-open-joe-dean-qualifier.webp" alt="Joe Dean walking down the fairway at Royal Birkdale with his fiancée Emily carrying his bag" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="739" height="415" src="/public/news-2026-open-joe-dean-qualifier.webp" alt="Joe Dean walking down the fairway at Royal Birkdale with his fiancée Emily carrying his bag" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <p>Joe Dean used to drive a Morrisons van to help pay for his golf. On Monday morning he stood on the 18th green at Royal Birkdale, his fiancée carrying his bag, and rolled in a par putt to claim the final place in the 154th Open Championship.</p>
           <p>Eight days before his wedding. In front of the grandstands. One shot clear of the field.</p>

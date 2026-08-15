@@ -65,10 +65,19 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
 <style>
 /* ============ TOKENS ============ */
 :root {
@@ -422,7 +431,7 @@ table { max-width: 100%; }
 
         <p>This is raw golf. Not in the aspirational sense — in the brutally literal sense. This is what the game actually feels like for most people who play it. And the entire golf improvement industry is built on making you forget that and buy something else instead.</p>
 
-        <img width="2816" height="1536" src="/public/raw-golf-practice.webp" alt="Amateur golfer dealing with a chunked shot at the driving range" class="hero-image" loading="lazy">
+        <img width="2816" height="1536" src="/public/raw-golf-practice.webp" alt="Amateur golfer dealing with a chunked shot at the driving range" class="hero-image" loading="eager" fetchpriority="high">
 
         <h2>The Performance of Improvement vs. Actual Improvement</h2>
 

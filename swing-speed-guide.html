@@ -55,10 +55,19 @@
 <!-- ============ TWITTER CARD ============ -->
 
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
 <style>
 /* ============ TOKENS ============ */
 :root {
@@ -480,7 +489,7 @@ table { max-width: 100%; }
 
         <p>This is the core paradox of golf equipment: the gear marketed most aggressively is almost always the wrong gear for the person buying it. Knowing <strong>how to improve golf swing</strong> results has far less to do with buying professional-grade clubs and far more to do with playing equipment that's actually matched to your body. A stiff-shaft, low-compression driver built for someone swinging 115 mph is actively working against you at 90 mph. It's the mechanical equivalent of putting Formula 1 tyres on a Honda Civic and wondering why it handles poorly in the rain.</p>
 
-        <img width="2752" height="1536" src="/public/golf-swing-speed-flex.webp" alt="Golfer checking golf club swing weight and shaft flex specifications" class="hero-image" loading="lazy">
+        <img width="2752" height="1536" src="/public/golf-swing-speed-flex.webp" alt="Golfer checking golf club swing weight and shaft flex specifications" class="hero-image" loading="eager" fetchpriority="high">
 
         <h2>Stop Guessing: Know Your Actual Number</h2>
 

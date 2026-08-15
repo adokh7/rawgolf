@@ -93,11 +93,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -249,7 +258,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> Donald Trump toured East Potomac Golf Links on Sunday, claiming the planned redevelopment will make this public course capable of hosting major championships like the U.S. Open, PGA Championship, and Ryder Cup. Renowned architect Tom Fazio is attached to the project, with reconstruction scheduled to begin on September 1, drawing on the site's original 1920s Walter J. Travis design. However, an objective analysis of the logistics, low-lying flood-prone terrain, and political/legal challenges suggest that bringing a major to this compact municipal island is a highly unrealistic ambition.</p>
 
-          <img width="2752" height="1536" src="/public/news-trump-east-potomac-fazio-major.webp" alt="East Potomac Golf Links with Washington DC skyline in the background" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="2752" height="1536" src="/public/news-trump-east-potomac-fazio-major.webp" alt="East Potomac Golf Links with Washington DC skyline in the background" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>A Bold Capital Vision: The Announcement</h2>
           <p>While surveying federal construction projects around the capital on Sunday, Donald Trump toured East Potomac Golf Links and laid out an ambitious, headline-grabbing vision for the modest municipal course. Taking to social media afterward, Trump declared that once the planned redevelopment is complete, the venue will be capable of hosting golf's grandest tournaments, explicitly naming the U.S. Open, the Ryder Cup, and the PGA Championship.</p>

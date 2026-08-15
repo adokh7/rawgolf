@@ -94,11 +94,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -253,7 +262,7 @@
             <p>James Madison's men's golf program dropped its 2026-27 schedule on Friday, and it's a slate that mixes familiar stops with a couple of genuine debuts. Ten tournaments in total, four before Christmas, six after. The Dukes are coming off a fifth-place finish at the 2026 Sun Belt Championship, and they'll open the new campaign back in Phoenix for the Bomb Darts Birds Collegiate on September 7-8.</p>
           </div>
 
-          <img src="/public/jmu-mens-golf-2026-27-schedule.webp" alt="James Madison men's golf team competes during a collegiate tournament." style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img src="/public/jmu-mens-golf-2026-27-schedule.webp" alt="James Madison men's golf team competes during a collegiate tournament." style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <div style="border:2px solid var(--ink);background:var(--white);margin-bottom:32px;overflow-x:auto;">
             <table style="width:100%;border-collapse:collapse;font-family:'IBM Plex Mono',monospace;font-size:13px;">

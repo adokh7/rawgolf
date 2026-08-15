@@ -93,13 +93,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A;
       --fairway-deep: #0B2418;
@@ -788,7 +795,7 @@
         </div>
 
         <figure class="lead-img">
-            <img src="/public/dewi-weber-solheim-cup-2026-eligibility.webp" alt="Dewi Weber Solheim Cup 2026 Eligibility" />
+            <img src="/public/dewi-weber-solheim-cup-2026-eligibility.webp" alt="Dewi Weber Solheim Cup 2026 Eligibility"  loading="eager" fetchpriority="high">
         </figure>
         <figcaption>WEBER'S LET INELIGIBILITY BARS HER FROM THE HISTORIC TOURNAMENT.</figcaption>
 

@@ -93,11 +93,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -229,7 +238,7 @@
             <p><strong>Haeran Ryu shot an 11-under 60</strong> in Round 3 of the 2026 Amundi Evian Championship &mdash; the lowest single round ever recorded at any major championship in the history of golf. Not just the LPGA. Any major, across men&rsquo;s, women&rsquo;s, and senior tours. Nine birdies, one eagle, not a dropped shot across a par-71 layout. Her 54-hole total of 194 is a new LPGA major scoring record. She leads by three at 19-under going into Sunday. She had no idea she was making history until she counted her birdies on the 18th green.</p>
           </div>
 
-          <img width="1672" height="941" src="/public/news-2026-evian-championship-haeran-ryu-60.webp" alt="Haeran Ryu smiling and walking on the 18th green at the Evian Championship under realistic daylight" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="1672" height="941" src="/public/news-2026-evian-championship-haeran-ryu-60.webp" alt="Haeran Ryu smiling and walking on the 18th green at the Evian Championship under realistic daylight" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>The Number You Have to Read Twice</h2>
           <p>Now and then golf produces a scorecard that requires a double-take. A 60 at a major is one of them. Not a regular Tour event on a benign parkland layout with soft greens and generous fairways. A <b>major championship</b>. The Amundi Evian Championship, with its mountain backdrop, severe slopes, and the specific psychological weight that only major golf can generate.</p>

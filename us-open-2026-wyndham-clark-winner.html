@@ -95,13 +95,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A;
       --fairway-deep: #0B2418;
@@ -749,7 +756,7 @@
         <div class="article-body">
           <p><b>Quick answer:</b> Wyndham Clark won the 2026 U.S. Open at Shinnecock Hills, finishing at 4 under par to beat Sam Burns by one shot. He closed with a wobbly 3-over 73 but did just enough to complete a wire-to-wire victory, leading after all four rounds. It is his second U.S. Open in four years, and he did it while a New York gallery openly rooted against him and sang happy birthday to playing partner Scottie Scheffler. Clark two-putted the 72nd hole from 53 feet to seal it.</p>
 
-          <img width="1672" height="941" src="/public/us-open-winner-wyndham-clark.webp" alt="Wyndham Clark holding the U.S. Open trophy at Shinnecock Hills" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
+          <img width="1672" height="941" src="/public/us-open-winner-wyndham-clark.webp" alt="Wyndham Clark holding the U.S. Open trophy at Shinnecock Hills" style="width: 100%; border-radius: 4px; margin-bottom: 30px;" loading="eager" fetchpriority="high">
 
           <p>It was ugly, tense, and at times downright hostile. It was also a gritty, redemptive win. Here is how it happened.</p>
 

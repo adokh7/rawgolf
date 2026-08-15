@@ -92,11 +92,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -248,7 +257,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> Most amateur golfers overestimate their average golf club distances, leading to poor club selection and dropped shots on the course. In this realistic guide, we break down an honest golf club distance chart—noting that the average male amateur carries a driver about 215 meters (235 yards) and a 7-iron around 130 meters (140 yards). We examine why knowing your repeatable yardages, rather than your best smash, is the ultimate shortcut to lowering your scores.</p>
 
-          <img width="2816" height="1536" src="/public/news-golf-club-distances-guide.webp" alt="Golfer using a laser rangefinder to measure distance on the fairway" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="2816" height="1536" src="/public/news-golf-club-distances-guide.webp" alt="Golfer using a laser rangefinder to measure distance on the fairway" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>A Realistic Golf Club Distance Chart: The Honest Averages</h2>
           <p>When looking at a standard golf club distance chart, it is easy to get caught up in inflated numbers published by gear manufacturers or boasted by players at your local club. To play smart course management, however, you need reference points built on average swing speeds rather than peak athletic smash factor. The list below represents carry-and-roll averages for a typical male amateur golfer swinging at moderate speeds under normal playing conditions:</p>

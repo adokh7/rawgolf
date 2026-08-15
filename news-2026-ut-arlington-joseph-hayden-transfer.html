@@ -93,13 +93,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A;
       --fairway-deep: #0B2418;
@@ -252,7 +259,7 @@
         <div class="article-body">
           <p><b>Quick answer:</b> UT Arlington has signed Joseph Hayden, a graduate transfer from Santa Clara, to its men's golf roster for the 2026-27 season. The Dublin, California native spent four years with the Broncos, where he played 12 events and posted a career scoring average of 72.66 across 35 rounds. He brings experience and a low-round best of 4-under 68 to a Mavericks program that has been busy reshaping its lineup this offseason.</p>
 
-          <img width="2752" height="1536" src="/public/news-ut-arlington-joseph-hayden-transfer.webp" alt="Joseph Hayden transfers to UT Arlington men's golf" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
+          <img width="2752" height="1536" src="/public/news-ut-arlington-joseph-hayden-transfer.webp" alt="Joseph Hayden transfers to UT Arlington men's golf" style="width: 100%; border-radius: 4px; margin-bottom: 30px;" loading="eager" fetchpriority="high">
 
           <h2>Maverick-Level Depth: Who is Joseph Hayden?</h2>
           <p>The modern college golf landscape is increasingly defined by the transfer portal, and the Western Athletic Conference (WAC) is no exception. In its latest roster-building move, UT Arlington (UTA) has added Dublin, California native Joseph Hayden. Hayden arrives in Arlington as a graduate student after a solid four-year career at Santa Clara, where he played alongside his younger brother. He logged real tournament reps against Division I fields on the West Coast, which is exactly the kind of seasoned profile needed to solidify a roster.</p>

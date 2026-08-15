@@ -93,11 +93,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -221,7 +230,7 @@
             <p><strong>The 2026 Myrtle Beach World Amateur Handicap Championship</strong> has officially sold out, hitting its strict 3,000-player limit months ahead of the tournament. The massive event, scheduled for August 31 to September 4, brings together golfers from all 50 states and over 20 countries to compete across 50 Grand Strand courses. Featuring flighted handicap divisions and the famous nightly "World's Largest 19th Hole" expo, the tournament continues to stand as the premier competitive event for everyday amateurs.</p>
           </div>
 
-          <img width="2752" height="1536" src="/public/news-2026-myrtle-beach-world-amateur-sold-out.webp" alt="Amateur golfers on a sunny golf course during a massive summer championship tournament" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="2752" height="1536" src="/public/news-2026-myrtle-beach-world-amateur-sold-out.webp" alt="Amateur golfers on a sunny golf course during a massive summer championship tournament" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>What Is the Myrtle Beach World Amateur?</h2>
           <p>There is a golf tournament where a 20-handicap accountant, a scratch club player, and a weekend hacker who simply wants to enjoy a few cold beers all tee it up in the exact same field. That event is the Play Golf Myrtle Beach World Amateur Handicap Championship. Held annually along the South Carolina coast, the tournament has officially filled its strict 3,000-player cap for the 2026 edition, leaving late registrants on a growing waiting list.</p>

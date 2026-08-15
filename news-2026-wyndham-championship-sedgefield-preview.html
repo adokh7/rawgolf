@@ -96,11 +96,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -236,7 +245,7 @@
 
         <div class="article-body">
           <!-- Featured Hero Image -->
-          <img src="/public/wyndham-championship-2026-sedgefield.webp" alt="Sedgefield Country Club golf course layout for the Wyndham Championship" style="margin-bottom: 28px; border-radius: 4px;">
+          <img src="/public/wyndham-championship-2026-sedgefield.webp" alt="Sedgefield Country Club golf course layout for the Wyndham Championship" style="margin-bottom: 28px; border-radius: 4px;" loading="eager" fetchpriority="high">
 
           <p>Last week the Tour played a Donald Ross par 70 that had just swallowed $16.1 million trying to become harder. It gave up three rounds of 61 and a winning total that tied the lowest in the tournament's history.</p>
           <p>This week it plays another Donald Ross par 70, two hundred yards shorter, that has had almost nothing done to it.</p>

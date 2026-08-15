@@ -90,13 +90,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A;
       --fairway-deep: #0B2418;
@@ -253,7 +260,7 @@
             <p><strong>Viktor Hovland secured a massive $3.6 million payout</strong> for winning the 2026 Travelers Championship after defeating Scottie Scheffler in a dramatic Monday playoff at TPC River Highlands. Despite the runner-up finish, Scheffler banked $2.16 million in winnings. As one of the PGA Tour's signature events, the Travelers Championship featured a $20 million total prize money purse, which was split among all 72 players in the field due to the tournament's no-cut format. Even the last-place finisher walked away with a guaranteed $36,000. Here is the complete financial breakdown from Cromwell.</p>
           </div>
 
-          <img width="2752" height="1536" src="/public/news-travelers-championship-2026-prize-money.webp" alt="Macro shot of a golf ball teetering on the edge of the hole" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="2752" height="1536" src="/public/news-travelers-championship-2026-prize-money.webp" alt="Macro shot of a golf ball teetering on the edge of the hole" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>The Economics of the Signature Model: Inside the $20 Million Purse</h2>
           <p>The PGA Tour’s signature event series has fundamentally shifted the financial structure of professional golf. By elevating the purses of selected tournaments to a staggering $20 million, the Tour aims to guarantee that the world’s best players compete head-to-head outside of the major championships. At TPC River Highlands, the resulting payout structure was top-heavy but incredibly lucrative. The Travelers Championship operated under a no-cut, limited-field format of 72 players, guaranteeing a payday for every competitor who tee'd it up. This model stands in contrast to player-hosted signature events, which include a 36-hole cut and pay $4 million to the winner. For Hovland, the victory yielded a standard 18 percent champion's share of $3.6 million, cementing his status in the upper echelon of the Tour's money list.</p>

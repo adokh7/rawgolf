@@ -92,13 +92,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A;
       --fairway-deep: #0B2418;
@@ -255,7 +262,7 @@
             <p><strong>Even the best players in the world get sabotaged by the wrong driver.</strong> Matt Fitzpatrick fought his equipment all through the U.S. Open, switched to a better-fitting head at the Travelers Championship, and immediately shot an opening 64 while missing only a single fairway. The lesson for the rest of us is simple and a little uncomfortable: <strong>a driver that does not match your swing can wreck your tee shots</strong> no matter how well you are swinging it. Here is how to tell if your club vs swing is the problem, and how a professional golf driver fitting can salvage your game.</p>
           </div>
 
-          <img width="2752" height="1536" src="/public/news-golf-driver-fitting-guide.webp" alt="Golfer analyzing a driver clubface for strike location" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="2752" height="1536" src="/public/news-golf-driver-fitting-guide.webp" alt="Golfer analyzing a driver clubface for strike location" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>The Warning Signs: How to Tell if Your Driver Doesn't Fit Your Move</h2>
           <p>Many golfers spend years and countless hours on the range trying to fix swing flaws, unaware that their equipment is actively working against them. The driver is uniquely deceptive in this regard; a poorly fit club doesn't just produce bad results, it actively masks itself as a technical fault. Your ball flight, rather than your score, is the ultimate giveaway. If your solid drives perform well but your off-center strikes result in absolute disaster, the driver head itself may lack the necessary forgiveness. If the ball balloons high into the air with zero roll-out, the shaft is likely too soft. Conversely, a ball flight that stays low and leaks right is a classic sign of a shaft that is too stiff for your swing speed.</p>

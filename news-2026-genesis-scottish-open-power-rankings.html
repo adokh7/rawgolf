@@ -93,11 +93,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -242,7 +251,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> The 2026 Genesis Scottish Open (July 9-12 at The Renaissance Club) draws a ferocious co-sanctioned field just one week before the final major at Royal Birkdale. Highlighting the return of LIV Golf's Jon Rahm in his first regular PGA Tour start since late 2023, defending champion Chris Gotterup entering with red-hot momentum, and a razor-thin margin separating betting favorite Scottie Scheffler and course specialist Rory McIlroy, North Berwick is set for a premier links showdown.</p>
 
-          <img width="1850" height="1102" src="/public/news-2026-genesis-scottish-open-power-rankings.webp" alt="Professional golfer swinging on a windy Scottish coastal links course under dramatic stormy skies" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="1850" height="1102" src="/public/news-2026-genesis-scottish-open-power-rankings.webp" alt="Professional golfer swinging on a windy Scottish coastal links course under dramatic stormy skies" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>The Tactical Challenge of The Renaissance Club</h2>
           <p>The Renaissance Club in North Berwick represents a modern hybrid links challenge. Architect Tom Doak designed generous landing areas off the tee, but the course places a premium on controlled, long-iron play into massive, undulating greens. When the coastal wind begins to bite off the Firth of Forth, player execution becomes the ultimate metric. It is not as savage as a traditional Open layout, but it acts as the perfect final preparation before Royal Birkdale next week.</p>

@@ -95,11 +95,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -230,7 +239,7 @@
           <p class="standfirst">Max Homa's had a front row seat to Rory McIlroy's career for the best part of a decade and a half, and he's just dropped an opinion that cuts against the grain of how most people talk about the Northern Irishman's game. Homa knows a thing or two about life on the PGA Tour himself. Six wins to his name, though nothing since January 2023, which tells you he's not just some outsider throwing shade from the cheap seats. He's competed against McIlroy, watched him operate at close range, and clearly rates him. McIlroy sits in a different stratosphere entirely, 30 PGA Tour wins and six major championships deep, the kind of résumé that puts him firmly in the conversation as the best and most consistent player the Tour has produced over the last 10 to 15 years. That's exactly why Homa's comment carries weight.</p>
 
           <!-- Top Hero Image -->
-          <img src="/public/max-homa-rory-mcilroy-swing-hero.webp" alt="Max Homa watching Rory McIlroy swing on the driving range." style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img src="/public/max-homa-rory-mcilroy-swing-hero.webp" alt="Max Homa watching Rory McIlroy swing on the driving range." style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <!-- In-Article Image 1 -->
           <img src="/public/max-homa-rory-mcilroy-swing-take.webp" alt="Max Homa looking down the fairway during a PGA Tour tournament." style="width: 100%; border-radius: 4px; margin: 30px 0;">

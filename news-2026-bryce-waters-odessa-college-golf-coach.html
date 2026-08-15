@@ -92,13 +92,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A;
       --fairway-deep: #0B2418;
@@ -262,7 +269,7 @@
             </ul>
           </div>
 
-          <img width="2752" height="1536" src="/public/news-bryce-waters-odessa-college-golf-coach.webp" alt="Bryce Waters named head coach of Odessa College golf teams" style="width: 100%; border-radius: 4px; margin-bottom: 30px; max-width: 800px; display: block;">
+          <img width="2752" height="1536" src="/public/news-bryce-waters-odessa-college-golf-coach.webp" alt="Bryce Waters named head coach of Odessa College golf teams" style="width: 100%; border-radius: 4px; margin-bottom: 30px; max-width: 800px; display: block;" loading="eager" fetchpriority="high">
 
           <h2>Hometown Return: Who Is Bryce Waters?</h2>
           <p>Waters isn't just another name on a coaching carousel; he is a product of Midland, Texas, who knows the local golf landscape inside and out. Coming up through Midland Christian, Waters was a multi-sport standout, proving his athletic pedigree across both basketball and golf. He earned district MVP and first-team all-state honors, culminating in a state championship during his senior year. Waters then went on to compete on the course for Odessa College. This background at the junior college level gave him first-hand experience of the program he now inherits. The athletic department's framing of his hiring as a "star returnee" highlights the lasting impression he left as a Wrangler player.</p>

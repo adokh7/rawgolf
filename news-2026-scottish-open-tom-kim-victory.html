@@ -93,11 +93,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -221,7 +230,7 @@
             <p><strong>Tom Kim ended his PGA TOUR drought</strong> at the Genesis Scottish Open, putting together a clinical weekend performance at the Renaissance Club to claim the trophy. The victory represents a massive shift in Kim's season, vaulting him from 58th to 32nd in the FedExCup standings and elevating him into the top 35 of the Official World Golf Ranking. Crucially, the win grants Kim a full PGA TOUR exemption running through the 2028 season. Behind him, the final three Open Championship qualifying spots for Royal Birkdale were secured by Johnny Keefer (T3), Michael Thorbjornsen (T7), and Victor Perez (T9), while defending champion Chris Gotterup finished in a tie for 11th, six shots off the pace.</p>
           </div>
 
-          <img width="1986" height="996" src="/public/news-2026-scottish-open-tom-kim-victory.webp" alt="Tom Kim celebrating his victory on the 18th green at the Scottish Open under realistic daylight" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="1986" height="996" src="/public/news-2026-scottish-open-tom-kim-victory.webp" alt="Tom Kim celebrating his victory on the 18th green at the Scottish Open under realistic daylight" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>The Renaissance Club Specialization Pays Off</h2>
           <p>Tom Kim did not arrive in East Lothian looking like a player on the verge of resetting his competitive trajectory. While his play had flashed potential in select stretches—most notably during a resilient run at the U.S. Open—the broader season had left him on the outside looking in regarding the PGA TOUR's premium, limited-field signature events. Entering the week at No. 58 in the FedExCup standings, Kim arrived at the Genesis Scottish Open knowing he needed a substantial result to redirect the final month of his season.</p>

@@ -92,11 +92,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -241,7 +250,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> Scottish Hall of Famer Colin Montgomerie pulled off the absurd on Monday, carding two holes-in-one during the opening round of the Wee Course—the brand-new, community-focused par-3 layout he designed at Harbor Shores Golf Club in Benton Harbor, Michigan. While two aces in a single round is a statistical anomaly pushing into the millions-to-one odds, doing it at your own ribbon-cutting ceremony in front of local families and children elevates the feat to instant golf lore.</p>
 
-          <img width="1280" height="720" src="/public/news-colin-montgomerie-two-holes-in-one.webp" alt="Golfer celebrating a hole in one with fans and children at a short par 3 course" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="1280" height="720" src="/public/news-colin-montgomerie-two-holes-in-one.webp" alt="Golfer celebrating a hole in one with fans and children at a short par 3 course" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>A Legend Returns to Benton Harbor</h2>
           <p>Benton Harbor has long been a special venue for Colin Montgomerie. The 62-year-old World Golf Hall of Famer won the Senior PGA Championship at Harbor Shores back in 2014, earning the lifelong adoration of local Michigan golf fans. On Monday, he returned to cut the ribbon on a passion project: the Wee Course. The new layout is a short par-3 pitch-and-putt designed to introduce the next generation of players to the game.</p>

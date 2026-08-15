@@ -95,11 +95,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -230,7 +239,7 @@
           <p class="standfirst">Michael Kim stood over a 24-foot putt on the 18th green Friday knowing exactly what it meant. Miss it, and he walks off with a very good round. Make it, and he joins a list of just 16 players in PGA Tour history to ever shoot 59. He made it. The 33-year-old had already put himself in position with his approach on the par-5 18th, a wedge shot from the fairway that rolled up to the fringe. That left him with one putt standing between him and the history books, and Kim knew precisely what not to do. "I tend to leave those short when it's that uphill and I just, last thing was just get it there, just don't leave it short," Kim said. He didn't leave it short. The putt found the bottom of the cup, and Kim let out a series of fist pumps that told you everything about how much that number meant to him.</p>
 
           <!-- Top Hero Image -->
-          <img src="/public/michael-kim-3m-open-59-hero.webp" alt="Michael Kim celebrates after sinking a 24-foot putt to shoot a 59 at the 3M Open." style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img src="/public/michael-kim-3m-open-59-hero.webp" alt="Michael Kim celebrates after sinking a 24-foot putt to shoot a 59 at the 3M Open." style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>He wasn't chasing this by accident</h2>
           <p>Kim didn't stumble into a 59. Walking into the closing stretch, he knew exactly what was on the line and made a conscious decision to go after it rather than hope it happened.</p>

@@ -92,13 +92,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A;
       --fairway-deep: #0B2418;
@@ -255,7 +262,7 @@
             <p><strong>Scottie Scheffler fired a 10-under 60</strong> in Friday's second round at the Travelers Championship, coming within a 26-foot putt on the 18th of his second career 59. He made 11 birdies against a single bogey, took a two-shot lead at 16-under, and then casually downplayed the whole thing, pointing out that Jim Furyk once shot 58 on this very course, so a 59 would not even be the record. Classic Scheffler. Here is how the round, and the shrug, unfolded.</p>
           </div>
 
-          <img width="2752" height="1536" src="/public/news-scheffler-60-travelers-championship.webp" alt="Scottie Scheffler reacts to shooting 60 at the Travelers Championship" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="2752" height="1536" src="/public/news-scheffler-60-travelers-championship.webp" alt="Scottie Scheffler reacts to shooting 60 at the Travelers Championship" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>The Scorecard: How Scottie Built a Flawless 60</h2>
           <p>On a soft and scoreable TPC River Highlands, Scottie Scheffler carded a 10-under 60, delivering one of the most commanding rounds of his career. The World No. 1 put on a clinic in precision, racking up 11 birdies against a lone dropped shot. His ball-striking was near-perfection: he hit all but one fairway and missed only two greens in regulation. For a player who has admitted that slow starts have quietly hampered his campaigns all season, this performance was a resounding statement. Coming off an opening 64, his back-to-back scoring puts him at 16-under par through 36 holes, securing a two-shot cushion heading into the weekend.</p>

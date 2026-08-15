@@ -92,13 +92,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A;
       --fairway-deep: #0B2418;
@@ -255,7 +262,7 @@
             <p><strong>With the world's elite players resting ahead of The Open</strong>, the 2026 John Deere Classic (July 2–5 at TPC Deere Run) is one of the most wide-open events of the PGA Tour season. While Chris Gotterup and Ben Griffin lead the field as co-favorites, the scorable layout rewards precise wedge play and hot putting over raw driving distance. This course setup opens the door for a diverse group of contenders, ranging from veteran course horses like Jordan Spieth to rising young stars like Blades Brown and pro debutant Jackson Koivun. Here is our authoritative ranking of who is most likely to contend in Silvis.</p>
           </div>
 
-          <img width="2752" height="1536" src="/public/news-john-deere-classic-2026-power-rankings.webp" alt="Professional golfer hitting a wedge approach shot from a lush green fairway" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="2752" height="1536" src="/public/news-john-deere-classic-2026-power-rankings.webp" alt="Professional golfer hitting a wedge approach shot from a lush green fairway" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>The Silvis Shootout: Deciphering the TPC Deere Run Test</h2>
           <p>TPC Deere Run is a notorious birdie machine. Winning scores here consistently blow past the 20-under-par mark—a feat accomplished in nine of the last twelve editions of the tournament. However, unlike standard PGA Tour venues that yield to modern bombers, Deere Run acts as a great equalizer. Forced layups, strategic elevation changes, and penal, grabby rough effectively neutralize raw distance off the tee. Instead, success in Silvis is dictated by a sharp wedge game, precise placement off the tee, and a putter capable of catching fire over four days.</p>

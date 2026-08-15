@@ -94,13 +94,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A;
       --fairway-deep: #0B2418;
@@ -259,7 +266,7 @@
         <div class="article-body">
           <p><b>Quick answer:</b> Tiger Woods returned to the public eye at the Travelers Championship, introducing PGA Tour CEO Brian Rolapp ahead of the announcement of the Tour's sweeping new 2028 structure. It was Woods's first public appearance since his March DUI arrest and a stint in rehab. He kept it brief, reading a short introduction and releasing a statement praising the work of the Future Competition Committee he chairs. He did not take questions.</p>
 
-          <img width="1024" height="1024" src="/public/tiger-woods-return-travelers-2026.webp" alt="Tiger Woods speaking at a PGA Tour podium" style="width: 100%; border-radius: 4px; margin-bottom: 30px;">
+          <img width="1024" height="1024" src="/public/tiger-woods-return-travelers-2026.webp" alt="Tiger Woods speaking at a PGA Tour podium" style="width: 100%; border-radius: 4px; margin-bottom: 30px;" loading="eager" fetchpriority="high">
 
           <p>It was a low-key return for golf's biggest name, in a role that was about the future of the Tour rather than his own game. Here is what happened and the context behind it.</p>
 

@@ -92,11 +92,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -241,7 +250,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> Rory McIlroy has issued a stark warning regarding the PGA Tour's 2028 schedule overhaul, calling out its existential threat to the Genesis Scottish Open. Under the proposed two-tier split, the co-sanctioned event would be excluded from the closed, elite "Championship Series." McIlroy's blunt message to Tiger Woods and Tour leadership highlights the growing structural tension between restricted corporate tiers and traditional, globally open National Opens.</p>
 
-          <img width="1596" height="854" src="/public/news-rory-mcilroy-pga-tour-2028-warning.webp" alt="Professional golfer giving a serious press conference under dramatic lights regarding PGA Tour politics" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="1596" height="854" src="/public/news-rory-mcilroy-pga-tour-2028-warning.webp" alt="Professional golfer giving a serious press conference under dramatic lights regarding PGA Tour politics" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>An Existential Threat to Golf's Finest Blueprint</h2>
           <p>Standing on the grounds of the Renaissance Club in East Lothian, Rory McIlroy looked out over a field that boasts 14 of the world’s top 20 players. It is, by all traditional metrics, one of the crown jewels of the global golf calendar. Yet, as McIlroy pointed out, under the PGA Tour's newly conceptualized 2028 schedule overhaul, the vast majority of these elite players would not even be permitted to tee it up. The Genesis Scottish Open—a tournament co-sanctioned by the PGA Tour and the DP World Tour—does not qualify for the closed, limited-field "Championship Series" tier under the proposed structural changes.</p>

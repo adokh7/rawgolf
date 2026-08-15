@@ -92,11 +92,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -241,7 +250,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> World No. 1 Scottie Scheffler missed the cut at the 2026 Genesis Scottish Open, firing rounds of 68 and 72 to finish at even par—two strokes outside the cut line. The early exit snaps his historic streak of 78 consecutive made cuts dating back to August 2022, the fifth-longest streak in PGA Tour history. As Scheffler mutters into a hot mic and heads to Royal Birkdale for his Open Championship defense, we analyze a rare, human glitch in golf's most dominant machine.</p>
 
-          <img width="1536" height="1024" src="/public/news-rory-mcilroy-missing-first-cut-in-four-years.webp" alt="Scottie Scheffler looking contemplative under dramatic lighting at the Renaissance Club Tee Box" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="1536" height="1024" src="/public/news-rory-mcilroy-missing-first-cut-in-four-years.webp" alt="Scottie Scheffler looking contemplative under dramatic lighting at the Renaissance Club Tee Box" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>The Sputtering of the Machine: Scheffler's Friday Stumble</h2>
           <p>Even the most advanced golfing machine is subject to structural failure. At the Genesis Scottish Open, the golf world witnessed a glitch in the grid that was both jarring and strangely human. Scottie Scheffler, who has steamrolled professional golf with relentless, robotic consistency, missed a 36-hole cut for the first time in nearly four years. He finished his two rounds at even-par overall, failing to reach the 2-under cut line in North Berwick.</p>

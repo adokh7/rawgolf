@@ -92,11 +92,20 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
     :root {
       --fairway: #14402A; --fairway-deep: #0B2418; --flag: #E03E2D;
       --paper: #F3F4F0; --white: #fff; --ink: #101511; --grey: #5B665E; --maxw: 1180px;
@@ -248,7 +257,7 @@
         <div class="article-body">
           <p class="standfirst"><b>Quick Summary:</b> Fresh off an opening 7-under 63 at the John Deere Classic, Lucas Glover delivered the most candid player assessment yet of the PGA Tour's impending 2028 overhaul. While acknowledging that the controversial new rule barring top-tier players from dropping down to lower-tier tournaments "stinks" for local fans and loyal past champions, the former critic turned policymaker explained why the business model makes commercial sense for $20 million sponsors.</p>
 
-          <img width="2752" height="1536" src="/public/news-lucas-glover-pga-tour-rule-critique.webp" alt="Veteran professional golfer in a dimly lit locker room having an intense conversation" style="width: 100%; border-radius: 4px; margin-bottom: 40px;">
+          <img width="2752" height="1536" src="/public/news-lucas-glover-pga-tour-rule-critique.webp" alt="Veteran professional golfer in a dimly lit locker room having an intense conversation" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
 
           <h2>The Iron Curtain of 2028: The Challenger Series Exclusion Rule</h2>
           <p>Fresh off a scorching opening-round 63 that placed him in a tie for the lead at the John Deere Classic, veteran Lucas Glover didn't hold back. In a sport increasingly dominated by corporate talking points, Glover offered a refreshingly honest player's perspective on the PGA Tour's 2028 overhaul. The focal point of his critique is a newly minted rule that establishes a strict one-way boundary between the Tour's split tiers. Once the PGA Tour splits into the Championship Series and the Challenger Series in 2028, players who qualify for the elite Championship Series will be prohibited from entering Challenger Series events. There are no exceptions—not for past champions of those events, nor for players wishing to compete in their hometown tournaments.</p>
