@@ -173,6 +173,7 @@
       max-width: 100%;
       height: auto;
       display: block;
+      /* Stops mobile scrolling flicker/jiggling */
       backface-visibility: hidden;
       transform: translateZ(0);
     }
@@ -234,6 +235,47 @@
     .nav-links a:hover {
       background: var(--ink);
       color: #fff
+    }
+
+
+    /* AD SLOTS */
+    .ad-slot {
+      background: repeating-linear-gradient(45deg, #E9EBE4 0 12px, #F1F2EC 12px 24px);
+      border: 1px dashed #B9BFB2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .16em;
+      color: #9aa194;
+      text-transform: uppercase;
+    }
+
+    .ad-leaderboard {
+      max-width: 728px;
+      height: 90px;
+      margin: 24px auto
+    }
+
+    .ad-inarticle {
+      width: 100%;
+      min-height: 250px;
+      margin: 36px 0
+    }
+
+    .ad-sidebar {
+      width: 100%;
+      height: 600px;
+      position: sticky;
+      top: 96px
+    }
+
+    @media(max-width:760px) {
+      .ad-leaderboard {
+        height: 50px;
+        max-width: 320px
+      }
     }
 
     /* LAYOUT */
@@ -333,13 +375,13 @@
     figure.lead-img {
       margin-bottom: 8px;
       border: 2px solid var(--ink);
-      overflow: hidden;
+      overflow: hidden; /* Keeps image strictly contained */
     }
 
     figure.lead-img img {
       width: 100%;
       height: auto;
-      aspect-ratio: 16/9;
+      aspect-ratio: 16/9; /* Prevents scroll jumping (CLS) before load */
       object-fit: cover;
     }
 
@@ -363,6 +405,14 @@
 
     .article-body p b {
       font-weight: 800
+    }
+
+    .article-body ul, .article-body ol {
+      margin: 0 0 22px 22px
+    }
+
+    .article-body li {
+      margin-bottom: 10px
     }
 
     .article-body h2 {
@@ -427,7 +477,7 @@
       font-weight: 600;
       border: 2px solid var(--ink);
       padding: 6px 14px;
-      transition: background .15s, color .15s
+      transition: background .15s, color .15s;
     }
 
     .tag-row a:hover {
@@ -637,35 +687,35 @@
       }
     }
 
-    /* === RAWGOLF RESPONSIVE OVERRIDES === */
-    img { max-width: 100%; height: auto; }
-    @media (max-width: 1024px) {
-      .wrap { padding-left: 20px; padding-right: 20px; }
-      .page-grid { grid-template-columns: 1fr; gap: 32px; }
-      .article-aside { display: block; }
-      .rel-grid { grid-template-columns: 1fr 1fr; }
-      .news-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .wrap { padding-left: 16px; padding-right: 16px; }
-      .nav { padding: 0 16px; }
-      .page-grid { grid-template-columns: 1fr; gap: 28px; }
-      .article-aside { display: block; }
-      .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr; }
-      .article-head h1 { font-size: clamp(26px, 7vw, 34px); }
-      .standfirst { font-size: 16.5px; }
-      .article-body { font-size: 16.5px; }
-      .article-body h2 { font-size: clamp(20px, 5.5vw, 24px); }
-      .article-body h3 { font-size: 17px; }
-      blockquote.pull { font-size: clamp(18px, 5vw, 22px); padding: 20px 22px; }
-      figure.lead-img img { aspect-ratio: 4 / 3; }
-    }
+  /* === RAWGOLF RESPONSIVE OVERRIDES === */
+  img { max-width: 100%; height: auto; }
+  @media (max-width: 1024px) {
+    .wrap { padding-left: 20px; padding-right: 20px; }
+    .page-grid { grid-template-columns: 1fr; gap: 32px; }
+    .article-aside { display: block; }
+    .rel-grid { grid-template-columns: 1fr 1fr; }
+    .news-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .wrap { padding-left: 16px; padding-right: 16px; }
+    .nav { padding: 0 16px; }
+    .page-grid { grid-template-columns: 1fr; gap: 28px; }
+    .article-aside { display: block; }
+    .rel-grid, .news-grid, .guide-grid, .contact-grid { grid-template-columns: 1fr; }
+    .article-head h1 { font-size: clamp(26px, 7vw, 34px); }
+    .standfirst { font-size: 16.5px; }
+    .article-body { font-size: 16.5px; }
+    .article-body h2 { font-size: clamp(20px, 5.5vw, 24px); }
+    .article-body h3 { font-size: 17px; }
+    blockquote.pull { font-size: clamp(18px, 5vw, 22px); padding: 20px 22px; }
+    figure.lead-img img { aspect-ratio: 4 / 3; }
+  }
     /* === CLS / RESPONSIVE SAFETY === */
-    html, body { max-width: 100%; overflow-x: clip; }
-    img, video, iframe { max-width: 100%; }
-    table { max-width: 100%; }
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe { max-width: 100%; }
+  table { max-width: 100%; }
   </style>
-  <!-- Google AdSense -->
+<!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 
@@ -690,6 +740,7 @@
     </div>
   </header>
 
+
   <!-- ============ MAIN ============ -->
   <main>
     <div class="wrap page-grid">
@@ -701,11 +752,11 @@
         </nav>
 
         <header class="article-head">
-          <span class="cat">PGA TOUR · FEDEXCUP PLAYOFFS</span>
+          <span class="cat">PGA Tour · Tournament Recap</span>
           <h1>Thursday He Took 33 Putts and Shot 68. Friday He Made 13 One-Putts and Shot 61.</h1>
           <p class="standfirst">Scottie Scheffler tied the TPC Southwind course record on Friday with a nine-under 61, taking a three-shot lead into the weekend at the FedEx St. Jude Championship. The seven-shot swing from his opening round happened almost entirely on the greens.</p>
           <div class="byline">
-            <span>BY <b>GOLFRAW EDITORIAL</b></span>
+            <span>BY <b><a href="#">GOLFRAW EDITORIAL</a></b></span>
             <span>PUBLISHED <b>SAT 15 AUG 2026</b></span>
             <span class="live-upd">ROUND 2 RECAP</span>
             <span><b>4 MIN READ</b></span>
@@ -713,29 +764,48 @@
         </header>
 
         <div class="meta-callout" style="border-left: 4px solid #10b981; padding-left: 12px; margin: 16px 0;">
-          <strong>Tournament Analysis & Course Records:</strong> August 15, 2026 | FedEx St. Jude Championship
+          <strong>Tournament Recap &amp; Scoring Records:</strong> August 15, 2026 | FedEx St. Jude Championship
         </div>
 
         <figure class="lead-img">
           <img src="/public/scottie-scheffler-61-tpc-southwind-course-record-2026.webp" alt="Scottie Scheffler 61 TPC Southwind Course Record 2026" />
         </figure>
-        <figcaption>SCOTTIE SCHEFFLER TIED THE TPC SOUTHWIND COURSE RECORD WITH A 61 IN ROUND 2. IMAGE: GOLFRAW</figcaption>
+        <figcaption>SCOTTIE SCHEFFLER TIED THE TPC SOUTHWIND COURSE RECORD WITH A 61 IN ROUND 2. PHOTO: GOLFRAW</figcaption>
 
         <div class="article-body">
-          <h2>The Seven-Shot Swing on the Greens</h2>
-          <p>On Thursday, playing the exact same holes, Scheffler shot 68 and noted he felt he played better than his score. The statistics back him up. He took 33 putts in a round plagued by lip-outs and near misses.</p>
+          <p><strong>Quick summary:</strong> Scottie Scheffler produced a breathtaking putting turnaround on Friday at TPC Southwind, firing a career-low-tying 9-under 61 to match the 33-year-old course record and open a three-shot lead at the FedEx St. Jude Championship. After burning edges with 33 putts on Thursday, Scheffler recorded 13 one-putts in Round 2, gaining nearly four strokes on the greens alone.</p>
 
-          <p>Friday delivered a masterclass. He recorded 13 one-putts and gained 3.874 strokes on the field on the greens. Scheffler birdied six of his first seven holes, holing 54 feet of putts in that stretch alone, primarily capitalizing on the 15-to-20-footers that had slid past the hole a day prior. He finished with 11 birdies and two bogeys in the intense Memphis heat.</p>
+          <h2>The Seven-Shot Swing on the Greens</h2>
+          <p>On Thursday, playing the exact same 18 holes, Scheffler signed for a two-under 68 and remarked that his ball-striking warranted a significantly lower number. The underlying metrics backed him up: he took 33 putts in a round filled with lip-outs and near-misses on Southwind's Bermuda greens.</p>
+
+          <p>Friday delivered an absolute clinic in scoring:</p>
+          <ul>
+            <li><strong>13 one-putts</strong> across 18 holes (compared to just five in Round 1).</li>
+            <li><strong>+3.874 Strokes Gained: Putting</strong> on Friday after losing strokes on the greens Thursday.</li>
+            <li><strong>54 total feet</strong> of putts holed during a 6-birdie blitz across his first seven holes alone.</li>
+            <li><strong>11 total birdies</strong>, matching the low mark for any single round at TPC Southwind in 2026.</li>
+          </ul>
+
+          <blockquote class="pull">
+            "I felt like I hit it really well yesterday and just didn't get anything out of it. Today the putts actually went in."
+            <footer>— SCOTTIE SCHEFFLER</footer>
+          </blockquote>
 
           <h2>Tying the TPC Southwind Course Record</h2>
-          <p>Scheffler's 61 ties the long-standing TPC Southwind course record, matching Jay Delsing's final round in 1993 and Bob Estes' opening round in 2001. After 25 years of professional golf at this venue, Scheffler becomes only the third man to shoot 61 here, and the first to achieve it during a FedExCup Playoff event.</p>
+          <p>Scheffler's 61 ties the long-standing TPC Southwind tournament record, joining an elite company of just three players over 35+ years of professional tournament history at the Memphis venue:</p>
 
-          <p>This also marks the fourth 61 on the PGA Tour in just four weeks across three par-70 layouts (Detroit Golf Club, Sedgefield, and now Southwind). However, Southwind has historically played as the toughest of the summer stretch, proving that this score was the result of extraordinary putting rather than a defenceless golf course.</p>
+          <ul>
+            <li><strong>Jay Delsing (1993):</strong> Final round 61 at the Federal Express St. Jude Classic.</li>
+            <li><strong>Bob Estes (2001):</strong> Opening round 61 en route to victory.</li>
+            <li><strong>Scottie Scheffler (2026):</strong> Second round 61, the first ever recorded during a FedExCup Playoff event.</li>
+          </ul>
 
-          <h2>The Playoff Implications for Scheffler</h2>
-          <p>Despite being the best player in the world, Scheffler entered Memphis with only one victory in 2026 (the American Express in January). He has amassed 11 top-10 finishes, including five runner-ups, but the Tour's removal of the staggered start at the Tour Championship means this consistency guarantees no head start at East Lake.</p>
+          <p>This also marks the fourth 61 on the PGA Tour in just four weeks across three par-70 layouts (Detroit Golf Club, Sedgefield, and now Southwind). However, Southwind has historically played as the toughest test of the summer stretch, proving that this score was the result of extraordinary execution rather than a defenceless golf course.</p>
 
-          <p>To capitalize on his season, he needs victories. History is on his side: this is his eighth outright 36-hole lead since 2024, with the previous seven yielding four wins and six top-three finishes. He currently leads Sungjae Im and Viktor Hovland by three strokes at 11-under 129.</p>
+          <h2>The Playoff Implications and the East Lake Chase</h2>
+          <p>Despite being the dominant world No. 1, Scheffler entered Memphis with only one victory in 2026 (the American Express in January). He has amassed 11 top-10 finishes, including five runner-ups, but the Tour's removal of the staggered start at the Tour Championship means this consistency guarantees no head start at East Lake.</p>
+
+          <p>To capitalize on his remarkable season, he needs trophies. History is firmly on his side: this is his eighth outright 36-hole lead since 2024, with the previous seven yielding four victories and six top-three finishes. He currently leads Sungjae Im and Viktor Hovland by three strokes at 11-under 129 heading into the weekend.</p>
 
           <div class="faq-section">
             <h2>Frequently Asked Questions</h2>
@@ -754,7 +824,7 @@
           </div>
 
           <h2>The Raw Take</h2>
-          <p>Scheffler's Friday performance is the ultimate validation that elite golf is decided on the greens. Hitting iron shots perfectly only sets the stage; holing 15-footers separates a solid 68 from a historic 61. If his putter stays this hot, the debate over his 2026 season ends in Memphis.</p>
+          <p>Scheffler's Friday performance is the ultimate validation that elite tournament golf is decided on the greens. Hitting laser-like iron shots sets the baseline; holing 15-footers separates a solid 68 from a historic 61. If his putter stays this cooperative over the weekend, the debate over his 2026 season ends in Memphis.</p>
 
           <nav class="tag-row" aria-label="Article tags">
             <a href="/pga-tour">PGA Tour</a>
