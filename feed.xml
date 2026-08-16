@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Fifteen Months Ago He Was Playing NAIA Golf. Today He&#x27;s in the U.S. Amateur Final at Merion.</title>
+      <link>https://www.golfraw.com/news-2026-us-amateur-final-jack-whaley-jay-leng-merion</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-us-amateur-final-jack-whaley-jay-leng-merion</guid>
+      <pubDate>Sun, 16 Aug 2026 09:00:00 +0000</pubDate>
+      <category>AMATEUR GOLF</category>
+      <description>Jack Whaley survived a 16-for-11 playoff just to make the bracket at Merion. Jay Leng Jr. was 2-6-2 in college match play. Now they&#x27;re playing for the trophy.</description>
+      <enclosure url="https://www.golfraw.com/public/jack-whaley-jay-leng-us-amateur-final-merion-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Jon Rahm Has &#x27;Earned&#x27; $87.7 Million on LIV. He&#x27;s Reportedly Owed $150 Million. He Signed for a Reported $300 Million.</title>
       <link>https://www.golfraw.com/news-2026-jon-rahm-liv-money-list-contract-debt</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-jon-rahm-liv-money-list-contract-debt</guid>
@@ -359,15 +368,6 @@
       <category>LIV GOLF</category>
       <description>LIV Golf New York at Bedminster carried a $20 million individual purse, with Joaquín Niemann earning $4 million for the victory.</description>
       <enclosure url="https://www.golfraw.com/public/liv-golf-bedminster-purse-unknown.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>LIV Says It&amp;#x27;s Saved. It Won&amp;#x27;t Say By Whom</title>
-      <link>https://www.golfraw.com/news-2026-liv-golf-secures-lead-investor</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-secures-lead-investor</guid>
-      <pubDate>Wed, 05 Aug 2026 09:00:00 +0000</pubDate>
-      <category>LIV GOLF</category>
-      <description>LIV Golf says it has a signed lead investor and players will be majority owners. It won&amp;#x27;t name the investor or the amount. What was actually announced.</description>
-      <enclosure url="https://www.golfraw.com/public/liv-golf-lead-investor.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
