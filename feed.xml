@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 15 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 16 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Maverick McNealy Lost His Season in an Airport Departure Lounge</title>
+      <link>https://www.golfraw.com/news-2026-maverick-mcnealy-fedexcup-top-50-bubble</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-maverick-mcnealy-fedexcup-top-50-bubble</guid>
+      <pubDate>Sun, 16 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Maverick McNealy lost his season in an airport two years ago, projected 50th when he finished. He&#x27;s back on the same bubble at the same course, by four points.</description>
+      <enclosure url="https://www.golfraw.com/public/maverick-mcnealy-fedexcup-top-50-bubble-2026.webp" type="image/webp"/>
+    </item>
     <item>
       <title>33 Putts and a 68. Then 13 One-Putts and a 61.</title>
       <link>https://www.golfraw.com/news-2026-scottie-scheffler-61-tpc-southwind-course-record</link>
@@ -359,15 +368,6 @@
       <category>GUIDES</category>
       <description>Australians search for a 7-wood three times more than a 3-iron. The loft numbers, the one downside nobody mentions, and why the club has three names.</description>
       <enclosure url="https://www.golfraw.com/public/7-wood-vs-3-iron-australian-golfers.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Wyndham Championship Bubble: Koivun Leads by 12</title>
-      <link>https://www.golfraw.com/news-2026-wyndham-fedexcup-bubble-koivun</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-wyndham-fedexcup-bubble-koivun</guid>
-      <pubDate>Tue, 04 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Jackson Koivun enters the 2026 Wyndham Championship holding the 70th FedExCup spot by just 12 points. What Sedgefield&amp;#x27;s positional layout means.</description>
-      <enclosure url="https://www.golfraw.com/public/wyndham-fedexcup-bubble-koivun.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
