@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>The Most Welcoming Golf in America Happens at Charity Scrambles</title>
+      <link>https://www.golfraw.com/charity-golf-scrambles-access-guide</link>
+      <guid isPermaLink="true">https://www.golfraw.com/charity-golf-scrambles-access-guide</guid>
+      <pubDate>Sun, 16 Aug 2026 09:00:00 +0000</pubDate>
+      <category>GUIDES</category>
+      <description>No handicap, all abilities welcome, private courses open for the day. Why charity golf tournaments are the easiest way into the game — and how to find one.</description>
+      <enclosure url="https://www.golfraw.com/public/charity-golf-scrambles-access-guide-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>He Finished 66th and Called It Encouraging. He Might Be Right.</title>
       <link>https://www.golfraw.com/news-2026-rory-mcilroy-66th-finish-pga-tour-membership</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-rory-mcilroy-66th-finish-pga-tour-membership</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>Hossler went from 122nd to a projected 52nd in a single round. Koepka needs a top four for a spot that pays him nothing. Inside the Wyndham bubble.</description>
       <enclosure url="https://www.golfraw.com/public/hossler-koepka-wyndham-fedexcup-bubble.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>He Threw a Bottle at a Bin From Four Feet. He</title>
-      <link>https://www.golfraw.com/news-2026-bryson-dechambeau-water-bottle-bedminster</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-bryson-dechambeau-water-bottle-bedminster</guid>
-      <pubDate>Fri, 07 Aug 2026 09:00:00 +0000</pubDate>
-      <category>LIV GOLF</category>
-      <description>DeChambeau shot 76 at Bedminster — his worst LIV round of the year — and lost it with a bin on the fifth tee. Why the clip is the least of his problems.</description>
-      <enclosure url="https://www.golfraw.com/public/bryson-dechambeau-water-bottle-bedminster.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
