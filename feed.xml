@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Three Tour Players, One Diagnosis, and Only One of Them Fixed It</title>
+      <link>https://www.golfraw.com/news-2026-brian-harman-putter-struggle-wagner</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-brian-harman-putter-struggle-wagner</guid>
+      <pubDate>Sun, 16 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Johnson Wagner wants Brian Harman back on his old putter. It&#x27;s the third case in a fortnight of the same trap — and Scheffler showed the way out of it.</description>
+      <enclosure url="https://www.golfraw.com/public/brian-harman-johnson-wagner-putter-struggle-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Maverick McNealy Lost His Season in an Airport Departure Lounge</title>
       <link>https://www.golfraw.com/news-2026-maverick-mcnealy-fedexcup-top-50-bubble</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-maverick-mcnealy-fedexcup-top-50-bubble</guid>
@@ -359,15 +368,6 @@
       <category>LIV GOLF</category>
       <description>Cam Smith says he&amp;#x27;d &quot;100%&quot; return to the PGA Tour if LIV folded. But he turned down the exit route in February — and PIF pulled its funding in April.</description>
       <enclosure url="https://www.golfraw.com/public/cam-smith-liv-door-closed.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>7-Wood vs 3-Iron: What Aussie Golfers Actually</title>
-      <link>https://www.golfraw.com/news-2026-7-wood-vs-3-iron-australian-golfers</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-7-wood-vs-3-iron-australian-golfers</guid>
-      <pubDate>Wed, 05 Aug 2026 09:00:00 +0000</pubDate>
-      <category>GUIDES</category>
-      <description>Australians search for a 7-wood three times more than a 3-iron. The loft numbers, the one downside nobody mentions, and why the club has three names.</description>
-      <enclosure url="https://www.golfraw.com/public/7-wood-vs-3-iron-australian-golfers.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
