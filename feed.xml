@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>There Are Six Ways to Win Your Club Championship. Only One of Them Is the Club Championship.</title>
+      <link>https://www.golfraw.com/club-championship-divisions-flights-explained</link>
+      <guid isPermaLink="true">https://www.golfraw.com/club-championship-divisions-flights-explained</guid>
+      <pubDate>Mon, 17 Aug 2026 09:00:00 +0000</pubDate>
+      <category>GUIDES</category>
+      <description>Senior, super senior, flights, gross, net. Most club champions won a division, not the championship. What each one actually means, and who verifies it.</description>
+      <enclosure url="https://www.golfraw.com/public/club-championship-flights-divisions-explained-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Bellerive Is a Par 72. The Tour Has Decided It&#x27;s a Par 70 This Week.</title>
       <link>https://www.golfraw.com/news-2026-bmw-championship-bellerive-par-70-course-setup</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-bmw-championship-bellerive-par-70-course-setup</guid>
@@ -359,15 +368,6 @@
       <category>GUIDES</category>
       <description>PGA Tour pro-ams run $2,500–$10,000 a head. Your local PGA section runs them for $200–$400, at private clubs. How pro-ams work and how to actually get.</description>
       <enclosure url="https://www.golfraw.com/public/how-much-does-pro-am-cost-golf.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>&quot;Wherever They&amp;#x27;ll Let Me.&quot; Nobody Is Letting Him</title>
-      <link>https://www.golfraw.com/news-2026-bryson-dechambeau-pga-tour-return</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-bryson-dechambeau-pga-tour-return</guid>
-      <pubDate>Sat, 08 Aug 2026 09:00:00 +0000</pubDate>
-      <category>LIV GOLF</category>
-      <description>DeChambeau says he&amp;#x27;d love to play PGA Tour events again. The Tour&amp;#x27;s CEO said &quot;no merger, no conversations&quot; the same week. And he turned down the way back.</description>
-      <enclosure url="https://www.golfraw.com/public/bryson-dechambeau-pga-tour-return-liv.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
