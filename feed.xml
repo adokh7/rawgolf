@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>You Start to Make the Golf Swing More Important Than the Golf Shot</title>
+      <link>https://www.golfraw.com/news-2026-rory-mcilroy-target-awareness-swing-mechanics</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-rory-mcilroy-target-awareness-swing-mechanics</guid>
+      <pubDate>Mon, 17 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>McIlroy finished 66th of 68 and gave the best explanation of golf&#x27;s most common trap: when you work on your swing, you stop looking at the target.</description>
+      <enclosure url="https://www.golfraw.com/public/rory-mcilroy-target-awareness-swing-mechanics-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>FedEx St. Jude Championship 2026 Prize Money: Scottie Scheffler Takes $3.6M After Eight-Shot Win</title>
       <link>https://www.golfraw.com/news-2026-fedex-st-jude-championship-prize-money-payouts</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-fedex-st-jude-championship-prize-money-payouts</guid>
@@ -359,15 +368,6 @@
       <category>GUIDES</category>
       <description>Five Washington golf courses made Golfweek&amp;#x27;s 2026 list of America&amp;#x27;s 200 best modern courses — not four. See the rankings, locations, and which ones you.</description>
       <enclosure url="https://www.golfraw.com/public/washington-best-golf-courses-golfweek-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>A 61 Led in Greensboro. A 64 Led in New Jersey</title>
-      <link>https://www.golfraw.com/news-2026-two-tournaments-one-thursday-sedgefield-bedminster</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-two-tournaments-one-thursday-sedgefield-bedminster</guid>
-      <pubDate>Fri, 07 Aug 2026 09:00:00 +0000</pubDate>
-      <category>LIV GOLF</category>
-      <description>Two tournaments, one Thursday. Sedgefield gave up 36 rounds under 66. Bedminster&amp;#x27;s leader shot 64 and won by two. What 520 yards actually does.</description>
-      <enclosure url="https://www.golfraw.com/public/two-tournaments-one-thursday-sedgefield-bedminster.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
