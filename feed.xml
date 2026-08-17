@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>The Last Man to Win at Bellerive Isn&#x27;t in the Field</title>
+      <link>https://www.golfraw.com/news-2026-brooks-koepka-absent-bellerive-bmw-championship</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-brooks-koepka-absent-bellerive-bmw-championship</guid>
+      <pubDate>Mon, 17 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Koepka won the 2018 PGA at Bellerive. He paid $5m to leave LIV and missed the playoffs entirely. Fifty players arrive at a course he owns the memory of.</description>
+      <enclosure url="https://www.golfraw.com/public/brooks-koepka-bellerive-bmw-championship-absent-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>There Are Six Ways to Win Your Club Championship. Only One of Them Is the Club Championship.</title>
       <link>https://www.golfraw.com/club-championship-divisions-flights-explained</link>
       <guid isPermaLink="true">https://www.golfraw.com/club-championship-divisions-flights-explained</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>Jason Day missed the cut at Sedgefield and ended a run of 19 consecutive FedExCup Playoff seasons. Bradley and Finau survived on the number.</description>
       <enclosure url="https://www.golfraw.com/public/jason-day-wyndham-streak-ended.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>You Can Play With a Professional Golfer. It</title>
-      <link>https://www.golfraw.com/news-2026-how-much-pro-am-costs</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-how-much-pro-am-costs</guid>
-      <pubDate>Sat, 08 Aug 2026 09:00:00 +0000</pubDate>
-      <category>GUIDES</category>
-      <description>PGA Tour pro-ams run $2,500–$10,000 a head. Your local PGA section runs them for $200–$400, at private clubs. How pro-ams work and how to actually get.</description>
-      <enclosure url="https://www.golfraw.com/public/how-much-does-pro-am-cost-golf.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
