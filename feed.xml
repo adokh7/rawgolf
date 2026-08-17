@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Bellerive Is a Par 72. The Tour Has Decided It&#x27;s a Par 70 This Week.</title>
+      <link>https://www.golfraw.com/news-2026-bmw-championship-bellerive-par-70-course-setup</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-bmw-championship-bellerive-par-70-course-setup</guid>
+      <pubDate>Mon, 17 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Detroit spent $16.1m to become a par 70 and gave up three 61s. The Tour has re-parred Bellerive with a pen. The fourth straight par 70, and the longest.</description>
+      <enclosure url="https://www.golfraw.com/public/bellerive-country-club-bmw-championship-par-70-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>You Start to Make the Golf Swing More Important Than the Golf Shot</title>
       <link>https://www.golfraw.com/news-2026-rory-mcilroy-target-awareness-swing-mechanics</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-rory-mcilroy-target-awareness-swing-mechanics</guid>
@@ -359,15 +368,6 @@
       <category>LIV GOLF</category>
       <description>DeChambeau says he&amp;#x27;d love to play PGA Tour events again. The Tour&amp;#x27;s CEO said &quot;no merger, no conversations&quot; the same week. And he turned down the way back.</description>
       <enclosure url="https://www.golfraw.com/public/bryson-dechambeau-pga-tour-return-liv.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>5 of America&amp;#x27;s Best Golf Courses Are in Washington</title>
-      <link>https://www.golfraw.com/best-golf-courses-washington-state-golfweek-2026</link>
-      <guid isPermaLink="true">https://www.golfraw.com/best-golf-courses-washington-state-golfweek-2026</guid>
-      <pubDate>Sat, 08 Aug 2026 09:00:00 +0000</pubDate>
-      <category>GUIDES</category>
-      <description>Five Washington golf courses made Golfweek&amp;#x27;s 2026 list of America&amp;#x27;s 200 best modern courses — not four. See the rankings, locations, and which ones you.</description>
-      <enclosure url="https://www.golfraw.com/public/washington-best-golf-courses-golfweek-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
