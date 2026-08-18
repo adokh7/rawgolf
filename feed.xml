@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Golf PGA Australia in 2026: 135 tour cards, down from 170</title>
+      <link>https://www.golfraw.com/news-2026-golf-pga-australia-tour-cards-changes</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-golf-pga-australia-tour-cards-changes</guid>
+      <pubDate>Tue, 18 Aug 2026 09:00:00 +0000</pubDate>
+      <category>ANALYSIS</category>
+      <description>The PGA TOUR cut its 2026 entry pathways while golf PGA Australia events gained international co-sanctioning. We ran the numbers on both sides of that trade.</description>
+      <enclosure url="https://www.golfraw.com/public/golf-pga-australia-tour-cards-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>1,140 golf PGA Australia queries: only 9 of them name Australia</title>
       <link>https://www.golfraw.com/news-2026-golf-pga-australia-search-demand</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-golf-pga-australia-search-demand</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>Koepka is 8th on Tour in approach play and 116th in putting. He withdrew from Detroit with a hand injury. Now he needs a massive week at Sedgefield.</description>
       <enclosure url="https://www.golfraw.com/public/brooks-koepka-wyndham-putting-pga-tour.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Playing Golf in Your Fifties: Distance Loss</title>
-      <link>https://www.golfraw.com/guides-playing-golf-in-your-fifties-distance-loss</link>
-      <guid isPermaLink="true">https://www.golfraw.com/guides-playing-golf-in-your-fifties-distance-loss</guid>
-      <pubDate>Sun, 09 Aug 2026 09:00:00 +0000</pubDate>
-      <category>GUIDES</category>
-      <description>Playing golf in your 50s means less carry and longer approaches. Learn when to move up a tee and choose yardage that protects your score.</description>
-      <enclosure url="https://www.golfraw.com/public/lee-westwood-liv-golf-bedminster-53.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
