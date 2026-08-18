@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>1,140 golf PGA Australia queries: only 9 of them name Australia</title>
+      <link>https://www.golfraw.com/news-2026-golf-pga-australia-search-demand</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-golf-pga-australia-search-demand</guid>
+      <pubDate>Tue, 18 Aug 2026 09:00:00 +0000</pubDate>
+      <category>ANALYSIS</category>
+      <description>An Australian-tagged file of 1,140 golf PGA Australia rows sends 99.89% of its volume to the US tour. We show the arithmetic and correct a venue error.</description>
+      <enclosure url="https://www.golfraw.com/public/golf-pga-australia-search-demand-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Bellerive is 132 yards longer than it was in 2018. Here is where every yard went.</title>
       <link>https://www.golfraw.com/bmw-championship-2026-bellerive-yardage</link>
       <guid isPermaLink="true">https://www.golfraw.com/bmw-championship-2026-bellerive-yardage</guid>
@@ -359,15 +368,6 @@
       <category>GUIDES</category>
       <description>Playing golf in your 50s means less carry and longer approaches. Learn when to move up a tee and choose yardage that protects your score.</description>
       <enclosure url="https://www.golfraw.com/public/lee-westwood-liv-golf-bedminster-53.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>6 and 5 on Thursday. Beaten on the 19th on Friday</title>
-      <link>https://www.golfraw.com/news-2026-us-womens-amateur-match-play-malixi</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-us-womens-amateur-match-play-malixi</guid>
-      <pubDate>Sat, 08 Aug 2026 09:00:00 +0000</pubDate>
-      <category>GUIDES</category>
-      <description>Rianne Malixi beat the world No. 14 amateur by six and five, then lost on the 19th hole the next day. What match play does that stroke play never does.</description>
-      <enclosure url="https://www.golfraw.com/public/us-womens-amateur-match-play-malixi.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
