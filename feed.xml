@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Bellerive is 132 yards longer than it was in 2018. Here is where every yard went.</title>
+      <link>https://www.golfraw.com/bmw-championship-2026-bellerive-yardage</link>
+      <guid isPermaLink="true">https://www.golfraw.com/bmw-championship-2026-bellerive-yardage</guid>
+      <pubDate>Tue, 18 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>The BMW Championship 2026 Bellerive setup runs 7,448 yards. We subtracted the 2018 card hole by hole: three holes hold half the added length.</description>
+      <enclosure url="https://www.golfraw.com/public/bellerive-132-yards-longer-bmw-championship-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Jon Rahm PGA Tour return 2027: What is confirmed, what is not</title>
       <link>https://www.golfraw.com/news-2026-jon-rahm-pga-tour-return-2027-unconfirmed</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-jon-rahm-pga-tour-return-2027-unconfirmed</guid>
@@ -359,15 +368,6 @@
       <category>GUIDES</category>
       <description>Rianne Malixi beat the world No. 14 amateur by six and five, then lost on the 19th hole the next day. What match play does that stroke play never does.</description>
       <enclosure url="https://www.golfraw.com/public/us-womens-amateur-match-play-malixi.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>LIV&amp;#x27;s Secret Investor Lends to DeChambeau&amp;#x27;s Agency</title>
-      <link>https://www.golfraw.com/news-2026-liv-golf-investor-bc-partners-dechambeau</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-investor-bc-partners-dechambeau</guid>
-      <pubDate>Sat, 08 Aug 2026 09:00:00 +0000</pubDate>
-      <category>LIV GOLF</category>
-      <description>Bloomberg and the FT name BC Partners as LIV&amp;#x27;s investor — a lender to Bryson DeChambeau&amp;#x27;s agency. And LIV quietly lost its feeder tour to the PGA Tour.</description>
-      <enclosure url="https://www.golfraw.com/public/liv-golf-bc-partners-dechambeau.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
