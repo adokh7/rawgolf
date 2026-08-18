@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 17 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Jon Rahm PGA Tour return 2027: What is confirmed, what is not</title>
+      <link>https://www.golfraw.com/news-2026-jon-rahm-pga-tour-return-2027-unconfirmed</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-jon-rahm-pga-tour-return-2027-unconfirmed</guid>
+      <pubDate>Tue, 18 Aug 2026 09:00:00 +0000</pubDate>
+      <category>LIV GOLF</category>
+      <description>Jon Rahm PGA Tour return 2027 remains unconfirmed. We trace the PGA rules, his real DP World Tour deal and the 197-day gap since the window shut.</description>
+      <enclosure url="https://www.golfraw.com/public/jon-rahm-pga-tour-return-2027-unconfirmed.webp" type="image/webp"/>
+    </item>
     <item>
       <title>The Last Man to Win at Bellerive Isn&#x27;t in the Field</title>
       <link>https://www.golfraw.com/news-2026-brooks-koepka-absent-bellerive-bmw-championship</link>
@@ -359,15 +368,6 @@
       <category>LIV GOLF</category>
       <description>Bloomberg and the FT name BC Partners as LIV&amp;#x27;s investor — a lender to Bryson DeChambeau&amp;#x27;s agency. And LIV quietly lost its feeder tour to the PGA Tour.</description>
       <enclosure url="https://www.golfraw.com/public/liv-golf-bc-partners-dechambeau.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Jason Day&amp;#x27;s 19-Season Playoff Streak Ends</title>
-      <link>https://www.golfraw.com/news-2026-jason-day-wyndham-streak-ended</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-jason-day-wyndham-streak-ended</guid>
-      <pubDate>Sat, 08 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Jason Day missed the cut at Sedgefield and ended a run of 19 consecutive FedExCup Playoff seasons. Bradley and Finau survived on the number.</description>
-      <enclosure url="https://www.golfraw.com/public/jason-day-wyndham-streak-ended.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
