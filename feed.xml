@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>No, 15 LPGA cards are not decided at Wildhorse this week</title>
+      <link>https://www.golfraw.com/news-2026-wildhorse-ladies-golf-classic-race-for-the-card</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-wildhorse-ladies-golf-classic-race-for-the-card</guid>
+      <pubDate>Thu, 20 Aug 2026 09:00:00 +0000</pubDate>
+      <category>EPSON TOUR</category>
+      <description>The 2026 Wildhorse Ladies Golf Classic runs 21 to 23 August. The Race for the Card arithmetic nobody has published, and what a win in Pendleton is worth.</description>
+      <enclosure url="https://www.golfraw.com/public/wildhorse-ladies-golf-classic-race-for-the-card-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>$1.23m claim, $200k offered: the LIV Golf vendor lawsuit</title>
       <link>https://www.golfraw.com/news-2026-liv-golf-vendor-lawsuit-settlement-offers</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-vendor-lawsuit-settlement-offers</guid>
@@ -359,15 +368,6 @@
       <category>GUIDES</category>
       <description>PGA Tour pro-ams run $2,500–$10,000 a head. Your local PGA section runs them for $200–$400, at private clubs. How pro-ams work and what pros expect of you.</description>
       <enclosure url="https://www.golfraw.com/public/pro-am-golf-guide-pga-tour.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>The Winning Team Finished Six Over Par</title>
-      <link>https://www.golfraw.com/news-2026-liv-golf-bedminster-crushers-six-over-par</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-bedminster-crushers-six-over-par</guid>
-      <pubDate>Mon, 10 Aug 2026 09:00:00 +0000</pubDate>
-      <category>LIV GOLF</category>
-      <description>Crushers GC won LIV New York at six over — the highest winning team score in league history. Niemann took the individual title wire to wire at 16 under.</description>
-      <enclosure url="https://www.golfraw.com/public/joaquin-niemann-liv-bedminster-win-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
