@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>$1.23m claim, $200k offered: the LIV Golf vendor lawsuit</title>
+      <link>https://www.golfraw.com/news-2026-liv-golf-vendor-lawsuit-settlement-offers</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-vendor-lawsuit-settlement-offers</guid>
+      <pubDate>Thu, 20 Aug 2026 09:00:00 +0000</pubDate>
+      <category>LIV GOLF</category>
+      <description>The LIV Golf vendor lawsuit was filed 21 July 2026, four weeks before it broke. Settlement offers as a share of the claim, plus the purse maths nobody ran.</description>
+      <enclosure url="https://www.golfraw.com/public/liv-golf-vendor-lawsuit-scott-oneil-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Do LIV players add value to the PGA Tour? The data gap</title>
       <link>https://www.golfraw.com/news-2026-liv-players-pga-tour-value-data-gap</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-players-pga-tour-value-data-gap</guid>
@@ -359,15 +368,6 @@
       <category>LIV GOLF</category>
       <description>Crushers GC won LIV New York at six over — the highest winning team score in league history. Niemann took the individual title wire to wire at 16 under.</description>
       <enclosure url="https://www.golfraw.com/public/joaquin-niemann-liv-bedminster-win-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>No, Scheffler Isn&amp;#x27;t at a Disadvantage at East Lake</title>
-      <link>https://www.golfraw.com/news-2026-scheffler-tour-championship-fedexcup-format-east-lake</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-scheffler-tour-championship-fedexcup-format-east-lake</guid>
-      <pubDate>Sun, 09 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>The FedExCup leader no longer starts 10 under at the Tour Championship. That isn&amp;#x27;t a disadvantage — it&amp;#x27;s no advantage. Why the difference matters in 2026.</description>
-      <enclosure url="https://www.golfraw.com/public/scheffler-tour-championship-fedexcup-east-lake.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
