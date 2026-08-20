@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Do LIV players add value to the PGA Tour? The data gap</title>
+      <link>https://www.golfraw.com/news-2026-liv-players-pga-tour-value-data-gap</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-players-pga-tour-value-data-gap</guid>
+      <pubDate>Thu, 20 Aug 2026 09:00:00 +0000</pubDate>
+      <category>ANALYSIS</category>
+      <description>Rory McIlroy questioned what defecting golfers brought to LIV Golf. We examine the 17.78x TV gap, Koepka&#x27;s return, and the data behind player value.</description>
+      <enclosure url="https://www.golfraw.com/public/liv-players-pga-tour-value-data-gap-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Scheffler tees off at 2:33. Full BMW Round 1 tee times.</title>
       <link>https://www.golfraw.com/news-2026-scheffler-mcilroy-bmw-championship-tee-times</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-scheffler-mcilroy-bmw-championship-tee-times</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>The FedExCup leader no longer starts 10 under at the Tour Championship. That isn&amp;#x27;t a disadvantage — it&amp;#x27;s no advantage. Why the difference matters in 2026.</description>
       <enclosure url="https://www.golfraw.com/public/scheffler-tour-championship-fedexcup-east-lake.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Michigan Pro Golf Faces an Uncertain Future in</title>
-      <link>https://www.golfraw.com/news-2026-michigan-golf-tournaments-rocket-classic-liv-cancelled</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-michigan-golf-tournaments-rocket-classic-liv-cancelled</guid>
-      <pubDate>Sun, 09 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Michigan could lose three men&amp;#x27;s pro golf events before 2027. See the latest on the Rocket Classic, LIV Golf, Ally Challenge and LPGA stops.</description>
-      <enclosure url="https://www.golfraw.com/public/michigan-pro-golf-2027-uncertain-future.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
