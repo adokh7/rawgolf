@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 18 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>BMW Championship 2026 Round 1 tee times, in local time</title>
+      <link>https://www.golfraw.com/news-2026-bmw-championship-round-1-tee-times-local-time</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-bmw-championship-round-1-tee-times-local-time</guid>
+      <pubDate>Thu, 20 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>BMW Championship 2026 Round 1 tee times, converted to CDT. All 25 Bellerive pairings in both zones, plus the 11-minute interval maths and when to leave.</description>
+      <enclosure url="https://www.golfraw.com/public/bmw-championship-round-1-tee-times-bellerive-2026.webp" type="image/webp"/>
+    </item>
     <item>
       <title>Golf PGA Australia in 2026: 135 tour cards, down from 170</title>
       <link>https://www.golfraw.com/news-2026-golf-pga-australia-tour-cards-changes</link>
@@ -359,15 +368,6 @@
       <category>WOMEN&#x27;S GOLF</category>
       <description>Charley Hull shot 62 to equal the lowest round in Ladies European Tour history, then four-putted the 17th while leading. Anna Huang, 17, eagled the last.</description>
       <enclosure url="https://www.golfraw.com/public/charley-hull-four-putt-pif-london.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Eighth in Iron Play, 116th in Putting</title>
-      <link>https://www.golfraw.com/news-2026-brooks-koepka-wyndham-putting-stat-injury</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-brooks-koepka-wyndham-putting-stat-injury</guid>
-      <pubDate>Sun, 09 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Koepka is 8th on Tour in approach play and 116th in putting. He withdrew from Detroit with a hand injury. Now he needs a massive week at Sedgefield.</description>
-      <enclosure url="https://www.golfraw.com/public/brooks-koepka-wyndham-putting-pga-tour.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
