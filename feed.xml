@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 20 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Lee Westwood Rory McIlroy LIV Golf comments: what the transcripts show</title>
+      <link>https://www.golfraw.com/news-2026-lee-westwood-rory-mcilroy-liv-golf-value-transcripts</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-lee-westwood-rory-mcilroy-liv-golf-value-transcripts</guid>
+      <pubDate>Fri, 21 Aug 2026 09:00:00 +0000</pubDate>
+      <category>LIV GOLF</category>
+      <description>Lee Westwood Rory McIlroy LIV Golf comments, checked against the transcripts. See the 8% top-50 figure and which PGA Tour return routes remain open.</description>
+      <enclosure url="https://www.golfraw.com/public/lee-westwood-rory-mcilroy-liv-golf-value-transcripts-2026.webp" type="image/webp"/>
+    </item>
     <item>
       <title>No, 15 LPGA cards are not decided at Wildhorse this week</title>
       <link>https://www.golfraw.com/news-2026-wildhorse-ladies-golf-classic-race-for-the-card</link>
@@ -359,15 +368,6 @@
       <category>GUIDES</category>
       <description>Tour players hole 99.42% from three feet and 70.98% from six. Everything about three-putting is which one you leave yourself. The data, and what to do.</description>
       <enclosure url="https://www.golfraw.com/public/lag-putting-three-putt-avoidance-guide.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Playing With a Pro Costs $10,000. Or $200</title>
-      <link>https://www.golfraw.com/guides-how-to-play-in-a-golf-pro-am-costs-etiquette</link>
-      <guid isPermaLink="true">https://www.golfraw.com/guides-how-to-play-in-a-golf-pro-am-costs-etiquette</guid>
-      <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
-      <category>GUIDES</category>
-      <description>PGA Tour pro-ams run $2,500–$10,000 a head. Your local PGA section runs them for $200–$400, at private clubs. How pro-ams work and what pros expect of you.</description>
-      <enclosure url="https://www.golfraw.com/public/pro-am-golf-guide-pga-tour.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
