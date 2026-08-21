@@ -10,15 +10,6 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
-      <title>2026 FM Championship field: 129 entrants, 34 reserves</title>
-      <link>https://www.golfraw.com/news-2026-fm-championship-field-tpc-boston</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-fm-championship-field-tpc-boston</guid>
-      <pubDate>Fri, 21 Aug 2026 09:00:00 +0000</pubDate>
-      <category>LPGA TOUR</category>
-      <description>The 2026 FM Championship field runs 27 to 30 August at TPC Boston. Our purse arithmetic, the entry-list numbers, and the date error in the sponsor&#x27;s own listing.</description>
-      <enclosure url="https://www.golfraw.com/public/fm-championship-tpc-boston-field-2026.webp" type="image/webp"/>
-    </item>
-    <item>
       <title>DeChambeau asks for one more shot as LIV funding slips</title>
       <link>https://www.golfraw.com/news-2026-dechambeau-liv-golf-one-more-shot</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-dechambeau-liv-golf-one-more-shot</guid>
@@ -26,6 +17,15 @@
       <category>LIV GOLF</category>
       <description>Bryson DeChambeau LIV Golf one more shot: the plea landed inside an unclosed investment deal. Our count of the 218.34-point gap and what is still unknown.</description>
       <enclosure url="https://www.golfraw.com/public/dechambeau-liv-golf-one-more-shot-2026.webp" type="image/webp"/>
+    </item>
+    <item>
+      <title>2026 FM Championship field: 129 entrants, 34 reserves</title>
+      <link>https://www.golfraw.com/news-2026-fm-championship-field-tpc-boston</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-fm-championship-field-tpc-boston</guid>
+      <pubDate>Fri, 21 Aug 2026 09:00:00 +0000</pubDate>
+      <category>LPGA TOUR</category>
+      <description>The 2026 FM Championship field runs 27 to 30 August at TPC Boston. Our purse arithmetic, the entry-list numbers, and the date error in the sponsor&#x27;s own listing.</description>
+      <enclosure url="https://www.golfraw.com/public/fm-championship-tpc-boston-field-2026.webp" type="image/webp"/>
     </item>
     <item>
       <title>Lee Westwood Rory McIlroy LIV Golf comments: what the transcripts show</title>

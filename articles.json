@@ -26,15 +26,6 @@
   ],
   "articles": [
     {
-      "url": "/news-2026-fm-championship-field-tpc-boston",
-      "title": "2026 FM Championship field: 129 entrants, 34 reserves",
-      "category": "LPGA TOUR",
-      "date": "AUG 21 2026",
-      "image": "/public/fm-championship-tpc-boston-field-2026.webp",
-      "snippet": "The 2026 FM Championship field runs 27 to 30 August at TPC Boston. Our purse arithmetic, the entry-list numbers, and the date error in the sponsor's own listing.",
-      "keywords": "fm championship 2026 field, lpga tpc boston 2026, miranda wang defending champion, nelly korda fm championship, lpga prize money 2026"
-    },
-    {
       "url": "/news-2026-dechambeau-liv-golf-one-more-shot",
       "title": "DeChambeau asks for one more shot as LIV funding slips",
       "category": "LIV GOLF",
@@ -42,6 +33,15 @@
       "image": "/public/dechambeau-liv-golf-one-more-shot-2026.webp",
       "snippet": "Bryson DeChambeau LIV Golf one more shot: the plea landed inside an unclosed investment deal. Our count of the 218.34-point gap and what is still unknown.",
       "keywords": "bryson dechambeau liv golf one more shot, liv golf funding 2027, bc partners liv golf, jon rahm season points gap, liv golf indianapolis 2026"
+    },
+    {
+      "url": "/news-2026-fm-championship-field-tpc-boston",
+      "title": "2026 FM Championship field: 129 entrants, 34 reserves",
+      "category": "LPGA TOUR",
+      "date": "AUG 21 2026",
+      "image": "/public/fm-championship-tpc-boston-field-2026.webp",
+      "snippet": "The 2026 FM Championship field runs 27 to 30 August at TPC Boston. Our purse arithmetic, the entry-list numbers, and the date error in the sponsor's own listing.",
+      "keywords": "fm championship 2026 field, lpga tpc boston 2026, miranda wang defending champion, nelly korda fm championship, lpga prize money 2026"
     },
     {
       "url": "/news-2026-lee-westwood-rory-mcilroy-liv-golf-value-transcripts",
