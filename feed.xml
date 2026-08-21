@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Scheffler sick at BMW Championship: what is confirmed</title>
+      <link>https://www.golfraw.com/news-2026-scheffler-sick-bmw-championship</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-scheffler-sick-bmw-championship</guid>
+      <pubDate>Fri, 21 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Scottie Scheffler shot 72 on 20 August 2026 and skipped media. No diagnosis exists. What is verified, the back-nine maths, and what the field rules mean.</description>
+      <enclosure url="https://www.golfraw.com/public/scheffler-sick-bmw-championship-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>DeChambeau asks for one more shot as LIV funding slips</title>
       <link>https://www.golfraw.com/news-2026-dechambeau-liv-golf-one-more-shot</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-dechambeau-liv-golf-one-more-shot</guid>
@@ -359,15 +368,6 @@
       <category>EQUIPMENT</category>
       <description>Cameron Young averages 312 yards this year using a ball that meets the 2030 rules — one further than last season. Why golf&amp;#x27;s rollback just got paused.</description>
       <enclosure url="https://www.golfraw.com/public/colin-montgomerie-golf-ball-rollback-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>The Tournament the Tour Demoted Is the Hardest One</title>
-      <link>https://www.golfraw.com/news-2026-fedex-st-jude-championship-tpc-southwind-demotion</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-fedex-st-jude-championship-tpc-southwind-demotion</guid>
-      <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Detroit gave up three 61s. Sedgefield gave up 36 rounds under 66. TPC Southwind is the same par and the hardest of the three — and it&amp;#x27;s being relegated.</description>
-      <enclosure url="https://www.golfraw.com/public/tpc-southwind-fedex-st-jude-championship-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
