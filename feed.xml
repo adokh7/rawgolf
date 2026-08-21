@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>2026 FM Championship field: 129 entrants, 34 reserves</title>
+      <link>https://www.golfraw.com/news-2026-fm-championship-field-tpc-boston</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-fm-championship-field-tpc-boston</guid>
+      <pubDate>Fri, 21 Aug 2026 09:00:00 +0000</pubDate>
+      <category>LPGA TOUR</category>
+      <description>The 2026 FM Championship field runs 27 to 30 August at TPC Boston. Our purse arithmetic, the entry-list numbers, and the date error in the sponsor&#x27;s own listing.</description>
+      <enclosure url="https://www.golfraw.com/public/fm-championship-tpc-boston-field-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>DeChambeau asks for one more shot as LIV funding slips</title>
       <link>https://www.golfraw.com/news-2026-dechambeau-liv-golf-one-more-shot</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-dechambeau-liv-golf-one-more-shot</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>Detroit gave up three 61s. Sedgefield gave up 36 rounds under 66. TPC Southwind is the same par and the hardest of the three — and it&amp;#x27;s being relegated.</description>
       <enclosure url="https://www.golfraw.com/public/tpc-southwind-fedex-st-jude-championship-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>&quot;Pathetic.&quot; Also: &quot;10 Out of 10.&quot; Same Interview</title>
-      <link>https://www.golfraw.com/news-2026-brooks-koepka-pga-tour-return-season-verdict</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-brooks-koepka-pga-tour-return-season-verdict</guid>
-      <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Koepka called his season pathetic and rated his happiness 10 out of 10, minutes apart. What his return from LIV actually cost, and what went wrong.</description>
-      <enclosure url="https://www.golfraw.com/public/brooks-koepka-wyndham-championship-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
