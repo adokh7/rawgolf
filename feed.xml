@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>DeChambeau asks for one more shot as LIV funding slips</title>
+      <link>https://www.golfraw.com/news-2026-dechambeau-liv-golf-one-more-shot</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-dechambeau-liv-golf-one-more-shot</guid>
+      <pubDate>Fri, 21 Aug 2026 09:00:00 +0000</pubDate>
+      <category>LIV GOLF</category>
+      <description>Bryson DeChambeau LIV Golf one more shot: the plea landed inside an unclosed investment deal. Our count of the 218.34-point gap and what is still unknown.</description>
+      <enclosure url="https://www.golfraw.com/public/dechambeau-liv-golf-one-more-shot-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Lee Westwood Rory McIlroy LIV Golf comments: what the transcripts show</title>
       <link>https://www.golfraw.com/news-2026-lee-westwood-rory-mcilroy-liv-golf-value-transcripts</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-lee-westwood-rory-mcilroy-liv-golf-value-transcripts</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>Koepka called his season pathetic and rated his happiness 10 out of 10, minutes apart. What his return from LIV actually cost, and what went wrong.</description>
       <enclosure url="https://www.golfraw.com/public/brooks-koepka-wyndham-championship-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Three Feet vs. Six: The Putting Gap</title>
-      <link>https://www.golfraw.com/guides-the-three-feet-that-decide-whether-you-three-putt</link>
-      <guid isPermaLink="true">https://www.golfraw.com/guides-the-three-feet-that-decide-whether-you-three-putt</guid>
-      <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
-      <category>GUIDES</category>
-      <description>Tour players hole 99.42% from three feet and 70.98% from six. Everything about three-putting is which one you leave yourself. The data, and what to do.</description>
-      <enclosure url="https://www.golfraw.com/public/lag-putting-three-putt-avoidance-guide.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
