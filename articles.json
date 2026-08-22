@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 253,
+  "count": 254,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -31,6 +31,20 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-dustin-johnson-liv-golf-2-0",
+      "alias_of": "",
+      "slug": "news-2026-dustin-johnson-liv-golf-2-0",
+      "url": "/news-2026-dustin-johnson-liv-golf-2-0",
+      "title": "Dustin Johnson heard LIV 2.0 is going well. He missed the meeting.",
+      "excerpt": "Dustin Johnson LIV Golf 2.0 comments came second hand. We trace the missed meeting, unfinished investor deal and proposed 28.6% schedule cut.",
+      "category": "LIV GOLF",
+      "date": "2026-08-22",
+      "image": "/public/dustin-johnson-liv-golf-2-0-2026.webp",
+      "keywords": "dustin johnson liv golf 2.0 liv investor meeting liv golf 2027 schedule 4aces st andrews open",
+      "category_source": "keyword-fallback",
+      "section": "LIV GOLF"
+    },
     {
       "canonical": "/news-2026-scheffler-sick-bmw-championship",
       "alias_of": "",
@@ -3360,7 +3374,7 @@
       "date": "2026-06-13",
       "image": "/public/raw-golf-practice.webp",
       "keywords": "",
-      "category_source": "search-index",
+      "category_source": "keyword-fallback",
       "section": "GUIDES"
     },
     {
@@ -3570,7 +3584,7 @@
       "date": "",
       "image": "/public/raw-golf-practice.webp",
       "keywords": "",
-      "category_source": "keyword-fallback",
+      "category_source": "search-index",
       "section": "PGA TOUR"
     }
   ]

@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 21 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Dustin Johnson heard LIV 2.0 is going well. He missed the meeting.</title>
+      <link>https://www.golfraw.com/news-2026-dustin-johnson-liv-golf-2-0</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-dustin-johnson-liv-golf-2-0</guid>
+      <pubDate>Sat, 22 Aug 2026 09:00:00 +0000</pubDate>
+      <category>LIV GOLF</category>
+      <description>Dustin Johnson LIV Golf 2.0 comments came second hand. We trace the missed meeting, unfinished investor deal and proposed 28.6% schedule cut.</description>
+      <enclosure url="https://www.golfraw.com/public/dustin-johnson-liv-golf-2-0-2026.webp" type="image/webp"/>
+    </item>
     <item>
       <title>Scottie Scheffler sick at the BMW Championship</title>
       <link>https://www.golfraw.com/news-2026-scheffler-sick-bmw-championship</link>
@@ -359,15 +368,6 @@
       <category>KORN FERRY TOUR</category>
       <description>Frankie Harris shot 12-under 59 to win the Pinnacle Bank Championship — but Docherty birdied his last three to force extra holes. Only nine have done it.</description>
       <enclosure url="https://www.golfraw.com/public/frankie-harris-59-pinnacle-bank-championship-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Koivun Won at 25 Under. Southwind Is the Opposite</title>
-      <link>https://www.golfraw.com/news-2026-jackson-koivun-tpc-southwind-fedex-st-jude</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-jackson-koivun-tpc-southwind-fedex-st-jude</guid>
-      <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Koivun won the 3M Open at 25 under. TPC Southwind has seven par 4s over 450 yards and water on 11 holes. The first real test of a 21-year-old&amp;#x27;s season.</description>
-      <enclosure url="https://www.golfraw.com/public/jackson-koivun-tpc-southwind-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
