@@ -245,16 +245,80 @@ def parse_page(source: str) -> PageParser:
     return parser
 
 
+# Words that must never end a title. Cutting at a word boundary is not enough:
+# "…tour cards, down from" and "…The PGA claim is" are both valid word
+# boundaries and both read as broken.
+DANGLING_WORDS = {
+    "a", "an", "and", "as", "at", "but", "by", "down", "for", "from", "in",
+    "into", "is", "it", "its", "of", "on", "or", "the", "their", "this",
+    "to", "up", "was", "were", "who", "with", "his", "her", "that", "than",
+}
+
+
+def _strip_dangling(value: str) -> str:
+    """Drop trailing filler words, bare numbers and punctuation from a cut title."""
+    prev = None
+    while value and value != prev:
+        prev = value
+        value = value.rstrip(" |—–-:;,.")
+        if " " not in value:
+            break
+        head, last = value.rsplit(" ", 1)
+        drop = last.casefold() in DANGLING_WORDS
+        # A bare number is only a fragment when it trails a list ("entrants, 34").
+        # In "Round 1" or "Top 30" it belongs to the phrase.
+        if last.isdigit() and head.rstrip().endswith(","):
+            drop = True
+        if not drop:
+            break
+        value = head
+    return value
+
+
 def truncate_words(value: str, limit: int) -> str:
     value = clean_text(value).strip(" |—–-:;,.")
     if len(value) <= limit:
         return value
-    shortened = value[: limit + 1].rsplit(" ", 1)[0].rstrip(" |—–-:;,.")
+
+    # A clause boundary reads far better than a mid-phrase cut, so prefer the
+    # longest comma/colon/dash clause that still fits.
+    best = ""
+    for match in re.finditer(r"[,:;—–]", value):
+        clause = value[: match.start()].strip(" |—–-:;,.")
+        if len(clause) <= limit and len(clause) > len(best):
+            best = clause
+    if len(best) >= 30:
+        return best
+
+    shortened = _strip_dangling(value[: limit + 1].rsplit(" ", 1)[0])
+    # A short trailing word is usually half of a phrase the cut split ("… tee"
+    # from "tee times"). Drop it when there is room to spare.
+    if " " in shortened:
+        head, last = shortened.rsplit(" ", 1)
+        if len(last) <= 4 and len(_strip_dangling(head)) >= 30:
+            shortened = _strip_dangling(head)
+    if len(shortened) >= 30:
+        return shortened
     return shortened or value[:limit].rstrip(" |—–-:;,.")
 
 
-def title_core(value: str) -> str:
+def strip_decoration(value: str) -> str:
+    """Remove eyebrow decoration that belongs in an H1 but not in a <title>.
+
+    Headings here open with things like "⛳ LPGA PREVIEW:" or "· GOLF MAGIC:".
+    Carried into a title they waste characters the truncator then reclaims from
+    the actual headline.
+    """
     value = clean_text(value)
+    # leading emoji, bullets, dashes and other non-word decoration
+    value = re.sub(r"^[^\w(\[]+", "", value).strip()
+    # a leading SHOUTED LABEL: prefix
+    value = re.sub(r"^[A-Z0-9][A-Z0-9 &''’.-]{2,28}:\s*", "", value).strip()
+    return value
+
+
+def title_core(value: str) -> str:
+    value = strip_decoration(value)
     value = re.sub(r"\s*(?:\||—|–|-)\s*(?:GOLFRAW|GolfRaw|Rawgolf)\s*$", "", value, flags=re.I)
     value = re.sub(r"\s*(?:—|–|-)\s*Raw Take\s*$", "", value, flags=re.I)
     return value.strip(" |—–-")
@@ -263,11 +327,19 @@ def title_core(value: str) -> str:
 def sanitize_title(path: Path, parsed: PageParser) -> str:
     existing = parsed.titles[0] if parsed.titles else ""
     core = SHORT_TITLE_OVERRIDES.get(path.name) or title_core(existing)
-    heading = title_core(parsed.h1)
+    heading = title_core(strip_decoration(parsed.h1))
 
     if not core:
         core = heading or path.stem.replace("-", " ").title()
     if len(core) < 30 and 30 <= len(heading) <= 50:
+        core = heading
+
+    # An earlier version of this script truncated mid-phrase and wrote the result
+    # back, so the stored <title> is often a fragment of the real headline. The
+    # H1 is intact, so prefer it whenever it carries more of the headline than
+    # the stored title does. Without this the script keeps re-truncating its own
+    # output and pads the remains with " Explained".
+    if heading and len(heading) > len(core):
         core = heading
 
     max_core = 60 - len(BRAND_SUFFIX)
