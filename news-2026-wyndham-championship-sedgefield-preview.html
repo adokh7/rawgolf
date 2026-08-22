@@ -98,6 +98,7 @@
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/public/wyndham-championship-2026-sedgefield-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -245,7 +246,7 @@
 
         <div class="article-body">
           <!-- Featured Hero Image -->
-          <img src="/public/wyndham-championship-2026-sedgefield.webp" alt="Sedgefield Country Club golf course layout for the Wyndham Championship" style="margin-bottom: 28px; border-radius: 4px;" loading="eager" fetchpriority="high">
+          <img src="/public/wyndham-championship-2026-sedgefield.webp" alt="Sedgefield Country Club golf course layout for the Wyndham Championship" style="margin-bottom: 28px; border-radius: 4px;" loading="eager" fetchpriority="high" srcset="/public/wyndham-championship-2026-sedgefield-400.webp 400w, /public/wyndham-championship-2026-sedgefield-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
 
           <p>Last week the Tour played a Donald Ross par 70 that had just swallowed $16.1 million trying to become harder. It gave up three rounds of 61 and a winning total that tied the lowest in the tournament's history.</p>
           <p>This week it plays another Donald Ross par 70, two hundred yards shorter, that has had almost nothing done to it.</p>

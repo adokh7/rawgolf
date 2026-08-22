@@ -100,6 +100,7 @@
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/public/lucas-herbert-liv-uk-record-asterisk-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -247,7 +248,7 @@
 
         <div class="article-body">
           <!-- Featured Hero Image -->
-          <img src="/public/lucas-herbert-liv-uk-record-asterisk.webp" alt="Lucas Herbert holding the trophy after winning LIV Golf UK with a record 30-under total at JCB Golf & Country Club." style="width: 100%; border-radius: 4px; margin-bottom: 40px;" fetchpriority="high" loading="eager" decoding="sync">
+          <img src="/public/lucas-herbert-liv-uk-record-asterisk.webp" alt="Lucas Herbert holding the trophy after winning LIV Golf UK with a record 30-under total at JCB Golf & Country Club." style="width: 100%; border-radius: 4px; margin-bottom: 40px;" fetchpriority="high" loading="eager" decoding="async" srcset="/public/lucas-herbert-liv-uk-record-asterisk-400.webp 400w, /public/lucas-herbert-liv-uk-record-asterisk-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px">
 
           <!-- The Quick Verdict Summary Box -->
           <div class="quick-summary">

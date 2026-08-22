@@ -90,6 +90,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/public/7-wood-vs-3-iron-australian-golfers-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -232,7 +233,7 @@
 </div>
 </header>
 <figure class="lead-img">
-<img alt="7 Wood vs 3 Iron" src="/public/7-wood-vs-3-iron-australian-golfers.webp"  loading="eager" fetchpriority="high">
+<img alt="7 Wood vs 3 Iron" src="/public/7-wood-vs-3-iron-australian-golfers.webp"  loading="eager" fetchpriority="high" srcset="/public/7-wood-vs-3-iron-australian-golfers-400.webp 400w, /public/7-wood-vs-3-iron-australian-golfers-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
 </figure>
 <div class="article-body">
 <div class="meta-callout" style="border-left: 4px solid #10b981; padding-left: 12px; margin: 16px 0;">

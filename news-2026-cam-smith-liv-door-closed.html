@@ -92,6 +92,7 @@
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/public/cam-smith-liv-door-closed-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -231,7 +232,7 @@
           </div>
         </header>
 
-        <img src="/public/cam-smith-liv-door-closed.webp" alt="Cameron Smith" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
+        <img src="/public/cam-smith-liv-door-closed.webp" alt="Cameron Smith" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high" srcset="/public/cam-smith-liv-door-closed-400.webp 400w, /public/cam-smith-liv-door-closed-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
 
         <div class="article-body">
 <p>Cameron Smith stood at Bedminster on Tuesday and said that if LIV Golf folded, returning to the PGA Tour would be where everyone would want to be. A hundred per cent, he said. It'd go back to old times.</p>

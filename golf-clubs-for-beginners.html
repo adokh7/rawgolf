@@ -93,6 +93,7 @@
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/public/beginner-golf-clubs-guide-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -728,7 +729,7 @@
         </header>
 
         <figure class="lead-img">
-          <img width="1376" height="768" src="/public/beginner-golf-clubs-guide.webp" alt="A simple starter set of golf clubs on a golf course, illustrating what beginners actually need" loading="eager" fetchpriority="high">
+          <img width="1376" height="768" src="/public/beginner-golf-clubs-guide.webp" alt="A simple starter set of golf clubs on a golf course, illustrating what beginners actually need" loading="eager" fetchpriority="high" srcset="/public/beginner-golf-clubs-guide-400.webp 400w, /public/beginner-golf-clubs-guide-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
         </figure>
         <figcaption>YOU DO NOT NEED A COMPLICATED BAG TO START. A FEW ESSENTIAL CLUBS ARE MORE THAN ENOUGH. PHOTO: RAWGOLF</figcaption>
 

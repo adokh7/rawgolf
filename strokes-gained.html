@@ -84,6 +84,7 @@
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="./public/strokes-gained-explained.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -362,7 +363,7 @@ table { max-width: 100%; }
 
       <figure class="lead-img">
         <div class="img-ph" role="img" aria-label="Golf caddie looking at strokes gained data in a yardage book">
-          <img width="1672" height="941" src="./public/strokes-gained-explained.webp" alt="Golf caddie looking at strokes gained data in a yardage book" loading="eager" fetchpriority="high">
+          <img width="1672" height="941" src="./public/strokes-gained-explained.webp" alt="Golf caddie looking at strokes gained data in a yardage book" loading="eager" fetchpriority="high" decoding="async">
         </div>
       </figure>
       <figcaption>EVERY NUMBER IN THAT YARDAGE BOOK HAS A STROKES GAINED CONTEXT. THE CADDIE KNOWS. NOW YOU WILL TOO. PHOTO: RAWGOLF</figcaption>

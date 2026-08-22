@@ -95,6 +95,7 @@
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/public/us-open-history-winners-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -808,7 +809,7 @@
 
           <p>New to the majors? Start with <a href="golf-majors-guide">golf's major championships explained</a> for the full context on where the U.S. Open fits.</p>
 
-          <img width="1672" height="941" src="/public/us-open-history-winners.webp" alt="The historic silver U.S. Open Championship trophy" style="width: 100%; border-radius: 4px; margin-bottom: 30px;" loading="eager" fetchpriority="high">
+          <img width="1672" height="941" src="/public/us-open-history-winners.webp" alt="The historic silver U.S. Open Championship trophy" style="width: 100%; border-radius: 4px; margin-bottom: 30px;" loading="eager" fetchpriority="high" srcset="/public/us-open-history-winners-400.webp 400w, /public/us-open-history-winners-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
 
           <p>Dating back to the late 19th century, the U.S. Open represents the ultimate test of nerve and physical execution in professional golf. Known for its punishing rough, lightning-fast greens, and demanding course setups, only the most resilient players hoist the historic silver trophy.</p>
 

@@ -95,6 +95,7 @@
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="./public/us-open-2026-shinnecock.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -739,7 +740,7 @@
         </header>
 
         <figure class="lead-img">
-          <img width="2752" height="1536" src="./public/us-open-2026-shinnecock.webp" alt="Shinnecock Hills golf course setup for the 2026 U.S. Open major tournament" loading="eager" fetchpriority="high">
+          <img width="2752" height="1536" src="./public/us-open-2026-shinnecock.webp" alt="Shinnecock Hills golf course setup for the 2026 U.S. Open major tournament" loading="eager" fetchpriority="high" decoding="async">
         </figure>
         <figcaption>THE TOUGHEST TEST IN GOLF RETURNS TO SHINNECOCK HILLS. PHOTO/GRAPHIC: RAWGOLF</figcaption>
 

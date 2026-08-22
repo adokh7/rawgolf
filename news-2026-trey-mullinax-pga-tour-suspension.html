@@ -99,6 +99,7 @@
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/public/trey-mullinax-pga-tour-suspension-2026-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -246,7 +247,7 @@
 
         <div class="article-body">
           <!-- Featured Hero Image -->
-          <img src="/public/trey-mullinax-pga-tour-suspension-2026.webp" alt="Trey Mullinax walking down the fairway during a PGA Tour event." loading="eager" fetchpriority="high">
+          <img src="/public/trey-mullinax-pga-tour-suspension-2026.webp" alt="Trey Mullinax walking down the fairway during a PGA Tour event." loading="eager" fetchpriority="high" srcset="/public/trey-mullinax-pga-tour-suspension-2026-400.webp 400w, /public/trey-mullinax-pga-tour-suspension-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
 
           <!-- The Quick Verdict Summary Box -->
           <div class="quick-summary">

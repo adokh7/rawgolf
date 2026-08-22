@@ -99,6 +99,7 @@
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/public/liv-golf-michigan-martin-kaymer-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -246,7 +247,7 @@
 
         <div class="article-body">
           <!-- Featured Hero Image -->
-          <img src="/public/liv-golf-michigan-martin-kaymer.webp" alt="Martin Kaymer of Cleeks GC speaks with reporters about LIV Golf's uncertain 2026 season finale." style="width: 100%; border-radius: 4px; margin-bottom: 40px;" fetchpriority="high" loading="eager" decoding="sync">
+          <img src="/public/liv-golf-michigan-martin-kaymer.webp" alt="Martin Kaymer of Cleeks GC speaks with reporters about LIV Golf's uncertain 2026 season finale." style="width: 100%; border-radius: 4px; margin-bottom: 40px;" fetchpriority="high" loading="eager" decoding="async" srcset="/public/liv-golf-michigan-martin-kaymer-400.webp 400w, /public/liv-golf-michigan-martin-kaymer-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px">
 
           <!-- The Quick Verdict Summary Box -->
           <div class="quick-summary">

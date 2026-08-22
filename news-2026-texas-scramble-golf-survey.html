@@ -96,6 +96,7 @@
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/public/texas-scramble-golf-survey-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -235,7 +236,7 @@
           </div>
         </header>
 
-        <img src="/public/texas-scramble-golf-survey.webp" alt="Golfers playing a Texas Scramble format at an amateur golf event." style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high">
+        <img src="/public/texas-scramble-golf-survey.webp" alt="Golfers playing a Texas Scramble format at an amateur golf event." style="width: 100%; border-radius: 4px; margin-bottom: 40px;" loading="eager" fetchpriority="high" srcset="/public/texas-scramble-golf-survey-400.webp 400w, /public/texas-scramble-golf-survey-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
 
         <div class="article-body">
 

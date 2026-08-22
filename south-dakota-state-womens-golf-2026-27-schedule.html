@@ -100,6 +100,7 @@
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/public/sdsu-womens-golf-schedule-2026-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -247,7 +248,7 @@
 
         <div class="article-body">
           <!-- Featured Hero Image -->
-          <img src="/public/sdsu-womens-golf-schedule-2026.webp" alt="South Dakota State women's golf bags representing the Jackrabbits' 2026-27 schedule" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" fetchpriority="high" loading="eager" decoding="sync">
+          <img src="/public/sdsu-womens-golf-schedule-2026.webp" alt="South Dakota State women's golf bags representing the Jackrabbits' 2026-27 schedule" style="width: 100%; border-radius: 4px; margin-bottom: 40px;" fetchpriority="high" loading="eager" decoding="async" srcset="/public/sdsu-womens-golf-schedule-2026-400.webp 400w, /public/sdsu-womens-golf-schedule-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px">
 
           <p>That is the quick answer. The larger story is what South Dakota State takes into those events: the program’s first Summit League title, its first NCAA regional experience and a roster that must replace 2026 conference medalist McKenzie Mages.</p>
 

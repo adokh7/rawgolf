@@ -119,6 +119,7 @@
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/public/golf-majors-guide-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -256,7 +257,7 @@
         </header>
 
         <figure class="lead-img">
-          <img width="1408" height="768" fetchpriority="high" loading="eager" decoding="sync" src="/public/golf-majors-guide.webp" alt="The four major golf trophies representing the Masters, PGA Championship, U.S. Open, and The Open">
+          <img width="1408" height="768" fetchpriority="high" loading="eager" decoding="async" src="/public/golf-majors-guide.webp" alt="The four major golf trophies representing the Masters, PGA Championship, U.S. Open, and The Open" srcset="/public/golf-majors-guide-400.webp 400w, /public/golf-majors-guide-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px">
         </figure>
         <figcaption>GOLF'S FOUR MAJORS. PHOTO: RAWGOLF</figcaption>
 

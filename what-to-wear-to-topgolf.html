@@ -145,6 +145,7 @@
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/public/what-to-wear-to-topgolf-guide-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -905,7 +906,7 @@
         </header>
 
         <figure class="lead-img">
-          <img width="1672" height="941" fetchpriority="high" loading="eager" decoding="sync" src="/public/what-to-wear-to-topgolf-guide.webp" alt="A relaxed group at a Topgolf bay dressed in casual jeans, t-shirts, and sneakers">
+          <img width="1672" height="941" fetchpriority="high" loading="eager" decoding="async" src="/public/what-to-wear-to-topgolf-guide.webp" alt="A relaxed group at a Topgolf bay dressed in casual jeans, t-shirts, and sneakers" srcset="/public/what-to-wear-to-topgolf-guide-400.webp 400w, /public/what-to-wear-to-topgolf-guide-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px">
         </figure>
         <figcaption>WHAT TO WEAR TO TOPGOLF. PHOTO: RAWGOLF</figcaption>
 

@@ -92,6 +92,7 @@
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="./public/towel-drill-golf.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -740,7 +741,7 @@
 
         <figure class="lead-img">
           <img width="2752" height="1536" src="./public/towel-drill-golf.webp"
-            alt="Golfer doing towel drill to keep arms and body connected during swing" loading="eager" fetchpriority="high">
+            alt="Golfer doing towel drill to keep arms and body connected during swing" loading="eager" fetchpriority="high" decoding="async">
         </figure>
         <figcaption>THE SIMPLEST PRACTICE ROUTINES TEND TO BE THE MOST EFFECTIVE. PHOTO/GRAPHIC: RAWGOLF</figcaption>
 

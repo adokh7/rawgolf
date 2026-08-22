@@ -95,6 +95,7 @@
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/public/us-open-round-2-shinnecock-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -798,7 +799,7 @@
         </header>
 
         <figure class="lead-img">
-          <img width="2816" height="1536" src="/public/us-open-round-2-shinnecock.webp" alt="Wyndham Clark playing at Shinnecock Hills during U.S. Open Round 2" loading="eager" fetchpriority="high">
+          <img width="2816" height="1536" src="/public/us-open-round-2-shinnecock.webp" alt="Wyndham Clark playing at Shinnecock Hills during U.S. Open Round 2" loading="eager" fetchpriority="high" srcset="/public/us-open-round-2-shinnecock-400.webp 400w, /public/us-open-round-2-shinnecock-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
         </figure>
         <figcaption>WYNDHAM CLARK AT SHINNECOCK HILLS. PHOTO: RAWGOLF</figcaption>
 

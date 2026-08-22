@@ -100,11 +100,36 @@ def get_keywords(a):
 # Card generators
 # ---------------------------------------------------------------------------
 
+CARD_SIZES = "(max-width: 700px) 92vw, 360px"
+
+
+def srcset_for(image):
+    """Return a srcset for a /public image when mobile variants exist.
+
+    Cards render around 335px on a phone and 360px in the desktop grid, so the
+    full-size original is several times larger than anything ever displayed.
+    """
+    path = (image or "").split("?")[0]
+    if not path.startswith("/public/") or not path.endswith(".webp"):
+        return ""
+    stem = path[:-5]
+    parts = []
+    for width in (400, 800):
+        candidate = f"{stem}-{width}.webp"
+        if os.path.exists(os.path.join(ROOT, candidate.lstrip("/"))):
+            parts.append(f"{candidate} {width}w")
+    if not parts:
+        return ""
+    return ", ".join(parts)
+
+
 def news_card(a):
     """Generate an <article class="news"> card for news.html / liv-golf.html."""
+    ss = srcset_for(get_image(a))
+    news_srcset = f' srcset="{esc(ss)}" sizes="{CARD_SIZES}"' if ss else ''
     return f'''        <article class="news">
           <a href="{esc(get_url(a))}" style="display:block; margin-bottom:16px;">
-            <img src="{esc(get_image(a))}" alt="{esc(get_title(a))}" style="width: 100%; border-radius: 4px;" loading="lazy">
+            <img src="{esc(get_image(a))}"{news_srcset} alt="{esc(get_title(a))}" style="width: 100%; border-radius: 4px;" loading="lazy" decoding="async">
           </a>
           <div class="cat" style="display:flex;align-items:center;gap:8px;">
             <span>{esc(get_category(a))}</span>
@@ -117,8 +142,10 @@ def news_card(a):
 
 def guide_card(a):
     """Generate an <a class="guide-card"> card for pga-tour/guides/tournaments."""
+    ss = srcset_for(get_image(a))
+    guide_srcset = f' srcset="{esc(ss)}" sizes="{CARD_SIZES}"' if ss else ''
     return f'''        <a class="guide-card" href="{esc(get_url(a))}">
-          <img width="1672" height="941" src="{esc(get_image(a))}" alt="{esc(get_title(a))}" class="card-thumb" loading="lazy">
+          <img width="1672" height="941" src="{esc(get_image(a))}"{guide_srcset} alt="{esc(get_title(a))}" class="card-thumb" loading="lazy" decoding="async">
           <div class="card-body">
             <div class="badge-row"><span class="badge badge-red">{esc(get_category(a))}</span></div>
             <h3>{esc(get_title(a))}</h3>
