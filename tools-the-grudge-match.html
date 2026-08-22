@@ -256,7 +256,7 @@
     .strip-lab { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: #8b958d; margin-bottom: 14px; display: block }
     .strip { display: flex; align-items: flex-end; gap: 3px; height: 92px }
     .strip .col { flex: 1 1 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; height: 100%; position: relative }
-    .strip .bar { background: #4a5a4f; min-height: 3px; transition: height .2s ease }
+    .strip .bar { background: #4a5a4f; min-height: 3px; transition: none}
     .strip .col.good .bar { background: #6FDB9A }
     .strip .col.bad .bar { background: #FF9486 }
     .strip .col.blow .bar { background: var(--flag); box-shadow: 0 0 0 1px #fff }
@@ -281,7 +281,7 @@
     .v.zero { color: #8b958d }
 
     /* benchmark bar */
-    .bench { border-left: 4px solid #6FDB9A; padding: 12px 0 12px 14px; margin-bottom: 26px; font-size: 14.5px; color: #d8ded6; line-height: 1.55 }
+    .bench { border-left: 1px solid #6FDB9A; padding: 12px 0 12px 14px; margin-bottom: 26px; font-size: 14.5px; color: #d8ded6; line-height: 1.55 }
     .bench b { color: #6FDB9A }
     .bench.cold { border-left-color: var(--flag) }
     .bench.cold b { color: #FF9486 }
@@ -309,7 +309,7 @@
     .answer-block { border: 2px solid var(--ink); background: var(--white); padding: 26px 24px 24px; margin-bottom: 28px }
     .ab-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
     .answer-block h2 { font-weight: 900; font-size: clamp(19px, 2.6vw, 27px); line-height: 1.15; letter-spacing: -.02em; margin-bottom: 14px }
-    .ab-answer { font-size: clamp(16px, 2vw, 18.5px); line-height: 1.5; font-weight: 700; color: var(--ink); border-left: 4px solid var(--flag); padding: 2px 0 2px 15px; margin-bottom: 16px }
+    .ab-answer { font-size: clamp(16px, 2vw, 18.5px); line-height: 1.5; font-weight: 700; color: var(--ink); border-left: 1px solid var(--flag); padding: 2px 0 2px 15px; margin-bottom: 16px }
     .ab-body { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
     .ab-body b { color: var(--ink); font-weight: 700 }
     .ab-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line) }
@@ -364,7 +364,7 @@
     .gm-seg button:hover { background: var(--flag); border-color: var(--flag); color: #fff }
     .gm-odds { display: flex; height: 44px; border: 2px solid var(--ink); overflow: hidden; margin: 4px 0 10px }
     .gm-odds span { display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace;
-      font-weight: 600; font-size: 13px; color: #fff; transition: width .35s cubic-bezier(.2,.7,.3,1); overflow: hidden;
+      font-weight: 600; font-size: 13px; color: #fff; transition: none; overflow: hidden;
       white-space: nowrap }
     .gm-odds .you { background: var(--fairway) }
     .gm-odds .halve { background: #8b958d }
@@ -382,7 +382,7 @@
     .gm-stat .k { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em;
       text-transform: uppercase; color: var(--grey); font-weight: 600 }
     .gm-stat .v { font-family: 'IBM Plex Mono', monospace; font-size: 26px; font-weight: 600; margin-top: 4px }
-    .gm-verdict { border-left: 6px solid var(--flag); padding: 14px 0 14px 16px; margin-top: 16px;
+    .gm-verdict { border-left: 1px solid var(--flag); padding: 14px 0 14px 16px; margin-top: 16px;
       font-size: 17px; line-height: 1.6; font-weight: 700 }
     .gm-runline { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .14em;
       text-transform: uppercase; color: var(--grey); margin-top: 10px }
@@ -393,9 +393,11 @@
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
       clip: rect(0 0 0 0); white-space: nowrap; border: 0 }
   </style>
+  <link rel="stylesheet" href="/public/tool-premium.css?v=2">
 </head>
 
 <body>
+  <!-- impeccable:direction 9a45384d | Tour Intelligence: warm zinc canvas, tournament green actions, white elevated work surfaces, quiet borders, editorial Archivo, numerical Plex Mono. Enter quickly, see state clearly, understand the result, keep it privately. Unreviewed and undocumented is unfinished. -->
 
   <header class="site-header">
     <div class="nav">
@@ -1002,7 +1004,7 @@
        guaranteed by `defer`, which the storage layer relies on. -->
   <script src="/lib/locker/schema.js?v=4" defer></script>
   <script src="/lib/locker/store.js?v=4" defer></script>
-  <script src="/lib/locker/drawer.js?v=4" defer></script>
+  <script src="/lib/locker/drawer.js?v=5" defer></script>
 <!-- LOCKER:END -->
   <!-- Ads + consent are deferred until the reader engages, or 6s, whichever
        comes first. Consent loads BEFORE AdSense so the EEA/UK gate still runs

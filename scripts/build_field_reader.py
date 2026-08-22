@@ -21,12 +21,15 @@ def shell_parts():
     lines = io.open(SHELL, encoding='utf-8').read().split('\n')
     return {
         'head_top': '\n'.join(lines[0:45]),
-        'head_tail': '\n'.join(lines[200:419]),
-        'body_open': '\n'.join(lines[419:439]),
-        'footer': '\n'.join(lines[637:656]),
-        'nav_script': '\n'.join(lines[660:675]),
-        'gtag': '\n'.join(lines[1169:1175]),
+        'head_tail': '\n'.join(lines[200:420]),
+        'body_open': '\n'.join(lines[421:442]),
+        'footer': '\n'.join(lines[639:658]),
+        'nav_script': '\n'.join(lines[662:677]),
+        'gtag': '\n'.join(lines[1171:1177]),
     }
+
+
+PREMIUM_LINK = '  <link rel="stylesheet" href="/public/tool-premium.css?v=2">\n'
 
 
 def rewrite_meta(s):
@@ -172,7 +175,7 @@ STYLE = '''<style>
     .fr-board { display: grid; gap: 8px }
     .fr-card { display: grid; grid-template-columns: 42px 1fr auto; gap: 11px; align-items: start;
       border: 2px solid var(--ink); background: var(--white); padding: 12px 13px }
-    .fr-card.picked { border-left: 7px solid var(--flag) }
+    .fr-card.picked { border-left: 1px solid var(--flag) }
     .fr-rank { font: 600 20px/1 'IBM Plex Mono', monospace; color: var(--grey); padding-top: 2px }
     .fr-card.top .fr-rank { color: var(--flag) }
     .fr-name { font: 800 15px/1.2 'Archivo', system-ui, sans-serif; margin-bottom: 3px }
@@ -774,13 +777,23 @@ SCRIPT2 = r'''  <script>
 TAIL = '''  <script>window.__gr_consent=true;window.__gr_ads=false;</script>
 '''
 
+LOCKER = '''<!-- LOCKER:START -->
+  <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
+       Deferred so it never competes with first paint; execution order is
+       guaranteed by `defer`, which the storage layer relies on. -->
+  <script src="/lib/locker/schema.js?v=4" defer></script>
+  <script src="/lib/locker/store.js?v=4" defer></script>
+  <script src="/lib/locker/drawer.js?v=5" defer></script>
+<!-- LOCKER:END -->
+'''
+
 
 def main():
     p = shell_parts()
     doc = '\n'.join([
         rewrite_meta(p['head_top']),
         JSONLD,
-        p['head_tail'].replace('</head>', STYLE + '</head>'),
+        p['head_tail'].replace(PREMIUM_LINK, '').replace('</head>', STYLE + PREMIUM_LINK + '</head>'),
         p['body_open'],
         MAIN,
         p['footer'],
@@ -791,7 +804,8 @@ def main():
         SCRIPT,
         SCRIPT2,
         p['gtag'],
-        TAIL + '</body>',
+        TAIL,
+        LOCKER + '</body>',
         '',
         '</html>',
     ])

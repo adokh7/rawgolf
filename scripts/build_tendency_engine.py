@@ -23,12 +23,15 @@ def shell_parts():
     lines = io.open(SHELL, encoding='utf-8').read().split('\n')
     return {
         'head_top': '\n'.join(lines[0:45]),
-        'head_tail': '\n'.join(lines[200:419]),
-        'body_open': '\n'.join(lines[419:439]),
-        'footer': '\n'.join(lines[637:656]),
-        'nav_script': '\n'.join(lines[660:675]),
-        'gtag': '\n'.join(lines[1169:1175]),
+        'head_tail': '\n'.join(lines[200:420]),
+        'body_open': '\n'.join(lines[421:442]),
+        'footer': '\n'.join(lines[639:658]),
+        'nav_script': '\n'.join(lines[662:677]),
+        'gtag': '\n'.join(lines[1171:1177]),
     }
+
+
+PREMIUM_LINK = '  <link rel="stylesheet" href="/public/tool-premium.css?v=2">\n'
 
 
 def rewrite_meta(s):
@@ -220,8 +223,8 @@ STYLE = '''<style>
       color: var(--grey); margin-bottom: 6px }
     .te-tile .v { font: 600 26px/1 'IBM Plex Mono', monospace; letter-spacing: -.02em }
     .te-tile .s { font-size: 12.5px; color: var(--grey); margin-top: 5px; line-height: 1.45 }
-    .te-tile.warn { border-left: 7px solid var(--flag) }
-    .te-tile.good { border-left: 7px solid var(--fairway) }
+    .te-tile.warn { border-left: 1px solid var(--flag) }
+    .te-tile.good { border-left: 1px solid var(--fairway) }
 
     .te-chart { width: 100%; max-width: 560px; height: auto; display: block; margin: 0 auto }
 
@@ -1118,13 +1121,23 @@ SCRIPT2 = r'''  <script>
 TAIL = '''  <script>window.__gr_consent=true;window.__gr_ads=false;</script>
 '''
 
+LOCKER = '''<!-- LOCKER:START -->
+  <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
+       Deferred so it never competes with first paint; execution order is
+       guaranteed by `defer`, which the storage layer relies on. -->
+  <script src="/lib/locker/schema.js?v=4" defer></script>
+  <script src="/lib/locker/store.js?v=4" defer></script>
+  <script src="/lib/locker/drawer.js?v=5" defer></script>
+<!-- LOCKER:END -->
+'''
+
 
 def main():
     p = shell_parts()
     doc = '\n'.join([
         rewrite_meta(p['head_top']),
         JSONLD,
-        p['head_tail'].replace('</head>', STYLE + '</head>'),
+        p['head_tail'].replace(PREMIUM_LINK, '').replace('</head>', STYLE + PREMIUM_LINK + '</head>'),
         p['body_open'],
         MAIN,
         p['footer'],
@@ -1135,7 +1148,8 @@ def main():
         SCRIPT,
         SCRIPT2,
         p['gtag'],
-        TAIL + '</body>',
+        TAIL,
+        LOCKER + '</body>',
         '',
         '</html>',
     ])

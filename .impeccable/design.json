@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-22T20:19:15Z",
+  "title": "Design System: GolfRaw Tour Intelligence",
+  "extensions": {
+    "colorMeta": {
+      "tournament-forest": { "role": "primary", "displayName": "Tournament Forest", "canonical": "#0f392b", "tonalRamp": ["oklch(15% 0.035 160)", "oklch(25% 0.052 160)", "oklch(35% 0.062 160)", "oklch(45% 0.064 160)", "oklch(58% 0.057 160)", "oklch(70% 0.044 160)", "oklch(84% 0.025 160)", "oklch(95% 0.010 160)"] },
+      "tournament-forest-strong": { "role": "primary", "displayName": "Deep Leaderboard Forest", "canonical": "#0a2a20", "tonalRamp": ["oklch(15% 0.032 160)", "oklch(25% 0.045 160)", "oklch(35% 0.052 160)", "oklch(45% 0.052 160)", "oklch(58% 0.046 160)", "oklch(70% 0.036 160)", "oklch(84% 0.021 160)", "oklch(95% 0.008 160)"] },
+      "tournament-forest-soft": { "role": "primary", "displayName": "Practice Green Wash", "canonical": "#e7f0eb", "tonalRamp": ["oklch(15% 0.018 160)", "oklch(25% 0.022 160)", "oklch(35% 0.025 160)", "oklch(45% 0.026 160)", "oklch(58% 0.023 160)", "oklch(70% 0.019 160)", "oklch(84% 0.013 160)", "oklch(95% 0.006 160)"] },
+      "warm-zinc-canvas": { "role": "neutral", "displayName": "Warm Zinc Canvas", "canonical": "#f7f7f5", "tonalRamp": ["oklch(15% 0.003 100)", "oklch(25% 0.004 100)", "oklch(35% 0.004 100)", "oklch(45% 0.004 100)", "oklch(58% 0.004 100)", "oklch(70% 0.004 100)", "oklch(84% 0.003 100)", "oklch(95% 0.002 100)"] },
+      "card-white": { "role": "neutral", "displayName": "Card White", "canonical": "#ffffff", "tonalRamp": ["oklch(15% 0 0)", "oklch(25% 0 0)", "oklch(35% 0 0)", "oklch(45% 0 0)", "oklch(58% 0 0)", "oklch(70% 0 0)", "oklch(84% 0 0)", "oklch(95% 0 0)"] },
+      "editorial-ink": { "role": "neutral", "displayName": "Editorial Ink", "canonical": "#181c1a", "tonalRamp": ["oklch(15% 0.008 160)", "oklch(25% 0.009 160)", "oklch(35% 0.009 160)", "oklch(45% 0.008 160)", "oklch(58% 0.007 160)", "oklch(70% 0.006 160)", "oklch(84% 0.004 160)", "oklch(95% 0.002 160)"] },
+      "measured-grey": { "role": "neutral", "displayName": "Measured Grey", "canonical": "#626a66", "tonalRamp": ["oklch(15% 0.009 160)", "oklch(25% 0.011 160)", "oklch(35% 0.012 160)", "oklch(45% 0.012 160)", "oklch(58% 0.011 160)", "oklch(70% 0.009 160)", "oklch(84% 0.006 160)", "oklch(95% 0.003 160)"] },
+      "quiet-line": { "role": "neutral", "displayName": "Quiet Line", "canonical": "#e4e4e1", "tonalRamp": ["oklch(15% 0.003 100)", "oklch(25% 0.004 100)", "oklch(35% 0.004 100)", "oklch(45% 0.004 100)", "oklch(58% 0.004 100)", "oklch(70% 0.004 100)", "oklch(84% 0.003 100)", "oklch(95% 0.002 100)"] },
+      "quiet-line-strong": { "role": "neutral", "displayName": "Strong Quiet Line", "canonical": "#d3d5d1", "tonalRamp": ["oklch(15% 0.005 130)", "oklch(25% 0.006 130)", "oklch(35% 0.007 130)", "oklch(45% 0.007 130)", "oklch(58% 0.006 130)", "oklch(70% 0.006 130)", "oklch(84% 0.004 130)", "oklch(95% 0.002 130)"] },
+      "positive": { "role": "status", "displayName": "Positive", "canonical": "#16724b", "tonalRamp": ["oklch(15% 0.045 155)", "oklch(25% 0.068 155)", "oklch(35% 0.082 155)", "oklch(45% 0.088 155)", "oklch(58% 0.078 155)", "oklch(70% 0.059 155)", "oklch(84% 0.034 155)", "oklch(95% 0.013 155)"] },
+      "positive-soft": { "role": "status", "displayName": "Positive Wash", "canonical": "#e7f6ee", "tonalRamp": ["oklch(15% 0.022 155)", "oklch(25% 0.029 155)", "oklch(35% 0.034 155)", "oklch(45% 0.035 155)", "oklch(58% 0.031 155)", "oklch(70% 0.024 155)", "oklch(84% 0.015 155)", "oklch(95% 0.006 155)"] },
+      "caution": { "role": "status", "displayName": "Caution", "canonical": "#a85f06", "tonalRamp": ["oklch(15% 0.055 65)", "oklch(25% 0.085 65)", "oklch(35% 0.105 65)", "oklch(45% 0.115 65)", "oklch(58% 0.105 65)", "oklch(70% 0.080 65)", "oklch(84% 0.045 65)", "oklch(95% 0.017 65)"] },
+      "caution-soft": { "role": "status", "displayName": "Caution Wash", "canonical": "#fff4dd", "tonalRamp": ["oklch(15% 0.035 75)", "oklch(25% 0.049 75)", "oklch(35% 0.057 75)", "oklch(45% 0.060 75)", "oklch(58% 0.055 75)", "oklch(70% 0.043 75)", "oklch(84% 0.027 75)", "oklch(95% 0.010 75)"] },
+      "negative": { "role": "status", "displayName": "Negative", "canonical": "#b43b31", "tonalRamp": ["oklch(15% 0.060 28)", "oklch(25% 0.095 28)", "oklch(35% 0.120 28)", "oklch(45% 0.132 28)", "oklch(58% 0.118 28)", "oklch(70% 0.088 28)", "oklch(84% 0.050 28)", "oklch(95% 0.019 28)"] },
+      "negative-soft": { "role": "status", "displayName": "Negative Wash", "canonical": "#fff0ed", "tonalRamp": ["oklch(15% 0.030 28)", "oklch(25% 0.042 28)", "oklch(35% 0.050 28)", "oklch(45% 0.052 28)", "oklch(58% 0.047 28)", "oklch(70% 0.037 28)", "oklch(84% 0.022 28)", "oklch(95% 0.009 28)"] },
+      "focus": { "role": "status", "displayName": "Focus Green", "canonical": "#2e8b67", "tonalRamp": ["oklch(15% 0.045 158)", "oklch(25% 0.067 158)", "oklch(35% 0.082 158)", "oklch(45% 0.090 158)", "oklch(58% 0.082 158)", "oklch(70% 0.063 158)", "oklch(84% 0.037 158)", "oklch(95% 0.014 158)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Short hero statements on the forest field." },
+      "headline": { "displayName": "Headline", "purpose": "Panel and answer hierarchy." },
+      "title": { "displayName": "Title", "purpose": "Drawer and compact surface titles." },
+      "body": { "displayName": "Body", "purpose": "Tool guidance, analysis, and editorial explanation." },
+      "control": { "displayName": "Control", "purpose": "High-legibility inputs and selects." },
+      "label": { "displayName": "Label", "purpose": "Actions, section labels, and navigation." },
+      "measure": { "displayName": "Measure", "purpose": "Steps, hole numbers, scores, distances, and tabular data." }
+    },
+    "shadows": [
+      { "name": "surface-low", "value": "0 1px 2px rgba(16, 24, 20, .04), 0 8px 24px rgba(16, 24, 20, .04)", "purpose": "Default panels, cards, and compact data surfaces." },
+      { "name": "surface-raised", "value": "0 2px 4px rgba(16, 24, 20, .05), 0 16px 36px rgba(16, 24, 20, .08)", "purpose": "Hovered panels and decisive result surfaces." },
+      { "name": "locker-float", "value": "0 24px 70px rgba(9, 24, 18, .24)", "purpose": "The modal Locker drawer only." }
+    ],
+    "motion": [
+      { "name": "press", "value": "transform .16s ease", "purpose": "Immediate button and option press feedback." },
+      { "name": "state", "value": "color .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease", "purpose": "Default control state transition." },
+      { "name": "rank-settle", "value": ".32s cubic-bezier(.22, 1, .36, 1)", "purpose": "A short 6px settle when ranking cards update." },
+      { "name": "drawer", "value": ".26s cubic-bezier(.32, .72, 0, 1)", "purpose": "Locker drawer entrance and exit." }
+    ],
+    "breakpoints": [
+      { "name": "mobile-composition", "value": "760px" },
+      { "name": "phone-stack", "value": "480px" },
+      { "name": "locker-fullscreen", "value": "420px" },
+      { "name": "locker-compact-launcher", "value": "340px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The default decisive action across GolfRaw tools.",
+      "html": "<button class=\"ds-btn-primary\">RUN THE NUMBERS</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border:1px solid var(--gr-forest,#0f392b);border-radius:999px;background:var(--gr-forest,#0f392b);color:#fff;box-shadow:0 1px 2px rgba(9,42,32,.15);font:800 12px/1 Archivo,system-ui,sans-serif;letter-spacing:.055em;text-transform:uppercase;cursor:pointer;transition:transform .16s ease,background .18s ease,border-color .18s ease,box-shadow .18s ease}.ds-btn-primary:hover{border-color:var(--gr-forest-strong,#0a2a20);background:var(--gr-forest-strong,#0a2a20);box-shadow:0 6px 18px rgba(9,42,32,.16)}.ds-btn-primary:focus-visible{outline:3px solid #2e8b67;outline-offset:3px}.ds-btn-primary:active{transform:translateY(1px) scale(.99)}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "A quiet secondary action that retains the pill silhouette.",
+      "html": "<button class=\"ds-btn-ghost\">EXPORT</button>",
+      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border:1px solid var(--gr-line-strong,#d3d5d1);border-radius:999px;background:#fff;color:var(--gr-forest-strong,#0a2a20);font:800 12px/1 Archivo,system-ui,sans-serif;letter-spacing:.055em;text-transform:uppercase;cursor:pointer;transition:transform .16s ease,background .18s ease,border-color .18s ease}.ds-btn-ghost:hover{border-color:#b9c8c0;background:var(--gr-forest-soft,#e7f0eb)}.ds-btn-ghost:focus-visible{outline:3px solid #2e8b67;outline-offset:3px}.ds-btn-ghost:active{transform:translateY(1px) scale(.99)}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "The standard high-legibility tool and Locker field.",
+      "html": "<label class=\"ds-field\"><span>CLAIMED HANDICAP</span><input type=\"number\" value=\"12.4\"></label>",
+      "css": ".ds-field{display:grid;gap:5px;color:var(--gr-muted,#626a66);font:800 11px/1 Archivo,system-ui,sans-serif;letter-spacing:.08em}.ds-field input{min-height:48px;padding:11px 13px;border:1px solid var(--gr-line-strong,#d3d5d1);border-radius:10px;background:#fff;color:var(--gr-ink,#181c1a);box-shadow:inset 0 1px 2px rgba(16,24,20,.03);font:600 15px/1.2 Archivo,system-ui,sans-serif;transition:border-color .18s ease,box-shadow .18s ease}.ds-field input:hover{border-color:#aeb5b1}.ds-field input:focus{border-color:#2e8b67;outline:none;box-shadow:0 0 0 4px rgba(46,139,103,.12)}.ds-field input:focus-visible{outline:3px solid #2e8b67;outline-offset:3px}"
+    },
+    {
+      "name": "Editorial Navigation",
+      "kind": "nav",
+      "description": "The compact frosted header with restrained pill states.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Primary\"><a class=\"ds-nav-logo\" href=\"#\">Golf<span>Raw</span></a><div><a class=\"ds-nav-link ds-nav-active\" href=\"#\">TOOLS</a><a class=\"ds-nav-link\" href=\"#\">INTELLIGENCE</a><a class=\"ds-nav-link\" href=\"#\">ABOUT</a></div></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:72px;padding:0 20px;border-bottom:1px solid rgba(211,213,209,.9);background:rgba(247,247,245,.88);box-shadow:0 1px 0 rgba(255,255,255,.7);backdrop-filter:blur(18px) saturate(140%);font-family:Archivo,system-ui,sans-serif}.ds-nav-logo{color:var(--gr-forest-strong,#0a2a20);font-size:24px;font-weight:900;letter-spacing:-.035em;text-decoration:none}.ds-nav-logo span{color:var(--gr-forest,#0f392b)}.ds-nav div{display:flex;align-items:center;gap:2px}.ds-nav-link{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:999px;color:#444b47;font-size:11px;font-weight:800;letter-spacing:.035em;text-decoration:none;transition:color .18s ease,background .18s ease,transform .18s ease}.ds-nav-link:hover,.ds-nav-active{background:var(--gr-forest-soft,#e7f0eb);color:var(--gr-forest-strong,#0a2a20)}.ds-nav-link:focus-visible{outline:3px solid #2e8b67;outline-offset:3px}"
+    },
+    {
+      "name": "Working Panel",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The main white work surface over the warm zinc canvas.",
+      "html": "<section class=\"ds-panel\"><div class=\"ds-panel-head\">01 · YOUR NUMBERS</div><h2>What actually happened?</h2><p>Enter the round. The tool will do the polite lying for nobody.</p></section>",
+      "css": ".ds-panel{max-width:560px;padding:24px;border:1px solid var(--gr-line,#e4e4e1);border-radius:18px;background:#fff;color:var(--gr-ink,#181c1a);box-shadow:0 1px 2px rgba(16,24,20,.04),0 8px 24px rgba(16,24,20,.04);font:400 16px/1.6 Archivo,system-ui,sans-serif;transition:border-color .2s ease,box-shadow .2s ease}.ds-panel:hover{border-color:var(--gr-line-strong,#d3d5d1);box-shadow:0 2px 4px rgba(16,24,20,.05),0 16px 36px rgba(16,24,20,.08)}.ds-panel-head{margin:-24px -24px 22px;padding:16px 24px;border-bottom:1px solid var(--gr-line,#e4e4e1);border-radius:18px 18px 0 0;background:#fafaf8;font:600 12px/1 IBM Plex Mono,ui-monospace,monospace;letter-spacing:.065em}.ds-panel h2{margin:0 0 12px;color:var(--gr-forest-strong,#0a2a20);font-size:28px;line-height:1.08;letter-spacing:-.025em}.ds-panel p{margin:0;color:var(--gr-muted,#626a66)}"
+    },
+    {
+      "name": "Tendency Choice",
+      "kind": "chip",
+      "refersTo": "option-selected",
+      "description": "A tactile answer option for fast hole-by-hole entry.",
+      "html": "<button class=\"ds-tendency-choice\" aria-pressed=\"true\"><strong>Miss right</strong><small>Push or block</small></button>",
+      "css": ".ds-tendency-choice{display:grid;place-items:center;gap:2px;min-width:132px;min-height:54px;padding:7px;border:1px solid var(--gr-line-strong,#d3d5d1);border-radius:12px;background:#fff;color:#313733;box-shadow:0 1px 2px rgba(16,24,20,.03);font:700 14px/1.2 Archivo,system-ui,sans-serif;cursor:pointer;transition:transform .14s ease,color .18s ease,background .18s ease,border-color .18s ease,box-shadow .18s ease}.ds-tendency-choice small{color:#69716d;font-size:11px}.ds-tendency-choice:hover{border-color:#9eb4a8;background:#f4faf6;color:var(--gr-forest-strong,#0a2a20);box-shadow:0 4px 12px rgba(15,57,43,.07)}.ds-tendency-choice[aria-pressed=true]{border-color:var(--gr-forest,#0f392b);background:var(--gr-forest,#0f392b);color:#fff;box-shadow:0 6px 18px rgba(15,57,43,.16)}.ds-tendency-choice[aria-pressed=true] small{color:#d8e8df}.ds-tendency-choice:focus-visible{outline:3px solid #2e8b67;outline-offset:3px}.ds-tendency-choice:active{transform:scale(.97)}"
+    },
+    {
+      "name": "Ranking Card",
+      "kind": "card",
+      "description": "A compact, hoverable result row for tournament field comparisons.",
+      "html": "<article class=\"ds-ranking-card\"><span class=\"ds-ranking-rank\">01</span><div><strong>Best course fit</strong><small>Approach profile · strong</small></div><b class=\"ds-ranking-score\">87</b></article>",
+      "css": ".ds-ranking-card{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:12px;max-width:520px;padding:14px 15px;border:1px solid var(--gr-line,#e4e4e1);border-radius:14px;background:#fff;color:var(--gr-ink,#181c1a);box-shadow:0 1px 2px rgba(16,24,20,.04),0 8px 24px rgba(16,24,20,.04);font:700 14px/1.35 Archivo,system-ui,sans-serif;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}.ds-ranking-card:hover{transform:translateY(-1px);border-color:#bbc5bf;box-shadow:0 2px 4px rgba(16,24,20,.05),0 16px 36px rgba(16,24,20,.08)}.ds-ranking-rank,.ds-ranking-score{color:var(--gr-forest-strong,#0a2a20);font-family:IBM Plex Mono,ui-monospace,monospace;font-variant-numeric:tabular-nums}.ds-ranking-card small{display:block;margin-top:2px;color:var(--gr-muted,#626a66);font-weight:400}.ds-ranking-card:focus-within{outline:3px solid #2e8b67;outline-offset:3px}"
+    },
+    {
+      "name": "Verdict Card",
+      "kind": "custom",
+      "description": "The decisive forest field for conclusions and next actions.",
+      "html": "<section class=\"ds-verdict\"><span>THE VERDICT</span><h2>Your miss is not random.</h2><p>The pattern is clear enough to work on. Start with the right side.</p></section>",
+      "css": ".ds-verdict{max-width:560px;padding:28px;border-radius:18px;background:var(--gr-forest-strong,#0a2a20);color:#fff;box-shadow:0 2px 4px rgba(16,24,20,.05),0 16px 36px rgba(16,24,20,.08);font:400 16px/1.6 Archivo,system-ui,sans-serif}.ds-verdict span{color:#9fd0b9;font:800 11px/1 Archivo,system-ui,sans-serif;letter-spacing:.1em}.ds-verdict h2{max-width:14ch;margin:12px 0;color:#fff;font-size:32px;line-height:1.05;letter-spacing:-.03em}.ds-verdict p{max-width:48ch;margin:0;color:#d6e5dd}.ds-verdict:focus-within{outline:3px solid #2e8b67;outline-offset:3px}"
+    },
+    {
+      "name": "Locker Launcher",
+      "kind": "custom",
+      "description": "The frosted, persistent entry point to the local-first Locker.",
+      "html": "<button class=\"ds-locker-launch\" aria-haspopup=\"dialog\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 8h12l-1 12H7L6 8Z\"/><path d=\"M9 8V5a3 3 0 0 1 6 0v3\"/><path d=\"M12 12v5\"/></svg><span>MY BAG</span><b>12</b></button>",
+      "css": ".ds-locker-launch{display:flex;align-items:center;gap:9px;min-height:50px;padding:0 16px;border:1px solid var(--gr-line-strong,#d3d5d1);border-radius:999px;background:rgba(255,255,255,.9);color:var(--gr-forest,#0f392b);box-shadow:0 10px 30px rgba(9,42,32,.16);backdrop-filter:blur(16px) saturate(140%);font:800 12.5px/1 Archivo,system-ui,sans-serif;letter-spacing:.055em;cursor:pointer;transition:transform .16s ease,background .18s ease,color .18s ease,box-shadow .18s ease}.ds-locker-launch b{display:inline-flex;align-items:center;justify-content:center;min-width:22px;min-height:22px;padding:2px 7px;border-radius:999px;background:var(--gr-forest-soft,#e7f0eb);font-size:11px}.ds-locker-launch:hover{background:var(--gr-forest,#0f392b);color:#fff;box-shadow:0 14px 34px rgba(9,42,32,.22)}.ds-locker-launch:hover b{background:rgba(255,255,255,.16)}.ds-locker-launch:focus-visible{outline:3px solid #2e8b67;outline-offset:3px}.ds-locker-launch:active{transform:translateY(1px) scale(.99)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Tournament Desk",
+    "overview": "GolfRaw should feel like the working desk behind a serious tournament broadcast: composed, fast to scan, and close to the numbers. A warm zinc canvas and white working surfaces keep the interface editorial; tournament forest green carries authority without turning every screen into branding.\n\nThe voice is blunt, but the interface is disciplined. Tactile controls, restrained lift, and compact mono measurements make dense golf data feel usable on the course and credible after the round. Avoid the old brutalist weight: one-pixel lines, tonal separation, and selective elevation replace heavy borders.",
+    "keyCharacteristics": [
+      "Tournament forest reserved for action, selection, and decisive result fields.",
+      "Warm neutral canvas, clean white work surfaces, and quiet zinc dividers.",
+      "Archivo-led editorial hierarchy with IBM Plex Mono for measurements.",
+      "Thumb-ready controls, restrained radii, crisp status color, and soft elevation."
+    ],
+    "rules": [
+      { "name": "The Scoreboard Rule", "body": "Green marks what matters now: an action, a selection, progress, or the verdict. Do not wash whole screens in accent color.", "section": "colors" },
+      { "name": "The Numbers Earn Mono Rule", "body": "Use IBM Plex Mono only where sequence, measurement, or tabular comparison benefits from it; prose and actions stay Archivo.", "section": "typography" },
+      { "name": "The Quiet Lift Rule", "body": "Borders establish structure; shadow communicates working depth or overlay state, never decoration.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do make the next action and current selection obvious with Tournament Forest.",
+      "Do keep one-pixel lines quiet and let spacing carry most of the hierarchy.",
+      "Do preserve 44–54px touch targets, visible focus, safe-area spacing, and reduced-motion behavior.",
+      "Do use status washes as precise analytical feedback and pair color with text.",
+      "Do keep factual measurements tabular and compact with IBM Plex Mono."
+    ],
+    "donts": [
+      "Don't revive heavy black borders, raw brutalist boxes, or high-contrast divider grids.",
+      "Don't use green as ambient decoration across every card; its rarity gives it authority.",
+      "Don't add decorative gradients, glass effects on ordinary content cards, or oversized rounded containers.",
+      "Don't animate data for spectacle; movement should confirm ranking, press, selection, or overlay state.",
+      "Don't let the visual polish soften GolfRaw's blunt editorial copy."
+    ]
+  }
+}

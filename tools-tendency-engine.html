@@ -268,7 +268,7 @@
 
     /* ============ RECOMMENDATIONS ============ */
     .recs { margin-bottom: 26px }
-    .rec { border-left: 4px solid var(--flag); padding: 12px 0 12px 14px; margin-bottom: 14px }
+    .rec { border-left: 1px solid var(--flag); padding: 12px 0 12px 14px; margin-bottom: 14px }
     .rec:last-child { margin-bottom: 0 }
     .rec.good { border-left-color: #6FDB9A }
     .rec .rt { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 5px }
@@ -298,7 +298,7 @@
     .answer-block { border: 2px solid var(--ink); background: var(--white); padding: 26px 24px 24px; margin-bottom: 28px }
     .ab-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
     .answer-block h2 { font-weight: 900; font-size: clamp(19px, 2.6vw, 27px); line-height: 1.15; letter-spacing: -.02em; margin-bottom: 14px }
-    .ab-answer { font-size: clamp(16px, 2vw, 18.5px); line-height: 1.5; font-weight: 700; color: var(--ink); border-left: 4px solid var(--flag); padding: 2px 0 2px 15px; margin-bottom: 16px }
+    .ab-answer { font-size: clamp(16px, 2vw, 18.5px); line-height: 1.5; font-weight: 700; color: var(--ink); border-left: 1px solid var(--flag); padding: 2px 0 2px 15px; margin-bottom: 16px }
     .ab-body { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
     .ab-body b { color: var(--ink); font-weight: 700 }
     .ab-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line) }
@@ -431,8 +431,8 @@
       color: var(--grey); margin-bottom: 6px }
     .te-tile .v { font: 600 26px/1 'IBM Plex Mono', monospace; letter-spacing: -.02em }
     .te-tile .s { font-size: 12.5px; color: var(--grey); margin-top: 5px; line-height: 1.45 }
-    .te-tile.warn { border-left: 7px solid var(--flag) }
-    .te-tile.good { border-left: 7px solid var(--fairway) }
+    .te-tile.warn { border-left: 1px solid var(--flag) }
+    .te-tile.good { border-left: 1px solid var(--fairway) }
 
     .te-chart { width: 100%; max-width: 560px; height: auto; display: block; margin: 0 auto }
 
@@ -471,9 +471,10 @@
       .te-row.c5 { grid-template-columns: repeat(3, 1fr) }
     }
   </style>
+  <link rel="stylesheet" href="/public/tool-premium.css?v=2">
 </head>
-
 <body>
+  <!-- impeccable:direction 9a45384d | Tour Intelligence: warm zinc canvas, tournament green actions, white elevated work surfaces, quiet borders, editorial Archivo, numerical Plex Mono. Enter quickly, see state clearly, understand the result, keep it privately. Unreviewed and undocumented is unfinished. -->
 
   <header class="site-header">
     <div class="nav">
@@ -492,6 +493,7 @@
       </button>
     </div>
   </header>
+
 
   <div class="hub-hero">
     <div class="wrap">
@@ -1386,13 +1388,14 @@
     gtag('config', 'G-PMECW4VW66');
   </script>
   <script>window.__gr_consent=true;window.__gr_ads=false;</script>
+
 <!-- LOCKER:START -->
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
   <script src="/lib/locker/schema.js?v=4" defer></script>
   <script src="/lib/locker/store.js?v=4" defer></script>
-  <script src="/lib/locker/drawer.js?v=4" defer></script>
+  <script src="/lib/locker/drawer.js?v=5" defer></script>
 <!-- LOCKER:END -->
 </body>
 
