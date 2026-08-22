@@ -11,8 +11,8 @@
                             refuses every request, so nobody can trigger a send
                             by hitting the URL.
      RESEND_API_KEY         required to send.
-     MAIL_FROM              e.g. "GOLFRAW <the-card@golfraw.com>". The domain
-                            must be verified in Resend or everything bounces.
+     Sender                 fixed in code as "GolfRaw <contact@golfraw.com>".
+                            The golfraw.com domain must be verified in Resend.
      MAIL_POSTAL_ADDRESS    required to send. A real postal address is a legal
                             requirement for commercial email under CAN-SPAM,
                             and this pipeline refuses to send live without one
@@ -25,8 +25,6 @@
    Optional:
      EMAIL_DRY_RUN          "1" (default) renders and logs without sending.
                             Must be explicitly set to "0" to send real mail.
-     EMAIL_TEST_RECIPIENT   when set, the send goes ONLY to this address no
-                            matter what the subscriber list says.
      EMAIL_MAX_RECIPIENTS   hard cap per run. Default 500.
    ========================================================================== */
 'use strict';
@@ -53,7 +51,7 @@ function maxRecipients() {
 /* Everything that must be present before a single live message goes out.
    Returns the list of what is missing so the caller can say so precisely. */
 function missingForLiveSend() {
-  var need = ['RESEND_API_KEY', 'MAIL_FROM', 'MAIL_POSTAL_ADDRESS', 'UNSUBSCRIBE_SECRET'];
+  var need = ['RESEND_API_KEY', 'MAIL_POSTAL_ADDRESS', 'UNSUBSCRIBE_SECRET', 'HUBSPOT_TOKEN'];
   var missing = [];
   for (var i = 0; i < need.length; i++) {
     if (!env(need[i], '')) missing.push(need[i]);

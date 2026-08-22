@@ -394,21 +394,24 @@ an underscore.
 
 ## It will not send by accident
 
-Four independent gates, and all four must be cleared:
+Three independent gates, and all three must be cleared:
 
 1. **Auth.** `api/cron/weekly` returns 401 without `Authorization: Bearer
    $CRON_SECRET`. Vercel sends that automatically on scheduled runs. Nobody can
    trigger a send by visiting the URL.
 2. **Dry run by default.** `EMAIL_DRY_RUN` must be *exactly* `"0"` to send.
    Unset, `"1"`, `"true"`, `"yes"` and every typo all mean dry run.
-3. **Compliance.** Missing `RESEND_API_KEY`, `MAIL_FROM`, `MAIL_POSTAL_ADDRESS`
-   or `UNSUBSCRIBE_SECRET` forces a dry run *regardless of step 2*, and the
-   response names what is absent. A commercial email with no postal address is
-   unlawful under CAN-SPAM, so the pipeline refuses rather than shipping one.
-4. **Test diversion.** With `EMAIL_TEST_RECIPIENT` set, the send goes only to
-   that address no matter what the list says.
+3. **Compliance and audience.** Missing `RESEND_API_KEY`,
+   `MAIL_POSTAL_ADDRESS`, `UNSUBSCRIBE_SECRET`, or `HUBSPOT_TOKEN` forces a dry
+   run *regardless of step 2*, and the response names what is absent. A
+   commercial email with no postal address is unlawful under CAN-SPAM, so the
+   pipeline refuses rather than shipping one. HubSpot is the sole production
+   audience source; opted-out, unsubscribed, bounced, and duplicate contacts are
+   removed before dispatch.
 
 `EMAIL_MAX_RECIPIENTS` (default 500) caps any single run.
+The From header is fixed as `GolfRaw <contact@golfraw.com>`; `golfraw.com` must
+be verified in Resend.
 
 ## Deliverability and the law
 
@@ -440,10 +443,8 @@ Changing this is a product decision with a real trust cost, not a feature.
 
 ## Schedule
 
-One daily cron that decides in code whether today is a send day (Wednesday →
-board, Monday → practice). Done this way because the Vercel Hobby plan allows
-one invocation per day per job; checking the weekday in code works on every
-plan and keeps the schedule in one readable place.
+Vercel calls `/api/cron/weekly?template=field` every Monday at 09:00 UTC
+(`0 9 * * 1`). Authenticated manual calls may request `?template=practice`.
 
 ## Reviewing the templates without deploying
 

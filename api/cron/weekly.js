@@ -4,16 +4,15 @@
    Vercel calls this on a schedule with `Authorization: Bearer $CRON_SECRET`.
    Nothing else can trigger it.
 
-   One daily cron, and this decides whether today is a send day. That is done
-   here rather than with two cron entries because the Vercel Hobby plan allows
-   only one invocation per day per job — checking the weekday in code works on
-   every plan, and makes the schedule visible in one place.
+   The production cron calls `?template=field` every Monday at 09:00 UTC.
+   Authenticated manual calls may use `?template=practice` when the separate
+   practice note is needed.
 
    Safety, in order:
      1. reject unauthenticated callers
      2. refuse to send live if any compliance-critical config is missing
      3. dry run unless EMAIL_DRY_RUN is explicitly "0"
-     4. divert to EMAIL_TEST_RECIPIENT when one is set
+     4. load active, opted-in recipients from HubSpot
      5. hard cap the recipient count
    ========================================================================== */
 'use strict';
@@ -23,8 +22,6 @@ var templates = require('../_lib/templates');
 var subscribers = require('../_lib/subscribers');
 var send = require('../_lib/send');
 var tokens = require('../_lib/token');
-
-var WEDNESDAY = 3, MONDAY = 1;
 
 function weekIndex(d) {
   /* Stable rotation through the practice pieces: whole weeks since epoch. */
@@ -46,12 +43,10 @@ module.exports = async function handler(req, res) {
 
   var now = new Date();
   var forced = (req.query && req.query.template) || '';
-  var day = now.getUTCDay();
-  var which = forced || (day === WEDNESDAY ? 'field' : (day === MONDAY ? 'practice' : ''));
+  var which = forced || 'field';
 
-  if (!which) {
-    res.status(200).json({ ok: true, skipped: true,
-      reason: 'not a send day (UTC day ' + day + '); Wednesday sends the board, Monday the practice note' });
+  if (which !== 'field' && which !== 'practice') {
+    res.status(400).json({ ok: false, error: 'template must be field or practice' });
     return;
   }
 
@@ -66,10 +61,7 @@ module.exports = async function handler(req, res) {
 
   try {
     var recipients;
-    var testTo = cfg.env('EMAIL_TEST_RECIPIENT', '');
-    if (testTo) {
-      recipients = [{ email: testTo.toLowerCase(), firstName: '' }];
-    } else if (dryRun && !cfg.env('HUBSPOT_TOKEN', '')) {
+    if (dryRun && !cfg.env('HUBSPOT_TOKEN', '')) {
       /* A dry run should work before any credential exists, so the templates
          can be reviewed on day one. */
       recipients = [{ email: 'dry-run@example.invalid', firstName: '' }];

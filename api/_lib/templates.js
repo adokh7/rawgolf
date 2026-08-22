@@ -207,10 +207,10 @@ function fieldBoard(feed, ctx) {
   return {
     subject: 'The board for ' + ev.name,
     preheader: 'What this week actually asks for, and who has it.',
-    kicker: 'Course fit · Wednesday',
+    kicker: 'Course fit · Monday',
     html: shell({
       title: 'The board for ' + ev.name,
-      kicker: 'Course fit · Wednesday',
+      kicker: 'Course fit · Monday',
       preheader: 'What this week actually asks for, and who has it.',
       body: body,
       unsubscribeUrl: ctx.unsubscribeUrl,

@@ -13,11 +13,12 @@
 
 var cfg = require('./config');
 var tokens = require('./token');
+var FROM = 'GolfRaw <contact@golfraw.com>';
 
 async function sendOne(recipient, message) {
-  var from = cfg.env('MAIL_FROM', '');
+  var from = FROM;
   var unsubUrl = tokens.link(recipient.email);
-  var replyTo = cfg.env('MAIL_REPLY_TO', '');
+  var replyTo = cfg.env('MAIL_REPLY_TO', 'contact@golfraw.com');
 
   var payload = {
     from: from,
@@ -71,4 +72,4 @@ async function sendAll(recipients, buildMessage) {
   return { sent: sent, failed: failed, dryRun: dryRun };
 }
 
-module.exports = { sendOne: sendOne, sendAll: sendAll };
+module.exports = { sendOne: sendOne, sendAll: sendAll, FROM: FROM };
