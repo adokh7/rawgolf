@@ -459,6 +459,8 @@ MAIN = '''
         <button type="submit" class="so-go" id="soSubmit" style="width:100%;margin-top:10px">Join the list</button>
       </form>
       <div class="so-msg" id="soMsg" role="status"></div>
+      <p style="font-size:12px;line-height:1.5;margin-top:14px">Questions about this tool?
+        <a href="mailto:contact@golfraw.com">contact@golfraw.com</a></p>
     </div>
   </div>
 

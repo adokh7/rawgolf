@@ -125,5 +125,5 @@ module.exports = async function handler(req, res) {
    carries a plain mailto instead, which still gives the reader a way out. */
 function safeUnsub(email) {
   try { return tokens.link(email); }
-  catch (e) { return 'mailto:' + (cfg.env('MAIL_REPLY_TO', 'hello@golfraw.com')) + '?subject=unsubscribe'; }
+  catch (e) { return 'mailto:' + (cfg.env('MAIL_REPLY_TO', 'contact@golfraw.com')) + '?subject=unsubscribe'; }
 }

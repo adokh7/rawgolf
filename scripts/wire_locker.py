@@ -10,7 +10,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Bumped whenever a file under lib/locker/ changes. vercel.json serves .js with
 # a one-year immutable Cache-Control, so without a new query string readers keep
 # running the old locker until their cache expires.
-VER = '3'
+VER = '4'
 
 START = '<!-- LOCKER:START -->'
 END = '<!-- LOCKER:END -->'
