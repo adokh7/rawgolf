@@ -1,0 +1,125 @@
+{
+  "format": "golfraw.field",
+  "version": 1,
+  "updated": "2026-08-22",
+  "_readme": [
+    "Weekly feed for The Field Reader (/tools-field-reader).",
+    "",
+    "TO UPDATE FOR A NEW TOURNAMENT — edit `event`, then replace `players`.",
+    "",
+    "event.surface must be one of: bentgrass, bermuda, poa.",
+    "event.profile values are 0-100 and set where the sliders START. They are",
+    "the course's demands, not a player's skill: distance 85 means the course",
+    "rewards length heavily.",
+    "",
+    "PLAYERS. Every skill is 0-100 where 50 is a tour-average player.",
+    "`putting` is split by surface because a good Bermuda putter is not",
+    "automatically a good Poa putter.",
+    "",
+    "The shipped list is ARCHETYPES, not real golfers, and every entry is",
+    "flagged `\"archetype\": true`. They exist so the model is usable and",
+    "testable before anyone sources a real field.",
+    "",
+    "If you add real players, set `\"archetype\": false` and use REAL numbers,",
+    "converted from a public source you can point at — PGA Tour strokes-gained",
+    "stats (SG: Off-the-Tee, SG: Approach, SG: Around-the-Green, SG: Putting)",
+    "rescaled to 0-100. Do not estimate them by feel. Publishing invented",
+    "statistics about a named person is not a modelling shortcut, it is a",
+    "false claim about someone real, and the page carries a byline.",
+    "",
+    "The tool validates this file on load and refuses to render a field that",
+    "does not parse, rather than showing a half-built board."
+  ],
+  "event": {
+    "id": "sample-signature-2026",
+    "name": "Sample Signature Event",
+    "course": "Composite Course profile",
+    "location": "Replace with the real venue",
+    "dates": "Replace with the real dates",
+    "surface": "bentgrass",
+    "par": 71,
+    "yardage": 7300,
+    "profile": {
+      "distance": 70,
+      "approach": 85,
+      "aroundGreen": 55,
+      "putting": 60
+    },
+    "readTheCourse": "A long par 71 where the second shot decides everything. Length gets you a wedge instead of a 7-iron, but the greens are small enough that approach play, not raw distance, separates the field. Bentgrass surfaces roll true, which slightly flattens the putting edge.",
+    "isSample": true
+  },
+  "players": [
+    {
+      "name": "The Bomber",
+      "archetype": true,
+      "skills": { "distance": 95, "approach": 48, "aroundGreen": 45, "putting": { "bentgrass": 50, "bermuda": 52, "poa": 45 } },
+      "note": "Overpowers a course when the rough is soft and the greens are big."
+    },
+    {
+      "name": "The Iron Surgeon",
+      "archetype": true,
+      "skills": { "distance": 52, "approach": 94, "aroundGreen": 58, "putting": { "bentgrass": 60, "bermuda": 55, "poa": 52 } },
+      "note": "Hits it to fifteen feet from anywhere and never needs to scramble."
+    },
+    {
+      "name": "The Grinder",
+      "archetype": true,
+      "skills": { "distance": 44, "approach": 55, "aroundGreen": 92, "putting": { "bentgrass": 66, "bermuda": 70, "poa": 62 } },
+      "note": "Misses greens all week and still shoots 69. Lives on the short game."
+    },
+    {
+      "name": "The Flat-Stick Savant",
+      "archetype": true,
+      "skills": { "distance": 50, "approach": 52, "aroundGreen": 60, "putting": { "bentgrass": 88, "bermuda": 84, "poa": 93 } },
+      "note": "Wins by making everything inside twelve feet, loses when the putts stop."
+    },
+    {
+      "name": "The Complete Player",
+      "archetype": true,
+      "skills": { "distance": 72, "approach": 78, "aroundGreen": 70, "putting": { "bentgrass": 72, "bermuda": 70, "poa": 68 } },
+      "note": "No weakness anywhere, which is why the price is never any good."
+    },
+    {
+      "name": "The Wild Long Hitter",
+      "archetype": true,
+      "skills": { "distance": 92, "approach": 40, "aroundGreen": 68, "putting": { "bentgrass": 48, "bermuda": 50, "poa": 44 } },
+      "note": "Two feast weeks and eight missed cuts. The rough length decides which."
+    },
+    {
+      "name": "The Fairway Metronome",
+      "archetype": true,
+      "skills": { "distance": 38, "approach": 76, "aroundGreen": 62, "putting": { "bentgrass": 64, "bermuda": 58, "poa": 60 } },
+      "note": "Finds every fairway and every green, and never makes a birdie run."
+    },
+    {
+      "name": "The Bermuda Specialist",
+      "archetype": true,
+      "skills": { "distance": 66, "approach": 64, "aroundGreen": 74, "putting": { "bentgrass": 52, "bermuda": 90, "poa": 44 } },
+      "note": "Transformed on Bermuda greens, ordinary on anything else."
+    },
+    {
+      "name": "The Poa Reader",
+      "archetype": true,
+      "skills": { "distance": 60, "approach": 68, "aroundGreen": 66, "putting": { "bentgrass": 58, "bermuda": 48, "poa": 91 } },
+      "note": "Grew up on bumpy afternoon Poa and stops caring when it gets late."
+    },
+    {
+      "name": "The Short-Game Escape Artist",
+      "archetype": true,
+      "skills": { "distance": 56, "approach": 46, "aroundGreen": 89, "putting": { "bentgrass": 74, "bermuda": 72, "poa": 70 } },
+      "note": "Up and down from the car park. Needs a course that forgives the long game."
+    },
+    {
+      "name": "The Young Athlete",
+      "archetype": true,
+      "skills": { "distance": 84, "approach": 70, "aroundGreen": 54, "putting": { "bentgrass": 62, "bermuda": 64, "poa": 56 } },
+      "note": "Length and iron play arriving together, short game still catching up."
+    },
+    {
+      "name": "The Veteran Plodder",
+      "archetype": true,
+      "skills": { "distance": 34, "approach": 72, "aroundGreen": 78, "putting": { "bentgrass": 70, "bermuda": 66, "poa": 72 } },
+      "note": "Gives up forty yards a drive and beats half the field on know-how."
+    }
+  ]
+}

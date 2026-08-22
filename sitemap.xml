@@ -112,6 +112,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.golfraw.com/tools-field-reader</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/tools-gimme-audit</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

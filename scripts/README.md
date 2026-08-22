@@ -306,3 +306,70 @@ The newsletter opt-in is the site's existing Friday list and is described as
 that. Nothing here can generate or send a personalised weekly trend digest, so
 nothing promises one. The trend already updates on-device the moment a round is
 logged.
+
+# The Field Reader (`tools-field-reader.html`)
+
+Tool 12, the weekly course-fit board. **Generated**, not hand-written:
+
+    python3 scripts/build_field_reader.py
+    python3 scripts/wire_locker.py
+
+Edits to the HTML are destroyed on the next build.
+
+## The weekly feed
+
+`data/tournament-field.json` drives it. Update `event`, replace `players`, done.
+`vercel.json` already serves `.json` with `max-age=0, must-revalidate`, so a new
+feed reaches readers on their next visit with no cache-busting needed.
+
+The file carries its own `_readme` array with the field-by-field rules, so
+whoever updates it next week does not have to come here first.
+
+## Archetypes, not invented players
+
+The shipped field is twelve **archetypes**, every one flagged `"archetype": true`
+and labelled on the board. They exist so the model works out of the box.
+
+If you load a real field, use real numbers converted from a public source you
+can point at — PGA Tour strokes-gained splits rescaled to 0-100. Do not estimate
+a named player's ratings by feel. Publishing invented statistics about a real,
+identifiable person is not a modelling shortcut, and the tool ships without
+doing it precisely so nobody inherits that decision by accident.
+
+## Fatal vs dropped
+
+`validateFeed()` separates two things that are not interchangeable:
+
+- **fatal** — a malformed `event`. An unknown `surface` makes every putting
+  lookup `undefined` and the whole board becomes nonsense, so the board is
+  refused with the reason instead of rendered.
+- **dropped** — one malformed player. That entry is skipped, the rest of the
+  field still ranks, and the count is reported.
+
+An earlier version treated "at least one valid player" as success, which
+rendered a full board off an invalid surface. Covered by a regression test.
+
+## Scoring
+
+Weighted mean of four 0-100 skills, putting read off the surface in play. All
+weights at zero returns `null`, not `NaN`, and the board says so. Ties share a
+rank and break alphabetically so the order is stable between renders.
+
+Verdicts are **derived from the numbers**, not written by hand, so they cannot
+drift out of step when the weights move. Note the single-driver case: when only
+one category carries weight, `best` and `worst` are the same driver and the
+two-sided phrasing silently drops it — that branch is handled explicitly.
+
+## Focus survives the re-render
+
+The board is rebuilt wholesale on every slider move and every lock, which
+destroys the element the reader just activated. `renderBoard()` captures and
+restores focus by player name; without it, a keyboard or screen-reader user is
+thrown to the top of the document on every pick.
+
+## Not a betting product
+
+A fit score is not a probability, and the page says so. The site's own Terms
+state it "does not facilitate wagering ... and is not gambling software" — keep
+this tool on the right side of that line. No Wednesday board is promised in the
+email capture either, because nothing here can assemble or send one.
