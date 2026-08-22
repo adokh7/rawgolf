@@ -18,6 +18,7 @@
 var INK = '#101511', PAPER = '#F3F4F0', FLAG = '#E03E2D',
     FAIRWAY = '#14402A', GREY = '#5B665E', LINE = '#DADDD4';
 var SITE = 'https://www.golfraw.com';
+var LOGO = SITE + '/public/favicon-192.png';
 var FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif";
 var MONO = "'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace";
 
@@ -32,33 +33,53 @@ function esc(s) {
 function shell(opts) {
   var preheader = esc(opts.preheader || '');
   return '<!doctype html>' +
-'<html lang="en"><head>' +
+'<html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>' +
 '<meta charset="utf-8">' +
 '<meta name="viewport" content="width=device-width,initial-scale=1">' +
+'<meta name="x-apple-disable-message-reformatting">' +
+'<meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">' +
 '<meta name="color-scheme" content="light">' +
 '<meta name="supported-color-schemes" content="light">' +
+'<style type="text/css">' +
+  ':root{color-scheme:light;supported-color-schemes:light}' +
+  '.gr-logo-bg,.gr-logo-img{background-color:#ffffff!important;color:#101511!important}' +
+  '@media(prefers-color-scheme:dark){.gr-logo-bg,.gr-logo-img{background-color:#ffffff!important;color:#101511!important}}' +
+  '[data-ogsc] .gr-logo-bg,[data-ogsc] .gr-logo-img{background-color:#ffffff!important;color:#101511!important}' +
+'</style>' +
+'<!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch>' +
+  '</o:OfficeDocumentSettings></xml></noscript><![endif]-->' +
 '<title>' + esc(opts.title) + '</title>' +
 '</head>' +
-'<body style="margin:0;padding:0;background:' + PAPER + ';">' +
+'<body style="margin:0;padding:0;background:' + PAPER + ';font-family:' + FONT + ';">' +
 /* The preheader is the grey line the inbox shows next to the subject. Hidden
    in the body, then padded so the client does not pull the footer into it. */
 '<div style="display:none;font-size:1px;color:' + PAPER + ';line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">' +
   preheader + '&#8199;&#65279;&#847; '.repeat(30) +
 '</div>' +
-'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:' + PAPER + ';">' +
+'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="' + PAPER + '" style="background:' + PAPER + ';">' +
 '<tr><td align="center" style="padding:20px 12px;">' +
 '<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;">' +
 
 /* masthead */
-'<tr><td style="background:' + INK + ';padding:20px 22px;">' +
-  '<a href="' + SITE + '" style="text-decoration:none;color:#ffffff;font-family:' + FONT + ';font-weight:800;font-size:24px;letter-spacing:-0.5px;">' +
-    'GOLF<span style="color:' + FLAG + ';">RAW</span></a>' +
-  '<div style="font-family:' + MONO + ';font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8b958d;padding-top:6px;">' +
-    esc(opts.kicker || '') + '</div>' +
+'<tr><td class="gr-logo-bg" bgcolor="#ffffff" style="background-color:#ffffff;padding:0 22px;">' +
+  '<table role="presentation" width="160" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" ' +
+    'style="width:160px;max-width:160px;background-color:#ffffff;">' +
+    '<tr><td class="gr-logo-bg" align="left" valign="middle" bgcolor="#ffffff" ' +
+      'style="background-color:#ffffff;padding:0;line-height:0;font-size:0;">' +
+      '<a href="' + SITE + '" aria-label="GolfRaw" style="display:block;text-decoration:none;background-color:#ffffff;">' +
+        '<img class="gr-logo-img" src="' + LOGO + '" width="140" height="140" alt="GolfRaw" border="0" ' +
+          'style="display:block;width:140px;max-width:140px;height:auto;border:0;outline:none;text-decoration:none;' +
+          'background-color:#ffffff;color:#101511;font-family:' + FONT + ';font-size:22px;font-weight:800;line-height:1;">' +
+      '</a>' +
+    '</td></tr>' +
+  '</table>' +
 '</td></tr>' +
+'<tr><td bgcolor="' + INK + '" style="background:' + INK + ';padding:8px 22px 7px;font-family:' + MONO +
+  ';font-size:11px;line-height:1.4;letter-spacing:2px;text-transform:uppercase;color:#b9c1bb;">' +
+  esc(opts.kicker || '') + '</td></tr>' +
 
 /* body */
-'<tr><td style="background:#ffffff;padding:24px 22px;font-family:' + FONT + ';color:' + INK + ';">' +
+'<tr><td style="background:#ffffff;padding:20px 22px 24px;font-family:' + FONT + ';color:' + INK + ';">' +
   opts.body +
 '</td></tr>' +
 

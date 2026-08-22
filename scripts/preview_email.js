@@ -30,7 +30,19 @@ var built = [
   ['practice-4', templates.practiceReview(3, ctx)]
 ];
 
+function assertLogo(name, message) {
+  var html = message.html;
+  var logoUrl = 'https://www.golfraw.com/public/favicon-192.png';
+  if (html.indexOf('<table role="presentation" width="160"') === -1 ||
+      html.indexOf('src="' + logoUrl + '"') === -1 ||
+      html.indexOf('width="140" height="140" alt="GolfRaw"') === -1 ||
+      html.indexOf('bgcolor="#ffffff"') === -1) {
+    throw new Error(name + ' is missing the bulletproof GolfRaw logo masthead');
+  }
+}
+
 built.forEach(function (pair) {
+  assertLogo(pair[0], pair[1]);
   fs.writeFileSync(path.join(out, pair[0] + '.html'), pair[1].html);
   fs.writeFileSync(path.join(out, pair[0] + '.txt'), pair[1].text);
   console.log('  ' + pair[0].padEnd(14) + ' ' + JSON.stringify(pair[1].subject));
