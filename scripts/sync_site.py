@@ -44,7 +44,8 @@ HOMEPAGE_END = '<!-- END HOMEPAGE ARTICLE FEED -->'
 STATIC = ['/', '/news', '/guides', '/liv-golf', '/pga-tour', '/tournaments',
           '/vault', '/ratings', '/tools', '/analysis', '/about', '/contact',
           '/corrections', '/full-board', '/manifesto', '/past-issues',
-          '/privacy', '/ratings-manual', '/search', '/terms', '/the-card']
+          '/privacy', '/ratings-manual', '/search', '/terms', '/the-card',
+          '/in-memoriam']
 
 # ---------------------------------------------------------------------------
 # Helpers

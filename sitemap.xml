@@ -107,6 +107,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.golfraw.com/in-memoriam</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/tools-bag-audit</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
