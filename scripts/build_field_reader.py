@@ -11,9 +11,9 @@ OUT = os.path.join(ROOT, 'tools-field-reader.html')
 
 SITE = 'https://www.golfraw.com'
 SLUG = 'tools-field-reader'
-TITLE = 'The Field Reader: Golf Course Fit Model &amp; Field Ranker | GOLFRAW'
-DESC = ('Free course fit model. Set what the week actually demands — distance, approach, short game, '
-        'putting surface — and the field re-ranks live to show who the course suits and who it exposes.')
+TITLE = 'Golf Field Reader: Course Fit Model &amp; Rankings | GolfRaw'
+DESC = ('Rank any golf field by course fit. Adjust distance, approach, short game and putting demands '
+        'to reveal which players are best suited to the week.')
 OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
 
 

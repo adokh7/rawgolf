@@ -13,9 +13,9 @@ OUT = os.path.join(ROOT, 'tools-tendency-engine.html')
 
 SITE = 'https://www.golfraw.com'
 SLUG = 'tools-tendency-engine'
-TITLE = 'The Tendency Engine: Golf Miss Pattern &amp; Shot Tracker | GOLFRAW'
-DESC = ('Free golf miss pattern tracker. Tap in your round in 90 seconds and see which way you '
-        'actually miss, where your shots are going, and what it costs you across your last 10 rounds.')
+TITLE = 'Golf Tendency Engine: Track Miss Patterns | GolfRaw'
+DESC = ('Track your real golf miss patterns across 18 holes. See directional bias, distance-control '
+        'trends, and which parts of your game cost the most shots.')
 OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
 
 
