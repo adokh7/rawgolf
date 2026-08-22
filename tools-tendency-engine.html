@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Funding Choices — EEA/UK consent management (required by Google's EU User Consent Policy) -->
+<script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+<!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+<meta charset="UTF-8">
+  <!-- ============ FAVICON / GOOGLE SEARCH LOGO ============ -->
+  <link rel="icon" type="image/webp" sizes="1254x1254" href="/public/favicon-192.webp">
+  <link rel="alternate icon" type="image/png" sizes="192x192" href="/public/favicon-192.png">
+  <link rel="apple-touch-icon" href="/public/favicon-192.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO audit metadata: managed by scripts/fix_seo_audit.py -->
+  <title>The Tendency Engine: Golf Miss Pattern &amp; Shot Tracker | GOLFRAW</title>
+  <meta name="description" content="Free golf miss pattern tracker. Tap in your round in 90 seconds and see which way you actually miss, where your shots are going, and what it costs you across your last 10 rounds.">
+  <link rel="canonical" href="https://www.golfraw.com/tools-tendency-engine">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:site_name" content="GolfRaw">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Tendency Engine: Golf Miss Pattern &amp; Shot Tracker | GOLFRAW">
+  <meta property="og:description" content="Free golf miss pattern tracker. Tap in your round in 90 seconds and see which way you actually miss, where your shots are going, and what it costs you across your last 10 rounds.">
+  <meta property="og:url" content="https://www.golfraw.com/tools-tendency-engine">
+  <meta property="og:image" content="https://www.golfraw.com/public/raw-golf-practice.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Tendency Engine: Golf Miss Pattern &amp; Shot Tracker | GOLFRAW">
+  <meta name="twitter:description" content="Free golf miss pattern tracker. Tap in your round in 90 seconds and see which way you actually miss, where your shots are going, and what it costs you across your last 10 rounds.">
+  <meta name="twitter:image" content="https://www.golfraw.com/public/raw-golf-practice.webp">
+  <meta name="p:domain_verify" content="b7225cf07b728cc1691b9a4c7a938dbe"/>
+
+  <!-- ============ PRIMARY SEO ============ -->
+
+
+  <link rel="alternate" type="application/rss+xml" title="GOLFRAW" href="https://www.golfraw.com/feed.xml">
+
+  <meta name="author" content="GOLFRAW Editorial">
+
+  <!-- ============ OPEN GRAPH ============ -->
+
+
+  <!-- ============ TWITTER CARD ============ -->
+
+
+  <!-- ============ STRUCTURED DATA ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "The Tendency Engine",
+  "alternateName": "Golf Miss Pattern and Shot Tracker",
+  "url": "https://www.golfraw.com/tools-tendency-engine",
+  "applicationCategory": "SportsApplication",
+  "operatingSystem": "Any browser",
+  "browserRequirements": "Requires JavaScript",
+  "description": "Free golf miss pattern tracker. Tap in your round in 90 seconds and see which way you actually miss, where your shots are going, and what it costs you across your last 10 rounds.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": [
+    "Tap in 18 holes after the round in about 90 seconds",
+    "Directional miss bias off the tee, left versus right",
+    "Approach distance control, short versus long",
+    "Estimated shots gained or lost across four parts of the game",
+    "Rolling trend across your last 3 to 10 rounds",
+    "Stored on your device only"
+  ],
+  "publisher": { "@type": "Organization", "name": "GOLFRAW", "url": "https://www.golfraw.com/" }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.golfraw.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.golfraw.com/tools" },
+    { "@type": "ListItem", "position": 3, "name": "The Tendency Engine", "item": "https://www.golfraw.com/tools-tendency-engine" }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many rounds before my miss pattern means anything?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Three rounds is the earliest anything is worth reading, and the tool will not call a directional bias until it has seen at least eight missed fairways. Below that a two-shot run of pulls looks identical to a genuine pattern, and acting on it sends you to the range to fix a problem you do not have." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this real strokes gained?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No, and it does not claim to be. Real strokes gained needs the distance and lie of every shot you hit. This estimates where your shots went by comparing your fairway, green, scrambling and putting rates against a 15-handicap benchmark. The split between the four categories is reliable in direction and rough in magnitude." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between this and The Round Autopsy?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The Round Autopsy dissects one round in detail. The Tendency Engine watches many rounds and finds the pattern that repeats: which way you miss, whether you come up short or run through the green, and which part of the game is quietly taking the most from you." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the tracker upload my scores?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Every round is stored in your own browser and never leaves the device. There is no account and no upload. Clearing your browser data deletes it, so export a backup from the locker if you want to keep it." }
+    }
+  ]
+}
+  </script>
+
+
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+<style>
+    :root {
+      --fairway: #14402A;
+      --fairway-deep: #0B2418;
+      --flag: #E03E2D;
+      --paper: #F3F4F0;
+      --white: #fff;
+      --ink: #101511;
+      --grey: #5B665E;
+      --line: #DADDD4;
+      --maxw: 1180px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box }
+    html { scroll-behavior: smooth }
+    body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased }
+    a { color: inherit; text-decoration: none }
+    img { max-width: 100%; height: auto; display: block }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .mono { font-family: 'IBM Plex Mono', monospace }
+
+    /* HEADER */
+    .site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
+    .logo { font-weight: 900; font-size: 26px; letter-spacing: -.04em; text-transform: uppercase }
+    .logo .raw { color: var(--flag) }
+    .nav-links { display: flex; gap: 0 }
+    .nav-links a { font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; padding: 8px 14px; transition: background .15s, color .15s }
+    .nav-links a:hover { background: var(--ink); color: #fff }
+    .nav-links a.active { background: var(--ink); color: #fff }
+    .burger { display: none; background: none; border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px }
+    .burger span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0 }
+    @media(max-width:760px) {
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
+      .nav-links.open { display: flex }
+      .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+      .burger { display: block }
+    }
+
+    /* HERO */
+    .hub-hero { background: var(--ink); color: #fff; border-bottom: 4px solid var(--flag); padding: 56px 0 48px }
+    .hub-hero .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
+    .hub-hero h1 { font-weight: 900; font-size: clamp(32px, 5.6vw, 64px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
+    .hub-hero p { font-size: 17px; color: #9CC9AE; max-width: 62ch; line-height: 1.6 }
+
+    /* PANELS */
+    .tool-body { padding: 40px 0 72px }
+    .panel { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
+    .panel-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .panel-head .step { color: var(--flag) }
+    .panel-in { padding: 24px 20px }
+
+    input[type=text], input[type=number], select {
+      width: 100%; padding: 11px 10px; border: 2px solid var(--ink); background: var(--white);
+      font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 700; color: var(--ink); border-radius: 0;
+    }
+    input[type=number] { text-align: center }
+    input:focus, select:focus { outline: 3px solid var(--flag); outline-offset: -1px; position: relative; z-index: 2 }
+    input[type=number] { -moz-appearance: textfield }
+    input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0 }
+
+    /* ============ THE BAG: 14 CLUB ROWS ============ */
+    .bag-head, .club-row { display: grid; grid-template-columns: minmax(110px, 1.7fr) 92px 92px 106px; gap: 10px; align-items: center }
+    .bag-head { padding: 0 0 8px; border-bottom: 2px solid var(--line); margin-bottom: 12px }
+    .bag-head span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--grey) }
+    .bag-head span:not(:first-child) { text-align: center }
+    .club-row { margin-bottom: 9px }
+    .club-row .cr-lab { display: none; font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--grey); margin-bottom: 4px }
+
+    @media(max-width:760px) {
+      .bag-head { display: none }
+      .club-row {
+        grid-template-columns: repeat(3, 1fr); gap: 8px;
+        border: 2px solid var(--line); padding: 12px; margin-bottom: 12px; background: #FBFBF8;
+      }
+      .club-row > :first-child { grid-column: 1 / -1 }
+      .club-row .cr-lab { display: block }
+    }
+
+    .bag-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 18px; border-top: 2px solid var(--line) }
+    .tally { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--grey) }
+    .tally b { color: var(--ink); font-size: 15px }
+    .tally b.warn { color: var(--flag) }
+
+    .legend { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--grey); line-height: 1.7; margin-top: 14px }
+    .legend b { color: var(--ink) }
+
+    .btn { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 14px 22px; border: 2px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; transition: background .15s, color .15s }
+    .btn:hover { background: var(--flag); border-color: var(--flag) }
+    .btn.ghost { background: transparent; color: var(--ink) }
+    .btn.ghost:hover { background: var(--ink); color: #fff }
+    .btn.sm { padding: 10px 14px; font-size: 10.5px }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px }
+
+    .err { border: 2px solid var(--flag); background: #FDF0EE; color: #8f2015; padding: 12px 14px; font-size: 13.5px; font-weight: 600; margin-bottom: 18px; display: none }
+    .err.show { display: block }
+
+    /* AD SLOT — isolated from controls */
+    .ad-zone { border: 1px dashed var(--line); background: #EFF1EC; padding: 18px; margin: 30px 0; text-align: center; min-height: 96px; display: flex; align-items: center; justify-content: center }
+    .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #a8aea3 }
+
+    /* ===== action utility bar (kept clear of ad zones) ===== */
+    .act-bar { margin-top: 18px; padding-top: 16px; border-top: 2px solid rgba(16,21,17,.12); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between }
+    .act-lab { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--grey) }
+    .act-btns { display: flex; gap: 10px; flex-wrap: wrap }
+    /* Dead-zone so a mis-tap on an action button can never land on an ad */
+    .out-wrap + .ad-zone, .act-bar + .ad-zone { margin-top: 46px }
+    @media (max-width:520px){ .act-bar { justify-content: flex-start } .act-btns .btn { flex: 1 1 auto; min-height: 44px } }
+
+    /* ============ VERDICT CARD ============ */
+    .out-wrap { display: none }
+    .out-wrap.show { display: block }
+    .verdict-card { background: var(--ink); color: #fff; border: 3px solid var(--ink); padding: 32px 26px 0; overflow: hidden }
+    .vc-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 12px }
+    .vc-head { font-weight: 900; font-size: clamp(24px, 5vw, 40px); line-height: 1; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 14px }
+    .vc-sub { font-size: 16px; color: #d8ded6; line-height: 1.6; margin-bottom: 26px; max-width: 60ch }
+    .vc-sub b { color: #fff }
+
+    .badge-strip { border: 1px solid rgba(255,255,255,.18); padding: 20px; margin-bottom: 24px; text-align: center }
+    .badge-strip .bs-badge { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(13px, 3.1vw, 18px); letter-spacing: .06em; line-height: 1.5; color: #FF9486; text-transform: uppercase }
+    .badge-strip .bs-badge.clean { color: #6FDB9A }
+    .counts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.15); margin-top: 18px; padding-top: 16px }
+    .counts div { text-align: center; border-right: 1px solid rgba(255,255,255,.12) }
+    .counts div:last-child { border-right: none }
+    .counts .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 30px; line-height: 1; color: #fff }
+    .counts .n.zero { color: #6FDB9A }
+    .counts .l { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase; color: #8b958d; margin-top: 7px; display: block }
+
+    /* ============ THE YARDAGE LADDER (pure CSS) ============ */
+    .ladder-wrap { border: 1px solid rgba(255,255,255,.18); padding: 18px 16px 14px; margin-bottom: 24px }
+    .ladder-lab { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: #8b958d; margin-bottom: 16px; display: block }
+    .lad-row { display: grid; grid-template-columns: 92px 1fr 58px; gap: 10px; align-items: center; padding: 3px 0 }
+    .lad-row .ln { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #d8ded6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+    .lad-row .ln.dead { color: #FF9486; text-decoration: line-through }
+    .lad-row .lb { height: 13px; background: #4a5a4f; min-width: 3px }
+    .lad-row .lb.dead { background: var(--flag) }
+    .lad-row .ly { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b958d; text-align: right }
+    .gap-row { display: grid; grid-template-columns: 92px 1fr 58px; gap: 10px; align-items: center; padding: 1px 0 }
+    .gap-row .gtxt { grid-column: 2 / 4; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; padding-left: 2px }
+    .gap-row.hole .gtxt { color: #FF9486 }
+    .gap-row.overlap .gtxt { color: #FFC97A }
+    .lad-key { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.12); font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: #8b958d }
+    .lad-key span { display: flex; align-items: center; gap: 6px }
+    .lad-key i { width: 10px; height: 10px; display: block }
+
+    /* ============ RECOMMENDATIONS ============ */
+    .recs { margin-bottom: 26px }
+    .rec { border-left: 4px solid var(--flag); padding: 12px 0 12px 14px; margin-bottom: 14px }
+    .rec:last-child { margin-bottom: 0 }
+    .rec.good { border-left-color: #6FDB9A }
+    .rec .rt { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 5px }
+    .rec.good .rt { color: #6FDB9A }
+    .rec p { font-size: 14.5px; color: #d8ded6; line-height: 1.55 }
+
+    .vc-foot { border-top: 1px solid rgba(255,255,255,.15); margin: 0 -26px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .vc-foot .mark { font-weight: 900; font-size: 17px; letter-spacing: -.03em; text-transform: uppercase }
+    .vc-foot .mark span { color: var(--flag) }
+    .vc-foot .url { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #8b958d }
+
+    .note { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--grey); line-height: 1.65; margin-top: 14px }
+
+    /* EXPLAINER */
+    .explain h2 { font-weight: 900; font-size: clamp(20px, 3vw, 26px); text-transform: uppercase; letter-spacing: -.02em; margin-bottom: 12px; padding-top: 16px; border-top: 3px solid var(--ink) }
+    .explain h3 { font-weight: 800; font-size: 17px; margin: 22px 0 8px }
+    .explain h3::before { content: "— "; color: var(--flag) }
+    .explain p { font-size: 15.5px; margin-bottom: 14px; max-width: 68ch; line-height: 1.65 }
+
+    /* FOOTER */
+    .site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
+    .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
+    .site-footer a:hover { color: #fff }
+
+
+    /* ===================== AEO/GEO: DIRECT ANSWER + FAQ ===================== */
+    .answer-block { border: 2px solid var(--ink); background: var(--white); padding: 26px 24px 24px; margin-bottom: 28px }
+    .ab-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
+    .answer-block h2 { font-weight: 900; font-size: clamp(19px, 2.6vw, 27px); line-height: 1.15; letter-spacing: -.02em; margin-bottom: 14px }
+    .ab-answer { font-size: clamp(16px, 2vw, 18.5px); line-height: 1.5; font-weight: 700; color: var(--ink); border-left: 4px solid var(--flag); padding: 2px 0 2px 15px; margin-bottom: 16px }
+    .ab-body { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
+    .ab-body b { color: var(--ink); font-weight: 700 }
+    .ab-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line) }
+    .ab-facts li { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); border: 1px solid var(--line); padding: 5px 10px }
+    .ab-facts li b { color: var(--ink) }
+
+    .faq-block { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
+    .faq-block > .panel-head { margin: 0 }
+    .faq-in { padding: 8px 22px 22px }
+    .faq-item { border-bottom: 1px solid var(--line); padding: 20px 0 }
+    .faq-item:last-child { border-bottom: none }
+    .faq-item h3 { font-weight: 800; font-size: 17px; line-height: 1.3; margin-bottom: 8px }
+    .faq-item h3::before { content: "— "; color: var(--flag) }
+    .faq-item p { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
+    @media(max-width:560px) { .answer-block { padding: 22px 18px } .faq-in { padding: 8px 16px 18px } }
+
+    /* === CLS / RESPONSIVE SAFETY === */
+    html, body { max-width: 100%; overflow-x: clip; }
+    img, video, iframe { max-width: 100%; }
+    table { max-width: 100%; }
+
+    /* === NAV WRAP SAFETY === */
+    .nav { height: auto; min-height: 68px; padding-top: 6px; padding-bottom: 6px; flex-wrap: wrap; row-gap: 4px; }
+    .nav-links { flex-wrap: wrap; row-gap: 2px; }
+    @media(min-width:761px){ .nav-links a { padding: 7px 10px; font-size: 11.5px; letter-spacing: .03em; } }
+  </style>
+<style>
+    /* ---- The Tendency Engine ---------------------------------------------
+       Post-round, indoors, one thumb, ninety seconds. Every control in the
+       logging flow is a tap target of at least 48px and the whole hole fits on
+       one screen at 320px so nothing needs scrolling mid-hole. */
+    .te-wrap { max-width: 620px; margin: 0 auto }
+
+    /* progress stepper — two rows of nine on a phone. Eighteen across a 375px
+       screen gives a 17px target, which is unhittable with a thumb; nine per
+       row clears 44px in both directions. */
+    .te-steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; margin-bottom: 16px }
+    @media (min-width: 430px) { .te-steps { grid-template-columns: repeat(9, 1fr) } }
+    @media (min-width: 620px) { .te-steps { grid-template-columns: repeat(18, 1fr); gap: 3px } }
+    .te-dot { height: 44px; border: 2px solid var(--line); background: var(--white); cursor: pointer;
+      font: 600 9.5px/1 'IBM Plex Mono', monospace; color: var(--grey); padding: 0;
+      display: flex; align-items: center; justify-content: center; transition: background .12s }
+    .te-dot.done { background: var(--fairway); border-color: var(--fairway); color: #fff }
+    .te-dot.now { border-color: var(--flag); border-width: 3px; color: var(--ink); font-weight: 700 }
+    .te-dot:focus-visible { outline: 2px solid var(--flag); outline-offset: 1px }
+
+    /* hole card */
+    .te-card { border: 3px solid var(--ink); background: var(--white) }
+    .te-head { display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 12px 14px; background: var(--ink); color: #fff }
+    .te-hole { font: 900 18px/1 'Archivo', system-ui, sans-serif; text-transform: uppercase;
+      letter-spacing: -.01em }
+    .te-par { display: flex; gap: 5px }
+    .te-par button { min-width: 44px; min-height: 44px; background: transparent; color: #fff;
+      border: 2px solid rgba(255,255,255,.45); font: 700 12px/1 'IBM Plex Mono', monospace; cursor: pointer }
+    .te-par button[aria-pressed="true"] { background: #fff; color: var(--ink); border-color: #fff }
+    .te-par button:focus-visible { outline: 2px solid var(--flag); outline-offset: 2px }
+
+    .te-body { padding: 14px }
+    .te-q { font-size: 10.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--grey); margin: 0 0 7px }
+    .te-q + .te-row { margin-bottom: 15px }
+    .te-row { display: grid; gap: 6px }
+    .te-row.c6 { grid-template-columns: repeat(6, 1fr) }
+    .te-row.c5 { grid-template-columns: repeat(5, 1fr) }
+    .te-row.c4 { grid-template-columns: repeat(4, 1fr) }
+    .te-row.c3 { grid-template-columns: repeat(3, 1fr) }
+    .te-opt { min-height: 50px; padding: 4px 2px; background: var(--white); border: 2px solid var(--ink);
+      color: var(--ink); font: 800 12px/1.15 'Archivo', system-ui, sans-serif; text-transform: uppercase;
+      letter-spacing: .02em; cursor: pointer; touch-action: manipulation;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+      transition: background .12s, color .12s }
+    .te-opt small { font: 500 9px/1 'IBM Plex Mono', monospace; color: var(--grey); letter-spacing: 0 }
+    .te-opt:hover { background: var(--paper) }
+    .te-opt[aria-pressed="true"] { background: var(--ink); color: #fff }
+    .te-opt[aria-pressed="true"] small { color: rgba(255,255,255,.65) }
+    .te-opt:focus-visible { outline: 3px solid var(--flag); outline-offset: 2px }
+    .te-opt[disabled] { opacity: .35; cursor: not-allowed; background: var(--paper) }
+
+    .te-nav { display: flex; gap: 8px; margin-top: 4px }
+    .te-nav button { flex: 1; min-height: 50px; background: var(--white); border: 2px solid var(--ink);
+      color: var(--ink); font: 800 12px/1 'Archivo', system-ui, sans-serif; letter-spacing: .06em;
+      text-transform: uppercase; cursor: pointer; transition: background .12s, color .12s }
+    .te-nav button.pri { background: var(--flag); border-color: var(--flag); color: #fff }
+    .te-nav button.pri:hover { background: #c1301f; border-color: #c1301f }
+    .te-nav button:hover { background: var(--ink); color: #fff }
+    .te-nav button:focus-visible { outline: 3px solid var(--flag); outline-offset: 2px }
+    .te-nav button[disabled] { opacity: .4; cursor: not-allowed }
+
+    .te-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 14px }
+    .te-meta input { flex: 1; min-width: 150px; min-height: 46px; padding: 10px 12px; background: var(--white);
+      border: 2px solid var(--ink); font: 600 14px/1.2 'Archivo', system-ui, sans-serif; color: var(--ink) }
+    .te-meta input:focus { outline: 3px solid var(--flag); outline-offset: -1px }
+
+    .te-bar { display: flex; justify-content: space-between; align-items: center; gap: 10px;
+      flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 2px solid var(--line);
+      font-size: 13px; color: var(--grey) }
+    .te-bar b { color: var(--ink); font-family: 'IBM Plex Mono', monospace; font-weight: 600 }
+
+    .te-go { min-height: 52px; padding: 0 20px; background: var(--ink); color: #fff;
+      border: 2px solid var(--ink); font: 900 12.5px/1 'Archivo', system-ui, sans-serif;
+      letter-spacing: .07em; text-transform: uppercase; cursor: pointer; transition: background .15s }
+    .te-go:hover { background: var(--fairway); border-color: var(--fairway) }
+    .te-go:focus-visible { outline: 3px solid var(--flag); outline-offset: 3px }
+    .te-go[disabled] { background: var(--line); border-color: var(--line); color: var(--grey); cursor: not-allowed }
+    .te-go.ghost { background: var(--white); color: var(--ink) }
+    .te-go.ghost:hover { background: var(--ink); color: #fff }
+
+    /* verdict hero */
+    .te-verdict { background: var(--ink); color: #fff; padding: 22px 20px; margin-bottom: 18px }
+    .te-verdict .lead { font-size: 10.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--flag); margin-bottom: 9px }
+    .te-verdict h3 { font: 900 24px/1.15 'Archivo', system-ui, sans-serif; letter-spacing: -.02em;
+      margin-bottom: 10px }
+    .te-verdict p { font-size: 14.5px; line-height: 1.55; color: rgba(255,255,255,.82) }
+    .te-verdict .num { font-family: 'IBM Plex Mono', monospace; color: #fff; font-weight: 600 }
+
+    .te-win { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap }
+    .te-win button { min-height: 42px; padding: 0 14px; background: var(--white); border: 2px solid var(--ink);
+      font: 800 11.5px/1 'Archivo', system-ui, sans-serif; letter-spacing: .05em; text-transform: uppercase;
+      cursor: pointer; color: var(--ink) }
+    .te-win button[aria-pressed="true"] { background: var(--ink); color: #fff }
+    .te-win button:focus-visible { outline: 3px solid var(--flag); outline-offset: 2px }
+    .te-win button[disabled] { opacity: .35; cursor: not-allowed }
+
+    .te-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px }
+    @media (max-width: 430px) { .te-grid { grid-template-columns: 1fr } }
+    .te-tile { border: 2px solid var(--ink); background: var(--white); padding: 13px 14px }
+    .te-tile .k { font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--grey); margin-bottom: 6px }
+    .te-tile .v { font: 600 26px/1 'IBM Plex Mono', monospace; letter-spacing: -.02em }
+    .te-tile .s { font-size: 12.5px; color: var(--grey); margin-top: 5px; line-height: 1.45 }
+    .te-tile.warn { border-left: 7px solid var(--flag) }
+    .te-tile.good { border-left: 7px solid var(--fairway) }
+
+    .te-chart { width: 100%; max-width: 560px; height: auto; display: block; margin: 0 auto }
+
+    .te-list { border: 2px solid var(--ink); background: var(--white) }
+    .te-item { display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 11px 13px; border-bottom: 1px solid var(--line); font-size: 13.5px }
+    .te-item:last-child { border-bottom: 0 }
+    .te-item .sc { font-family: 'IBM Plex Mono', monospace; font-weight: 600 }
+    .te-item button { min-width: 44px; min-height: 44px; background: none; border: 0; color: var(--grey);
+      font-size: 18px; cursor: pointer }
+    .te-item button:hover { color: var(--flag) }
+    .te-item button:focus-visible { outline: 2px solid var(--flag) }
+
+    .te-msg { margin-top: 11px; padding: 10px 12px; border: 2px solid var(--ink); background: var(--white);
+      font-size: 13px; font-weight: 600; line-height: 1.45; display: none }
+    .te-msg.on { display: block }
+    .te-msg.bad { border-color: var(--flag); color: var(--flag) }
+    .te-msg.good { border-color: var(--fairway); color: var(--fairway) }
+    .te-note { font-size: 12.5px; color: var(--grey); line-height: 1.55; margin-top: 12px }
+    .te-acts { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px }
+
+    .te-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0 0 0 0); white-space: nowrap; border: 0 }
+
+    @media (prefers-reduced-motion: reduce) {
+      .te-opt, .te-dot, .te-nav button, .te-go { transition: none }
+    }
+    @media (max-width: 400px) {
+      .te-opt { min-height: 48px; font-size: 11px }
+      .te-verdict h3 { font-size: 21px }
+    }
+    /* On a 320px handset six buttons across leaves 35px each. Wrapping the
+       score and approach rows keeps every option wide enough to hit. */
+    @media (max-width: 374px) {
+      .te-row.c6 { grid-template-columns: repeat(3, 1fr) }
+      .te-row.c5 { grid-template-columns: repeat(3, 1fr) }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="nav">
+      <a href="/" class="logo">Golf<span class="raw">Raw</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="/news">Latest News</a>
+        <a href="/pga-tour">PGA Tour</a>
+        <a href="/liv-golf">LIV Golf</a>
+        <a href="/tournaments">Tournaments</a>
+        <a href="/guides">Guides</a>
+        <a href="/search">🔍 Search</a>
+        <a href="/tools">Tools</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="hub-hero">
+    <div class="wrap">
+      <div class="eyebrow">RAWGOLF &middot; TOOLS</div>
+      <h1>The Tendency Engine</h1>
+      <p>One bad round tells you nothing. Ten of them tell you everything. Tap in your card afterwards
+        &mdash; ninety seconds, no phone out on the course &mdash; and this finds the miss that keeps
+        repeating: which way you leak it off the tee, whether you come up short or run through the green,
+        and which part of your game is quietly taking the most. Runs entirely in your browser.</p>
+    </div>
+  </div>
+
+  <div class="tool-body">
+    <div class="wrap">
+
+      <section class="answer-block" aria-labelledby="aeo-q">
+        <div class="ab-tag">The short answer</div>
+        <h2 id="aeo-q">How do you find your miss pattern in golf?</h2>
+        <blockquote>Record which side you miss on every tee shot and whether each approach finished
+          <b>short or long</b>, then look at the totals across at least three rounds. A genuine bias shows up
+          as roughly <b>60% or more</b> of your misses landing on one side. Anything less than that, over
+          fewer than eight misses, is noise you should not be practising against.</blockquote>
+      </section>
+
+      <!-- ============ LOG A ROUND ============ -->
+      <section class="panel" aria-labelledby="log-h">
+        <h2 id="log-h">Tap in the round</h2>
+        <div class="te-wrap">
+
+          <div class="te-meta">
+            <input type="text" id="course" maxlength="80" placeholder="Course (optional)" aria-label="Course name">
+            <button type="button" class="te-go ghost" id="newRound">New round</button>
+          </div>
+
+          <div class="te-steps" id="steps" role="group" aria-label="Hole progress"></div>
+
+          <div class="te-card">
+            <div class="te-head">
+              <span class="te-hole" id="holeLabel">Hole 1</span>
+              <span class="te-par" id="parPick" role="group" aria-label="Par for this hole">
+                <button type="button" data-par="3" aria-pressed="false">Par 3</button>
+                <button type="button" data-par="4" aria-pressed="true">Par 4</button>
+                <button type="button" data-par="5" aria-pressed="false">Par 5</button>
+              </span>
+            </div>
+            <div class="te-body">
+              <p class="te-q" id="q-score">Score</p>
+              <div class="te-row c6" id="scorePick" role="group" aria-labelledby="q-score"></div>
+
+              <p class="te-q" id="q-fir">Off the tee</p>
+              <div class="te-row c3" id="firPick" role="group" aria-labelledby="q-fir">
+                <button type="button" class="te-opt" data-fir="left">Left</button>
+                <button type="button" class="te-opt" data-fir="hit">Fairway</button>
+                <button type="button" class="te-opt" data-fir="right">Right</button>
+              </div>
+
+              <p class="te-q" id="q-app">Approach finished</p>
+              <div class="te-row c5" id="appPick" role="group" aria-labelledby="q-app">
+                <button type="button" class="te-opt" data-app="hit">Green</button>
+                <button type="button" class="te-opt" data-app="short">Short</button>
+                <button type="button" class="te-opt" data-app="long">Long</button>
+                <button type="button" class="te-opt" data-app="left">Left</button>
+                <button type="button" class="te-opt" data-app="right">Right</button>
+              </div>
+
+              <p class="te-q" id="q-putts">Putts</p>
+              <div class="te-row c4" id="puttPick" role="group" aria-labelledby="q-putts">
+                <button type="button" class="te-opt" data-putts="0">0<small>chip in</small></button>
+                <button type="button" class="te-opt" data-putts="1">1</button>
+                <button type="button" class="te-opt" data-putts="2">2</button>
+                <button type="button" class="te-opt" data-putts="3">3+</button>
+              </div>
+
+              <div class="te-nav">
+                <button type="button" id="prevHole">&larr; Back</button>
+                <button type="button" id="nextHole" class="pri">Next &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="te-bar">
+            <span><b id="doneCount">0</b> of 18 holes &middot; <b id="runTotal">&mdash;</b> to par</span>
+            <button type="button" class="te-go" id="analyseBtn" disabled>See my tendencies</button>
+          </div>
+          <p class="te-note" id="saveState">Every tap saves to this device. Put the phone away mid-round
+            &mdash; this is built to be filled in afterwards, in the car park.</p>
+        </div>
+      </section>
+
+      <!-- ============ TENDENCIES ============ -->
+      <section class="panel" id="results" hidden aria-labelledby="res-h">
+        <h2 id="res-h">What keeps happening</h2>
+        <div class="te-wrap">
+          <div class="te-win" id="winPick" role="group" aria-label="How many recent rounds to read">
+            <button type="button" data-win="3" aria-pressed="false">Last 3</button>
+            <button type="button" data-win="5" aria-pressed="true">Last 5</button>
+            <button type="button" data-win="10" aria-pressed="false">Last 10</button>
+          </div>
+
+          <div class="te-verdict" id="verdict"></div>
+
+          <p class="te-q">Score trend</p>
+          <div id="sparkHost"></div>
+
+          <p class="te-q" style="margin-top:18px">Where the shots went, per round</p>
+          <div id="sgHost"></div>
+          <p class="te-note" id="sgNote"></p>
+
+          <p class="te-q" style="margin-top:20px">Miss pattern</p>
+          <div class="te-grid" id="tiles"></div>
+
+          <p class="te-q" style="margin-top:4px">Rounds logged</p>
+          <div class="te-list" id="roundList"></div>
+
+          <div class="te-acts">
+            <button type="button" class="te-go" id="pushBtn">Send scores to the Handicap Lie Detector</button>
+            <a class="te-go ghost" href="/tools-round-autopsy"
+               style="display:inline-flex;align-items:center;text-decoration:none">Dissect one round instead</a>
+          </div>
+          <div class="te-msg" id="resMsg" role="status"></div>
+
+          <div class="te-tile" style="margin-top:20px">
+            <div class="k">Keep an eye on it</div>
+            <p style="font-size:14px;line-height:1.55;margin:4px 0 12px">Your trend lives on this device and
+              updates the moment you log a round &mdash; there is nothing to subscribe to for that. What you can
+              have is <b>The Card</b>: unfiltered player ratings and the stories PR reps tried to kill, every
+              Friday.</p>
+            <form id="teForm" novalidate style="display:flex;gap:8px;flex-wrap:wrap">
+              <label for="teEmail" class="te-sr">Email address</label>
+              <input type="email" id="teEmail" placeholder="you@email.com" autocomplete="email"
+                style="flex:1;min-width:170px;min-height:48px;padding:10px 12px;background:#fff;
+                       border:2px solid var(--ink);font:600 15px/1.2 Archivo,system-ui,sans-serif;color:var(--ink)">
+              <button type="submit" class="te-go" id="teSubmit">Join</button>
+            </form>
+            <div class="te-msg" id="teMsg" role="status"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ METHOD ============ -->
+      <section class="panel explain">
+        <h2>What these numbers are, and what they are not</h2>
+        <p><b>This is not strokes gained.</b> Real strokes gained needs the distance and the lie of every
+          shot you hit, measured against a tour baseline. Four taps a hole cannot produce that, and any
+          tool telling you otherwise is selling you a number it did not earn.</p>
+        <p>What this does instead is compare four rates you <em>can</em> record &mdash; fairways, greens,
+          scrambles and putts &mdash; against a 15-handicap benchmark, and convert the difference into
+          shots. So &ldquo;approach &minus;1.8&rdquo; means your greens-in-regulation rate is costing you
+          about 1.8 shots a round against that benchmark. The <b>direction</b> of the split is reliable:
+          if approach is your worst category here, it is your worst category. The <b>magnitude</b> is an
+          estimate and should be read to the nearest half shot, not the nearest tenth.</p>
+        <p><b>The bias thresholds are deliberately conservative.</b> Nothing is called a tendency until
+          there are at least three rounds and eight missed fairways behind it, and even then only when one
+          side takes 60% or more. Two pulls in a row feel like a pattern and are not. Practising against a
+          pattern you do not have is worse than practising nothing.</p>
+        <p>The benchmark rates used are 45% fairways, 30% greens, 28% scrambling and two putts per green
+          hit. Those are typical of a mid-handicap player. If you are far better or far worse than that,
+          read the four categories against each other rather than against zero.</p>
+      </section>
+
+      <section class="faq-block panel" aria-labelledby="faq-h">
+        <h2 id="faq-h">Questions</h2>
+        <details><summary>How many rounds before the pattern means anything?</summary>
+          <p>Three is the earliest anything is worth reading, and no directional call is made until at
+            least eight missed fairways have been seen. Below that, a short run of pulls looks exactly
+            like a genuine bias.</p></details>
+        <details><summary>Is this real strokes gained?</summary>
+          <p>No. Real strokes gained needs the distance and lie of every shot. This compares your fairway,
+            green, scrambling and putting rates to a 15-handicap benchmark. Reliable in direction, rough
+            in magnitude.</p></details>
+        <details><summary>How is this different from The Round Autopsy?</summary>
+          <p><a href="/tools-round-autopsy">The Round Autopsy</a> dissects a single round in detail. This
+            watches many rounds and finds what repeats. Use the Autopsy after a strange round, and this
+            one every round.</p></details>
+        <details><summary>Does it upload my scores?</summary>
+          <p>No. Everything stays in your browser and never leaves the device. Clearing browser data
+            deletes it, so export a backup from the locker if you want to keep it.</p></details>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 GOLFRAW — ALL RATINGS FINAL</span>
+      <nav aria-label="Footer navigation" style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="./manifesto">MANIFESTO</a>
+        <a href="./about">ABOUT</a>
+        <a href="./ratings-manual">HOW RATINGS WORK</a>
+        <a href="./corrections">CORRECTIONS</a>
+        <a href="./privacy">PRIVACY</a>
+        <a href="./terms">TERMS</a>
+        <a href="./contact">CONTACT</a>
+        <a href="/ratings">PLAYER RATINGS</a>
+        <a href="/analysis">SWING ANALYSIS</a>
+        <a href="/vault">THE VAULT</a>
+        <a href="/in-memoriam">IN MEMORIAM</a>
+        <a href="/">← FRONT PAGE</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+
+    /* ==================== NAV ==================== */
+    (function () {
+      var b = document.getElementById('burger'), l = document.getElementById('navLinks');
+      if (b && l) {
+        b.addEventListener('click', function () {
+          var o = l.classList.toggle('open');
+          b.setAttribute('aria-expanded', o);
+        });
+        l.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () { l.classList.remove('open'); });
+        });
+      }
+    })();
+
+  </script>
+  <script>
+    var $ = function (id) { return document.getElementById(id); };
+
+    /* ==================== BENCHMARK ====================
+       A 15-handicap reference player. These are the rates every figure on the
+       page is measured against, stated openly on the page itself so nobody has
+       to guess what "minus 1.8" is minus of. */
+    var BASE = {
+      fir: 0.45,            /* fairways hit, driving holes only */
+      gir: 0.30,            /* greens in regulation */
+      scramble: 0.28,       /* up and down when the green is missed */
+      puttsOnGir: 2.00,
+      puttsOffGir: 1.85     /* lower: a missed green is often chipped close */
+    };
+    /* Strokes attributable to one event of each kind. Round magnitudes, chosen
+       to be defensible rather than precise — the page says so. */
+    var COST = { fir: 0.28, gir: 0.80, scramble: 0.55 };
+
+    var MIN_ROUNDS_TREND = 3;   /* nothing is called a tendency below this */
+    var MIN_MISSES_BIAS = 8;    /* nor below this many missed fairways */
+    var BIAS_THRESHOLD = 0.60;  /* one side must take 60% before it is a bias */
+    var HOLES = 18;
+
+    /* ==================== HELPERS ==================== */
+    function esc(s) {
+      return String(s === null || s === undefined ? '' : s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+    function r1(x) { return Math.round(x * 10) / 10; }
+    function pctText(x) { return Math.round(x * 100) + '%'; }
+    function signed(x) { var v = r1(x); return (v > 0 ? '+' : '') + v.toFixed(1); }
+
+    /* A hole only offers a fairway if it is long enough to drive. */
+    function isDrivingHole(h) { return h.par >= 4; }
+
+    /* Regulation = on the green with two putts left. */
+    function hitGreen(h) { return h.app === 'hit'; }
+
+    /* ==================== PER-ROUND SUMMARY ==================== */
+    function summarise(card) {
+      var holes = card.holes || [];
+      var s = {
+        id: card.id, playedAt: card.playedAt, course: card.course,
+        played: 0, gross: 0, par: 0, toPar: 0,
+        firOpp: 0, firHit: 0, firLeft: 0, firRight: 0,
+        girOpp: 0, girHit: 0,
+        appShort: 0, appLong: 0, appLeft: 0, appRight: 0,
+        putts: 0, puttsCounted: 0,
+        scrOpp: 0, scrWin: 0
+      };
+      for (var i = 0; i < holes.length; i++) {
+        var h = holes[i];
+        if (h.score === null || h.score === undefined) continue;
+        s.played++; s.gross += h.score; s.par += h.par;
+
+        if (isDrivingHole(h) && h.fir) {
+          s.firOpp++;
+          if (h.fir === 'hit') s.firHit++;
+          else if (h.fir === 'left') s.firLeft++;
+          else if (h.fir === 'right') s.firRight++;
+        }
+        if (h.app) {
+          s.girOpp++;
+          if (h.app === 'hit') s.girHit++;
+          else if (h.app === 'short') s.appShort++;
+          else if (h.app === 'long') s.appLong++;
+          else if (h.app === 'left') s.appLeft++;
+          else if (h.app === 'right') s.appRight++;
+        }
+        if (h.putts !== null && h.putts !== undefined) {
+          s.putts += h.putts; s.puttsCounted++;
+          /* Scramble: green missed, still made par or better. */
+          if (h.app && h.app !== 'hit') {
+            s.scrOpp++;
+            if (h.score <= h.par) s.scrWin++;
+          }
+        }
+      }
+      s.toPar = s.gross - s.par;
+      return s;
+    }
+
+    /* ==================== SHOTS VS BENCHMARK ====================
+       Deliberately NOT called strokes gained. Each category converts the gap
+       between the player's rate and the benchmark rate into shots, using a
+       fixed cost per event. Reliable about which category is worst; rough
+       about by how much. */
+    function shotsVsBenchmark(rounds) {
+      var t = { firOpp: 0, firHit: 0, girOpp: 0, girHit: 0, scrOpp: 0, scrWin: 0,
+                putts: 0, puttsCounted: 0, girForPutts: 0, n: rounds.length };
+      for (var i = 0; i < rounds.length; i++) {
+        var s = rounds[i];
+        t.firOpp += s.firOpp; t.firHit += s.firHit;
+        t.girOpp += s.girOpp; t.girHit += s.girHit;
+        t.scrOpp += s.scrOpp; t.scrWin += s.scrWin;
+        t.putts += s.putts; t.puttsCounted += s.puttsCounted;
+        t.girForPutts += s.girHit;
+      }
+      if (!t.n) return null;
+
+      var firRate = t.firOpp ? t.firHit / t.firOpp : null;
+      var girRate = t.girOpp ? t.girHit / t.girOpp : null;
+      var scrRate = t.scrOpp ? t.scrWin / t.scrOpp : null;
+
+      /* Expected putts for the greens actually hit and missed. */
+      var missedGreens = t.puttsCounted - t.girForPutts;
+      var expectedPutts = t.girForPutts * BASE.puttsOnGir + missedGreens * BASE.puttsOffGir;
+
+      var ott = firRate === null ? 0 : (firRate - BASE.fir) * COST.fir * t.firOpp;
+      var app = girRate === null ? 0 : (girRate - BASE.gir) * COST.gir * t.girOpp;
+      var arg = scrRate === null ? 0 : (scrRate - BASE.scramble) * COST.scramble * t.scrOpp;
+      var putt = t.puttsCounted ? (expectedPutts - t.putts) : 0;
+
+      return {
+        n: t.n,
+        ott: ott / t.n, app: app / t.n, arg: arg / t.n, putt: putt / t.n,
+        firRate: firRate, girRate: girRate, scrRate: scrRate,
+        puttsPerRound: t.puttsCounted ? t.putts / t.n : null
+      };
+    }
+
+    /* ==================== BIAS ====================
+       Returns null rather than a weak claim. A tendency the data does not
+       support is worse than no tendency at all: it sends the reader to the
+       range to fix something that is not there. */
+    function bias(a, b, labelA, labelB, minTotal) {
+      var total = a + b;
+      if (total < (minTotal || MIN_MISSES_BIAS)) return { enough: false, total: total };
+      var share = a / total, side = labelA, count = a;
+      if (b > a) { share = b / total; side = labelB; count = b; }
+      /* `count` is the majority side's own count. Reporting `a` alongside a
+         side of `labelB` would print a sentence that contradicts its own
+         percentage. */
+      return {
+        enough: true, total: total, side: side, share: share, count: count,
+        strong: share >= BIAS_THRESHOLD,
+        a: a, b: b
+      };
+    }
+
+    function tendencies(rounds) {
+      var t = { firLeft: 0, firRight: 0, appShort: 0, appLong: 0, appLeft: 0, appRight: 0 };
+      for (var i = 0; i < rounds.length; i++) {
+        t.firLeft += rounds[i].firLeft; t.firRight += rounds[i].firRight;
+        t.appShort += rounds[i].appShort; t.appLong += rounds[i].appLong;
+        t.appLeft += rounds[i].appLeft; t.appRight += rounds[i].appRight;
+      }
+      return {
+        tee: bias(t.firLeft, t.firRight, 'left', 'right'),
+        distance: bias(t.appShort, t.appLong, 'short', 'long'),
+        counts: t
+      };
+    }
+
+    /* ==================== VERDICT ==================== */
+    function verdictFor(rounds, sg, tend) {
+      var n = rounds.length;
+      if (n < MIN_ROUNDS_TREND) {
+        return {
+          lead: 'Not enough yet',
+          head: n + ' round' + (n === 1 ? '' : 's') + ' logged',
+          body: 'Nothing here is worth acting on until there are at least ' + MIN_ROUNDS_TREND +
+            ' rounds behind it. Log ' + (MIN_ROUNDS_TREND - n) + ' more and the pattern &mdash; if you ' +
+            'have one &mdash; will show up on its own.'
+        };
+      }
+      /* Worst category leads, because that is the one worth practising. */
+      var cats = [
+        { k: 'off the tee', v: sg.ott }, { k: 'approach play', v: sg.app },
+        { k: 'around the green', v: sg.arg }, { k: 'putting', v: sg.putt }
+      ];
+      cats.sort(function (x, y) { return x.v - y.v; });
+      var worst = cats[0], best = cats[cats.length - 1];
+
+      var head, body;
+      if (tend.tee.enough && tend.tee.strong) {
+        head = 'You miss ' + tend.tee.side + ' off the tee, ' + pctText(tend.tee.share) + ' of the time.';
+        body = 'Across your last ' + n + ' rounds, ' + tend.tee.count + ' of your ' + tend.tee.total +
+          ' missed fairways went ' + tend.tee.side +
+          '. That is a pattern, not variance. Separately, <span class="num">' + worst.k +
+          '</span> is your weakest category at <span class="num">' + signed(worst.v) +
+          '</span> shots a round against the benchmark.';
+      } else if (tend.distance.enough && tend.distance.strong) {
+        head = 'You come up ' + tend.distance.side + ' on approach, ' + pctText(tend.distance.share) + ' of the time.';
+        body = 'Of the ' + tend.distance.total + ' approaches that finished short or long across your last ' +
+          n + ' rounds, ' + pctText(tend.distance.share) + ' were ' + tend.distance.side +
+          '. That is a club selection problem, not a swing problem. Your weakest category is <span class="num">' +
+          worst.k + '</span> at <span class="num">' + signed(worst.v) + '</span> a round.';
+      } else {
+        head = 'Your ' + worst.k + ' is costing you the most.';
+        body = 'Across your last ' + n + ' rounds it runs at <span class="num">' + signed(worst.v) +
+          '</span> shots a round against a 15-handicap benchmark, while your ' + best.k +
+          ' is your strongest at <span class="num">' + signed(best.v) + '</span>. ' +
+          (tend.tee.enough ? 'No strong directional bias off the tee &mdash; your misses are split ' +
+            tend.tee.a + '/' + tend.tee.b + '.' :
+            'Not enough missed fairways yet to call which way you leak it.');
+      }
+      return { lead: 'Last ' + n + ' rounds', head: head, body: body };
+    }
+
+    /* ==================== SVG: SPARKLINE ==================== */
+    function sparkline(rounds) {
+      if (rounds.length < 2) {
+        return '<p class="te-note">A trend line needs at least two rounds.</p>';
+      }
+      var W = 560, H = 130, padL = 34, padR = 12, padT = 14, padB = 26;
+      var pts = [];
+      for (var i = 0; i < rounds.length; i++) pts.push(rounds[i].toPar);
+      var lo = Math.min.apply(null, pts), hi = Math.max.apply(null, pts);
+      if (lo === hi) { lo -= 2; hi += 2; }
+      var pad = (hi - lo) * 0.15; lo -= pad; hi += pad;
+      var sx = function (i) { return padL + (pts.length === 1 ? 0 : i / (pts.length - 1) * (W - padL - padR)); };
+      var sy = function (v) { return padT + (hi - v) / (hi - lo) * (H - padT - padB); };
+
+      var p = ['<svg class="te-chart" viewBox="0 0 ' + W + ' ' + H + '" role="img" ' +
+        'aria-label="Score to par over the last ' + pts.length + ' rounds, oldest first" ' +
+        'xmlns="http://www.w3.org/2000/svg"><title>Score to par, oldest round first</title>'];
+
+      /* zero line if it is in range */
+      if (lo < 0 && hi > 0) {
+        p.push('<line x1="' + padL + '" y1="' + sy(0).toFixed(1) + '" x2="' + (W - padR) +
+          '" y2="' + sy(0).toFixed(1) + '" stroke="#14402A" stroke-width="1" stroke-dasharray="3 3"/>');
+      }
+      var d = [];
+      for (var j = 0; j < pts.length; j++) d.push((j ? 'L' : 'M') + sx(j).toFixed(1) + ' ' + sy(pts[j]).toFixed(1));
+      p.push('<path d="' + d.join(' ') + '" fill="none" stroke="#101511" stroke-width="2.5" ' +
+        'stroke-linejoin="round" stroke-linecap="round"/>');
+      for (var k = 0; k < pts.length; k++) {
+        var last = k === pts.length - 1;
+        p.push('<circle cx="' + sx(k).toFixed(1) + '" cy="' + sy(pts[k]).toFixed(1) + '" r="' +
+          (last ? 5 : 3.5) + '" fill="' + (last ? '#E03E2D' : '#101511') + '"/>');
+      }
+      /* end labels only: a value per point is unreadable at this width */
+      p.push('<text x="' + padL + '" y="' + (H - 8) + '" font-size="9.5" fill="#5B665E" ' +
+        'font-family="IBM Plex Mono, monospace">oldest</text>');
+      p.push('<text x="' + (W - padR) + '" y="' + (H - 8) + '" font-size="9.5" fill="#5B665E" ' +
+        'text-anchor="end" font-family="IBM Plex Mono, monospace">latest</text>');
+      p.push('<text x="' + (padL - 6) + '" y="' + (sy(pts[pts.length - 1]) + 3.5).toFixed(1) +
+        '" font-size="10.5" fill="#101511" text-anchor="end" font-weight="600" ' +
+        'font-family="IBM Plex Mono, monospace">' + (pts[pts.length - 1] > 0 ? '+' : '') +
+        pts[pts.length - 1] + '</text>');
+      p.push('</svg>');
+      return p.join('');
+    }
+
+    /* ==================== SVG: FOUR-BAR SPLIT ==================== */
+    function sgBars(sg) {
+      var cats = [
+        { label: 'Off the tee', v: sg.ott }, { label: 'Approach', v: sg.app },
+        { label: 'Around green', v: sg.arg }, { label: 'Putting', v: sg.putt }
+      ];
+      var W = 560, rowH = 34, padT = 10, padB = 22, labelW = 104;
+      var H = padT + cats.length * rowH + padB;
+      var mag = 0.5;
+      for (var i = 0; i < cats.length; i++) mag = Math.max(mag, Math.abs(cats[i].v));
+      mag *= 1.15;
+      var mid = labelW + (W - labelW - 40) / 2;
+      var half = (W - labelW - 40) / 2;
+      var sx = function (v) { return mid + (v / mag) * half; };
+
+      var p = ['<svg class="te-chart" viewBox="0 0 ' + W + ' ' + H + '" role="img" ' +
+        'aria-label="Estimated shots gained or lost per round in four categories versus a 15 handicap benchmark" ' +
+        'xmlns="http://www.w3.org/2000/svg"><title>Shots vs benchmark, per round</title>'];
+      p.push('<line x1="' + mid.toFixed(1) + '" y1="' + (padT - 4) + '" x2="' + mid.toFixed(1) +
+        '" y2="' + (H - padB + 2) + '" stroke="#101511" stroke-width="1.5"/>');
+
+      for (var c = 0; c < cats.length; c++) {
+        var y = padT + c * rowH + rowH / 2, v = cats[c].v;
+        var x = v >= 0 ? mid : sx(v), w = Math.max(2, Math.abs(sx(v) - mid));
+        var fill = v >= 0 ? '#14402A' : '#E03E2D';
+        p.push('<rect x="' + x.toFixed(1) + '" y="' + (y - 9) + '" width="' + w.toFixed(1) +
+          '" height="18" fill="' + fill + '" fill-opacity="0.85"/>');
+        p.push('<text x="' + (labelW - 10) + '" y="' + (y + 4) + '" font-size="11" fill="#101511" ' +
+          'text-anchor="end" font-weight="700" font-family="Archivo, system-ui, sans-serif">' +
+          esc(cats[c].label) + '</text>');
+        p.push('<text x="' + (W - 6) + '" y="' + (y + 4) + '" font-size="11" fill="' + fill +
+          '" text-anchor="end" font-weight="600" font-family="IBM Plex Mono, monospace">' +
+          signed(v) + '</text>');
+      }
+      p.push('<text x="' + mid.toFixed(1) + '" y="' + (H - 6) + '" font-size="9" fill="#5B665E" ' +
+        'text-anchor="middle" font-family="IBM Plex Mono, monospace">benchmark</text>');
+      p.push('</svg>');
+      return p.join('');
+    }
+  </script>
+
+  <script>
+    /* ==================== STATE ==================== */
+    var L = null;              /* resolved in boot(): the locker is deferred */
+    var card = null;           /* the scorecard being filled */
+    var idx = 0;               /* current hole, 0-based */
+    var win = 5;               /* rolling window */
+    var writeChain = Promise.resolve();
+    var allRounds = [];
+
+    var SCORE_OPTS = [
+      { d: -2, l: 'Eagle', s: '−2' }, { d: -1, l: 'Birdie', s: '−1' },
+      { d: 0, l: 'Par', s: 'E' }, { d: 1, l: 'Bogey', s: '+1' },
+      { d: 2, l: 'Double', s: '+2' }, { d: 3, l: 'Triple+', s: '+3' }
+    ];
+
+    function blankHole() { return { par: 4, score: null, fir: null, app: null, putts: null }; }
+
+    function freshCard() {
+      var holes = [];
+      /* A standard par 72: four par 3s and four par 5s in the usual places.
+         The reader can change any of them and the change sticks. */
+      var pars = [4, 4, 3, 5, 4, 4, 3, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 5];
+      for (var i = 0; i < HOLES; i++) { var h = blankHole(); h.par = pars[i]; holes.push(h); }
+      return { id: null, course: '', playedAt: Date.now(), holes: holes };
+    }
+
+    function persist() {
+      if (!L || !card) return Promise.resolve();
+      /* Bind the card being saved into this closure. Reading the shared `card`
+         inside the .then would let a save that started before "New round"
+         write the old card's id onto the new object — the new round then
+         overwrites the old record and one round is silently lost. */
+      var target = card;
+      writeChain = writeChain.then(function () {
+        return L.saveScorecard(target).then(function (rec) { target.id = rec.id; });
+      })['catch'](function () {
+        $('saveState').textContent = 'Could not save to this device — the round still works, ' +
+          'but it will not survive a reload.';
+      });
+      return writeChain;
+    }
+
+    /* ==================== RENDER: HOLE ==================== */
+    function renderSteps() {
+      var out = [];
+      for (var i = 0; i < HOLES; i++) {
+        var h = card.holes[i], done = h.score !== null && h.score !== undefined;
+        out.push('<button type="button" class="te-dot' + (done ? ' done' : '') +
+          (i === idx ? ' now' : '') + '" data-jump="' + i + '" ' +
+          'aria-label="Hole ' + (i + 1) + (done ? ', scored ' + h.score : ', not scored') + '"' +
+          (i === idx ? ' aria-current="true"' : '') + '>' + (i + 1) + '</button>');
+      }
+      $('steps').innerHTML = out.join('');
+    }
+
+    function renderHole() {
+      var h = card.holes[idx];
+      $('holeLabel').textContent = 'Hole ' + (idx + 1);
+
+      var pars = $('parPick').querySelectorAll('[data-par]');
+      for (var i = 0; i < pars.length; i++) {
+        pars[i].setAttribute('aria-pressed', String(+pars[i].dataset.par === h.par));
+      }
+
+      var sc = [];
+      for (var j = 0; j < SCORE_OPTS.length; j++) {
+        var o = SCORE_OPTS[j], val = h.par + o.d;
+        sc.push('<button type="button" class="te-opt" data-delta="' + o.d + '" ' +
+          'aria-pressed="' + (h.score === val) + '" aria-label="' + o.l + ', ' + val + ' strokes">' +
+          o.s + '<small>' + val + '</small></button>');
+      }
+      $('scorePick').innerHTML = sc.join('');
+
+      /* A par 3 has no fairway to hit, so the question is disabled rather than
+         hidden: hiding it would make the card jump height between holes. */
+      var isPar3 = h.par < 4;
+      var firs = $('firPick').querySelectorAll('[data-fir]');
+      for (var k = 0; k < firs.length; k++) {
+        firs[k].disabled = isPar3;
+        firs[k].setAttribute('aria-pressed', String(!isPar3 && h.fir === firs[k].dataset.fir));
+      }
+      $('q-fir').innerHTML = isPar3 ? 'Off the tee <small style="font-weight:600;letter-spacing:0;' +
+        'text-transform:none">— par 3, no fairway</small>' : 'Off the tee';
+
+      var apps = $('appPick').querySelectorAll('[data-app]');
+      for (var m = 0; m < apps.length; m++) {
+        apps[m].setAttribute('aria-pressed', String(h.app === apps[m].dataset.app));
+      }
+      var pu = $('puttPick').querySelectorAll('[data-putts]');
+      for (var n = 0; n < pu.length; n++) {
+        var pv = +pu[n].dataset.putts;
+        pu[n].setAttribute('aria-pressed', String(h.putts === pv || (pv === 3 && h.putts > 3)));
+      }
+
+      $('prevHole').disabled = idx === 0;
+      $('nextHole').textContent = idx === HOLES - 1 ? 'Finish' : 'Next →';
+      renderSteps();
+      renderBar();
+    }
+
+    function renderBar() {
+      var done = 0, gross = 0, par = 0;
+      for (var i = 0; i < HOLES; i++) {
+        var h = card.holes[i];
+        if (h.score !== null && h.score !== undefined) { done++; gross += h.score; par += h.par; }
+      }
+      $('doneCount').textContent = done;
+      var tp = gross - par;
+      $('runTotal').textContent = done ? ((tp > 0 ? '+' : '') + tp) : '—';
+      $('analyseBtn').disabled = false;
+    }
+
+    /* ==================== EDIT ==================== */
+    function setPar(p) {
+      var h = card.holes[idx];
+      h.par = p;
+      if (p < 4) h.fir = null;          /* a par 3 cannot have a fairway result */
+      renderHole(); persist();
+    }
+    function setScore(delta) {
+      var h = card.holes[idx];
+      var v = h.par + delta;
+      h.score = (h.score === v) ? null : v;
+      renderHole(); persist();
+    }
+    function setFir(v) {
+      var h = card.holes[idx];
+      if (h.par < 4) return;
+      h.fir = (h.fir === v) ? null : v;
+      renderHole(); persist();
+    }
+    function setApp(v) {
+      var h = card.holes[idx];
+      h.app = (h.app === v) ? null : v;
+      renderHole(); persist();
+    }
+    function setPutts(v) {
+      var h = card.holes[idx];
+      h.putts = (h.putts === v) ? null : v;
+      renderHole(); persist();
+      /* Putts is the last question, so completing it advances — that is what
+         makes the whole card about ninety seconds. */
+      if (h.putts !== null && h.score !== null && idx < HOLES - 1) {
+        setTimeout(function () { go(idx + 1); }, 160);
+      }
+    }
+    function go(i) {
+      idx = Math.max(0, Math.min(HOLES - 1, i));
+      renderHole();
+      $('steps').scrollIntoView({ block: 'nearest' });
+    }
+
+    /* ==================== ANALYSIS ==================== */
+    function loadRounds() {
+      if (!L) return Promise.resolve([]);
+      return L.listCompletedScorecards().then(function (cards) {
+        var out = [];
+        for (var i = 0; i < cards.length; i++) out.push(summarise(cards[i]));
+        out.sort(function (a, b) { return a.playedAt - b.playedAt; });  /* oldest first */
+        allRounds = out;
+        return out;
+      });
+    }
+
+    function showResults() {
+      loadRounds().then(function (rounds) {
+        $('results').hidden = false;
+        var wins = $('winPick').querySelectorAll('[data-win]');
+        for (var i = 0; i < wins.length; i++) {
+          var w = +wins[i].dataset.win;
+          wins[i].setAttribute('aria-pressed', String(w === win));
+          wins[i].disabled = rounds.length < 2 && w > 3;
+        }
+        renderAnalysis();
+        $('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+
+    function renderAnalysis() {
+      var rounds = allRounds.slice(-win);
+      if (!rounds.length) {
+        $('verdict').innerHTML = '<div class="lead">Nothing logged yet</div>' +
+          '<h3>Finish a round first.</h3><p>Tap in all eighteen holes above and the patterns start here.</p>';
+        $('sparkHost').innerHTML = ''; $('sgHost').innerHTML = '';
+        $('sgNote').textContent = ''; $('tiles').innerHTML = ''; $('roundList').innerHTML = '';
+        return;
+      }
+      var sg = shotsVsBenchmark(rounds);
+      var tend = tendencies(rounds);
+      var v = verdictFor(rounds, sg, tend);
+
+      $('verdict').innerHTML = '<div class="lead">' + esc(v.lead) + '</div><h3>' + v.head + '</h3><p>' + v.body + '</p>';
+      $('sparkHost').innerHTML = sparkline(rounds);
+      $('sgHost').innerHTML = sgBars(sg);
+      $('sgNote').innerHTML = 'Estimated shots per round against a 15-handicap benchmark ' +
+        '(45% fairways, 30% greens, 28% scrambling, two putts a green). Not tour strokes gained &mdash; ' +
+        'read the order of the four bars, not the decimal.';
+
+      /* tiles */
+      var tiles = [];
+      tiles.push(tile('Tee miss bias', tend.tee,
+        'of your missed fairways went', 'Not enough missed fairways yet to call a side.'));
+      tiles.push(tile('Distance control', tend.distance,
+        'of approaches that missed the green finished', 'Not enough missed greens yet to call short or long.'));
+      tiles.push('<div class="te-tile"><div class="k">Fairways / greens</div><div class="v">' +
+        (sg.firRate === null ? '—' : pctText(sg.firRate)) + ' / ' +
+        (sg.girRate === null ? '—' : pctText(sg.girRate)) + '</div>' +
+        '<div class="s">Benchmark is ' + pctText(BASE.fir) + ' and ' + pctText(BASE.gir) + '.</div></div>');
+      tiles.push('<div class="te-tile"><div class="k">Putts per round</div><div class="v">' +
+        (sg.puttsPerRound === null ? '—' : r1(sg.puttsPerRound)) + '</div>' +
+        '<div class="s">Scrambling ' + (sg.scrRate === null ? '—' : pctText(sg.scrRate)) +
+        ' against a ' + pctText(BASE.scramble) + ' benchmark.</div></div>');
+      $('tiles').innerHTML = tiles.join('');
+
+      /* round list, newest first */
+      var list = [], newest = allRounds.slice().reverse();
+      for (var i = 0; i < newest.length; i++) {
+        var r = newest[i], d = new Date(r.playedAt);
+        list.push('<div class="te-item"><span>' + (r.course ? esc(r.course) + ' &middot; ' : '') +
+          '<span class="sc">' + d.toLocaleDateString() + '</span></span>' +
+          '<span><span class="sc">' + r.gross + '</span> (' + (r.toPar > 0 ? '+' : '') + r.toPar + ')' +
+          '<button type="button" data-del="' + esc(r.id) + '" aria-label="Delete this round">&times;</button></span></div>');
+      }
+      $('roundList').innerHTML = list.join('');
+    }
+
+    function tile(label, b, midText, emptyText) {
+      if (!b.enough) {
+        return '<div class="te-tile"><div class="k">' + esc(label) + '</div><div class="v">—</div>' +
+          '<div class="s">' + esc(emptyText) + ' Seen ' + b.total + ' of ' + MIN_MISSES_BIAS + '.</div></div>';
+      }
+      var cls = b.strong ? ' warn' : ' good';
+      return '<div class="te-tile' + cls + '"><div class="k">' + esc(label) + '</div>' +
+        '<div class="v">' + pctText(b.share) + ' ' + esc(b.side) + '</div>' +
+        '<div class="s">' + pctText(b.share) + ' ' + esc(midText) + ' ' + esc(b.side) +
+        ' across ' + b.total + '. ' + (b.strong ? 'That is a pattern.' :
+          'Close to an even split — not a tendency worth practising against.') + '</div></div>';
+    }
+
+    /* ==================== BOOT ==================== */
+    function boot() {
+      L = window.GolfrawLocker || null;
+      card = freshCard();
+      renderHole();
+
+      $('parPick').addEventListener('click', function (e) {
+        var b = e.target.closest && e.target.closest('[data-par]');
+        if (b) setPar(+b.dataset.par);
+      });
+      $('scorePick').addEventListener('click', function (e) {
+        var b = e.target.closest && e.target.closest('[data-delta]');
+        if (b) setScore(+b.dataset.delta);
+      });
+      $('firPick').addEventListener('click', function (e) {
+        var b = e.target.closest && e.target.closest('[data-fir]');
+        if (b && !b.disabled) setFir(b.dataset.fir);
+      });
+      $('appPick').addEventListener('click', function (e) {
+        var b = e.target.closest && e.target.closest('[data-app]');
+        if (b) setApp(b.dataset.app);
+      });
+      $('puttPick').addEventListener('click', function (e) {
+        var b = e.target.closest && e.target.closest('[data-putts]');
+        if (b) setPutts(+b.dataset.putts);
+      });
+      $('steps').addEventListener('click', function (e) {
+        var b = e.target.closest && e.target.closest('[data-jump]');
+        if (b) go(+b.dataset.jump);
+      });
+      $('prevHole').addEventListener('click', function () { go(idx - 1); });
+      $('nextHole').addEventListener('click', function () {
+        if (idx === HOLES - 1) showResults(); else go(idx + 1);
+      });
+      $('analyseBtn').addEventListener('click', showResults);
+      $('course').addEventListener('input', function () {
+        card.course = $('course').value.slice(0, 80); persist();
+      });
+      $('newRound').addEventListener('click', function () {
+        card = freshCard(); idx = 0;
+        $('course').value = '';
+        renderHole();
+        $('saveState').textContent = 'New card started. It saves as you tap.';
+      });
+      $('winPick').addEventListener('click', function (e) {
+        var b = e.target.closest && e.target.closest('[data-win]');
+        if (!b || b.disabled) return;
+        win = +b.dataset.win;
+        var wins = $('winPick').querySelectorAll('[data-win]');
+        for (var i = 0; i < wins.length; i++) {
+          wins[i].setAttribute('aria-pressed', String(+wins[i].dataset.win === win));
+        }
+        renderAnalysis();
+      });
+      $('roundList').addEventListener('click', function (e) {
+        var b = e.target.closest && e.target.closest('[data-del]');
+        if (!b || !L) return;
+        if (!window.confirm('Delete this round? It cannot be undone.')) return;
+        L.deleteScorecard(b.dataset.del).then(loadRounds).then(renderAnalysis);
+      });
+
+      /* Hand scores across rather than writing into the handicap tool's store
+         directly: saveRounds() clears that store, so a blind write would
+         destroy anything the reader typed in by hand. */
+      $('pushBtn').addEventListener('click', function () {
+        if (!L || !allRounds.length) return;
+        var scores = [];
+        for (var i = 0; i < allRounds.length; i++) scores.push(allRounds[i].gross);
+        L.pushScoresToRounds(scores).then(function (r) {
+          msg(r.added
+            ? r.added + ' score' + (r.added === 1 ? '' : 's') + ' added to the Handicap Lie Detector. ' +
+              'Open it and add each course rating and slope to get a differential. ' +
+              '<a href="/tools-handicap-detector" style="color:inherit;text-decoration:underline">Go there now</a>.'
+            : 'Those scores are already on the Handicap Lie Detector card.', 'good');
+        })['catch'](function (e) { msg((e && e.message) || 'Could not hand the scores across.', 'bad'); });
+      });
+
+      /* The newsletter is the site's existing Friday list, and it is described
+         as exactly that. Nothing on this site can generate or send a
+         personalised weekly trend digest, so nothing here promises one. */
+      $('teForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = $('teEmail').value.replace(/^\s+|\s+$/g, '');
+        var box = $('teMsg');
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+          box.className = 'te-msg on bad'; box.textContent = 'That does not look like an email address.';
+          $('teEmail').focus(); return;
+        }
+        var btn = $('teSubmit');
+        btn.disabled = true; btn.textContent = 'Sending…';
+        fetch('https://api.hsforms.com/submissions/v3/integration/submit/148744463/f9b9028c-b648-4563-9b01-2b53b3caae13', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fields: [{ name: 'email', value: email }] })
+        }).then(function (r) {
+          if (!r.ok) throw new Error('rejected');
+          $('teForm').style.display = 'none';
+          box.className = 'te-msg on good'; box.textContent = 'You are on the list.';
+        })['catch'](function () {
+          btn.disabled = false; btn.textContent = 'Join';
+          box.className = 'te-msg on bad'; box.textContent = 'Could not connect. Try again in a moment.';
+        });
+      });
+
+      if (!L) {
+        $('saveState').textContent = 'Storage is unavailable in this browser, so this round will not be saved.';
+        return;
+      }
+      L.ready().then(function () { return L.getDraftScorecard(); }).then(function (draft) {
+        if (draft) {
+          card = draft;
+          while (card.holes.length < HOLES) card.holes.push(blankHole());
+          $('course').value = card.course || '';
+          /* Drop the reader back on the first hole they have not scored. */
+          idx = 0;
+          for (var i = 0; i < HOLES; i++) {
+            if (card.holes[i].score === null || card.holes[i].score === undefined) { idx = i; break; }
+          }
+          renderHole();
+          $('saveState').textContent = 'Picked up your unfinished card at hole ' + (idx + 1) + '.';
+        }
+        return loadRounds();
+      }).then(function (rounds) {
+        if (rounds.length) { showResults(); }
+      })['catch'](function () {
+        $('saveState').textContent = 'Could not open local storage, so this round will not be saved.';
+      });
+
+      L.subscribe(function (kind) {
+        if (kind === 'clear' || kind === 'import') window.location.reload();
+      });
+    }
+
+    function msg(text, kind) {
+      var el = $('resMsg');
+      el.className = 'te-msg on ' + (kind || '');
+      el.innerHTML = text;
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  </script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PMECW4VW66');
+  </script>
+  <script>window.__gr_consent=true;window.__gr_ads=false;</script>
+<!-- LOCKER:START -->
+  <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
+       Deferred so it never competes with first paint; execution order is
+       guaranteed by `defer`, which the storage layer relies on. -->
+  <script src="/lib/locker/schema.js?v=2" defer></script>
+  <script src="/lib/locker/store.js?v=2" defer></script>
+  <script src="/lib/locker/drawer.js?v=2" defer></script>
+<!-- LOCKER:END -->
+</body>
+
+</html>

@@ -163,7 +163,7 @@ Indexing API work and is gitignored.
 
 ## Data model
 
-`profile` (one record) · `bags` · `rounds` · `toolState` · `sessions` · `meta`
+`profile` (one record) · `bags` · `rounds` · `toolState` · `sessions` · `scorecards` · `meta`
 
 Every write is schema-validated first, so invalid data never reaches disk. Bad
 records are rejected individually: one out-of-range yardage costs the reader
@@ -254,3 +254,55 @@ nothing that can render or send a PDF. The newsletter field beside it is a
 genuine opt-in to the existing HubSpot list and is deliberately not a gate: the
 chart never depends on giving up an address. Do not reword this into a promise
 to email the chart unless a HubSpot workflow that actually sends one exists.
+
+
+# The Tendency Engine (`tools-tendency-engine.html`)
+
+Tool 11, the post-round miss-pattern tracker. **Generated**, not hand-written:
+
+    python3 scripts/build_tendency_engine.py
+    python3 scripts/wire_locker.py
+
+Edits made directly to the HTML are destroyed on the next build.
+
+## `scorecards`, not `rounds`
+
+Hole-by-hole cards go to the `scorecards` store. They must **never** go into
+`rounds`: that store belongs to the Handicap Lie Detector, whose `saveRounds()`
+calls `clear('rounds')` and rewrites the whole store on every keystroke. Hole
+data written there is destroyed the moment the reader opens that tool, and
+`RoundSchema` has no fields for it anyway.
+
+The handoff between the two goes through `pushScoresToRounds()`, which reads the
+existing rounds, appends only scores not already present, and writes the union
+back. It merges; it never replaces. Repeated presses add nothing.
+
+## What the numbers are
+
+**Not strokes gained.** Real SG needs the distance and lie of every shot. This
+compares four recordable rates — fairways, greens, scrambling, putts — against a
+15-handicap benchmark (45% / 30% / 28% / 2.0 putts) and converts the gap into
+shots via a fixed cost per event. Reliable about *which* category is worst,
+rough about by how much. The page says exactly this, in those words. Do not
+retitle it "Strokes Gained".
+
+Bias detection is deliberately conservative: no directional call below 3 rounds
+or 8 missed fairways, and only when one side takes 60%+. `bias()` returns
+`count` — the *majority side's* count. Reporting `a` next to a side of `labelB`
+prints a sentence that contradicts its own percentage; that shipped once in
+testing and is covered by a regression test.
+
+## The persist race
+
+`persist()` binds the current card into a local `target` before the async save.
+Reading the shared `card` inside the `.then` lets a save that began before
+"New round" write the old card's id onto the new object — the new round then
+overwrites the old record and a round vanishes. Caught in testing; keep the
+local binding.
+
+## No Monday digest
+
+The newsletter opt-in is the site's existing Friday list and is described as
+that. Nothing here can generate or send a personalised weekly trend digest, so
+nothing promises one. The trend already updates on-device the moment a round is
+logged.
