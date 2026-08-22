@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 <!-- Google Funding Choices — EEA/UK consent management (required by Google's EU User Consent Policy) -->
-  <script async src="https://fundingchoicesmessages.google.com/i/pub-8933725159594062?ers=1"></script>
-  <script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+<script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
 <meta charset="UTF-8">
@@ -431,7 +430,6 @@ table { max-width: 100%; }
 }
 </script>
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -752,5 +750,55 @@ if (burger && links) {
   gtag('js', new Date());
   gtag('config', 'G-PMECW4VW66');
 </script>
+  <script>window.__gr_consent=true;window.__gr_ads=true;</script>
+  <!-- Ads + consent are deferred until the reader engages, or 3.5s, whichever
+       comes first. Consent loads BEFORE AdSense so the EEA/UK gate still runs
+       ahead of any ad request. Analytics is NOT deferred: delaying it would
+       lose pageviews from readers who bounce without interacting. -->
+  <script>
+    (function () {
+      var FC = 'https://fundingchoicesmessages.google.com/i/pub-8933725159594062?ers=1';
+      var ADS = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062';
+      var EVENTS = ['touchstart', 'scroll', 'mousemove', 'keydown', 'click', 'wheel'];
+      var started = false, adsQueued = false, timer;
+
+      function inject(src, isAds, onload) {
+        var s = document.createElement('script');
+        s.src = src; s.async = true;
+        if (isAds) s.crossOrigin = 'anonymous';
+        if (onload) { s.onload = onload; s.onerror = onload; }
+        document.head.appendChild(s);
+      }
+
+      function loadAds() {
+        if (adsQueued || !window.__gr_ads) return;
+        adsQueued = true;
+        inject(ADS, true);
+      }
+
+      function start() {
+        if (started) return;
+        started = true;
+        clearTimeout(timer);
+        for (var i = 0; i < EVENTS.length; i++) {
+          window.removeEventListener(EVENTS[i], start, LISTEN);
+        }
+        // Consent first; ads follow once it has loaded (or failed).
+        if (window.__gr_consent) {
+          inject(FC, false, loadAds);
+          // If the consent script is blocked outright, do not strand the ads.
+          setTimeout(loadAds, 2500);
+        } else {
+          loadAds();
+        }
+      }
+
+      var LISTEN = { passive: true };
+      for (var i = 0; i < EVENTS.length; i++) {
+        window.addEventListener(EVENTS[i], start, LISTEN);
+      }
+      timer = setTimeout(start, 3500);
+    })();
+  </script>
 </body>
 </html>
