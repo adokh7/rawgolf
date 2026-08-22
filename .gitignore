@@ -6,3 +6,4 @@ __pycache__/
 .fast-index-pending.json
 .env*
 .claude/
+.email-preview/

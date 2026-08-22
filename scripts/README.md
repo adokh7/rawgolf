@@ -373,3 +373,81 @@ A fit score is not a probability, and the page says so. The site's own Terms
 state it "does not facilitate wagering ... and is not gambling software" — keep
 this tool on the right side of that line. No Wednesday board is promised in the
 email capture either, because nothing here can assemble or send one.
+
+# The weekly email pipeline (`api/`)
+
+Vercel serverless functions, zero dependencies, CommonJS, native `fetch`. They
+deploy alongside the static site; nothing is bundled or compiled.
+
+| Path | Role |
+| --- | --- |
+| `api/cron/weekly.js` | the scheduled entry point |
+| `api/unsubscribe.js` | RFC 8058 one-click unsubscribe (POST) and the human link (GET) |
+| `api/_lib/config.js` | env, auth, and the safety gates |
+| `api/_lib/templates.js` | both email templates, HTML + plaintext |
+| `api/_lib/subscribers.js` | reads the list from HubSpot |
+| `api/_lib/send.js` | dispatch via Resend |
+| `api/_lib/token.js` | HMAC-signed unsubscribe tokens |
+
+Files under `api/_lib/` are not routes: Vercel excludes anything prefixed with
+an underscore.
+
+## It will not send by accident
+
+Four independent gates, and all four must be cleared:
+
+1. **Auth.** `api/cron/weekly` returns 401 without `Authorization: Bearer
+   $CRON_SECRET`. Vercel sends that automatically on scheduled runs. Nobody can
+   trigger a send by visiting the URL.
+2. **Dry run by default.** `EMAIL_DRY_RUN` must be *exactly* `"0"` to send.
+   Unset, `"1"`, `"true"`, `"yes"` and every typo all mean dry run.
+3. **Compliance.** Missing `RESEND_API_KEY`, `MAIL_FROM`, `MAIL_POSTAL_ADDRESS`
+   or `UNSUBSCRIBE_SECRET` forces a dry run *regardless of step 2*, and the
+   response names what is absent. A commercial email with no postal address is
+   unlawful under CAN-SPAM, so the pipeline refuses rather than shipping one.
+4. **Test diversion.** With `EMAIL_TEST_RECIPIENT` set, the send goes only to
+   that address no matter what the list says.
+
+`EMAIL_MAX_RECIPIENTS` (default 500) caps any single run.
+
+## Deliverability and the law
+
+- One message per recipient. Never a shared `To` or `BCC`: that leaks every
+  subscriber's address to every other subscriber and cannot carry a per-person
+  unsubscribe link.
+- `List-Unsubscribe` and `List-Unsubscribe-Post: List-Unsubscribe=One-Click` on
+  every message. Gmail and Yahoo require these from bulk senders; without them
+  the unsubscribe surfaces as "report spam" instead.
+- Unsubscribe tokens are HMAC-signed, so a link only works for the address it
+  was issued for and the list cannot be enumerated. **No expiry** — a link dug
+  out of a six-month-old email must still work.
+- Unsubscribing is immediate on both GET and POST. No confirmation step, no
+  winback. Rotating `UNSUBSCRIBE_SECRET` invalidates every old link, so treat it
+  as permanent.
+- Real `text/plain` alternative on every message, not a stub.
+
+## Why template B is not personalised
+
+It cannot be. Every number the tools produce — bag, range sessions, scorecards,
+picks — lives in the reader's own IndexedDB and **never reaches a server**. The
+locker makes zero network calls, and every tool page says so in those words.
+
+A "your tendencies this week" email would require uploading all of it, which
+would make that promise false. So template B is a practice note that rotates
+through four pieces and says plainly that we do not have the reader's numbers.
+
+Changing this is a product decision with a real trust cost, not a feature.
+
+## Schedule
+
+One daily cron that decides in code whether today is a send day (Wednesday →
+board, Monday → practice). Done this way because the Vercel Hobby plan allows
+one invocation per day per job; checking the weekday in code works on every
+plan and keeps the schedule in one readable place.
+
+## Reviewing the templates without deploying
+
+    node scripts/preview_email.js
+
+Writes both templates as `.html` and `.txt` to `.email-preview/` (gitignored).
+No credentials, no network, nothing sent.
