@@ -92,11 +92,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.golfraw.com/search</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.golfraw.com/terms</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>

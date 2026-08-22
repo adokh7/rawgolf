@@ -41,10 +41,12 @@ HOMEPAGE_END = '<!-- END HOMEPAGE ARTICLE FEED -->'
 # sitemap agrees with the indexable canonicals applied by fix_seo_audit.py.
 # article-template.html is intentionally omitted because it is a development
 # scaffold, not a public destination.
+# /search is omitted too: internal search results are noindex, and a sitemap
+# should only list URLs you want indexed.
 STATIC = ['/', '/news', '/guides', '/liv-golf', '/pga-tour', '/tournaments',
           '/vault', '/ratings', '/tools', '/analysis', '/about', '/contact',
           '/corrections', '/full-board', '/manifesto', '/past-issues',
-          '/privacy', '/ratings-manual', '/search', '/terms', '/the-card',
+          '/privacy', '/ratings-manual', '/terms', '/the-card',
           '/in-memoriam']
 
 # ---------------------------------------------------------------------------

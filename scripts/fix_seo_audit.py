@@ -25,6 +25,17 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://www.golfraw.com"
 BRAND_SUFFIX = " | GOLFRAW"
 ROBOTS_VALUE = "index, follow, max-image-preview:large"
+
+# Pages that must stay out of the index. Internal search results are thin
+# and near-duplicate by nature, and Google's own guidance is to keep them
+# out; "follow" is retained so link equity still flows through them.
+NOINDEX_ROBOTS_VALUE = "noindex, follow"
+NOINDEX_PAGES = {"search.html"}
+
+
+def robots_for(name: str) -> str:
+    """Robots directive for a page, honouring the noindex exceptions."""
+    return NOINDEX_ROBOTS_VALUE if name in NOINDEX_PAGES else ROBOTS_VALUE
 DEFAULT_IMAGE = "/public/raw-golf-practice.webp"
 
 OG_PROPERTIES = {
@@ -61,6 +72,7 @@ WEBSITE_PAGES = {
     "privacy.html",
     "ratings-manual.html",
     "ratings.html",
+    "in-memoriam.html",
     "search.html",
     "terms.html",
     "the-card.html",
@@ -429,12 +441,13 @@ def metadata_block(
     canonical: str,
     og_type: str,
     image: str,
+    robots_value: str = ROBOTS_VALUE,
 ) -> str:
     return f'''  <!-- SEO audit metadata: managed by scripts/fix_seo_audit.py -->
   <title>{escaped(title)}</title>
   <meta name="description" content="{escaped(description)}">
   <link rel="canonical" href="{escaped(canonical)}">
-  <meta name="robots" content="{ROBOTS_VALUE}">
+  <meta name="robots" content="{robots_value}">
   <meta property="og:site_name" content="GolfRaw">
   <meta property="og:type" content="{og_type}">
   <meta property="og:title" content="{escaped(title)}">
@@ -466,7 +479,7 @@ def repair_source(path: Path, source: str) -> tuple[str, dict[str, str]]:
     head = LINK_RE.sub(lambda m: "" if is_canonical_link(m.group(0)) else m.group(0), head)
     head = re.sub(r"[ \t]+\n", "\n", head)
     head = re.sub(r"\n{4,}", "\n\n\n", head).rstrip()
-    block = metadata_block(title, description, canonical, og_type, image)
+    block = metadata_block(title, description, canonical, og_type, image, robots_for(path.name))
 
     # Keep discovery metadata near the top of <head>, after the viewport (or
     # charset fallback), rather than below large inline stylesheets.
@@ -520,9 +533,12 @@ def validate_page(path: Path, source: str) -> list[str]:
         errors.append(f"title length is {len(title)}, expected 40-60")
     if not 120 <= len(description) <= 155:
         errors.append(f"description length is {len(description)}, expected 120-155")
-    if robots.casefold() != ROBOTS_VALUE.casefold():
-        errors.append(f"robots is {robots!r}")
-    if "noindex" in robots.casefold() or "nofollow" in robots.casefold():
+    expected_robots = robots_for(path.name)
+    if robots.casefold() != expected_robots.casefold():
+        errors.append(f"robots is {robots!r}, expected {expected_robots!r}")
+    if path.name not in NOINDEX_PAGES and (
+        "noindex" in robots.casefold() or "nofollow" in robots.casefold()
+    ):
         errors.append("robots still blocks indexing or following")
     if not canonical.startswith(SITE + "/"):
         errors.append(f"canonical is outside {SITE}: {canonical!r}")
