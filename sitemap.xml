@@ -137,6 +137,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.golfraw.com/tools-standing-order</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/tools-tee-box-check</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

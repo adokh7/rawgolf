@@ -163,7 +163,7 @@ Indexing API work and is gitignored.
 
 ## Data model
 
-`profile` (one record) · `bags` · `rounds` · `toolState` · `meta`
+`profile` (one record) · `bags` · `rounds` · `toolState` · `sessions` · `meta`
 
 Every write is schema-validated first, so invalid data never reaches disk. Bad
 records are rejected individually: one out-of-range yardage costs the reader
@@ -195,3 +195,62 @@ Each bridge sits *alongside* the tool's existing `persist()`/`restore()` rather
 than replacing it. Legacy keys are migrated into IndexedDB once (guarded by a
 `meta` flag) and then left in place, so a reader still holding a cached copy of
 an older page does not lose their bag. Do not delete those code paths.
+
+
+# The Standing Order (`tools-standing-order.html`)
+
+Tool 10, the range-session gapping logger. The page is **generated**, not
+hand-written:
+
+    python3 scripts/build_standing_order.py
+    python3 scripts/wire_locker.py
+
+`build_standing_order.py` lifts the head (fonts, design tokens, shared CSS),
+the site header and the footer verbatim out of `tools-bag-audit.html`, so the
+tool cannot drift from the rest of the site. Only the metadata, the structured
+data and the tool itself are new. **Edits made directly to
+`tools-standing-order.html` are destroyed on the next build** — change the
+generator instead.
+
+## What it stores
+
+Shots go to the `sessions` store as a `RangeSession`: one record per visit,
+each holding the clubs hit and the raw carry yardages in entry order. Only raw
+shots are persisted. Every statistic is derived on read, so deleting a
+mis-tapped shot recomputes the whole chart correctly.
+
+Sessions are per-day: `getOrStartSession()` reuses the newest session started
+since midnight and opens a fresh one otherwise. A bag gapped in July is never
+averaged with one gapped in December.
+
+## Statistics
+
+Medians and percentiles throughout, never means. Nine 7-irons at 160 plus one
+thinned 105 averages to 154.5 — a club nobody owns — while the median stays at
+160. `stdev()` is the sample (n-1) deviation. The "80% band" is the empirical
+p10–p90 of the reader's own shots: a description of dispersion, **not** a
+confidence interval around the median, and the page says so rather than
+dressing it up. Clubs with fewer than 5 shots are drawn greyed out and excluded
+from the gap checks entirely.
+
+The dispersion chart is hand-built SVG. No chart library, nothing to download,
+nothing to parse before the page is usable. Club names are escaped into it.
+
+## Two ordering traps this page already hit
+
+1. `window.GolfrawLocker` **must not** be captured at parse time. The locker
+   scripts are `defer`red, so the inline tool script runs first and would pin
+   the reference to `null` — every shot then silently fails to save while the
+   UI behaves perfectly. It is resolved inside `boot()`.
+2. Club names from the bag **extend** the default club list, they never replace
+   it. Replacing means a reader whose bag holds three clubs cannot log a
+   fourth.
+
+## The chart is not emailed
+
+The modal generates the chart client-side and hands it over through the
+browser's own print/save-as-PDF. There is no server on this site and therefore
+nothing that can render or send a PDF. The newsletter field beside it is a
+genuine opt-in to the existing HubSpot list and is deliberately not a gate: the
+chart never depends on giving up an address. Do not reword this into a promise
+to email the chart unless a HubSpot workflow that actually sends one exists.
