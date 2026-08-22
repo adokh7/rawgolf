@@ -1296,6 +1296,14 @@
     gtag('config', 'G-PMECW4VW66');
   </script>
   <script>window.__gr_consent=true;window.__gr_ads=false;</script>
+<!-- LOCKER:START -->
+  <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
+       Deferred so it never competes with first paint; execution order is
+       guaranteed by `defer`, which the storage layer relies on. -->
+  <script src="/lib/locker/schema.js?v=1" defer></script>
+  <script src="/lib/locker/store.js?v=1" defer></script>
+  <script src="/lib/locker/drawer.js?v=1" defer></script>
+<!-- LOCKER:END -->
   <!-- Ads + consent are deferred until the reader engages, or 6s, whichever
        comes first. Consent loads BEFORE AdSense so the EEA/UK gate still runs
        ahead of any ad request. Analytics is NOT deferred: delaying it would

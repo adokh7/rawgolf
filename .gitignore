@@ -5,3 +5,4 @@ __pycache__/
 *.pyc
 .fast-index-pending.json
 .env*
+.claude/

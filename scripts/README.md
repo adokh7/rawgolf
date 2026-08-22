@@ -136,3 +136,62 @@ new. Sync records the changed URLs and prints the command instead:
 
 Pass `--notify` or set `FAST_INDEX=1` to fire inline anyway. Failures never
 break a sync; indexing is best-effort by design.
+
+# The Locker (`lib/locker/`)
+
+Local-first storage shared by the tool pages. Everything stays in the reader's
+browser; nothing here ever touches the network.
+
+| File | Role |
+| --- | --- |
+| `lib/locker/schema.js` | structural validator (`window.GolfrawSchema`) |
+| `lib/locker/store.js` | IndexedDB + public API (`window.GolfrawLocker`) |
+| `lib/locker/drawer.js` | the My Bag / Locker slide-out (`window.GolfrawDrawer`) |
+
+## Why hand-written instead of Dexie + Zod
+
+This site has no bundler, no `package.json` and no npm runtime — every page is
+static HTML with inline scripts. Adding Dexie and Zod means adding a build step
+in front of 283 pages. The parts we actually need (a promise API over IndexedDB,
+store versioning, and safeParse-style validation that never throws) are small
+enough to own outright, so they are written directly against the platform. The
+API is deliberately shaped like the libraries it replaces, so swapping either in
+later is mechanical.
+
+`node_modules/` in the repo root is unrelated — it is left over from the Google
+Indexing API work and is gitignored.
+
+## Data model
+
+`profile` (one record) · `bags` · `rounds` · `toolState` · `meta`
+
+Every write is schema-validated first, so invalid data never reaches disk. Bad
+records are rejected individually: one out-of-range yardage costs the reader
+that club, not the other thirteen.
+
+## Wiring it into a page
+
+`scripts/wire_locker.py` injects the loader — and, for the three connected
+tools, a bridge — into every `tools-*.html` between `<!-- LOCKER:START -->` and
+`<!-- LOCKER:END -->`. It is idempotent: it replaces the managed block rather
+than appending, so re-running it is always safe.
+
+    python3 scripts/wire_locker.py
+
+Connected tools: `tools-bag-audit` (#07, clubs), `tools-plays-like` (#05,
+conditions) and `tools-handicap-detector` (#04, rounds + claimed handicap). The
+other six tool pages get the drawer and the storage layer but no bridge.
+
+### Bump `VER` when you edit `lib/locker/`
+
+`vercel.json` serves `.js` with a one-year `immutable` Cache-Control. The
+`?v=` query string on each `<script src>` is the only cache-buster, so a change
+under `lib/locker/` that does not bump `VER` in `wire_locker.py` reaches nobody
+who has already visited. Bump it, re-run the script, and commit both.
+
+### Tools keep their own `localStorage` writes
+
+Each bridge sits *alongside* the tool's existing `persist()`/`restore()` rather
+than replacing it. Legacy keys are migrated into IndexedDB once (guarded by a
+`meta` flag) and then left in place, so a reader still holding a cached copy of
+an older page does not lose their bag. Do not delete those code paths.

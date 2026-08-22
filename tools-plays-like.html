@@ -1021,6 +1021,75 @@
     gtag('config', 'G-PMECW4VW66');
   </script>
   <script>window.__gr_consent=true;window.__gr_ads=false;</script>
+<!-- LOCKER:START -->
+  <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
+       Deferred so it never competes with first paint; execution order is
+       guaranteed by `defer`, which the storage layer relies on. -->
+  <script src="/lib/locker/schema.js?v=1" defer></script>
+  <script src="/lib/locker/store.js?v=1" defer></script>
+  <script src="/lib/locker/drawer.js?v=1" defer></script>
+  <script>
+    /* ---- Locker bridge: Tool #05 Plays Like -----------------------------
+       Conditions are this tool's own state, so they live in toolState rather
+       than in a shared schema. The reader's unit preference does come from the
+       shared profile — it is a property of the person, not of one calculator. */
+    window.addEventListener('DOMContentLoaded', function () {
+      var L = window.GolfrawLocker;
+      if (!L) return;
+      var TOOL = 'plays-like';
+      var FIELDS = ['yards', 'temp', 'alt', 'wind', 'slope', 'gap'];
+      var timer = null, hydrating = false, missedWrite = false;
+
+      function collect() {
+        var d = {};
+        for (var i = 0; i < FIELDS.length; i++) d[FIELDS[i]] = $(FIELDS[i]).value;
+        d.windDir = segValue('windDir');
+        d.humidity = segValue('humid');
+        return d;
+      }
+
+      function push() {
+        /* A keystroke during hydration must not be lost: remember it and
+           replay once hydration finishes, otherwise the reader's first edit
+           after load silently fails to reach the Locker. */
+        if (hydrating) { missedWrite = true; return; }
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(function () {
+          L.setToolState(TOOL, collect())['catch'](function () { });
+        }, 400);
+      }
+
+      function hydrate(force) {
+        return L.getToolState(TOOL).then(function (d) {
+          if (!d) { if (force) clearFields(); return; }
+          hydrating = true;
+          for (var i = 0; i < FIELDS.length; i++) {
+            var k = FIELDS[i];
+            if (d[k] !== undefined && d[k] !== '') $(k).value = d[k];
+          }
+          if (d.windDir) setSeg('windDir', d.windDir);
+          if (d.humidity) setSeg('humid', d.humidity);
+          hydrating = false;
+          if (missedWrite) { missedWrite = false; push(); }
+        })['catch'](function () { hydrating = false; missedWrite = false; });
+      }
+
+      function clearFields() {
+        hydrating = true;
+        for (var i = 0; i < FIELDS.length; i++) $(FIELDS[i]).value = '';
+        setSeg('windDir', 'head'); setSeg('humid', 'low');
+        hydrating = false;
+      }
+
+      for (var i = 0; i < FIELDS.length; i++) $(FIELDS[i]).addEventListener('input', push);
+      $('windDir').addEventListener('click', push);
+      $('humid').addEventListener('click', push);
+
+      L.ready().then(function () { return hydrate(false); });
+      L.subscribe(function (kind) { if (kind === 'import' || kind === 'clear') hydrate(true); });
+    });
+  </script>
+<!-- LOCKER:END -->
   <!-- Ads + consent are deferred until the reader engages, or 6s, whichever
        comes first. Consent loads BEFORE AdSense so the EEA/UK gate still runs
        ahead of any ad request. Analytics is NOT deferred: delaying it would

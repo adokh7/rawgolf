@@ -1174,6 +1174,86 @@
     gtag('config', 'G-PMECW4VW66');
   </script>
   <script>window.__gr_consent=true;window.__gr_ads=false;</script>
+<!-- LOCKER:START -->
+  <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
+       Deferred so it never competes with first paint; execution order is
+       guaranteed by `defer`, which the storage layer relies on. -->
+  <script src="/lib/locker/schema.js?v=1" defer></script>
+  <script src="/lib/locker/store.js?v=1" defer></script>
+  <script src="/lib/locker/drawer.js?v=1" defer></script>
+  <script>
+    /* ---- Locker bridge: Tool #07 Bag Audit ------------------------------
+       The fourteen slots are the edit surface; the Locker is the record of
+       truth that other tools and the drawer read. Writes are debounced so a
+       burst of keystrokes is one transaction, and each club is validated
+       individually — one nonsense yardage must not cost the reader the other
+       thirteen clubs. */
+    window.addEventListener('DOMContentLoaded', function () {
+      var L = window.GolfrawLocker;
+      if (!L || typeof SLOTS === 'undefined') return;
+      var timer = null, hydrating = false, missedWrite = false;
+
+      function collect() {
+        var clubs = [];
+        for (var i = 0; i < SLOTS; i++) {
+          var name = String($('n' + i).value || '').replace(/^\s+|\s+$/g, '');
+          var carry = L.util.toNum($('y' + i).value);
+          if (!name && carry === null) continue;
+          var conf = L.util.toInt($('c' + i).value);
+          var candidate = {
+            name: name.slice(0, 40),
+            carry: carry,
+            usage: L.util.toInt($('u' + i).value),
+            conf: conf === null ? 3 : Math.min(5, Math.max(1, conf))
+          };
+          var parsed = L.schemas.Club.parse(candidate, '$');
+          if (parsed.ok) clubs.push(parsed.value);
+        }
+        return clubs;
+      }
+
+      function push() {
+        /* A keystroke during hydration must not be lost: remember it and
+           replay once hydration finishes, otherwise the reader's first edit
+           after load silently fails to reach the Locker. */
+        if (hydrating) { missedWrite = true; return; }
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(function () {
+          L.saveActiveBagClubs(collect())['catch'](function () { /* local-only; the form still works */ });
+        }, 400);
+      }
+
+      function hydrate(force) {
+        return L.getActiveBag().then(function (bag) {
+          var clubs = (bag && bag.clubs) || [];
+          if (!clubs.length && !force) return;
+          hydrating = true;
+          for (var i = 0; i < SLOTS; i++) {
+            var c = clubs[i];
+            if (!c) {
+              if (!force) continue;
+              $('n' + i).value = ''; $('y' + i).value = ''; $('u' + i).value = '';
+              $('c' + i).value = '3';
+              continue;
+            }
+            $('n' + i).value = c.name || '';
+            $('y' + i).value = c.carry === null ? '' : c.carry;
+            $('u' + i).value = c.usage === null ? '' : c.usage;
+            $('c' + i).value = c.conf || 3;
+          }
+          hydrating = false;
+          updateTally();
+          if (missedWrite) { missedWrite = false; push(); }
+        })['catch'](function () { hydrating = false; missedWrite = false; });
+      }
+
+      $('bagList').addEventListener('input', push);
+      $('bagList').addEventListener('change', push);
+      L.ready().then(function () { return hydrate(false); });
+      L.subscribe(function (kind) { if (kind === 'import' || kind === 'clear') hydrate(true); });
+    });
+  </script>
+<!-- LOCKER:END -->
   <!-- Ads + consent are deferred until the reader engages, or 6s, whichever
        comes first. Consent loads BEFORE AdSense so the EEA/UK gate still runs
        ahead of any ad request. Analytics is NOT deferred: delaying it would

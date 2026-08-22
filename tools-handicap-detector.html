@@ -1109,6 +1109,89 @@
     gtag('config', 'G-PMECW4VW66');
   </script>
   <script>window.__gr_consent=true;window.__gr_ads=false;</script>
+<!-- LOCKER:START -->
+  <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
+       Deferred so it never competes with first paint; execution order is
+       guaranteed by `defer`, which the storage layer relies on. -->
+  <script src="/lib/locker/schema.js?v=1" defer></script>
+  <script src="/lib/locker/store.js?v=1" defer></script>
+  <script src="/lib/locker/drawer.js?v=1" defer></script>
+  <script>
+    /* ---- Locker bridge: Tool #04 Handicap Lie Detector ------------------
+       Rounds are shared data, so they go to the rounds store rather than to
+       this tool's scratch state, and the claimed handicap belongs on the
+       profile. The tool owns the whole list, so a write replaces it. */
+    window.addEventListener('DOMContentLoaded', function () {
+      var L = window.GolfrawLocker;
+      if (!L) return;
+      var timer = null, hydrating = false, missedWrite = false;
+
+      function collect() {
+        var rows = [];
+        $('rounds').querySelectorAll('.rnd').forEach(function (r) {
+          var rec = {
+            score: L.util.toInt(r.querySelector('.sc').value),
+            cr: L.util.toNum(r.querySelector('.cr').value),
+            slope: L.util.toInt(r.querySelector('.sl').value)
+          };
+          if (rec.score === null && rec.cr === null && rec.slope === null) return;
+          /* Out-of-range entries are the reader mid-typing; drop them from the
+             saved record instead of failing the whole write. */
+          var probe = L.schemas.Round.parse({ id: 'probe', seq: 0, score: rec.score, cr: rec.cr, slope: rec.slope }, '$');
+          if (probe.ok) rows.push(rec);
+        });
+        return rows;
+      }
+
+      function push() {
+        /* A keystroke during hydration must not be lost: remember it and
+           replay once hydration finishes, otherwise the reader's first edit
+           after load silently fails to reach the Locker. */
+        if (hydrating) { missedWrite = true; return; }
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(function () {
+          var hcp = L.util.toNum($('claimed').value);
+          L.saveRounds(collect())['catch'](function () { });
+          if (hcp === null || (hcp >= -10 && hcp <= 54)) {
+            L.saveProfile({ claimedHandicap: hcp })['catch'](function () { });
+          }
+        }, 500);
+      }
+
+      function hydrate(force) {
+        return Promise.all([L.listRounds(), L.getProfile()]).then(function (res) {
+          var rounds = res[0], profile = res[1];
+          if (!rounds.length && !force) {
+            if (profile.claimedHandicap !== null) $('claimed').value = profile.claimedHandicap;
+            return;
+          }
+          hydrating = true;
+          $('rounds').innerHTML = '';
+          for (var i = 0; i < rounds.length && i < MAX_ROUNDS; i++) {
+            addRow({
+              score: rounds[i].score === null ? null : rounds[i].score,
+              cr: rounds[i].cr === null ? null : rounds[i].cr,
+              slope: rounds[i].slope === null ? null : rounds[i].slope
+            });
+          }
+          while ($('rounds').querySelectorAll('.rnd').length < MIN_ROUNDS) addRow();
+          $('claimed').value = profile.claimedHandicap === null ? '' : profile.claimedHandicap;
+          renumber();
+          hydrating = false;
+          refresh();
+          if (missedWrite) { missedWrite = false; push(); }
+        })['catch'](function () { hydrating = false; missedWrite = false; });
+      }
+
+      $('rounds').addEventListener('input', push);
+      $('rounds').addEventListener('change', push);
+      $('claimed').addEventListener('input', push);
+
+      L.ready().then(function () { return hydrate(false); });
+      L.subscribe(function (kind) { if (kind === 'import' || kind === 'clear') hydrate(true); });
+    });
+  </script>
+<!-- LOCKER:END -->
   <!-- Ads + consent are deferred until the reader engages, or 6s, whichever
        comes first. Consent loads BEFORE AdSense so the EEA/UK gate still runs
        ahead of any ad request. Analytics is NOT deferred: delaying it would
