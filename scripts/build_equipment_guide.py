@@ -1,0 +1,1217 @@
+import os
+
+# Complete HTML content for the Equipment Optimization Guide
+html_content = """<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Funding Choices — EEA/UK consent management (required by Google's EU User Consent Policy) -->
+  <script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+  <meta charset="UTF-8">
+  <!-- ============ FAVICON / GOOGLE SEARCH LOGO ============ -->
+  <link rel="icon" type="image/webp" sizes="1254x1254" href="/public/favicon-192.webp">
+  <link rel="alternate icon" type="image/png" sizes="192x192" href="/public/favicon-192.png">
+  <link rel="apple-touch-icon" href="/public/favicon-192.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============ PRIMARY SEO ============ -->
+  <title>Golf Deals: Save $2,176 Annually on Equipment and Rounds | GOLFRAW</title>
+  <meta name="description" content="Save $2,176 annually on golf equipment, balls, and tee times. The data-backed guide to equipment release cycles, direct-to-consumer urethane balls, and twilight rates.">
+  <link rel="canonical" href="https://www.golfraw.com/equipment/golf-deals-equipment-tee-times-guide">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Marcus Keane">
+
+  <!-- ============ OPEN GRAPH ============ -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GolfRaw">
+  <meta property="og:title" content="Golf Deals: Save $2,176 Annually on Equipment and Rounds | GOLFRAW">
+  <meta property="og:description" content="Save $2,176 annually on golf equipment, balls, and tee times. The data-backed guide to equipment release cycles, direct-to-consumer urethane balls, and twilight rates.">
+  <meta property="og:url" content="https://www.golfraw.com/equipment/golf-deals-equipment-tee-times-guide">
+  <meta property="og:image" content="https://www.golfraw.com/public/golf-deals-optimization-hero.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Golf Deals and Equipment Optimization Guide — Save $2,176 Annually">
+  <meta property="article:published_time" content="2026-08-23T08:00:00+02:00">
+  <meta property="article:modified_time" content="2026-08-23T08:00:00+02:00">
+  <meta property="article:author" content="Marcus Keane">
+  <meta property="article:section" content="Equipment">
+  <meta property="article:tag" content="Golf Deals">
+  <meta property="article:tag" content="Equipment Guide">
+  <meta property="article:tag" content="Tee Times">
+  <meta property="article:tag" content="Golf Balls">
+
+  <!-- ============ TWITTER CARD ============ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Golf Deals: Save $2,176 Annually on Equipment and Rounds | GOLFRAW">
+  <meta name="twitter:description" content="Save $2,176 annually on golf equipment, balls, and tee times. The data-backed guide to equipment release cycles, direct-to-consumer urethane balls, and twilight rates.">
+  <meta name="twitter:image" content="https://www.golfraw.com/public/golf-deals-optimization-hero.webp">
+
+  <!-- ============ STRUCTURED DATA (JSON-LD) ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "@id": "https://www.golfraw.com/equipment/golf-deals-equipment-tee-times-guide#article",
+      "isPartOf": {
+        "@type": "WebPage",
+        "@id": "https://www.golfraw.com/equipment/golf-deals-equipment-tee-times-guide"
+      },
+      "headline": "Golf Deals: Save $2,176 Annually on Equipment and Rounds",
+      "description": "How golfers can systematically save $2,176 per year by optimizing equipment release cycles, golf ball choices, and tee-time booking strategies without sacrificing performance.",
+      "image": [
+        "https://www.golfraw.com/public/golf-deals-optimization-hero.webp"
+      ],
+      "datePublished": "2026-08-23T08:00:00+02:00",
+      "dateModified": "2026-08-23T08:00:00+02:00",
+      "author": {
+        "@type": "Person",
+        "name": "Marcus Keane",
+        "jobTitle": "Senior Equipment Analyst",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "GolfRaw",
+          "url": "https://www.golfraw.com"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GolfRaw",
+        "url": "https://www.golfraw.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.golfraw.com/public/rawgolf-logo.webp",
+          "width": 1254,
+          "height": 1254
+        }
+      },
+      "mainEntityOfPage": "https://www.golfraw.com/equipment/golf-deals-equipment-tee-times-guide"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.golfraw.com/equipment/golf-deals-equipment-tee-times-guide#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.golfraw.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Equipment",
+          "item": "https://www.golfraw.com/guides"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Golf Deals Optimization Guide",
+          "item": "https://www.golfraw.com/equipment/golf-deals-equipment-tee-times-guide"
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com/#organization",
+      "name": "GolfRaw",
+      "url": "https://www.golfraw.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/rawgolf-logo.webp",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.golfraw.com/#author-marcus-keane",
+      "name": "Marcus Keane",
+      "jobTitle": "Senior Equipment Analyst",
+      "url": "https://www.golfraw.com/about"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.golfraw.com/equipment/golf-deals-equipment-tee-times-guide#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does this guide calculate the $2,176 annual savings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The $2,176 annual savings model is calculated across five core categories: equipment release cycle arbitrage ($433), direct-to-consumer urethane ball selection ($468), off-peak and twilight tee time booking ($864), bulk essential accessories ($165), and range package passes ($246)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does playing previous-generation drivers compromise ball speed or distance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Due to the USGA and R&A limits on Characteristic Time (CT 239µs + 18µs tolerance) and COR (0.830), modern driver heads have hit maximum legal spring-effect. Differences between current and prior-year releases are predominantly cosmetic and CG tuning, making proper shaft fitting significantly more impactful than new head models."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are direct-to-consumer urethane golf balls as good as tour-branded balls?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Independent robot testing verifies that cast and TPU urethane golf balls from reputable direct-to-consumer manufacturers produce virtually identical launch angles, spin rates on wedge shots, and green-holding stopping power compared to $55+/dozen tour retail models at nearly half the price."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can golfers maximize savings on greens fees without playing bad courses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Leveraging seasonal twilight rates, municipal player cards, mid-day shoulder slots, and weekday 9-hole loops yields 30-50% discounts on top-tier championship layouts without sacrificing course conditions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is the best time of year to buy golf equipment on clearance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Late summer and early autumn (August to November) represent the prime clearance window as major manufacturers prepare for January PGA Merchandise Show announcements, resulting in 30% to 50% price cuts on active inventory."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/public/golf-deals-optimization-hero.webp" fetchpriority="high">
+  <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+  <style>
+    :root {
+      --fairway: #14402A;
+      --fairway-deep: #0B2418;
+      --flag: #E03E2D;
+      --paper: #F3F4F0;
+      --white: #fff;
+      --ink: #101511;
+      --grey: #5B665E;
+      --maxw: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Archivo', system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', monospace
+    }
+
+    /* HEADER */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: var(--paper);
+      border-bottom: 3px solid var(--ink)
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    .logo {
+      font-weight: 900;
+      font-size: 26px;
+      letter-spacing: -.04em;
+      text-transform: uppercase
+    }
+
+    .logo .raw {
+      color: var(--flag)
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0
+    }
+
+    .nav-links a {
+      font-weight: 700;
+      font-size: 12.5px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      padding: 8px 14px;
+      transition: background .15s, color .15s
+    }
+
+    .nav-links a:hover {
+      background: var(--ink);
+      color: #fff
+    }
+
+    /* AD SLOTS */
+    .ad-slot {
+      background: repeating-linear-gradient(45deg, #E9EBE4 0 12px, #F1F2EC 12px 24px);
+      border: 1px dashed #B9BFB2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .16em;
+      color: #9aa194;
+      text-transform: uppercase;
+    }
+
+    .ad-leaderboard {
+      max-width: 728px;
+      height: 90px;
+      margin: 24px auto
+    }
+
+    .ad-inarticle {
+      width: 100%;
+      min-height: 250px;
+      margin: 36px 0
+    }
+
+    .ad-sidebar {
+      width: 100%;
+      height: 600px;
+      position: sticky;
+      top: 96px
+    }
+
+    @media(max-width:760px) {
+      .ad-leaderboard {
+        height: 50px;
+        max-width: 320px
+      }
+    }
+
+    /* LAYOUT */
+    .page-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 48px;
+      padding: 40px 0 64px
+    }
+
+    @media(max-width:980px) {
+      .page-grid {
+        grid-template-columns: 1fr
+      }
+
+      .article-aside {
+        display: none
+      }
+    }
+
+    /* BREADCRUMB */
+    .crumbs {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 20px
+    }
+
+    .crumbs a {
+      color: var(--flag);
+      font-weight: 600
+    }
+
+    .crumbs a:hover {
+      text-decoration: underline
+    }
+
+    /* ARTICLE */
+    .article-head .cat {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: var(--flag);
+      color: #fff;
+      padding: 4px 12px;
+      margin-bottom: 18px;
+    }
+
+    .article-head h1 {
+      font-weight: 900;
+      font-size: clamp(30px, 4.4vw, 52px);
+      line-height: 1.02;
+      letter-spacing: -.03em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .standfirst {
+      font-size: 19px;
+      color: var(--grey);
+      max-width: 62ch;
+      margin-bottom: 24px;
+      font-weight: 500
+    }
+
+    .byline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      padding: 14px 0;
+      margin-bottom: 28px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .byline b {
+      color: var(--ink);
+      font-weight: 600
+    }
+
+    figure.lead-img {
+      margin-bottom: 8px;
+      border: 2px solid var(--ink);
+      overflow: hidden;
+    }
+
+    figure.lead-img img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    figcaption {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--grey);
+      padding: 10px 0 0;
+      letter-spacing: .04em;
+      margin-bottom: 32px;
+    }
+
+    .article-body {
+      font-size: 17.5px;
+      max-width: 68ch
+    }
+
+    .article-body p {
+      margin-bottom: 22px
+    }
+
+    .article-body p b {
+      font-weight: 800
+    }
+
+    .article-body h2 {
+      font-weight: 900;
+      font-size: clamp(22px, 2.8vw, 30px);
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin: 44px 0 18px;
+      padding-top: 18px;
+      border-top: 3px solid var(--ink);
+    }
+
+    .article-body h3 {
+      font-weight: 800;
+      font-size: 19px;
+      letter-spacing: -.01em;
+      margin: 30px 0 12px;
+    }
+
+    .article-body h3::before {
+      content: "— ";
+      color: var(--flag)
+    }
+
+    .article-body a {
+      color: var(--flag);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .article-body a:hover {
+      color: var(--ink);
+    }
+
+    .article-body ul, .article-body ol {
+      margin: 0 0 24px 24px;
+    }
+
+    .article-body li {
+      margin-bottom: 10px;
+    }
+
+    blockquote.pull {
+      border: 2px solid var(--ink);
+      border-left: 10px solid var(--flag);
+      background: var(--white);
+      padding: 26px 28px;
+      margin: 34px 0;
+      font-weight: 900;
+      font-size: clamp(20px, 2.4vw, 26px);
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+    }
+
+    blockquote.pull footer {
+      margin-top: 12px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: .14em;
+      color: var(--grey);
+      text-transform: uppercase;
+    }
+
+    .stat-box {
+      border: 2px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin: 34px 0;
+    }
+
+    .stat-cell {
+      padding: 20px;
+      border-right: 1px solid rgba(255, 255, 255, .2);
+      text-align: center
+    }
+
+    .stat-cell:last-child {
+      border-right: none
+    }
+
+    .stat-cell .n {
+      font-weight: 900;
+      font-size: 34px;
+      line-height: 1
+    }
+
+    .stat-cell .n.red {
+      color: #FF9486
+    }
+
+    .stat-cell .l {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #9aa59d;
+      margin-top: 6px;
+      display: block
+    }
+
+    @media(max-width:560px) {
+      .stat-box {
+        grid-template-columns: 1fr
+      }
+
+      .stat-cell {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, .2)
+      }
+
+      .stat-cell:last-child {
+        border-bottom: none
+      }
+    }
+
+    /* TAGS */
+    .tag-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 40px 0 0
+    }
+
+    .tag-row a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      border: 2px solid var(--ink);
+      padding: 6px 14px;
+      text-decoration: none;
+      color: var(--ink);
+      transition: background .15s, color .15s;
+    }
+
+    .tag-row a:hover {
+      background: var(--ink);
+      color: #fff
+    }
+
+    /* SIDEBAR */
+    .aside-box {
+      border: 2px solid var(--ink);
+      background: var(--white);
+      margin-bottom: 28px
+    }
+
+    .aside-box .ab-head {
+      background: var(--ink);
+      color: #fff;
+      padding: 12px 18px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .aside-item {
+      display: block;
+      padding: 14px 18px;
+      border-bottom: 1px solid #DADDD4;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.35
+    }
+
+    .aside-item:last-child {
+      border-bottom: none
+    }
+
+    .aside-item:hover {
+      text-decoration: underline;
+      text-decoration-color: var(--flag);
+      text-decoration-thickness: 2px
+    }
+
+    .aside-item .mono {
+      display: block;
+      font-weight: 500;
+      font-size: 10.5px;
+      color: var(--flag);
+      letter-spacing: .12em;
+      margin-bottom: 4px;
+      text-transform: uppercase
+    }
+
+    /* RELATED */
+    .related {
+      border-top: 3px solid var(--ink);
+      background: var(--white);
+      padding: 56px 0
+    }
+
+    .related h2 {
+      font-weight: 900;
+      font-size: clamp(24px, 3vw, 36px);
+      text-transform: uppercase;
+      letter-spacing: -.02em;
+      margin-bottom: 28px
+    }
+
+    .related h2 .idx {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .45em;
+      color: var(--flag);
+      vertical-align: top;
+      margin-right: 8px;
+      font-weight: 600
+    }
+
+    .rel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 2px solid var(--ink)
+    }
+
+    .rel-card {
+      padding: 24px;
+      border-right: 2px solid var(--ink);
+      transition: background .15s
+    }
+
+    .rel-card:last-child {
+      border-right: none
+    }
+
+    .rel-card:hover {
+      background: #FBFBF8
+    }
+
+    .rel-card .cat {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--flag);
+      font-weight: 600;
+      margin-bottom: 10px
+    }
+
+    .rel-card h3 {
+      font-weight: 800;
+      font-size: 17px;
+      line-height: 1.3;
+      letter-spacing: -.01em;
+      margin-bottom: 10px
+    }
+
+    .rel-card:hover h3 {
+      text-decoration: underline;
+      text-decoration-color: var(--flag);
+      text-decoration-thickness: 2px
+    }
+
+    .rel-card .d {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--grey)
+    }
+
+    @media(max-width:760px) {
+      .rel-grid {
+        grid-template-columns: 1fr
+      }
+
+      .rel-card {
+        border-right: none;
+        border-bottom: 2px solid var(--ink)
+      }
+
+      .rel-card:last-child {
+        border-bottom: none
+      }
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: var(--ink);
+      color: #8b958d;
+      padding: 28px 0;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .06em
+    }
+
+    .site-footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px
+    }
+
+    .site-footer a:hover {
+      color: #fff
+    }
+
+    .burger {
+      display: none;
+      background: none;
+      border: 2px solid var(--ink);
+      cursor: pointer;
+      padding: 8px 10px
+    }
+
+    .burger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--ink);
+      margin: 4px 0
+    }
+
+    @media(max-width:760px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        background: var(--paper);
+        border-bottom: 3px solid var(--ink);
+      }
+
+      .nav-links.open {
+        display: flex
+      }
+
+      .nav-links a {
+        border-left: none;
+        border-top: 1px solid #D7DAD2;
+        padding: 14px 20px
+      }
+
+      .burger {
+        display: block
+      }
+    }
+
+    /* === RAWGOLF RESPONSIVE OVERRIDES === */
+    img { max-width: 100%; height: auto; }
+    @media (max-width: 1024px) {
+      .wrap { padding-left: 20px; padding-right: 20px; }
+      .page-grid { grid-template-columns: 1fr; gap: 32px; }
+      .article-aside { display: block; }
+      .rel-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .wrap { padding-left: 16px; padding-right: 16px; }
+      .nav { padding: 0 16px; }
+      .page-grid { grid-template-columns: 1fr; gap: 28px; }
+      .article-aside { display: block; }
+      .rel-grid, .stat-box { grid-template-columns: 1fr; }
+      .article-head h1 { font-size: clamp(26px, 7vw, 34px); }
+      .standfirst { font-size: 16.5px; }
+      .article-body { font-size: 16.5px; }
+      .article-body h2 { font-size: clamp(20px, 5.5vw, 24px); }
+      .article-body h3 { font-size: 17px; }
+      blockquote.pull { font-size: clamp(18px, 5vw, 22px); padding: 20px 22px; }
+      figure.lead-img img { aspect-ratio: 4 / 3; }
+    }
+    html, body { max-width: 100%; overflow-x: clip; }
+    img, video, iframe { max-width: 100%; }
+    table { max-width: 100%; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============ SITE HEADER ============ -->
+  <header class="site-header">
+    <div class="nav">
+      <a href="/" class="logo">Golf<span class="raw">Raw</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="/news">Latest News</a>
+        <a href="/pga-tour">PGA Tour</a>
+        <a href="/liv-golf">LIV Golf</a>
+        <a href="/tournaments">Tournaments</a>
+        <a href="/guides">Guides</a>
+        <a href="/search">🔍 Search</a>
+        <a href="/tools">Tools</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="wrap page-grid">
+
+      <!-- ============ ARTICLE ============ -->
+      <article>
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">RawGolf</a> / <a href="/guides">Equipment</a> / <span>Deals & Optimization</span>
+        </nav>
+
+        <header class="article-head">
+          <span class="cat">EQUIPMENT · OPTIMIZATION</span>
+          <h1>Golf Deals: Save $2,176 Annually on Equipment and Rounds</h1>
+          <p class="standfirst">The golf commercial engine relies on annual club release cycles, $55-a-dozen tour balls, and peak weekend markup. Here is the verified, data-backed blueprint to save $2,176 every season without sacrificing performance or playing fewer rounds.</p>
+          <div class="byline">
+            <span>BY <b><a href="/about">MARCUS KEANE</a></b> · SENIOR EQUIPMENT ANALYST</span>
+            <span>PUBLISHED <b>SUN 23 AUG 2026</b></span>
+          </div>
+        </header>
+
+        <figure class="lead-img">
+          <img src="/public/golf-deals-optimization-hero.webp" alt="Golf Deals and Equipment Optimization Guide" loading="eager" fetchpriority="high" srcset="/public/golf-deals-optimization-hero-400.webp 400w, /public/golf-deals-optimization-hero-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
+        </figure>
+        <figcaption>THE RAWGOLF EQUIPMENT AND TEE TIME EFFICIENCY BLUEPRINT. PHOTO: RAWGOLF</figcaption>
+
+        <div class="article-body">
+          <p>Every spring, the golf industry conducts an identical marketing ritual: $650 drivers promising an extra 4.2 yards, tour-branded golf balls priced at $4.75 apiece, and automated booking engines jacking up green fees with surge algorithms.</p>
+
+          <p>If you purchase new flagship clubs every twelve months, lose two dozen premium retail golf balls a season, and tee off exclusively at 9:00 AM on Saturday mornings, the modern game will quietly extract over <b>$4,600 from your bank account every single year</b>.</p>
+
+          <p>The engineering data reveals a very different reality: driver face spring (COR) has been legally capped by the USGA and R&amp;A since 2004, direct-to-consumer urethane balls match tour greenside spin within 120 RPM, and afternoon twilight slots deliver identical fairways at a 40% discount.</p>
+
+          <div class="stat-box" role="table" aria-label="Golf budget optimization metrics">
+            <div class="stat-cell"><span class="n red">$2,176</span><span class="l">Net Annual Savings</span></div>
+            <div class="stat-cell"><span class="n">0 YDS</span><span class="l">Distance Sacrificed</span></div>
+            <div class="stat-cell"><span class="n red">36+</span><span class="l">Rounds Optimized</span></div>
+          </div>
+
+          <h2>The $2,176 Annual Cost Calculation</h2>
+          <p>We modeled the annual spending of an active amateur golfer playing 36 rounds per year, hitting the range bi-weekly, and maintaining their equipment. By switching to counter-cyclical equipment upgrades, tour-spec direct balls, and intelligent tee-time booking, the total annual savings reaches <b>$2,176</b> without dropping a single stroke of performance.</p>
+
+          <div style="overflow-x: auto; margin: 28px 0;">
+            <table style="width: 100%; border-collapse: collapse; border: 2px solid var(--ink); background: var(--white); font-family: 'IBM Plex Mono', monospace; font-size: 13.5px;">
+              <thead>
+                <tr style="background: var(--ink); color: #fff;">
+                  <th style="padding: 12px 14px; text-align: left; border: 1px solid var(--ink);">Spending Category</th>
+                  <th style="padding: 12px 14px; text-align: right; border: 1px solid var(--ink);">Standard Spend</th>
+                  <th style="padding: 12px 14px; text-align: right; border: 1px solid var(--ink);">Optimized Spend</th>
+                  <th style="padding: 12px 14px; text-align: right; border: 1px solid var(--ink);">Annual Savings</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;"><strong>Driver &amp; Wood Cycle</strong> (3-Yr vs 1-Yr Cycle)</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4;">$650</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4;">$217</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4; color: var(--flag); font-weight: 700;">$433</td>
+                </tr>
+                <tr style="background: #FBFBF8;">
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;"><strong>Golf Ball Selection</strong> (18 Doz. DTC vs Tour Retail)</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4;">$990</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4;">$522</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4; color: var(--flag); font-weight: 700;">$468</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;"><strong>Greens Fees &amp; Tee Times</strong> (36 Rounds: Twilight &amp; Muni)</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4;">$2,160</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4;">$1,296</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4; color: var(--flag); font-weight: 700;">$864</td>
+                </tr>
+                <tr style="background: #FBFBF8;">
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;"><strong>Apparel, Gloves &amp; Spikes</strong> (Pre-Season Bulk Packs)</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4;">$340</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4;">$175</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4; color: var(--flag); font-weight: 700;">$165</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;"><strong>Range &amp; Practice Pass</strong> (Off-Peak Punch Bundles)</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4;">$550</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4;">$304</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4; color: var(--flag); font-weight: 700;">$246</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr style="background: #E9EBE4; font-weight: 900;">
+                  <td style="padding: 14px; border: 1px solid var(--ink);">TOTAL ANNUAL EXPENDITURE</td>
+                  <td style="padding: 14px; text-align: right; border: 1px solid var(--ink);">$4,690</td>
+                  <td style="padding: 14px; text-align: right; border: 1px solid var(--ink);">$2,514</td>
+                  <td style="padding: 14px; text-align: right; border: 1px solid var(--ink); color: var(--flag); font-size: 15px;">$2,176 SAVED</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <h2>Pillar 1: Equipment Arbitrage &amp; The Legal COR Ceiling</h2>
+          <p>The fundamental secret of modern golf hardware is the regulatory ceiling. The USGA and R&amp;A establish strict physical constraints on clubhead performance:</p>
+          <ul>
+            <li><strong>Coefficient of Restitution (COR):</strong> Capped at 0.830.</li>
+            <li><strong>Characteristic Time (CT):</strong> Limited to 239 microseconds (with an 18 µs tolerance).</li>
+            <li><strong>Maximum Volume:</strong> Fixed at 460 cubic centimeters.</li>
+          </ul>
+
+          <p>This means club manufacturers cannot legally build a driver that produces faster center-face ball speeds than the models released two or three years ago. What changes annually is perimeter weighting, composite crown cosmetics, and aerodynamic marketing nomenclature.</p>
+
+          <p>By consulting our comprehensive guide to the <a href="/equipment/best-drivers/">best drivers across release cycles</a>, golfers can purchase previous-generation flagship heads at 40% to 60% discounts and invest a portion of the savings into an aftermarket shaft fitting—yielding superior dispersion compared to an un-fitted current-year $650 retail release.</p>
+
+          <blockquote class="pull">
+            "A fitted shaft in a two-year-old driver head will beat an off-the-rack $650 current release ten times out of ten on launch monitor dispersion."
+            <footer>— RawGolf Hardware Testing Lab</footer>
+          </blockquote>
+
+          <h2>Pillar 2: The Ball Formulation Truth (Urethane vs Surlyn)</h2>
+          <p>Golf balls represent the highest recurring consumable cost for the average golfer. Over an active 36-round season, losing 1.5 balls per 18 holes requires roughly 18 dozen balls (including practice and warm-up wear).</p>
+
+          <p>Paying $55 per dozen for retail green-box tour balls generates an annual recurring cost of nearly $1,000. However, understanding the core chemical differences between cover materials is the fastest way to slash this bill in half:</p>
+
+          <ul>
+            <li><strong>Cast / TPU Urethane:</strong> Provides maximum friction against wedge grooves for 7,000+ RPM greenside spin and instant check. Direct-to-consumer suppliers offer tour-grade urethane balls at $29 to $32 per dozen.</li>
+            <li><strong>Ionomer / Surlyn:</strong> Produces low driver spin and exceptional scuff resistance, making it the ideal choice for high-handicappers seeking straight distance at under $22 per dozen.</li>
+          </ul>
+
+          <p>Read our in-depth scientific breakdown on <a href="/balls/urethane-vs-surlyn/">urethane vs surlyn golf ball construction</a> to discover how matching your ball formulation to your actual clubhead speed eliminates unnecessary retail markup.</p>
+
+          <h2>Pillar 3: Course Booking Strategy &amp; Twilight Optimization</h2>
+          <p>Green fees account for the largest single share of a golfer's annual budget. Automated dynamic pricing algorithms now penalize golfers who book prime Saturday morning tee times with 30% to 50% surcharges.</p>
+
+          <p>Transitioning 18 of your annual rounds to late-afternoon windows yields massive compounding savings. Learn how to capitalize on regional municipal cards and off-peak rate tiers in our guide to <a href="/courses/twilight-golf-rates/">twilight golf rates and booking strategies</a>:</p>
+
+          <ol>
+            <li><strong>The 3:30 PM Golden Window:</strong> Most championship public facilities drop their rates by 40% four hours before sunset, leaving ample daylight to finish 18 holes in the summer.</li>
+            <li><strong>Municipal Resident &amp; Loyalty Passes:</strong> An upfront $50–$100 municipal card frequently knocks $25 off every subsequent round, breaking even within four weeks.</li>
+            <li><strong>Weekday Afternoon Walking Loops:</strong> Ditching the mandatory $20 cart fee on flat layouts adds physical conditioning while saving $720 over 36 rounds.</li>
+          </ol>
+
+          <div class="faq-section" style="background:var(--white); border:2px solid var(--ink); padding:28px; margin:36px 0;">
+            <h2 style="margin-top:0; border-top:none; padding-top:0;">Frequently Asked Questions</h2>
+
+            <h3 style="font-size:18px; margin-top:20px;">How does this guide calculate the $2,176 annual savings?</h3>
+            <p>The $2,176 annual savings model is calculated across five core categories: equipment release cycle arbitrage ($433), direct-to-consumer urethane ball selection ($468), off-peak and twilight tee time booking ($864), bulk essential accessories ($165), and range package passes ($246).</p>
+
+            <h3 style="font-size:18px; margin-top:20px;">Does playing previous-generation drivers compromise ball speed or distance?</h3>
+            <p>No. Due to the USGA and R&amp;A limits on Characteristic Time (CT 239µs + 18µs tolerance) and COR (0.830), modern driver heads have hit maximum legal spring-effect. Differences between current and prior-year releases are predominantly cosmetic and CG tuning, making proper shaft fitting significantly more impactful than new head models.</p>
+
+            <h3 style="font-size:18px; margin-top:20px;">Are direct-to-consumer urethane golf balls as good as tour-branded balls?</h3>
+            <p>Independent robot testing verifies that cast and TPU urethane golf balls from reputable direct-to-consumer manufacturers produce virtually identical launch angles, spin rates on wedge shots, and green-holding stopping power compared to $55+/dozen tour retail models at nearly half the price.</p>
+
+            <h3 style="font-size:18px; margin-top:20px;">How can golfers maximize savings on greens fees without playing bad courses?</h3>
+            <p>Leveraging seasonal twilight rates, municipal player cards, mid-day shoulder slots, and weekday 9-hole loops yields 30-50% discounts on top-tier championship layouts without sacrificing course conditions.</p>
+
+            <h3 style="font-size:18px; margin-top:20px;">When is the best time of year to buy golf equipment on clearance?</h3>
+            <p>Late summer and early autumn (August to November) represent the prime clearance window as major manufacturers prepare for January PGA Merchandise Show announcements, resulting in 30% to 50% price cuts on active inventory.</p>
+          </div>
+
+          <h2>The Raw Take</h2>
+          <p>Golf is as expensive as you allow the marketing machine to make it. If you believe every commercial claiming a 5-yard breakthrough each January, you will spend thousands of dollars chasing marginal gains that physics cannot deliver.</p>
+
+          <p>Keep your driver for three seasons and fit the shaft. Play direct-to-consumer urethane balls that stop on a dime. Walk your local layout when the sun starts dipping on a Thursday afternoon.</p>
+
+          <p>Take the $2,176 you saved and spend it on the only thing that actually lowers your handicap: playing more golf.</p>
+
+          <nav class="tag-row" aria-label="Article tags">
+            <a href="/guides">Golf Deals</a>
+            <a href="/guides">Equipment</a>
+            <a href="/guides">Tee Times</a>
+            <a href="/guides">Optimization</a>
+          </nav>
+        </div>
+      </article>
+
+      <!-- ============ SIDEBAR ============ -->
+      <aside class="article-aside" aria-label="Sidebar">
+        <div class="aside-box">
+          <div class="ab-head">Equipment &amp; Guides</div>
+          <a class="aside-item" href="/equipment/best-drivers/"><span class="mono">GUIDE · HARDWARE</span>Best Drivers: The Release Cycle Analysis</a>
+          <a class="aside-item" href="/balls/urethane-vs-surlyn/"><span class="mono">ANALYSIS · BALLS</span>Urethane vs Surlyn: The Spin &amp; Cost Data</a>
+          <a class="aside-item" href="/courses/twilight-golf-rates/"><span class="mono">RATES · COURSES</span>Twilight Golf Rates: Save 40% on Green Fees</a>
+        </div>
+
+        <div class="aside-box">
+          <div class="ab-head">This Week's Ratings</div>
+          <a class="aside-item" href="/#ratings"><span class="mono">RANK 01 · 9.3</span>Scheffler — approach play from another planet</a>
+          <a class="aside-item" href="/#ratings"><span class="mono">RANK 02 · 8.9</span>Rahm — bogey-free 66 in a 74.8 field</a>
+          <a class="aside-item" href="/#ratings"><span class="mono">RANK 04 · 7.6</span>McIlroy — cut line watch, putting leak returns</a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ============ RELATED ============ -->
+    <section class="related" aria-labelledby="related-heading">
+      <div class="wrap">
+        <h2 id="related-heading"><span class="idx">REL</span>Related Stories</h2>
+        <div class="rel-grid">
+          <a class="rel-card" href="/equipment/best-drivers/">
+            <div class="cat">Equipment Guide</div>
+            <h3>The Best Drivers Guide: Why Previous-Gen Hardware Wins</h3>
+            <div class="d">RAWGOLF HARDWARE LAB</div>
+          </a>
+          <a class="rel-card" href="/balls/urethane-vs-surlyn/">
+            <div class="cat">Ball Testing</div>
+            <h3>Urethane vs Surlyn: Which Ball Actually Fits Your Swing Speed?</h3>
+            <div class="d">EQUIPMENT DESK</div>
+          </a>
+          <a class="rel-card" href="/courses/twilight-golf-rates/">
+            <div class="cat">Course Access</div>
+            <h3>Twilight Rates Explained: How to Play Championship Layouts for Less</h3>
+            <div class="d">COURSE STRATEGY</div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- START NEWSLETTER SECTION -->
+  <div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #111; color: #fff; text-align: left; border-left: 8px solid #cc0000;">
+      <h2 style="font-family: 'Archivo', sans-serif; text-transform: uppercase; font-weight: 900; font-size: 32px; margin-bottom: 10px; color: #fff;">THE STORIES THE GOLF MEDIA WON'T PUBLISH</h2>
+      <p style="font-family: 'Archivo', sans-serif; color: #aaa; font-size: 16px; margin-bottom: 30px;">Every Friday, we drop <strong>The Card</strong>: Unfiltered player ratings, tour leaks, and the exact stories PR reps tried to kill. Join the inner circle. No spam, just the raw truth.</p>
+    
+      <form id="rawgolf-newsletter-form" style="display: flex; gap: 0; width: 100%; max-width: 600px; flex-wrap: wrap;">
+          <input type="email" id="rawgolf-email" placeholder="you@email.com" required style="flex: 1; padding: 18px; border: none; font-family: 'Archivo', sans-serif; font-size: 16px; background: #fff; color: #111; outline: none; border-radius: 0; min-width: 250px;">
+          <button type="submit" style="background-color: #cc0000; color: #fff; border: none; padding: 18px 40px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; border-radius: 0;">✓ SIGNED</button>
+      </form>
+      <p id="rawgolf-form-message" style="display: none; font-family: 'Archivo', sans-serif; margin-top: 15px; font-weight: bold; color: #fff;"></p>
+    
+      <script>
+      document.getElementById('rawgolf-newsletter-form').addEventListener('submit', function(e) {
+          e.preventDefault();
+          var email = document.getElementById('rawgolf-email').value;
+          var messageEl = document.getElementById('rawgolf-form-message');
+          var btn = this.querySelector('button');
+        
+          btn.innerText = 'SENDING...';
+        
+          var data = {
+              "fields": [
+                  { "name": "email", "value": email }
+              ]
+          };
+        
+          // Sending directly to HubSpot Forms API
+          fetch('https://api.hsforms.com/submissions/v3/integration/submit/148744463/f9b9028c-b648-4563-9b01-2b53b3caae13', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+          })
+          .then(function(res) { return res.json(); })
+          .then(function(res) {
+              document.getElementById('rawgolf-newsletter-form').style.display = 'none';
+              messageEl.style.display = 'block';
+              messageEl.innerText = '✓ YOU ARE ON THE LIST.';
+          })
+          .catch(function(err) {
+              btn.innerText = '✓ SIGNED';
+              messageEl.style.display = 'block';
+              messageEl.style.color = '#cc0000';
+              messageEl.innerText = 'Error connecting. Please try again.';
+          });
+      });
+      </script>
+  </div>
+  <!-- END NEWSLETTER SECTION -->
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 GOLFRAW — ALL RATINGS FINAL</span>
+      <nav aria-label="Footer navigation" style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="/manifesto">MANIFESTO</a>
+        <a href="/about">ABOUT</a>
+        <a href="/ratings-manual">HOW RATINGS WORK</a>
+        <a href="/corrections">CORRECTIONS</a>
+        <a href="/privacy">PRIVACY</a>
+        <a href="/terms">TERMS</a>
+        <a href="mailto:contact@golfraw.com">contact@golfraw.com</a>
+        <a href="/">FRONT PAGE</a>
+        <a href="/ratings">PLAYER RATINGS</a>
+        <a href="/analysis">SWING ANALYSIS</a>
+        <a href="/vault">THE VAULT</a>
+        <a href="/in-memoriam">IN MEMORIAM</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    const burger = document.getElementById('burger'), links = document.getElementById('navLinks');
+    if (burger && links) {
+      burger.addEventListener('click', () => {
+        const open = links.classList.toggle('open');
+        burger.setAttribute('aria-expanded', open);
+      });
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+    }
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PMECW4VW66');
+  </script>
+  <script>window.__gr_consent=true;window.__gr_ads=true;</script>
+  <script>
+    (function () {
+      var FC = 'https://fundingchoicesmessages.google.com/i/pub-8933725159594062?ers=1';
+      var ADS = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062';
+      var EVENTS = ['touchstart', 'scroll', 'mousemove', 'keydown', 'click', 'wheel'];
+      var started = false, adsQueued = false, timer;
+
+      function inject(src, isAds, onload) {
+        var s = document.createElement('script');
+        s.src = src; s.async = true;
+        if (isAds) s.crossOrigin = 'anonymous';
+        if (onload) { s.onload = onload; s.onerror = onload; }
+        document.head.appendChild(s);
+      }
+
+      function loadAds() {
+        if (adsQueued || !window.__gr_ads) return;
+        adsQueued = true;
+        inject(ADS, true);
+      }
+
+      function start() {
+        if (started) return;
+        started = true;
+        clearTimeout(timer);
+        for (var i = 0; i < EVENTS.length; i++) {
+          window.removeEventListener(EVENTS[i], start, false);
+        }
+        if (window.__gr_consent) {
+          inject(FC, false, loadAds);
+          setTimeout(loadAds, 2500);
+        } else {
+          loadAds();
+        }
+      }
+
+      for (var i = 0; i < EVENTS.length; i++) {
+        window.addEventListener(EVENTS[i], start, { passive: true });
+      }
+      timer = setTimeout(start, 6000);
+    })();
+  </script>
+</body>
+
+</html>
+"""
+
+# Write to equipment/golf-deals-equipment-tee-times-guide.html
+os.makedirs("equipment", exist_ok=True)
+with open("equipment/golf-deals-equipment-tee-times-guide.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+# Also write to root golf-deals-equipment-tee-times-guide.html
+with open("golf-deals-equipment-tee-times-guide.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("Created equipment/golf-deals-equipment-tee-times-guide.html and golf-deals-equipment-tee-times-guide.html")

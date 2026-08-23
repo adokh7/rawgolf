@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 22 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Golf Deals: Save ,176 Annually on Equipment and Rounds</title>
+      <link>https://www.golfraw.com/equipment/golf-deals-equipment-tee-times-guide</link>
+      <guid isPermaLink="true">https://www.golfraw.com/equipment/golf-deals-equipment-tee-times-guide</guid>
+      <pubDate>Sun, 23 Aug 2026 09:00:00 +0000</pubDate>
+      <category>EQUIPMENT</category>
+      <description>How golfers can systematically save ,176 per year by optimizing equipment release cycles, golf ball choices, and tee-time booking strategies without sacrificing performance.</description>
+      <enclosure url="https://www.golfraw.com/public/golf-deals-optimization-hero.webp" type="image/webp"/>
+    </item>
     <item>
       <title>Dustin Johnson heard LIV 2.0 is going well. He missed the meeting.</title>
       <link>https://www.golfraw.com/news-2026-dustin-johnson-liv-golf-2-0</link>
@@ -359,15 +368,6 @@
       <category>SOLHEIM CUP</category>
       <description>Dewi Weber is ranked ahead of three of Europe&amp;#x27;s captain&amp;#x27;s picks. She can&amp;#x27;t be selected for the Solheim Cup in her own country because of an LET rule.</description>
       <enclosure url="https://www.golfraw.com/public/dewi-weber-solheim-cup-2026-eligibility.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>He Shot 59 and It Only Got Him Into a Playoff</title>
-      <link>https://www.golfraw.com/news-2026-pinnacle-bank-championship-frankie-harris-59</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-pinnacle-bank-championship-frankie-harris-59</guid>
-      <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
-      <category>KORN FERRY TOUR</category>
-      <description>Frankie Harris shot 12-under 59 to win the Pinnacle Bank Championship — but Docherty birdied his last three to force extra holes. Only nine have done it.</description>
-      <enclosure url="https://www.golfraw.com/public/frankie-harris-59-pinnacle-bank-championship-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
