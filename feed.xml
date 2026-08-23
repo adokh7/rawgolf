@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Golf Tournament Rules, Formats, and Tax Guide</title>
+      <link>https://www.golfraw.com/rules/golf-tournaments-rules-formats-tax-guide</link>
+      <guid isPermaLink="true">https://www.golfraw.com/rules/golf-tournaments-rules-formats-tax-guide</guid>
+      <pubDate>Sun, 23 Aug 2026 09:00:00 +0000</pubDate>
+      <category>TOURNAMENTS</category>
+      <description>Complete reference for competitive golf tournament formats, USGA handicap allowances, Rule 3.3b scorecard compliance, amateur prize limits, and IRS tax withholding.</description>
+      <enclosure url="https://www.golfraw.com/public/golf-tournaments-scoring-hero.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Golf Deals: Save ,176 Annually on Equipment and Rounds</title>
       <link>https://www.golfraw.com/equipment/golf-deals-equipment-tee-times-guide</link>
       <guid isPermaLink="true">https://www.golfraw.com/equipment/golf-deals-equipment-tee-times-guide</guid>
@@ -359,15 +368,6 @@
       <category>GUIDES</category>
       <description>&quot;Golf deals fairmont st andrews&quot; costs $9.06 a click on 40 monthly searches. &quot;Black friday golf deals&quot; costs 95 cents on 3,600. Why value runs backwards.</description>
       <enclosure url="https://www.golfraw.com/public/most-valuable-golf-search-cpc-data-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>The First Dutch Woman to Make a Solheim Cup Won&amp;#x27;t</title>
-      <link>https://www.golfraw.com/news-2026-solheim-cup-dewi-weber-dutch-eligibility-let</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-solheim-cup-dewi-weber-dutch-eligibility-let</guid>
-      <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
-      <category>SOLHEIM CUP</category>
-      <description>Dewi Weber is ranked ahead of three of Europe&amp;#x27;s captain&amp;#x27;s picks. She can&amp;#x27;t be selected for the Solheim Cup in her own country because of an LET rule.</description>
-      <enclosure url="https://www.golfraw.com/public/dewi-weber-solheim-cup-2026-eligibility.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>

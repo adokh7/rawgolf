@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 255,
+  "count": 256,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -31,6 +31,20 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/rules/golf-tournaments-rules-formats-tax-guide",
+      "alias_of": "",
+      "slug": "golf-tournaments-rules-formats-tax-guide",
+      "url": "/rules/golf-tournaments-rules-formats-tax-guide",
+      "title": "Golf Tournament Rules, Formats, and Tax Guide",
+      "excerpt": "Complete reference for competitive golf tournament formats, USGA handicap allowances, Rule 3.3b scorecard compliance, amateur prize limits, and IRS tax withholding.",
+      "category": "TOURNAMENTS",
+      "date": "2026-08-23",
+      "image": "/public/golf-tournaments-scoring-hero.webp",
+      "keywords": "golf tournament rules, handicap allowances, usga four ball allowance, scramble handicap formula, rule 3.3b scorecard, amateur golf prize limits, golf tournament winnings tax",
+      "category_source": "tournaments",
+      "section": "TOURNAMENTS"
+    },
     {
       "canonical": "/equipment/golf-deals-equipment-tee-times-guide",
       "alias_of": "",

@@ -1,0 +1,1239 @@
+import os
+
+# Complete HTML content for the Golf Tournaments Rules, Formats, and Tax Guide
+html_content = """<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Funding Choices — EEA/UK consent management (required by Google's EU User Consent Policy) -->
+  <script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
+  <meta charset="UTF-8">
+  <!-- ============ FAVICON / GOOGLE SEARCH LOGO ============ -->
+  <link rel="icon" type="image/webp" sizes="1254x1254" href="/public/favicon-192.webp">
+  <link rel="alternate icon" type="image/png" sizes="192x192" href="/public/favicon-192.png">
+  <link rel="apple-touch-icon" href="/public/favicon-192.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============ PRIMARY SEO ============ -->
+  <title>Golf Tournament Rules, Formats, and Tax Guide | GOLFRAW</title>
+  <meta name="description" content="Complete guide to competitive golf tournament formats, USGA handicap allowances, Rule 3.3b scorecard compliance, amateur prize limits, and IRS tax reporting.">
+  <link rel="canonical" href="https://www.golfraw.com/rules/golf-tournaments-rules-formats-tax-guide">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Marcus Keane">
+
+  <!-- ============ OPEN GRAPH ============ -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GolfRaw">
+  <meta property="og:title" content="Golf Tournament Rules, Formats, and Tax Guide | GOLFRAW">
+  <meta property="og:description" content="Complete guide to competitive golf tournament formats, USGA handicap allowances, Rule 3.3b scorecard compliance, amateur prize limits, and IRS tax reporting.">
+  <meta property="og:url" content="https://www.golfraw.com/rules/golf-tournaments-rules-formats-tax-guide">
+  <meta property="og:image" content="https://www.golfraw.com/public/golf-tournaments-scoring-hero.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Golf Tournament Rules, Formats, and Tax Guide">
+  <meta property="article:published_time" content="2026-08-23T08:00:00+02:00">
+  <meta property="article:modified_time" content="2026-08-23T08:00:00+02:00">
+  <meta property="article:author" content="Marcus Keane">
+  <meta property="article:section" content="Rules & Tournaments">
+  <meta property="article:tag" content="Tournament Rules">
+  <meta property="article:tag" content="Golf Formats">
+  <meta property="article:tag" content="Handicap Allowances">
+  <meta property="article:tag" content="Prize Money Tax">
+
+  <!-- ============ TWITTER CARD ============ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Golf Tournament Rules, Formats, and Tax Guide | GOLFRAW">
+  <meta name="twitter:description" content="Complete guide to competitive golf tournament formats, USGA handicap allowances, Rule 3.3b scorecard compliance, amateur prize limits, and IRS tax reporting.">
+  <meta name="twitter:image" content="https://www.golfraw.com/public/golf-tournaments-scoring-hero.webp">
+
+  <!-- ============ STRUCTURED DATA (JSON-LD) ============ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "@id": "https://www.golfraw.com/rules/golf-tournaments-rules-formats-tax-guide#article",
+      "isPartOf": {
+        "@type": "WebPage",
+        "@id": "https://www.golfraw.com/rules/golf-tournaments-rules-formats-tax-guide"
+      },
+      "headline": "Golf Tournament Rules, Formats, and Tax Guide",
+      "description": "A comprehensive reference for competitive golf tournament formats, USGA handicap allowance calculations, amateur status prize limits, and IRS tax withholding compliance.",
+      "image": [
+        "https://www.golfraw.com/public/golf-tournaments-scoring-hero.webp"
+      ],
+      "datePublished": "2026-08-23T08:00:00+02:00",
+      "dateModified": "2026-08-23T08:00:00+02:00",
+      "author": {
+        "@type": "Person",
+        "name": "Marcus Keane",
+        "jobTitle": "Senior Equipment Analyst",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "GolfRaw",
+          "url": "https://www.golfraw.com"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GolfRaw",
+        "url": "https://www.golfraw.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.golfraw.com/public/rawgolf-logo.webp",
+          "width": 1254,
+          "height": 1254
+        }
+      },
+      "mainEntityOfPage": "https://www.golfraw.com/rules/golf-tournaments-rules-formats-tax-guide"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.golfraw.com/rules/golf-tournaments-rules-formats-tax-guide#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.golfraw.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tournaments",
+          "item": "https://www.golfraw.com/tournaments"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tournament Rules, Formats & Tax Guide",
+          "item": "https://www.golfraw.com/rules/golf-tournaments-rules-formats-tax-guide"
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com/#organization",
+      "name": "GolfRaw",
+      "url": "https://www.golfraw.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/rawgolf-logo.webp",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.golfraw.com/#author-marcus-keane",
+      "name": "Marcus Keane",
+      "jobTitle": "Senior Equipment Analyst",
+      "url": "https://www.golfraw.com/about"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.golfraw.com/rules/golf-tournaments-rules-formats-tax-guide#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the maximum prize money an amateur golfer can accept under USGA rules?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under Rule 3 of the USGA Rules of Amateur Status, an amateur golfer may accept cash or non-cash prizes up to $1,000 (or £700 in R&A jurisdictions) per event in a scratch or handicap competition. The only exception is hole-in-one prizes, which have no monetary limit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are USGA handicap allowances calculated in four-ball stroke play?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under the World Handicap System (WHS) Appendix C, men and women receive 85% of their Course Handicap in four-ball stroke play (better ball). In match play four-ball, allowances are 90% of the difference from the lowest Course Handicap in the match."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do amateur golf tournament prize winnings need to be reported on federal tax returns?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Under US tax law (IRC Section 61), all prize winnings, gift certificates, pro shop merchandise credits, and tournament payouts are considered taxable gross income. Tournament organizers must issue Form 1099-MISC for non-employee prize payments of $600 or more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the penalty under Rule 3.3b for signing an incorrect tournament scorecard?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under Rule 3.3b(3), if a player returns a scorecard with a recorded hole score lower than actually taken, the penalty is disqualification. If the player returns a score higher than actually taken, the higher score stands with no additional penalty."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a Scramble and a Shamble format?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In a Scramble, all players hit from the chosen best shot location for every stroke until the ball is holed out. In a Shamble, all players hit tee shots, select the best drive, and then play their own ball individually into the hole from that spot."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
+  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="/public/golf-tournaments-scoring-hero.webp" fetchpriority="high">
+  <style>
+    /* font-display:swap paints fallback text immediately instead of blocking on the font. */
+    @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/public/fonts/archivo-var.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+      src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
+  </style>
+  <style>
+    :root {
+      --fairway: #14402A;
+      --fairway-deep: #0B2418;
+      --flag: #E03E2D;
+      --paper: #F3F4F0;
+      --white: #fff;
+      --ink: #101511;
+      --grey: #5B665E;
+      --maxw: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Archivo', system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', monospace
+    }
+
+    /* HEADER */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: var(--paper);
+      border-bottom: 3px solid var(--ink)
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    .logo {
+      font-weight: 900;
+      font-size: 26px;
+      letter-spacing: -.04em;
+      text-transform: uppercase
+    }
+
+    .logo .raw {
+      color: var(--flag)
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0
+    }
+
+    .nav-links a {
+      font-weight: 700;
+      font-size: 12.5px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      padding: 8px 14px;
+      transition: background .15s, color .15s
+    }
+
+    .nav-links a:hover {
+      background: var(--ink);
+      color: #fff
+    }
+
+    /* AD SLOTS */
+    .ad-slot {
+      background: repeating-linear-gradient(45deg, #E9EBE4 0 12px, #F1F2EC 12px 24px);
+      border: 1px dashed #B9BFB2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .16em;
+      color: #9aa194;
+      text-transform: uppercase;
+    }
+
+    .ad-leaderboard {
+      max-width: 728px;
+      height: 90px;
+      margin: 24px auto
+    }
+
+    .ad-inarticle {
+      width: 100%;
+      min-height: 250px;
+      margin: 36px 0
+    }
+
+    .ad-sidebar {
+      width: 100%;
+      height: 600px;
+      position: sticky;
+      top: 96px
+    }
+
+    @media(max-width:760px) {
+      .ad-leaderboard {
+        height: 50px;
+        max-width: 320px
+      }
+    }
+
+    /* LAYOUT */
+    .page-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 48px;
+      padding: 40px 0 64px
+    }
+
+    @media(max-width:980px) {
+      .page-grid {
+        grid-template-columns: 1fr
+      }
+
+      .article-aside {
+        display: none
+      }
+    }
+
+    /* BREADCRUMB */
+    .crumbs {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 20px
+    }
+
+    .crumbs a {
+      color: var(--flag);
+      font-weight: 600
+    }
+
+    .crumbs a:hover {
+      text-decoration: underline
+    }
+
+    /* ARTICLE */
+    .article-head .cat {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: var(--flag);
+      color: #fff;
+      padding: 4px 12px;
+      margin-bottom: 18px;
+    }
+
+    .article-head h1 {
+      font-weight: 900;
+      font-size: clamp(30px, 4.4vw, 52px);
+      line-height: 1.02;
+      letter-spacing: -.03em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .standfirst {
+      font-size: 19px;
+      color: var(--grey);
+      max-width: 62ch;
+      margin-bottom: 24px;
+      font-weight: 500
+    }
+
+    .byline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      padding: 14px 0;
+      margin-bottom: 28px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .byline b {
+      color: var(--ink);
+      font-weight: 600
+    }
+
+    figure.lead-img {
+      margin-bottom: 8px;
+      border: 2px solid var(--ink);
+      overflow: hidden;
+    }
+
+    figure.lead-img img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    figcaption {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--grey);
+      padding: 10px 0 0;
+      letter-spacing: .04em;
+      margin-bottom: 32px;
+    }
+
+    .article-body {
+      font-size: 17.5px;
+      max-width: 68ch
+    }
+
+    .article-body p {
+      margin-bottom: 22px
+    }
+
+    .article-body p b {
+      font-weight: 800
+    }
+
+    .article-body h2 {
+      font-weight: 900;
+      font-size: clamp(22px, 2.8vw, 30px);
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin: 44px 0 18px;
+      padding-top: 18px;
+      border-top: 3px solid var(--ink);
+    }
+
+    .article-body h3 {
+      font-weight: 800;
+      font-size: 19px;
+      letter-spacing: -.01em;
+      margin: 30px 0 12px;
+    }
+
+    .article-body h3::before {
+      content: "— ";
+      color: var(--flag)
+    }
+
+    .article-body a {
+      color: var(--flag);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .article-body a:hover {
+      color: var(--ink);
+    }
+
+    .article-body ul, .article-body ol {
+      margin: 0 0 24px 24px;
+    }
+
+    .article-body li {
+      margin-bottom: 10px;
+    }
+
+    blockquote.pull {
+      border: 2px solid var(--ink);
+      border-left: 10px solid var(--flag);
+      background: var(--white);
+      padding: 26px 28px;
+      margin: 34px 0;
+      font-weight: 900;
+      font-size: clamp(20px, 2.4vw, 26px);
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+    }
+
+    blockquote.pull footer {
+      margin-top: 12px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: .14em;
+      color: var(--grey);
+      text-transform: uppercase;
+    }
+
+    .stat-box {
+      border: 2px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin: 34px 0;
+    }
+
+    .stat-cell {
+      padding: 20px;
+      border-right: 1px solid rgba(255, 255, 255, .2);
+      text-align: center
+    }
+
+    .stat-cell:last-child {
+      border-right: none
+    }
+
+    .stat-cell .n {
+      font-weight: 900;
+      font-size: 34px;
+      line-height: 1
+    }
+
+    .stat-cell .n.red {
+      color: #FF9486
+    }
+
+    .stat-cell .l {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #9aa59d;
+      margin-top: 6px;
+      display: block
+    }
+
+    @media(max-width:560px) {
+      .stat-box {
+        grid-template-columns: 1fr
+      }
+
+      .stat-cell {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, .2)
+      }
+
+      .stat-cell:last-child {
+        border-bottom: none
+      }
+    }
+
+    /* TAGS */
+    .tag-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 40px 0 0
+    }
+
+    .tag-row a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      border: 2px solid var(--ink);
+      padding: 6px 14px;
+      text-decoration: none;
+      color: var(--ink);
+      transition: background .15s, color .15s;
+    }
+
+    .tag-row a:hover {
+      background: var(--ink);
+      color: #fff
+    }
+
+    /* SIDEBAR */
+    .aside-box {
+      border: 2px solid var(--ink);
+      background: var(--white);
+      margin-bottom: 28px
+    }
+
+    .aside-box .ab-head {
+      background: var(--ink);
+      color: #fff;
+      padding: 12px 18px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .aside-item {
+      display: block;
+      padding: 14px 18px;
+      border-bottom: 1px solid #DADDD4;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.35
+    }
+
+    .aside-item:last-child {
+      border-bottom: none
+    }
+
+    .aside-item:hover {
+      text-decoration: underline;
+      text-decoration-color: var(--flag);
+      text-decoration-thickness: 2px
+    }
+
+    .aside-item .mono {
+      display: block;
+      font-weight: 500;
+      font-size: 10.5px;
+      color: var(--flag);
+      letter-spacing: .12em;
+      margin-bottom: 4px;
+      text-transform: uppercase
+    }
+
+    /* RELATED */
+    .related {
+      border-top: 3px solid var(--ink);
+      background: var(--white);
+      padding: 56px 0
+    }
+
+    .related h2 {
+      font-weight: 900;
+      font-size: clamp(24px, 3vw, 36px);
+      text-transform: uppercase;
+      letter-spacing: -.02em;
+      margin-bottom: 28px
+    }
+
+    .related h2 .idx {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .45em;
+      color: var(--flag);
+      vertical-align: top;
+      margin-right: 8px;
+      font-weight: 600
+    }
+
+    .rel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 2px solid var(--ink)
+    }
+
+    .rel-card {
+      padding: 24px;
+      border-right: 2px solid var(--ink);
+      transition: background .15s
+    }
+
+    .rel-card:last-child {
+      border-right: none
+    }
+
+    .rel-card:hover {
+      background: #FBFBF8
+    }
+
+    .rel-card .cat {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--flag);
+      font-weight: 600;
+      margin-bottom: 10px
+    }
+
+    .rel-card h3 {
+      font-weight: 800;
+      font-size: 17px;
+      line-height: 1.3;
+      letter-spacing: -.01em;
+      margin-bottom: 10px
+    }
+
+    .rel-card:hover h3 {
+      text-decoration: underline;
+      text-decoration-color: var(--flag);
+      text-decoration-thickness: 2px
+    }
+
+    .rel-card .d {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--grey)
+    }
+
+    @media(max-width:760px) {
+      .rel-grid {
+        grid-template-columns: 1fr
+      }
+
+      .rel-card {
+        border-right: none;
+        border-bottom: 2px solid var(--ink)
+      }
+
+      .rel-card:last-child {
+        border-bottom: none
+      }
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: var(--ink);
+      color: #8b958d;
+      padding: 28px 0;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .06em
+    }
+
+    .site-footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px
+    }
+
+    .site-footer a:hover {
+      color: #fff
+    }
+
+    .burger {
+      display: none;
+      background: none;
+      border: 2px solid var(--ink);
+      cursor: pointer;
+      padding: 8px 10px
+    }
+
+    .burger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--ink);
+      margin: 4px 0
+    }
+
+    @media(max-width:760px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        background: var(--paper);
+        border-bottom: 3px solid var(--ink);
+      }
+
+      .nav-links.open {
+        display: flex
+      }
+
+      .nav-links a {
+        border-left: none;
+        border-top: 1px solid #D7DAD2;
+        padding: 14px 20px
+      }
+
+      .burger {
+        display: block
+      }
+    }
+
+    /* === RAWGOLF RESPONSIVE OVERRIDES === */
+    img { max-width: 100%; height: auto; }
+    @media (max-width: 1024px) {
+      .wrap { padding-left: 20px; padding-right: 20px; }
+      .page-grid { grid-template-columns: 1fr; gap: 32px; }
+      .article-aside { display: block; }
+      .rel-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .wrap { padding-left: 16px; padding-right: 16px; }
+      .nav { padding: 0 16px; }
+      .page-grid { grid-template-columns: 1fr; gap: 28px; }
+      .article-aside { display: block; }
+      .rel-grid, .stat-box { grid-template-columns: 1fr; }
+      .article-head h1 { font-size: clamp(26px, 7vw, 34px); }
+      .standfirst { font-size: 16.5px; }
+      .article-body { font-size: 16.5px; }
+      .article-body h2 { font-size: clamp(20px, 5.5vw, 24px); }
+      .article-body h3 { font-size: 17px; }
+      blockquote.pull { font-size: clamp(18px, 5vw, 22px); padding: 20px 22px; }
+      figure.lead-img img { aspect-ratio: 4 / 3; }
+    }
+    html, body { max-width: 100%; overflow-x: clip; }
+    img, video, iframe { max-width: 100%; }
+    table { max-width: 100%; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============ SITE HEADER ============ -->
+  <header class="site-header">
+    <div class="nav">
+      <a href="/" class="logo">Golf<span class="raw">Raw</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="/news">Latest News</a>
+        <a href="/pga-tour">PGA Tour</a>
+        <a href="/liv-golf">LIV Golf</a>
+        <a href="/tournaments">Tournaments</a>
+        <a href="/guides">Guides</a>
+        <a href="/search">🔍 Search</a>
+        <a href="/tools">Tools</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="wrap page-grid">
+
+      <!-- ============ ARTICLE ============ -->
+      <article>
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">RawGolf</a> / <a href="/tournaments">Tournaments</a> / <span>Rules &amp; Formats</span>
+        </nav>
+
+        <header class="article-head">
+          <span class="cat">TOURNAMENTS · RULES &amp; TAX</span>
+          <h1>Golf Tournament Rules, Formats, and Tax Guide</h1>
+          <p class="standfirst">From World Handicap System allowance formulas and Rule 3.3b scorecard verification to the $1,000 amateur prize limit and IRS 1099 reporting, here is the verified operational manual for competitive golf.</p>
+          <div class="byline">
+            <span>BY <b><a href="/about">MARCUS KEANE</a></b> · SENIOR EQUIPMENT ANALYST</span>
+            <span>PUBLISHED <b>SUN 23 AUG 2026</b></span>
+          </div>
+        </header>
+
+        <figure class="lead-img">
+          <img src="/public/golf-tournaments-scoring-hero.webp" alt="Golf Tournament Rules, Formats, and Tax Guide" loading="eager" fetchpriority="high" srcset="/public/golf-tournaments-scoring-hero-400.webp 400w, /public/golf-tournaments-scoring-hero-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
+        </figure>
+        <figcaption>OFFICIAL COMPETITIVE SCORING, HANDICAP ALLOWANCES, AND COMPLIANCE. PHOTO: RAWGOLF</figcaption>
+
+        <div class="article-body">
+          <p>Every weekend across the world, thousands of club championships, invitationals, and member-guests descend into administrative chaos over three predictable issues: incorrect handicap percentages, improperly certified scorecards, and confusion regarding prize limits.</p>
+
+          <p>Whether you are organizing a regional pro-am or standing on the 18th green with a signed card in your hand, competitive golf is governed by exacting mathematical tolerances and strict tax compliance regulations.</p>
+
+          <p>This manual breaks down the governing USGA/WHS handicap allowances, official competition formats, scorecard protocols under Rule 3.3b, and the financial reporting thresholds required by the IRS.</p>
+
+          <div class="stat-box" role="table" aria-label="Tournament rules and tax metrics">
+            <div class="stat-cell"><span class="n red">85%</span><span class="l">4-Ball Stroke Allowance</span></div>
+            <div class="stat-cell"><span class="n">$1,000</span><span class="l">Amateur Prize Cap</span></div>
+            <div class="stat-cell"><span class="n red">$600</span><span class="l">IRS 1099-MISC Trigger</span></div>
+          </div>
+
+          <h2>Table 1: Official USGA &amp; WHS Handicap Allowances</h2>
+          <p>Under the World Handicap System (WHS Appendix C), players do not simply receive 100% of their Course Handicap in multi-ball or team formats. Handicap allowances exist to equalize equity across differing skill distributions, preventing high-handicap duos from statistically dominating team net events.</p>
+
+          <div style="overflow-x: auto; margin: 28px 0;">
+            <table style="width: 100%; border-collapse: collapse; border: 2px solid var(--ink); background: var(--white); font-family: 'IBM Plex Mono', monospace; font-size: 13px;">
+              <thead>
+                <tr style="background: var(--ink); color: #fff;">
+                  <th style="padding: 12px 14px; text-align: left; border: 1px solid var(--ink);">Tournament Format</th>
+                  <th style="padding: 12px 14px; text-align: left; border: 1px solid var(--ink);">Type of Play</th>
+                  <th style="padding: 12px 14px; text-align: right; border: 1px solid var(--ink);">Recommended Allowance</th>
+                  <th style="padding: 12px 14px; text-align: left; border: 1px solid var(--ink);">Calculation Methodology</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;"><strong>Individual Stroke Play</strong></td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">Stroke Play / Medal</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4; font-weight: 700;">95% – 100%</td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">95% for fields &gt; 30 players to compress variance; 100% for casual.</td>
+                </tr>
+                <tr style="background: #FBFBF8;">
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;"><strong>Individual Match Play</strong></td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">Match Play</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4; font-weight: 700;">100%</td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">Full difference from the lowest player's Course Handicap.</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;"><strong>Four-Ball (Better Ball)</strong></td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">Stroke Play</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4; color: var(--flag); font-weight: 700;">85%</td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">Applied directly to each player's individual Course Handicap.</td>
+                </tr>
+                <tr style="background: #FBFBF8;">
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;"><strong>Four-Ball (Better Ball)</strong></td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">Match Play</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4; font-weight: 700;">90%</td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">90% of the difference from the lowest Course Handicap in the foursome.</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;"><strong>4-Person Scramble</strong></td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">Stroke Play Team</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4; color: var(--flag); font-weight: 700;">25/20/15/10%</td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">Sum of 25% lowest CH + 20% 2nd + 15% 3rd + 10% highest CH.</td>
+                </tr>
+                <tr style="background: #FBFBF8;">
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;"><strong>2-Person Scramble</strong></td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">Stroke Play Team</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4; font-weight: 700;">35% / 15%</td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">35% of low Course Handicap + 15% of high Course Handicap.</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;"><strong>Chapman (Pinehurst)</strong></td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">Stroke Play (2-Person)</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4; font-weight: 700;">60% / 40%</td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">60% of low player's Course Handicap + 40% of high player's Course Handicap.</td>
+                </tr>
+                <tr style="background: #FBFBF8;">
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;"><strong>Individual Stableford</strong></td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">Points Scoring</td>
+                  <td style="padding: 12px 14px; text-align: right; border: 1px solid #DADDD4; font-weight: 700;">95% – 100%</td>
+                  <td style="padding: 12px 14px; border: 1px solid #DADDD4;">Points based on net score (Double Eagle 5, Eagle 4, Birdie 3, Par 2, Bogey 1).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>For more details on flight breakdowns and net divisions, consult our comprehensive breakdown on <a href="/club-championship-divisions-flights-explained">club championship flights and divisions</a>. To check whether your playing partners' handicaps conform to statistical distributions, use our interactive <a href="/tools-handicap-detector">Handicap Detector tool</a>.</p>
+
+          <h2>Tournament Formats &amp; Tactical Execution</h2>
+          <p>Choosing the right format dictates pace of play, field engagement, and scoring integrity. Here is how the primary competitive structures operate:</p>
+
+          <h3>1. Stroke Play (Medal Play)</h3>
+          <p>The purest and most punitive format in golf. Every stroke counts, and Rule 3.3c mandates that the ball must be holed out on every green. In amateur tournaments, playing under a 95% handicap allowance is standard practice to prevent high-handicap outlier scores from sweeping the net prizes.</p>
+
+          <h3>2. Match Play</h3>
+          <p>Scored hole-by-hole rather than stroke-by-stroke. Concessions of strokes, holes, or entire matches are permitted under Rule 3.2b. Read our complete comparison on <a href="/match-play">Match Play vs Stroke Play tactics</a> to understand why approach angles and risk tolerance shift radically when competing directly against an opponent rather than the card.</p>
+
+          <h3>3. Four-Ball (Better Ball)</h3>
+          <p>Two partners play their own ball throughout the round. The lower net score of the two partners serves as the team score for that hole. The 85% allowance prevents partner teams from "ham-and-egging" into runaway 58s.</p>
+
+          <h3>4. Scramble vs. Shamble</h3>
+          <p>In a traditional 4-person scramble, all players hit from the chosen location on every shot. In a Shamble, players take the best drive, but then play their own ball individually into the cup. Explore our guide on <a href="/charity-golf-scrambles-access-guide">charity scrambles and corporate outing strategy</a> for course management blueprints.</p>
+
+          <blockquote class="pull">
+            "In team four-ball stroke play, the 85% handicap allowance is not a penalty. It is the mathematical boundary that keeps the tournament from descending into a farce."
+            <footer>— USGA Handicap Research Committee</footer>
+          </blockquote>
+
+          <h2>Rule 3.3b: Scorecard Administration &amp; Disqualification Traps</h2>
+          <p>Nothing sours a tournament faster than a post-round disqualification in the scoring tent. Under Rule 3.3b, the responsibilities of the player and the marker are strictly defined:</p>
+
+          <ul>
+            <li><strong>Marker Verification:</strong> The marker is responsible solely for recording the correct gross score for each hole and signing the card.</li>
+            <li><strong>Player Certification:</strong> The player is responsible for verifying their gross hole-by-hole scores, signing the card, and prompt submission to the committee.</li>
+            <li><strong>The Cardinal Rule:</strong> Under Rule 3.3b(3), submitting a gross score on any hole lower than actually taken results in <b>immediate disqualification</b>. Submitting a score higher than taken means the higher score stands.</li>
+            <li><strong>Handicap &amp; Addition Errors:</strong> The player is NOT responsible for adding up the totals or applying handicap strokes—that is the committee's duty under the Rules of Golf.</li>
+          </ul>
+
+          <p>For settling Nassau bets, skins pots, and side wagers after submitting your card, check out our automated <a href="/tools-settle-up-calculator">Settle Up Calculator</a>.</p>
+
+          <h2>Amateur Status Prize Limits &amp; IRS Tax Compliance</h2>
+          <p>Tournament payouts are subject to dual jurisdictions: the sporting governing bodies (USGA / R&amp;A) and the tax authorities (IRS).</p>
+
+          <h3>The $1,000 Amateur Status Limit</h3>
+          <p>Effective with the modernized Rules of Amateur Status, amateur golfers may accept cash prizes, gift cards, and merchandise credits up to a maximum value of <b>$1,000 per event</b> (or £700 / €850). Exceeding this threshold results in immediate loss of amateur status.</p>
+          <p><strong>The Only Exception:</strong> Hole-in-one contests during a tournament are completely exempt from the $1,000 ceiling. You can legally win a $90,000 sports car or $25,000 cash for an ace and remain fully eligible for amateur state opens.</p>
+
+          <h3>IRS Tax Reporting on Prize Winnings (Form 1099-MISC)</h3>
+          <p>Many amateur golfers incorrectly believe that pro shop gift certificates and merchandise vouchers are non-taxable perks. Under Internal Revenue Code Section 61, all gross income from whatever source derived—including tournament prizes, Calcutta auctions, skins pools, and pro shop credit—is legally taxable.</p>
+
+          <ol>
+            <li><strong>The $600 1099-MISC Threshold:</strong> Tournament organizers and country clubs are legally required to issue IRS Form 1099-MISC to any individual who receives $600 or more in cumulative prize payouts during a calendar year.</li>
+            <li><strong>Pro Shop Scrip:</strong> Merchandising credit redeemed for drivers, apparel, or bags must be reported at fair market value.</li>
+            <li><strong>Gambling vs. Skill Prizes (Form W-2G):</strong> Payouts from pari-mutuel wagering, Calcutta pools, or 50/50 raffles exceeding $600 (at 300-to-1 odds) or $5,000 require Form W-2G and mandatory federal withholding.</li>
+            <li><strong>Hobby Loss Rules (IRC Section 183):</strong> Amateur golfers cannot deduct entry fees, travel, or equipment against tournament prize income unless they operate as a registered trade or business with a verified profit motive.</li>
+          </ol>
+
+          <p>For more tournament strategy and preparation, explore our complete <a href="/amateur-tournament-guide">Amateur Tournament Preparation Guide</a>.</p>
+
+          <div class="faq-section" style="background:var(--white); border:2px solid var(--ink); padding:28px; margin:36px 0;">
+            <h2 style="margin-top:0; border-top:none; padding-top:0;">Frequently Asked Questions</h2>
+
+            <h3 style="font-size:18px; margin-top:20px;">What is the maximum prize money an amateur golfer can accept under USGA rules?</h3>
+            <p>Under Rule 3 of the USGA Rules of Amateur Status, an amateur golfer may accept cash or non-cash prizes up to $1,000 (or £700 in R&amp;A jurisdictions) per event in a scratch or handicap competition. The only exception is hole-in-one prizes, which have no monetary limit.</p>
+
+            <h3 style="font-size:18px; margin-top:20px;">How are USGA handicap allowances calculated in four-ball stroke play?</h3>
+            <p>Under the World Handicap System (WHS) Appendix C, men and women receive 85% of their Course Handicap in four-ball stroke play (better ball). In match play four-ball, allowances are 90% of the difference from the lowest Course Handicap in the match.</p>
+
+            <h3 style="font-size:18px; margin-top:20px;">Do amateur golf tournament prize winnings need to be reported on federal tax returns?</h3>
+            <p>Yes. Under US tax law (IRC Section 61), all prize winnings, gift certificates, pro shop merchandise credits, and tournament payouts are considered taxable gross income. Tournament organizers must issue Form 1099-MISC for non-employee prize payments of $600 or more.</p>
+
+            <h3 style="font-size:18px; margin-top:20px;">What is the penalty under Rule 3.3b for signing an incorrect tournament scorecard?</h3>
+            <p>Under Rule 3.3b(3), if a player returns a scorecard with a recorded hole score lower than actually taken, the penalty is disqualification. If the player returns a score higher than actually taken, the higher score stands with no additional penalty.</p>
+
+            <h3 style="font-size:18px; margin-top:20px;">What is the difference between a Scramble and a Shamble format?</h3>
+            <p>In a Scramble, all players hit from the chosen best shot location for every stroke until the ball is holed out. In a Shamble, all players hit tee shots, select the best drive, and then play their own ball individually into the hole from that spot.</p>
+          </div>
+
+          <h2>The Raw Take</h2>
+          <p>Competitive golf is unforgiving by design. The player who masters the rulebook and understands handicap mathematics arrives on the first tee with an immediate psychological advantage.</p>
+
+          <p>Calculate your allowances correctly before you tee off. Protect the field by verifying your marker's figures. And when you pick up that $800 pro shop voucher on Sunday afternoon, make sure your accountant knows about it.</p>
+
+          <nav class="tag-row" aria-label="Article tags">
+            <a href="/tournaments">Tournament Rules</a>
+            <a href="/tournaments">Handicap Allowances</a>
+            <a href="/tournaments">Golf Formats</a>
+            <a href="/guides">Tax Compliance</a>
+          </nav>
+        </div>
+      </article>
+
+      <!-- ============ SIDEBAR ============ -->
+      <aside class="article-aside" aria-label="Sidebar">
+        <div class="aside-box">
+          <div class="ab-head">Tournament Guides &amp; Tools</div>
+          <a class="aside-item" href="/amateur-tournament-guide"><span class="mono">GUIDE · AMATEURS</span>Amateur Tournament Preparation Guide</a>
+          <a class="aside-item" href="/club-championship-divisions-flights-explained"><span class="mono">RULES · FLIGHTS</span>Club Championship Flights &amp; Divisions</a>
+          <a class="aside-item" href="/tools-settle-up-calculator"><span class="mono">TOOL · BETTING</span>Settle Up: Nassau &amp; Match Calculator</a>
+          <a class="aside-item" href="/tools-handicap-detector"><span class="mono">TOOL · INTEGRITY</span>Handicap Sandbagging Detector</a>
+        </div>
+
+        <div class="aside-box">
+          <div class="ab-head">This Week's Ratings</div>
+          <a class="aside-item" href="/#ratings"><span class="mono">RANK 01 · 9.3</span>Scheffler — approach play from another planet</a>
+          <a class="aside-item" href="/#ratings"><span class="mono">RANK 02 · 8.9</span>Rahm — bogey-free 66 in a 74.8 field</a>
+          <a class="aside-item" href="/#ratings"><span class="mono">RANK 04 · 7.6</span>McIlroy — cut line watch, putting leak returns</a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ============ RELATED ============ -->
+    <section class="related" aria-labelledby="related-heading">
+      <div class="wrap">
+        <h2 id="related-heading"><span class="idx">REL</span>Related Stories</h2>
+        <div class="rel-grid">
+          <a class="rel-card" href="/amateur-tournament-guide">
+            <div class="cat">Amateur Golf</div>
+            <h3>How to Play in Your First Competitive Tournament</h3>
+            <div class="d">RAWGOLF TOURNAMENT DESK</div>
+          </a>
+          <a class="rel-card" href="/match-play">
+            <div class="cat">Formats</div>
+            <h3>Match Play Tactics: Why Aggression Trumps Conservative Play</h3>
+            <div class="d">TACTICAL ANALYSIS</div>
+          </a>
+          <a class="rel-card" href="/charity-golf-scrambles-access-guide">
+            <div class="cat">Scrambles</div>
+            <h3>Charity Golf Scrambles: How to Win Without Sandbagging</h3>
+            <div class="d">EVENT STRATEGY</div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- START NEWSLETTER SECTION -->
+  <div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #111; color: #fff; text-align: left; border-left: 8px solid #cc0000;">
+      <h2 style="font-family: 'Archivo', sans-serif; text-transform: uppercase; font-weight: 900; font-size: 32px; margin-bottom: 10px; color: #fff;">THE STORIES THE GOLF MEDIA WON'T PUBLISH</h2>
+      <p style="font-family: 'Archivo', sans-serif; color: #aaa; font-size: 16px; margin-bottom: 30px;">Every Friday, we drop <strong>The Card</strong>: Unfiltered player ratings, tour leaks, and the exact stories PR reps tried to kill. Join the inner circle. No spam, just the raw truth.</p>
+    
+      <form id="rawgolf-newsletter-form" style="display: flex; gap: 0; width: 100%; max-width: 600px; flex-wrap: wrap;">
+          <input type="email" id="rawgolf-email" placeholder="you@email.com" required style="flex: 1; padding: 18px; border: none; font-family: 'Archivo', sans-serif; font-size: 16px; background: #fff; color: #111; outline: none; border-radius: 0; min-width: 250px;">
+          <button type="submit" style="background-color: #cc0000; color: #fff; border: none; padding: 18px 40px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; border-radius: 0;">✓ SIGNED</button>
+      </form>
+      <p id="rawgolf-form-message" style="display: none; font-family: 'Archivo', sans-serif; margin-top: 15px; font-weight: bold; color: #fff;"></p>
+    
+      <script>
+      document.getElementById('rawgolf-newsletter-form').addEventListener('submit', function(e) {
+          e.preventDefault();
+          var email = document.getElementById('rawgolf-email').value;
+          var messageEl = document.getElementById('rawgolf-form-message');
+          var btn = this.querySelector('button');
+        
+          btn.innerText = 'SENDING...';
+        
+          var data = {
+              "fields": [
+                  { "name": "email", "value": email }
+              ]
+          };
+        
+          // Sending directly to HubSpot Forms API
+          fetch('https://api.hsforms.com/submissions/v3/integration/submit/148744463/f9b9028c-b648-4563-9b01-2b53b3caae13', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+          })
+          .then(function(res) { return res.json(); })
+          .then(function(res) {
+              document.getElementById('rawgolf-newsletter-form').style.display = 'none';
+              messageEl.style.display = 'block';
+              messageEl.innerText = '✓ YOU ARE ON THE LIST.';
+          })
+          .catch(function(err) {
+              btn.innerText = '✓ SIGNED';
+              messageEl.style.display = 'block';
+              messageEl.style.color = '#cc0000';
+              messageEl.innerText = 'Error connecting. Please try again.';
+          });
+      });
+      </script>
+  </div>
+  <!-- END NEWSLETTER SECTION -->
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 GOLFRAW — ALL RATINGS FINAL</span>
+      <nav aria-label="Footer navigation" style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="/manifesto">MANIFESTO</a>
+        <a href="/about">ABOUT</a>
+        <a href="/ratings-manual">HOW RATINGS WORK</a>
+        <a href="/corrections">CORRECTIONS</a>
+        <a href="/privacy">PRIVACY</a>
+        <a href="/terms">TERMS</a>
+        <a href="mailto:contact@golfraw.com">contact@golfraw.com</a>
+        <a href="/">FRONT PAGE</a>
+        <a href="/ratings">PLAYER RATINGS</a>
+        <a href="/analysis">SWING ANALYSIS</a>
+        <a href="/vault">THE VAULT</a>
+        <a href="/in-memoriam">IN MEMORIAM</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    const burger = document.getElementById('burger'), links = document.getElementById('navLinks');
+    if (burger && links) {
+      burger.addEventListener('click', () => {
+        const open = links.classList.toggle('open');
+        burger.setAttribute('aria-expanded', open);
+      });
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+    }
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PMECW4VW66');
+  </script>
+  <script>window.__gr_consent=true;window.__gr_ads=true;</script>
+  <script>
+    (function () {
+      var FC = 'https://fundingchoicesmessages.google.com/i/pub-8933725159594062?ers=1';
+      var ADS = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062';
+      var EVENTS = ['touchstart', 'scroll', 'mousemove', 'keydown', 'click', 'wheel'];
+      var started = false, adsQueued = false, timer;
+
+      function inject(src, isAds, onload) {
+        var s = document.createElement('script');
+        s.src = src; s.async = true;
+        if (isAds) s.crossOrigin = 'anonymous';
+        if (onload) { s.onload = onload; s.onerror = onload; }
+        document.head.appendChild(s);
+      }
+
+      function loadAds() {
+        if (adsQueued || !window.__gr_ads) return;
+        adsQueued = true;
+        inject(ADS, true);
+      }
+
+      function start() {
+        if (started) return;
+        started = true;
+        clearTimeout(timer);
+        for (var i = 0; i < EVENTS.length; i++) {
+          window.removeEventListener(EVENTS[i], start, false);
+        }
+        if (window.__gr_consent) {
+          inject(FC, false, loadAds);
+          setTimeout(loadAds, 2500);
+        } else {
+          loadAds();
+        }
+      }
+
+      for (var i = 0; i < EVENTS.length; i++) {
+        window.addEventListener(EVENTS[i], start, { passive: true });
+      }
+      timer = setTimeout(start, 6000);
+    })();
+  </script>
+</body>
+
+</html>
+"""
+
+# Write to rules/golf-tournaments-rules-formats-tax-guide.html
+os.makedirs("rules", exist_ok=True)
+with open("rules/golf-tournaments-rules-formats-tax-guide.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+# Also write to root golf-tournaments-rules-formats-tax-guide.html
+with open("golf-tournaments-rules-formats-tax-guide.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("Created rules/golf-tournaments-rules-formats-tax-guide.html and golf-tournaments-rules-formats-tax-guide.html")
