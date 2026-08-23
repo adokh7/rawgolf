@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Charlotte Women&#x27;s Golf Begins 2026 Season at Quail Hollow</title>
+      <link>https://www.golfraw.com/news-2026-charlotte-womens-golf-begins-season-quail-hollow</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-charlotte-womens-golf-begins-season-quail-hollow</guid>
+      <pubDate>Sun, 23 Aug 2026 09:00:00 +0000</pubDate>
+      <category>TOURNAMENTS</category>
+      <description>Charlotte women&#x27;s golf begins 2026 season on 24 August at Quail Hollow Club. Pinky Chaisilprungruang leads C.C. McMahan&#x27;s lineup in the 18-hole Truist Summit.</description>
+      <enclosure url="https://www.golfraw.com/public/charlotte-womens-golf-quail-hollow.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>LPGA Tour Golfer Costs: k Earnings Yields ,620</title>
       <link>https://www.golfraw.com/news-2026-lpga-tour-golfer-costs-alexa-pano-expenses</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-lpga-tour-golfer-costs-alexa-pano-expenses</guid>
@@ -359,15 +368,6 @@
       <category>LIV GOLF</category>
       <description>The DP World Tour is set to resume LIV fines in 2027, a Ryder Cup year. LIV is paying its players in shares. Both jaws of the vice closed in one fortnight.</description>
       <enclosure url="https://www.golfraw.com/public/liv-golf-equity-dp-world-tour-fines-2027.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>The Last Man Into the Playoffs Hits the First</title>
-      <link>https://www.golfraw.com/news-2026-fedex-st-jude-round-1-tee-times-jackson-koivun</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-fedex-st-jude-round-1-tee-times-jackson-koivun</guid>
-      <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Jackson Koivun plays as a single at 8:10 a.m. after Berger&amp;#x27;s withdrawal. Scheffler and McIlroy go at 9:30. Full round one tee times from TPC Southwind.</description>
-      <enclosure url="https://www.golfraw.com/public/jackson-koivun-fedex-st-jude-tee-times-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>

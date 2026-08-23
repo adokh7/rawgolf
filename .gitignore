@@ -8,3 +8,6 @@ __pycache__/
 .claude/
 .email-preview/
 .impeccable/review/
+out/
+.DS_Store
+skills/
