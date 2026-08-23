@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 256,
+  "count": 257,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -31,6 +31,20 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-bmw-championship-round-3-scores-odds-recap",
+      "alias_of": "",
+      "slug": "news-2026-bmw-championship-round-3-scores-odds-recap",
+      "url": "/news-2026-bmw-championship-round-3-scores-odds-recap",
+      "title": "BMW Championship Round 3: Wyndham Clark Leads by 5 at Bellerive",
+      "excerpt": "Get BMW Championship Round 3 scores and odds. Wyndham Clark leads by 5 at 17-under as ShotLink data and East Lake playoff stakes shape Sunday at Bellerive.",
+      "category": "PGA TOUR",
+      "date": "2026-08-23",
+      "image": "/public/bmw-championship-round-3-bellerive.webp",
+      "keywords": "bmw championship round 3 scores, wyndham clark bellerive, bmw championship odds, pga tour draws and fades, east lake tour championship bubble",
+      "category_source": "tournaments",
+      "section": "PGA TOUR"
+    },
     {
       "canonical": "/rules/golf-tournaments-rules-formats-tax-guide",
       "alias_of": "",

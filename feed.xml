@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>BMW Championship Round 3: Wyndham Clark Leads by 5 at Bellerive</title>
+      <link>https://www.golfraw.com/news-2026-bmw-championship-round-3-scores-odds-recap</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-bmw-championship-round-3-scores-odds-recap</guid>
+      <pubDate>Sun, 23 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Get BMW Championship Round 3 scores and odds. Wyndham Clark leads by 5 at 17-under as ShotLink data and East Lake playoff stakes shape Sunday at Bellerive.</description>
+      <enclosure url="https://www.golfraw.com/public/bmw-championship-round-3-bellerive.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Golf Tournament Rules, Formats, and Tax Guide</title>
       <link>https://www.golfraw.com/rules/golf-tournaments-rules-formats-tax-guide</link>
       <guid isPermaLink="true">https://www.golfraw.com/rules/golf-tournaments-rules-formats-tax-guide</guid>
@@ -359,15 +368,6 @@
       <category>LIV GOLF</category>
       <description>LIV has told players the $40m Michigan Team Championship is off — but its own website is still selling tickets, and nobody knows who wins the team title.</description>
       <enclosure url="https://www.golfraw.com/public/liv-golf-michigan-team-championship-cancelled-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>The Most Valuable Golf Search in America Gets</title>
-      <link>https://www.golfraw.com/guides-most-valuable-golf-search-cpc-data</link>
-      <guid isPermaLink="true">https://www.golfraw.com/guides-most-valuable-golf-search-cpc-data</guid>
-      <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
-      <category>GUIDES</category>
-      <description>&quot;Golf deals fairmont st andrews&quot; costs $9.06 a click on 40 monthly searches. &quot;Black friday golf deals&quot; costs 95 cents on 3,600. Why value runs backwards.</description>
-      <enclosure url="https://www.golfraw.com/public/most-valuable-golf-search-cpc-data-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
