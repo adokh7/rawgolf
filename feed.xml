@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Wyndham Clark Gary Woodland BMW Championship: Clark Leads by 5</title>
+      <link>https://www.golfraw.com/news-2026-wyndham-clark-gary-woodland-bmw-championship-recap</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-wyndham-clark-gary-woodland-bmw-championship-recap</guid>
+      <pubDate>Sun, 23 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Get the Wyndham Clark Gary Woodland BMW Championship recap. Clark shoots 17-under at Bellerive as Woodland&#x27;s 199 total protects his Tour Championship bubble spot.</description>
+      <enclosure url="https://www.golfraw.com/public/wyndham-clark-gary-woodland-bellerive.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>BMW Championship Round 3: Wyndham Clark Leads by 5 at Bellerive</title>
       <link>https://www.golfraw.com/news-2026-bmw-championship-round-3-scores-odds-recap</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-bmw-championship-round-3-scores-odds-recap</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>McIlroy is 12th in the FedExCup and safe either way. He skipped Memphis last year and drew criticism. This time he mentioned talking to the Tour&amp;#x27;s new CEO.</description>
       <enclosure url="https://www.golfraw.com/public/rory-mcilroy-fedex-st-jude-brian-rolapp-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>LIV Has Cancelled Its Biggest Event</title>
-      <link>https://www.golfraw.com/news-2026-liv-golf-michigan-team-championship-cancelled</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-michigan-team-championship-cancelled</guid>
-      <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
-      <category>LIV GOLF</category>
-      <description>LIV has told players the $40m Michigan Team Championship is off — but its own website is still selling tickets, and nobody knows who wins the team title.</description>
-      <enclosure url="https://www.golfraw.com/public/liv-golf-michigan-team-championship-cancelled-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
