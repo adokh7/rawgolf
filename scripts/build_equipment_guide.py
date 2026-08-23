@@ -1,6 +1,6 @@
 import os
 
-# Complete HTML content for the Equipment Optimization Guide
+# Complete HTML content for the Equipment Optimization Guide with valid existing internal links
 html_content = """<!DOCTYPE html>
 <html lang="en">
 
@@ -962,7 +962,7 @@ html_content = """<!DOCTYPE html>
 
           <p>This means club manufacturers cannot legally build a driver that produces faster center-face ball speeds than the models released two or three years ago. What changes annually is perimeter weighting, composite crown cosmetics, and aerodynamic marketing nomenclature.</p>
 
-          <p>By consulting our comprehensive guide to the <a href="/equipment/best-drivers/">best drivers across release cycles</a>, golfers can purchase previous-generation flagship heads at 40% to 60% discounts and invest a portion of the savings into an aftermarket shaft fitting—yielding superior dispersion compared to an un-fitted current-year $650 retail release.</p>
+          <p>By consulting our comprehensive guide on <a href="/news-2026-driver-fitting-guide-fitzpatrick">driver fitting and hardware upgrades</a>, golfers can purchase previous-generation flagship heads at 40% to 60% discounts and invest a portion of the savings into an aftermarket shaft fitting—yielding superior dispersion compared to an un-fitted current-year $650 retail release.</p>
 
           <blockquote class="pull">
             "A fitted shaft in a two-year-old driver head will beat an off-the-rack $650 current release ten times out of ten on launch monitor dispersion."
@@ -979,12 +979,12 @@ html_content = """<!DOCTYPE html>
             <li><strong>Ionomer / Surlyn:</strong> Produces low driver spin and exceptional scuff resistance, making it the ideal choice for high-handicappers seeking straight distance at under $22 per dozen.</li>
           </ul>
 
-          <p>Read our in-depth scientific breakdown on <a href="/balls/urethane-vs-surlyn/">urethane vs surlyn golf ball construction</a> to discover how matching your ball formulation to your actual clubhead speed eliminates unnecessary retail markup.</p>
+          <p>Read our in-depth analysis in the <a href="/news-2026-golf-ball-deals-buying-guide">golf ball deals and buying guide</a> to discover how matching your ball formulation to your actual clubhead speed eliminates unnecessary retail markup.</p>
 
           <h2>Pillar 3: Course Booking Strategy &amp; Twilight Optimization</h2>
           <p>Green fees account for the largest single share of a golfer's annual budget. Automated dynamic pricing algorithms now penalize golfers who book prime Saturday morning tee times with 30% to 50% surcharges.</p>
 
-          <p>Transitioning 18 of your annual rounds to late-afternoon windows yields massive compounding savings. Learn how to capitalize on regional municipal cards and off-peak rate tiers in our guide to <a href="/courses/twilight-golf-rates/">twilight golf rates and booking strategies</a>:</p>
+          <p>Transitioning 18 of your annual rounds to late-afternoon windows yields massive compounding savings. Learn how to capitalize on regional municipal cards and off-peak rate tiers in our deep dive into <a href="/news-2026-golf-deals-means-travel">golf deals data and booking strategies</a>:</p>
 
           <ol>
             <li><strong>The 3:30 PM Golden Window:</strong> Most championship public facilities drop their rates by 40% four hours before sunset, leaving ample daylight to finish 18 holes in the summer.</li>
@@ -1031,9 +1031,9 @@ html_content = """<!DOCTYPE html>
       <aside class="article-aside" aria-label="Sidebar">
         <div class="aside-box">
           <div class="ab-head">Equipment &amp; Guides</div>
-          <a class="aside-item" href="/equipment/best-drivers/"><span class="mono">GUIDE · HARDWARE</span>Best Drivers: The Release Cycle Analysis</a>
-          <a class="aside-item" href="/balls/urethane-vs-surlyn/"><span class="mono">ANALYSIS · BALLS</span>Urethane vs Surlyn: The Spin &amp; Cost Data</a>
-          <a class="aside-item" href="/courses/twilight-golf-rates/"><span class="mono">RATES · COURSES</span>Twilight Golf Rates: Save 40% on Green Fees</a>
+          <a class="aside-item" href="/news-2026-driver-fitting-guide-fitzpatrick"><span class="mono">GUIDE · HARDWARE</span>Driver Fitting: Save Strokes &amp; Money</a>
+          <a class="aside-item" href="/news-2026-golf-ball-deals-buying-guide"><span class="mono">ANALYSIS · BALLS</span>Golf Ball Deals: Buying Guide &amp; Tests</a>
+          <a class="aside-item" href="/news-2026-golf-deals-means-travel"><span class="mono">RATES · DEALS</span>Golf Deals Search Data &amp; Travel</a>
         </div>
 
         <div class="aside-box">
@@ -1050,20 +1050,20 @@ html_content = """<!DOCTYPE html>
       <div class="wrap">
         <h2 id="related-heading"><span class="idx">REL</span>Related Stories</h2>
         <div class="rel-grid">
-          <a class="rel-card" href="/equipment/best-drivers/">
+          <a class="rel-card" href="/news-2026-driver-fitting-guide-fitzpatrick">
             <div class="cat">Equipment Guide</div>
-            <h3>The Best Drivers Guide: Why Previous-Gen Hardware Wins</h3>
+            <h3>Driver Fitting Guide: Why Proper Specs Beat New Models</h3>
             <div class="d">RAWGOLF HARDWARE LAB</div>
           </a>
-          <a class="rel-card" href="/balls/urethane-vs-surlyn/">
+          <a class="rel-card" href="/news-2026-golf-ball-deals-buying-guide">
             <div class="cat">Ball Testing</div>
-            <h3>Urethane vs Surlyn: Which Ball Actually Fits Your Swing Speed?</h3>
+            <h3>Golf Ball Deals: The Real Truth on Covers and Pricing</h3>
             <div class="d">EQUIPMENT DESK</div>
           </a>
-          <a class="rel-card" href="/courses/twilight-golf-rates/">
-            <div class="cat">Course Access</div>
-            <h3>Twilight Rates Explained: How to Play Championship Layouts for Less</h3>
-            <div class="d">COURSE STRATEGY</div>
+          <a class="rel-card" href="/news-2026-golf-deals-means-travel">
+            <div class="cat">Market Data</div>
+            <h3>Golf Deals in America: Why Travel Dominates Search</h3>
+            <div class="d">RAW DATA DESK</div>
           </a>
         </div>
       </div>
@@ -1214,4 +1214,4 @@ with open("equipment/golf-deals-equipment-tee-times-guide.html", "w", encoding="
 with open("golf-deals-equipment-tee-times-guide.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
-print("Created equipment/golf-deals-equipment-tee-times-guide.html and golf-deals-equipment-tee-times-guide.html")
+print("Updated equipment/golf-deals-equipment-tee-times-guide.html and golf-deals-equipment-tee-times-guide.html with valid routes.")
