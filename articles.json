@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 264,
+  "count": 265,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -59,6 +59,20 @@
       "keywords": "scottie scheffler bmw championship bellerive hand foot mouth disease hfmd blisters grip fedex cup tour championship east lake cameron young bennett illness",
       "category_source": "search-index",
       "section": "PGA TOUR"
+    },
+    {
+      "canonical": "/news-2026-liv-golf-pif-withdrawal-season-end",
+      "alias_of": "",
+      "slug": "news-2026-liv-golf-pif-withdrawal-season-end",
+      "url": "/news-2026-liv-golf-pif-withdrawal-season-end",
+      "title": "LIV Golf ends 2026 season early following PIF withdrawal",
+      "excerpt": "LIV Golf packed up its 2026 season two weeks early. The cancellation of the Team Championship traces to PIF's April withdrawal. See the full timeline.",
+      "category": "LIV GOLF",
+      "date": "2026-08-24",
+      "image": "/public/liv-golf-indianapolis-2026.webp",
+      "keywords": "liv golf pif withdrawal season end team championship cancelled michigan indianapolis michael la sasso jon rahm scott oneil private equity term sheet",
+      "category_source": "search-index",
+      "section": "LIV GOLF"
     },
     {
       "canonical": "/news-2026-jon-rahm-liv-golf-future",
