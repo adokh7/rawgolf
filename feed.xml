@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>2026 U.S. Presidents Cup team standings: Scheffler and Young secure automatic spots</title>
+      <link>https://www.golfraw.com/news-2026-us-presidents-cup-team-standings</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-us-presidents-cup-team-standings</guid>
+      <pubDate>Mon, 24 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>2026 U.S. Presidents Cup team standings finalized 24 August. Collin Morikawa beat Chris Gotterup by 79 points. See who made the team and who needs a pick.</description>
+      <enclosure url="https://www.golfraw.com/public/2026-presidents-cup-scheffler-young.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Scottie Scheffler battles hand-foot-and-mouth disease at Bellerive</title>
       <link>https://www.golfraw.com/news-2026-scottie-scheffler-hand-foot-and-mouth-disease</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-scottie-scheffler-hand-foot-and-mouth-disease</guid>
@@ -359,15 +368,6 @@
       <category>NEWS</category>
       <description>Jessica Bang, an 18-year-old Australian golfer in her rookie season on the WPGA Tour of Australasia, has died in Bangkok after suffering a brain.</description>
       <enclosure url="https://www.golfraw.com/public/jessica-bang-2008-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Morikawa Shot 61 at the Travelers and Lost by One</title>
-      <link>https://www.golfraw.com/blog/morikawa-61-travelers-championship-2026</link>
-      <guid isPermaLink="true">https://www.golfraw.com/blog/morikawa-61-travelers-championship-2026</guid>
-      <pubDate>Sat, 15 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Collin Morikawa&#x27;s 9-under 61 tied his career low and left him one shot out. Hovland beat Scheffler in a Monday playoff. What actually happened, verified.</description>
-      <enclosure url="https://www.golfraw.com/public/collin-morikawa-travelers-championship-2026-final-round.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>

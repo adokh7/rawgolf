@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 263,
+  "count": 264,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,20 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-us-presidents-cup-team-standings",
+      "alias_of": "",
+      "slug": "news-2026-us-presidents-cup-team-standings",
+      "url": "/news-2026-us-presidents-cup-team-standings",
+      "title": "2026 U.S. Presidents Cup team standings: Scheffler and Young secure automatic spots",
+      "excerpt": "2026 U.S. Presidents Cup team standings finalized 24 August. Collin Morikawa beat Chris Gotterup by 79 points. See who made the team and who needs a pick.",
+      "category": "PGA TOUR",
+      "date": "2026-08-24",
+      "image": "/public/2026-presidents-cup-scheffler-young.webp",
+      "keywords": "2026 us presidents cup team standings scottie scheffler collin morikawa chris gotterup automatic spots jim furyk cameron young",
+      "category_source": "search-index",
+      "section": "PGA TOUR"
+    },
     {
       "canonical": "/news-2026-scottie-scheffler-hand-foot-and-mouth-disease",
       "alias_of": "",
