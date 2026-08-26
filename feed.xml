@@ -10,10 +10,19 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>LIV Golf players return to PGA Tour: what the rules say</title>
+      <link>https://www.golfraw.com/news-2026-liv-golf-players-return-pga-tour-rules</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-players-return-pga-tour-rules</guid>
+      <pubDate>Wed, 26 Aug 2026 16:30:00 +0000</pubDate>
+      <category>LIV GOLF</category>
+      <description>LIV Golf players return to PGA Tour? The route closed on 2 February 2026. Brian Rolapp restated the terms at East Lake, while LIV's money trail raises a separate 2027 question.</description>
+      <enclosure url="https://www.golfraw.com/public/liv-golf-players-return-pga-tour-rules.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Scheffler confirms 95 percent recovery heading into Tour Championship</title>
       <link>https://www.golfraw.com/news-2026-scheffler-illness-update-95-percent-recovered</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-scheffler-illness-update-95-percent-recovered</guid>
-      <pubDate>Wed, 26 Aug 2026 15:45:00 +0000</pubDate>
+      <pubDate>Wed, 26 Aug 2026 09:00:00 +0000</pubDate>
       <category>PGA TOUR</category>
       <description>Scottie Scheffler illness update: world No. 1 says he is 95 percent recovered from hand, foot and mouth disease. Why his BMW Championship T12 looked worse than it was.</description>
       <enclosure url="https://www.golfraw.com/public/scheffler-illness-tour-championship-2026.webp" type="image/webp"/>
@@ -359,24 +368,6 @@
       <category>PGA TOUR</category>
       <description>Johnson Wagner wants Brian Harman back on his old putter. It&amp;#x27;s the third case in a fortnight of the same trap — and Scheffler showed the way out of it.</description>
       <enclosure url="https://www.golfraw.com/public/brian-harman-johnson-wagner-putter-struggle-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>The Most Welcoming Golf in America Happens</title>
-      <link>https://www.golfraw.com/charity-golf-scrambles-access-guide</link>
-      <guid isPermaLink="true">https://www.golfraw.com/charity-golf-scrambles-access-guide</guid>
-      <pubDate>Sun, 16 Aug 2026 09:00:00 +0000</pubDate>
-      <category>GUIDES</category>
-      <description>No handicap, all abilities welcome, private courses open for the day. Why charity golf tournaments are the easiest way into the game — and how to find one.</description>
-      <enclosure url="https://www.golfraw.com/public/charity-golf-scrambles-access-guide-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Thursday He Took 33 Putts and Shot 68. Friday</title>
-      <link>https://www.golfraw.com/news-2026-scottie-scheffler-61-tpc-southwind-course-record</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-scottie-scheffler-61-tpc-southwind-course-record</guid>
-      <pubDate>Sat, 15 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Scheffler tied the TPC Southwind course record with a 61 and leads by three. The seven-shot swing from Thursday was almost entirely on the greens.</description>
-      <enclosure url="https://www.golfraw.com/public/scottie-scheffler-61-tpc-southwind-course-record-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>

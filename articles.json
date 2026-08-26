@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 268,
+  "count": 269,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,20 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-liv-golf-players-return-pga-tour-rules",
+      "alias_of": "",
+      "slug": "news-2026-liv-golf-players-return-pga-tour-rules",
+      "url": "/news-2026-liv-golf-players-return-pga-tour-rules",
+      "title": "LIV Golf players return to PGA Tour: what the rules say",
+      "excerpt": "LIV Golf players return to PGA Tour? The route closed on 2 February 2026. Brian Rolapp restated the terms at East Lake, while LIV's money trail raises a separate 2027 question.",
+      "category": "LIV GOLF",
+      "date": "2026-08-26",
+      "image": "/public/liv-golf-players-return-pga-tour-rules.webp",
+      "keywords": "LIV Golf players return to PGA Tour, Returning Member Program, Brian Rolapp, PGA Tour, LIV Golf 2027, Brooks Koepka, Jon Rahm, Bryson DeChambeau, Cameron Smith",
+      "category_source": "search-index",
+      "section": "LIV GOLF"
+    },
     {
       "canonical": "/news-2026-scheffler-illness-update-95-percent-recovered",
       "alias_of": "",

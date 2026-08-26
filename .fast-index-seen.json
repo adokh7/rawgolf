@@ -24,6 +24,7 @@
   "/jean-van-de-velde-1999-open",
   "/jessica-bang-2008-2026",
   "/joaquin-niemann-us-open-penalty",
+  "/liv-golf-pga-tour-return",
   "/lpga-2026-kpmg-prize-money-12m",
   "/lpga-2026-nelly-korda-hazeltine-preview",
   "/match-play",
@@ -175,6 +176,7 @@
   "/news-2026-ryan-fox-open-22-seconds",
   "/news-2026-ryan-stefko-niu-golf-coach",
   "/news-2026-ryder-cup-qualifying-schedule",
+  "/news-2026-scheffler-illness-update-95-percent-recovered",
   "/news-2026-scheffler-mcilroy-birkdale-press-conference",
   "/news-2026-scheffler-mcilroy-bmw-championship-tee-times",
   "/news-2026-scheffler-sick-bmw-championship",
@@ -266,8 +268,10 @@
   "/why-us-open-is-hardest-major"
  ],
  "fingerprints": {
+  "/liv-golf-pga-tour-return": "59c0055021ea6b17845b462009746e1028c54034a9ed1355758f3ec11d2c7fbd",
+  "/news-2026-scheffler-illness-update-95-percent-recovered": "d632737b20d384fc83e61bd9f1a1a0ca7a2c48604f9ff4763a4e0a6cb0d36064",
   "/news-2026-tour-championship-odds-even-par": "b7015a0fe0a75480bf5a5e4d37d4f3b48c124547d824f62a040a9ff1cdb56d11",
-  "/news-2026-scottie-scheffler-tour-championship-odds": "84f93910d5b29c3bf8646a1191868e07d865597c1da0a88cb7cef8a2c57a270d",
+  "/news-2026-scottie-scheffler-tour-championship-odds": "c5bac215b0d31bdc1632d10fe24b943bb2740a91f7e80f763ef3bec2ddb384db",
   "/news-2026-us-presidents-cup-team-standings": "a1e670ae8a21a2521963e58738ad9c07fee0f7fc583f85dd027590150dd5a76d",
   "/news-2026-scottie-scheffler-hand-foot-and-mouth-disease": "c069204627b9816709d642ad3645e14834ec33d740846f2b3a2d1d9955319faf",
   "/news-2026-liv-golf-pif-withdrawal-season-end": "cad355e58e100a6029c463cd804e6d5ede0673f54a4f4d629c43f5e753649d19",
