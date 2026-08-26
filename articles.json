@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 266,
+  "count": 267,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -43,6 +43,20 @@
       "date": "2026-08-26",
       "image": "/public/tour-championship-2026-east-lake-odds.webp",
       "keywords": "2026 Tour Championship odds, East Lake Golf Club, FedExCup, PGA Tour betting math, implied probability",
+      "category_source": "search-index",
+      "section": "TOURNAMENTS"
+    },
+    {
+      "canonical": "/news-2026-scottie-scheffler-tour-championship-odds",
+      "alias_of": "",
+      "slug": "news-2026-scottie-scheffler-tour-championship-odds",
+      "url": "/news-2026-scottie-scheffler-tour-championship-odds",
+      "title": "Scottie Scheffler's 2026 Tour Championship odds: +310",
+      "excerpt": "Scottie Scheffler is +310 at East Lake. We convert the 2026 Tour Championship odds into a break-even win rate and price the other 29 players against it.",
+      "category": "PGA TOUR",
+      "date": "2026-08-26",
+      "image": "/public/scottie-scheffler-tour-championship-2026-odds.webp",
+      "keywords": "Scottie Scheffler 2026 Tour Championship odds, +310 implied probability, East Lake Golf Club, FedExCup, PGA Tour betting math",
       "category_source": "search-index",
       "section": "TOURNAMENTS"
     },
