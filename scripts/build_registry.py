@@ -25,7 +25,7 @@ RULES = [
 MAJOR = (r'us-open|the-open|open-championship|birkdale|masters|pga-championship|evian|'
          r'aig-womens-open|womens-open|lytham|solheim|ryder-cup|kpmg|shinnecock|sahalee|'
          r'major|course-guide|course-history|scorecard|yardage|setup|renovation|restoration|'
-         r'renaissance-club|teugega|donald-ross|venue')
+         r'renaissance-club|teugega|donald-ross|venue|tour-championship-odds-even-par')
 
 def section(a):
     """Which category page owns this article."""

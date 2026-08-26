@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 265,
+  "count": 266,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,20 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-tour-championship-odds-even-par",
+      "alias_of": "",
+      "slug": "news-2026-tour-championship-odds-even-par",
+      "url": "/news-2026-tour-championship-odds-even-par",
+      "title": "2026 Tour Championship odds: what an even-par field does to the board",
+      "excerpt": "All 30 players start level at East Lake. We turn the 2026 Tour Championship odds into implied probability and show the arithmetic before Thursday.",
+      "category": "PGA TOUR",
+      "date": "2026-08-26",
+      "image": "/public/tour-championship-2026-east-lake-odds.webp",
+      "keywords": "2026 Tour Championship odds, East Lake Golf Club, FedExCup, PGA Tour betting math, implied probability",
+      "category_source": "search-index",
+      "section": "TOURNAMENTS"
+    },
     {
       "canonical": "/news-2026-us-presidents-cup-team-standings",
       "alias_of": "",

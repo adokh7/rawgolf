@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 24 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>2026 Tour Championship odds: what an even-par field does to the board</title>
+      <link>https://www.golfraw.com/news-2026-tour-championship-odds-even-par</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-odds-even-par</guid>
+      <pubDate>Wed, 26 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>All 30 players start level at East Lake. We turn the 2026 Tour Championship odds into implied probability and show the arithmetic before Thursday.</description>
+      <enclosure url="https://www.golfraw.com/public/tour-championship-2026-east-lake-odds.webp" type="image/webp"/>
+    </item>
     <item>
       <title>2026 U.S. Presidents Cup team standings: Scheffler and Young secure automatic spots</title>
       <link>https://www.golfraw.com/news-2026-us-presidents-cup-team-standings</link>
@@ -359,15 +368,6 @@
       <category>LIV GOLF</category>
       <description>Every outlet reported LIV secured an investor. Fried Egg Golf says it&amp;#x27;s a line of credit — debt, which is what broke LIV in the first place.</description>
       <enclosure url="https://www.golfraw.com/public/liv-golf-line-of-credit-debt-rahm-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Collin Morikawa Shot 61 at the Travelers and Still</title>
-      <link>https://www.golfraw.com/morikawa-61-travelers-championship-2026</link>
-      <guid isPermaLink="true">https://www.golfraw.com/morikawa-61-travelers-championship-2026</guid>
-      <pubDate>Sat, 15 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Collin Morikawa&amp;#x27;s 9-under 61 tied his career low and left him one shot out. Hovland beat Scheffler in a Monday playoff. What actually happened, verified.</description>
-      <enclosure url="https://www.golfraw.com/public/collin-morikawa-travelers-championship-2026-final-round.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
