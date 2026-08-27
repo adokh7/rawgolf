@@ -209,7 +209,43 @@ class ArticleSchemaTests(unittest.TestCase):
             self.assertIn(slug, (ROOT / generated).read_text(encoding="utf-8"), generated)
 
 
+    def test_brooks_koepka_motor_city_tgl_page_has_clean_news_schema(self):
+        target = ROOT / "news-2026-brooks-koepka-motor-city-golf-club-tgl.html"
+        self.assertTrue(target.exists(), "Brooks Koepka TGL article is missing")
+        parser = JsonLdParser()
+        parser.feed(target.read_text(encoding="utf-8"))
+        nodes = [node for block in parser.blocks for node in objects(json.loads(block))]
+        self.assertFalse(any(node.get("@type") == "SportsEvent" for node in nodes))
+        article = next(node for node in nodes if node.get("@type") == "NewsArticle")
+        self.assertEqual(
+            "https://www.golfraw.com/news-2026-brooks-koepka-motor-city-golf-club-tgl#article",
+            article.get("@id"),
+        )
+        required = {
+            "headline", "description", "image", "datePublished", "dateModified",
+            "author", "publisher", "mainEntityOfPage", "articleSection",
+        }
+        self.assertEqual(set(), required - article.keys())
+        self.assertTrue(article["image"]["url"].endswith("brooks-koepka-motor-city-golf-club-tgl.webp"))
+        html = target.read_text(encoding="utf-8")
+        self.assertIn("Koepka Joins Detroit's TGL Team. Catch: No Detroit | GOLFRAW", html)
+        self.assertIn("Motor City Golf Club", html)
+        self.assertIn("SoFi Center", html)
+        self.assertIn("BROOKS KOEPKA WAS NAMED THE FIRST PLAYER FOR TGL'S MOTOR CITY GOLF CLUB AHEAD OF ITS 2027 DEBUT. PHOTO: RAWGOLF", html)
+
+    def test_brooks_koepka_motor_city_tgl_page_is_registered(self):
+        slug = "news-2026-brooks-koepka-motor-city-golf-club-tgl"
+        registry = json.loads((ROOT / "articles.json").read_text(encoding="utf-8"))
+        record = next((a for a in registry["articles"] if a.get("slug") == slug), None)
+        self.assertIsNotNone(record, "Brooks Koepka TGL article is missing from articles.json")
+        self.assertEqual("PGA TOUR", record.get("category"))
+        self.assertEqual("PGA TOUR", record.get("section"))
+        for generated in ("news.html", "pga-tour.html", "search.html", "sitemap.xml"):
+            self.assertIn(slug, (ROOT / generated).read_text(encoding="utf-8"), generated)
+
+
 if __name__ == "__main__":
     unittest.main()
+
 
 
