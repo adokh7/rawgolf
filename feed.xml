@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Henrik Stenson PGA Tour Champions debut: the 1-year clock</title>
+      <link>https://www.golfraw.com/news-2026-henrik-stenson-pga-tour-champions-debut</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-henrik-stenson-pga-tour-champions-debut</guid>
+      <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
+      <category>LIV GOLF</category>
+      <description>He didn&#x27;t leave LIV. LIV dropped him. Here is the real date his ban ended, where he tees it up this week, and the one thing nobody can confirm yet.</description>
+      <enclosure url="https://www.golfraw.com/public/henrik-stenson-pga-tour-champions-debut-2026.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Good Good Golf Ad Backlash: What&#x27;s Actually Been Pulled</title>
       <link>https://www.golfraw.com/news-2026-good-good-golf-ad-backlash</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-good-good-golf-ad-backlash</guid>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>McIlroy never broke par at Southwind and finished 66th. He also got exactly what he came for — and the conversations with the Tour&amp;#x27;s CEO explain why.</description>
       <enclosure url="https://www.golfraw.com/public/rory-mcilroy-66th-finish-memphis-pga-tour-membership-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Maverick McNealy Lost His Season in an Airport</title>
-      <link>https://www.golfraw.com/news-2026-maverick-mcnealy-fedexcup-top-50-bubble</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-maverick-mcnealy-fedexcup-top-50-bubble</guid>
-      <pubDate>Sun, 16 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Maverick McNealy lost his season in an airport two years ago, projected 50th when he finished. He&amp;#x27;s back on the same bubble at the same course, by four.</description>
-      <enclosure url="https://www.golfraw.com/public/maverick-mcnealy-fedexcup-top-50-bubble-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>

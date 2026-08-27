@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 273,
+  "count": 274,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,20 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-henrik-stenson-pga-tour-champions-debut",
+      "alias_of": "",
+      "slug": "news-2026-henrik-stenson-pga-tour-champions-debut",
+      "url": "/news-2026-henrik-stenson-pga-tour-champions-debut",
+      "title": "Henrik Stenson PGA Tour Champions debut: the 1-year clock",
+      "excerpt": "He didn't leave LIV. LIV dropped him. Here is the real date his ban ended, where he tees it up this week, and the one thing nobody can confirm yet.",
+      "category": "LIV GOLF",
+      "date": "2026-08-27",
+      "image": "/public/henrik-stenson-pga-tour-champions-debut-2026.webp",
+      "keywords": "Henrik Stenson, Henrik Stenson PGA Tour Champions, PGA Tour Champions, The Ally Challenge, Warwick Hills, Grand Blanc Michigan, LIV Golf, Henrik Stenson LIV Golf ban, Henrik Stenson suspension, Ryder Cup captaincy, Luke Donald, Charles Schwab Cup, DP World Tour reinstatement, senior golf, latest news",
+      "category_source": "override",
+      "section": "LIV GOLF"
+    },
     {
       "canonical": "/news-2026-good-good-golf-ad-backlash",
       "alias_of": "",
