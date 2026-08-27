@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>2026 Tour Championship prize money payout: $355K last</title>
+      <link>https://www.golfraw.com/news-2026-tour-championship-prize-money-payout</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-prize-money-payout</guid>
+      <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Every spot from $10 million down to $355,000, plus the reason two different payout tables are circulating and which one the Tour actually publishes.</description>
+      <enclosure url="https://www.golfraw.com/public/tour-championship-2026-prize-money-payout.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>Henrik Stenson PGA Tour Champions debut: the 1-year clock</title>
       <link>https://www.golfraw.com/news-2026-henrik-stenson-pga-tour-champions-debut</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-henrik-stenson-pga-tour-champions-debut</guid>
@@ -359,15 +368,6 @@
       <category>AMATEUR GOLF</category>
       <description>Jack Whaley survived a 16-for-11 playoff just to make the bracket at Merion. Jay Leng Jr. was 2-6-2 in college match play.</description>
       <enclosure url="https://www.golfraw.com/public/jack-whaley-jay-leng-us-amateur-final-merion-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>He Finished 66th and Called It Encouraging</title>
-      <link>https://www.golfraw.com/news-2026-rory-mcilroy-66th-finish-pga-tour-membership</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-rory-mcilroy-66th-finish-pga-tour-membership</guid>
-      <pubDate>Sun, 16 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>McIlroy never broke par at Southwind and finished 66th. He also got exactly what he came for — and the conversations with the Tour&amp;#x27;s CEO explain why.</description>
-      <enclosure url="https://www.golfraw.com/public/rory-mcilroy-66th-finish-memphis-pga-tour-membership-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>

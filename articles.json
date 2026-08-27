@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 274,
+  "count": 275,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,20 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-tour-championship-prize-money-payout",
+      "alias_of": "",
+      "slug": "news-2026-tour-championship-prize-money-payout",
+      "url": "/news-2026-tour-championship-prize-money-payout",
+      "title": "2026 Tour Championship prize money payout: $355K last",
+      "excerpt": "Every spot from $10 million down to $355,000, plus the reason two different payout tables are circulating and which one the Tour actually publishes.",
+      "category": "PGA TOUR",
+      "date": "2026-08-27",
+      "image": "/public/tour-championship-2026-prize-money-payout.webp",
+      "keywords": "Tour Championship prize money, 2026 Tour Championship payout, Tour Championship purse, East Lake prize money, 30th place payout, $355,000, FedExCup bonus pool, Scottie Scheffler, PGA Tour prize money, tournaments, latest news",
+      "category_source": "override",
+      "section": "TOURNAMENTS"
+    },
     {
       "canonical": "/news-2026-henrik-stenson-pga-tour-champions-debut",
       "alias_of": "",
