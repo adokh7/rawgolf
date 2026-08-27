@@ -376,6 +376,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -716,6 +722,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -770,8 +778,8 @@
 
         <figure class="lead-img">
           <img src="/public/maverick-mcnealy-fedexcup-top-50-bubble-2026.webp" alt="Maverick McNealy FedExCup Top 50 Bubble 2026" srcset="/public/maverick-mcnealy-fedexcup-top-50-bubble-2026-400.webp 400w, /public/maverick-mcnealy-fedexcup-top-50-bubble-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async" loading="eager" fetchpriority="high">
+          <figcaption>MAVERICK MCNEALY SITS PRECARIOUSLY AT 50TH IN THE LIVE FEDEXCUP STANDINGS AT TPC SOUTHWIND. PHOTO: GOLFRAW</figcaption>
         </figure>
-        <figcaption>MAVERICK MCNEALY SITS PRECARIOUSLY AT 50TH IN THE LIVE FEDEXCUP STANDINGS AT TPC SOUTHWIND. PHOTO: GOLFRAW</figcaption>
 
         <div class="article-body">
           <p><strong>Quick summary:</strong> Two years after losing his spot in the FedExCup top 50 while sitting at an airport departure gate, Maverick McNealy is right back on the razor's edge. Entering Sunday's final round at TPC Southwind, McNealy is projected 50th by just 3.8 points—battling for an 18-month guarantee into every PGA Tour signature event.</p>

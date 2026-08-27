@@ -376,6 +376,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -716,6 +722,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -770,8 +778,8 @@
 
         <figure class="lead-img">
           <img src="/public/rory-mcilroy-target-awareness-swing-mechanics-2026.webp" alt="Rory McIlroy Swing Mechanics and Target Awareness 2026" srcset="/public/rory-mcilroy-target-awareness-swing-mechanics-2026-400.webp 400w, /public/rory-mcilroy-target-awareness-swing-mechanics-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async" loading="eager" fetchpriority="high">
+          <figcaption>MCILROY PINPOINTS THE DELICATE BALANCE BETWEEN MECHANICAL WORK AND EXTERNAL TARGET FOCUS. PHOTO: GOLFRAW</figcaption>
         </figure>
-        <figcaption>MCILROY PINPOINTS THE DELICATE BALANCE BETWEEN MECHANICAL WORK AND EXTERNAL TARGET FOCUS. PHOTO: GOLFRAW</figcaption>
 
         <div class="article-body">
           <p><strong>Quick summary:</strong> After laboring to a 66th-place finish at TPC Southwind without breaking par once, Rory McIlroy highlighted the core danger of mechanical over-analysis: when golfers over-focus on their swing technique, they lose external target awareness. Heading into the BMW Championship at Bellerive with coach Michael Bannon, reconnecting to target visualization is his primary mission.</p>

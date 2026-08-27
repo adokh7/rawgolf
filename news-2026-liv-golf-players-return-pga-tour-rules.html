@@ -442,6 +442,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -921,6 +927,8 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
     }
+  
+    .lead-img figcaption { margin-top: 9px }
   </style>
 </head>
 
@@ -973,8 +981,8 @@
 
         <figure class="lead-img">
           <img src="/public/liv-golf-players-return-pga-tour-rules.webp" alt="PGA Tour CEO Brian Rolapp addressing the media at East Lake ahead of the 2026 Tour Championship." width="1200" height="675">
+          <figcaption>PGA TOUR CEO BRIAN ROLAPP RESTATED AT EAST LAKE THAT THE RETURNING MEMBER PROGRAM IS CLOSED. PHOTO: GOLFRAW ARCHIVE</figcaption>
         </figure>
-        <figcaption>PGA TOUR CEO BRIAN ROLAPP RESTATED AT EAST LAKE THAT THE RETURNING MEMBER PROGRAM IS CLOSED. PHOTO: GOLFRAW ARCHIVE</figcaption>
 
         <div class="article-body">
           <h2>Key Takeaways</h2>
@@ -1284,9 +1292,9 @@
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=4" defer></script>
-  <script src="/lib/locker/store.js?v=4" defer></script>
-  <script src="/lib/locker/drawer.js?v=5" defer></script>
+  <script src="/lib/locker/schema.js?v=6" defer></script>
+  <script src="/lib/locker/store.js?v=6" defer></script>
+  <script src="/lib/locker/drawer.js?v=6" defer></script>
   <!-- LOCKER:END -->
 
   <script>

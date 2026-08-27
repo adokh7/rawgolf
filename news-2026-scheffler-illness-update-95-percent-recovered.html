@@ -426,6 +426,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -815,6 +821,8 @@
     html, body { max-width: 100%; overflow-x: clip; }
     img, video, iframe { max-width: 100%; }
     table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 </head>
 
@@ -867,8 +875,8 @@
 
         <figure class="lead-img">
           <img src="/public/scheffler-illness-tour-championship-2026.webp" alt="Scottie Scheffler on the fairway at the BMW Championship 2026, competing while battling hand, foot and mouth disease" width="1200" height="675">
+          <figcaption>SCOTTIE SCHEFFLER CONFIRMED HE IS 95% RECOVERED AHEAD OF THE 2026 TOUR CHAMPIONSHIP. PHOTO: RAWGOLF</figcaption>
         </figure>
-        <figcaption>SCOTTIE SCHEFFLER CONFIRMED HE IS 95% RECOVERED AHEAD OF THE 2026 TOUR CHAMPIONSHIP. PHOTO: RAWGOLF</figcaption>
 
         <div class="article-body">
           <h2>Key Takeaways</h2>
@@ -1121,9 +1129,9 @@
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=4" defer></script>
-  <script src="/lib/locker/store.js?v=4" defer></script>
-  <script src="/lib/locker/drawer.js?v=5" defer></script>
+  <script src="/lib/locker/schema.js?v=6" defer></script>
+  <script src="/lib/locker/store.js?v=6" defer></script>
+  <script src="/lib/locker/drawer.js?v=6" defer></script>
   <!-- LOCKER:END -->
 
   <script>

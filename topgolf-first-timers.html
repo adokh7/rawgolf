@@ -340,6 +340,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -744,6 +750,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -794,8 +802,8 @@
 
         <figure class="lead-img">
           <img width="1536" height="1024" src="/public/topgolf-first-timers.webp" alt="First-timers hitting balls from a covered Topgolf bay toward the open target field" loading="eager" fetchpriority="high" srcset="/public/topgolf-first-timers-400.webp 400w, /public/topgolf-first-timers-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
+          <figcaption>TOPGOLF FOR FIRST-TIMERS. PHOTO: RAWGOLF</figcaption>
         </figure>
-        <figcaption>TOPGOLF FOR FIRST-TIMERS. PHOTO: RAWGOLF</figcaption>
 
         <div class="article-body">
           <p>You are about to go to Topgolf for the first time and your head is full of small questions. Is it heated? Do you need your own clubs? Can you go if it rains? How many people fit in a bay? You searched each one and got ten ad-stuffed pages in return.</p>

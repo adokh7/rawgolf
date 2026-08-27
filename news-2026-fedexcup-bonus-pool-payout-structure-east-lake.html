@@ -376,6 +376,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -716,6 +722,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -770,8 +778,8 @@
 
         <figure class="lead-img">
           <img src="/public/fedexcup-bonus-pool-tour-championship-purse-2026.webp" alt="FedExCup Bonus Pool and Tour Championship Payout Structure 2026" srcset="/public/fedexcup-bonus-pool-tour-championship-purse-2026-400.webp 400w, /public/fedexcup-bonus-pool-tour-championship-purse-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async" loading="eager" fetchpriority="high">
+          <figcaption>THE DECOUPLING OF THE $100M BONUS POOL FROM EAST LAKE RESHAPES PGA TOUR POSTSEASON PURSE DYNAMICS. PHOTO: GOLFRAW</figcaption>
         </figure>
-        <figcaption>THE DECOUPLING OF THE $100M BONUS POOL FROM EAST LAKE RESHAPES PGA TOUR POSTSEASON PURSE DYNAMICS. PHOTO: GOLFRAW</figcaption>
 
         <div class="article-body">
           <p><strong>Quick summary:</strong> In a major structural overhaul of the PGA Tour's postseason economics, the season-long $100 million FedExCup bonus pool is now finalized immediately following the BMW Championship. East Lake has been transformed into a standalone $40 million tournament with a $10 million winner's check, decoupling financial equity from the final trophy.</p>

@@ -375,6 +375,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -715,6 +721,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -769,8 +777,8 @@
 
         <figure class="lead-img">
           <img src="/public/scottie-scheffler-61-tpc-southwind-course-record-2026.webp" alt="Scottie Scheffler 61 TPC Southwind Course Record 2026"  loading="eager" fetchpriority="high" srcset="/public/scottie-scheffler-61-tpc-southwind-course-record-2026-400.webp 400w, /public/scottie-scheffler-61-tpc-southwind-course-record-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
+          <figcaption>SCOTTIE SCHEFFLER TIED THE TPC SOUTHWIND COURSE RECORD WITH A 61 IN ROUND 2. PHOTO: GOLFRAW</figcaption>
         </figure>
-        <figcaption>SCOTTIE SCHEFFLER TIED THE TPC SOUTHWIND COURSE RECORD WITH A 61 IN ROUND 2. PHOTO: GOLFRAW</figcaption>
 
         <div class="article-body">
           <p><strong>Quick summary:</strong> Scottie Scheffler produced a breathtaking putting turnaround on Friday at TPC Southwind, firing a career-low-tying 9-under 61 to match the 33-year-old course record and open a three-shot lead at the FedEx St. Jude Championship. After burning edges with 33 putts on Thursday, Scheffler recorded 13 one-putts in Round 2, gaining nearly four strokes on the greens alone.</p>

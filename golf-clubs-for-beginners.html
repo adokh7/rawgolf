@@ -332,6 +332,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -674,6 +680,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
   <!-- Google AdSense -->
 </head>
@@ -722,8 +730,8 @@
 
         <figure class="lead-img">
           <img width="1376" height="768" src="/public/beginner-golf-clubs-guide.webp" alt="A simple starter set of golf clubs on a golf course, illustrating what beginners actually need" loading="eager" fetchpriority="high" srcset="/public/beginner-golf-clubs-guide-400.webp 400w, /public/beginner-golf-clubs-guide-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
+          <figcaption>YOU DO NOT NEED A COMPLICATED BAG TO START. A FEW ESSENTIAL CLUBS ARE MORE THAN ENOUGH. PHOTO: RAWGOLF</figcaption>
         </figure>
-        <figcaption>YOU DO NOT NEED A COMPLICATED BAG TO START. A FEW ESSENTIAL CLUBS ARE MORE THAN ENOUGH. PHOTO: RAWGOLF</figcaption>
 
         <div class="article-body">
           <p>You walk into a golf store as a beginner and the wall hits you. Hundreds of clubs, shiny drivers, full sets with fourteen clubs, price tags that make your stomach drop. A staff member tells you that you need all of it, plus a fitting, plus the latest model. You leave confused, broke, or empty-handed.</p>

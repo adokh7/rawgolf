@@ -384,6 +384,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -724,6 +730,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -778,8 +786,8 @@
 
         <figure class="lead-img">
           <img src="/public/collin-morikawa-travelers-championship-2026-final-round.webp" alt="Collin Morikawa playing his final round at the 2026 Travelers Championship at TPC River Highlands" srcset="/public/collin-morikawa-travelers-championship-2026-final-round-400.webp 400w, /public/collin-morikawa-travelers-championship-2026-final-round-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async" loading="eager" fetchpriority="high">
+          <figcaption>COLLIN MORIKAWA PLAYING HIS FINAL ROUND AT THE 2026 TRAVELERS CHAMPIONSHIP AT TPC RIVER HIGHLANDS. PHOTO: GOLFRAW</figcaption>
         </figure>
-        <figcaption>COLLIN MORIKAWA PLAYING HIS FINAL ROUND AT THE 2026 TRAVELERS CHAMPIONSHIP AT TPC RIVER HIGHLANDS. PHOTO: GOLFRAW</figcaption>
 
         <div class="article-body">
           <p><strong>Quick summary:</strong> Collin Morikawa closed the 2026 Travelers Championship with a breathtaking 9-under 61 on Sunday, posting nine birdies, zero bogeys, and tying his career low on the PGA Tour. Charging from eight shots back to set the clubhouse target at 20-under, it ultimately fell one stroke short of victory as Viktor Hovland defeated Scottie Scheffler in a Monday sudden-death playoff.</p>

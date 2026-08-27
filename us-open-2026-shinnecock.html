@@ -334,6 +334,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -685,6 +691,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
   <!-- Google AdSense -->
 </head>
@@ -733,8 +741,8 @@
 
         <figure class="lead-img">
           <img width="2752" height="1536" src="./public/us-open-2026-shinnecock.webp" alt="Shinnecock Hills golf course setup for the 2026 U.S. Open major tournament" loading="eager" fetchpriority="high" decoding="async">
+          <figcaption>THE TOUGHEST TEST IN GOLF RETURNS TO SHINNECOCK HILLS. PHOTO/GRAPHIC: RAWGOLF</figcaption>
         </figure>
-        <figcaption>THE TOUGHEST TEST IN GOLF RETURNS TO SHINNECOCK HILLS. PHOTO/GRAPHIC: RAWGOLF</figcaption>
 
         <div class="article-body">
           <p>The 2026 U.S. Open starts Thursday, June 18, at Shinnecock Hills in Southampton, New York. You will hear a hundred takes this week, most of them loud and most of them empty. So let me give you the honest version. One storyline towers over the rest, the course is going to be brutal, and there is something here a normal player can actually use.</p>

@@ -340,6 +340,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -736,6 +742,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -785,8 +793,8 @@
 
         <figure class="lead-img">
           <img width="2752" height="1536" src="/public/greg-norman-1996-masters-vault.webp" alt="Greg Norman at the 1996 Masters" loading="eager" fetchpriority="high" srcset="/public/greg-norman-1996-masters-vault-400.webp 400w, /public/greg-norman-1996-masters-vault-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
+          <figcaption>GREG NORMAN 1996. PHOTO: RAWGOLF</figcaption>
         </figure>
-        <figcaption>GREG NORMAN 1996. PHOTO: RAWGOLF</figcaption>
 
         <div class="article-body">
           <p>On the Saturday night before the final round of the 1996 Masters, a veteran golf writer ran into Greg Norman and told him, in blunter words than we will use here, that not even he could mess this up now. Norman led by six. The green jacket he had chased his whole life looked, finally, like his.</p>

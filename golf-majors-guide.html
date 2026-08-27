@@ -160,7 +160,17 @@
     .byline b { color: var(--ink); font-weight: 600; }
     .update-badge { background: #E9EBE4; padding: 4px 10px; border: 1px solid #B9BFB2; font-weight: 600; display: inline-block; }
 
-    figure.lead-img { margin-bottom: 8px; border: 2px solid var(--ink); overflow: hidden; }
+    figure.lead-img {
+      margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
+      border: 2px solid var(--ink);
+      overflow: hidden; /* Keeps image strictly contained */
+    }
     figure.lead-img img { width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
     figcaption { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--grey); padding: 10px 0 0; letter-spacing: .04em; margin-bottom: 32px; text-transform: uppercase; }
 
@@ -207,6 +217,8 @@
       .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px; }
       .burger { display: block; }
     }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 </head>
 
@@ -250,8 +262,8 @@
 
         <figure class="lead-img">
           <img width="1408" height="768" fetchpriority="high" loading="eager" decoding="async" src="/public/golf-majors-guide.webp" alt="The four major golf trophies representing the Masters, PGA Championship, U.S. Open, and The Open" srcset="/public/golf-majors-guide-400.webp 400w, /public/golf-majors-guide-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px">
+          <figcaption>GOLF'S FOUR MAJORS. PHOTO: RAWGOLF</figcaption>
         </figure>
-        <figcaption>GOLF'S FOUR MAJORS. PHOTO: RAWGOLF</figcaption>
 
         <div class="article-body">
           <p>You are watching golf with a friend who knows it well, and they say something like "this is a major, it actually matters." You nod along, but inside you are lost. Which tournaments are the big ones? Why do some count more than others? What is this Grand Slam everyone mentions?</p>

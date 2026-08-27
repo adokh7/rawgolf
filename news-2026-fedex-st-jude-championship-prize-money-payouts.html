@@ -376,6 +376,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -716,6 +722,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -770,8 +778,8 @@
 
         <figure class="lead-img">
           <img src="/public/scottie-scheffler-fedex-st-jude-2026-prize-money.webp" alt="Scottie Scheffler 2026 FedEx St. Jude Championship Prize Money Payout" srcset="/public/scottie-scheffler-fedex-st-jude-2026-prize-money-400.webp 400w, /public/scottie-scheffler-fedex-st-jude-2026-prize-money-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async" loading="eager" fetchpriority="high">
+          <figcaption>SCOTTIE SCHEFFLER COLLECTS $3.6M AFTER AN EIGHT-SHOT TOUR DE FORCE AT TPC SOUTHWIND. PHOTO: GOLFRAW</figcaption>
         </figure>
-        <figcaption>SCOTTIE SCHEFFLER COLLECTS $3.6M AFTER AN EIGHT-SHOT TOUR DE FORCE AT TPC SOUTHWIND. PHOTO: GOLFRAW</figcaption>
 
         <div class="article-body">
           <p><strong>Quick summary:</strong> World No. 1 Scottie Scheffler captured the 2026 FedEx St. Jude Championship with a dominant eight-stroke margin at TPC Southwind, taking home $3,600,000 from the $20 million purse. With the win, Scheffler's career earnings reach $119.96 million—putting Tiger Woods' all-time career money mark directly within reach.</p>

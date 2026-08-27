@@ -376,6 +376,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -716,6 +722,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -770,8 +778,8 @@
 
         <figure class="lead-img">
           <img src="/public/club-championship-flights-divisions-explained-2026.webp" alt="Club Championship Divisions Flights and Formats Explained" srcset="/public/club-championship-flights-divisions-explained-2026-400.webp 400w, /public/club-championship-flights-divisions-explained-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async" loading="eager" fetchpriority="high">
+          <figcaption>THE CHAMPIONSHIP FLIGHT CONTESTED FROM THE TIPS DECIDES THE OFFICIAL CLUB CHAMPION. PHOTO: GOLFRAW</figcaption>
         </figure>
-        <figcaption>THE CHAMPIONSHIP FLIGHT CONTESTED FROM THE TIPS DECIDES THE OFFICIAL CLUB CHAMPION. PHOTO: GOLFRAW</figcaption>
 
         <div class="article-body">
           <p><strong>Quick summary:</strong> While amateur club championships award trophies across multiple divisions—including Senior, Super Senior, Net, and flight tiers—only the winner of the gross Championship Flight from the back tees claims the true club championship. Understanding the structure clarifies how amateur competitions are organized and verified.</p>

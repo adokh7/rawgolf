@@ -388,6 +388,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -728,6 +734,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -782,8 +790,8 @@
 
         <figure class="lead-img">
           <img src="/public/bmw-championship-tee-times-top-30-bubble-2026.webp" alt="BMW Championship 2026 Round 1 Tee Times and Top 30 Bubble Cut" srcset="/public/bmw-championship-tee-times-top-30-bubble-2026-400.webp 400w, /public/bmw-championship-tee-times-top-30-bubble-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async" loading="eager" fetchpriority="high">
+          <figcaption>ALL 50 PLAYERS PLAY 72 HOLES, BUT 40 PERCENT WILL BE ELIMINATED FROM THE TOUR CHAMPIONSHIP BY SUNDAY EVENING. PHOTO: GOLFRAW</figcaption>
         </figure>
-        <figcaption>ALL 50 PLAYERS PLAY 72 HOLES, BUT 40 PERCENT WILL BE ELIMINATED FROM THE TOUR CHAMPIONSHIP BY SUNDAY EVENING. PHOTO: GOLFRAW</figcaption>
 
         <div class="article-body">
           <h2>Key Takeaways</h2>

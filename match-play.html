@@ -175,7 +175,7 @@ img{max-width:100%;height:auto;display:block}
 }
 .byline b{color:var(--ink);font-weight:600}
 
-figure.lead-img{margin-bottom:8px;border:2px solid var(--ink)}
+figure.lead-img{margin-bottom:8px}.lead-img>img,.lead-img>.img-ph{display:block;border:2px solid var(--ink);overflow:hidden}
 .img-ph{
   aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(135deg,#1a1a1a,#3a1a10);font-size:60px;
@@ -324,7 +324,9 @@ img { max-width: 100%; height: auto; }
 html, body { max-width: 100%; overflow-x: clip; }
 img, video, iframe { max-width: 100%; }
 table { max-width: 100%; }
-</style>
+
+    .lead-img figcaption { margin-top: 10px }
+  </style>
 <!-- Google AdSense -->
 </head>
 <body>
@@ -377,8 +379,8 @@ table { max-width: 100%; }
         <div class="img-ph" role="img" aria-label="Two professional golfers glaring at each other during a match play tournament">
           <img width="1536" height="1024" src="./public/match-play-vs-stroke-play.webp" alt="Two professional golfers glaring at each other during a match play tournament" loading="eager" fetchpriority="high" decoding="async">
         </div>
+        <figcaption>IN STROKE PLAY, YOUR OPPONENT IS THE FIELD. IN MATCH PLAY, YOUR OPPONENT IS RIGHT THERE. PHOTO: RAWGOLF</figcaption>
       </figure>
-      <figcaption>IN STROKE PLAY, YOUR OPPONENT IS THE FIELD. IN MATCH PLAY, YOUR OPPONENT IS RIGHT THERE. PHOTO: RAWGOLF</figcaption>
 
       <div class="article-body">
         <p><b>Let's start with the facts.</b> The WGC-Dell Technologies Match Play — the only full-field match play event the PGA Tour runs — has never once been cited by a top-10 world-ranked player as their favourite event on the schedule. Ask them off the record why and the answer is always a variation of the same thing: <b>you can't control it.</b></p>

@@ -340,6 +340,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -736,6 +742,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -789,8 +797,8 @@
 
         <figure class="lead-img">
             <img src="/public/tpc-southwind-fedex-st-jude-championship-2026.webp" alt="TPC Southwind FedEx St Jude Championship 2026"  loading="eager" fetchpriority="high" srcset="/public/tpc-southwind-fedex-st-jude-championship-2026-400.webp 400w, /public/tpc-southwind-fedex-st-jude-championship-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
-        </figure>
-        <figcaption>TPC SOUTHWIND DEFENDS ITSELF WITH ZOYSIA FAIRWAYS AND WATER HAZARDS ON 11 HOLES.</figcaption>
+            <figcaption>TPC SOUTHWIND DEFENDS ITSELF WITH ZOYSIA FAIRWAYS AND WATER HAZARDS ON 11 HOLES.</figcaption>
+          </figure>
 
         <div class="article-body">
           <h2>What Makes TPC Southwind So Difficult</h2>

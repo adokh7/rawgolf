@@ -331,9 +331,14 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
-      overflow: hidden;
-      /* Keeps image strictly contained */
+      overflow: hidden; /* Keeps image strictly contained */
     }
 
     figure.lead-img img {
@@ -684,6 +689,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
   <!-- Google AdSense -->
 </head>
@@ -734,8 +741,8 @@
         <figure class="lead-img">
           <img width="2752" height="1536" src="./public/towel-drill-golf.webp"
             alt="Golfer doing towel drill to keep arms and body connected during swing" loading="eager" fetchpriority="high" decoding="async">
+          <figcaption>THE SIMPLEST PRACTICE ROUTINES TEND TO BE THE MOST EFFECTIVE. PHOTO/GRAPHIC: RAWGOLF</figcaption>
         </figure>
-        <figcaption>THE SIMPLEST PRACTICE ROUTINES TEND TO BE THE MOST EFFECTIVE. PHOTO/GRAPHIC: RAWGOLF</figcaption>
 
         <div class="article-body">
           <p>You search for golf swing drills and get a hundred of them. Towel drills, alignment sticks, weird arm

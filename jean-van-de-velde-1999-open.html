@@ -340,6 +340,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -736,6 +742,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -785,8 +793,8 @@
 
         <figure class="lead-img">
           <img width="2752" height="1536" src="/public/jean-van-de-velde-1999-open-vault.webp" alt="Jean van de Velde in the Barry Burn at the 1999 Open" loading="eager" fetchpriority="high" srcset="/public/jean-van-de-velde-1999-open-vault-400.webp 400w, /public/jean-van-de-velde-1999-open-vault-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
+          <figcaption>JEAN VAN DE VELDE IN THE BARRY BURN, 1999 OPEN. PHOTO: RAWGOLF</figcaption>
         </figure>
-        <figcaption>JEAN VAN DE VELDE IN THE BARRY BURN, 1999 OPEN. PHOTO: RAWGOLF</figcaption>
 
         <div class="article-body">
           <p>Jean van de Velde stood on the 18th tee at Carnoustie with a three-shot lead and one hole left to win the Open Championship. He could have made a six and still won. He could have made a double bogey, the kind of score that ruins your Saturday with friends, and still walked off as champion golfer of the year. Instead he made a seven, lost in a playoff, and walked into golf history for all the wrong reasons.</p>

@@ -427,8 +427,14 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
-      overflow: hidden;
+      overflow: hidden; /* Keeps image strictly contained */
     }
 
     figure.lead-img img {
@@ -831,6 +837,8 @@
     html, body { max-width: 100%; overflow-x: clip; }
     img, video, iframe { max-width: 100%; }
     table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 </head>
 
@@ -877,8 +885,8 @@
 
         <figure class="lead-img">
           <img src="/public/golf-tournaments-scoring-hero.webp" alt="Golf Tournament Rules, Formats, and Tax Guide" loading="eager" fetchpriority="high" srcset="/public/golf-tournaments-scoring-hero-400.webp 400w, /public/golf-tournaments-scoring-hero-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
+          <figcaption>OFFICIAL COMPETITIVE SCORING, HANDICAP ALLOWANCES, AND COMPLIANCE. PHOTO: RAWGOLF</figcaption>
         </figure>
-        <figcaption>OFFICIAL COMPETITIVE SCORING, HANDICAP ALLOWANCES, AND COMPLIANCE. PHOTO: RAWGOLF</figcaption>
 
         <div class="article-body">
           <p>Every weekend across the world, thousands of club championships, invitationals, and member-guests descend into administrative chaos over three predictable issues: incorrect handicap percentages, improperly certified scorecards, and confusion regarding prize limits.</p>

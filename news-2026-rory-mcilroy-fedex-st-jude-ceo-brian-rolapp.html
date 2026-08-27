@@ -341,6 +341,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -738,6 +744,8 @@
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
   figure.lead-img img { aspect-ratio: 3 / 2; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -787,8 +795,8 @@
 
         <figure class="lead-img">
           <img src="/public/rory-mcilroy-fedex-st-jude-brian-rolapp-2026.webp" alt="Rory McIlroy FedEx St Jude Brian Rolapp 2026"  loading="eager" fetchpriority="high" srcset="/public/rory-mcilroy-fedex-st-jude-brian-rolapp-2026-400.webp 400w, /public/rory-mcilroy-fedex-st-jude-brian-rolapp-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
+          <figcaption>MCILROY RETURNS TO THE MEMPHIS PLAYOFF OPENER AFTER SKIPPING IT IN 2025. IMAGE: GOLFRAW</figcaption>
         </figure>
-        <figcaption>MCILROY RETURNS TO THE MEMPHIS PLAYOFF OPENER AFTER SKIPPING IT IN 2025. IMAGE: GOLFRAW</figcaption>
 
         <div class="article-body">
           <p>He could have stayed home. McIlroy begins the playoffs 12th in the FedExCup and has enough room to absorb a quiet week at TPC Southwind, the same calculation that shaped his decision to skip Memphis in 2025. The difference this August is that he showed up and mentioned the people running the Tour.</p>

@@ -177,7 +177,7 @@ img{max-width:100%;height:auto;display:block}
 }
 .byline b{color:var(--ink);font-weight:600}
 
-figure.lead-img{margin-bottom:8px;border:2px solid var(--ink)}
+figure.lead-img{margin-bottom:8px}.lead-img>img,.lead-img>.img-ph{display:block;border:2px solid var(--ink);overflow:hidden}
 .img-ph{
   aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(135deg,#1a1208,#0e1a10);font-size:60px;
@@ -308,7 +308,9 @@ img { max-width: 100%; height: auto; }
 html, body { max-width: 100%; overflow-x: clip; }
 img, video, iframe { max-width: 100%; }
 table { max-width: 100%; }
-</style>
+
+    .lead-img figcaption { margin-top: 10px }
+  </style>
 <!-- Google AdSense -->
 </head>
 <body>
@@ -361,8 +363,8 @@ table { max-width: 100%; }
         <div class="img-ph" role="img" aria-label="Close up of Scottie Scheffler's golf bag and TaylorMade irons on the PGA Tour">
           <img width="2752" height="1536" src="./public/scottie-scheffler-witb.webp" alt="Close up of Scottie Scheffler's golf bag and TaylorMade irons on the PGA Tour" loading="eager" fetchpriority="high" decoding="async">
         </div>
+        <figcaption>THE BAG THAT WON A MAJOR. AND THE BAG THAT WILL COST YOU SIX SHOTS A ROUND IF YOU COPY IT. PHOTO: RAWGOLF</figcaption>
       </figure>
-      <figcaption>THE BAG THAT WON A MAJOR. AND THE BAG THAT WILL COST YOU SIX SHOTS A ROUND IF YOU COPY IT. PHOTO: RAWGOLF</figcaption>
 
       <div class="article-body">
         <p>Every time Scottie Scheffler wins a tournament, golf equipment brands rush to social media to post the official <b>"Scottie Scheffler WITB"</b> (What's In The Bag). It's a brilliant marketing tactic designed to make you believe that if you spend $3,000 on his exact setup, you'll stop slicing your driver into the woods.</p>

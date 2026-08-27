@@ -373,6 +373,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -769,6 +775,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -817,8 +825,8 @@
 
         <figure class="lead-img">
           <img src="/public/liv-golf-bedminster-purse-unknown.webp" alt="LIV Golf Bedminster Purse" loading="eager" fetchpriority="high" srcset="/public/liv-golf-bedminster-purse-unknown-400.webp 400w, /public/liv-golf-bedminster-purse-unknown-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
+          <figcaption>LIV GOLF BEDMINSTER PURSE. PHOTO: RAWGOLF</figcaption>
         </figure>
-        <figcaption>LIV GOLF BEDMINSTER PURSE. PHOTO: RAWGOLF</figcaption>
 
         <div class="article-body">
 <p>The individual purse was $20 million, and Niemann's winner's share was $4 million. Team and captain payments sit outside that figure and should not be added to it when describing the event purse.</p>

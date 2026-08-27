@@ -376,6 +376,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -716,6 +722,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -770,8 +778,8 @@
 
         <figure class="lead-img">
           <img src="/public/charity-golf-scrambles-access-guide-2026.webp" alt="Charity Golf Scrambles and Access to Golf" srcset="/public/charity-golf-scrambles-access-guide-2026-400.webp 400w, /public/charity-golf-scrambles-access-guide-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async" loading="eager" fetchpriority="high">
+          <figcaption>CHARITY SCRAMBLES PROVIDE ACCESSIBLE GOLF EXPERIENCES AT PREMIER COURSES ACROSS THE COUNTRY. PHOTO: GOLFRAW</figcaption>
         </figure>
-        <figcaption>CHARITY SCRAMBLES PROVIDE ACCESSIBLE GOLF EXPERIENCES AT PREMIER COURSES ACROSS THE COUNTRY. PHOTO: GOLFRAW</figcaption>
 
         <div class="article-body">
           <p><strong>Quick summary:</strong> While traditional tournament golf can feel intimidating to beginners and casual players, the charity scramble format is designed entirely around community, shared shots, and accessibility. By removing individual scoring pressure and opening private facilities to the public, charity outings remain golf’s most effective welcoming front door.</p>

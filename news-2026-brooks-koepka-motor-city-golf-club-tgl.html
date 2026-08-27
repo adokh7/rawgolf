@@ -341,9 +341,11 @@
       .nav-links{display:none;position:absolute;top:68px;left:0;right:0;z-index:51;flex-direction:column;align-items:stretch;gap:2px;padding:8px 0;background:var(--canvas);border:1px solid var(--line-strong);border-top:0;border-radius:0 0 12px 12px;box-shadow:0 12px 24px rgba(16,24,20,.08)}
       .nav-links.open{display:flex}
       .nav-links a{min-height:44px;display:flex;align-items:center;padding:10px 16px;border-radius:0}
-      .lead-img{margin-left:-16px;margin-right:-16px}
+      .lead-img{margin-left:-16px;margin-right:-16px}.lead-img figcaption{padding-left:16px;padding-right:16px}
       .lead-img img{border-radius:0}
     }
+  
+    .lead-img figcaption { margin-top: 12px }
   </style>
 </head>
 <body>
@@ -386,8 +388,8 @@
 
         <figure class="lead-img">
           <img src="/public/brooks-koepka-motor-city-golf-club-tgl.webp" alt="Brooks Koepka looking intense during tournament play, named as the first player for TGL's Motor City Golf Club." width="1200" height="675">
+          <figcaption>BROOKS KOEPKA WAS NAMED THE FIRST PLAYER FOR TGL'S MOTOR CITY GOLF CLUB AHEAD OF ITS 2027 DEBUT. PHOTO: RAWGOLF</figcaption>
         </figure>
-        <figcaption>BROOKS KOEPKA WAS NAMED THE FIRST PLAYER FOR TGL'S MOTOR CITY GOLF CLUB AHEAD OF ITS 2027 DEBUT. PHOTO: RAWGOLF</figcaption>
 
         <div class="article-body">
           <div class="takeaways">
@@ -556,9 +558,9 @@
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=4" defer></script>
-  <script src="/lib/locker/store.js?v=4" defer></script>
-  <script src="/lib/locker/drawer.js?v=5" defer></script>
+  <script src="/lib/locker/schema.js?v=6" defer></script>
+  <script src="/lib/locker/store.js?v=6" defer></script>
+  <script src="/lib/locker/drawer.js?v=6" defer></script>
   <!-- LOCKER:END -->
 </body>
 </html>

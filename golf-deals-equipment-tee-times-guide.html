@@ -427,8 +427,14 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
-      overflow: hidden;
+      overflow: hidden; /* Keeps image strictly contained */
     }
 
     figure.lead-img img {
@@ -831,6 +837,8 @@
     html, body { max-width: 100%; overflow-x: clip; }
     img, video, iframe { max-width: 100%; }
     table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 </head>
 
@@ -877,8 +885,8 @@
 
         <figure class="lead-img">
           <img src="/public/golf-deals-optimization-hero.webp" alt="Golf Deals and Equipment Optimization Guide" loading="eager" fetchpriority="high" srcset="/public/golf-deals-optimization-hero-400.webp 400w, /public/golf-deals-optimization-hero-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
+          <figcaption>THE RAWGOLF EQUIPMENT AND TEE TIME EFFICIENCY BLUEPRINT. PHOTO: RAWGOLF</figcaption>
         </figure>
-        <figcaption>THE RAWGOLF EQUIPMENT AND TEE TIME EFFICIENCY BLUEPRINT. PHOTO: RAWGOLF</figcaption>
 
         <div class="article-body">
           <p>Every spring, the golf industry conducts an identical marketing ritual: $650 drivers promising an extra 4.2 yards, tour-branded golf balls priced at $4.75 apiece, and automated booking engines jacking up green fees with surge algorithms.</p>

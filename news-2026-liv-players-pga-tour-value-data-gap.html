@@ -388,6 +388,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -728,6 +734,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -782,8 +790,8 @@
 
         <figure class="lead-img">
           <img src="/public/liv-players-pga-tour-value-data-gap-2026.webp" alt="Do LIV Players Add Value to PGA Tour Analysis 2026" srcset="/public/liv-players-pga-tour-value-data-gap-2026-400.webp 400w, /public/liv-players-pga-tour-value-data-gap-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async" loading="eager" fetchpriority="high">
+          <figcaption>A 17.78X AUDIENCE GAP SEPARATES SUNDAY TOUR COVERAGE FROM LIV GOLF, BUT INDIVIDUAL STARS STILL RESHAPE TOURNAMENT INTEREST. PHOTO: GOLFRAW</figcaption>
         </figure>
-        <figcaption>A 17.78X AUDIENCE GAP SEPARATES SUNDAY TOUR COVERAGE FROM LIV GOLF, BUT INDIVIDUAL STARS STILL RESHAPE TOURNAMENT INTEREST. PHOTO: GOLFRAW</figcaption>
 
         <div class="article-body">
           <h2>Key Takeaways</h2>

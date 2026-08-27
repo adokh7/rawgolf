@@ -332,6 +332,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -683,6 +689,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
   <!-- Google AdSense -->
 </head>
@@ -731,8 +739,8 @@
 
         <figure class="lead-img">
           <img width="2816" height="1536" src="./public/fix-over-the-top-lead.webp" alt="Golfer swinging over the top with out-to-in swing path" loading="eager" fetchpriority="high" decoding="async">
+          <figcaption>THE MOST COMMON FAULT IN GOLF, AND HOW TO FIX IT. PHOTO/GRAPHIC: RAWGOLF</figcaption>
         </figure>
-        <figcaption>THE MOST COMMON FAULT IN GOLF, AND HOW TO FIX IT. PHOTO/GRAPHIC: RAWGOLF</figcaption>
 
         <div class="article-body">
           <p>You hit a drive and watch it start left, then curve hard to the right into the trees. Again. You did not aim there. You did not want that. But it keeps happening, and somewhere online a guy told you the problem is an over the top golf swing. He was probably right. He just made the fix sound easy, and it is not.</p>

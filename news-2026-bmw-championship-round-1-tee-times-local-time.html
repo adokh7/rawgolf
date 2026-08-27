@@ -388,6 +388,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -728,6 +734,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -782,8 +790,8 @@
 
         <figure class="lead-img">
           <img src="/public/bmw-championship-round-1-tee-times-bellerive-2026.webp" alt="BMW Championship 2026 Round 1 Tee Times and Local Central Time Pairings" srcset="/public/bmw-championship-round-1-tee-times-bellerive-2026-400.webp 400w, /public/bmw-championship-round-1-tee-times-bellerive-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async" loading="eager" fetchpriority="high">
+          <figcaption>ALL 25 TWOSOMES AT BELLERIVE TEE OFF FROM HOLE 1 BETWEEN 9:03 A.M. AND 1:55 P.M. LOCAL CENTRAL TIME. PHOTO: GOLFRAW</figcaption>
         </figure>
-        <figcaption>ALL 25 TWOSOMES AT BELLERIVE TEE OFF FROM HOLE 1 BETWEEN 9:03 A.M. AND 1:55 P.M. LOCAL CENTRAL TIME. PHOTO: GOLFRAW</figcaption>
 
         <div class="article-body">
           <h2>Key Takeaways</h2>

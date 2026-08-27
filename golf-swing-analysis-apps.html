@@ -333,6 +333,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -684,6 +690,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
   <!-- Google AdSense -->
 </head>
@@ -732,8 +740,8 @@
 
         <figure class="lead-img">
           <img width="2752" height="1536" src="./public/golf-swing-analysis-app.webp" alt="Using a mobile app to draw lines and analyze a golf swing path in slow motion" loading="eager" fetchpriority="high" decoding="async">
+          <figcaption>A CLEAR FRAME-BY-FRAME VIEW IS THE CORE OF VIDEO ANALYSIS. PHOTO/GRAPHIC: RAWGOLF</figcaption>
         </figure>
-        <figcaption>A CLEAR FRAME-BY-FRAME VIEW IS THE CORE OF VIDEO ANALYSIS. PHOTO/GRAPHIC: RAWGOLF</figcaption>
 
         <div class="article-body">
           <p>You go looking for a golf swing analysis app and the ads hit you fast. AI coaching, 3D models, instant fixes, pro-level breakdowns in your pocket. Every app is the best one, somehow. You end up confused, and you still have not looked at a single swing.</p>

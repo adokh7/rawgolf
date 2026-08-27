@@ -339,6 +339,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -735,6 +741,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -789,9 +797,9 @@
           <div class="img-ph" role="img"
             aria-label="The first green at Oakmont Country Club with championship rough during US Open 2026 setup">⛳
           </div>
-        </figure>
-        <figcaption>THE 1ST GREEN, THURSDAY MORNING. THE ROUGH BEHIND IT SWALLOWED 14 BALLS BEFORE NOON. PHOTO: RAWGOLF
+          <figcaption>THE 1ST GREEN, THURSDAY MORNING. THE ROUGH BEHIND IT SWALLOWED 14 BALLS BEFORE NOON. PHOTO: RAWGOLF
         </figcaption>
+        </figure>
 
         <div class="article-body">
           <p><b>OAKMONT, PA —</b> The number on every caddie's mind this week isn't a yardage. It's 15 — the stimpmeter

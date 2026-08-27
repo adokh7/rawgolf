@@ -340,6 +340,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -736,6 +742,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -789,8 +797,8 @@
 
         <figure class="lead-img">
             <img src="/public/jackson-koivun-tpc-southwind-2026.webp" alt="Jackson Koivun TPC Southwind FedEx St Jude 2026"  loading="eager" fetchpriority="high" srcset="/public/jackson-koivun-tpc-southwind-2026-400.webp 400w, /public/jackson-koivun-tpc-southwind-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
-        </figure>
-        <figcaption>KOIVUN SECURED THE 70TH AND FINAL SPOT IN THE FEDEXCUP PLAYOFFS AT THE WYNDHAM CHAMPIONSHIP.</figcaption>
+            <figcaption>KOIVUN SECURED THE 70TH AND FINAL SPOT IN THE FEDEXCUP PLAYOFFS AT THE WYNDHAM CHAMPIONSHIP.</figcaption>
+          </figure>
 
         <div class="article-body">
           <h2>How Koivun Clung to 70th in the Standings</h2>

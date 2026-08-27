@@ -335,6 +335,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -731,6 +737,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -779,8 +787,8 @@
 
         <figure class="lead-img">
           <img src="/public/hossler-koepka-wyndham-fedexcup-bubble.webp" alt="Beau Hossler and Brooks Koepka at Wyndham Championship" loading="eager" fetchpriority="high" srcset="/public/hossler-koepka-wyndham-fedexcup-bubble-400.webp 400w, /public/hossler-koepka-wyndham-fedexcup-bubble-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
+          <figcaption>BEAU HOSSLER AND BROOKS KOEPKA AT THE WYNDHAM CHAMPIONSHIP. PHOTO: RAWGOLF</figcaption>
         </figure>
-        <figcaption>BEAU HOSSLER AND BROOKS KOEPKA AT THE WYNDHAM CHAMPIONSHIP. PHOTO: RAWGOLF</figcaption>
 
         <div class="article-body">
 <div class="meta-callout" style="border-left: 4px solid #10b981; padding-left: 12px; margin: 16px 0;">

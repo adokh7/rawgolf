@@ -376,6 +376,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -716,6 +722,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -770,8 +778,8 @@
 
         <figure class="lead-img">
           <img src="/public/jack-whaley-jay-leng-us-amateur-final-merion-2026.webp" alt="Jack Whaley and Jay Leng Jr 2026 US Amateur Final Merion" srcset="/public/jack-whaley-jay-leng-us-amateur-final-merion-2026-400.webp 400w, /public/jack-whaley-jay-leng-us-amateur-final-merion-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async" loading="eager" fetchpriority="high">
+          <figcaption>JACK WHALEY AND JAY LENG JR. BATTLE OVER 36 HOLES AT MERION FOR AMATEUR GOLF'S ULTIMATE PRIZE. PHOTO: GOLFRAW</figcaption>
         </figure>
-        <figcaption>JACK WHALEY AND JAY LENG JR. BATTLE OVER 36 HOLES AT MERION FOR AMATEUR GOLF'S ULTIMATE PRIZE. PHOTO: GOLFRAW</figcaption>
 
         <div class="article-body">
           <p><strong>Quick summary:</strong> The 126th U.S. Amateur Championship final at Merion Golf Club presents one of the most compelling contrasts in recent championship history. Former NAIA standout Jack Whaley, who survived a 16-man playoff as the 60th seed, faces reigning Western Amateur champion Jay Leng Jr. over 36 holes for the Havemeyer Trophy, Masters invitations, and U.S. Open berths.</p>

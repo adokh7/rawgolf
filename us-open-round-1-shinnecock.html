@@ -340,9 +340,14 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
-      overflow: hidden;
-      /* Keeps image strictly contained */
+      overflow: hidden; /* Keeps image strictly contained */
     }
 
     figure.lead-img img {
@@ -810,6 +815,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -860,8 +867,8 @@
         <figure class="lead-img">
           <img width="3168" height="1344" src="/public/us-open-round-1-shinnecock.webp"
             alt="Wyndham Clark playing a shot into the wind at Shinnecock Hills during U.S. Open Round 1" loading="eager" fetchpriority="high" srcset="/public/us-open-round-1-shinnecock-400.webp 400w, /public/us-open-round-1-shinnecock-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
+          <figcaption>WYNDHAM CLARK AT SHINNECOCK HILLS. PHOTO: RAWGOLF</figcaption>
         </figure>
-        <figcaption>WYNDHAM CLARK AT SHINNECOCK HILLS. PHOTO: RAWGOLF</figcaption>
 
         <div class="article-body">
           <p>Shinnecock Hills was supposed to be a bloodbath. The forecast promised wind, the course promised pain, and

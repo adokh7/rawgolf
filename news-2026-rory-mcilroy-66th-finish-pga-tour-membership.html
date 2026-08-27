@@ -376,6 +376,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -716,6 +722,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -770,8 +778,8 @@
 
         <figure class="lead-img">
           <img src="/public/rory-mcilroy-66th-finish-memphis-pga-tour-membership-2026.webp" alt="Rory McIlroy 66th Finish Memphis PGA Tour Membership 2026" srcset="/public/rory-mcilroy-66th-finish-memphis-pga-tour-membership-2026-400.webp 400w, /public/rory-mcilroy-66th-finish-memphis-pga-tour-membership-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async" loading="eager" fetchpriority="high">
+          <figcaption>MCILROY USED SOUTHWIND TO SHAKE OFF RUST AND ALIGN MEMBERSHIP STATUS WITH TOUR LEADERSHIP. PHOTO: GOLFRAW</figcaption>
         </figure>
-        <figcaption>MCILROY USED SOUTHWIND TO SHAKE OFF RUST AND ALIGN MEMBERSHIP STATUS WITH TOUR LEADERSHIP. PHOTO: GOLFRAW</figcaption>
 
         <div class="article-body">
           <p><strong>Quick summary:</strong> Rory McIlroy’s four-round total of 8-over 288 at TPC Southwind left him 66th out of 69 competitors without a single under-par round. However, with his postseason advancement already secured and crucial regulatory discussions completed with PGA Tour CEO Brian Rolapp, McIlroy left Memphis with positive swing momentum heading into Bellerive and East Lake.</p>

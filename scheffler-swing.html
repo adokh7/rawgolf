@@ -175,10 +175,16 @@ img {
 .byline b{color:var(--ink);font-weight:600}
 
 figure.lead-img {
-  margin-bottom: 8px;
-  border: 2px solid var(--ink);
-  overflow: hidden; /* Keeps image strictly contained */
-}
+      margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
+      border: 2px solid var(--ink);
+      overflow: hidden; /* Keeps image strictly contained */
+    }
 
 figure.lead-img img {
   width: 100%;
@@ -321,7 +327,9 @@ img { max-width: 100%; height: auto; }
 html, body { max-width: 100%; overflow-x: clip; }
 img, video, iframe { max-width: 100%; }
 table { max-width: 100%; }
-</style>
+
+    .lead-img figcaption { margin-top: 10px }
+  </style>
 <!-- Google AdSense -->
 </head>
 <body>
@@ -371,8 +379,8 @@ table { max-width: 100%; }
         <div class="img-ph" role="img" aria-label="Close up of golfer's feet aggressively sliding on the turf during a high-speed swing">
           <img width="2752" height="1536" src="./public/scottie-scheffler-swing-speed.webp" alt="Close up of golfer's feet aggressively sliding on the turf during a high-speed swing" loading="eager" fetchpriority="high" decoding="async">
         </div>
+        <figcaption>THE SCHEFFLER SHUFFLE IN FRAME. THE RIGHT FOOT IS ALREADY MOVING BEFORE IMPACT. THAT'S NOT A FLAW. PHOTO: RAWGOLF</figcaption>
       </figure>
-      <figcaption>THE SCHEFFLER SHUFFLE IN FRAME. THE RIGHT FOOT IS ALREADY MOVING BEFORE IMPACT. THAT'S NOT A FLAW. PHOTO: RAWGOLF</figcaption>
 
       <div class="article-body">
         <p><b>If you watch Scottie Scheffler hit a driver</b>, it looks like a man trying to swing a baseball bat while slipping on wet ice. His right foot slides backward, his left foot spins out, and it looks completely chaotic.</p>

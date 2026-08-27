@@ -171,7 +171,7 @@ img{max-width:100%;height:auto;display:block}
   padding:3px 10px;font-size:10px;letter-spacing:.14em;
 }
 
-figure.lead-img{margin-bottom:8px;border:2px solid var(--ink)}
+figure.lead-img{margin-bottom:8px}.lead-img>img,.lead-img>.img-ph{display:block;border:2px solid var(--ink);overflow:hidden}
 .img-ph{
   aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(135deg,#DCE9DF,#A9C9B4);font-size:60px;
@@ -306,7 +306,9 @@ img { max-width: 100%; height: auto; }
 html, body { max-width: 100%; overflow-x: clip; }
 img, video, iframe { max-width: 100%; }
 table { max-width: 100%; }
-</style>
+
+    .lead-img figcaption { margin-top: 10px }
+  </style>
 <!-- Google AdSense -->
 </head>
 <body>
@@ -357,8 +359,8 @@ table { max-width: 100%; }
         <div class="img-ph" role="img" aria-label="Golf caddie looking at strokes gained data in a yardage book">
           <img width="1672" height="941" src="./public/strokes-gained-explained.webp" alt="Golf caddie looking at strokes gained data in a yardage book" loading="eager" fetchpriority="high" decoding="async">
         </div>
+        <figcaption>EVERY NUMBER IN THAT YARDAGE BOOK HAS A STROKES GAINED CONTEXT. THE CADDIE KNOWS. NOW YOU WILL TOO. PHOTO: RAWGOLF</figcaption>
       </figure>
-      <figcaption>EVERY NUMBER IN THAT YARDAGE BOOK HAS A STROKES GAINED CONTEXT. THE CADDIE KNOWS. NOW YOU WILL TOO. PHOTO: RAWGOLF</figcaption>
 
       <div class="article-body">
         <p>Whether you're chasing the SG putting meaning or just the basics, <b>here's the problem with traditional golf stats:</b> they tell you what happened but not whether it was good. A player makes 70% of their putts from 6 feet. Is that excellent? Average? A total disaster? You have no idea, because 70% of what compared to what?</p>

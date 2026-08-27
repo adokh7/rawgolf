@@ -376,6 +376,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -716,6 +722,8 @@
   html, body { max-width: 100%; overflow-x: clip; }
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -770,8 +778,8 @@
 
         <figure class="lead-img">
           <img src="/public/jon-rahm-liv-golf-career-earnings-contract-2026.webp" alt="Jon Rahm LIV Golf Career Earnings and Contract Debt 2026" srcset="/public/jon-rahm-liv-golf-career-earnings-contract-2026-400.webp 400w, /public/jon-rahm-liv-golf-career-earnings-contract-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async" loading="eager" fetchpriority="high">
+          <figcaption>JON RAHM'S RECORD PUBLISHED EARNINGS MASK A MASSIVE UNDERLYING GAP IN CONTRACTUAL CASH FLOW. PHOTO: GOLFRAW</figcaption>
         </figure>
-        <figcaption>JON RAHM'S RECORD PUBLISHED EARNINGS MASK A MASSIVE UNDERLYING GAP IN CONTRACTUAL CASH FLOW. PHOTO: GOLFRAW</figcaption>
 
         <div class="article-body">
           <p><strong>Quick summary:</strong> Published career money lists on LIV Golf present Jon Rahm as the circuit's all-time earner at $87.7 million. However, with $36 million of that total coming from individual points bonuses and headline signing guarantees entirely excluded, the public leaderboard bears little relation to actual player balance sheets—especially as LIV transitions to offer equity instead of cash.</p>

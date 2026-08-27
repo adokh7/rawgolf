@@ -341,6 +341,12 @@
 
     figure.lead-img {
       margin-bottom: 8px;
+    }
+    /* The frame wraps the media only. The caption is a child of <figure> for
+       correct semantics, so a border on the figure would enclose it as well. */
+    .lead-img > img,
+    .lead-img > .img-ph {
+      display: block;
       border: 2px solid var(--ink);
       overflow: hidden; /* Keeps image strictly contained */
     }
@@ -752,6 +758,8 @@
   img, video, iframe { max-width: 100%; }
   table { max-width: 100%; }
   figure.lead-img img { aspect-ratio: 3 / 2; }
+  
+    .lead-img figcaption { margin-top: 10px }
   </style>
 <!-- Google AdSense -->
 </head>
@@ -801,8 +809,8 @@
 
         <figure class="lead-img">
           <img src="/public/most-valuable-golf-search-cpc-data-2026.webp" alt="Most Valuable Golf Search CPC Data Analysis 2026"  loading="eager" fetchpriority="high" srcset="/public/most-valuable-golf-search-cpc-data-2026-400.webp 400w, /public/most-valuable-golf-search-cpc-data-2026-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
+          <figcaption>FORTY MONTHLY SEARCHES. AN ESTIMATED $9.06 COST PER CLICK. IMAGE: GOLFRAW</figcaption>
         </figure>
-        <figcaption>FORTY MONTHLY SEARCHES. AN ESTIMATED $9.06 COST PER CLICK. IMAGE: GOLFRAW</figcaption>
 
         <div class="article-body">
           <p>Forty searches. That is the estimated monthly US demand behind "golf deals fairmont st andrews," yet advertisers pay an estimated $9.06 for each click. "Black friday golf deals" draws 3,600 searches and costs about $0.95 per click.</p>
