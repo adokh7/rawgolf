@@ -5,17 +5,26 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 26 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>2026 Tour Championship Purse: The Winner Gets $10 Million</title>
+      <link>https://www.golfraw.com/news-2026-tour-championship-purse-east-lake</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-purse-east-lake</guid>
+      <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>The 2026 Tour Championship pays $10 million to the winner. But the $100 million FedExCup pool was already handed out. Here is who got paid, and when.</description>
+      <enclosure url="https://www.golfraw.com/public/tour-championship-2026-purse-east-lake.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>LIV Golf players return to PGA Tour: what the rules say</title>
       <link>https://www.golfraw.com/news-2026-liv-golf-players-return-pga-tour-rules</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-players-return-pga-tour-rules</guid>
-      <pubDate>Wed, 26 Aug 2026 16:30:00 +0000</pubDate>
+      <pubDate>Wed, 26 Aug 2026 09:00:00 +0000</pubDate>
       <category>LIV GOLF</category>
-      <description>LIV Golf players return to PGA Tour? The route closed on 2 February 2026. Brian Rolapp restated the terms at East Lake, while LIV's money trail raises a separate 2027 question.</description>
+      <description>LIV Golf players return to PGA Tour? The route closed on 2 February 2026. Brian Rolapp restated the terms at East Lake, while LIV&#x27;s money trail raises a separate 2027 question.</description>
       <enclosure url="https://www.golfraw.com/public/liv-golf-players-return-pga-tour-rules.webp" type="image/webp"/>
     </item>
     <item>
@@ -359,15 +368,6 @@
       <category>PGA TOUR</category>
       <description>The ~$100m bonus pool is fully distributed after the BMW Championship. East Lake is a $40m tournament with a trophy attached. What that actually means.</description>
       <enclosure url="https://www.golfraw.com/public/fedexcup-bonus-pool-tour-championship-purse-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Three Tour Players, One Diagnosis</title>
-      <link>https://www.golfraw.com/news-2026-brian-harman-putter-struggle-wagner</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-brian-harman-putter-struggle-wagner</guid>
-      <pubDate>Sun, 16 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Johnson Wagner wants Brian Harman back on his old putter. It&amp;#x27;s the third case in a fortnight of the same trap — and Scheffler showed the way out of it.</description>
-      <enclosure url="https://www.golfraw.com/public/brian-harman-johnson-wagner-putter-struggle-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>

@@ -24,7 +24,6 @@
   "/jean-van-de-velde-1999-open",
   "/jessica-bang-2008-2026",
   "/joaquin-niemann-us-open-penalty",
-  "/liv-golf-pga-tour-return",
   "/lpga-2026-kpmg-prize-money-12m",
   "/lpga-2026-nelly-korda-hazeltine-preview",
   "/match-play",
@@ -129,6 +128,7 @@
   "/news-2026-liv-golf-michigan-martin-kaymer",
   "/news-2026-liv-golf-michigan-team-championship-cancelled",
   "/news-2026-liv-golf-pif-withdrawal-season-end",
+  "/news-2026-liv-golf-players-return-pga-tour-rules",
   "/news-2026-liv-golf-secures-lead-investor",
   "/news-2026-liv-golf-staff-terminations",
   "/news-2026-liv-golf-vendor-lawsuit-settlement-offers",
@@ -209,6 +209,7 @@
   "/news-2026-tommy-fleetwood-travelers-return",
   "/news-2026-tony-romo-withdraws-texas-state-open",
   "/news-2026-tour-championship-odds-even-par",
+  "/news-2026-tour-championship-purse-east-lake",
   "/news-2026-travelers-betting-preview",
   "/news-2026-travelers-championship-prize-money",
   "/news-2026-travelers-championship-round-1-recap",
@@ -268,7 +269,8 @@
   "/why-us-open-is-hardest-major"
  ],
  "fingerprints": {
-  "/liv-golf-pga-tour-return": "59c0055021ea6b17845b462009746e1028c54034a9ed1355758f3ec11d2c7fbd",
+  "/news-2026-tour-championship-purse-east-lake": "71c46d12e5977da692358071a46eca887288e3eb576e58780ee06ce9bc47e4e0",
+  "/news-2026-liv-golf-players-return-pga-tour-rules": "c463f8119a002e39eeed7ea26ca0fbe5b7f8480b86e59e576ee9b90b8d6faf55",
   "/news-2026-scheffler-illness-update-95-percent-recovered": "d632737b20d384fc83e61bd9f1a1a0ca7a2c48604f9ff4763a4e0a6cb0d36064",
   "/news-2026-tour-championship-odds-even-par": "b7015a0fe0a75480bf5a5e4d37d4f3b48c124547d824f62a040a9ff1cdb56d11",
   "/news-2026-scottie-scheffler-tour-championship-odds": "c5bac215b0d31bdc1632d10fe24b943bb2740a91f7e80f763ef3bec2ddb384db",
