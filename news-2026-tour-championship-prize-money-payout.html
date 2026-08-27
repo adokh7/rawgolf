@@ -327,6 +327,32 @@
   
     .lead-img figcaption { margin-top: 12px }
   </style>
+  <style>
+    /* ---- Page overrides -------------------------------------------------
+       Applied after the shared article stylesheet so a rebuild keeps them.
+
+       Top spacing: the shared sheet drops main padding to 26px below 760px,
+       which is under the 32-48px this page wants beneath the header. Measured
+       across 320-1440px the H1 never actually sits behind the header (the
+       header is static below 760px and sticky above it), so this is breathing
+       room rather than an overlap fix.
+
+       scroll-margin-top is the one place a sticky header genuinely does cover
+       content: arriving at an in-page anchor. Cheap to guard against. */
+    @media (max-width: 760px) {
+      main { padding-top: 40px }
+    }
+    #main-content, .article-body h2, .article-body h3 { scroll-margin-top: 88px }
+
+    /* Lead image: width, aspect ratio and object-fit already match the spec in
+       the shared sheet; only the corner radius differs. The full-bleed mobile
+       treatment keeps square corners, because a radius on an image that runs
+       to both screen edges notches the page background into the corners. */
+    .lead-img img { border-radius: 8px }
+    @media (max-width: 760px) { .lead-img img { border-radius: 0 } }
+  </style>
+
+
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to article</a>
