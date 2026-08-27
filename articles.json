@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 270,
+  "count": 271,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,20 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-tour-championship-2028-match-play-format",
+      "alias_of": "",
+      "slug": "news-2026-tour-championship-2028-match-play-format",
+      "url": "/news-2026-tour-championship-2028-match-play-format",
+      "title": "The Tour Championship 2028 Match Play Format, Explained Without the Spin",
+      "excerpt": "The PGA Tour just rebuilt its finale around match play. Here is how the 2028 format actually works, and the flaw Scottie Scheffler pointed at.",
+      "category": "PGA TOUR",
+      "date": "2026-08-27",
+      "image": "/public/tour-championship-2028-match-play-format.webp",
+      "keywords": "2028 Tour Championship match play format, PGA Tour 2028 overhaul, Scottie Scheffler match play critique, Rory McIlroy match play endorsement, East Lake venue rotation, Two-series model PGA Tour, PGA Tour, Tournaments, Latest News",
+      "category_source": "search-index",
+      "section": "TOURNAMENTS"
+    },
     {
       "canonical": "/news-2026-tour-championship-purse-east-lake",
       "alias_of": "",

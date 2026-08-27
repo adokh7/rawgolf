@@ -174,6 +174,42 @@ class ArticleSchemaTests(unittest.TestCase):
             self.assertIn(slug, (ROOT / generated).read_text(encoding="utf-8"), generated)
 
 
+    def test_tour_championship_2028_match_play_page_has_clean_news_schema(self):
+        target = ROOT / "news-2026-tour-championship-2028-match-play-format.html"
+        self.assertTrue(target.exists(), "2028 Tour Championship match play article is missing")
+        parser = JsonLdParser()
+        parser.feed(target.read_text(encoding="utf-8"))
+        nodes = [node for block in parser.blocks for node in objects(json.loads(block))]
+        self.assertFalse(any(node.get("@type") == "SportsEvent" for node in nodes))
+        article = next(node for node in nodes if node.get("@type") == "NewsArticle")
+        self.assertEqual(
+            "https://www.golfraw.com/news-2026-tour-championship-2028-match-play-format#article",
+            article.get("@id"),
+        )
+        required = {
+            "headline", "description", "image", "datePublished", "dateModified",
+            "author", "publisher", "mainEntityOfPage", "articleSection",
+        }
+        self.assertEqual(set(), required - article.keys())
+        self.assertTrue(article["image"]["url"].endswith("tour-championship-2028-match-play-format.webp"))
+        html = target.read_text(encoding="utf-8")
+        self.assertIn("The Tour Championship 2028 Match Play Format, Explained Without the Spin | GOLFRAW", html)
+        self.assertIn("32 Players", html)
+        self.assertIn("16 Players", html)
+        self.assertIn("SCOTTIE SCHEFFLER ADDRESSED THE 2028 TWO-WEEK MATCH PLAY RESTRUCTURE AT EAST LAKE. PHOTO: RAWGOLF", html)
+
+    def test_tour_championship_2028_match_play_page_is_registered(self):
+        slug = "news-2026-tour-championship-2028-match-play-format"
+        registry = json.loads((ROOT / "articles.json").read_text(encoding="utf-8"))
+        record = next((a for a in registry["articles"] if a.get("slug") == slug), None)
+        self.assertIsNotNone(record, "2028 Tour Championship match play article is missing from articles.json")
+        self.assertEqual("PGA TOUR", record.get("category"))
+        self.assertEqual("TOURNAMENTS", record.get("section"))
+        for generated in ("news.html", "tournaments.html", "search.html", "sitemap.xml"):
+            self.assertIn(slug, (ROOT / generated).read_text(encoding="utf-8"), generated)
+
+
 if __name__ == "__main__":
     unittest.main()
+
 

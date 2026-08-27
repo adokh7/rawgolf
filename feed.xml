@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>The Tour Championship 2028 Match Play Format, Explained Without the Spin</title>
+      <link>https://www.golfraw.com/news-2026-tour-championship-2028-match-play-format</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-2028-match-play-format</guid>
+      <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>The PGA Tour just rebuilt its finale around match play. Here is how the 2028 format actually works, and the flaw Scottie Scheffler pointed at.</description>
+      <enclosure url="https://www.golfraw.com/public/tour-championship-2028-match-play-format.webp" type="image/webp"/>
+    </item>
+    <item>
       <title>2026 Tour Championship Purse: The Winner Gets $10 Million</title>
       <link>https://www.golfraw.com/news-2026-tour-championship-purse-east-lake</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-purse-east-lake</guid>
@@ -359,15 +368,6 @@
       <category>LIV GOLF</category>
       <description>Rahm tops LIV&amp;#x27;s earnings list at $87.7m — but $36m of that is bonus, and none of it includes his reported $300m signing fee. What the numbers really show.</description>
       <enclosure url="https://www.golfraw.com/public/jon-rahm-liv-golf-career-earnings-contract-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>The FedExCup Money Will Be Decided Before</title>
-      <link>https://www.golfraw.com/news-2026-fedexcup-bonus-pool-payout-structure-east-lake</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-fedexcup-bonus-pool-payout-structure-east-lake</guid>
-      <pubDate>Sun, 16 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>The ~$100m bonus pool is fully distributed after the BMW Championship. East Lake is a $40m tournament with a trophy attached. What that actually means.</description>
-      <enclosure url="https://www.golfraw.com/public/fedexcup-bonus-pool-tour-championship-purse-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
