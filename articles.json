@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 279,
+  "count": 280,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,20 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/how-long-do-golf-tournaments-last",
+      "alias_of": "",
+      "slug": "how-long-do-golf-tournaments-last",
+      "url": "/how-long-do-golf-tournaments-last",
+      "title": "How long do golf tournaments last?",
+      "excerpt": "Four days is the default, not the rule. Three-day tours, no-cut fields, weather Mondays, and the 2028 change that stretches one event to two weeks.",
+      "category": "GUIDES",
+      "date": "2026-08-30",
+      "image": "/public/how-long-do-golf-tournaments-last.webp",
+      "keywords": "how long do golf tournaments last, golf tournament length, how many days is a golf tournament, 72 holes four days, 54 hole tournaments, PGA Tour cut rule, top 65 and ties, no cut events, rules, Rule 5.6b pace of play, 40 second rule, Monday finish weather delay, 2028 Tour Championship match play, guides, PGA Tour",
+      "category_source": "override",
+      "section": "GUIDES"
+    },
     {
       "canonical": "/news-2026-liv-golf-300-million-funding-explained",
       "alias_of": "",

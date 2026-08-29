@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 29 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>How long do golf tournaments last?</title>
+      <link>https://www.golfraw.com/how-long-do-golf-tournaments-last</link>
+      <guid isPermaLink="true">https://www.golfraw.com/how-long-do-golf-tournaments-last</guid>
+      <pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate>
+      <category>GUIDES</category>
+      <description>Four days is the default, not the rule. Three-day tours, no-cut fields, weather Mondays, and the 2028 change that stretches one event to two weeks.</description>
+      <enclosure url="https://www.golfraw.com/public/how-long-do-golf-tournaments-last.webp" length="276860" type="image/webp"/>
+    </item>
     <item>
       <title>LIV Golf $300 Million Funding: It Might Be a Loan</title>
       <link>https://www.golfraw.com/news-2026-liv-golf-300-million-funding-explained</link>
@@ -134,15 +143,6 @@
       <category>PGA TOUR</category>
       <description>Scottie Scheffler is +310 at East Lake. We convert the 2026 Tour Championship odds into a break-even win rate and price the other 29 players against it.</description>
       <enclosure url="https://www.golfraw.com/public/scottie-scheffler-tour-championship-2026-odds.webp" length="102392" type="image/webp"/>
-    </item>
-    <item>
-      <title>2026 U.S. Presidents Cup team standings: Scheffler and Young secure automatic spots</title>
-      <link>https://www.golfraw.com/news-2026-us-presidents-cup-team-standings</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-us-presidents-cup-team-standings</guid>
-      <pubDate>Mon, 24 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>2026 U.S. Presidents Cup team standings finalized 24 August. Collin Morikawa beat Chris Gotterup by 79 points. See who made the team and who needs a pick.</description>
-      <enclosure url="https://www.golfraw.com/public/2026-presidents-cup-scheffler-young.webp" length="50578" type="image/webp"/>
     </item>
   </channel>
 </rss>
