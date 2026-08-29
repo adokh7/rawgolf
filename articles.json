@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 275,
+  "count": 276,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,20 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-tour-championship-winners-losers-friday",
+      "alias_of": "",
+      "slug": "news-2026-tour-championship-winners-losers-friday",
+      "url": "/news-2026-tour-championship-winners-losers-friday",
+      "title": "Tour Championship winners and losers Friday: Scheffler surges",
+      "excerpt": "Two over through four, and Scheffler still shot 67. Who else moved at East Lake, who buried himself, and the number that says this isn't over.",
+      "category": "PGA TOUR",
+      "date": "2026-08-28",
+      "image": "/public/tour-championship-2026-friday-winners-losers.webp",
+      "keywords": "Tour Championship winners and losers, Tour Championship Friday, Tour Championship round 2, Scottie Scheffler 67, Ryan Gerard, Viktor Hovland, Cameron Young 62, Min Woo Lee triple bogey, Rory McIlroy, East Lake, PGA Tour, tournaments, latest news",
+      "category_source": "override",
+      "section": "TOURNAMENTS"
+    },
     {
       "canonical": "/news-2026-tour-championship-prize-money-payout",
       "alias_of": "",

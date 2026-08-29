@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 27 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Tour Championship winners and losers Friday: Scheffler surges</title>
+      <link>https://www.golfraw.com/news-2026-tour-championship-winners-losers-friday</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-winners-losers-friday</guid>
+      <pubDate>Fri, 28 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>Two over through four, and Scheffler still shot 67. Who else moved at East Lake, who buried himself, and the number that says this isn&#x27;t over.</description>
+      <enclosure url="https://www.golfraw.com/public/tour-championship-2026-friday-winners-losers.webp" type="image/webp"/>
+    </item>
     <item>
       <title>2026 Tour Championship prize money payout: $355K last</title>
       <link>https://www.golfraw.com/news-2026-tour-championship-prize-money-payout</link>
@@ -359,15 +368,6 @@
       <category>GUIDES</category>
       <description>Senior, super senior, flights, gross, net. Most club champions won a division, not the championship. What each one actually means, and who verifies it.</description>
       <enclosure url="https://www.golfraw.com/public/club-championship-flights-divisions-explained-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Fifteen Months Ago He Was Playing NAIA Golf. Today</title>
-      <link>https://www.golfraw.com/news-2026-us-amateur-final-jack-whaley-jay-leng-merion</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-us-amateur-final-jack-whaley-jay-leng-merion</guid>
-      <pubDate>Sun, 16 Aug 2026 09:00:00 +0000</pubDate>
-      <category>AMATEUR GOLF</category>
-      <description>Jack Whaley survived a 16-for-11 playoff just to make the bracket at Merion. Jay Leng Jr. was 2-6-2 in college match play.</description>
-      <enclosure url="https://www.golfraw.com/public/jack-whaley-jay-leng-us-amateur-final-merion-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
