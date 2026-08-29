@@ -19,11 +19,6 @@
             "source": "/news-2026-lee-westwood-liv-golf-bedminster-different-course",
             "destination": "/guides-playing-golf-in-your-fifties-distance-loss",
             "permanent": true
-        },
-        {
-            "source": "/news/tour-championship-winners-losers-friday-scheffler-round-2",
-            "destination": "/news-2026-tour-championship-winners-losers-friday",
-            "permanent": true
         }
     ],
     "headers": [
