@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 278,
+  "count": 279,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,20 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-liv-golf-300-million-funding-explained",
+      "alias_of": "",
+      "slug": "news-2026-liv-golf-300-million-funding-explained",
+      "url": "/news-2026-liv-golf-300-million-funding-explained",
+      "title": "LIV Golf $300 Million Funding: It Might Be a Loan",
+      "excerpt": "The CEO says an investor signed. Bloomberg says it's a loan. Four vendors are suing. Here's what's actually confirmed, and the September date that decides it.",
+      "category": "LIV GOLF",
+      "date": "2026-08-29",
+      "image": "/public/liv-golf-300-million-funding-explained.webp",
+      "keywords": "LIV Golf $300 million funding, Scott O'Neil term sheet, BC Partners credit facility, LIV Golf 2.0, LIV vendor lawsuits, Business of Golf, PIF spending, OWGR, PGA Tour, latest news",
+      "category_source": "search-index",
+      "section": "LIV GOLF"
+    },
     {
       "canonical": "/news-2026-cameron-young-new-putter-62-tour-championship",
       "alias_of": "",
