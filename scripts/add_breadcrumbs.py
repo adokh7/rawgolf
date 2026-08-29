@@ -7,6 +7,7 @@ The trail is Home -> section hub -> page for routable sections, and
 Home -> News -> page for sections with no hub of their own. Each block is a
 standalone <script type="application/ld+json"> appended just before </head>.
 """
+import html as _html
 import io, json, os, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -67,7 +68,8 @@ def main():
         if 'BreadcrumbList' in s:
             skipped += 1; continue
         m = re.search(r'<title>([^<|]+)', s)
-        name = m.group(1).strip() if m else os.path.basename(path)[:-5]
+        # <title> text arrives entity-encoded; JSON-LD wants plain text.
+        name = _html.unescape(m.group(1).strip()) if m else os.path.basename(path)[:-5]
         slug = '/' + os.path.basename(path)[:-5]
         if inject(path, [('Home', '/'), TOOLS, (name, slug)]):
             done += 1
