@@ -485,7 +485,14 @@ def write_feed(arts):
                 f'      <category>{esc(get_category(a))}</category>',
                 f'      <description>{esc(get_excerpt(a))}</description>']
         if img:
-            out.append(f'      <enclosure url="{base}{img}" type="image/webp"/>')
+            # RSS 2.0 makes all three enclosure attributes required: url,
+            # length and type. GSC reports a missing one per item as
+            # "Missing XML attribute". The length is the real byte size of
+            # the local file; 0 is the spec's own convention when unknown
+            # (e.g. the image is registered but not on disk yet).
+            img_file = os.path.join(ROOT, img.lstrip('/'))
+            size = os.path.getsize(img_file) if os.path.exists(img_file) else 0
+            out.append(f'      <enclosure url="{base}{img}" length="{size}" type="image/webp"/>')
         out.append('    </item>')
     out += ['  </channel>', '</rss>', '']
     write_if_changed(os.path.join(ROOT, FEED_PATH), '\n'.join(out))
