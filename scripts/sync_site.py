@@ -426,7 +426,7 @@ def write_sitemap(arts):
 
 FEED_PATH  = 'feed.xml'
 FEED_URL   = 'https://www.golfraw.com/feed.xml'
-FEED_ITEMS = 40
+FEED_ITEMS = 15
 WEBSUB_HUBS = [
     'https://pubsubhubbub.appspot.com/',
     'https://pubsubhubbub.superfeedr.com/',
