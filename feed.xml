@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 28 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Hovland in Tie for Lead at Tour Championship: 12 of 14</title>
+      <link>https://www.golfraw.com/news-2026-hovland-tie-for-lead-tour-championship</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-hovland-tie-for-lead-tour-championship</guid>
+      <pubDate>Sat, 29 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>He hit 12 of 14 fairways and told reporters he can&#x27;t explain it. What Hovland&#x27;s 66 really proves, who&#x27;s stacked behind him, and the stat nobody checked.</description>
+      <enclosure url="https://www.golfraw.com/public/hovland-tie-for-lead-tour-championship-2026.webp" type="image/webp"/>
+    </item>
     <item>
       <title>Tour Championship winners and losers Friday: Scheffler surges</title>
       <link>https://www.golfraw.com/news-2026-tour-championship-winners-losers-friday</link>
@@ -134,15 +143,6 @@
       <category>LIV GOLF</category>
       <description>LIV Golf packed up its 2026 season two weeks early. The cancellation of the Team Championship traces to PIF&#x27;s April withdrawal. See the full timeline.</description>
       <enclosure url="https://www.golfraw.com/public/liv-golf-indianapolis-2026.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Jon Rahm LIV Golf future: where things stand as of August 2026</title>
-      <link>https://www.golfraw.com/news-2026-jon-rahm-liv-golf-future</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-jon-rahm-liv-golf-future</guid>
-      <pubDate>Mon, 24 Aug 2026 09:00:00 +0000</pubDate>
-      <category>LIV GOLF</category>
-      <description>Jon Rahm faces a short window to return to the PGA Tour. He settled a $3 million DP World Tour fine in May, but 2028 rules approach.</description>
-      <enclosure url="https://www.golfraw.com/jon-rahm-liv-golf-future-august-2026.webp" type="image/webp"/>
     </item>
   </channel>
 </rss>
