@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Hovland Leads the Tour Championship by One Into Sunday | GOLFRAW</title>
+      <link>https://www.golfraw.com/news-2026-hovland-leads-tour-championship-final-day</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-hovland-leads-tour-championship-final-day</guid>
+      <pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate>
+      <category>TOURNAMENTS, PGA TOUR, NEWS</category>
+      <description>He closed with six putts from 7 feet or longer to lead by one. Scheffler&#x27;s three back, McIlroy shot 63, and nobody agrees on Sunday&#x27;s tee times.</description>
+      <enclosure url="https://www.golfraw.com/public/hovland-leads-tour-championship-final-day-2026.webp" length="97280" type="image/webp"/>
+    </item>
+    <item>
       <title>Tour Championship Final Round: Hovland Leads by One | GOLFRAW</title>
       <link>https://www.golfraw.com/news-2026-tour-championship-final-round-hovland-leads</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-final-round-hovland-leads</guid>
@@ -134,15 +143,6 @@
       <category>PGA TOUR</category>
       <description>The 2026 Tour Championship pays $10 million to the winner. But the $100 million FedExCup pool was already handed out. Here is who got paid, and when.</description>
       <enclosure url="https://www.golfraw.com/public/tour-championship-2026-purse-east-lake.webp" length="177188" type="image/webp"/>
-    </item>
-    <item>
-      <title>LIV Golf players return to PGA Tour: what the rules say</title>
-      <link>https://www.golfraw.com/news-2026-liv-golf-players-return-pga-tour-rules</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-players-return-pga-tour-rules</guid>
-      <pubDate>Wed, 26 Aug 2026 09:00:00 +0000</pubDate>
-      <category>LIV GOLF</category>
-      <description>LIV Golf players return to PGA Tour? The route closed on 2 February 2026. Brian Rolapp restated the terms at East Lake, while LIV&#x27;s money trail raises a separate 2027 question.</description>
-      <enclosure url="https://www.golfraw.com/public/liv-golf-players-return-pga-tour-rules.webp" length="56198" type="image/webp"/>
     </item>
   </channel>
 </rss>
