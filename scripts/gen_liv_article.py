@@ -1,12 +1,14 @@
 import os
+from pathlib import Path
 try:
     from scripts.fix_template_metadata import finalize_html
 except ModuleNotFoundError:
     from fix_template_metadata import finalize_html
 import json
 
-template_path = '/Users/adnan/Desktop/golf/article-template.html'
-output_path = '/Users/adnan/Desktop/golf/news-2026-liv-golf-bedminster-crushers-six-over-par.html'
+ROOT = Path(__file__).resolve().parents[1]
+template_path = ROOT / 'article-template.html'
+output_path = ROOT / 'news-2026-liv-golf-bedminster-crushers-six-over-par.html'
 
 with open(template_path, 'r', encoding='utf-8') as f:
     html = f.read()

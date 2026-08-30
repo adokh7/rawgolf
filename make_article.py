@@ -1,7 +1,12 @@
 import re
+from pathlib import Path
 from scripts.fix_template_metadata import finalize_html
 
-with open('/Users/adnan/Desktop/golf/article-template.html', 'r') as f:
+ROOT = Path(__file__).resolve().parent
+template_path = ROOT / 'article-template.html'
+output_path = ROOT / 'news-2026-what-beginners-actually-search.html'
+
+with template_path.open('r') as f:
     html = f.read()
 
 # Replace title
@@ -221,9 +226,9 @@ html = re.sub(r'<article>.*?</article>', article_content, html, flags=re.DOTALL)
 
 html = finalize_html(
     html,
-    'news-2026-what-beginners-actually-search.html',
+    output_path,
     force=True,
 )
 
-with open('/Users/adnan/Desktop/golf/news-2026-what-beginners-actually-search.html', 'w') as f:
+with output_path.open('w') as f:
     f.write(html)

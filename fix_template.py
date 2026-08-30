@@ -1,8 +1,13 @@
 import json
+from pathlib import Path
 from bs4 import BeautifulSoup
 from scripts.fix_template_metadata import finalize_html
 
-with open('/Users/adnan/Desktop/golf/article-template.html', 'r', encoding='utf-8') as f:
+ROOT = Path(__file__).resolve().parent
+template_path = ROOT / 'article-template.html'
+output_path = ROOT / 'news-2026-wyndham-championship-brennan-fedexcup-bubble-resolution.html'
+
+with template_path.open('r', encoding='utf-8') as f:
     html = f.read()
 
 soup = BeautifulSoup(html, 'html.parser')
@@ -129,8 +134,8 @@ soup.article.replace_with(new_article)
 final_html = "<!DOCTYPE html>\n" + str(soup)
 final_html = finalize_html(
     final_html,
-    '/Users/adnan/Desktop/golf/news-2026-wyndham-championship-brennan-fedexcup-bubble-resolution.html',
+    output_path,
     force=True,
 )
-with open('/Users/adnan/Desktop/golf/news-2026-wyndham-championship-brennan-fedexcup-bubble-resolution.html', 'w', encoding='utf-8') as f:
+with output_path.open('w', encoding='utf-8') as f:
     f.write(final_html)
