@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 280,
+  "count": 279,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -370,9 +370,9 @@
     },
     {
       "canonical": "/rules/golf-tournaments-rules-formats-tax-guide",
-      "alias_of": "rules/golf-tournaments-rules-formats-tax-guide",
-      "slug": "golf-tournaments-rules-formats-tax-guide",
-      "url": "/golf-tournaments-rules-formats-tax-guide",
+      "alias_of": "",
+      "slug": "rules/golf-tournaments-rules-formats-tax-guide",
+      "url": "/rules/golf-tournaments-rules-formats-tax-guide",
       "title": "Golf Tournament Rules, Formats, and Tax Guide",
       "excerpt": "Complete guide to competitive golf tournament formats, USGA handicap allowances, Rule 3.3b scorecard compliance, amateur prize limits, and IRS tax reporting.",
       "category": "GUIDES",
@@ -384,9 +384,9 @@
     },
     {
       "canonical": "/equipment/golf-deals-equipment-tee-times-guide",
-      "alias_of": "equipment/golf-deals-equipment-tee-times-guide",
-      "slug": "golf-deals-equipment-tee-times-guide",
-      "url": "/golf-deals-equipment-tee-times-guide",
+      "alias_of": "",
+      "slug": "equipment/golf-deals-equipment-tee-times-guide",
+      "url": "/equipment/golf-deals-equipment-tee-times-guide",
       "title": "Golf Deals: Save $2,176 Annually on Equipment and Rounds",
       "excerpt": "Save $2,176 annually on golf equipment, balls, and tee times. The data-backed guide to equipment release cycles, direct-to-consumer urethane balls, and twilight rates.",
       "category": "GUIDES",
@@ -843,20 +843,6 @@
       "keywords": "jessica bang, jessica bang golfer, wpga tour australasia, jessica bang obituary",
       "category_source": "search-index",
       "section": "NEWS"
-    },
-    {
-      "canonical": "/blog/morikawa-61-travelers-championship-2026",
-      "alias_of": "",
-      "slug": "blog/morikawa-61-travelers-championship-2026",
-      "url": "/blog/morikawa-61-travelers-championship-2026",
-      "title": "Morikawa Shot 61 at the Travelers and Lost by One",
-      "excerpt": "Collin Morikawa's 9-under 61 tied his career low and left him one shot out. Hovland beat Scheffler in a Monday playoff. What actually happened, verified.",
-      "category": "PGA TOUR",
-      "date": "2026-08-15",
-      "image": "/public/collin-morikawa-travelers-championship-2026-final-round.webp",
-      "keywords": "who won the 2026 Travelers Championship, Morikawa 61 Travelers, Travelers Championship Monday playoff, Morikawa third place Travelers",
-      "category_source": "search-index",
-      "section": "PGA TOUR"
     },
     {
       "canonical": "/news-2026-liv-golf-equity-dp-world-tour-fines-2027",

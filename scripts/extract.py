@@ -4,6 +4,10 @@ import re, os, json
 UTIL = {'index','search','news','guides','liv-golf','pga-tour','tournaments','analysis','vault',
 'ratings','tools','about','contact','privacy','terms','corrections','manifesto','past-issues',
 'article-template','full-board','the-card','ratings-manual'}
+# This legacy LIV analysis has its own editorial package and is intentionally
+# kept outside the generated article registry. It remains a standalone page
+# while its metadata distinguishes it from the newer rules explainer.
+EXCLUDED_STANDALONE = {'liv-golf-pga-tour-return'}
 # match-play, strokes-gained and swing-guide are content pages, not utility chrome.
 
 def meta(s, key, attr='name'):
@@ -36,12 +40,13 @@ def unescape(t):
 
 def slugs(root='.'):
     d = {f[:-5] for f in os.listdir(root) if f.endswith('.html')}
-    blog_dir = os.path.join(root, 'blog')
-    if os.path.exists(blog_dir) and os.path.isdir(blog_dir):
-        for f in os.listdir(blog_dir):
-            if f.endswith('.html'):
-                d.add('blog/' + f[:-5])
-    return sorted(d - UTIL - {x for x in d if x.startswith('tools-')})
+    for directory in ('blog', 'equipment', 'rules'):
+        nested_dir = os.path.join(root, directory)
+        if os.path.exists(nested_dir) and os.path.isdir(nested_dir):
+            for f in os.listdir(nested_dir):
+                if f.endswith('.html'):
+                    d.add(directory + '/' + f[:-5])
+    return sorted(d - UTIL - EXCLUDED_STANDALONE - {x for x in d if x.startswith('tools-')})
 
 def categories(root='.'):
     """Authoritative category map from the live search index."""

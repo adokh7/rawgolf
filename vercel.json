@@ -19,6 +19,21 @@
             "source": "/news-2026-lee-westwood-liv-golf-bedminster-different-course",
             "destination": "/guides-playing-golf-in-your-fifties-distance-loss",
             "permanent": true
+        },
+        {
+            "source": "/blog/morikawa-61-travelers-championship-2026",
+            "destination": "/morikawa-61-travelers-championship-2026",
+            "permanent": true
+        },
+        {
+            "source": "/golf-deals-equipment-tee-times-guide",
+            "destination": "/equipment/golf-deals-equipment-tee-times-guide",
+            "permanent": true
+        },
+        {
+            "source": "/golf-tournaments-rules-formats-tax-guide",
+            "destination": "/rules/golf-tournaments-rules-formats-tax-guide",
+            "permanent": true
         }
     ],
     "headers": [

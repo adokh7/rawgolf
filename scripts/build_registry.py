@@ -83,6 +83,9 @@ def existing_keywords():
                 slug = a.get('slug') or a.get('url', '').lstrip('/')
                 if slug and a.get('keywords', '').strip():
                     kw[slug] = a['keywords']
+                    canonical = a.get('canonical', '').lstrip('/')
+                    if canonical:
+                        kw.setdefault(canonical, a['keywords'])
         except (ValueError, KeyError):
             pass
     return kw

@@ -1232,8 +1232,4 @@ os.makedirs("rules", exist_ok=True)
 with open("rules/golf-tournaments-rules-formats-tax-guide.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
-# Also write to root golf-tournaments-rules-formats-tax-guide.html
-with open("golf-tournaments-rules-formats-tax-guide.html", "w", encoding="utf-8") as f:
-    f.write(html_content)
-
-print("Created rules/golf-tournaments-rules-formats-tax-guide.html and golf-tournaments-rules-formats-tax-guide.html")
+print("Created rules/golf-tournaments-rules-formats-tax-guide.html")
