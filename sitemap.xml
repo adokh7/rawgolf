@@ -41,7 +41,7 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
+  <url><loc>https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4</loc><changefreq>daily</changefreq><priority>0.7</priority></url><url>
     <loc>https://www.golfraw.com/tools</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
