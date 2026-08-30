@@ -14,7 +14,7 @@ the site: URL, title, excerpt, category, section, date, image and keywords.
 | `news.html` | every article, newest first |
 | `guides.html`, `liv-golf.html`, `pga-tour.html`, `tournaments.html` | filtered by `section` |
 | `search.html` | the whole `ARTICLES` array |
-| `sitemap.xml` | every article + static pages |
+| `sitemap.xml` | every deployable, indexable, self-canonical HTML page |
 | `feed.xml` | newest 40 articles, with WebSub hub links |
 
 Anything you hand-edit in a generated file (or the marked homepage feed) is
@@ -96,10 +96,12 @@ page, so it is not regenerated and its picks are unaffected by `section`.
 ## Dates
 
 `date` is ISO `YYYY-MM-DD` in the registry and is also used as card display
-text. `sitemap.xml` must carry strict W3C dates, so `write_sitemap()` passes
-every value through `iso_date()`, which normalises formats like `AUG 07 2026`
-and omits `<lastmod>` entirely rather than emit something invalid. A single
-malformed date makes Search Console reject the whole sitemap.
+text. Sitemap `<lastmod>` values come from each page's own
+`article:modified_time` or JSON-LD `dateModified`, falling back to the page's
+publication metadata only when no modification date is available. The
+generator emits no `<lastmod>` when the page has no reliable date or when its
+metadata sources disagree. It never uses today's date or a registry date that
+could have drifted from the page.
 
 ## Gotchas in the HTML
 

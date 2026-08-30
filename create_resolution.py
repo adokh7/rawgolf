@@ -1,9 +1,15 @@
 import json
+from pathlib import Path
 from bs4 import BeautifulSoup
 from scripts.fix_template_metadata import finalize_html
 
+ROOT = Path(__file__).resolve().parent
+template_path = ROOT / 'article-template.html'
+output_path = ROOT / 'news-2026-wyndham-championship-brennan-fedexcup-bubble-resolution.html'
+registry_path = ROOT / 'articles.json'
+
 # 1. Create HTML file
-with open('/Users/adnan/Desktop/golf/article-template.html', 'r', encoding='utf-8') as f:
+with template_path.open('r', encoding='utf-8') as f:
     html = f.read()
 
 soup = BeautifulSoup(html, 'html.parser')
@@ -128,14 +134,14 @@ soup.article.replace_with(new_article)
 final_html = "<!DOCTYPE html>\n" + str(soup)
 final_html = finalize_html(
     final_html,
-    '/Users/adnan/Desktop/golf/news-2026-wyndham-championship-brennan-fedexcup-bubble-resolution.html',
+    output_path,
     force=True,
 )
-with open('/Users/adnan/Desktop/golf/news-2026-wyndham-championship-brennan-fedexcup-bubble-resolution.html', 'w', encoding='utf-8') as f:
+with output_path.open('w', encoding='utf-8') as f:
     f.write(final_html)
 
 # Update articles.json
-with open('/Users/adnan/Desktop/golf/articles.json', 'r', encoding='utf-8') as f:
+with registry_path.open('r', encoding='utf-8') as f:
     articles_data = json.load(f)
 
 new_json_obj = {
@@ -151,6 +157,6 @@ new_json_obj = {
 articles_data['articles'].insert(0, new_json_obj)
 articles_data['count'] += 1
 
-with open('/Users/adnan/Desktop/golf/articles.json', 'w', encoding='utf-8') as f:
+with registry_path.open('w', encoding='utf-8') as f:
     json.dump(articles_data, f, indent=2, ensure_ascii=False)
     f.write('\n')

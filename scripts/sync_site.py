@@ -9,6 +9,9 @@ Regenerates: the latest-article feed in index.html; news.html, liv-golf.html,
              sitemap.xml; and feed.xml.
 """
 import sys, os, re, json, html as html_mod, hashlib
+from datetime import date as date_type
+from html.parser import HTMLParser
+from urllib.parse import urlsplit
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,24 +40,27 @@ HOMEPAGE_PRIORITY_URLS = (
 HOMEPAGE_START = '<!-- START HOMEPAGE ARTICLE FEED -->'
 HOMEPAGE_END = '<!-- END HOMEPAGE ARTICLE FEED -->'
 
-# Every publishable root-level non-article page. Keeping these here ensures the
-# sitemap agrees with the indexable canonicals applied by fix_seo_audit.py.
-# article-template.html is intentionally omitted because it is a development
-# scaffold, not a public destination.
-# /search is omitted too: internal search results are noindex, and a sitemap
-# should only list URLs you want indexed.
+# Preferred ordering for the stable, human-readable sitemap output. Candidate
+# discovery happens from the deployable HTML inventory below, so a new
+# self-canonical indexable page cannot be silently omitted just because it was
+# not added to this ordering list.
 STATIC = ['/', '/news', '/guides', '/liv-golf', '/pga-tour', '/tournaments',
           '/vault', '/ratings', '/tools', '/analysis', '/about', '/contact',
           '/corrections', '/full-board', '/manifesto', '/past-issues',
           '/privacy', '/ratings-manual', '/terms', '/the-card',
           '/in-memoriam']
 
+# Development-only HTML that is present locally for generators or hosting
+# fallbacks but is not an indexable production destination.
+NON_PRODUCTION_HTML = {'article-template.html', '404.html'}
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
 def load():
-    d = json.load(open(os.path.join(ROOT, 'articles.json'), encoding='utf-8'))
+    with open(os.path.join(ROOT, 'articles.json'), encoding='utf-8') as registry:
+        d = json.load(registry)
     return [a for a in d['articles'] if not a.get('alias_of')]
 
 
@@ -213,9 +219,12 @@ def write_if_changed(path, text):
     completely untouched — no rewrites, no mtime churn. Returns True if the
     file was written.
     """
-    if os.path.exists(path) and open(path, encoding='utf-8').read() == text:
-        return False
-    open(path, 'w', encoding='utf-8').write(text)
+    if os.path.exists(path):
+        with open(path, encoding='utf-8') as existing:
+            if existing.read() == text:
+                return False
+    with open(path, 'w', encoding='utf-8') as output:
+        output.write(text)
     return True
 
 
@@ -376,6 +385,167 @@ def iso_date(value):
     return ''
 
 
+class _PageMetadata(HTMLParser):
+    """Read indexation and publication metadata without assuming attr order."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.meta = {}
+        self.canonical = ''
+        self.jsonld = []
+        self._jsonld_open = False
+        self._jsonld_buffer = []
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == 'meta':
+            key = (attrs.get('property') or attrs.get('name') or '').lower()
+            if key and attrs.get('content') is not None:
+                self.meta.setdefault(key, []).append(attrs['content'].strip())
+        elif tag == 'link':
+            rel = {part.lower() for part in (attrs.get('rel') or '').split()}
+            if 'canonical' in rel:
+                self.canonical = (attrs.get('href') or '').strip()
+        elif tag == 'script':
+            script_type = (attrs.get('type') or '').lower().split(';', 1)[0].strip()
+            if script_type == 'application/ld+json':
+                self._jsonld_open = True
+                self._jsonld_buffer = []
+
+    def handle_data(self, data):
+        if self._jsonld_open:
+            self._jsonld_buffer.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == 'script' and self._jsonld_open:
+            raw = ''.join(self._jsonld_buffer).strip()
+            try:
+                self.jsonld.append(json.loads(raw))
+            except (TypeError, ValueError):
+                # Invalid JSON-LD cannot be a reliable sitemap date source.
+                self.jsonld.append(None)
+            self._jsonld_open = False
+            self._jsonld_buffer = []
+
+
+def page_metadata(path):
+    parser = _PageMetadata()
+    with open(path, encoding='utf-8') as page:
+        parser.feed(page.read())
+    return parser
+
+
+def _jsonld_values(value, key):
+    if isinstance(value, dict):
+        if isinstance(value.get(key), str):
+            yield value[key]
+        for child in value.values():
+            yield from _jsonld_values(child, key)
+    elif isinstance(value, list):
+        for child in value:
+            yield from _jsonld_values(child, key)
+
+
+def _normalise_page_date(value):
+    """Return a valid W3C date from an ISO date/datetime, or an empty string."""
+    match = re.match(r'^(\d{4}-\d{2}-\d{2})', (value or '').strip())
+    if not match:
+        return ''
+    try:
+        date_type.fromisoformat(match.group(1))
+    except ValueError:
+        return ''
+    return match.group(1)
+
+
+def _consistent_page_date(values):
+    """Return one date only when every supplied source agrees on its day."""
+    if not values:
+        return None
+    normalised = [_normalise_page_date(value) for value in values]
+    if not all(normalised) or len(set(normalised)) != 1:
+        return ''
+    return normalised[0]
+
+
+def reliable_lastmod(path, metadata=None):
+    """Use page metadata only; omit dates that are absent, invalid, or conflicted."""
+    metadata = metadata or page_metadata(path)
+    modified = list(metadata.meta.get('article:modified_time', []))
+    modified += list(value for obj in metadata.jsonld
+                     for value in _jsonld_values(obj, 'dateModified'))
+    published = list(metadata.meta.get('article:published_time', []))
+    published += list(value for obj in metadata.jsonld
+                      for value in _jsonld_values(obj, 'datePublished'))
+    for values in (modified, published):
+        result = _consistent_page_date(values)
+        if result is not None:
+            return result
+    return ''
+
+
+def _route_for_html(path):
+    relative = os.path.relpath(path, ROOT).replace(os.sep, '/')
+    if relative == 'index.html':
+        return '/'
+    if relative.endswith('.html'):
+        return '/' + relative[:-5]
+    return ''
+
+
+def production_html_pages():
+    """Return every deployable HTML route and its local source file."""
+    pages = []
+    for directory, dirnames, filenames in os.walk(ROOT):
+        dirnames[:] = [name for name in dirnames
+                       if not name.startswith('.') and name not in {'node_modules', 'public'}]
+        for filename in filenames:
+            if not filename.endswith('.html') or filename in NON_PRODUCTION_HTML:
+                continue
+            path = os.path.join(directory, filename)
+            route = _route_for_html(path)
+            if route:
+                pages.append((route, path))
+    return sorted(pages)
+
+
+def redirect_sources():
+    """Return exact Vercel redirect sources that must never enter a sitemap."""
+    try:
+        with open(os.path.join(ROOT, 'vercel.json'), encoding='utf-8') as config_file:
+            config = json.load(config_file)
+    except (OSError, ValueError):
+        return set()
+    return {item.get('source', '') for item in config.get('redirects', [])
+            if item.get('source')}
+
+
+def sitemap_page_records():
+    """Discover unique indexable self-canonical pages from production HTML."""
+    excluded = redirect_sources()
+    records = {}
+    for route, path in production_html_pages():
+        if route in excluded:
+            continue
+        metadata = page_metadata(path)
+        robots = ','.join(metadata.meta.get('robots', [])).lower()
+        if 'noindex' in robots:
+            continue
+        canonical = urlsplit(metadata.canonical)
+        if canonical.query or canonical.fragment:
+            continue
+        if metadata.canonical != f'https://www.golfraw.com{route}':
+            continue
+        canonical_route = canonical.path or '/'
+        if canonical_route != route:
+            continue
+        records.setdefault(route, {
+            'path': path,
+            'lastmod': reliable_lastmod(path, metadata),
+        })
+    return records
+
+
 
 def tool_pages():
     """Every individual /tools-* page on disk, sorted.
@@ -393,30 +563,32 @@ def tool_pages():
 
 def write_sitemap(arts):
     base = 'https://www.golfraw.com'
+    records = sitemap_page_records()
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', '']
-    out += [f'  <url>\n    <loc>{base}/</loc>\n    <changefreq>daily</changefreq>'
-            f'\n    <priority>1.0</priority>\n  </url>']
-    for u in STATIC[1:]:
-        out.append(f'  <url>\n    <loc>{base}{u}</loc>\n    <changefreq>daily</changefreq>'
-                   f'\n    <priority>0.8</priority>\n  </url>')
-    # Individual tool pages. These were missing entirely — only /tools was
-    # listed — so none of the calculators were being crawled. Discovered from
-    # disk rather than hardcoded, so a new tool is indexed the moment it ships.
-    # They carry no published date, so <lastmod> is omitted rather than faked.
-    for slug in tool_pages():
-        out.append(f'  <url>\n    <loc>{base}/{slug}</loc>\n    <changefreq>monthly</changefreq>'
-                   f'\n    <priority>0.8</priority>\n  </url>')
-    # Sort on the normalised date too — mixing 'AUG 07 2026' with '2026-08-07'
-    # sorts lexicographically and scrambles the order.
-    for a in sorted(arts, key=lambda x: iso_date(x.get('date')), reverse=True):
-        d = iso_date(a.get('date'))
-        lastmod = f'\n    <lastmod>{d}</lastmod>' if d else ''
-        out.append(f'  <url>\n    <loc>{base}{a["url"]}</loc>{lastmod}'
-                   f'\n    <priority>0.9</priority>\n  </url>')
+    preferred = [route for route in STATIC if route in records]
+    remaining = [route for route in records if route not in preferred]
+    dated = sorted((route for route in remaining if records[route]['lastmod']),
+                   key=lambda route: (records[route]['lastmod'], route), reverse=True)
+    undated = sorted(route for route in remaining if not records[route]['lastmod'])
+    ordered = preferred + dated + undated
+    for route in ordered:
+        record = records[route]
+        lastmod = f'\n    <lastmod>{record["lastmod"]}</lastmod>' if record['lastmod'] else ''
+        if route == '/':
+            frequency, priority = 'daily', '1.0'
+        elif route in STATIC:
+            frequency, priority = 'daily', '0.8'
+        elif route.startswith('/tools-'):
+            frequency, priority = 'monthly', '0.8'
+        else:
+            frequency, priority = None, '0.9'
+        frequency_line = f'\n    <changefreq>{frequency}</changefreq>' if frequency else ''
+        out.append(f'  <url>\n    <loc>{base}{route}</loc>{lastmod}{frequency_line}'
+                   f'\n    <priority>{priority}</priority>\n  </url>')
     out += ['</urlset>', '']
     write_if_changed(os.path.join(ROOT, 'sitemap.xml'), '\n'.join(out))
-    return len(arts) + len(STATIC) + len(tool_pages())
+    return len(records)
 
 
 

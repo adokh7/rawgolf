@@ -1,8 +1,10 @@
 import json
 import os
+from pathlib import Path
 
-filepath = "/Users/adnan/Desktop/golf/articles.json"
-with open(filepath, "r", encoding="utf-8") as f:
+ROOT = Path(__file__).resolve().parent
+registry_path = ROOT / "articles.json"
+with registry_path.open("r", encoding="utf-8") as f:
     data = json.load(f)
 
 new_article = {
@@ -21,5 +23,5 @@ data["articles"].insert(0, new_article)
 # Update the count
 data["count"] = len(data["articles"])
 
-with open(filepath, "w", encoding="utf-8") as f:
+with registry_path.open("w", encoding="utf-8") as f:
     json.dump(data, f, indent=2)

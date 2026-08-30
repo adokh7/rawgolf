@@ -1,7 +1,12 @@
 import re
+from pathlib import Path
 from scripts.fix_template_metadata import finalize_html
 
-with open('/Users/adnan/Desktop/golf/article-template.html', 'r') as f:
+ROOT = Path(__file__).resolve().parent
+template_path = ROOT / 'article-template.html'
+output_path = ROOT / 'news-2026-scheffler-tour-championship-fedexcup-format-east-lake.html'
+
+with template_path.open('r') as f:
     template = f.read()
 
 # Meta replacements
@@ -101,11 +106,11 @@ template = re.sub(r'<article>.*?</article>', new_article, template, flags=re.DOT
 
 template = finalize_html(
     template,
-    '/Users/adnan/Desktop/golf/news-2026-scheffler-tour-championship-fedexcup-format-east-lake.html',
+    output_path,
     force=True,
 )
 
-with open('/Users/adnan/Desktop/golf/news-2026-scheffler-tour-championship-fedexcup-format-east-lake.html', 'w') as f:
+with output_path.open('w') as f:
     f.write(template)
 
 print("Article generated.")

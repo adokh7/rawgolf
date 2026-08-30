@@ -1,7 +1,11 @@
 import json
+from pathlib import Path
 
-with open("/Users/adnan/Desktop/golf/news-2026-what-beginners-actually-search.html", "r", encoding="utf-8") as f:
-    html = f.read()
+ROOT = Path(__file__).resolve().parent
+input_path = ROOT / "news-2026-what-beginners-actually-search.html"
+output_path = ROOT / "news-2026-michigan-golf-tournaments-rocket-classic-liv-cancelled.html"
+
+html = input_path.read_text(encoding="utf-8")
 
 # Replace metadata
 html = html.replace(
@@ -155,5 +159,4 @@ html = re.sub(
     flags=re.DOTALL
 )
 
-with open("/Users/adnan/Desktop/golf/news-2026-michigan-golf-tournaments-rocket-classic-liv-cancelled.html", "w", encoding="utf-8") as f:
-    f.write(html)
+output_path.write_text(html, encoding="utf-8")
