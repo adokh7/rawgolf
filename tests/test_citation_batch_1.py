@@ -15,7 +15,7 @@ TARGETS = {
         "canonical": f"{BASE}/news-2026-liv-golf-300-million-funding-explained",
         "citations": {
             "https://www.livgolf.com/news/liv-golf-reaches-agreement-with-lead-investor-for-its-next-era",
-            "https://news.bloomberglaw.com/bankruptcy-law/bc-partners-credit-arm-explores-extending-lifeline-to-liv-golf",
+            "https://www.bloomberg.com/news/articles/2026-08-05/bc-partners-credit-arm-explores-extending-lifeline-to-liv-golf",
             "https://golf.com/news/liv-golf-financial-woes-lawsuit/",
         },
     },

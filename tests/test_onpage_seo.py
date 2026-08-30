@@ -47,7 +47,7 @@ EXPECTED_TOOL_TITLES = {
 
 TASK5_INLINE_CITATION_HREFS = {
     "https://www.livgolf.com/news/liv-golf-reaches-agreement-with-lead-investor-for-its-next-era",
-    "https://news.bloomberglaw.com/bankruptcy-law/bc-partners-credit-arm-explores-extending-lifeline-to-liv-golf",
+    "https://www.bloomberg.com/news/articles/2026-08-05/bc-partners-credit-arm-explores-extending-lifeline-to-liv-golf",
     "https://golf.com/news/liv-golf-financial-woes-lawsuit/",
     "https://www.golfmonthly.com/news/they-removed-my-ankle-bracelet-henrik-stenson-discusses-future-plans-as-liv-golf-penalty-comes-to-an-end",
     "https://theallychallenge.com/media/latest-news/2026/283-the-concert-17-presented-soaring-eagle-casino-resort-returns-friday-the-2026-the-ally-challenge-presented-mclaren/",
