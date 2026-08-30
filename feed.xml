@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Tour Championship Round 3: Hovland&#x27;s 65 and Every Score | GOLFRAW</title>
+      <link>https://www.golfraw.com/news-2026-tour-championship-round-3-tee-times-leaderboard</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-round-3-tee-times-leaderboard</guid>
+      <pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate>
+      <category>TOURNAMENTS, PGA TOUR, NEWS</category>
+      <description>Nineteen players began Saturday within five shots and it ended with a one-shot lead. Full Round 3 draw, results, and the Sunday sheet nobody agrees on.</description>
+      <enclosure url="https://www.golfraw.com/public/tour-championship-2026-round-3-tee-times-leaderboard.webp" length="144066" type="image/webp"/>
+    </item>
+    <item>
       <title>Hovland Leads the Tour Championship by One Into Sunday | GOLFRAW</title>
       <link>https://www.golfraw.com/news-2026-hovland-leads-tour-championship-final-day</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-hovland-leads-tour-championship-final-day</guid>
@@ -134,15 +143,6 @@
       <category>PGA TOUR</category>
       <description>The PGA Tour just rebuilt its finale around match play. Here is how the 2028 format actually works, and the flaw Scottie Scheffler pointed at.</description>
       <enclosure url="https://www.golfraw.com/public/tour-championship-2028-match-play-format.webp" length="106814" type="image/webp"/>
-    </item>
-    <item>
-      <title>2026 Tour Championship Purse: The Winner Gets $10 Million</title>
-      <link>https://www.golfraw.com/news-2026-tour-championship-purse-east-lake</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-purse-east-lake</guid>
-      <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>The 2026 Tour Championship pays $10 million to the winner. But the $100 million FedExCup pool was already handed out. Here is who got paid, and when.</description>
-      <enclosure url="https://www.golfraw.com/public/tour-championship-2026-purse-east-lake.webp" length="177188" type="image/webp"/>
     </item>
   </channel>
 </rss>
