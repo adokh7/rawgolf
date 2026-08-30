@@ -77,11 +77,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.golfraw.com/past-issues</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.golfraw.com/privacy</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -97,14 +92,14 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.golfraw.com/the-card</loc>
+    <loc>https://www.golfraw.com/in-memoriam</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.golfraw.com/in-memoriam</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.golfraw.com/news-2026-trump-honorary-chairman-presidents-cup-2026</loc>
+    <lastmod>2026-08-30</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.golfraw.com/how-long-do-golf-tournaments-last</loc>
