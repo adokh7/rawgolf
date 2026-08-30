@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>PGA Tour Winners 2026: 28 Names, 35 Events, One Left | GOLFRAW</title>
+      <link>https://www.golfraw.com/news-2026-pga-tour-winners-2026</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-pga-tour-winners-2026</guid>
+      <pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR, TOURNAMENTS, NEWS</category>
+      <description>Every winner from the Sony Open to the BMW, the three men who won three times, and why the best player in the world isn&#x27;t one of them.</description>
+      <enclosure url="https://www.golfraw.com/public/pga-tour-winners-2026-season-recap.webp" length="105888" type="image/webp"/>
+    </item>
+    <item>
       <title>Tour Championship Round 3: Hovland&#x27;s 65 and Every Score | GOLFRAW</title>
       <link>https://www.golfraw.com/news-2026-tour-championship-round-3-tee-times-leaderboard</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-round-3-tee-times-leaderboard</guid>
@@ -134,15 +143,6 @@
       <category>PGA TOUR</category>
       <description>Brooks Koepka is Motor City Golf Club&#x27;s first signing. Here is who owns the team, what it cost him to get here, and why no match happens in Detroit.</description>
       <enclosure url="https://www.golfraw.com/public/brooks-koepka-motor-city-golf-club-tgl.webp" length="116806" type="image/webp"/>
-    </item>
-    <item>
-      <title>The Tour Championship 2028 Match Play Format, Explained Without the Spin</title>
-      <link>https://www.golfraw.com/news-2026-tour-championship-2028-match-play-format</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-2028-match-play-format</guid>
-      <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>The PGA Tour just rebuilt its finale around match play. Here is how the 2028 format actually works, and the flaw Scottie Scheffler pointed at.</description>
-      <enclosure url="https://www.golfraw.com/public/tour-championship-2028-match-play-format.webp" length="106814" type="image/webp"/>
     </item>
   </channel>
 </rss>
