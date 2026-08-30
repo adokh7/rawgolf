@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Trump named honorary chairman of the Presidents Cup again</title>
+      <link>https://www.golfraw.com/news-2026-trump-honorary-chairman-presidents-cup-2026</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-trump-honorary-chairman-presidents-cup-2026</guid>
+      <pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR</category>
+      <description>He&#x27;s the seventh U.S. president in the role and the second to do it twice. What the job actually involves, and the dates two outlets can&#x27;t agree on.</description>
+      <enclosure url="https://www.golfraw.com/public/trump-honorary-chairman-presidents-cup-2026.webp" length="121492" type="image/webp"/>
+    </item>
+    <item>
       <title>How long do golf tournaments last?</title>
       <link>https://www.golfraw.com/how-long-do-golf-tournaments-last</link>
       <guid isPermaLink="true">https://www.golfraw.com/how-long-do-golf-tournaments-last</guid>
@@ -134,15 +143,6 @@
       <category>PGA TOUR</category>
       <description>All 30 players start level at East Lake. We turn the 2026 Tour Championship odds into implied probability and show the arithmetic before Thursday.</description>
       <enclosure url="https://www.golfraw.com/public/tour-championship-2026-east-lake-odds.webp" length="106636" type="image/webp"/>
-    </item>
-    <item>
-      <title>Scottie Scheffler&#x27;s 2026 Tour Championship odds: +310</title>
-      <link>https://www.golfraw.com/news-2026-scottie-scheffler-tour-championship-odds</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-scottie-scheffler-tour-championship-odds</guid>
-      <pubDate>Wed, 26 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Scottie Scheffler is +310 at East Lake. We convert the 2026 Tour Championship odds into a break-even win rate and price the other 29 players against it.</description>
-      <enclosure url="https://www.golfraw.com/public/scottie-scheffler-tour-championship-2026-odds.webp" length="102392" type="image/webp"/>
     </item>
   </channel>
 </rss>

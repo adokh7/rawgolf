@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 279,
+  "count": 280,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,20 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-trump-honorary-chairman-presidents-cup-2026",
+      "alias_of": "",
+      "slug": "news-2026-trump-honorary-chairman-presidents-cup-2026",
+      "url": "/news-2026-trump-honorary-chairman-presidents-cup-2026",
+      "title": "Trump named honorary chairman of the Presidents Cup again",
+      "excerpt": "He's the seventh U.S. president in the role and the second to do it twice. What the job actually involves, and the dates two outlets can't agree on.",
+      "category": "PGA TOUR",
+      "date": "2026-08-30",
+      "image": "/public/trump-honorary-chairman-presidents-cup-2026.webp",
+      "keywords": "Trump honorary chairman, Presidents Cup 2026, Trump Presidents Cup, Medinah Country Club, honorary chairman role, Brandt Snedeker, Geoff Ogilvy, Presidents Cup dates, Presidents Cup format, PGA Tour, tournaments, latest news",
+      "category_source": "override",
+      "section": "TOURNAMENTS"
+    },
     {
       "canonical": "/how-long-do-golf-tournaments-last",
       "alias_of": "",
