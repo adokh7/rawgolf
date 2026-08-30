@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Every Shot From Tiger Woods&#x27; 80th Win: What to Watch For | GOLFRAW</title>
+      <link>https://www.golfraw.com/news-every-shot-tiger-woods-80th-win-2018</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-every-shot-tiger-woods-80th-win-2018</guid>
+      <pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate>
+      <category>TOURNAMENTS, PGA TOUR, HISTORY</category>
+      <description>He shot 71 on Sunday, made three bogeys, and won by two. What the full broadcast shows that the highlight reel cuts, and the trophy he didn&#x27;t take home.</description>
+      <enclosure url="https://www.golfraw.com/public/every-shot-tiger-woods-80th-win-2018.webp" length="365120" type="image/webp"/>
+    </item>
+    <item>
       <title>2026 Tour Championship Sunday Tee Times: Everything Moved | GOLFRAW</title>
       <link>https://www.golfraw.com/news-2026-tour-championship-sunday-tee-times-round-4</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-sunday-tee-times-round-4</guid>
@@ -134,15 +143,6 @@
       <category>PGA TOUR</category>
       <description>Two over through four, and Scheffler still shot 67. Who else moved at East Lake, who buried himself, and the number that says this isn&#x27;t over.</description>
       <enclosure url="https://www.golfraw.com/public/tour-championship-2026-friday-winners-losers.webp" length="89854" type="image/webp"/>
-    </item>
-    <item>
-      <title>2026 Tour Championship prize money payout: $355K last</title>
-      <link>https://www.golfraw.com/news-2026-tour-championship-prize-money-payout</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-prize-money-payout</guid>
-      <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR</category>
-      <description>Every spot from $10 million down to $355,000, plus the reason two different payout tables are circulating and which one the Tour actually publishes.</description>
-      <enclosure url="https://www.golfraw.com/public/tour-championship-2026-prize-money-payout.webp" length="86124" type="image/webp"/>
     </item>
   </channel>
 </rss>
