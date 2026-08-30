@@ -1,4 +1,5 @@
 import re
+from scripts.fix_template_metadata import finalize_html
 
 with open("article-template.html", "r") as f:
     template = f.read()
@@ -147,6 +148,12 @@ template = re.sub(
     '<article>\n' + article_content + '\n      </article>', 
     template,
     flags=re.DOTALL
+)
+
+template = finalize_html(
+    template,
+    "news-2026-megha-ganne-lpga-debut-inkster-award.html",
+    force=True,
 )
 
 with open("news-2026-megha-ganne-lpga-debut-inkster-award.html", "w") as f:

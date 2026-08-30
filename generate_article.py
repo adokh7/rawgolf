@@ -1,17 +1,18 @@
 import re
+from scripts.fix_template_metadata import finalize_html
 
 with open('/Users/adnan/Desktop/golf/article-template.html', 'r') as f:
     template = f.read()
 
 # Meta replacements
-template = re.sub(r'<title>.*?</title>', '<title>Eighth in Iron Play, 116th in Putting: The Brutal Math Behind Brooks Koepka\'s Wyndham Stand | GolfRaw</title>', template)
+template = re.sub(r'<title>.*?</title>', '<title>Eighth in Iron Play, 116th in Putting | GolfRaw</title>', template)
 template = re.sub(r'<meta name="description"\s*content=".*?">', '<meta name="description"\n    content="Koepka is 8th on Tour in approach play and 116th in putting. He withdrew from Detroit with a hand injury. Now he needs a massive week at Sedgefield.">', template)
 template = re.sub(r'<link rel="canonical" href=".*?">', '<link rel="canonical" href="https://www.golfraw.com/news-2026-brooks-koepka-wyndham-putting-stat-injury">', template)
-template = re.sub(r'<meta property="og:title" content=".*?" />', '<meta property="og:title" content="Eighth in Iron Play, 116th in Putting: The Brutal Math Behind Brooks Koepka\'s Wyndham Stand" />', template)
+template = re.sub(r'<meta property="og:title" content=".*?" />', '<meta property="og:title" content="Eighth in Iron Play, 116th in Putting | GolfRaw" />', template)
 template = re.sub(r'<meta property="og:description" content=".*?" />', '<meta property="og:description" content="Koepka is 8th on Tour in approach play and 116th in putting. He withdrew from Detroit with a hand injury. Now he needs a massive week at Sedgefield." />', template)
 template = re.sub(r'<meta property="og:url" content=".*?" />', '<meta property="og:url" content="https://www.golfraw.com/news-2026-brooks-koepka-wyndham-putting-stat-injury" />', template)
 template = re.sub(r'<meta property="og:image" content=".*?">', '<meta property="og:image" content="https://www.golfraw.com/public/brooks-koepka-wyndham-putting-pga-tour.webp">', template)
-template = re.sub(r'<meta name="twitter:title" content=".*?">', '<meta name="twitter:title" content="Eighth in Iron Play, 116th in Putting: The Brutal Math Behind Brooks Koepka\'s Wyndham Stand">', template)
+template = re.sub(r'<meta name="twitter:title" content=".*?">', '<meta name="twitter:title" content="Eighth in Iron Play, 116th in Putting | GolfRaw">', template)
 template = re.sub(r'<meta name="twitter:description"\s*content=".*?">', '<meta name="twitter:description"\n    content="Koepka is 8th on Tour in approach play and 116th in putting. He withdrew from Detroit with a hand injury. Now he needs a massive week at Sedgefield.">', template)
 template = re.sub(r'<meta name="twitter:image" content=".*?">', '<meta name="twitter:image" content="https://www.golfraw.com/public/brooks-koepka-wyndham-putting-pga-tour.webp">', template)
 template = re.sub(r'<meta property="article:published_time" content=".*?" />', '<meta property="article:published_time" content="2026-08-09T07:30:00+02:00" />', template)
@@ -97,6 +98,12 @@ new_article = """<article>
 
 # Using regex to replace the <article>...</article> section
 template = re.sub(r'<article>.*?</article>', new_article, template, flags=re.DOTALL)
+
+template = finalize_html(
+    template,
+    'news-2026-brooks-koepka-wyndham-putting-stat-injury.html',
+    force=True,
+)
 
 with open('/Users/adnan/Desktop/golf/news-2026-brooks-koepka-wyndham-putting-stat-injury.html', 'w') as f:
     f.write(template)

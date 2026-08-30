@@ -1,5 +1,6 @@
 import json
 from bs4 import BeautifulSoup
+from scripts.fix_template_metadata import finalize_html
 
 # 1. Create HTML file
 with open('/Users/adnan/Desktop/golf/article-template.html', 'r', encoding='utf-8') as f:
@@ -125,6 +126,11 @@ new_article = BeautifulSoup(article_html, 'html.parser')
 soup.article.replace_with(new_article)
 
 final_html = "<!DOCTYPE html>\n" + str(soup)
+final_html = finalize_html(
+    final_html,
+    '/Users/adnan/Desktop/golf/news-2026-wyndham-championship-brennan-fedexcup-bubble-resolution.html',
+    force=True,
+)
 with open('/Users/adnan/Desktop/golf/news-2026-wyndham-championship-brennan-fedexcup-bubble-resolution.html', 'w', encoding='utf-8') as f:
     f.write(final_html)
 

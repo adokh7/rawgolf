@@ -1,4 +1,5 @@
 import re
+from scripts.fix_template_metadata import finalize_html
 
 with open('/Users/adnan/Desktop/golf/article-template.html', 'r') as f:
     template = f.read()
@@ -91,6 +92,12 @@ new_article = """<article>
       </article>"""
 
 template = re.sub(r'<article>.*?</article>', new_article, template, flags=re.DOTALL)
+
+template = finalize_html(
+    template,
+    '/Users/adnan/Desktop/golf/news-2026-charley-hull-four-putt-anna-huang-pif-london.html',
+    force=True,
+)
 
 with open('/Users/adnan/Desktop/golf/news-2026-charley-hull-four-putt-anna-huang-pif-london.html', 'w') as f:
     f.write(template)
