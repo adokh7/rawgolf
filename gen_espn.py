@@ -1,4 +1,5 @@
 import re
+from scripts.fix_template_metadata import finalize_html
 
 with open("article-template.html", "r") as f:
     template = f.read()
@@ -13,7 +14,7 @@ template = re.sub(
 # Replace meta description
 template = re.sub(
     r'<meta name="description" content="[^"]*">', 
-    '<meta name="description" content="Scheffler and McIlroy are paired for two rounds in ESPN\'s morning window. ESPN hasn\'t shown the Tour Championship since 2006 — the year before the FedExCup.">', 
+    '<meta name="description" content="Scheffler and McIlroy are paired for two rounds in ESPN\'s morning window. ESPN hasn\'t shown the Tour Championship since 2006 — before the FedExCup.">',
     template
 )
 
@@ -32,7 +33,7 @@ template = re.sub(
 )
 template = re.sub(
     r'<meta property="og:description" content="[^"]*">', 
-    '<meta property="og:description" content="Scheffler and McIlroy are paired for two rounds in ESPN\'s morning window. ESPN hasn\'t shown the Tour Championship since 2006 — the year before the FedExCup.">', 
+    '<meta property="og:description" content="Scheffler and McIlroy are paired for two rounds in ESPN\'s morning window. ESPN hasn\'t shown the Tour Championship since 2006 — before the FedExCup.">',
     template
 )
 template = re.sub(
@@ -57,7 +58,7 @@ template = re.sub(
 )
 template = re.sub(
     r'<meta name="twitter:description" content="[^"]*">', 
-    '<meta name="twitter:description" content="Scheffler and McIlroy are paired for two rounds in ESPN\'s morning window. ESPN hasn\'t shown the Tour Championship since 2006 — the year before the FedExCup.">', 
+    '<meta name="twitter:description" content="Scheffler and McIlroy are paired for two rounds in ESPN\'s morning window. ESPN hasn\'t shown the Tour Championship since 2006 — before the FedExCup.">',
     template
 )
 template = re.sub(
@@ -153,6 +154,12 @@ template = re.sub(
     '<article>\n' + article_content + '\n      </article>', 
     template,
     flags=re.DOTALL
+)
+
+template = finalize_html(
+    template,
+    "news-2026-espn-pga-tour-playoffs-coverage-fedex-st-jude.html",
+    force=True,
 )
 
 with open("news-2026-espn-pga-tour-playoffs-coverage-fedex-st-jude.html", "w") as f:

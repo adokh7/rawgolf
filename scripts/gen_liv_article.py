@@ -1,4 +1,8 @@
 import os
+try:
+    from scripts.fix_template_metadata import finalize_html
+except ModuleNotFoundError:
+    from fix_template_metadata import finalize_html
 import json
 
 template_path = '/Users/adnan/Desktop/golf/article-template.html'
@@ -89,6 +93,8 @@ article_content = """<article>
 # Find the start and end of <article> in the HTML and replace it
 import re
 html = re.sub(r'<article>.*?</article>', article_content, html, flags=re.DOTALL)
+
+html = finalize_html(html, output_path, force=True)
 
 with open(output_path, 'w', encoding='utf-8') as f:
     f.write(html)

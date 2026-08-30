@@ -1,21 +1,22 @@
 import re
+from scripts.fix_template_metadata import finalize_html
 
 with open('/Users/adnan/Desktop/golf/article-template.html', 'r') as f:
     html = f.read()
 
 # Replace title
-html = re.sub(r'<title>.*?</title>', '<title>40,500 Search "Beginner Clubs." 1,600 Search "Golf." | GolfRaw</title>', html, flags=re.DOTALL)
+html = re.sub(r'<title>.*?</title>', '<title>40,500 Search "Beginner Clubs"; 1,600 "Golf" | GolfRaw</title>', html, flags=re.DOTALL)
 html = re.sub(r'<meta name="description".*?>', '<meta name="description"\n    content="40,500 people a month search for beginner golf clubs. 590 ask what a handicap is. What the search data reveals about how beginners are being sold to.">', html, flags=re.DOTALL)
 html = re.sub(r'<link rel="canonical" href="https://www.golfraw.com/article-template">', '<link rel="canonical" href="https://www.golfraw.com/what-beginners-actually-search">', html)
 
 # Replace OG tags
-html = re.sub(r'<meta property="og:title" content=".*?" />', '<meta property="og:title" content="40,500 Search &quot;Beginner Clubs.&quot; 1,600 Search &quot;Golf.&quot; | GolfRaw" />', html)
+html = re.sub(r'<meta property="og:title" content=".*?" />', '<meta property="og:title" content="40,500 Search &quot;Beginner Clubs&quot;; 1,600 &quot;Golf&quot; | GolfRaw" />', html)
 html = re.sub(r'<meta property="og:description" content=".*?" />', '<meta property="og:description" content="40,500 people a month search for beginner golf clubs. 590 ask what a handicap is. What the search data reveals about how beginners are being sold to." />', html)
 html = re.sub(r'<meta property="og:url" content=".*?" />', '<meta property="og:url" content="https://www.golfraw.com/what-beginners-actually-search" />', html)
 html = re.sub(r'<meta property="og:image" content=".*?">', '<meta property="og:image" content="https://www.golfraw.com/public/what-beginners-actually-search.webp">', html)
 
 # Replace Twitter tags
-html = re.sub(r'<meta name="twitter:title" content=".*?">', '<meta name="twitter:title" content="40,500 Search &quot;Beginner Clubs.&quot; 1,600 Search &quot;Golf.&quot; | GolfRaw">', html)
+html = re.sub(r'<meta name="twitter:title" content=".*?">', '<meta name="twitter:title" content="40,500 Search &quot;Beginner Clubs&quot;; 1,600 &quot;Golf&quot; | GolfRaw">', html)
 html = re.sub(r'<meta name="twitter:description".*?>', '<meta name="twitter:description"\n    content="40,500 people a month search for beginner golf clubs. 590 ask what a handicap is. What the search data reveals about how beginners are being sold to.">', html, flags=re.DOTALL)
 html = re.sub(r'<meta name="twitter:image" content=".*?">', '<meta name="twitter:image" content="https://www.golfraw.com/public/what-beginners-actually-search.webp">', html)
 
@@ -217,6 +218,12 @@ article_content = """      <article>
       </article>"""
 
 html = re.sub(r'<article>.*?</article>', article_content, html, flags=re.DOTALL)
+
+html = finalize_html(
+    html,
+    'news-2026-what-beginners-actually-search.html',
+    force=True,
+)
 
 with open('/Users/adnan/Desktop/golf/news-2026-what-beginners-actually-search.html', 'w') as f:
     f.write(html)

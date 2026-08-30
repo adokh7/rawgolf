@@ -1,4 +1,5 @@
 .git
+.vercel
 .github
 node_modules
 .system_generated
@@ -6,3 +7,8 @@ node_modules
 .gemini
 __pycache__
 *.pyc
+*.py
+
+# Development-only scaffold; generators read it locally, but production must
+# not expose it as an indexable static route.
+article-template.html

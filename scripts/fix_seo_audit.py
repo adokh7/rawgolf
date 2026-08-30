@@ -20,6 +20,11 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import quote, urlparse
 
+try:
+    from fix_template_metadata import finalize_html, has_template_contamination
+except ModuleNotFoundError:  # imported as scripts.fix_seo_audit
+    from scripts.fix_template_metadata import finalize_html, has_template_contamination
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://www.golfraw.com"
@@ -630,6 +635,8 @@ def validate_page(path: Path, source: str) -> list[str]:
         errors.append("twitter:image does not match og:image")
     if not local_image_url(og_image):
         errors.append(f"og:image is not a live local /public asset: {og_image!r}")
+    if path.name != "article-template.html" and has_template_contamination(source):
+        errors.append("template-derived Oakmont metadata remains in production HTML")
     return errors
 
 
@@ -650,6 +657,8 @@ def main() -> int:
             try:
                 source = path.read_text(encoding="utf-8")
                 repaired, _ = repair_source(path, source)
+                if path.name != "article-template.html":
+                    repaired = finalize_html(repaired, path)
                 if repaired != source:
                     path.write_text(repaired, encoding="utf-8")
                     changed += 1
