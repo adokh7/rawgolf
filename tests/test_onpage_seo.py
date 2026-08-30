@@ -45,6 +45,17 @@ EXPECTED_TOOL_TITLES = {
     "tools-tilt-meter.html": "The Tilt Meter: Amateur Meltdown Index | GOLFRAW",
 }
 
+TASK5_INLINE_CITATION_HREFS = {
+    "https://www.livgolf.com/news/liv-golf-reaches-agreement-with-lead-investor-for-its-next-era",
+    "https://news.bloomberglaw.com/bankruptcy-law/bc-partners-credit-arm-explores-extending-lifeline-to-liv-golf",
+    "https://golf.com/news/liv-golf-financial-woes-lawsuit/",
+    "https://www.golfmonthly.com/news/they-removed-my-ankle-bracelet-henrik-stenson-discusses-future-plans-as-liv-golf-penalty-comes-to-an-end",
+    "https://theallychallenge.com/media/latest-news/2026/283-the-concert-17-presented-soaring-eagle-casino-resort-returns-friday-the-2026-the-ally-challenge-presented-mclaren/",
+    "https://qualifying.pgatourhq.com/static-assets/uploads/2026-PGA%20TOUR%20Player%20Handbook%20and%20Regulations-2-23-26.pdf",
+    "https://www.espnradio941.com/2026/08/26/scheffler-says-hes-95-recovered-from-illness/",
+    "https://www.foxnews.com/outkick-sports/scottie-scheffler-reveals-he-played-through-pretty-painful-illness-during-bmw-championship",
+}
+
 
 class PageParser(HTMLParser):
     def __init__(self):
@@ -104,6 +115,19 @@ def sitemap_paths():
         urlsplit(node.findtext("sm:loc", "", SITEMAP_NS)).path
         for node in root.findall("sm:url", SITEMAP_NS)
     }
+
+
+def comparable_article(source):
+    """Compare article copy while allowing Task 5 citation markup only."""
+    body = re.search(r"<article\b.*?</article>", source, re.I | re.S)
+    if body is None:
+        return ""
+    value = body.group(0)
+    value = re.sub(r'<section\b[^>]*class=["\'][^"\']*\bsources\b[^"\']*["\'][^>]*>.*?</section>', "", value, flags=re.I | re.S)
+    for href in TASK5_INLINE_CITATION_HREFS:
+        tag = rf'<a\b[^>]*href=["\']{re.escape(href)}["\'][^>]*>(.*?)</a>'
+        value = re.sub(tag, r"\1", value, flags=re.I | re.S)
+    return re.sub(r"\s+", " ", value).strip()
 
 
 class OnPageSeoTests(unittest.TestCase):
@@ -170,11 +194,9 @@ class OnPageSeoTests(unittest.TestCase):
         for name in ARTICLE_TITLES:
             current = (ROOT / name).read_text(encoding="utf-8")
             base = subprocess.check_output(["git", "show", f"HEAD:{name}"], text=True)
-            current_body = re.search(r"<article\b.*?</article>", current, re.I | re.S)
-            base_body = re.search(r"<article\b.*?</article>", base, re.I | re.S)
-            self.assertIsNotNone(current_body, name)
-            self.assertIsNotNone(base_body, name)
-            self.assertEqual(base_body.group(0), current_body.group(0), name)
+            self.assertTrue(comparable_article(current), name)
+            self.assertTrue(comparable_article(base), name)
+            self.assertEqual(comparable_article(base), comparable_article(current), name)
 
     def test_affected_metadata_is_not_stale_template_data(self):
         stale = ("Oakmont", "article-template", "Average score 74.8")
