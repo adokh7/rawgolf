@@ -1210,8 +1210,4 @@ os.makedirs("equipment", exist_ok=True)
 with open("equipment/golf-deals-equipment-tee-times-guide.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
-# Also write to root golf-deals-equipment-tee-times-guide.html
-with open("golf-deals-equipment-tee-times-guide.html", "w", encoding="utf-8") as f:
-    f.write(html_content)
-
-print("Updated equipment/golf-deals-equipment-tee-times-guide.html and golf-deals-equipment-tee-times-guide.html with valid routes.")
+print("Updated equipment/golf-deals-equipment-tee-times-guide.html.")
