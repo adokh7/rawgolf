@@ -90,12 +90,19 @@ def get_image(a):
 
 
 def get_category(a):
-    return a.get('category', '')
+    c = a.get('category', '')
+    if isinstance(c, list):
+        return ", ".join(c)
+    return c
 
 
 def get_section(a):
     """Return the section for routing. Falls back to category."""
-    return a.get('section') or a.get('category') or ''
+    s = a.get('section')
+    if s: return s if isinstance(s, str) else s[0]
+    c = a.get('category')
+    if c: return c if isinstance(c, str) else c[0]
+    return ''
 
 
 def get_keywords(a):

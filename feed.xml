@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>GOLFRAW</title>
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
     <lastBuildDate>Sun, 30 Aug 2026 09:00:00 +0000</lastBuildDate>
-    <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml" />
-    <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/" />
-    <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/" />
-    <item><title>2026 Tour Championship Tee Times: Round 4 at East Lake | GOLFRAW</title><link>https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4</link><guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4</guid><pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate><category>TOURNAMENTS</category><description>Every pairing from 11:55 a.m. to the 2:55 final group, plus TV times, what Hovland's lead is worth, and the rule that could still cost somebody two shots.</description><enclosure url="https://www.golfraw.com/public/tour-championship-2026-round-4-tee-times.webp" length="154358" type="image/webp" /></item><item>
+    <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
+    <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+    <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>2026 Tour Championship Tee Times: Round 4 at East Lake</title>
+      <link>https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4</guid>
+      <pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate>
+      <category>TOURNAMENTS, PGA TOUR, NEWS</category>
+      <description>Every pairing from 11:55 a.m. to the 2:55 final group, plus TV times, what Hovland&#x27;s lead is worth, and the rule that could still cost somebody two shots.</description>
+      <enclosure url="https://www.golfraw.com/public/tour-championship-2026-round-4-tee-times.webp" length="154358" type="image/webp"/>
+    </item>
+    <item>
       <title>Trump named honorary chairman of the Presidents Cup again</title>
       <link>https://www.golfraw.com/news-2026-trump-honorary-chairman-presidents-cup-2026</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-trump-honorary-chairman-presidents-cup-2026</guid>
       <pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate>
       <category>PGA TOUR</category>
-      <description>He's the seventh U.S. president in the role and the second to do it twice. What the job actually involves, and the dates two outlets can't agree on.</description>
-      <enclosure url="https://www.golfraw.com/public/trump-honorary-chairman-presidents-cup-2026.webp" length="121492" type="image/webp" />
+      <description>He&#x27;s the seventh U.S. president in the role and the second to do it twice. What the job actually involves, and the dates two outlets can&#x27;t agree on.</description>
+      <enclosure url="https://www.golfraw.com/public/trump-honorary-chairman-presidents-cup-2026.webp" length="121492" type="image/webp"/>
     </item>
     <item>
       <title>How long do golf tournaments last?</title>
@@ -25,7 +34,7 @@
       <pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate>
       <category>GUIDES</category>
       <description>Four days is the default, not the rule. Three-day tours, no-cut fields, weather Mondays, and the 2028 change that stretches one event to two weeks.</description>
-      <enclosure url="https://www.golfraw.com/public/how-long-do-golf-tournaments-last.webp" length="276860" type="image/webp" />
+      <enclosure url="https://www.golfraw.com/public/how-long-do-golf-tournaments-last.webp" length="276860" type="image/webp"/>
     </item>
     <item>
       <title>LIV Golf $300 Million Funding: It Might Be a Loan</title>
@@ -33,17 +42,17 @@
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-300-million-funding-explained</guid>
       <pubDate>Sat, 29 Aug 2026 09:00:00 +0000</pubDate>
       <category>LIV GOLF</category>
-      <description>The CEO says an investor signed. Bloomberg says it's a loan. Four vendors are suing. Here's what's actually confirmed, and the September date that decides it.</description>
-      <enclosure url="https://www.golfraw.com/public/liv-golf-300-million-funding-explained.webp" length="167226" type="image/webp" />
+      <description>The CEO says an investor signed. Bloomberg says it&#x27;s a loan. Four vendors are suing. Here&#x27;s what&#x27;s actually confirmed, and the September date that decides it.</description>
+      <enclosure url="https://www.golfraw.com/public/liv-golf-300-million-funding-explained.webp" length="167226" type="image/webp"/>
     </item>
     <item>
-      <title>Cameron Young's New Putter and the 62 That Followed</title>
+      <title>Cameron Young&#x27;s New Putter and the 62 That Followed</title>
       <link>https://www.golfraw.com/news-2026-cameron-young-new-putter-62-tour-championship</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-cameron-young-new-putter-62-tour-championship</guid>
       <pubDate>Sat, 29 Aug 2026 09:00:00 +0000</pubDate>
       <category>EQUIPMENT</category>
       <description>He fell from top 10 in putting to outside the top 100, benched his gamer on a Monday, then gained four strokes on the greens. What you can copy here.</description>
-      <enclosure url="https://www.golfraw.com/public/cameron-young-new-putter-62-tour-championship-2026.webp" length="248376" type="image/webp" />
+      <enclosure url="https://www.golfraw.com/public/cameron-young-new-putter-62-tour-championship-2026.webp" length="248376" type="image/webp"/>
     </item>
     <item>
       <title>Hovland in Tie for Lead at Tour Championship: 12 of 14</title>
@@ -51,8 +60,8 @@
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-hovland-tie-for-lead-tour-championship</guid>
       <pubDate>Sat, 29 Aug 2026 09:00:00 +0000</pubDate>
       <category>PGA TOUR</category>
-      <description>He hit 12 of 14 fairways and told reporters he can't explain it. What Hovland's 66 really proves, who's stacked behind him, and the stat nobody checked.</description>
-      <enclosure url="https://www.golfraw.com/public/hovland-tie-for-lead-tour-championship-2026.webp" length="82580" type="image/webp" />
+      <description>He hit 12 of 14 fairways and told reporters he can&#x27;t explain it. What Hovland&#x27;s 66 really proves, who&#x27;s stacked behind him, and the stat nobody checked.</description>
+      <enclosure url="https://www.golfraw.com/public/hovland-tie-for-lead-tour-championship-2026.webp" length="82580" type="image/webp"/>
     </item>
     <item>
       <title>Tour Championship winners and losers Friday: Scheffler surges</title>
@@ -60,8 +69,8 @@
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-winners-losers-friday</guid>
       <pubDate>Fri, 28 Aug 2026 09:00:00 +0000</pubDate>
       <category>PGA TOUR</category>
-      <description>Two over through four, and Scheffler still shot 67. Who else moved at East Lake, who buried himself, and the number that says this isn't over.</description>
-      <enclosure url="https://www.golfraw.com/public/tour-championship-2026-friday-winners-losers.webp" length="89854" type="image/webp" />
+      <description>Two over through four, and Scheffler still shot 67. Who else moved at East Lake, who buried himself, and the number that says this isn&#x27;t over.</description>
+      <enclosure url="https://www.golfraw.com/public/tour-championship-2026-friday-winners-losers.webp" length="89854" type="image/webp"/>
     </item>
     <item>
       <title>2026 Tour Championship prize money payout: $355K last</title>
@@ -70,7 +79,7 @@
       <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
       <category>PGA TOUR</category>
       <description>Every spot from $10 million down to $355,000, plus the reason two different payout tables are circulating and which one the Tour actually publishes.</description>
-      <enclosure url="https://www.golfraw.com/public/tour-championship-2026-prize-money-payout.webp" length="86124" type="image/webp" />
+      <enclosure url="https://www.golfraw.com/public/tour-championship-2026-prize-money-payout.webp" length="86124" type="image/webp"/>
     </item>
     <item>
       <title>Henrik Stenson PGA Tour Champions debut: the 1-year clock</title>
@@ -78,26 +87,26 @@
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-henrik-stenson-pga-tour-champions-debut</guid>
       <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
       <category>LIV GOLF</category>
-      <description>He didn't leave LIV. LIV dropped him. Here is the real date his ban ended, where he tees it up this week, and the one thing nobody can confirm yet.</description>
-      <enclosure url="https://www.golfraw.com/public/henrik-stenson-pga-tour-champions-debut-2026.webp" length="229364" type="image/webp" />
+      <description>He didn&#x27;t leave LIV. LIV dropped him. Here is the real date his ban ended, where he tees it up this week, and the one thing nobody can confirm yet.</description>
+      <enclosure url="https://www.golfraw.com/public/henrik-stenson-pga-tour-champions-debut-2026.webp" length="229364" type="image/webp"/>
     </item>
     <item>
-      <title>Good Good Golf Ad Backlash: What's Actually Been Pulled</title>
+      <title>Good Good Golf Ad Backlash: What&#x27;s Actually Been Pulled</title>
       <link>https://www.golfraw.com/news-2026-good-good-golf-ad-backlash</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-good-good-golf-ad-backlash</guid>
       <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
       <category>PGA TOUR</category>
       <description>Good Good Golf ad backlash: retailers pull merch and Big Break is postponed, but the PGA Tour Good Good Championship is not cancelled. Here is what is confirmed.</description>
-      <enclosure url="https://www.golfraw.com/public/good-good-golf-ad-backlash-callaway-2026.webp" length="333734" type="image/webp" />
+      <enclosure url="https://www.golfraw.com/public/good-good-golf-ad-backlash-callaway-2026.webp" length="333734" type="image/webp"/>
     </item>
     <item>
-      <title>Koepka Joins Detroit's TGL Team. Catch: No Detroit</title>
+      <title>Koepka Joins Detroit&#x27;s TGL Team. Catch: No Detroit</title>
       <link>https://www.golfraw.com/news-2026-brooks-koepka-motor-city-golf-club-tgl</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-brooks-koepka-motor-city-golf-club-tgl</guid>
       <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
       <category>PGA TOUR</category>
-      <description>Brooks Koepka is Motor City Golf Club's first signing. Here is who owns the team, what it cost him to get here, and why no match happens in Detroit.</description>
-      <enclosure url="https://www.golfraw.com/public/brooks-koepka-motor-city-golf-club-tgl.webp" length="116806" type="image/webp" />
+      <description>Brooks Koepka is Motor City Golf Club&#x27;s first signing. Here is who owns the team, what it cost him to get here, and why no match happens in Detroit.</description>
+      <enclosure url="https://www.golfraw.com/public/brooks-koepka-motor-city-golf-club-tgl.webp" length="116806" type="image/webp"/>
     </item>
     <item>
       <title>The Tour Championship 2028 Match Play Format, Explained Without the Spin</title>
@@ -106,7 +115,7 @@
       <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
       <category>PGA TOUR</category>
       <description>The PGA Tour just rebuilt its finale around match play. Here is how the 2028 format actually works, and the flaw Scottie Scheffler pointed at.</description>
-      <enclosure url="https://www.golfraw.com/public/tour-championship-2028-match-play-format.webp" length="106814" type="image/webp" />
+      <enclosure url="https://www.golfraw.com/public/tour-championship-2028-match-play-format.webp" length="106814" type="image/webp"/>
     </item>
     <item>
       <title>2026 Tour Championship Purse: The Winner Gets $10 Million</title>
@@ -115,7 +124,7 @@
       <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
       <category>PGA TOUR</category>
       <description>The 2026 Tour Championship pays $10 million to the winner. But the $100 million FedExCup pool was already handed out. Here is who got paid, and when.</description>
-      <enclosure url="https://www.golfraw.com/public/tour-championship-2026-purse-east-lake.webp" length="177188" type="image/webp" />
+      <enclosure url="https://www.golfraw.com/public/tour-championship-2026-purse-east-lake.webp" length="177188" type="image/webp"/>
     </item>
     <item>
       <title>LIV Golf players return to PGA Tour: what the rules say</title>
@@ -123,8 +132,8 @@
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-players-return-pga-tour-rules</guid>
       <pubDate>Wed, 26 Aug 2026 09:00:00 +0000</pubDate>
       <category>LIV GOLF</category>
-      <description>LIV Golf players return to PGA Tour? The route closed on 2 February 2026. Brian Rolapp restated the terms at East Lake, while LIV's money trail raises a separate 2027 question.</description>
-      <enclosure url="https://www.golfraw.com/public/liv-golf-players-return-pga-tour-rules.webp" length="56198" type="image/webp" />
+      <description>LIV Golf players return to PGA Tour? The route closed on 2 February 2026. Brian Rolapp restated the terms at East Lake, while LIV&#x27;s money trail raises a separate 2027 question.</description>
+      <enclosure url="https://www.golfraw.com/public/liv-golf-players-return-pga-tour-rules.webp" length="56198" type="image/webp"/>
     </item>
     <item>
       <title>Scheffler confirms 95 percent recovery heading into Tour Championship</title>
@@ -133,7 +142,7 @@
       <pubDate>Wed, 26 Aug 2026 09:00:00 +0000</pubDate>
       <category>PGA TOUR</category>
       <description>Scottie Scheffler illness update: world No. 1 says he is 95 percent recovered from hand, foot and mouth disease. Why his BMW Championship T12 looked worse than it was.</description>
-      <enclosure url="https://www.golfraw.com/public/scheffler-illness-tour-championship-2026.webp" length="264132" type="image/webp" />
+      <enclosure url="https://www.golfraw.com/public/scheffler-illness-tour-championship-2026.webp" length="264132" type="image/webp"/>
     </item>
-    </channel>
+  </channel>
 </rss>

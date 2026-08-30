@@ -37,9 +37,13 @@
       "alias_of": "",
       "slug": "news-2026-tour-championship-tee-times-round-4",
       "url": "/news-2026-tour-championship-tee-times-round-4",
-      "title": "2026 Tour Championship Tee Times: Round 4 at East Lake | GOLFRAW",
+      "title": "2026 Tour Championship Tee Times: Round 4 at East Lake",
       "excerpt": "Every pairing from 11:55 a.m. to the 2:55 final group, plus TV times, what Hovland's lead is worth, and the rule that could still cost somebody two shots.",
-      "category": "PGA TOUR",
+      "category": [
+        "TOURNAMENTS",
+        "PGA TOUR",
+        "NEWS"
+      ],
       "date": "2026-08-30",
       "image": "/public/tour-championship-2026-round-4-tee-times.webp",
       "keywords": "Tour Championship Tee Times, East Lake, Viktor Hovland, Ryan Gerard, PGA Tour, Latest News",
