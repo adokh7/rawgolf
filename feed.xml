@@ -10,13 +10,22 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Scott O&#x27;Neil&#x27;s LinkedIn Post on LIV Golf 1.0, Fact-Checked | GOLFRAW</title>
+      <link>https://www.golfraw.com/news-2026-scott-oneil-linkedin-post-liv-golf</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-scott-oneil-linkedin-post-liv-golf</guid>
+      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
+      <category>LIV GOLF, TOURNAMENTS, NEWS</category>
+      <description>Players as majority owners, five continents, a billion homes. Every claim checked against what LIV actually did in 2026, including the purse cut.</description>
+      <enclosure url="https://www.golfraw.com/public/scott-oneil-linkedin-post-liv-golf-2026.webp" length="282446" type="image/webp"/>
+    </item>
+    <item>
       <title>Scottie Scheffler&#x27;s Final Press Conference Answer of the Season</title>
       <link>https://www.golfraw.com/news-2026-scottie-scheffler-final-press-conference-answer</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-scottie-scheffler-final-press-conference-answer</guid>
       <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
       <category>PGA TOUR, TOURNAMENTS, NEWS</category>
       <description>He&#x27;d just won $10 million, a second FedEx Cup, and passed Tiger Woods on the all-time money list. Then he spent his last answers of the year talking about wind and about travelling with his kids.</description>
-      <enclosure url="https://www.golfraw.com/public/scheffler-presser-eastlake-2026.webp" length="154358" type="image/webp"/>
+      <enclosure url="https://www.golfraw.com/public/scheffler-presser-eastlake-2026.webp" length="276290" type="image/webp"/>
     </item>
     <item>
       <title>LIV Golf Settlement Offers: Cents on the Dollar, Explained | GOLFRAW</title>
@@ -134,15 +143,6 @@
       <category>PGA TOUR, TOURNAMENTS, NEWS</category>
       <description>Every winner from the Sony Open to the BMW, the three men who won three times, and why the best player in the world isn&#x27;t one of them.</description>
       <enclosure url="https://www.golfraw.com/public/pga-tour-winners-2026-season-recap.webp" length="105888" type="image/webp"/>
-    </item>
-    <item>
-      <title>Tour Championship Round 3: Hovland&#x27;s 65 and Every Score | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-tour-championship-round-3-tee-times-leaderboard</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-round-3-tee-times-leaderboard</guid>
-      <pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate>
-      <category>TOURNAMENTS, PGA TOUR, NEWS</category>
-      <description>Nineteen players began Saturday within five shots and it ended with a one-shot lead. Full Round 3 draw, results, and the Sunday sheet nobody agrees on.</description>
-      <enclosure url="https://www.golfraw.com/public/tour-championship-2026-round-3-tee-times-leaderboard.webp" length="144066" type="image/webp"/>
     </item>
   </channel>
 </rss>
