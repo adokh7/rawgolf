@@ -33,6 +33,24 @@
   ],
   "articles": [
     {
+      "canonical": "/news-2026-end-of-season-driver-deals",
+      "alias_of": "",
+      "slug": "news-2026-end-of-season-driver-deals",
+      "url": "/news-2026-end-of-season-driver-deals",
+      "title": "End-of-Season Driver Deals: What's Actually Worth Buying | GOLFRAW",
+      "excerpt": "The driver with the most PGA Tour wins in 2026 costs $449, less than some new fairway woods. What's discounted now, and the one check before you buy.",
+      "category": [
+        "GUIDES",
+        "GEAR",
+        "NEWS"
+      ],
+      "date": "2026-08-31",
+      "image": "/public/end-of-season-driver-deals-2026.webp",
+      "keywords": "driver deals, PING G440, Titleist GT, Callaway Elyte, Cobra Darkspeed, TaylorMade Qi4D, golf equipment, USGA conforming list",
+      "category_source": "override",
+      "section": "GUIDES"
+    },
+    {
       "canonical": "/news-2026-scheffler-true-strokes-gained",
       "alias_of": "",
       "slug": "news-2026-scheffler-true-strokes-gained",
