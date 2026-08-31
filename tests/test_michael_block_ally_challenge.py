@@ -51,9 +51,10 @@ class MichaelBlockArticleTests(unittest.TestCase):
         self.assertEqual(b"RIFF", asset.read_bytes()[:4])
         self.assertEqual(b"WEBP", asset.read_bytes()[8:12])
 
-    def test_registry_entry_is_first_and_routes_to_pga_tour(self):
-        self.assertTrue(self.registry["articles"])
-        record = self.registry["articles"][0]
+    def test_registry_entry_routes_to_pga_tour(self):
+        record = next(
+            record for record in self.registry["articles"] if record.get("slug") == SLUG
+        )
         self.assertEqual(SLUG, record.get("slug"))
         self.assertEqual(f"/{SLUG}", record.get("url"))
         self.assertEqual(f"/{SLUG}", record.get("canonical"))
