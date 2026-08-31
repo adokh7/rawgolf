@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression coverage for the Brandt Jobe / Jackson Jobe feature."""
+"""Regression coverage for the Scottie Scheffler True Strokes Gained feature."""
 
 import json
 import unittest
@@ -8,9 +8,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SLUG = "news-2026-brandt-jobe-ally-challenge-jackson"
+SLUG = "news-2026-scheffler-true-strokes-gained"
 CANONICAL = f"https://www.golfraw.com/{SLUG}"
-IMAGE = "/public/brandt-jobe-ally-challenge-jackson-2026.webp"
+IMAGE = "/public/scheffler-true-strokes-gained-2026.webp"
 
 
 class JsonLdParser(HTMLParser):
@@ -35,7 +35,7 @@ class JsonLdParser(HTMLParser):
             self._capturing = False
 
 
-class BrandtJobeArticleTests(unittest.TestCase):
+class SchefflerTrueStrokesGainedTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.path = ROOT / f"{SLUG}.html"
@@ -50,27 +50,22 @@ class BrandtJobeArticleTests(unittest.TestCase):
         self.assertEqual(b"WEBP", asset.read_bytes()[8:12])
 
     def test_registry_entry_is_first_and_routes_to_pga_tour(self):
-        entry = next(
-            article for article in self.registry["articles"] if article.get("slug") == SLUG
-        )
-        self.assertEqual(SLUG, entry.get("slug"))
-        self.assertEqual(f"/{SLUG}", entry.get("url"))
-        self.assertEqual(f"/{SLUG}", entry.get("canonical"))
-        self.assertEqual(IMAGE, entry.get("image"))
-        self.assertEqual(
-            ["PGA TOUR CHAMPIONS", "TOURNAMENTS", "NEWS"], entry.get("category")
-        )
-        self.assertEqual("PGA TOUR", entry.get("section"))
+        first = self.registry["articles"][0]
+        self.assertEqual(SLUG, first.get("slug"))
+        self.assertEqual(f"/{SLUG}", first.get("url"))
+        self.assertEqual(f"/{SLUG}", first.get("canonical"))
+        self.assertEqual(IMAGE, first.get("image"))
+        self.assertEqual(["PGA TOUR", "RATINGS", "NEWS"], first.get("category"))
+        self.assertEqual("PGA TOUR", first.get("section"))
 
     def test_metadata_hero_and_standard_layout_are_page_specific(self):
-        title = "Brandt Jobe's Ally Challenge: Best Week in Over a Year | GOLFRAW"
+        title = "Scottie Scheffler's True Strokes Gained: 12th Since 1983 | GOLFRAW"
         description = (
-            "A 69 on Sunday for his best result since last August, and a Tuesday night at Comerica "
-            "watching his son pitch. The week nobody put on a highlight reel."
+            "His 2026 rates as the 12th-best statistical season in 43 years, and eight above it belong to Tiger Woods. "
+            "What the number does and doesn't say."
         )
         alt = (
-            "Brandt Jobe watching his tee shot at Warwick Hills during the 2026 Ally Challenge "
-            "after shooting 8-under 208."
+            "Scottie Scheffler following through on an approach shot at East Lake during his historic 2026 True Strokes Gained season."
         )
         for marker in (
             f"<title>{title}</title>",
@@ -85,33 +80,31 @@ class BrandtJobeArticleTests(unittest.TestCase):
             '<div class="takeaways">',
             'class="related-grid"',
             f'<img src="{IMAGE}" alt="{alt}"',
-            "PGA TOUR CHAMPIONS",
         ):
             self.assertIn(marker, self.html, marker)
 
-    def test_required_sections_table_data_and_links_exist(self):
+    def test_required_sections_table_metrics_and_links_exist(self):
         for marker in (
-            "The Scorecard Breakdown",
-            "Why T12 is a Victory",
-            "Tuesday Night at Comerica Park",
-            "Parallel Rehabs",
-            "The 2006 Augusta Flashback",
-            "Fact-Checking 4 Claims",
+            "Defining True Strokes Gained vs Raw PGA Tour SG",
+            "The DG Points Dilemma",
+            "The Bounce-Back Rate Collapse",
+            "The Rate Stats vs Counting Stats Debate",
+            "5 Golf Analytics Myths Debunked",
             "The Raw Verdict",
             "Frequently Asked Questions",
             "Sources",
-            "Brandt Jobe (Father, 61)",
-            "Jackson Jobe (Son, 24)",
-            "Both hips &amp; shoulder reconstruction",
-            "Tommy John elbow reconstruction",
-            "67-72-69",
-            "3.93 ERA",
-            "4.1 IP",
-            "4 Ks",
-            "4-1 Win vs Tampa Bay",
-            "/news-2026-michael-block-ally-challenge",
-            "/news-2026-tour-championship-points-and-payouts",
+            "Tiger Woods (Peak Era)",
+            "Scottie Scheffler (2025)",
+            "Scottie Scheffler (2026)",
+            "+2.92 (PGA Tour Raw: +2.374)",
+            "2.374",
+            "1.694",
+            "72.9%",
+            "67.9",
+            ".680",
+            "/news-2026-scheffler-ted-scott-finding-the-number",
             "/news-2026-hovland-tour-championship-runner-up",
+            "/news-2026-scheffler-brandel-chamblee",
         ):
             self.assertIn(marker, self.html, marker)
 
@@ -160,10 +153,10 @@ class BrandtJobeArticleTests(unittest.TestCase):
         if isinstance(value, dict):
             yield value
             for child in value.values():
-                yield from BrandtJobeArticleTests._objects(child)
+                yield from SchefflerTrueStrokesGainedTests._objects(child)
         elif isinstance(value, list):
             for child in value:
-                yield from BrandtJobeArticleTests._objects(child)
+                yield from SchefflerTrueStrokesGainedTests._objects(child)
 
 
 if __name__ == "__main__":

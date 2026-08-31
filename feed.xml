@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Scottie Scheffler&#x27;s True Strokes Gained: 12th Since 1983 | GOLFRAW</title>
+      <link>https://www.golfraw.com/news-2026-scheffler-true-strokes-gained</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-scheffler-true-strokes-gained</guid>
+      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR, RATINGS, NEWS</category>
+      <description>His 2026 rates as the 12th-best statistical season in 43 years, and eight above it belong to Tiger Woods. What the number does and doesn&#x27;t say.</description>
+      <enclosure url="https://www.golfraw.com/public/scheffler-true-strokes-gained-2026.webp" length="120270" type="image/webp"/>
+    </item>
+    <item>
       <title>Brandt Jobe&#x27;s Ally Challenge: Best Week in Over a Year | GOLFRAW</title>
       <link>https://www.golfraw.com/news-2026-brandt-jobe-ally-challenge-jackson</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-brandt-jobe-ally-challenge-jackson</guid>
@@ -134,15 +143,6 @@
       <category>PGA TOUR, TOURNAMENTS, NEWS</category>
       <description>Scheffler needs solo 13th, McIlroy needs solo 4th. One outlet already declared it done a week ago. Here&#x27;s what&#x27;s actually verified and what isn&#x27;t.</description>
       <enclosure url="https://www.golfraw.com/public/tiger-woods-career-money-list-record.webp" length="135300" type="image/webp"/>
-    </item>
-    <item>
-      <title>Why Pros Are Ditching Hybrids, and Why You Shouldn&#x27;t | GOLFRAW</title>
-      <link>https://www.golfraw.com/why-pros-are-ditching-hybrids</link>
-      <guid isPermaLink="true">https://www.golfraw.com/why-pros-are-ditching-hybrids</guid>
-      <pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate>
-      <category>GUIDES, GEAR, PGA TOUR</category>
-      <description>Hybrid use in the PGA Tour top 100 fell from 32% to 13%. On the LPGA it&#x27;s 70%. The 15 mph gap explains both, and one man won a major with one.</description>
-      <enclosure url="https://www.golfraw.com/public/why-pros-are-ditching-hybrids-analysis.webp" length="306172" type="image/webp"/>
     </item>
   </channel>
 </rss>
