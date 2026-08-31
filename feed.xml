@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Scheffler and Brandel Chamblee: The Full 2026 Arc | GOLFRAW</title>
+      <link>https://www.golfraw.com/news-2026-scheffler-brandel-chamblee</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-scheffler-brandel-chamblee</guid>
+      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR, TOURNAMENTS, NEWS</category>
+      <description>In April he didn&#x27;t recognise Scheffler&#x27;s swing. In August he called him miles ahead. Both takes were right, and the record proves it.</description>
+      <enclosure url="https://www.golfraw.com/public/scheffler-brandel-chamblee-2026.webp" length="154358" type="image/webp"/>
+    </item>
+    <item>
       <title>Scott O&#x27;Neil&#x27;s LinkedIn Post on LIV Golf 1.0, Fact-Checked | GOLFRAW</title>
       <link>https://www.golfraw.com/news-2026-scott-oneil-linkedin-post-liv-golf</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-scott-oneil-linkedin-post-liv-golf</guid>
@@ -134,15 +143,6 @@
       <category>TOURNAMENTS, PGA TOUR, NEWS</category>
       <description>Six putts from seven feet or longer built it. Scheffler, Scott, Åberg and Gotterup are three back, McIlroy shot 63, and last place is 3 under.</description>
       <enclosure url="https://www.golfraw.com/public/hovland-one-shot-lead-tour-championship-2026.webp" length="144100" type="image/webp"/>
-    </item>
-    <item>
-      <title>PGA Tour Winners 2026: 28 Names, 35 Events, One Left | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-pga-tour-winners-2026</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-pga-tour-winners-2026</guid>
-      <pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR, TOURNAMENTS, NEWS</category>
-      <description>Every winner from the Sony Open to the BMW, the three men who won three times, and why the best player in the world isn&#x27;t one of them.</description>
-      <enclosure url="https://www.golfraw.com/public/pga-tour-winners-2026-season-recap.webp" length="105888" type="image/webp"/>
     </item>
   </channel>
 </rss>
