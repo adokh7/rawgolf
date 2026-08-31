@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Scottie Scheffler&#x27;s Final Press Conference Answer of 2026 | GOLFRAW</title>
+      <link>https://www.golfraw.com/news-2026-scottie-scheffler-final-press-conference-answer</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-scottie-scheffler-final-press-conference-answer</guid>
+      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR, TOURNAMENTS, NEWS</category>
+      <description>No existential monologue this time. Wind, fighting back, and travelling with his wife and two sons. Why the boring version tells you more.</description>
+      <enclosure url="https://www.golfraw.com/public/scottie-scheffler-final-press-conference-answer-2026.webp" length="276290" type="image/webp"/>
+    </item>
+    <item>
       <title>LIV Golf Settlement Offers: Cents on the Dollar, Explained | GOLFRAW</title>
       <link>https://www.golfraw.com/news-2026-liv-golf-settlement-offers-bankruptcy</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-settlement-offers-bankruptcy</guid>
@@ -134,15 +143,6 @@
       <category>TOURNAMENTS, PGA TOUR, NEWS</category>
       <description>Nineteen players began Saturday within five shots and it ended with a one-shot lead. Full Round 3 draw, results, and the Sunday sheet nobody agrees on.</description>
       <enclosure url="https://www.golfraw.com/public/tour-championship-2026-round-3-tee-times-leaderboard.webp" length="144066" type="image/webp"/>
-    </item>
-    <item>
-      <title>Hovland Leads the Tour Championship by One Into Sunday | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-hovland-leads-tour-championship-final-day</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-hovland-leads-tour-championship-final-day</guid>
-      <pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate>
-      <category>TOURNAMENTS, PGA TOUR, NEWS</category>
-      <description>He closed with six putts from 7 feet or longer to lead by one. Scheffler&#x27;s three back, McIlroy shot 63, and nobody agrees on Sunday&#x27;s tee times.</description>
-      <enclosure url="https://www.golfraw.com/public/hovland-leads-tour-championship-final-day-2026.webp" length="97280" type="image/webp"/>
     </item>
   </channel>
 </rss>
