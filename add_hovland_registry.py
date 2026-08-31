@@ -4,18 +4,18 @@ with open("articles.json", "r") as f:
     data = json.load(f)
 
 new_article = {
-  "canonical": "/news-2026-hovland-one-shot-lead-tour-championship",
+  "canonical": "/news-2026-hovland-on-what-makes-scheffler-successful",
   "alias_of": "",
-  "slug": "news-2026-hovland-one-shot-lead-tour-championship",
-  "url": "/news-2026-hovland-one-shot-lead-tour-championship",
-  "title": "Hovland's One-Shot Lead Came From Six Straight Putts | GOLFRAW",
-  "excerpt": "Six putts from seven feet or longer built it. Scheffler, Scott, Åberg and Gotterup are three back, McIlroy shot 63, and last place is 3 under.",
-  "category": ["TOURNAMENTS", "PGA TOUR", "NEWS"],
-  "date": "2026-08-30",
-  "image": "/public/hovland-one-shot-lead-tour-championship-2026.webp",
-  "keywords": "Viktor Hovland, Tour Championship, Scottie Scheffler, Rory McIlroy 63, East Lake, PGA Tour",
+  "slug": "news-2026-hovland-on-what-makes-scheffler-successful",
+  "url": "/news-2026-hovland-on-what-makes-scheffler-successful",
+  "title": "Hovland on What Makes Scheffler Successful, in 8 Words | GOLFRAW",
+  "excerpt": "Asked if Scheffler amazes him, the man he'd just lost to said no. His actual explanation is duller and far more useful than any mental-game theory.",
+  "category": ["PGA TOUR", "TOURNAMENTS", "NEWS"],
+  "date": "2026-08-31",
+  "image": "/public/hovland-on-what-makes-scheffler-successful-2026.webp",
+  "keywords": "Viktor Hovland, Scottie Scheffler, Tour Championship, Golf Mental Game, PGA Tour",
   "category_source": "override",
-  "section": "TOURNAMENTS"
+  "section": "PGA TOUR"
 }
 
 data["articles"].insert(0, new_article)
