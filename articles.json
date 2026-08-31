@@ -33,6 +33,24 @@
   ],
   "articles": [
     {
+      "canonical": "/news-2026-liv-golf-bankruptcy-player-settlements-deadlock",
+      "alias_of": "",
+      "slug": "news-2026-liv-golf-bankruptcy-player-settlements-deadlock",
+      "url": "/news-2026-liv-golf-bankruptcy-player-settlements-deadlock",
+      "title": "LIV Golf Bankruptcy: The Deadlock Nobody Can Break | GOLFRAW",
+      "excerpt": "The investor won't commit until players sign. Players won't sign for cents on the dollar. That standoff is why Chapter 11 is now the likeliest exit.",
+      "category": [
+        "LIV GOLF",
+        "TOURNAMENTS",
+        "NEWS"
+      ],
+      "date": "2026-08-31",
+      "image": "/public/liv-golf-bankruptcy-deadlock-2026.webp",
+      "keywords": "LIV Golf bankruptcy, player settlements, BC Partners, PIF, Chapter 11, DIP financing, LIV Golf contracts",
+      "category_source": "override",
+      "section": "LIV GOLF"
+    },
+    {
       "canonical": "/news-2026-end-of-season-driver-deals",
       "alias_of": "",
       "slug": "news-2026-end-of-season-driver-deals",

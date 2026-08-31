@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression coverage for the end-of-season driver deals buying guide."""
+"""Regression coverage for the LIV Golf bankruptcy deadlock feature."""
 
 import json
 import unittest
@@ -8,13 +8,13 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SLUG = "news-2026-end-of-season-driver-deals"
+SLUG = "news-2026-liv-golf-bankruptcy-player-settlements-deadlock"
 CANONICAL = f"https://www.golfraw.com/{SLUG}"
-IMAGE = "/public/end-of-season-driver-deals-2026.webp"
-TITLE = "End-of-Season Driver Deals: What's Actually Worth Buying | GOLFRAW"
+IMAGE = "/public/liv-golf-bankruptcy-deadlock-2026.webp"
+TITLE = "LIV Golf Bankruptcy: The Deadlock Nobody Can Break | GOLFRAW"
 DESCRIPTION = (
-    "The driver with the most PGA Tour wins in 2026 costs $449, less than some new fairway woods. "
-    "What's discounted now, and the one check before you buy."
+    "The investor won't commit until players sign. Players won't sign for cents on the dollar. "
+    "That standoff is why Chapter 11 is now the likeliest exit."
 )
 
 
@@ -40,7 +40,7 @@ class JsonLdParser(HTMLParser):
             self._capturing = False
 
 
-class EndOfSeasonDriverDealsTests(unittest.TestCase):
+class LivGolfBankruptcyDeadlockTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.path = ROOT / f"{SLUG}.html"
@@ -54,23 +54,21 @@ class EndOfSeasonDriverDealsTests(unittest.TestCase):
         self.assertEqual(b"RIFF", asset.read_bytes()[:4])
         self.assertEqual(b"WEBP", asset.read_bytes()[8:12])
 
-    def test_registry_entry_uses_guides_section(self):
-        first = next(
-            article for article in self.registry["articles"] if article.get("slug") == SLUG
-        )
+    def test_registry_entry_is_first_and_uses_liv_section(self):
+        first = self.registry["articles"][0]
         self.assertEqual(SLUG, first.get("slug"))
         self.assertEqual(f"/{SLUG}", first.get("url"))
         self.assertEqual(f"/{SLUG}", first.get("canonical"))
         self.assertEqual(TITLE, first.get("title"))
         self.assertEqual(DESCRIPTION, first.get("excerpt"))
         self.assertEqual(IMAGE, first.get("image"))
-        self.assertEqual(["GUIDES", "GEAR", "NEWS"], first.get("category"))
-        self.assertEqual("GUIDES", first.get("section"))
+        self.assertEqual(["LIV GOLF", "TOURNAMENTS", "NEWS"], first.get("category"))
+        self.assertEqual("LIV GOLF", first.get("section"))
 
     def test_metadata_layout_and_hero_are_page_specific(self):
         alt = (
-            "Discounted 2026 flagship drivers including PING G440 and Titleist GT on display "
-            "in a golf fitting studio."
+            "LIV Golf corporate branding and tournament staging standing empty amid Chapter 11 "
+            "bankruptcy standoff and player settlement disputes."
         )
         for marker in (
             f"<title>{TITLE}</title>",
@@ -88,31 +86,28 @@ class EndOfSeasonDriverDealsTests(unittest.TestCase):
             '<div class="takeaways">',
             'class="related-grid"',
             f'<img src="{IMAGE}" alt="{alt}"',
-            "GUIDES • GEAR",
+            "LIV GOLF • INVESTIGATION",
         ):
             self.assertIn(marker, self.html, marker)
 
-    def test_content_table_sections_and_internal_links_exist(self):
+    def test_standoff_table_sections_and_internal_links_exist(self):
         for marker in (
-            "2026 End-of-Season Driver Deals Comparison",
-            "PING G440",
-            "$449",
-            "Titleist GT",
-            "Callaway Elyte Lineup",
-            "Cobra Darkspeed X",
-            "TaylorMade Qi4D",
-            "The Anatomy of Current Cuts",
-            "The Early Discount Mystery",
-            "Performance vs Price",
-            "The TaylorMade Cycle Shift",
-            "USGA Rule 4.1a &amp; Conforming List Check",
-            "5 Discount Season Myths Debunked",
-            "The Practical Buyer's Guide",
+            "The LIV Golf Bankruptcy Standoff Matrix",
+            "Private Equity (BC Partners)",
+            "LIV Golf Players",
+            "PIF (Saudi Wealth Fund)",
+            "League Operations",
+            "The Anatomy of the Standoff",
+            "The Legal Mechanics of Chapter 11",
+            "The Financing Nuance",
+            "What Has Already Been Cut",
+            "The LIV 2.0 Reality",
+            "Debunking 5 Viral Bankruptcy Myths",
             "The Raw Verdict",
             "Frequently Asked Questions",
             "Sources",
-            "/news-2026-scheffler-ted-scott-finding-the-number",
-            "/news-2026-scheffler-true-strokes-gained",
+            "/news-2026-the-end-of-liv-golf-bankruptcy",
+            "/news-2026-scott-oneil-linkedin-post-liv-golf",
             "/news-2026-tour-championship-points-and-payouts",
         ):
             self.assertIn(marker, self.html, marker)
@@ -140,9 +135,9 @@ class EndOfSeasonDriverDealsTests(unittest.TestCase):
         self.assertEqual(
             [
                 (1, "Home", "https://www.golfraw.com/"),
-                (2, "Guides", "https://www.golfraw.com/guides"),
-                (3, "Equipment", "https://www.golfraw.com/gear"),
-                (4, "End-of-Season Driver Deals", CANONICAL),
+                (2, "News", "https://www.golfraw.com/news"),
+                (3, "LIV Golf", "https://www.golfraw.com/liv-golf"),
+                (4, "LIV Bankruptcy Deadlock", CANONICAL),
             ],
             [
                 (item["position"], item["name"], item["item"])
@@ -151,7 +146,7 @@ class EndOfSeasonDriverDealsTests(unittest.TestCase):
         )
 
     def test_synced_surfaces_include_article(self):
-        for name in ("index.html", "news.html", "guides.html", "search.html", "feed.xml", "sitemap.xml"):
+        for name in ("index.html", "news.html", "liv-golf.html", "search.html", "feed.xml", "sitemap.xml"):
             self.assertIn(SLUG, (ROOT / name).read_text(encoding="utf-8"), name)
 
     @staticmethod
@@ -159,10 +154,10 @@ class EndOfSeasonDriverDealsTests(unittest.TestCase):
         if isinstance(value, dict):
             yield value
             for child in value.values():
-                yield from EndOfSeasonDriverDealsTests._objects(child)
+                yield from LivGolfBankruptcyDeadlockTests._objects(child)
         elif isinstance(value, list):
             for child in value:
-                yield from EndOfSeasonDriverDealsTests._objects(child)
+                yield from LivGolfBankruptcyDeadlockTests._objects(child)
 
 
 if __name__ == "__main__":

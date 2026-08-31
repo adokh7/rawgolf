@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>LIV Golf Bankruptcy: The Deadlock Nobody Can Break | GOLFRAW</title>
+      <link>https://www.golfraw.com/news-2026-liv-golf-bankruptcy-player-settlements-deadlock</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-bankruptcy-player-settlements-deadlock</guid>
+      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
+      <category>LIV GOLF, TOURNAMENTS, NEWS</category>
+      <description>The investor won&#x27;t commit until players sign. Players won&#x27;t sign for cents on the dollar. That standoff is why Chapter 11 is now the likeliest exit.</description>
+      <enclosure url="https://www.golfraw.com/public/liv-golf-bankruptcy-deadlock-2026.webp" length="110586" type="image/webp"/>
+    </item>
+    <item>
       <title>End-of-Season Driver Deals: What&#x27;s Actually Worth Buying | GOLFRAW</title>
       <link>https://www.golfraw.com/news-2026-end-of-season-driver-deals</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-end-of-season-driver-deals</guid>
@@ -134,15 +143,6 @@
       <category>PGA TOUR, TOURNAMENTS, NEWS</category>
       <description>Asked if Scheffler amazes him, the man he&#x27;d just lost to said no. His actual explanation is duller and far more useful than any mental-game theory.</description>
       <enclosure url="https://www.golfraw.com/public/hovland-on-what-makes-scheffler-successful-2026.webp" length="94790" type="image/webp"/>
-    </item>
-    <item>
-      <title>Tour Championship Points and Payouts: All 29 Checks | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-tour-championship-points-and-payouts</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-points-and-payouts</guid>
-      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR, TOURNAMENTS, NEWS</category>
-      <description>Scheffler took $10M, seven men split $11.95M, and $355,000 went nowhere. Full table, plus the figure two official pages disagree on.</description>
-      <enclosure url="https://www.golfraw.com/public/tour-championship-points-and-payouts-2026.webp" length="120064" type="image/webp"/>
     </item>
   </channel>
 </rss>
