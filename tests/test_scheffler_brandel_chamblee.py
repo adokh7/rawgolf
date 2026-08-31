@@ -125,10 +125,12 @@ class SchefflerBrandelChambleeTests(unittest.TestCase):
 
     def test_registry_and_public_surfaces_register_the_article(self):
         registry = json.loads((ROOT / "articles.json").read_text(encoding="utf-8"))
-        first = registry["articles"][0]
-        self.assertEqual(first["canonical"], ARTICLE_URL)
-        self.assertEqual(first["image"], IMAGE_PATH)
-        self.assertEqual(first["category"], ["PGA TOUR", "TOURNAMENTS", "NEWS"])
+        article = next(
+            record for record in registry["articles"]
+            if record.get("canonical") == ARTICLE_URL
+        )
+        self.assertEqual(article["image"], IMAGE_PATH)
+        self.assertEqual(article["category"], ["PGA TOUR", "TOURNAMENTS", "NEWS"])
         for name in ("index.html", "news.html", "pga-tour.html", "search.html", "feed.xml", "sitemap.xml"):
             self.assertIn(ARTICLE_URL, (ROOT / name).read_text(encoding="utf-8"))
 

@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Michael Block&#x27;s Ally Challenge: A 36-Hole Record, Then 74 | GOLFRAW</title>
+      <link>https://www.golfraw.com/news-2026-michael-block-ally-challenge</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-michael-block-ally-challenge</guid>
+      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR CHAMPIONS, TOURNAMENTS, NEWS</category>
+      <description>He set the tournament&#x27;s 36-hole scoring record, led by two, then shot 74. Why a T3 is still the best result of his senior career, and what it buys him.</description>
+      <enclosure url="https://www.golfraw.com/public/michael-block-ally-challenge-2026.webp" length="63296" type="image/webp"/>
+    </item>
+    <item>
       <title>The End of LIV Golf? What a Bankruptcy Would Really Mean | GOLFRAW</title>
       <link>https://www.golfraw.com/news-2026-the-end-of-liv-golf-bankruptcy</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-the-end-of-liv-golf-bankruptcy</guid>
@@ -134,15 +143,6 @@
       <category>TOURNAMENTS, PGA TOUR, NEWS</category>
       <description>The whole draw shifted about an hour earlier and the pairings were rebuilt. Full Round 4 tee sheet, TV windows, and the mismatch nobody has flagged.</description>
       <enclosure url="https://www.golfraw.com/public/2026-tour-championship-sunday-tee-times-round-4.webp" length="361380" type="image/webp"/>
-    </item>
-    <item>
-      <title>Michael Block&#x27;s 2-Shot Lead at the Ally Challenge Explained | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-michael-block-lead-ally-challenge</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-michael-block-lead-ally-challenge</guid>
-      <pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate>
-      <category>TOURNAMENTS, CHAMPIONS TOUR, NEWS</category>
-      <description>He eagled the first, made five birdies, dropped nothing, and leads by two. But the number he&#x27;s actually chasing isn&#x27;t first place. Here&#x27;s what it is.</description>
-      <enclosure url="https://www.golfraw.com/public/michael-block-lead-ally-challenge-2026.webp" length="203522" type="image/webp"/>
     </item>
   </channel>
 </rss>
