@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Brandt Jobe&#x27;s Ally Challenge: Best Week in Over a Year | GOLFRAW</title>
+      <link>https://www.golfraw.com/news-2026-brandt-jobe-ally-challenge-jackson</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-brandt-jobe-ally-challenge-jackson</guid>
+      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR CHAMPIONS, TOURNAMENTS, NEWS</category>
+      <description>A 69 on Sunday for his best result since last August, and a Tuesday night at Comerica watching his son pitch. The week nobody put on a highlight reel.</description>
+      <enclosure url="https://www.golfraw.com/public/brandt-jobe-ally-challenge-jackson-2026.webp" length="106078" type="image/webp"/>
+    </item>
+    <item>
       <title>Scottie Scheffler and Ted Scott: How They Find the Number | GOLFRAW</title>
       <link>https://www.golfraw.com/news-2026-scheffler-ted-scott-finding-the-number</link>
       <guid isPermaLink="true">https://www.golfraw.com/news-2026-scheffler-ted-scott-finding-the-number</guid>
@@ -134,15 +143,6 @@
       <category>GUIDES, GEAR, PGA TOUR</category>
       <description>Hybrid use in the PGA Tour top 100 fell from 32% to 13%. On the LPGA it&#x27;s 70%. The 15 mph gap explains both, and one man won a major with one.</description>
       <enclosure url="https://www.golfraw.com/public/why-pros-are-ditching-hybrids-analysis.webp" length="306172" type="image/webp"/>
-    </item>
-    <item>
-      <title>Michael Block Leads the Ally Challenge Into Sunday by Two | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-michael-block-leads-ally-challenge-final-round</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-michael-block-leads-ally-challenge-final-round</guid>
-      <pubDate>Sun, 30 Aug 2026 09:00:00 +0000</pubDate>
-      <category>TOURNAMENTS, CHAMPIONS TOUR, NEWS</category>
-      <description>He&#x27;s in on an invitation, his son is on the bag, and he opened Saturday with an eagle. What Block actually needs from Sunday, and it isn&#x27;t the trophy.</description>
-      <enclosure url="https://www.golfraw.com/public/michael-block-leads-ally-challenge-final-round-2026.webp" length="544124" type="image/webp"/>
     </item>
   </channel>
 </rss>
