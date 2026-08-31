@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 30 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 31 Aug 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Tour Championship Points and Payouts: All 29 Checks | GOLFRAW</title>
+      <link>https://www.golfraw.com/news-2026-tour-championship-points-and-payouts</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-tour-championship-points-and-payouts</guid>
+      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR, TOURNAMENTS, NEWS</category>
+      <description>Scheffler took $10M, seven men split $11.95M, and $355,000 went nowhere. Full table, plus the figure two official pages disagree on.</description>
+      <enclosure url="https://www.golfraw.com/public/tour-championship-points-and-payouts-2026.webp" length="120064" type="image/webp"/>
+    </item>
     <item>
       <title>Tiger Woods&#x27; Career Money List Record May Fall Today | GOLFRAW</title>
       <link>https://www.golfraw.com/news-2026-tiger-woods-career-money-list-record</link>
@@ -134,15 +143,6 @@
       <category>GUIDES</category>
       <description>Four days is the default, not the rule. Three-day tours, no-cut fields, weather Mondays, and the 2028 change that stretches one event to two weeks.</description>
       <enclosure url="https://www.golfraw.com/public/how-long-do-golf-tournaments-last.webp" length="276860" type="image/webp"/>
-    </item>
-    <item>
-      <title>LIV Golf $300 Million Funding: It Might Be a Loan</title>
-      <link>https://www.golfraw.com/news-2026-liv-golf-300-million-funding-explained</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-300-million-funding-explained</guid>
-      <pubDate>Sat, 29 Aug 2026 09:00:00 +0000</pubDate>
-      <category>LIV GOLF</category>
-      <description>The CEO says an investor signed. Bloomberg says it&#x27;s a loan. Four vendors are suing. Here&#x27;s what&#x27;s actually confirmed, and the September date that decides it.</description>
-      <enclosure url="https://www.golfraw.com/public/liv-golf-300-million-funding-explained.webp" length="167226" type="image/webp"/>
     </item>
   </channel>
 </rss>
