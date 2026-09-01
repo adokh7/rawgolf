@@ -118,7 +118,7 @@ def sitemap_paths():
 
 
 def comparable_article(source):
-    """Compare article copy while allowing Task 5 citation markup only."""
+    """Compare article copy while allowing citation and image markup changes."""
     body = re.search(r"<article\b.*?</article>", source, re.I | re.S)
     if body is None:
         return ""
@@ -127,6 +127,15 @@ def comparable_article(source):
     for href in TASK5_INLINE_CITATION_HREFS:
         tag = rf'<a\b[^>]*href=["\']{re.escape(href)}["\'][^>]*>(.*?)</a>'
         value = re.sub(tag, r"\1", value, flags=re.I | re.S)
+    # Task 3 intentionally adds intrinsic/responsive image attributes. Keep
+    # the image source, alt text, CSS, and surrounding copy in the comparison,
+    # while ignoring only the managed delivery attributes.
+    value = re.sub(
+        r'\s+(?:width|height|srcset|sizes|loading|fetchpriority)=(?:"[^"]*"|\'[^\']*\'|[^\s>]+)',
+        "",
+        value,
+        flags=re.I,
+    )
     return re.sub(r"\s+", " ", value).strip()
 
 

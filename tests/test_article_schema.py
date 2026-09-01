@@ -6,6 +6,8 @@ import unittest
 from html.parser import HTMLParser
 from pathlib import Path
 
+from scripts.article_schema import audit_article_schema, normalize_article_schema
+
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -57,6 +59,53 @@ def article_documents():
 
 
 class ArticleSchemaTests(unittest.TestCase):
+    def test_normalizer_completes_and_deduplicates_article_entity(self):
+        source = '''<!doctype html>
+<html><head>
+  <title>Example story | GOLFRAW</title>
+  <meta name="author" content="GOLFRAW Editorial">
+  <meta property="og:image" content="https://www.golfraw.com/public/example.webp">
+  <meta property="article:published_time" content="2026-08-31T10:00:00+02:00">
+  <meta property="article:modified_time" content="2026-08-31T12:00:00+02:00">
+  <link rel="canonical" href="https://www.golfraw.com/example-story">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"NewsArticle",
+   "headline":"Old headline","datePublished":"2026-08-31",
+   "publisher":{"@type":"Organization","name":"GOLFRAW"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"NewsArticle",
+   "headline":"Old headline","datePublished":"2026-08-31",
+   "publisher":{"@type":"Organization","name":"GOLFRAW"}}
+  </script>
+</head><body><h1>Example story</h1></body></html>'''
+
+        normalized = normalize_article_schema(source, ROOT / "example-story.html")
+        parser = JsonLdParser()
+        parser.feed(normalized)
+        documents = [json.loads(block) for block in parser.blocks]
+        articles = [
+            node for document in documents for node in objects(document)
+            if node.get("@type") in ("Article", "NewsArticle")
+        ]
+        self.assertEqual(1, len(articles))
+        article = articles[0]
+        self.assertEqual("https://www.golfraw.com/example-story", article["mainEntityOfPage"])
+        self.assertEqual("https://www.golfraw.com/public/example.webp", article["image"])
+        self.assertEqual("GOLFRAW Editorial", article["author"]["name"])
+        self.assertEqual("2026-08-31T12:00:00+02:00", article["dateModified"])
+
+    def test_normalizer_reports_missing_authoritative_modification_date(self):
+        source = '''<html><head>
+  <meta property="og:image" content="https://www.golfraw.com/public/example.webp">
+  <meta property="article:published_time" content="2026-08-31">
+  <link rel="canonical" href="https://www.golfraw.com/example-story">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Example story","image":"https://www.golfraw.com/public/example.webp","datePublished":"2026-08-31","author":{"@id":"https://www.golfraw.com/about#editorial"},"publisher":{"@id":"https://www.golfraw.com#organization"},"mainEntityOfPage":"https://www.golfraw.com/example-story"}</script>
+</head><body><h1>Example story</h1></body></html>'''
+
+        audit = audit_article_schema(source, ROOT / "example-story.html")
+        self.assertIn("dateModified", audit["missing"])
+
     def test_general_articles_do_not_emit_event_schema(self):
         offenders = []
         for path, nodes in article_documents():
@@ -282,7 +331,6 @@ class ArticleSchemaTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
 
 
 

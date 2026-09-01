@@ -56,7 +56,17 @@ the silent mismatch is what made the keyword loss possible.
 
        python3 scripts/sync_site.py
 
-4. To fail a build on drift (CI):
+4. If a new local raster image was added, generate its safe responsive
+   variants before syncing:
+
+       python3 scripts/generate_image_variants.py
+
+   The generator preserves the source aspect ratio, never upscales or crops,
+   and only creates widths that are missing and smaller than the source. The
+   sync then writes the source dimensions, `srcset`, `sizes`, and loading
+   priority into every deployable image tag.
+
+5. To fail a build on drift (CI):
 
        python3 scripts/sync_site.py --check
 

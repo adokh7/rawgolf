@@ -48,7 +48,7 @@ class SchefflerBrandelChambleeTests(unittest.TestCase):
         )
         self.assertIn('<div class="wrap page-grid" style="padding-top: 48px;">', self.html)
         self.assertIn(
-            f'<img src="{IMAGE_PATH}" alt="Scottie Scheffler and Brandel Chamblee on the Golf Central set after the 2026 Tour Championship." width="1200" height="675"',
+            f'<img src="{IMAGE_PATH}" alt="Scottie Scheffler and Brandel Chamblee on the Golf Central set after the 2026 Tour Championship." style="aspect-ratio:16/9;object-fit:cover;width:100%;border-radius:8px;" width="1536" height="1024"',
             self.html,
         )
         self.assertIn(

@@ -24,6 +24,13 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
 
+try:
+    from scripts.image_markup import normalize_image_markup
+    from scripts.article_schema import normalize_article_schema
+except ImportError:  # direct execution from the scripts directory
+    from image_markup import normalize_image_markup
+    from article_schema import normalize_article_schema
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://www.golfraw.com"
@@ -306,9 +313,18 @@ def page_data(source: str, path: Path) -> dict[str, object]:
         section = clean((parser.meta.get("article:section") or [""])[0])
     if parser.category and section.casefold() == "tournaments":
         section = clean(parser.category.split("·", 1)[0]).upper()
-    author = clean((parser.meta.get("article:author") or ["GolfRaw Editorial"])[0])
+    author = clean((parser.meta.get("article:author") or parser.meta.get("author") or [""])[0])
     lead_alt = parser.body_images[0][1] if parser.body_images else ""
     published = published_date(source, parser, record)
+    modified = clean((parser.meta.get("article:modified_time") or [""])[0])
+    if modified == STALE_MODIFIED:
+        modified = ""
+    if not modified:
+        for node in article_nodes(documents):
+            candidate = clean(node.get("dateModified", ""))
+            if candidate and candidate != STALE_MODIFIED:
+                modified = candidate
+                break
     robots = clean((parser.meta.get("robots") or [""])[0]) or DEFAULT_ROBOTS
     og_type = clean((parser.meta.get("og:type") or [""])[0]) or "article"
 
@@ -332,7 +348,7 @@ def page_data(source: str, path: Path) -> dict[str, object]:
         "tags": tags,
         "author": author,
         "published": published,
-        "modified": published,
+        "modified": modified,
         "documents": documents,
     }
 
@@ -374,13 +390,20 @@ def article_meta_block(data: dict[str, object]) -> str:
         f'  <meta property="article:tag" content="{escape(tag)}">'
         for tag in data["tags"]
     )
-    return f'''  <meta property="og:image:alt" content="{escape(data["lead_alt"])}">
-  <meta property="article:published_time" content="{escape(data["published"])}">
-  <meta property="article:modified_time" content="{escape(data["modified"])}">
-  <meta property="article:author" content="{escape(data["author"])}">
-  <meta property="article:section" content="{escape(data["section"])}">
-{tags}
-'''
+    lines = [
+        f'  <meta property="og:image:alt" content="{escape(data["lead_alt"])}">',
+        f'  <meta property="article:published_time" content="{escape(data["published"])}">',
+    ]
+    if data["modified"]:
+        lines.append(
+            f'  <meta property="article:modified_time" content="{escape(data["modified"])}">'
+        )
+    if data["author"]:
+        lines.append(f'  <meta property="article:author" content="{escape(data["author"])}">')
+    lines.append(f'  <meta property="article:section" content="{escape(data["section"])}">')
+    if tags:
+        lines.append(tags)
+    return "\n".join(lines) + "\n"
 
 
 def primary_meta_block(data: dict[str, object]) -> str:
@@ -509,7 +532,10 @@ def rewrite_json_ld(source: str, data: dict[str, object]) -> str:
             article["description"] = data["description"]
             article["image"] = update_image(article.get("image"), str(data["image"]))
             article["datePublished"] = data["published"]
-            article["dateModified"] = data["modified"]
+            if data["modified"]:
+                article["dateModified"] = data["modified"]
+            else:
+                article.pop("dateModified", None)
             article["mainEntityOfPage"] = update_main_entity(
                 article.get("mainEntityOfPage"), canonical
             )
@@ -561,9 +587,12 @@ def finalize_html(source: str, output_path: str | Path, force: bool = False) -> 
     if path.name == TEMPLATE_NAME:
         return source
     if not force and not has_template_contamination(source):
-        return source
+        normalized_schema = normalize_article_schema(source, path)
+        return normalize_image_markup(normalized_schema, path, ROOT)
     data = page_data(source, path)
-    return rewrite_json_ld(rewrite_head(source, data), data)
+    rewritten = rewrite_json_ld(rewrite_head(source, data), data)
+    normalized_schema = normalize_article_schema(rewritten, path)
+    return normalize_image_markup(normalized_schema, path, ROOT)
 
 
 def affected_pages() -> list[Path]:

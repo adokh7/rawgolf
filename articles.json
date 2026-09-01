@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 281,
+  "count": 282,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,24 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-jon-rahm-liv-money-owed",
+      "alias_of": "",
+      "slug": "news-2026-jon-rahm-liv-money-owed",
+      "url": "/news-2026-jon-rahm-liv-money-owed",
+      "title": "Jon Rahm's LIV Money: What He's Owed and Who Gets Paid | GOLFRAW",
+      "excerpt": "Three outlets give three different figures for what he's owed. The bigger question is where a player ranks when the bankruptcy queue forms.",
+      "category": [
+        "LIV GOLF",
+        "MONEY",
+        "NEWS"
+      ],
+      "date": "2026-09-01",
+      "image": "/news-2026-jon-rahm-liv-money-owed.webp",
+      "keywords": "LIV GOLF, MONEY, NEWS, Jon Rahm",
+      "category_source": "override",
+      "section": "LIV GOLF"
+    },
     {
       "canonical": "/news-2026-justin-thomas-mental-capacity-bay-hill",
       "alias_of": "",

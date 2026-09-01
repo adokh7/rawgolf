@@ -11,7 +11,18 @@ Regenerates: the latest-article feed in index.html; news.html, liv-golf.html,
 import sys, os, re, json, html as html_mod, hashlib
 from datetime import date as date_type
 from html.parser import HTMLParser
+from pathlib import Path
 from urllib.parse import urlsplit
+
+try:
+    from scripts.image_markup import (
+        audit_image_markup,
+        image_attribute_string,
+        normalize_site,
+        responsive_candidates,
+    )
+except ImportError:  # direct execution from the scripts directory
+    from image_markup import audit_image_markup, image_attribute_string, normalize_site, responsive_candidates
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -122,27 +133,19 @@ def srcset_for(image):
     Cards render around 335px on a phone and 360px in the desktop grid, so the
     full-size original is several times larger than anything ever displayed.
     """
-    path = (image or "").split("?")[0]
-    if not path.startswith("/public/") or not path.endswith(".webp"):
-        return ""
-    stem = path[:-5]
-    parts = []
-    for width in (400, 800):
-        candidate = f"{stem}-{width}.webp"
-        if os.path.exists(os.path.join(ROOT, candidate.lstrip("/"))):
-            parts.append(f"{candidate} {width}w")
-    if not parts:
-        return ""
-    return ", ".join(parts)
+    return ", ".join(
+        f"{candidate} {width}w"
+        for candidate, width in responsive_candidates(image, Path(ROOT))
+    )
 
 
 def news_card(a):
     """Generate an <article class="news"> card for news.html / liv-golf.html."""
-    ss = srcset_for(get_image(a))
-    news_srcset = f' srcset="{esc(ss)}" sizes="{CARD_SIZES}"' if ss else ''
+    image = get_image(a)
+    image_attrs = image_attribute_string(image, "card", Path(ROOT))
     return f'''        <article class="news">
           <a href="{esc(get_url(a))}" style="display:block; margin-bottom:16px;">
-            <img src="{esc(get_image(a))}"{news_srcset} alt="{esc(get_title(a))}" style="width: 100%; border-radius: 4px;" loading="lazy" decoding="async">
+            <img src="{esc(image)}" alt="{esc(get_title(a))}"{image_attrs} style="width: 100%; border-radius: 4px;" loading="lazy" decoding="async">
           </a>
           <div class="cat" style="display:flex;align-items:center;gap:8px;">
             <span>{esc(get_category(a))}</span>
@@ -155,10 +158,10 @@ def news_card(a):
 
 def guide_card(a):
     """Generate an <a class="guide-card"> card for pga-tour/guides/tournaments."""
-    ss = srcset_for(get_image(a))
-    guide_srcset = f' srcset="{esc(ss)}" sizes="{CARD_SIZES}"' if ss else ''
+    image = get_image(a)
+    image_attrs = image_attribute_string(image, "card", Path(ROOT))
     return f'''        <a class="guide-card" href="{esc(get_url(a))}">
-          <img width="1672" height="941" src="{esc(get_image(a))}"{guide_srcset} alt="{esc(get_title(a))}" class="card-thumb" loading="lazy" decoding="async">
+          <img src="{esc(image)}" alt="{esc(get_title(a))}"{image_attrs} class="card-thumb" loading="lazy" decoding="async">
           <div class="card-body">
             <div class="badge-row"><span class="badge badge-red">{esc(get_category(a))}</span></div>
             <h3>{esc(get_title(a))}</h3>
@@ -831,6 +834,21 @@ def validate(arts):
     return problems
 
 
+def validate_images():
+    """Return image-markup problems for the read-only sync check."""
+    report = audit_image_markup(Path(ROOT))
+    problems = []
+    if report["missing_dimensions"]:
+        problems.append(("image dimensions missing", str(report["missing_dimensions"])))
+    if report["missing_srcset"]:
+        problems.append(("image srcset missing", str(report["missing_srcset"])))
+    if report["dimension_mismatches"]:
+        problems.append(("image dimensions incorrect", str(report["dimension_mismatches"])))
+    if report["invalid_srcset_candidates"]:
+        problems.append(("image srcset invalid", str(report["invalid_srcset_candidates"])))
+    return problems
+
+
 def direct_anchor_urls(page_file):
     """Return literal href values from server-rendered anchor elements."""
     path = os.path.join(ROOT, page_file)
@@ -881,7 +899,7 @@ if __name__ == '__main__':
     # --check is read-only, so it must include internal-link drift up front.
     probs = validate(arts) + check_readme()
     if '--check' in sys.argv:
-        probs += validate_internal_links(arts)
+        probs += validate_internal_links(arts) + validate_images()
     if probs:
         print(f"VALIDATION: {len(probs)} problem(s)")
         for kind, what in probs[:40]:
@@ -925,6 +943,12 @@ if __name__ == '__main__':
     #    hub ping in step 6 acceptable to the hub at all.
     n = write_feed(arts)
     print(f"  feed.xml regenerated: {n} items")
+
+    # Normalize image attributes after all generated grids are in place. This
+    # is an attribute-only pass: article text, CSS, URLs and JSON-LD are not
+    # serialised or rewritten.
+    image_files_changed, image_count = normalize_site(Path(ROOT))
+    print(f"  image markup normalized: {image_count} image(s) in {image_files_changed} file(s)")
 
     # 6. Fast indexing. Deliberately NOT fired by default: sync runs before
     #    the deploy, so a ping now would make the hub fetch the *old* live

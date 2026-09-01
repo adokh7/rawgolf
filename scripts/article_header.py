@@ -5,6 +5,14 @@ from __future__ import annotations
 import html
 import json
 import re
+from pathlib import Path
+
+try:
+    from scripts.image_markup import ROOT, normalize_image_markup
+    from scripts.article_schema import normalize_article_schema
+except ImportError:  # direct execution from the scripts directory
+    from image_markup import ROOT, normalize_image_markup
+    from article_schema import normalize_article_schema
 
 
 H1_RE = re.compile(r"<h1(?:\s+[^>]*)?>.*?</h1>", re.IGNORECASE | re.DOTALL)
@@ -57,6 +65,15 @@ def _replace_single_meta(source: str, property_name: str, value: str) -> str:
     return updated
 
 
+def _remove_meta(source: str, property_name: str) -> str:
+    pattern = re.compile(
+        rf'(?m)^[ \t]*<meta\s+property=["\']{re.escape(property_name)}["\'][^>]*>'
+        r'[ \t]*(?:\r?\n|$)',
+        re.IGNORECASE,
+    )
+    return pattern.sub("", source)
+
+
 def replace_article_header(source: str, headline: str, standfirst: str) -> str:
     """Replace the scaffold's visible H1 and standfirst, failing if either is absent."""
 
@@ -79,7 +96,9 @@ def replace_article_header(source: str, headline: str, standfirst: str) -> str:
     return updated
 
 
-def finalize_article_template_metadata(source: str) -> str:
+def finalize_article_template_metadata(
+    source: str, output_path: str | Path = "article.html"
+) -> str:
     """Replace scaffold-only head fields from the generated hero and schema.
 
     The article generators already write page-specific title, description,
@@ -99,11 +118,11 @@ def finalize_article_template_metadata(source: str) -> str:
         "article:published_time",
         str(article.get("datePublished", "")),
     )
-    source = _replace_single_meta(
-        source,
-        "article:modified_time",
-        str(article.get("dateModified", article.get("datePublished", ""))),
-    )
+    modified = str(article.get("dateModified", ""))
+    if modified:
+        source = _replace_single_meta(source, "article:modified_time", modified)
+    else:
+        source = _remove_meta(source, "article:modified_time")
     source = _replace_single_meta(
         source,
         "article:section",
@@ -133,4 +152,6 @@ def finalize_article_template_metadata(source: str) -> str:
     line_end = source.find("\n", marker_index)
     if line_end < 0:
         raise ValueError("article:section meta tag has no line ending")
-    return source[: line_end + 1] + tag_block + source[line_end + 1 :]
+    normalized = source[: line_end + 1] + tag_block + source[line_end + 1 :]
+    normalized_schema = normalize_article_schema(normalized, Path(output_path))
+    return normalize_image_markup(normalized_schema, Path(output_path), ROOT)

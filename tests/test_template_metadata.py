@@ -256,6 +256,8 @@ class TemplateMetadataTests(unittest.TestCase):
             shutil.copy2(ROOT / "article-template.html", temp / "article-template.html")
             shutil.copy2(ROOT / "articles.json", temp / "articles.json")
             shutil.copy2(ROOT / "scripts" / "fix_template_metadata.py", temp / "scripts" / "fix_template_metadata.py")
+            shutil.copy2(ROOT / "scripts" / "image_markup.py", temp / "scripts" / "image_markup.py")
+            shutil.copy2(ROOT / "scripts" / "article_schema.py", temp / "scripts" / "article_schema.py")
 
             generator = (ROOT / "generate_article.py").read_text(encoding="utf-8")
             generator = generator.replace(str(ROOT), str(temp))
@@ -304,6 +306,14 @@ class TemplateMetadataTests(unittest.TestCase):
             shutil.copy2(
                 ROOT / "scripts" / "article_header.py",
                 temp / "scripts" / "article_header.py",
+            )
+            shutil.copy2(
+                ROOT / "scripts" / "image_markup.py",
+                temp / "scripts" / "image_markup.py",
+            )
+            shutil.copy2(
+                ROOT / "scripts" / "article_schema.py",
+                temp / "scripts" / "article_schema.py",
             )
             generator = (ROOT / "create_hovland.py").read_text(encoding="utf-8")
             (temp / "create_hovland.py").write_text(generator, encoding="utf-8")
@@ -367,6 +377,14 @@ class TemplateMetadataTests(unittest.TestCase):
             shutil.copy2(
                 ROOT / "scripts" / "fix_template_metadata.py",
                 temp / "scripts" / "fix_template_metadata.py",
+            )
+            shutil.copy2(
+                ROOT / "scripts" / "image_markup.py",
+                temp / "scripts" / "image_markup.py",
+            )
+            shutil.copy2(
+                ROOT / "scripts" / "article_schema.py",
+                temp / "scripts" / "article_schema.py",
             )
             shutil.copy2(
                 ROOT / "scripts" / "gen_liv_article.py",
