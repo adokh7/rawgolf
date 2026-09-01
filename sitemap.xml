@@ -1691,4 +1691,10 @@
     <lastmod>2026-09-01</lastmod>
     <changefreq>never</changefreq>
   </url>
+  <url>
+    <loc>https://www.golfraw.com/news-2026-blades-brown-19-pga-tour-card</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

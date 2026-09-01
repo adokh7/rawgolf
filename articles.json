@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 282,
+  "count": 311,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,24 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-blades-brown-19-pga-tour-card",
+      "alias_of": "",
+      "slug": "news-2026-blades-brown-19-pga-tour-card",
+      "url": "/news-2026-blades-brown-19-pga-tour-card",
+      "title": "Blades Brown at 19: Two Paths to a PGA Tour Card | GOLFRAW",
+      "excerpt": "He made three cuts in eight PGA Tour starts last year. Now he has two live routes to a 2027 card before turning 20. Here's where he stands.",
+      "category": [
+        "PGA TOUR",
+        "KORN FERRY TOUR",
+        "NEWS"
+      ],
+      "date": "2026-09-01",
+      "image": "/news-2026-blades-brown-19-pga-tour-card.webp",
+      "keywords": "PGA TOUR, KORN FERRY TOUR, NEWS, Blades Brown, Tour Card, Special Temporary Membership",
+      "category_source": "override",
+      "section": "PGA TOUR"
+    },
     {
       "canonical": "/news-2026-jon-rahm-liv-money-owed",
       "alias_of": "",
