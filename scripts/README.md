@@ -15,6 +15,7 @@ the site: URL, title, excerpt, category, section, date, image and keywords.
 | `guides.html`, `liv-golf.html`, `pga-tour.html`, `tournaments.html` | filtered by `section` |
 | `search.html` | the whole `ARTICLES` array |
 | `sitemap.xml` | every deployable, indexable, self-canonical HTML page |
+| `news-sitemap.xml` | only indexable news-section articles published in the last two days |
 | `feed.xml` | newest 40 articles, with WebSub hub links |
 
 Anything you hand-edit in a generated file (or the marked homepage feed) is
@@ -106,12 +107,17 @@ page, so it is not regenerated and its picks are unaffected by `section`.
 ## Dates
 
 `date` is ISO `YYYY-MM-DD` in the registry and is also used as card display
-text. Sitemap `<lastmod>` values come from each page's own
-`article:modified_time` or JSON-LD `dateModified`, falling back to the page's
-publication metadata only when no modification date is available. The
-generator emits no `<lastmod>` when the page has no reliable date or when its
-metadata sources disagree. It never uses today's date or a registry date that
-could have drifted from the page.
+text. Standard sitemap `<lastmod>` values come only from each page's own
+`article:modified_time` or JSON-LD `dateModified`. The generator emits no
+`<lastmod>` when the page has no reliable modification date or when its
+metadata sources disagree. It never uses today's date, filesystem mtime, or a
+registry date that could have drifted from the page.
+
+`news-sitemap.xml` is a separate Google News sitemap. It uses the page's
+authoritative `article:published_time`/JSON-LD `datePublished` for the
+publication timestamp and keeps only indexable articles in the news sections
+from the last two days. Run `python3 scripts/generate_sitemaps.py` to rebuild
+both sitemap files without rebuilding the content grids.
 
 ## Gotchas in the HTML
 

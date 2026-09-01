@@ -6,13 +6,14 @@
 
 Regenerates: the latest-article feed in index.html; news.html, liv-golf.html,
              pga-tour.html, guides.html, tournaments.html, search.html grids;
-             sitemap.xml; and feed.xml.
+             sitemap.xml, news-sitemap.xml; and feed.xml.
 """
 import sys, os, re, json, html as html_mod, hashlib
-from datetime import date as date_type
+from datetime import date as date_type, datetime as datetime_type, timedelta
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
+from xml.etree import ElementTree
 
 try:
     from scripts.image_markup import (
@@ -486,14 +487,11 @@ def reliable_lastmod(path, metadata=None):
     modified = list(metadata.meta.get('article:modified_time', []))
     modified += list(value for obj in metadata.jsonld
                      for value in _jsonld_values(obj, 'dateModified'))
-    published = list(metadata.meta.get('article:published_time', []))
-    published += list(value for obj in metadata.jsonld
-                      for value in _jsonld_values(obj, 'datePublished'))
-    for values in (modified, published):
-        result = _consistent_page_date(values)
-        if result is not None:
-            return result
-    return ''
+    # Publication is not a modification event. It is deliberately not a
+    # fallback: a sitemap without an authoritative last-modified date is more
+    # truthful than one that reports the publication date as an update.
+    result = _consistent_page_date(modified)
+    return result if result else ''
 
 
 def _route_for_html(path):
@@ -587,19 +585,118 @@ def write_sitemap(arts):
     for route in ordered:
         record = records[route]
         lastmod = f'\n    <lastmod>{record["lastmod"]}</lastmod>' if record['lastmod'] else ''
-        if route == '/':
-            frequency, priority = 'daily', '1.0'
-        elif route in STATIC:
-            frequency, priority = 'daily', '0.8'
-        elif route.startswith('/tools-'):
-            frequency, priority = 'monthly', '0.8'
-        else:
-            frequency, priority = None, '0.9'
-        frequency_line = f'\n    <changefreq>{frequency}</changefreq>' if frequency else ''
-        out.append(f'  <url>\n    <loc>{base}{route}</loc>{lastmod}{frequency_line}'
-                   f'\n    <priority>{priority}</priority>\n  </url>')
+        out.append(f'  <url>\n    <loc>{base}{route}</loc>{lastmod}\n  </url>')
     out += ['</urlset>', '']
     write_if_changed(os.path.join(ROOT, 'sitemap.xml'), '\n'.join(out))
+    return len(records)
+
+
+# Google News sitemap
+NEWS_SITEMAP_PATH = 'news-sitemap.xml'
+NEWS_NAMESPACE = 'http://www.google.com/schemas/sitemap-news/0.9'
+SITEMAP_NAMESPACE = 'http://www.sitemaps.org/schemas/sitemap/0.9'
+NEWS_PUBLICATION_NAME = 'GOLFRAW'
+NEWS_LANGUAGE = 'en'
+NEWS_SECTIONS = {'PGA TOUR', 'LIV GOLF', 'TOURNAMENTS'}
+NEWS_MAX_AGE_DAYS = 2
+
+
+def _has_jsonld_type(value, wanted):
+    if isinstance(value, dict):
+        types = value.get('@type', [])
+        if isinstance(types, str):
+            types = [types]
+        if wanted in types:
+            return True
+        return any(_has_jsonld_type(child, wanted) for child in value.values())
+    if isinstance(value, list):
+        return any(_has_jsonld_type(child, wanted) for child in value)
+    return False
+
+
+def _consistent_publication_datetime(metadata):
+    """Return one exact, parseable publication value from page metadata."""
+    values = list(metadata.meta.get('article:published_time', []))
+    values += list(value for obj in metadata.jsonld
+                   for value in _jsonld_values(obj, 'datePublished'))
+    values = [value.strip() for value in values if isinstance(value, str) and value.strip()]
+    if not values or len(set(values)) != 1:
+        return ''
+    value = values[0]
+    day = _normalise_page_date(value)
+    if not day:
+        return ''
+    try:
+        if 'T' in value:
+            datetime_type.fromisoformat(value.replace('Z', '+00:00'))
+        else:
+            date_type.fromisoformat(day)
+    except ValueError:
+        return ''
+    return value
+
+
+def news_article_records(arts, today=None):
+    """Return recent, indexable news articles for the Google News sitemap.
+
+    Article registry data identifies the editorial section and title. The
+    publication timestamp comes only from the page's own publication
+    metadata, so registry drift cannot invent a news publication date.
+    """
+    today = today or date_type.today()
+    pages = sitemap_page_records()
+    records = []
+    for article in arts:
+        route = get_url(article)
+        if get_section(article).strip().upper() not in NEWS_SECTIONS:
+            continue
+        page_record = pages.get(route)
+        if not page_record:
+            continue
+        metadata = page_metadata(page_record['path'])
+        if not any(_has_jsonld_type(value, 'NewsArticle') for value in metadata.jsonld):
+            continue
+        publication_date = _consistent_publication_datetime(metadata)
+        if not publication_date:
+            continue
+        try:
+            published_day = date_type.fromisoformat(publication_date[:10])
+        except ValueError:
+            continue
+        if not (today - timedelta(days=NEWS_MAX_AGE_DAYS) <= published_day <= today):
+            continue
+        title = html_mod.unescape(str(get_title(article))).strip()
+        title = re.sub(r'\s+\|\s+GOLFRAW\s*$', '', title, flags=re.I)
+        if not title:
+            continue
+        records.append({
+            'route': route,
+            'publication_date': publication_date,
+            'title': title,
+        })
+    return sorted(records, key=lambda record: (record['publication_date'], record['route']), reverse=True)
+
+
+def write_news_sitemap(arts, today=None):
+    """Write a separate, recent-only Google News sitemap."""
+    records = news_article_records(arts, today=today)
+    ElementTree.register_namespace('', SITEMAP_NAMESPACE)
+    ElementTree.register_namespace('news', NEWS_NAMESPACE)
+    root = ElementTree.Element(f'{{{SITEMAP_NAMESPACE}}}urlset')
+    for record in records:
+        url_node = ElementTree.SubElement(root, f'{{{SITEMAP_NAMESPACE}}}url')
+        ElementTree.SubElement(url_node, f'{{{SITEMAP_NAMESPACE}}}loc').text = (
+            f'https://www.golfraw.com{record["route"]}'
+        )
+        news_node = ElementTree.SubElement(url_node, f'{{{NEWS_NAMESPACE}}}news')
+        publication_node = ElementTree.SubElement(news_node, f'{{{NEWS_NAMESPACE}}}publication')
+        ElementTree.SubElement(publication_node, f'{{{NEWS_NAMESPACE}}}name').text = NEWS_PUBLICATION_NAME
+        ElementTree.SubElement(publication_node, f'{{{NEWS_NAMESPACE}}}language').text = NEWS_LANGUAGE
+        ElementTree.SubElement(news_node, f'{{{NEWS_NAMESPACE}}}publication_date').text = record['publication_date']
+        ElementTree.SubElement(news_node, f'{{{NEWS_NAMESPACE}}}title').text = record['title']
+    ElementTree.indent(root, space='  ')
+    output = ElementTree.tostring(root, encoding='utf-8', xml_declaration=True).decode('utf-8') + '\n'
+    write_if_changed(os.path.join(ROOT, NEWS_SITEMAP_PATH), output)
     return len(records)
 
 
@@ -810,7 +907,7 @@ def generated_files():
     Anything listed here is regenerated in whole or in part from articles.json,
     so hand-edits to generated regions are destroyed on the next sync.
     """
-    return {'index.html', 'news.html', 'search.html', 'sitemap.xml', 'feed.xml'} | set(SECTION_PAGE.values())
+    return {'index.html', 'news.html', 'search.html', 'sitemap.xml', NEWS_SITEMAP_PATH, 'feed.xml'} | set(SECTION_PAGE.values())
 
 
 def documented_files(text):
@@ -972,11 +1069,7 @@ if __name__ == '__main__':
     if inject_search_index(arts):
         print(f"  search.html rebuilt: {len(arts)} articles")
 
-    # 4. sitemap.xml
-    n = write_sitemap(arts)
-    print(f"  sitemap.xml regenerated: {n} URLs")
-
-    # 5. feed.xml — WebSub hubs are declared here, which is what makes the
+    # 4. feed.xml — WebSub hubs are declared here, which is what makes the
     #    hub ping in step 6 acceptable to the hub at all.
     n = write_feed(arts)
     print(f"  feed.xml regenerated: {n} items")
@@ -993,7 +1086,14 @@ if __name__ == '__main__':
     schema_files_changed, schema_pages = normalize_article_schemas()
     print(f"  article schema normalized: {schema_pages} page(s) in {schema_files_changed} file(s)")
 
-    # 6. Fast indexing. Deliberately NOT fired by default: sync runs before
+    # 6. Sitemap outputs are generated after metadata normalization so their
+    # indexability and date decisions observe the final page output.
+    n = write_sitemap(arts)
+    news_n = write_news_sitemap(arts)
+    print(f"  sitemap.xml regenerated: {n} URLs")
+    print(f"  news-sitemap.xml regenerated: {news_n} recent news URLs")
+
+    # 7. Fast indexing. Deliberately NOT fired by default: sync runs before
     #    the deploy, so a ping now would make the hub fetch the *old* live
     #    feed and find nothing new. The changed URLs are recorded instead, and
     #    `python3 scripts/fast_index.py` sends them once the deploy is live.

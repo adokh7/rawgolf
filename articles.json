@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 311,
+  "count": 312,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,24 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-kevin-hart-golf-youtube-132",
+      "alias_of": "",
+      "slug": "news-2026-kevin-hart-golf-youtube-132",
+      "url": "/news-2026-kevin-hart-golf-youtube-132",
+      "title": "Kevin Hart Shot 132 on His New Golf YouTube Channel | GOLFRAW",
+      "excerpt": "A 62 on the front, 70 on the back. Where 132 sits against real handicap data, and the local rule that would have saved him a dozen shots.",
+      "category": [
+        "CULTURE",
+        "RULES",
+        "NEWS"
+      ],
+      "date": "2026-09-01",
+      "image": "/news-2026-kevin-hart-golf-youtube-132.webp",
+      "keywords": "CULTURE, RULES, NEWS, Kevin Hart, YouTube Golf, 132, Model Local Rule E-5, USGA",
+      "category_source": "override",
+      "section": "GUIDES"
+    },
     {
       "canonical": "/news-2026-blades-brown-19-pga-tour-card",
       "alias_of": "",

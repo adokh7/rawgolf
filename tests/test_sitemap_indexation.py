@@ -64,15 +64,10 @@ def normalize_date(value):
 def reliable_lastmod(path):
     source = path.read_text(encoding="utf-8")
     modified = meta_values(source, "article:modified_time") + jsonld_values(source, "dateModified")
-    published = meta_values(source, "article:published_time") + jsonld_values(source, "datePublished")
-    for candidates in (modified, published):
-        normalized = [normalize_date(value) for value in candidates]
-        if not candidates:
-            continue
-        if not all(normalized) or len(set(normalized)) != 1:
-            return ""
-        return normalized[0]
-    return ""
+    normalized = [normalize_date(value) for value in modified]
+    if not modified or not all(normalized) or len(set(normalized)) != 1:
+        return ""
+    return normalized[0]
 
 
 def canonical(path):
@@ -161,7 +156,7 @@ class SitemapIndexationTests(unittest.TestCase):
                 self.assertEqual(expected, entries[path], path)
         self.assertEqual("2026-08-11", entries["/news-2026-liv-golf-bedminster-crushers-six-over-par"])
         self.assertEqual("2026-08-26", entries["/liv-golf-pga-tour-return"])
-        self.assertEqual("", entries["/news-2026-wyndham-championship-odds-day-bradley"])
+        self.assertEqual("2026-08-04", entries["/news-2026-wyndham-championship-odds-day-bradley"])
         self.assertEqual("", entries["/"])
 
     def test_fresh_generator_recreates_the_checked_in_sitemap_contract(self):

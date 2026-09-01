@@ -14,3 +14,4 @@ Allow: /
 Allow: /public/
 
 Sitemap: https://www.golfraw.com/sitemap.xml
+Sitemap: https://www.golfraw.com/news-sitemap.xml
