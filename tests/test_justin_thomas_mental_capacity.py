@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression coverage for the LIV Golf bankruptcy deadlock feature."""
+"""Regression coverage for the Justin Thomas comeback analysis article."""
 
 import json
 import unittest
@@ -8,13 +8,13 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SLUG = "news-2026-liv-golf-bankruptcy-player-settlements-deadlock"
+SLUG = "news-2026-justin-thomas-mental-capacity-bay-hill"
 CANONICAL = f"https://www.golfraw.com/{SLUG}"
-IMAGE = "/public/liv-golf-bankruptcy-deadlock-2026.webp"
-TITLE = "LIV Golf Bankruptcy: The Deadlock Nobody Can Break | GOLFRAW"
+IMAGE = "/public/justin-thomas-mental-capacity-bay-hill-2026.webp"
+TITLE = "Justin Thomas's 'Mental Capacity' Line, Six Months On | GOLFRAW"
 DESCRIPTION = (
-    "The investor won't commit until players sign. Players won't sign for cents on the dollar. "
-    "That standoff is why Chapter 11 is now the likeliest exit."
+    "He shot 79-79 and couldn't concentrate on the back nine. Two months later he finished "
+    "fourth in a major. What that gap teaches about coming back."
 )
 
 
@@ -40,7 +40,7 @@ class JsonLdParser(HTMLParser):
             self._capturing = False
 
 
-class LivGolfBankruptcyDeadlockTests(unittest.TestCase):
+class JustinThomasMentalCapacityTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.path = ROOT / f"{SLUG}.html"
@@ -54,23 +54,21 @@ class LivGolfBankruptcyDeadlockTests(unittest.TestCase):
         self.assertEqual(b"RIFF", asset.read_bytes()[:4])
         self.assertEqual(b"WEBP", asset.read_bytes()[8:12])
 
-    def test_registry_entry_uses_liv_section(self):
-        entry = next(
-            article for article in self.registry["articles"] if article.get("slug") == SLUG
-        )
-        self.assertEqual(SLUG, entry.get("slug"))
-        self.assertEqual(f"/{SLUG}", entry.get("url"))
-        self.assertEqual(f"/{SLUG}", entry.get("canonical"))
-        self.assertEqual(TITLE, entry.get("title"))
-        self.assertEqual(DESCRIPTION, entry.get("excerpt"))
-        self.assertEqual(IMAGE, entry.get("image"))
-        self.assertEqual(["LIV GOLF", "TOURNAMENTS", "NEWS"], entry.get("category"))
-        self.assertEqual("LIV GOLF", entry.get("section"))
+    def test_registry_entry_is_first_and_uses_pga_tour_section(self):
+        first = self.registry["articles"][0]
+        self.assertEqual(SLUG, first.get("slug"))
+        self.assertEqual(f"/{SLUG}", first.get("url"))
+        self.assertEqual(f"/{SLUG}", first.get("canonical"))
+        self.assertEqual(TITLE, first.get("title"))
+        self.assertEqual(DESCRIPTION, first.get("excerpt"))
+        self.assertEqual(IMAGE, first.get("image"))
+        self.assertEqual(["PGA TOUR", "OPINION", "NEWS"], first.get("category"))
+        self.assertEqual("PGA TOUR", first.get("section"))
 
     def test_metadata_layout_and_hero_are_page_specific(self):
         alt = (
-            "LIV Golf corporate branding and tournament staging standing empty amid Chapter 11 "
-            "bankruptcy standoff and player settlement disputes."
+            "Justin Thomas walking off the green at Bay Hill during the 2026 Arnold Palmer "
+            "Invitational following his post-surgery return."
         )
         for marker in (
             f"<title>{TITLE}</title>",
@@ -88,31 +86,41 @@ class LivGolfBankruptcyDeadlockTests(unittest.TestCase):
             '<div class="takeaways">',
             'class="related-grid"',
             f'<img src="{IMAGE}" alt="{alt}"',
-            "LIV GOLF • INVESTIGATION",
+            "PGA TOUR • OPINION",
         ):
             self.assertIn(marker, self.html, marker)
 
-    def test_standoff_table_sections_and_internal_links_exist(self):
+    def test_timeline_sections_sources_and_internal_links_exist(self):
         for marker in (
-            "The LIV Golf Bankruptcy Standoff Matrix",
-            "Private Equity (BC Partners)",
-            "LIV Golf Players",
-            "PIF (Saudi Wealth Fund)",
-            "League Operations",
-            "The Anatomy of the Standoff",
-            "The Legal Mechanics of Chapter 11",
-            "The Financing Nuance",
-            "What Has Already Been Cut",
-            "The LIV 2.0 Reality",
-            "Debunking 5 Viral Bankruptcy Myths",
+            "Justin Thomas 2026 Comeback Timeline &amp; Progression",
+            "Microdiscectomy for disc/hip pain",
+            "Arnold Palmer Invitational",
+            "79-79 (+14, MC, Dead Last)",
+            "Decoding the Quote: Concentration Stamina",
+            "The Scorecard &amp; Hidden Stat",
+            "The Bay Hill Hazard",
+            "The Microdiscectomy Precedents",
+            "The Aronimink Vindication",
+            "Fact-Checking 5 March Narratives",
             "The Raw Verdict",
             "Frequently Asked Questions",
             "Sources",
-            "/news-2026-the-end-of-liv-golf-bankruptcy",
-            "/news-2026-scott-oneil-linkedin-post-liv-golf",
-            "/news-2026-tour-championship-points-and-payouts",
+            "/news-2026-brandt-jobe-ally-challenge-jackson",
+            "/news-2026-scheffler-true-strokes-gained",
+            "/news-2026-hovland-tour-championship-runner-up",
         ):
             self.assertIn(marker, self.html, marker)
+
+    def test_claim_specific_sources_are_present(self):
+        for href in (
+            "https://www.pgatour.com/article/news/latest/2025/11/14/justin-thomas-pulls-out-of-skins-game-after-undergoing-minor-medical-procedure-health-update",
+            "https://www.pgatour.com/article/news/latest/2026/02/23/justin-thomas-returns-shakes-off-rust-at-tgl-atlanta-drive-announces-return-to-tour-play-at-arnold-palmer-inviational-injury-microdiscectomy",
+            "https://www.pgatour.com/article/news/latest/2026/03/05/justin-thomas-return-to-pga-tour-arnold-palmer-invitational-back-surgery-bay-hill",
+            "https://asaptext.com/orgs/pgatour/1204/transcripts/164325.pdf",
+            "https://www.pgachampionship.com/news-media/articles/justin-thomas-saves-his-best-for-last-at-aronimink",
+            "https://www.pgatour.com/tournaments/2026/pga-championship/R2026033/leaderboard",
+        ):
+            self.assertIn(f'href="{href}"', self.html, href)
 
     def test_json_ld_contains_required_entities_and_breadcrumbs(self):
         parser = JsonLdParser()
@@ -138,8 +146,8 @@ class LivGolfBankruptcyDeadlockTests(unittest.TestCase):
             [
                 (1, "Home", "https://www.golfraw.com/"),
                 (2, "News", "https://www.golfraw.com/news"),
-                (3, "LIV Golf", "https://www.golfraw.com/liv-golf"),
-                (4, "LIV Bankruptcy Deadlock", CANONICAL),
+                (3, "PGA Tour", "https://www.golfraw.com/pga-tour"),
+                (4, "JT Mental Capacity", CANONICAL),
             ],
             [
                 (item["position"], item["name"], item["item"])
@@ -148,7 +156,14 @@ class LivGolfBankruptcyDeadlockTests(unittest.TestCase):
         )
 
     def test_synced_surfaces_include_article(self):
-        for name in ("index.html", "news.html", "liv-golf.html", "search.html", "feed.xml", "sitemap.xml"):
+        for name in (
+            "index.html",
+            "news.html",
+            "pga-tour.html",
+            "search.html",
+            "feed.xml",
+            "sitemap.xml",
+        ):
             self.assertIn(SLUG, (ROOT / name).read_text(encoding="utf-8"), name)
 
     @staticmethod
@@ -156,10 +171,10 @@ class LivGolfBankruptcyDeadlockTests(unittest.TestCase):
         if isinstance(value, dict):
             yield value
             for child in value.values():
-                yield from LivGolfBankruptcyDeadlockTests._objects(child)
+                yield from JustinThomasMentalCapacityTests._objects(child)
         elif isinstance(value, list):
             for child in value:
-                yield from LivGolfBankruptcyDeadlockTests._objects(child)
+                yield from JustinThomasMentalCapacityTests._objects(child)
 
 
 if __name__ == "__main__":

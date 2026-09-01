@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 31 Aug 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Justin Thomas&#x27;s &#x27;Mental Capacity&#x27; Line, Six Months On | GOLFRAW</title>
+      <link>https://www.golfraw.com/news-2026-justin-thomas-mental-capacity-bay-hill</link>
+      <guid isPermaLink="true">https://www.golfraw.com/news-2026-justin-thomas-mental-capacity-bay-hill</guid>
+      <pubDate>Tue, 01 Sep 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR, OPINION, NEWS</category>
+      <description>He shot 79-79 and couldn&#x27;t concentrate on the back nine. Two months later he finished fourth in a major. What that gap teaches about coming back.</description>
+      <enclosure url="https://www.golfraw.com/public/justin-thomas-mental-capacity-bay-hill-2026.webp" length="116286" type="image/webp"/>
+    </item>
     <item>
       <title>LIV Golf Bankruptcy: The Deadlock Nobody Can Break | GOLFRAW</title>
       <link>https://www.golfraw.com/news-2026-liv-golf-bankruptcy-player-settlements-deadlock</link>
@@ -134,15 +143,6 @@
       <category>GUIDES, PGA TOUR, SWING MECHANICS</category>
       <description>Most of the famous foot slide happens after the ball has gone. What&#x27;s actually producing 1.694 strokes gained tee to green is duller and copyable.</description>
       <enclosure url="https://www.golfraw.com/public/scottie-scheffler-swing-explained.webp" length="262688" type="image/webp"/>
-    </item>
-    <item>
-      <title>Hovland on What Makes Scheffler Successful, in 8 Words | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-hovland-on-what-makes-scheffler-successful</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-hovland-on-what-makes-scheffler-successful</guid>
-      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR, TOURNAMENTS, NEWS</category>
-      <description>Asked if Scheffler amazes him, the man he&#x27;d just lost to said no. His actual explanation is duller and far more useful than any mental-game theory.</description>
-      <enclosure url="https://www.golfraw.com/public/hovland-on-what-makes-scheffler-successful-2026.webp" length="94790" type="image/webp"/>
     </item>
   </channel>
 </rss>
