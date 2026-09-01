@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GOLFRAW.COM SEO audit</title>
+<style>
+  :root {
+    --bg: #e2e9f3;
+    --ink: #122650;
+    --muted: #4f5f79;
+    --rule: #c2cddd;
+    --rule-strong: #122650;
+  }
+  html { background: var(--bg); color-scheme: light; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: Charter, Georgia, "Times New Roman", serif;
+    line-height: 1.55; margin: 0; padding: 3.5rem 1.5rem 5rem;
+  }
+  .page { max-width: 860px; margin: 0 auto; }
+  .mono {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+  }
+  h1 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700; font-size: 1.6rem; letter-spacing: -0.01em;
+    margin: 0.75rem 0 0.25rem; text-wrap: balance;
+  }
+  .subtitle { color: var(--muted); margin: 0 0 2.5rem; font-size: 1.02rem; max-width: 46rem; }
+  .dateline { color: var(--muted); font-size: 0.92rem; margin: 0 0 1.1rem; }
+  h2 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700; font-size: 1.25rem; margin: 3rem 0 0.75rem;
+  }
+  .lede { font-size: 1.05rem; max-width: 46rem; }
+  section > p { max-width: 46rem; }
+  hr.heavy { border: 0; border-top: 2px solid var(--rule-strong); margin: 3rem 0 0; }
+  section .cols:first-of-type { border-top: 1px solid var(--rule); }
+  .cols {
+    display: grid; grid-template-columns: minmax(180px, 5fr) 8fr;
+    gap: 1.25rem; padding: 0.6rem 0; border-bottom: 1px solid var(--rule);
+  }
+  .row-title { font-size: 1.12rem; margin: 0; }
+  .row-title .tag { display: block; margin-top: 0.35rem; }
+  .cols > div p { margin: 0 0 0.6rem; color: var(--muted); font-size: 0.95rem; }
+  .cols > div p:last-child { margin-bottom: 0; }
+  .cols > div p.fix { color: var(--ink); }
+  .fix b { font-weight: 600; }
+  code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.85em; word-break: break-word;
+  }
+  ol { padding-left: 1.3rem; max-width: 44rem; }
+  ol li { margin-bottom: 0.5rem; }
+  ul.plain { list-style: none; padding: 0; max-width: 46rem; }
+  ul.plain li { padding: 0.5rem 0; border-bottom: 1px solid var(--rule); font-size: 0.98rem; }
+  ul.plain li:first-child { border-top: 1px solid var(--rule); }
+  ul.plain .why { color: var(--muted); }
+  footer { margin-top: 4rem; color: var(--muted); font-size: 0.88rem; max-width: 46rem; }
+  @media (max-width: 620px) {
+    .cols { grid-template-columns: 1fr; gap: 0.4rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>GOLFRAW.COM SEO AUDIT</h1>
+    <p class="dateline">1 September 2026</p>
+    <p class="subtitle">GOLFRAW is crawlable and largely indexable, with 338 live sitemap URLs, HTTPS preferred URLs on sitemap pages, current news feeds, and useful publisher trust signals. The main risk is a template and URL consistency problem: 11 live indexable routes contain stale Oakmont article output, while two sets of internal links point to 404 pages. This audit covers technical SEO, indexing, performance signals, page content, links, structured data, news discovery, Discover readiness, architecture, and content priorities.</p>
+  </header>
+
+  <section>
+    <h2>Where the site stands</h2>
+    <p class="lede">The basic crawl foundation is sound. <code>robots.txt</code> allows crawling and declares the sitemap, every one of the 338 sitemap URLs returned a direct 200 response without a redirect, every sitemap page has one title, one meta description, one canonical (preferred URL), and one H1 (main page heading), and the sitemap contains no noindex URLs.</p>
+    <p class="lede">The highest-impact problem is page integrity. On 11 current live indexable routes, the visible H1 and body still show the Oakmont article while the title, URL, image, or structured data describe another story. Repairing that data-to-template path and the related broken URLs should come before broad content expansion.</p>
+  </section>
+
+  <hr class="heavy">
+
+  <section>
+    <h2>If you only do one thing</h2>
+    <p class="lede">Repair the article data-to-template pipeline and purge stale Oakmont output from the 11 live indexable routes.</p>
+    <p>Google and readers can receive a page whose title, visible heading, lead image, preferred URL, and machine-readable article data disagree. That weakens relevance, trust, sharing, and news distribution on the affected pages.</p>
+    <ol>
+      <li>Audit the 11 routes first: the 10 sitemap URLs <code>/news-2026-hovland-leads-tour-championship-final-day</code>, <code>/news-2026-hovland-one-shot-lead-tour-championship</code>, <code>/news-2026-michael-block-lead-ally-challenge</code>, <code>/news-2026-michael-block-leads-ally-challenge-final-round</code>, <code>/news-2026-pga-tour-winners-2026</code>, <code>/news-2026-tiger-woods-career-money-list-record</code>, <code>/news-2026-tour-championship-final-round-hovland-leads</code>, <code>/news-2026-tour-championship-round-3-tee-times-leaderboard</code>, <code>/news-2026-tour-championship-sunday-tee-times-round-4</code>, and <code>/why-pros-are-ditching-hybrids</code>, plus the live legacy route <code>/news-every-shot-tiger-woods-80th-win-2018</code>.</li>
+      <li>Fix the content lookup or template data binding so each route has matching visible H1, standfirst, byline, date, lead image, title, canonical, Open Graph URL, and Article JSON-LD (machine-readable page data). Remove the Oakmont fallback or stale fixture data.</li>
+      <li>Fetch each corrected URL as a logged-out user, then check the rendered HTML and Google Search Console URL Inspection after Search Console is connected. Confirm that no affected page contains the Oakmont H1 and that each preferred URL returns 200 with matching article data.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Small fixes, in order</h2>
+    <div class="cols">
+      <div><p class="row-title">Stale article output <span class="mono tag">high</span></p></div>
+      <div>
+        <p>Eleven current live indexable routes show the visible H1 <code>Oakmont Is Eating the Field Alive</code> even when their title, canonical, lead image, and JSON-LD (machine-readable page data) describe another story. For example, <code>/news-2026-pga-tour-winners-2026</code> has a winners title and canonical but an Oakmont H1 and standfirst.</p>
+        <p class="fix"><b>Fix:</b> Correct the article data source or template fallback, regenerate the affected HTML, and validate the five-way match between H1, title, lead image, canonical, and JSON-LD. Recheck social previews and the visible byline after deployment.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">Broken preferred URLs and links <span class="mono tag">high</span></p></div>
+      <div>
+        <p><code>/news-every-shot-tiger-woods-80th-win-2018</code> returns 200 but its canonical, Open Graph (social sharing metadata) URL, JSON-LD page ID, and breadcrumb point to <code>/every-shot-tiger-woods-80th-win-2018</code>, which returns 404. Three links on the Tiger career-money article use that 404 path. Three links on <code>/why-pros-are-ditching-hybrids</code> use <code>/tools/bag-audit</code>, which returns 404 while <code>/tools-bag-audit</code> returns 200.</p>
+        <p class="fix"><b>Fix:</b> Keep <code>/news-every-shot-tiger-woods-80th-win-2018</code> as the preferred URL unless a replacement page is deliberately created. Point its canonical, Open Graph URL, JSON-LD, breadcrumb, and internal links there, and include it in the sitemap if it should rank. Replace all <code>/tools/bag-audit</code> links with <code>/tools-bag-audit</code>, or add a permanent redirect.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">Image delivery and Core Web Vitals risk <span class="mono tag">high</span></p></div>
+      <div>
+        <p>Current measurements do not include field LCP (largest content paint), INP (interaction responsiveness), or CLS (layout shift) because Search Console is not connected and PageSpeed Insights returned a quota response. The live sitemap pass found 527 image instances without explicit width and height across 153 pages and 191 without responsive <code>srcset</code> variants. The homepage has 21 images, 20 without dimensions, 19 without <code>srcset</code>, and 5 without lazy loading. The local <code>public</code> asset directory is about 82 MB and contains 48 image files above 300 KB.</p>
+        <p class="fix"><b>Fix:</b> Add width and height or an equivalent aspect-ratio box to every image, especially homepage cards. Generate responsive 400, 800, and 1200 pixel variants with <code>srcset</code> and <code>sizes</code>. Keep the first visible editorial image eager or preloaded, lazy-load below-fold images, compress the largest assets, then measure mobile LCP, INP, and CLS in Lighthouse and Search Console. Google’s targets are LCP within 2.5 seconds, INP below 200 ms, and CLS below 0.1.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">Article schema consistency <span class="mono tag">medium</span></p></div>
+      <div>
+        <p>The 338-page live pass found 649 parseable JSON-LD blocks and no malformed blocks. Of 304 article pages, 15 lack an Article JSON-LD author, 5 lack a JSON-LD image, and 5 lack <code>dateModified</code>. BreadcrumbList data is absent on 18 core hub and trust pages, including <code>/news</code>, <code>/pga-tour</code>, <code>/liv-golf</code>, <code>/guides</code>, <code>/analysis</code>, and <code>/ratings</code>.</p>
+        <p class="fix"><b>Fix:</b> Standardize one article schema component with headline, concise description, crawlable image, author with author URL, publisher logo, datePublished, dateModified when materially updated, and mainEntityOfPage. Add visible breadcrumbs and matching BreadcrumbList data to indexable hubs and trust pages, excluding the homepage where appropriate.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">News discovery and Discover readiness <span class="mono tag">medium</span></p></div>
+      <div>
+        <p><code>/feed.xml</code> is current, with a 1 September 2026 build date, 15 items, publication dates, links, descriptions, and image enclosures. A recent article has NewsArticle data, visible byline and date, a 1200 by 675 image, <code>max-image-preview:large</code>, and source links. The normal sitemap has 338 URLs but 51 lack <code>lastmod</code>, and there is no dedicated news sitemap. Discover inclusion and performance cannot be measured because Search Console is not connected. Readiness signals are present.</p>
+        <p class="fix"><b>Fix:</b> Populate accurate <code>lastmod</code> values for all changed pages, based on the real editorial update time. Consider adding <code>/news-sitemap.xml</code> for articles published in the last two days if dedicated News reporting and freshness tracking are useful, with publication name, publication date, and title fields. Submit it in Search Console and keep the normal sitemap for the full site. Continue using relevant representative images at least 1200 pixels wide, above 300,000 pixels total, preferably 16:9, with <code>max-image-preview:large</code>.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">Thin and placeholder pages <span class="mono tag">medium</span></p></div>
+      <div>
+        <p>The indexable <code>/full-board</code> page has 143 words in the crawl and mainly presents a ratings table. The noindex pages <code>/past-issues</code> and <code>/the-card</code> have 54 and 63 words and placeholder or signup-focused content. The <code>/analysis</code> hub has 253 words and <code>/ratings</code> has 374 words. The sitemap contains 338 unique URLs, but this audit did not establish a complete duplicate-body comparison outside the confirmed stale Oakmont template group.</p>
+        <p class="fix"><b>Fix:</b> Expand <code>/full-board</code> with methodology, data source, update cadence, rating interpretation, limitations, and FAQs, or keep it as a utility page and set it to noindex. If it becomes noindex, remove it from the sitemap while keeping it available for users and internal links. Keep the newsletter and empty archive pages noindex until they contain a useful archive or editorial explanation. Expand the Analysis and Ratings hubs with clear topic summaries and links to their strongest pages.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">Titles and search snippets <span class="mono tag">medium</span></p></div>
+      <div>
+        <p>All 338 sitemap pages have a title and meta description. Using 60 characters for titles and 160 for descriptions as screening thresholds, 64 titles and 26 descriptions exceed them. Examples include the 66-character title on <code>/news-2026-end-of-season-driver-deals</code>, the 174-character description on <code>/news-2026-bryson-dechambeau-pga-tour-return</code>, and the 173-character description on <code>/guides-most-valuable-golf-search-cpc-data</code>.</p>
+        <p class="fix"><b>Fix:</b> Create title and description rules for each page type. Put the primary topic and useful differentiator first, then the brand. Rewrite the 64 longest titles and 26 longest descriptions by hand or with a reviewed template, preserving article facts and avoiding truncation that removes the subject.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">Navigation and topic architecture <span class="mono tag">medium</span></p></div>
+      <div>
+        <p>The homepage primary navigation links to Latest News, PGA Tour, LIV Golf, Tournaments, Guides, Search, and Tools. Analysis and Ratings are available lower on the page or in the footer, while the current sitemap contains 244 news-style routes among 338 URLs. The crawl shows strong internal linking on hubs, including 295 internal links on <code>/news</code>, 143 on <code>/pga-tour</code>, and 57 on <code>/guides</code>.</p>
+        <p class="fix"><b>Fix:</b> Add Analysis and Ratings to a persistent primary or “Data” navigation group. Make each hub link to its best evergreen guides, tools, methodologies, and current stories, and add related-story or related-tool links on articles. Keep useful existing article URLs; consolidate only genuinely overlapping stories after reviewing traffic and backlinks.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">Redirect and header polish <span class="mono tag">low</span></p></div>
+      <div>
+        <p>The apex domain (golfraw.com without www) HTTP to HTTPS to www path currently takes two redirects, while the direct www HTTPS URL returns 200. HSTS (browser HTTPS policy) is present. The reviewed response headers did not include Content-Security-Policy, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, or Permissions-Policy.</p>
+        <p class="fix"><b>Fix:</b> Collapse the apex redirect chain to one permanent redirect into <code>https://www.golfraw.com/</code>. Add security headers after checking compatibility with Google Tag Manager, HubSpot, ads, and other third-party scripts. Treat this as infrastructure polish after the page integrity and image work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Where to focus first</h2>
+    <p>Build the next evergreen content cluster around golf swing analysis and evaluation. It matches GOLFRAW’s existing Analysis hub and tools, has clearer low-difficulty opportunities than broad golf news terms, and can support both search traffic and useful internal journeys.</p>
+    <div class="cols">
+      <div><p class="row-title">golf swing analysis <span class="mono tag">2,900 searches/mo</span></p></div>
+      <div>
+        <p>Saved US keyword research from 29 August estimates KD (keyword difficulty) 15. The existing <code>/analysis</code> hub is a natural destination but is only 253 words in the crawl.</p>
+        <p class="fix"><b>Make:</b> Turn <code>/analysis</code> into the hub: define the workflow, explain what the tools measure, link to swing articles and tools, and show when each method is useful.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">best golf swing analysis app <span class="mono tag">880 searches/mo</span></p></div>
+      <div>
+        <p>Saved US keyword research estimates KD7. GOLFRAW already has <code>/golf-swing-analysis-apps</code>, so this is the fastest page-level opportunity.</p>
+        <p class="fix"><b>Make:</b> Refresh the page with a comparison table covering use case, inputs, output, free versus paid access, privacy, and limitations. Add a visible reviewed date, methodology, and links to the relevant GOLFRAW tools.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">golf swing evaluation <span class="mono tag">320 searches/mo</span></p></div>
+      <div>
+        <p>Saved US keyword research estimates KD7. The query reflects a practical problem and can be served by an evergreen guide rather than a news post.</p>
+        <p class="fix"><b>Make:</b> Create a dedicated guide explaining what to record, a repeatable self-evaluation checklist, common swing patterns, and when to use a coach or video tool. Link it to the Analysis hub and Tendency Engine.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Already working</h2>
+    <ul class="plain">
+      <li>Crawl access is clear. <span class="why"><code>robots.txt</code> allows crawling and names <code>https://www.golfraw.com/sitemap.xml</code>.</span></li>
+      <li>Sitemap hygiene is strong. <span class="why">The 338 URLs are unique, direct 200 responses, and none of the sitemap pages carries noindex.</span></li>
+      <li>Basic page metadata is present. <span class="why">Every sitemap page has one title, description, canonical, and H1 in the live pass.</span></li>
+      <li>The current homepage HTML document is materially improved. <span class="why">It is about 96.7 KB and has no video tag, so the former large homepage video finding is stale.</span></li>
+      <li>Publisher and article signals are useful. <span class="why">The homepage includes NewsMediaOrganization policies and recent articles include bylines, dates, source links, article schema, and large preview images.</span></li>
+      <li>Alt text coverage is complete in the live sitemap pass. <span class="why">The remaining image work is dimensions, responsive variants, file weight, and correct page-to-image matching.</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Reviewed 1 September 2026. Evidence sources: OpenSEO project context and the completed 29 August crawl, live HTML fetched for all 338 sitemap URLs plus representative routes, local route and asset inventory, saved US keyword research from 29 August, and direct HTTP checks. Search Console is not connected, and PageSpeed Insights returned a quota response, so this report does not claim current field Core Web Vitals scores. JSON-LD was checked for parseability, not full Schema.org or Rich Results validation. Reference guidance: <a href="https://developers.google.com/search/docs/appearance/core-web-vitals">Google Core Web Vitals</a>, <a href="https://developers.google.com/search/docs/appearance/google-discover">Google Discover</a>, <a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap">Google News sitemaps</a>, and <a href="https://developers.google.com/search/docs/appearance/structured-data/article">Google Article structured data</a>. This audit changed no site code.</p>
+  </footer>
+</div>
+</body>
+</html>

@@ -182,6 +182,7 @@ def production_html():
         ".vercel",
         "__pycache__",
         "node_modules",
+        "out",
     }
     return sorted(
         path
@@ -293,6 +294,46 @@ class TemplateMetadataTests(unittest.TestCase):
             self.assertEqual(
                 article["keywords"],
                 ", ".join(parser.meta["article:tag"]),
+            )
+
+    def test_fresh_scaffold_replaces_visible_article_header(self):
+        with tempfile.TemporaryDirectory(prefix="article-header-test-") as raw_dir:
+            temp = Path(raw_dir)
+            (temp / "scripts").mkdir()
+            shutil.copy2(ROOT / "article-template.html", temp / "article-template.html")
+            shutil.copy2(
+                ROOT / "scripts" / "article_header.py",
+                temp / "scripts" / "article_header.py",
+            )
+            generator = (ROOT / "create_hovland.py").read_text(encoding="utf-8")
+            (temp / "create_hovland.py").write_text(generator, encoding="utf-8")
+
+            result = subprocess.run(
+                [sys.executable, "create_hovland.py"],
+                cwd=temp,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+
+            source = (
+                temp / "news-2026-hovland-one-shot-lead-tour-championship.html"
+            ).read_text(encoding="utf-8")
+            self.assertIn(
+                "Hovland's One-Shot Lead Came From Six Straight Putts",
+                source,
+            )
+            self.assertIn("Six putts from seven feet or longer built it.", source)
+            self.assertNotIn("Oakmont Is Eating the Field Alive", source)
+            self.assertNotIn("Average score: 74.8", source)
+            self.assertNotIn(STALE_IMAGE_ALT, source)
+            self.assertNotIn('property="article:tag" content="Oakmont"', source)
+            self.assertNotIn(STALE_PUBLISHED, source)
+            self.assertIn("<h2>The Six-Putt Survival Clinic</h2>", source)
+            self.assertIn(
+                "/public/hovland-one-shot-lead-tour-championship-2026.webp",
+                source,
             )
 
     def test_representative_generators_are_clean_from_a_fresh_scaffold(self):

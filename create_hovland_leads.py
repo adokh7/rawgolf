@@ -1,4 +1,8 @@
 import json, re
+from scripts.article_header import (
+    finalize_article_template_metadata,
+    replace_article_header,
+)
 
 with open('article-template.html', 'r') as f:
     html = f.read()
@@ -39,8 +43,11 @@ new_vis_bc = """<nav class="crumbs" aria-label="Breadcrumb">
         </nav>"""
 html = re.sub(r'<nav class="crumbs".*?</nav>', new_vis_bc, html, flags=re.DOTALL)
 
-html = re.sub(r'<h1 class="headline">.*?</h1>', '<h1 class="headline">Hovland Leads the Tour Championship by One Into Sunday</h1>', html, flags=re.DOTALL)
-html = re.sub(r'<h2 class="subhead">.*?</h2>', '<h2 class="subhead">He closed with six putts from 7 feet or longer to lead by one. Scheffler\'s three back, McIlroy shot 63, and nobody agrees on Sunday\'s tee times.</h2>', html, flags=re.DOTALL)
+html = replace_article_header(
+    html,
+    "Hovland Leads the Tour Championship by One Into Sunday",
+    description,
+)
 
 new_body = """<div class="article-body">
           <div class="takeaways">
@@ -213,6 +220,8 @@ if '<script type="application/ld+json">' in html:
     html = re.sub(r'<script type="application/ld\+json">.*?</script>', json_ld, html, flags=re.DOTALL)
 else:
     html = html.replace('</head>', json_ld + '\n</head>')
+
+html = finalize_article_template_metadata(html)
 
 with open('news-2026-hovland-leads-tour-championship-final-day.html', 'w') as f:
     f.write(html)

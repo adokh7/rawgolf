@@ -1,4 +1,8 @@
 import json, re
+from scripts.article_header import (
+    finalize_article_template_metadata,
+    replace_article_header,
+)
 
 with open('article-template.html', 'r') as f:
     html = f.read()
@@ -39,8 +43,11 @@ new_vis_bc = """<nav class="crumbs" aria-label="Breadcrumb">
         </nav>"""
 html = re.sub(r'<nav class="crumbs".*?</nav>', new_vis_bc, html, flags=re.DOTALL)
 
-html = re.sub(r'<h1 class="headline">.*?</h1>', '<h1 class="headline">Why Pros Are Ditching Hybrids, and Why You Shouldn\'t</h1>', html, flags=re.DOTALL)
-html = re.sub(r'<h2 class="subhead">.*?</h2>', '<h2 class="subhead">Hybrid use in the PGA Tour top 100 fell from 32% to 13%. On the LPGA it\'s 70%. The 15 mph gap explains both, and one man won a major with one.</h2>', html, flags=re.DOTALL)
+html = replace_article_header(
+    html,
+    "Why Pros Are Ditching Hybrids, and Why You Shouldn't",
+    description,
+)
 
 new_body = """<div class="article-body">
           <div class="takeaways">
@@ -209,6 +216,8 @@ if '<script type="application/ld+json">' in html:
     html = re.sub(r'<script type="application/ld\+json">.*?</script>', json_ld, html, flags=re.DOTALL)
 else:
     html = html.replace('</head>', json_ld + '\n</head>')
+
+html = finalize_article_template_metadata(html)
 
 with open('why-pros-are-ditching-hybrids.html', 'w') as f:
     f.write(html)

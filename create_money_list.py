@@ -1,4 +1,8 @@
 import json, re
+from scripts.article_header import (
+    finalize_article_template_metadata,
+    replace_article_header,
+)
 
 with open('article-template.html', 'r') as f:
     html = f.read()
@@ -39,8 +43,11 @@ new_vis_bc = """<nav class="crumbs" aria-label="Breadcrumb">
         </nav>"""
 html = re.sub(r'<nav class="crumbs".*?</nav>', new_vis_bc, html, flags=re.DOTALL)
 
-html = re.sub(r'<h1 class="headline">.*?</h1>', '<h1 class="headline">Tiger Woods\' Career Money List Record May Fall Today</h1>', html, flags=re.DOTALL)
-html = re.sub(r'<h2 class="subhead">.*?</h2>', '<h2 class="subhead">Scheffler needs solo 13th, McIlroy needs solo 4th. One outlet already declared it done a week ago. Here\'s what\'s actually verified and what isn\'t.</h2>', html, flags=re.DOTALL)
+html = replace_article_header(
+    html,
+    "Tiger Woods' Career Money List Record May Fall Today",
+    description,
+)
 
 new_body = """<div class="article-body">
           <div class="takeaways">
@@ -205,6 +212,8 @@ if '<script type="application/ld+json">' in html:
     html = re.sub(r'<script type="application/ld\+json">.*?</script>', json_ld, html, flags=re.DOTALL)
 else:
     html = html.replace('</head>', json_ld + '\n</head>')
+
+html = finalize_article_template_metadata(html)
 
 with open('news-2026-tiger-woods-career-money-list-record.html', 'w') as f:
     f.write(html)

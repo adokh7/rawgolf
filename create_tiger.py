@@ -1,4 +1,8 @@
 import json, re
+from scripts.article_header import (
+    finalize_article_template_metadata,
+    replace_article_header,
+)
 
 with open('article-template.html', 'r') as f:
     html = f.read()
@@ -6,7 +10,7 @@ with open('article-template.html', 'r') as f:
 # 1. Header & Metadata
 title = "Every Shot From Tiger Woods' 80th Win: What to Watch For | GOLFRAW"
 description = "He shot 71 on Sunday, made three bogeys, and won by two. What the full broadcast shows that the highlight reel cuts, and the trophy he didn't take home."
-canonical_url = "https://www.golfraw.com/every-shot-tiger-woods-80th-win-2018"
+canonical_url = "https://www.golfraw.com/news-every-shot-tiger-woods-80th-win-2018"
 image_asset = "/public/every-shot-tiger-woods-80th-win-2018.webp"
 
 html = re.sub(r'<title>.*?</title>', f'<title>{title}</title>', html)
@@ -39,8 +43,11 @@ new_vis_bc = """<nav class="crumbs" aria-label="Breadcrumb">
         </nav>"""
 html = re.sub(r'<nav class="crumbs".*?</nav>', new_vis_bc, html, flags=re.DOTALL)
 
-html = re.sub(r'<h1 class="headline">.*?</h1>', '<h1 class="headline">Every Shot From Tiger Woods\' 80th Win: What to Watch For</h1>', html, flags=re.DOTALL)
-html = re.sub(r'<h2 class="subhead">.*?</h2>', '<h2 class="subhead">He shot 71 on Sunday, made three bogeys, and won by two. What the full broadcast shows that the highlight reel cuts, and the trophy he didn\'t take home.</h2>', html, flags=re.DOTALL)
+html = replace_article_header(
+    html,
+    "Every Shot From Tiger Woods' 80th Win: What to Watch For",
+    description,
+)
 
 new_body = """<div class="article-body">
           <div class="takeaways">
@@ -216,10 +223,17 @@ json_ld = """<script type="application/ld+json">
 }
 </script>"""
 
+json_ld = json_ld.replace(
+    "https://www.golfraw.com/every-shot-tiger-woods-80th-win-2018",
+    canonical_url,
+)
+
 if '<script type="application/ld+json">' in html:
     html = re.sub(r'<script type="application/ld\+json">.*?</script>', json_ld, html, flags=re.DOTALL)
 else:
     html = html.replace('</head>', json_ld + '\n</head>')
+
+html = finalize_article_template_metadata(html)
 
 with open('news-every-shot-tiger-woods-80th-win-2018.html', 'w') as f:
     f.write(html)
