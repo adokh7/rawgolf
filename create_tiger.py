@@ -168,7 +168,7 @@ json_ld = """<script type="application/ld+json">
   "@graph": [
     {
       "@type": "NewsArticle",
-      "@id": "https://www.golfraw.com/every-shot-tiger-woods-80th-win-2018#article",
+      "@id": "https://www.golfraw.com/news-every-shot-tiger-woods-80th-win-2018#article",
       "headline": "Every Shot From Tiger Woods' 80th Win: What to Watch For | GOLFRAW",
       "name": "Every Shot From Tiger Woods' 80th Win: What to Watch For | GOLFRAW",
       "description": "He shot 71 on Sunday, made three bogeys, and won by two. What the full broadcast shows that the highlight reel cuts, and the trophy he didn't take home.",
@@ -202,18 +202,18 @@ json_ld = """<script type="application/ld+json">
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://www.golfraw.com/every-shot-tiger-woods-80th-win-2018#breadcrumb",
+      "@id": "https://www.golfraw.com/news-every-shot-tiger-woods-80th-win-2018#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.golfraw.com/"},
         {"@type": "ListItem", "position": 2, "name": "History", "item": "https://www.golfraw.com/guides"},
-        {"@type": "ListItem", "position": 3, "name": "Tiger Woods 80th Win Every Shot", "item": "https://www.golfraw.com/every-shot-tiger-woods-80th-win-2018"}
+        {"@type": "ListItem", "position": 3, "name": "Tiger Woods 80th Win Every Shot", "item": "https://www.golfraw.com/news-every-shot-tiger-woods-80th-win-2018"}
       ]
     },
     {"@type": "Person", "@id": "https://www.golfraw.com/about#editorial", "name": "GOLFRAW Editorial", "url": "https://www.golfraw.com/about"},
     {"@type": "Organization", "@id": "https://www.golfraw.com#organization", "name": "GOLFRAW", "url": "https://www.golfraw.com/"},
     {
       "@type": "FAQPage",
-      "@id": "https://www.golfraw.com/every-shot-tiger-woods-80th-win-2018#faq",
+      "@id": "https://www.golfraw.com/news-every-shot-tiger-woods-80th-win-2018#faq",
       "mainEntity": [
         {"@type": "Question", "name": "Did Tiger Woods win the FedEx Cup in 2018?", "acceptedAnswer": {"@type": "Answer", "text": "No. Tiger Woods won the 2018 Tour Championship tournament, but Justin Rose accumulated enough points to win the overall FedExCup title."}},
         {"@type": "Question", "name": "What did Tiger shoot on Sunday to win his 80th title?", "acceptedAnswer": {"@type": "Answer", "text": "Tiger Woods shot a 1-over 71 in the final round of the 2018 Tour Championship to win by two shots."}}
@@ -222,11 +222,6 @@ json_ld = """<script type="application/ld+json">
   ]
 }
 </script>"""
-
-json_ld = json_ld.replace(
-    "https://www.golfraw.com/every-shot-tiger-woods-80th-win-2018",
-    canonical_url,
-)
 
 if '<script type="application/ld+json">' in html:
     html = re.sub(r'<script type="application/ld\+json">.*?</script>', json_ld, html, flags=re.DOTALL)

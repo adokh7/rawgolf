@@ -4,7 +4,7 @@ with open("articles.json", "r") as f:
     data = json.load(f)
 
 new_article = {
-  "canonical": "/every-shot-tiger-woods-80th-win-2018",
+  "canonical": "/news-every-shot-tiger-woods-80th-win-2018",
   "alias_of": "",
   "slug": "news-every-shot-tiger-woods-80th-win-2018",
   "url": "/news-every-shot-tiger-woods-80th-win-2018",
