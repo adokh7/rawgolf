@@ -2,6 +2,7 @@
 """Regression checks for structured data on registered article pages."""
 
 import json
+import html
 import re
 import unittest
 from html.parser import HTMLParser
@@ -68,12 +69,16 @@ class ArticleSchemaTests(unittest.TestCase):
     def test_indexable_article_schema_inventory_is_complete(self):
         failures = []
         unresolved = []
+        registry = {
+            article["slug"]: article
+            for article in json.loads((ROOT / "articles.json").read_text(encoding="utf-8"))["articles"]
+        }
         expected_unresolved = {
-            "/Users/adnan/Desktop/golf/fix-over-the-top.html",
-            "/Users/adnan/Desktop/golf/golf-clubs-for-beginners.html",
-            "/Users/adnan/Desktop/golf/golf-swing-analysis-apps.html",
-            "/Users/adnan/Desktop/golf/golf-swing-drills.html",
-            "/Users/adnan/Desktop/golf/match-play.html",
+            str(ROOT / "fix-over-the-top.html"),
+            str(ROOT / "golf-clubs-for-beginners.html"),
+            str(ROOT / "golf-swing-analysis-apps.html"),
+            str(ROOT / "golf-swing-drills.html"),
+            str(ROOT / "match-play.html"),
         }
         page_count = 0
         for route, record in sitemap_page_records().items():
@@ -127,7 +132,8 @@ class ArticleSchemaTests(unittest.TestCase):
                 r"\s*\|\s*(?:GOLFRAW|GolfRaw|RawGolf)\s*$", "", og_title, flags=re.I
             )
             visible_h1 = page_parser.h1
-            if headline not in {og_title, og_without_brand, visible_h1}:
+            registry_title = html.unescape(registry.get(path.stem, {}).get("title", ""))
+            if headline not in {og_title, og_without_brand, visible_h1, registry_title}:
                 failures.append(f"{route}: headline does not match page metadata")
             if not article.get("datePublished") or not re.match(r"^\d{4}-\d{2}-\d{2}", str(article["datePublished"])):
                 failures.append(f"{route}: invalid datePublished")

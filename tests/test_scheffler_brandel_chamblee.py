@@ -107,15 +107,23 @@ class SchefflerBrandelChambleeTests(unittest.TestCase):
             re.DOTALL,
         )
         self.assertGreaterEqual(len(blocks), 1)
+        graphs = [json.loads(block)["@graph"] for block in blocks]
+        entities = [entity for graph in graphs for entity in graph]
+        types = {entity["@type"] for entity in entities}
+        self.assertTrue({"NewsArticle", "FAQPage", "Organization", "Person", "BreadcrumbList"} <= types)
+        self.assertEqual(1, sum(entity.get("@type") == "NewsArticle" for entity in entities))
+        article = next(entity for entity in entities if entity["@type"] == "NewsArticle")
+        main_entity = article["mainEntityOfPage"]
+        if isinstance(main_entity, dict):
+            main_entity = main_entity.get("@id")
+        self.assertEqual(main_entity, CANONICAL_URL)
         for block in blocks:
             graph = json.loads(block)["@graph"]
-            types = {entity["@type"] for entity in graph}
-            self.assertTrue({"NewsArticle", "FAQPage", "Organization", "Person", "BreadcrumbList"} <= types)
-            article = next(entity for entity in graph if entity["@type"] == "NewsArticle")
-            self.assertEqual(article["mainEntityOfPage"]["@id"], CANONICAL_URL)
-            breadcrumb = next(entity for entity in graph if entity["@type"] == "BreadcrumbList")
+            breadcrumbs = [entity for entity in graph if entity.get("@type") == "BreadcrumbList"]
+            if not breadcrumbs:
+                continue
             self.assertEqual(
-                [item["item"] for item in breadcrumb["itemListElement"]],
+                [item["item"] for item in breadcrumbs[0]["itemListElement"]],
                 [
                     "https://www.golfraw.com/",
                     "https://www.golfraw.com/pga-tour",

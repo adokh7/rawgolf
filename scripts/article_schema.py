@@ -277,9 +277,15 @@ def _editorial_author() -> dict[str, str]:
 def _author_value(parser: PageParser, nodes: list[dict]) -> object:
     raw = ""
     for key in ("article:author", "author"):
-        raw = _clean((parser.meta.get(key) or [""])[0])
-        if raw:
+        candidate = _clean((parser.meta.get(key) or [""])[0])
+        if candidate and not (
+            candidate.startswith(("http://", "https://"))
+            and "golfraw.com" in candidate
+        ):
+            raw = candidate
             break
+        if candidate and not raw:
+            raw = candidate
 
     existing = next((node.get("author") for node in nodes if node.get("author")), None)
     source = raw or existing
@@ -298,6 +304,8 @@ def _author_value(parser: PageParser, nodes: list[dict]) -> object:
     if not source:
         return ""
     if source.casefold() == "golfraw editorial":
+        return _editorial_author()
+    if source.startswith(("http://", "https://")) and "golfraw.com" in source:
         return _editorial_author()
     if source.casefold() == "marcus keane":
         return {
@@ -321,10 +329,23 @@ def _without_brand(value: object) -> str:
     return BRAND_SUFFIX_RE.sub("", _clean(value))
 
 
-def _headline(parser: PageParser, nodes: list[dict], record: dict) -> str:
+def _headline(
+    parser: PageParser,
+    nodes: list[dict],
+    record: dict,
+    *,
+    prefer_h1: bool = False,
+) -> str:
     h1 = parser.h1
     og_title = _without_brand((parser.meta.get("og:title") or [""])[0])
     existing = _clean(nodes[0].get("headline")) if nodes else ""
+
+    if prefer_h1:
+        return h1 or existing or og_title or _without_brand(record.get("title", ""))
+
+    registry_title = _clean(record.get("title", ""))
+    if registry_title:
+        return registry_title
 
     # A stale visible H1 can survive a direct-generator rewrite. If the
     # existing schema headline agrees with the page's OG title and the H1 is
@@ -392,6 +413,7 @@ def _normalize_article(
     parser: PageParser,
     nodes: list[dict],
     record: dict,
+    prefer_h1: bool,
 ) -> None:
     canonical = _site_url(parser.canonical) or _site_url(record.get("url"))
     if not canonical:
@@ -401,7 +423,7 @@ def _normalize_article(
     modified = _date_value(parser, nodes, "dateModified", record)
     author = _author_value(parser, nodes)
 
-    article["headline"] = _headline(parser, nodes, record)
+    article["headline"] = _headline(parser, nodes, record, prefer_h1=prefer_h1)
     if image:
         article["image"] = _replace_image(article.get("image"), image)
     else:
@@ -423,24 +445,33 @@ def _normalize_article(
     _set_publisher(document, article)
 
 
-def _transform(value: object, state: dict, parser: PageParser, nodes: list[dict], record: dict) -> object:
+def _transform(
+    value: object,
+    state: dict,
+    parser: PageParser,
+    nodes: list[dict],
+    record: dict,
+    prefer_h1: bool,
+) -> object:
     if _is_article(value):
         if state["seen"]:
             return None
         state["seen"] = True
-        _normalize_article(state["root"], value, parser, nodes, record)  # type: ignore[arg-type]
+        _normalize_article(
+            state["root"], value, parser, nodes, record, prefer_h1
+        )  # type: ignore[arg-type]
         return value
     if isinstance(value, list):
         transformed = []
         for child in value:
-            result = _transform(child, state, parser, nodes, record)
+            result = _transform(child, state, parser, nodes, record, prefer_h1)
             if result is not None:
                 transformed.append(result)
         return transformed
     if isinstance(value, dict):
         transformed = {}
         for key, child in value.items():
-            result = _transform(child, state, parser, nodes, record)
+            result = _transform(child, state, parser, nodes, record, prefer_h1)
             if result is not None:
                 transformed[key] = result
         if any(_is_article(child) for child in value.values()) and "@context" not in transformed:
@@ -449,7 +480,12 @@ def _transform(value: object, state: dict, parser: PageParser, nodes: list[dict]
     return value
 
 
-def normalize_article_schema(source: str, path: str | Path) -> str:
+def normalize_article_schema(
+    source: str,
+    path: str | Path,
+    *,
+    prefer_h1: bool = False,
+) -> str:
     """Normalize the page's article JSON-LD and preserve unrelated scripts.
 
     Pages without Article/NewsArticle JSON-LD are returned unchanged so the
@@ -476,8 +512,14 @@ def normalize_article_schema(source: str, path: str | Path) -> str:
             return match.group(0)
         if not any(_is_article(node) for node in walk(document)):
             return match.group(0)
+        if isinstance(document, dict) and "@context" not in document:
+            document["@context"] = "https://schema.org"
+        elif isinstance(document, list):
+            for item in document:
+                if isinstance(item, dict) and any(_is_article(node) for node in walk(item)):
+                    item.setdefault("@context", "https://schema.org")
         state["root"] = document
-        transformed = _transform(document, state, parser, nodes, record)
+        transformed = _transform(document, state, parser, nodes, record, prefer_h1)
         document_index += 1
         if transformed is None:
             return ""

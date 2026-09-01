@@ -587,11 +587,11 @@ def finalize_html(source: str, output_path: str | Path, force: bool = False) -> 
     if path.name == TEMPLATE_NAME:
         return source
     if not force and not has_template_contamination(source):
-        normalized_schema = normalize_article_schema(source, path)
+        normalized_schema = normalize_article_schema(source, path, prefer_h1=True)
         return normalize_image_markup(normalized_schema, path, ROOT)
     data = page_data(source, path)
     rewritten = rewrite_json_ld(rewrite_head(source, data), data)
-    normalized_schema = normalize_article_schema(rewritten, path)
+    normalized_schema = normalize_article_schema(rewritten, path, prefer_h1=True)
     return normalize_image_markup(normalized_schema, path, ROOT)
 
 

@@ -153,5 +153,7 @@ def finalize_article_template_metadata(
     if line_end < 0:
         raise ValueError("article:section meta tag has no line ending")
     normalized = source[: line_end + 1] + tag_block + source[line_end + 1 :]
-    normalized_schema = normalize_article_schema(normalized, Path(output_path))
+    normalized_schema = normalize_article_schema(
+        normalized, Path(output_path), prefer_h1=True
+    )
     return normalize_image_markup(normalized_schema, Path(output_path), ROOT)

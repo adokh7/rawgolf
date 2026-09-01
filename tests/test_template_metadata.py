@@ -471,7 +471,10 @@ class TemplateMetadataTests(unittest.TestCase):
             if isinstance(main_entity, dict):
                 main_entity = main_entity.get("@id")
             checks = {
-                "headline": article.get("headline") == parser.h1[0],
+                "headline": article.get("headline") in {
+                    parser.h1[0],
+                    html.unescape(record.get("title", "")),
+                },
                 "mainEntityOfPage": main_entity == canonical,
                 "image": record["image"] in json.dumps(article.get("image", "")),
                 "datePublished": article.get("datePublished") == published_meta,
