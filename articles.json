@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 313,
+  "count": 314,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,24 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-small-grip-change-big-swing-improvement",
+      "alias_of": "",
+      "slug": "news-2026-small-grip-change-big-swing-improvement",
+      "url": "/news-2026-small-grip-change-big-swing-improvement",
+      "title": "Small Grip Change, Big Swing Improvement: Count Your Knuckles | GOLFRAW",
+      "excerpt": "Face angle sets about 85% of where the ball starts, and your hands set the face before you move. Count your knuckles, then read what it won't fix.",
+      "category": [
+        "GUIDES",
+        "SWING TIPS",
+        "NEWS"
+      ],
+      "date": "2026-09-01",
+      "image": "/news-2026-small-grip-change-big-swing-improvement.webp",
+      "keywords": "GUIDES, SWING TIPS, NEWS, Golf Grip, Knuckle Test, Slice Fix, Clubface Angle, Swing Mechanics",
+      "category_source": "override",
+      "section": "GUIDES"
+    },
     {
       "canonical": "/news-2026-scottie-scheffler-captures-fedex-cup",
       "alias_of": "",

@@ -1336,4 +1336,10 @@
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.golfraw.com/news-2026-small-grip-change-big-swing-improvement</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
