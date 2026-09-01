@@ -1330,4 +1330,10 @@
   <url>
     <loc>https://www.golfraw.com/tools-tilt-meter</loc>
   </url>
+  <url>
+    <loc>https://www.golfraw.com/news-2026-scottie-scheffler-captures-fedex-cup</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

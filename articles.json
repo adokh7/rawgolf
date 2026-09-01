@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 312,
+  "count": 313,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,24 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-scottie-scheffler-captures-fedex-cup",
+      "alias_of": "",
+      "slug": "news-2026-scottie-scheffler-captures-fedex-cup",
+      "url": "/news-2026-scottie-scheffler-captures-fedex-cup",
+      "title": "Scottie Scheffler Captures the FedEx Cup and Passes Tiger | GOLFRAW",
+      "excerpt": "He started Sunday three behind, made two bogeys all weekend, and ended a Tiger record from 2000. The stat explaining it isn't the one being quoted.",
+      "category": [
+        "PGA TOUR",
+        "TOURNAMENTS",
+        "NEWS"
+      ],
+      "date": "2026-09-01",
+      "image": "/news-2026-scottie-scheffler-captures-fedex-cup.webp",
+      "keywords": "PGA TOUR, TOURNAMENTS, NEWS, Scottie Scheffler, FedEx Cup, Tour Championship, East Lake, Tiger Woods",
+      "category_source": "override",
+      "section": "PGA TOUR"
+    },
     {
       "canonical": "/news-2026-kevin-hart-golf-youtube-132",
       "alias_of": "",
