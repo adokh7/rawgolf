@@ -58,7 +58,8 @@
 
 
   <!-- ============ STRUCTURED DATA (NewsArticle) ============ -->
-  <script type="application/ld+json">{
+  <script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@type": "NewsArticle",
   "headline": "The Vault: One Hole, Seven Shots — Jean van de Velde, 1999 Open",
@@ -70,12 +71,15 @@
   "dateModified": "2026-06-16",
   "author": {
     "@type": "Organization",
+    "@id": "https://www.golfraw.com/about#editorial",
     "name": "GOLFRAW Editorial",
-    "url": "https://www.golfraw.com/"
+    "url": "https://www.golfraw.com/about"
   },
   "publisher": {
     "@type": "Organization",
+    "@id": "https://www.golfraw.com#organization",
     "name": "GOLFRAW",
+    "url": "https://www.golfraw.com/",
     "logo": {
       "@type": "ImageObject",
       "url": "https://www.golfraw.com/public/favicon-192.webp",
@@ -87,7 +91,8 @@
   "articleSection": "PGA TOUR",
   "keywords": "The Vault, History, 1999 Open",
   "@id": "https://www.golfraw.com/jean-van-de-velde-1999-open#article"
-}</script>
+}
+</script>
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>

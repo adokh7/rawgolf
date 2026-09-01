@@ -59,7 +59,8 @@
 
 
   <!-- ============ STRUCTURED DATA (NewsArticle) ============ -->
-  <script type="application/ld+json">{
+  <script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@type": "NewsArticle",
   "headline": "The Best Man in College Golf Gets a PGA Tour Card. The Best Woman Gets an Invitation.",
@@ -71,12 +72,15 @@
   "dateModified": "2026-08-12",
   "author": {
     "@type": "Organization",
+    "@id": "https://www.golfraw.com/about#editorial",
     "name": "GOLFRAW Editorial",
-    "url": "https://www.golfraw.com/"
+    "url": "https://www.golfraw.com/about"
   },
   "publisher": {
     "@type": "Organization",
+    "@id": "https://www.golfraw.com#organization",
     "name": "GOLFRAW",
+    "url": "https://www.golfraw.com/",
     "logo": {
       "@type": "ImageObject",
       "url": "https://www.golfraw.com/public/favicon-192.webp",
@@ -88,7 +92,8 @@
   "articleSection": "LPGA TOUR",
   "keywords": "LPGA Tour, Megha Ganne, Collegiate Golf, Epson Tour",
   "@id": "https://www.golfraw.com/news-2026-megha-ganne-lpga-debut-inkster-award#article"
-}</script>
+}
+</script>
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>

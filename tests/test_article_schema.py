@@ -2,11 +2,17 @@
 """Regression checks for structured data on registered article pages."""
 
 import json
+import re
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
 
-from scripts.article_schema import audit_article_schema, normalize_article_schema
+from scripts.article_schema import (
+    audit_article_schema,
+    normalize_article_schema,
+    parse_page as parse_schema_page,
+)
+from scripts.sync_site import sitemap_page_records
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -59,6 +65,81 @@ def article_documents():
 
 
 class ArticleSchemaTests(unittest.TestCase):
+    def test_indexable_article_schema_inventory_is_complete(self):
+        failures = []
+        unresolved = []
+        expected_unresolved = {
+            "/Users/adnan/Desktop/golf/fix-over-the-top.html",
+            "/Users/adnan/Desktop/golf/golf-clubs-for-beginners.html",
+            "/Users/adnan/Desktop/golf/golf-swing-analysis-apps.html",
+            "/Users/adnan/Desktop/golf/golf-swing-drills.html",
+            "/Users/adnan/Desktop/golf/match-play.html",
+        }
+        page_count = 0
+        for route, record in sitemap_page_records().items():
+            path = Path(record["path"])
+            parser = JsonLdParser()
+            source = path.read_text(encoding="utf-8")
+            parser.feed(source)
+            page_parser, _, _ = parse_schema_page(source)
+            documents = [json.loads(block) for block in parser.blocks]
+            articles = [
+                node for document in documents for node in objects(document)
+                if node.get("@type") in ("Article", "NewsArticle")
+            ]
+            if not articles:
+                continue
+            page_count += 1
+            audit = audit_article_schema(source, path)
+            if audit["malformed"] or audit["duplicate"]:
+                failures.append(f"{route}: malformed/duplicate article JSON-LD")
+            missing = set(audit["missing"]) - {"dateModified"}
+            if missing:
+                failures.append(f"{route}: missing {sorted(missing)}")
+            if any(audit["mismatches"].values()):
+                failures.append(f"{route}: {audit['mismatches']}")
+            if "dateModified" in audit["unresolved"]:
+                unresolved.append(str(path))
+
+            article = articles[0]
+            article_context = any(
+                isinstance(document, dict)
+                and document.get("@context") == "https://schema.org"
+                for document in documents
+                if any(node is article for node in objects(document))
+            ) or any(
+                isinstance(document, list)
+                and any(
+                    isinstance(item, dict)
+                    and item.get("@context") == "https://schema.org"
+                    and any(node is article for node in objects(item))
+                    for item in document
+                )
+                for document in documents
+            )
+            if not article_context:
+                failures.append(f"{route}: missing schema context")
+            if not article.get("headline"):
+                failures.append(f"{route}: empty headline")
+            headline = str(article["headline"]).strip()
+            og_title = page_parser.meta.get("og:title", [""])[0].strip()
+            og_without_brand = re.sub(
+                r"\s*\|\s*(?:GOLFRAW|GolfRaw|RawGolf)\s*$", "", og_title, flags=re.I
+            )
+            visible_h1 = page_parser.h1
+            if headline not in {og_title, og_without_brand, visible_h1}:
+                failures.append(f"{route}: headline does not match page metadata")
+            if not article.get("datePublished") or not re.match(r"^\d{4}-\d{2}-\d{2}", str(article["datePublished"])):
+                failures.append(f"{route}: invalid datePublished")
+            if article.get("dateModified") and not re.match(r"^\d{4}-\d{2}-\d{2}", str(article["dateModified"])):
+                failures.append(f"{route}: invalid dateModified")
+            if not article.get("author") or not article.get("publisher"):
+                failures.append(f"{route}: missing author/publisher")
+
+        self.assertEqual(306, page_count)
+        self.assertEqual(expected_unresolved, set(unresolved))
+        self.assertEqual([], failures)
+
     def test_normalizer_completes_and_deduplicates_article_entity(self):
         source = '''<!doctype html>
 <html><head>
@@ -331,6 +412,3 @@ class ArticleSchemaTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-
-

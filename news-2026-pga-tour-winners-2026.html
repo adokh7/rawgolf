@@ -66,7 +66,7 @@
     {
       "@type": "NewsArticle",
       "@id": "https://www.golfraw.com/news-2026-pga-tour-winners-2026#article",
-      "headline": "PGA Tour Winners 2026: 28 Names, 35 Events, One Left | GOLFRAW",
+      "headline": "PGA Tour Winners 2026: 28 Names, 35 Events, One Left",
       "name": "PGA Tour Winners 2026: 28 Names, 35 Events, One Left | GOLFRAW",
       "description": "Every winner from the Sony Open to the BMW, the three men who won three times, and why the best player in the world isn't one of them.",
       "articleSection": "PGA Tour",
@@ -82,30 +82,89 @@
         "height": 675,
         "caption": "PGA Tour trophy presentation on the 18th green celebrating a 2026 tournament champion."
       },
-      "author": {"@id": "https://www.golfraw.com/about#editorial"},
-      "publisher": {"@id": "https://www.golfraw.com#organization"},
+      "author": {
+        "@type": "Organization",
+        "@id": "https://www.golfraw.com/about#editorial",
+        "name": "GOLFRAW Editorial",
+        "url": "https://www.golfraw.com/about"
+      },
+      "publisher": {
+        "@id": "https://www.golfraw.com#organization"
+      },
       "about": [
-        {"@type": "Thing", "name": "PGA Tour"},
-        {"@type": "Thing", "name": "Scottie Scheffler"}
-      ]
+        {
+          "@type": "Thing",
+          "name": "PGA Tour"
+        },
+        {
+          "@type": "Thing",
+          "name": "Scottie Scheffler"
+        }
+      ],
+      "mainEntityOfPage": "https://www.golfraw.com/news-2026-pga-tour-winners-2026"
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.golfraw.com/news-2026-pga-tour-winners-2026#breadcrumb",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.golfraw.com/"},
-        {"@type": "ListItem", "position": 2, "name": "PGA Tour", "item": "https://www.golfraw.com/pga-tour"},
-        {"@type": "ListItem", "position": 3, "name": "PGA Tour Winners 2026", "item": "https://www.golfraw.com/news-2026-pga-tour-winners-2026"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.golfraw.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "PGA Tour",
+          "item": "https://www.golfraw.com/pga-tour"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "PGA Tour Winners 2026",
+          "item": "https://www.golfraw.com/news-2026-pga-tour-winners-2026"
+        }
       ]
     },
-    {"@type": "Person", "@id": "https://www.golfraw.com/about#editorial", "name": "GOLFRAW Editorial", "url": "https://www.golfraw.com/about"},
-    {"@type": "Organization", "@id": "https://www.golfraw.com#organization", "name": "GOLFRAW", "url": "https://www.golfraw.com/"},
+    {
+      "@type": "Person",
+      "@id": "https://www.golfraw.com/about#editorial",
+      "name": "GOLFRAW Editorial",
+      "url": "https://www.golfraw.com/about"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
+    },
     {
       "@type": "FAQPage",
       "@id": "https://www.golfraw.com/news-2026-pga-tour-winners-2026#faq",
       "mainEntity": [
-        {"@type": "Question", "name": "Who had the most wins on the PGA Tour in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Wyndham Clark, Chris Gotterup, and Matt Fitzpatrick led the PGA Tour with three wins each in the 2026 season prior to the Tour Championship."}},
-        {"@type": "Question", "name": "Did Scottie Scheffler win a major in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "No, despite entering the Tour Championship as the FedExCup leader for the fifth consecutive year, Scottie Scheffler did not win a major in 2026."}}
+        {
+          "@type": "Question",
+          "name": "Who had the most wins on the PGA Tour in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wyndham Clark, Chris Gotterup, and Matt Fitzpatrick led the PGA Tour with three wins each in the 2026 season prior to the Tour Championship."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Did Scottie Scheffler win a major in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, despite entering the Tour Championship as the FedExCup leader for the fifth consecutive year, Scottie Scheffler did not win a major in 2026."
+          }
+        }
       ]
     }
   ]

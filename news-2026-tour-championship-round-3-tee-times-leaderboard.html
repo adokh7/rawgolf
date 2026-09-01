@@ -65,7 +65,7 @@
     {
       "@type": "NewsArticle",
       "@id": "https://www.golfraw.com/news-2026-tour-championship-round-3-tee-times-leaderboard#article",
-      "headline": "Tour Championship Round 3: Hovland's 65 and Every Score | GOLFRAW",
+      "headline": "Tour Championship Round 3: Hovland's 65 and Every Score",
       "name": "Tour Championship Round 3: Hovland's 65 and Every Score | GOLFRAW",
       "description": "Nineteen players began Saturday within five shots and it ended with a one-shot lead. Full Round 3 draw, results, and the Sunday sheet nobody agrees on.",
       "articleSection": "Tournaments",
@@ -81,30 +81,89 @@
         "height": 675,
         "caption": "The first tee and tournament scoreboard at East Lake during Moving Day Round 3 of the 2026 Tour Championship."
       },
-      "author": {"@id": "https://www.golfraw.com/about#editorial"},
-      "publisher": {"@id": "https://www.golfraw.com#organization"},
+      "author": {
+        "@type": "Organization",
+        "@id": "https://www.golfraw.com/about#editorial",
+        "name": "GOLFRAW Editorial",
+        "url": "https://www.golfraw.com/about"
+      },
+      "publisher": {
+        "@id": "https://www.golfraw.com#organization"
+      },
       "about": [
-        {"@type": "Thing", "name": "Tour Championship"},
-        {"@type": "Thing", "name": "Viktor Hovland"}
-      ]
+        {
+          "@type": "Thing",
+          "name": "Tour Championship"
+        },
+        {
+          "@type": "Thing",
+          "name": "Viktor Hovland"
+        }
+      ],
+      "mainEntityOfPage": "https://www.golfraw.com/news-2026-tour-championship-round-3-tee-times-leaderboard"
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.golfraw.com/news-2026-tour-championship-round-3-tee-times-leaderboard#breadcrumb",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.golfraw.com/"},
-        {"@type": "ListItem", "position": 2, "name": "News", "item": "https://www.golfraw.com/news"},
-        {"@type": "ListItem", "position": 3, "name": "Tour Championship Round 3 Recap", "item": "https://www.golfraw.com/news-2026-tour-championship-round-3-tee-times-leaderboard"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.golfraw.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "News",
+          "item": "https://www.golfraw.com/news"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tour Championship Round 3 Recap",
+          "item": "https://www.golfraw.com/news-2026-tour-championship-round-3-tee-times-leaderboard"
+        }
       ]
     },
-    {"@type": "Person", "@id": "https://www.golfraw.com/about#editorial", "name": "GOLFRAW Editorial", "url": "https://www.golfraw.com/about"},
-    {"@type": "Organization", "@id": "https://www.golfraw.com#organization", "name": "GOLFRAW", "url": "https://www.golfraw.com/"},
+    {
+      "@type": "Person",
+      "@id": "https://www.golfraw.com/about#editorial",
+      "name": "GOLFRAW Editorial",
+      "url": "https://www.golfraw.com/about"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
+    },
     {
       "@type": "FAQPage",
       "@id": "https://www.golfraw.com/news-2026-tour-championship-round-3-tee-times-leaderboard#faq",
       "mainEntity": [
-        {"@type": "Question", "name": "Who leads after Round 3 of the Tour Championship?", "acceptedAnswer": {"@type": "Answer", "text": "Viktor Hovland leads by one shot at 15 under par after shooting a 65."}},
-        {"@type": "Question", "name": "What did Rory McIlroy shoot in Round 3?", "acceptedAnswer": {"@type": "Answer", "text": "Rory McIlroy shot a 63 with 9 birdies, tying his career-low round at East Lake."}}
+        {
+          "@type": "Question",
+          "name": "Who leads after Round 3 of the Tour Championship?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Viktor Hovland leads by one shot at 15 under par after shooting a 65."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What did Rory McIlroy shoot in Round 3?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rory McIlroy shot a 63 with 9 birdies, tying his career-low round at East Lake."
+          }
+        }
       ]
     }
   ]

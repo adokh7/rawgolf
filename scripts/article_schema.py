@@ -15,7 +15,7 @@ import re
 from datetime import date, datetime
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -185,7 +185,7 @@ def _site_url(raw: object, *, require_public_image: bool = False) -> str:
     value = html.unescape(_clean(raw))
     if not value:
         return ""
-    parsed = urlparse(value if "://" in value else f"{SITE}/{value.lstrip('/')}" )
+    parsed = urlparse(value if "://" in value else urljoin(f"{SITE}/", value))
     if parsed.scheme not in {"http", "https"}:
         return ""
     if parsed.netloc.lower() in {"golfraw.com", "www.golfraw.com"}:
@@ -197,14 +197,24 @@ def _site_url(raw: object, *, require_public_image: bool = False) -> str:
 
 
 def _image_url(parser: PageParser, record: dict) -> str:
-    image = _site_url((parser.meta.get("og:image") or [""])[0], require_public_image=True)
-    if image:
-        return image
+    # The first body image is the rendered lead/primary image. Prefer it over
+    # stale historical OG values so Article.image describes the article the
+    # reader actually sees. Query strings are delivery cache keys, not a
+    # distinct editorial image URL.
     for body_image in parser.body_images:
         image = _site_url(body_image, require_public_image=True)
         if image:
-            return image
-    return _site_url(record.get("image", ""), require_public_image=True)
+            parsed = urlparse(image)
+            return f"{parsed.scheme}://{parsed.netloc}{parsed.path or '/'}"
+    image = _site_url((parser.meta.get("og:image") or [""])[0], require_public_image=True)
+    if image:
+        parsed = urlparse(image)
+        return f"{parsed.scheme}://{parsed.netloc}{parsed.path or '/'}"
+    image = _site_url(record.get("image", ""), require_public_image=True)
+    if image:
+        parsed = urlparse(image)
+        return f"{parsed.scheme}://{parsed.netloc}{parsed.path or '/'}"
+    return ""
 
 
 def _iso(value: object) -> str:

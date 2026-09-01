@@ -56,7 +56,7 @@
     {
       "@type": "NewsArticle",
       "@id": "https://www.golfraw.com/news-2026-scheffler-sick-bmw-championship#article",
-      "headline": "Scheffler sick at BMW Championship: what is confirmed",
+      "headline": "Scottie Scheffler sick at the BMW Championship: what the reporting actually establishes",
       "description": "Scottie Scheffler shot 72 on 20 August 2026 and skipped media. No diagnosis exists. What is verified, the back-nine maths, and what the field rules mean.",
       "image": [
         "https://www.golfraw.com/public/scheffler-sick-bmw-championship-2026.webp"
@@ -65,18 +65,12 @@
       "dateModified": "2026-08-21T18:45:00+02:00",
       "author": {
         "@type": "Organization",
+        "@id": "https://www.golfraw.com/about#editorial",
         "name": "GOLFRAW Editorial",
-        "url": "https://golfraw.com/"
+        "url": "https://www.golfraw.com/about"
       },
       "publisher": {
-        "@type": "Organization",
-        "name": "GOLFRAW",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://www.golfraw.com/public/favicon-192.webp",
-          "width": 1254,
-          "height": 1254
-        }
+        "@id": "https://www.golfraw.com#organization"
       },
       "about": [
         {
@@ -128,10 +122,22 @@
           }
         }
       ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
     }
   ]
 }
-  </script>
+</script>
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>

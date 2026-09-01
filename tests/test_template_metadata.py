@@ -292,7 +292,7 @@ class TemplateMetadataTests(unittest.TestCase):
             self.assertEqual(article["headline"], parser.h1[0])
             self.assertEqual(article["mainEntityOfPage"], canonical)
             self.assertEqual(article["datePublished"], "2026-08-09")
-            self.assertEqual(article["dateModified"], "2026-08-09")
+            self.assertNotIn("dateModified", article)
             self.assertEqual(
                 article["keywords"],
                 ", ".join(parser.meta["article:tag"]),
@@ -433,9 +433,12 @@ class TemplateMetadataTests(unittest.TestCase):
                 self.assertEqual(parser.meta["og:url"][0], parser.canonicals[0])
                 self.assertEqual(article["headline"], parser.h1[0])
                 self.assertEqual(parser.meta["article:published_time"][0], expected_date)
-                self.assertEqual(parser.meta["article:modified_time"][0], expected_date)
+                self.assertEqual(
+                    parser.meta.get("article:modified_time", [None])[0],
+                    article.get("dateModified"),
+                )
                 self.assertEqual(article["datePublished"], expected_date)
-                self.assertEqual(article["dateModified"], expected_date)
+                self.assertEqual(article.get("dateModified"), parser.meta.get("article:modified_time", [None])[0])
                 main_entity = article["mainEntityOfPage"]
                 if isinstance(main_entity, dict):
                     main_entity = main_entity.get("@id")

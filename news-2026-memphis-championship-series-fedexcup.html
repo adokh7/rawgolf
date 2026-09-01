@@ -61,7 +61,8 @@
 
 
   <!-- ============ STRUCTURED DATA (NewsArticle) ============ -->
-  <script type="application/ld+json">{
+  <script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -69,20 +70,21 @@
       "@id": "https://www.golfraw.com/news-2026-memphis-championship-series-fedexcup#article",
       "headline": "The Bigger Story Isn't Memphis. It's Whether the FedExCup Survives.",
       "description": "Memphis loses top-tier status in 2028. But FedEx's deal covers the points race and postseason too, and it expires in 2027. What that really puts at risk.",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://www.golfraw.com/news-2026-memphis-championship-series-fedexcup"
-      },
+      "mainEntityOfPage": "https://www.golfraw.com/news-2026-memphis-championship-series-fedexcup",
       "datePublished": "2026-08-06",
       "dateModified": "2026-08-06",
       "publisher": {
-        "@type": "Organization",
-        "name": "GolfRaw",
-        "url": "https://www.golfraw.com"
+        "@id": "https://www.golfraw.com#organization"
       },
       "image": "https://www.golfraw.com/public/memphis-championship-series-fedexcup.webp",
       "articleSection": "PGA TOUR",
-      "keywords": "FedEx St Jude Championship 2028, PGA Tour Championship Series, Memphis PGA Tour, FedExCup Ending, Challenger Series, TPC Southwind"
+      "keywords": "FedEx St Jude Championship 2028, PGA Tour Championship Series, Memphis PGA Tour, FedExCup Ending, Challenger Series, TPC Southwind",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://www.golfraw.com/about#editorial",
+        "name": "GOLFRAW Editorial",
+        "url": "https://www.golfraw.com/about"
+      }
     },
     {
       "@type": "FAQPage",
@@ -129,9 +131,22 @@
           }
         }
       ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
     }
   ]
-}</script>
+}
+</script>
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>

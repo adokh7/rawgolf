@@ -65,7 +65,7 @@
     {
       "@type": "NewsArticle",
       "@id": "https://www.golfraw.com/news-2026-tour-championship-sunday-tee-times-round-4#article",
-      "headline": "2026 Tour Championship Sunday Tee Times: Everything Moved | GOLFRAW",
+      "headline": "2026 Tour Championship Sunday Tee Times: Everything Moved",
       "name": "2026 Tour Championship Sunday Tee Times: Everything Moved | GOLFRAW",
       "description": "The whole draw shifted about an hour earlier and the pairings were rebuilt. Full Round 4 tee sheet, TV windows, and the mismatch nobody has flagged.",
       "articleSection": "Tournaments",
@@ -81,29 +81,85 @@
         "height": 675,
         "caption": "Starter board and 1st tee at East Lake Golf Club showing the revised Sunday tee times for the 2026 Tour Championship final round."
       },
-      "author": {"@id": "https://www.golfraw.com/about#editorial"},
-      "publisher": {"@id": "https://www.golfraw.com#organization"},
+      "author": {
+        "@type": "Organization",
+        "@id": "https://www.golfraw.com/about#editorial",
+        "name": "GOLFRAW Editorial",
+        "url": "https://www.golfraw.com/about"
+      },
+      "publisher": {
+        "@id": "https://www.golfraw.com#organization"
+      },
       "about": [
-        {"@type": "Thing", "name": "Tour Championship"}
-      ]
+        {
+          "@type": "Thing",
+          "name": "Tour Championship"
+        }
+      ],
+      "mainEntityOfPage": "https://www.golfraw.com/news-2026-tour-championship-sunday-tee-times-round-4"
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.golfraw.com/news-2026-tour-championship-sunday-tee-times-round-4#breadcrumb",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.golfraw.com/"},
-        {"@type": "ListItem", "position": 2, "name": "News", "item": "https://www.golfraw.com/news"},
-        {"@type": "ListItem", "position": 3, "name": "Revised Sunday Tee Times", "item": "https://www.golfraw.com/news-2026-tour-championship-sunday-tee-times-round-4"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.golfraw.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "News",
+          "item": "https://www.golfraw.com/news"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Revised Sunday Tee Times",
+          "item": "https://www.golfraw.com/news-2026-tour-championship-sunday-tee-times-round-4"
+        }
       ]
     },
-    {"@type": "Person", "@id": "https://www.golfraw.com/about#editorial", "name": "GOLFRAW Editorial", "url": "https://www.golfraw.com/about"},
-    {"@type": "Organization", "@id": "https://www.golfraw.com#organization", "name": "GOLFRAW", "url": "https://www.golfraw.com/"},
+    {
+      "@type": "Person",
+      "@id": "https://www.golfraw.com/about#editorial",
+      "name": "GOLFRAW Editorial",
+      "url": "https://www.golfraw.com/about"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
+    },
     {
       "@type": "FAQPage",
       "@id": "https://www.golfraw.com/news-2026-tour-championship-sunday-tee-times-round-4#faq",
       "mainEntity": [
-        {"@type": "Question", "name": "What time does the final pairing tee off on Sunday at the Tour Championship?", "acceptedAnswer": {"@type": "Answer", "text": "Viktor Hovland and Ryan Gerard tee off at 1:50 p.m. ET."}},
-        {"@type": "Question", "name": "How can I watch the early Sunday coverage of the Tour Championship?", "acceptedAnswer": {"@type": "Answer", "text": "Early coverage begins at 11:00 a.m. ET exclusively on ESPN+ (PGA Tour Live), before Golf Channel coverage begins at noon ET."}}
+        {
+          "@type": "Question",
+          "name": "What time does the final pairing tee off on Sunday at the Tour Championship?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Viktor Hovland and Ryan Gerard tee off at 1:50 p.m. ET."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I watch the early Sunday coverage of the Tour Championship?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Early coverage begins at 11:00 a.m. ET exclusively on ESPN+ (PGA Tour Live), before Golf Channel coverage begins at noon ET."
+          }
+        }
       ]
     }
   ]

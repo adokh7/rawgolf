@@ -21,8 +21,10 @@ try:
         normalize_site,
         responsive_candidates,
     )
+    from scripts.article_schema import audit_article_schema, normalize_article_schema
 except ImportError:  # direct execution from the scripts directory
     from image_markup import audit_image_markup, image_attribute_string, normalize_site, responsive_candidates
+    from article_schema import audit_article_schema, normalize_article_schema
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -681,6 +683,41 @@ def write_feed(arts):
     return len(items)
 
 
+def normalize_article_schemas():
+    """Apply the shared schema pass to every current indexable article page."""
+    changed = 0
+    pages = 0
+    for record in sitemap_page_records().values():
+        path = Path(record['path'])
+        source = path.read_text(encoding='utf-8')
+        normalized = normalize_article_schema(source, path)
+        if normalized != source:
+            path.write_text(normalized, encoding='utf-8')
+            changed += 1
+        pages += 1
+    return changed, pages
+
+
+def validate_article_schemas():
+    """Report schema drift without treating unknown modification dates as errors."""
+    problems = []
+    for route, record in sitemap_page_records().items():
+        path = Path(record['path'])
+        source = path.read_text(encoding='utf-8')
+        audit = audit_article_schema(source, path)
+        if not audit['article_count']:
+            continue
+        missing = set(audit['missing']) - {'dateModified'}
+        mismatches = {field for field, count in audit['mismatches'].items() if count}
+        if audit['malformed']:
+            problems.append(('article schema malformed JSON-LD', route))
+        if audit['duplicate']:
+            problems.append(('article schema duplicate entity', route))
+        for field in sorted(missing | mismatches):
+            problems.append((f'article schema {field}', route))
+    return problems
+
+
 
 SEEN_PATH    = '.fast-index-seen.json'
 PENDING_PATH = '.fast-index-pending.json'
@@ -899,7 +936,7 @@ if __name__ == '__main__':
     # --check is read-only, so it must include internal-link drift up front.
     probs = validate(arts) + check_readme()
     if '--check' in sys.argv:
-        probs += validate_internal_links(arts) + validate_images()
+        probs += validate_internal_links(arts) + validate_images() + validate_article_schemas()
     if probs:
         print(f"VALIDATION: {len(probs)} problem(s)")
         for kind, what in probs[:40]:
@@ -949,6 +986,12 @@ if __name__ == '__main__':
     # serialised or rewritten.
     image_files_changed, image_count = normalize_site(Path(ROOT))
     print(f"  image markup normalized: {image_count} image(s) in {image_files_changed} file(s)")
+
+    # Historical article generators do not all share the same JSON-LD writer.
+    # Run the single schema boundary after every sync so direct-generator
+    # output cannot reintroduce duplicate or incomplete article entities.
+    schema_files_changed, schema_pages = normalize_article_schemas()
+    print(f"  article schema normalized: {schema_pages} page(s) in {schema_files_changed} file(s)")
 
     # 6. Fast indexing. Deliberately NOT fired by default: sync runs before
     #    the deploy, so a ping now would make the hub fetch the *old* live

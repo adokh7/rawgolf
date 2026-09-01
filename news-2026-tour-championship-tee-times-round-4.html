@@ -65,8 +65,10 @@
     {
       "@type": "NewsArticle",
       "@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#article",
-      "isPartOf": {"@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#webpage"},
-      "mainEntityOfPage": {"@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#webpage"},
+      "isPartOf": {
+        "@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#webpage"
+      },
+      "mainEntityOfPage": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4",
       "headline": "2026 Tour Championship Tee Times: Round 4 at East Lake",
       "name": "2026 Tour Championship Tee Times: Round 4 at East Lake | GOLFRAW",
       "description": "Every pairing from 11:55 a.m. to the 2:55 final group, plus TV times, what Hovland's lead is worth, and the rule that could still cost somebody two shots.",
@@ -81,8 +83,15 @@
         "height": 675,
         "caption": "East Lake Golf Club 18th green and clubhouse grandstands ahead of Sunday's final round of the 2026 Tour Championship."
       },
-      "author": {"@id": "https://www.golfraw.com/about#editorial"},
-      "publisher": {"@id": "https://www.golfraw.com#organization"}
+      "author": {
+        "@type": "Organization",
+        "@id": "https://www.golfraw.com/about#editorial",
+        "name": "GOLFRAW Editorial",
+        "url": "https://www.golfraw.com/about"
+      },
+      "publisher": {
+        "@id": "https://www.golfraw.com#organization"
+      }
     },
     {
       "@type": "WebPage",
@@ -90,28 +99,84 @@
       "url": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4",
       "name": "2026 Tour Championship Tee Times: Round 4 at East Lake | GOLFRAW",
       "description": "Every pairing from 11:55 a.m. to the 2:55 final group, plus TV times, what Hovland's lead is worth, and the rule that could still cost somebody two shots.",
-      "isPartOf": {"@id": "https://www.golfraw.com#website"},
-      "primaryImageOfPage": {"@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#article"},
-      "breadcrumb": {"@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#breadcrumb"}
+      "isPartOf": {
+        "@id": "https://www.golfraw.com#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#article"
+      },
+      "breadcrumb": {
+        "@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#breadcrumb"
+      }
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#breadcrumb",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.golfraw.com/"},
-        {"@type": "ListItem", "position": 2, "name": "News", "item": "https://www.golfraw.com/news"},
-        {"@type": "ListItem", "position": 3, "name": "Tournaments", "item": "https://www.golfraw.com/tournaments"},
-        {"@type": "ListItem", "position": 4, "name": "Tour Championship Round 4 Tee Times", "item": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.golfraw.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "News",
+          "item": "https://www.golfraw.com/news"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tournaments",
+          "item": "https://www.golfraw.com/tournaments"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Tour Championship Round 4 Tee Times",
+          "item": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4"
+        }
       ]
     },
-    {"@type": "Person", "@id": "https://www.golfraw.com/about#editorial", "name": "GOLFRAW Editorial", "url": "https://www.golfraw.com/about"},
-    {"@type": "Organization", "@id": "https://www.golfraw.com#organization", "name": "GOLFRAW", "url": "https://www.golfraw.com/"},
+    {
+      "@type": "Person",
+      "@id": "https://www.golfraw.com/about#editorial",
+      "name": "GOLFRAW Editorial",
+      "url": "https://www.golfraw.com/about"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
+    },
     {
       "@type": "FAQPage",
       "@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#faq",
       "mainEntity": [
-        {"@type": "Question", "name": "When does Rory McIlroy tee off?", "acceptedAnswer": {"@type": "Answer", "text": "Rory McIlroy tees off at 2:27 p.m. ET alongside Ludvig Åberg."}},
-        {"@type": "Question", "name": "What time is the final pairing?", "acceptedAnswer": {"@type": "Answer", "text": "Viktor Hovland and Ryan Gerard tee off at 2:55 p.m. ET."}}
+        {
+          "@type": "Question",
+          "name": "When does Rory McIlroy tee off?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rory McIlroy tees off at 2:27 p.m. ET alongside Ludvig Åberg."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What time is the final pairing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Viktor Hovland and Ryan Gerard tee off at 2:55 p.m. ET."
+          }
+        }
       ]
     }
   ]
@@ -783,55 +848,83 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "NewsArticle",
-      "@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#article",
-      "isPartOf": {"@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#webpage"},
-      "mainEntityOfPage": {"@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#webpage"},
-      "headline": "2026 Tour Championship Tee Times: Round 4 at East Lake",
-      "name": "2026 Tour Championship Tee Times: Round 4 at East Lake | GOLFRAW",
-      "description": "Every pairing from 11:55 a.m. to the 2:55 final group, plus TV times, what Hovland's lead is worth, and the rule that could still cost somebody two shots.",
-      "articleSection": "Tournaments",
-      "datePublished": "2026-08-30T10:00:00+02:00",
-      "dateModified": "2026-08-30T10:00:00+02:00",
-      "inLanguage": "en",
-      "image": {
-        "@type": "ImageObject",
-        "url": "https://www.golfraw.com/public/tour-championship-2026-round-4-tee-times.webp",
-        "width": 1200,
-        "height": 675,
-        "caption": "East Lake Golf Club 18th green and clubhouse grandstands ahead of Sunday's final round of the 2026 Tour Championship."
-      },
-      "author": {"@id": "https://www.golfraw.com/about#editorial"},
-      "publisher": {"@id": "https://www.golfraw.com#organization"}
-    },
-    {
       "@type": "WebPage",
       "@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#webpage",
       "url": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4",
       "name": "2026 Tour Championship Tee Times: Round 4 at East Lake | GOLFRAW",
       "description": "Every pairing from 11:55 a.m. to the 2:55 final group, plus TV times, what Hovland's lead is worth, and the rule that could still cost somebody two shots.",
-      "isPartOf": {"@id": "https://www.golfraw.com#website"},
-      "primaryImageOfPage": {"@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#article"},
-      "breadcrumb": {"@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#breadcrumb"}
+      "isPartOf": {
+        "@id": "https://www.golfraw.com#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#article"
+      },
+      "breadcrumb": {
+        "@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#breadcrumb"
+      }
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#breadcrumb",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.golfraw.com/"},
-        {"@type": "ListItem", "position": 2, "name": "News", "item": "https://www.golfraw.com/news"},
-        {"@type": "ListItem", "position": 3, "name": "Tournaments", "item": "https://www.golfraw.com/tournaments"},
-        {"@type": "ListItem", "position": 4, "name": "Tour Championship Round 4 Tee Times", "item": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.golfraw.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "News",
+          "item": "https://www.golfraw.com/news"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tournaments",
+          "item": "https://www.golfraw.com/tournaments"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Tour Championship Round 4 Tee Times",
+          "item": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4"
+        }
       ]
     },
-    {"@type": "Person", "@id": "https://www.golfraw.com/about#editorial", "name": "GOLFRAW Editorial", "url": "https://www.golfraw.com/about"},
-    {"@type": "Organization", "@id": "https://www.golfraw.com#organization", "name": "GOLFRAW", "url": "https://www.golfraw.com/"},
+    {
+      "@type": "Person",
+      "@id": "https://www.golfraw.com/about#editorial",
+      "name": "GOLFRAW Editorial",
+      "url": "https://www.golfraw.com/about"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/"
+    },
     {
       "@type": "FAQPage",
       "@id": "https://www.golfraw.com/news-2026-tour-championship-tee-times-round-4#faq",
       "mainEntity": [
-        {"@type": "Question", "name": "When does Rory McIlroy tee off?", "acceptedAnswer": {"@type": "Answer", "text": "Rory McIlroy tees off at 2:27 p.m. ET alongside Ludvig Åberg."}},
-        {"@type": "Question", "name": "What time is the final pairing?", "acceptedAnswer": {"@type": "Answer", "text": "Viktor Hovland and Ryan Gerard tee off at 2:55 p.m. ET."}}
+        {
+          "@type": "Question",
+          "name": "When does Rory McIlroy tee off?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rory McIlroy tees off at 2:27 p.m. ET alongside Ludvig Åberg."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What time is the final pairing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Viktor Hovland and Ryan Gerard tee off at 2:55 p.m. ET."
+          }
+        }
       ]
     }
   ]

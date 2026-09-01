@@ -66,7 +66,7 @@
     {
       "@type": "NewsArticle",
       "@id": "https://www.golfraw.com/news-2026-michael-block-lead-ally-challenge#article",
-      "headline": "Michael Block's 2-Shot Lead at the Ally Challenge Explained | GOLFRAW",
+      "headline": "Michael Block's 2-Shot Lead at the Ally Challenge Explained",
       "name": "Michael Block's 2-Shot Lead at the Ally Challenge Explained | GOLFRAW",
       "description": "He eagled the first, made five birdies, dropped nothing, and leads by two. But the number he's actually chasing isn't first place. Here's what it is.",
       "articleSection": "Tournaments",
@@ -82,30 +82,89 @@
         "height": 675,
         "caption": "Michael Block playing his approach shot during his bogey-free 65 at the 2026 Ally Challenge at Warwick Hills."
       },
-      "author": {"@id": "https://www.golfraw.com/about#editorial"},
-      "publisher": {"@id": "https://www.golfraw.com#organization"},
+      "author": {
+        "@type": "Organization",
+        "@id": "https://www.golfraw.com/about#editorial",
+        "name": "GOLFRAW Editorial",
+        "url": "https://www.golfraw.com/about"
+      },
+      "publisher": {
+        "@id": "https://www.golfraw.com#organization"
+      },
       "about": [
-        {"@type": "Thing", "name": "Ally Challenge"},
-        {"@type": "Thing", "name": "Michael Block"}
-      ]
+        {
+          "@type": "Thing",
+          "name": "Ally Challenge"
+        },
+        {
+          "@type": "Thing",
+          "name": "Michael Block"
+        }
+      ],
+      "mainEntityOfPage": "https://www.golfraw.com/news-2026-michael-block-lead-ally-challenge"
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.golfraw.com/news-2026-michael-block-lead-ally-challenge#breadcrumb",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.golfraw.com/"},
-        {"@type": "ListItem", "position": 2, "name": "News", "item": "https://www.golfraw.com/news"},
-        {"@type": "ListItem", "position": 3, "name": "Michael Block Ally Challenge Lead", "item": "https://www.golfraw.com/news-2026-michael-block-lead-ally-challenge"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.golfraw.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "News",
+          "item": "https://www.golfraw.com/news"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Michael Block Ally Challenge Lead",
+          "item": "https://www.golfraw.com/news-2026-michael-block-lead-ally-challenge"
+        }
       ]
     },
-    {"@type": "Person", "@id": "https://www.golfraw.com/about#editorial", "name": "GOLFRAW Editorial", "url": "https://www.golfraw.com/about"},
-    {"@type": "Organization", "@id": "https://www.golfraw.com#organization", "name": "GOLFRAW", "url": "https://www.golfraw.com/"},
+    {
+      "@type": "Person",
+      "@id": "https://www.golfraw.com/about#editorial",
+      "name": "GOLFRAW Editorial",
+      "url": "https://www.golfraw.com/about"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
+    },
     {
       "@type": "FAQPage",
       "@id": "https://www.golfraw.com/news-2026-michael-block-lead-ally-challenge#faq",
       "mainEntity": [
-        {"@type": "Question", "name": "Why does Michael Block need a top-10 finish at the Ally Challenge?", "acceptedAnswer": {"@type": "Answer", "text": "A top-10 finish earns him an exemption into the Sanford International, which would be his 7th start of the season. 7 starts are required to officially qualify for the Charles Schwab Cup playoffs."}},
-        {"@type": "Question", "name": "What did Michael Block shoot in the second round of the Ally Challenge?", "acceptedAnswer": {"@type": "Answer", "text": "Michael Block shot a bogey-free 65, including an eagle on the 1st hole and five birdies."}}
+        {
+          "@type": "Question",
+          "name": "Why does Michael Block need a top-10 finish at the Ally Challenge?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A top-10 finish earns him an exemption into the Sanford International, which would be his 7th start of the season. 7 starts are required to officially qualify for the Charles Schwab Cup playoffs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What did Michael Block shoot in the second round of the Ally Challenge?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Michael Block shot a bogey-free 65, including an eagle on the 1st hole and five birdies."
+          }
+        }
       ]
     }
   ]

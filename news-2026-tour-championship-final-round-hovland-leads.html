@@ -65,7 +65,7 @@
     {
       "@type": "NewsArticle",
       "@id": "https://www.golfraw.com/news-2026-tour-championship-final-round-hovland-leads#article",
-      "headline": "Tour Championship Final Round: Hovland Leads by One | GOLFRAW",
+      "headline": "Tour Championship Final Round: Hovland Leads by One",
       "name": "Tour Championship Final Round: Hovland Leads by One | GOLFRAW",
       "description": "Hovland leads by one at 15 under, Scheffler's three back, McIlroy shot 63. Every number that matters before the final round of the season.",
       "articleSection": "Tournaments",
@@ -81,30 +81,89 @@
         "height": 675,
         "caption": "Viktor Hovland celebrating a birdie putt on the 17th green at East Lake during Round 3 of the 2026 Tour Championship."
       },
-      "author": {"@id": "https://www.golfraw.com/about#editorial"},
-      "publisher": {"@id": "https://www.golfraw.com#organization"},
+      "author": {
+        "@type": "Organization",
+        "@id": "https://www.golfraw.com/about#editorial",
+        "name": "GOLFRAW Editorial",
+        "url": "https://www.golfraw.com/about"
+      },
+      "publisher": {
+        "@id": "https://www.golfraw.com#organization"
+      },
       "about": [
-        {"@type": "Thing", "name": "Tour Championship"},
-        {"@type": "Thing", "name": "Viktor Hovland"}
-      ]
+        {
+          "@type": "Thing",
+          "name": "Tour Championship"
+        },
+        {
+          "@type": "Thing",
+          "name": "Viktor Hovland"
+        }
+      ],
+      "mainEntityOfPage": "https://www.golfraw.com/news-2026-tour-championship-final-round-hovland-leads"
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.golfraw.com/news-2026-tour-championship-final-round-hovland-leads#breadcrumb",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.golfraw.com/"},
-        {"@type": "ListItem", "position": 2, "name": "News", "item": "https://www.golfraw.com/news"},
-        {"@type": "ListItem", "position": 3, "name": "Tour Championship Final Round Hovland Leads", "item": "https://www.golfraw.com/news-2026-tour-championship-final-round-hovland-leads"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.golfraw.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "News",
+          "item": "https://www.golfraw.com/news"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tour Championship Final Round Hovland Leads",
+          "item": "https://www.golfraw.com/news-2026-tour-championship-final-round-hovland-leads"
+        }
       ]
     },
-    {"@type": "Person", "@id": "https://www.golfraw.com/about#editorial", "name": "GOLFRAW Editorial", "url": "https://www.golfraw.com/about"},
-    {"@type": "Organization", "@id": "https://www.golfraw.com#organization", "name": "GOLFRAW", "url": "https://www.golfraw.com/"},
+    {
+      "@type": "Person",
+      "@id": "https://www.golfraw.com/about#editorial",
+      "name": "GOLFRAW Editorial",
+      "url": "https://www.golfraw.com/about"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
+    },
     {
       "@type": "FAQPage",
       "@id": "https://www.golfraw.com/news-2026-tour-championship-final-round-hovland-leads#faq",
       "mainEntity": [
-        {"@type": "Question", "name": "Who leads the Tour Championship?", "acceptedAnswer": {"@type": "Answer", "text": "Viktor Hovland leads at 15 under par heading into the final round."}},
-        {"@type": "Question", "name": "What is the winner's prize?", "acceptedAnswer": {"@type": "Answer", "text": "The winner receives $10 million from the official $40 million purse and a 5-year PGA Tour exemption."}}
+        {
+          "@type": "Question",
+          "name": "Who leads the Tour Championship?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Viktor Hovland leads at 15 under par heading into the final round."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the winner's prize?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The winner receives $10 million from the official $40 million purse and a 5-year PGA Tour exemption."
+          }
+        }
       ]
     }
   ]

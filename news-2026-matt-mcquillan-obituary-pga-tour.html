@@ -58,7 +58,8 @@
 
 
   <!-- ============ STRUCTURED DATA (NewsArticle) ============ -->
-  <script type="application/ld+json">{
+  <script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -66,23 +67,37 @@
       "@id": "https://www.golfraw.com/news-2026-matt-mcquillan-obituary-pga-tour#article",
       "headline": "Matt McQuillan, former PGA TOUR player, dies at 45",
       "description": "Matt McQuillan, who learned the game at Garrison in Kingston, Ontario and played the PGA TOUR in 2011, has died at 45. A look back at his career.",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://www.golfraw.com/news-2026-matt-mcquillan-obituary-pga-tour"
-      },
+      "mainEntityOfPage": "https://www.golfraw.com/news-2026-matt-mcquillan-obituary-pga-tour",
       "datePublished": "2026-08-07",
       "dateModified": "2026-08-07",
       "publisher": {
-        "@type": "Organization",
-        "name": "GolfRaw",
-        "url": "https://www.golfraw.com"
+        "@id": "https://www.golfraw.com#organization"
       },
       "image": "https://www.golfraw.com/public/matt-mcquillan-obituary-pga-tour.webp",
       "articleSection": "PGA TOUR",
-      "keywords": "PGA Tour, Matt McQuillan, Obituary"
+      "keywords": "PGA Tour, Matt McQuillan, Obituary",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://www.golfraw.com/about#editorial",
+        "name": "GOLFRAW Editorial",
+        "url": "https://www.golfraw.com/about"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
     }
   ]
-}</script>
+}
+</script>
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>

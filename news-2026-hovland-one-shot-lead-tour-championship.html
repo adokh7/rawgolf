@@ -66,7 +66,7 @@
     {
       "@type": "NewsArticle",
       "@id": "https://www.golfraw.com/news-2026-hovland-one-shot-lead-tour-championship#article",
-      "headline": "Hovland's One-Shot Lead Came From Six Straight Putts | GOLFRAW",
+      "headline": "Hovland's One-Shot Lead Came From Six Straight Putts",
       "name": "Hovland's One-Shot Lead Came From Six Straight Putts | GOLFRAW",
       "description": "Six putts from seven feet or longer built it. Scheffler, Scott, Åberg and Gotterup are three back, McIlroy shot 63, and last place is 3 under.",
       "articleSection": "Tournaments",
@@ -82,30 +82,89 @@
         "height": 675,
         "caption": "Viktor Hovland putting on the 15th peninsula green at East Lake during the third round of the 2026 Tour Championship."
       },
-      "author": {"@id": "https://www.golfraw.com/about#editorial"},
-      "publisher": {"@id": "https://www.golfraw.com#organization"},
+      "author": {
+        "@type": "Organization",
+        "@id": "https://www.golfraw.com/about#editorial",
+        "name": "GOLFRAW Editorial",
+        "url": "https://www.golfraw.com/about"
+      },
+      "publisher": {
+        "@id": "https://www.golfraw.com#organization"
+      },
       "about": [
-        {"@type": "Thing", "name": "Tour Championship"},
-        {"@type": "Thing", "name": "Viktor Hovland"}
-      ]
+        {
+          "@type": "Thing",
+          "name": "Tour Championship"
+        },
+        {
+          "@type": "Thing",
+          "name": "Viktor Hovland"
+        }
+      ],
+      "mainEntityOfPage": "https://www.golfraw.com/news-2026-hovland-one-shot-lead-tour-championship"
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.golfraw.com/news-2026-hovland-one-shot-lead-tour-championship#breadcrumb",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.golfraw.com/"},
-        {"@type": "ListItem", "position": 2, "name": "News", "item": "https://www.golfraw.com/news"},
-        {"@type": "ListItem", "position": 3, "name": "Hovland One-Shot Lead", "item": "https://www.golfraw.com/news-2026-hovland-one-shot-lead-tour-championship"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.golfraw.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "News",
+          "item": "https://www.golfraw.com/news"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Hovland One-Shot Lead",
+          "item": "https://www.golfraw.com/news-2026-hovland-one-shot-lead-tour-championship"
+        }
       ]
     },
-    {"@type": "Person", "@id": "https://www.golfraw.com/about#editorial", "name": "GOLFRAW Editorial", "url": "https://www.golfraw.com/about"},
-    {"@type": "Organization", "@id": "https://www.golfraw.com#organization", "name": "GOLFRAW", "url": "https://www.golfraw.com/"},
+    {
+      "@type": "Person",
+      "@id": "https://www.golfraw.com/about#editorial",
+      "name": "GOLFRAW Editorial",
+      "url": "https://www.golfraw.com/about"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
+    },
     {
       "@type": "FAQPage",
       "@id": "https://www.golfraw.com/news-2026-hovland-one-shot-lead-tour-championship#faq",
       "mainEntity": [
-        {"@type": "Question", "name": "How many consecutive putts did Viktor Hovland make to close his round?", "acceptedAnswer": {"@type": "Answer", "text": "Viktor Hovland made six consecutive putts from seven feet or longer on his final six holes."}},
-        {"@type": "Question", "name": "What is the score of the last place player at the Tour Championship?", "acceptedAnswer": {"@type": "Answer", "text": "The player in last place is currently 3 under par."}}
+        {
+          "@type": "Question",
+          "name": "How many consecutive putts did Viktor Hovland make to close his round?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Viktor Hovland made six consecutive putts from seven feet or longer on his final six holes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the score of the last place player at the Tour Championship?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The player in last place is currently 3 under par."
+          }
+        }
       ]
     }
   ]

@@ -58,7 +58,8 @@
 
 
   <!-- ============ STRUCTURED DATA (NewsArticle) ============ -->
-  <script type="application/ld+json">{
+  <script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -66,20 +67,21 @@
       "@id": "https://www.golfraw.com/news-2026-what-beginners-actually-search#article",
       "headline": "40,500 People a Month Search \"Golf Clubs for Beginners.\" 1,600 Search \"Golf for Beginners.\"",
       "description": "40,500 people a month search for beginner golf clubs. 590 ask what a handicap is. What the search data reveals about how beginners are being sold to.",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://www.golfraw.com/news-2026-what-beginners-actually-search"
-      },
+      "mainEntityOfPage": "https://www.golfraw.com/news-2026-what-beginners-actually-search",
       "datePublished": "2026-08-05",
       "dateModified": "2026-08-05",
       "publisher": {
-        "@type": "Organization",
-        "name": "GolfRaw",
-        "url": "https://www.golfraw.com"
+        "@id": "https://www.golfraw.com#organization"
       },
       "image": "https://www.golfraw.com/public/what-beginners-actually-search.webp",
       "articleSection": "GUIDES",
-      "keywords": "Beginners, Golf, Data"
+      "keywords": "Beginners, Golf, Data",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://www.golfraw.com/about#editorial",
+        "name": "GOLFRAW Editorial",
+        "url": "https://www.golfraw.com/about"
+      }
     },
     {
       "@type": "FAQPage",
@@ -126,9 +128,22 @@
           }
         }
       ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
     }
   ]
-}</script>
+}
+</script>
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
