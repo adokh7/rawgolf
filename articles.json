@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 314,
+  "count": 315,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,24 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-jj-spaun-withdraws-tour-championship",
+      "alias_of": "",
+      "slug": "news-2026-jj-spaun-withdraws-tour-championship",
+      "url": "/news-2026-jj-spaun-withdraws-tour-championship",
+      "title": "J.J. Spaun Withdraws From the Tour Championship: The Facts | GOLFRAW",
+      "excerpt": "A shoulder that flared Tuesday, four over through five, a walk off the sixth tee. What happened, what it paid, and what it cost him a week later.",
+      "category": [
+        "PGA TOUR",
+        "TOURNAMENTS",
+        "NEWS"
+      ],
+      "date": "2026-09-02",
+      "image": "/news-2026-jj-spaun-withdraws-tour-championship.webp",
+      "keywords": "PGA TOUR, TOURNAMENTS, NEWS, J.J. Spaun, Tour Championship, East Lake, Shoulder Injury, FedEx Cup",
+      "category_source": "override",
+      "section": "NEWS"
+    },
     {
       "canonical": "/news-2026-this-week-in-golf-liv-tiger-plea-pga-tour-rebrand",
       "alias_of": "",
