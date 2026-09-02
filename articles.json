@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 314,
+  "count": 313,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,24 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-tiger-woods-pleads-guilty-reckless-driving-jupiter-island",
+      "alias_of": "",
+      "slug": "news-2026-tiger-woods-pleads-guilty-reckless-driving-jupiter-island",
+      "url": "/news-2026-tiger-woods-pleads-guilty-reckless-driving-jupiter-island",
+      "title": "Tiger Woods Pleads Guilty: 5-Year Ban, $1,000 Fine, Explained | GOLFRAW",
+      "excerpt": "Five-year license suspension, $1,000 fine, and two different words for the plea depending on the outlet. What's verified, and why the wording matters.",
+      "category": [
+        "PEOPLE",
+        "NEWS",
+        "OFF THE COURSE"
+      ],
+      "date": "2026-09-02",
+      "image": "/news-2026-tiger-woods-pleads-guilty-reckless-driving.webp",
+      "keywords": "PEOPLE, NEWS, OFF THE COURSE, Tiger Woods, Reckless Driving, DUI, License Suspension, Jupiter Island",
+      "category_source": "override",
+      "section": "NEWS"
+    },
     {
       "canonical": "/news-2026-small-grip-change-big-swing-improvement",
       "alias_of": "",
@@ -465,24 +483,6 @@
       "section": "GUIDES"
     },
     {
-      "canonical": "/news-2026-michael-block-leads-ally-challenge-final-round",
-      "alias_of": "",
-      "slug": "news-2026-michael-block-leads-ally-challenge-final-round",
-      "url": "/news-2026-michael-block-leads-ally-challenge-final-round",
-      "title": "Michael Block Leads the Ally Challenge Into Sunday by Two | GOLFRAW",
-      "excerpt": "He's in on an invitation, his son is on the bag, and he opened Saturday with an eagle. What Block actually needs from Sunday, and it isn't the trophy.",
-      "category": [
-        "TOURNAMENTS",
-        "CHAMPIONS TOUR",
-        "NEWS"
-      ],
-      "date": "2026-08-30",
-      "image": "/public/michael-block-leads-ally-challenge-final-round-2026.webp",
-      "keywords": "Michael Block, Ally Challenge, Champions Tour, Warwick Hills, Steven Alker, Charles Schwab Cup",
-      "category_source": "override",
-      "section": "TOURNAMENTS"
-    },
-    {
       "canonical": "/news-every-shot-tiger-woods-80th-win-2018",
       "alias_of": "",
       "slug": "news-every-shot-tiger-woods-80th-win-2018",
@@ -587,24 +587,6 @@
       "date": "2026-08-30",
       "image": "/public/tour-championship-2026-round-3-tee-times-leaderboard.webp",
       "keywords": "Tour Championship Round 3, Viktor Hovland, Rory McIlroy 63, East Lake Leaderboard, PGA Tour",
-      "category_source": "override",
-      "section": "TOURNAMENTS"
-    },
-    {
-      "canonical": "/news-2026-hovland-leads-tour-championship-final-day",
-      "alias_of": "",
-      "slug": "news-2026-hovland-leads-tour-championship-final-day",
-      "url": "/news-2026-hovland-leads-tour-championship-final-day",
-      "title": "Hovland Leads the Tour Championship by One Into Sunday | GOLFRAW",
-      "excerpt": "He closed with six putts from 7 feet or longer to lead by one. Scheffler's three back, McIlroy shot 63, and nobody agrees on Sunday's tee times.",
-      "category": [
-        "TOURNAMENTS",
-        "PGA TOUR",
-        "NEWS"
-      ],
-      "date": "2026-08-30",
-      "image": "/public/hovland-leads-tour-championship-final-day-2026.webp",
-      "keywords": "Viktor Hovland, Tour Championship Final Round, Scottie Scheffler, Rory McIlroy 63, Ryan Gerard, East Lake",
       "category_source": "override",
       "section": "TOURNAMENTS"
     },

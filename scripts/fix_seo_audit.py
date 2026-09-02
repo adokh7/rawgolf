@@ -22,8 +22,10 @@ from urllib.parse import quote, urlparse
 
 try:
     from fix_template_metadata import finalize_html, has_template_contamination
+    from seo_metadata import apply_metadata_overrides, metadata_override_for
 except ModuleNotFoundError:  # imported as scripts.fix_seo_audit
     from scripts.fix_template_metadata import finalize_html, has_template_contamination
+    from scripts.seo_metadata import apply_metadata_overrides, metadata_override_for
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -541,6 +543,9 @@ def repair_source(path: Path, source: str) -> tuple[str, dict[str, str]]:
     parsed = parse_page(source)
     title = sanitize_title(path, parsed)
     description = description_for(title, parsed)
+    override = metadata_override_for(path)
+    title = override.get("title", title)
+    description = override.get("description", description)
     canonical = canonical_for(path, parsed)
     image = image_for(parsed)
     og_type = page_type(path)
@@ -643,9 +648,16 @@ def validate_page(path: Path, source: str) -> list[str]:
 def main() -> int:
     args = argparse.ArgumentParser(description=__doc__)
     args.add_argument("--check", action="store_true", help="validate without writing files")
+    args.add_argument(
+        "--only-overrides",
+        action="store_true",
+        help="process only pages with an explicit reviewed metadata override",
+    )
     options = args.parse_args()
 
     pages = sorted(ROOT.glob("*.html"))
+    if options.only_overrides:
+        pages = [path for path in pages if metadata_override_for(path)]
     if not pages:
         print("ERROR: no root-level HTML pages found", file=sys.stderr)
         return 1

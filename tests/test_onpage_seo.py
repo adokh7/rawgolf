@@ -15,7 +15,7 @@ BASE = "https://www.golfraw.com"
 SITEMAP_NS = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 
 ARTICLE_TITLES = {
-    "news-2026-tour-championship-winners-losers-friday.html": "Tour Championship Winners & Losers: Scheffler Surges | GOLFRAW",
+    "news-2026-tour-championship-winners-losers-friday.html": "Tour Championship Winners & Losers: Scheffler Surges",
     "news-2026-tour-championship-prize-money-payout.html": "2026 Tour Championship Payout: $355K for 30th | GOLFRAW",
     "news-2026-cameron-young-new-putter-62-tour-championship.html": "Cameron Young's New Putter Led to a 62 | GOLFRAW",
     "news-2026-hovland-tie-for-lead-tour-championship.html": "Hovland Ties Tour Championship Lead: 12 of 14 | GOLFRAW",
@@ -55,6 +55,8 @@ TASK5_INLINE_CITATION_HREFS = {
     "https://www.espnradio941.com/2026/08/26/scheffler-says-hes-95-recovered-from-illness/",
     "https://www.foxnews.com/outkick-sports/scottie-scheffler-reveals-he-played-through-pretty-painful-illness-during-bmw-championship",
 }
+
+TASK6B_INLINE_HREFS = {"/liv-golf-pga-tour-return"}
 
 
 class PageParser(HTMLParser):
@@ -124,7 +126,7 @@ def comparable_article(source):
         return ""
     value = body.group(0)
     value = re.sub(r'<section\b[^>]*class=["\'][^"\']*\bsources\b[^"\']*["\'][^>]*>.*?</section>', "", value, flags=re.I | re.S)
-    for href in TASK5_INLINE_CITATION_HREFS:
+    for href in TASK5_INLINE_CITATION_HREFS | TASK6B_INLINE_HREFS:
         tag = rf'<a\b[^>]*href=["\']{re.escape(href)}["\'][^>]*>(.*?)</a>'
         value = re.sub(tag, r"\1", value, flags=re.I | re.S)
     # Task 3 intentionally adds intrinsic/responsive image attributes. Keep

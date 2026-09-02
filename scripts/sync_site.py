@@ -23,9 +23,11 @@ try:
         responsive_candidates,
     )
     from scripts.article_schema import audit_article_schema, normalize_article_schema
+    from scripts.seo_metadata import audit_metadata, apply_metadata_overrides, metadata_override_for
 except ImportError:  # direct execution from the scripts directory
     from image_markup import audit_image_markup, image_attribute_string, normalize_site, responsive_candidates
     from article_schema import audit_article_schema, normalize_article_schema
+    from seo_metadata import audit_metadata, apply_metadata_overrides, metadata_override_for
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -795,6 +797,56 @@ def normalize_article_schemas():
     return changed, pages
 
 
+def normalize_seo_metadata():
+    """Apply reviewed title/description overrides at the sync boundary."""
+    changed = 0
+    pages = 0
+    for route, path_string in production_html_pages():
+        if not metadata_override_for(route):
+            continue
+        pages += 1
+        source_path = Path(path_string)
+        source = source_path.read_text(encoding='utf-8')
+        normalized = apply_metadata_overrides(source, route)
+        if normalized != source:
+            source_path.write_text(normalized, encoding='utf-8')
+            changed += 1
+    return changed, pages
+
+
+def validate_seo_metadata():
+    """Validate title/description cardinality, mirrors, length and uniqueness."""
+    problems = []
+    title_routes = {}
+    for route, record in sitemap_page_records().items():
+        audit = audit_metadata(Path(record['path']).read_text(encoding='utf-8'))
+        override = metadata_override_for(route)
+        title = str(audit['title'])
+        description = str(audit['description'])
+        if audit['title_count'] != 1:
+            problems.append(('title count', route))
+        if audit['description_count'] != 1:
+            problems.append(('description count', route))
+        if len(title) > 60:
+            problems.append(('title over 60 characters', route))
+        if len(description) > 160:
+            problems.append(('description over 160 characters', route))
+        if 'title' in override and (
+            audit['og:title'] != title or audit['twitter:title'] != title
+        ):
+            problems.append(('title social mirror mismatch', route))
+        if 'description' in override and (
+            audit['og:description'] != description
+            or audit['twitter:description'] != description
+        ):
+            problems.append(('description social mirror mismatch', route))
+        title_routes.setdefault(title, []).append(route)
+    for title, routes in title_routes.items():
+        if title and len(routes) > 1:
+            problems.append(('duplicate title', ', '.join(sorted(routes))))
+    return problems
+
+
 def validate_article_schemas():
     """Report schema drift without treating unknown modification dates as errors."""
     problems = []
@@ -1033,7 +1085,12 @@ if __name__ == '__main__':
     # --check is read-only, so it must include internal-link drift up front.
     probs = validate(arts) + check_readme()
     if '--check' in sys.argv:
-        probs += validate_internal_links(arts) + validate_images() + validate_article_schemas()
+        probs += (
+            validate_internal_links(arts)
+            + validate_images()
+            + validate_seo_metadata()
+            + validate_article_schemas()
+        )
     if probs:
         print(f"VALIDATION: {len(probs)} problem(s)")
         for kind, what in probs[:40]:
@@ -1085,6 +1142,9 @@ if __name__ == '__main__':
     # output cannot reintroduce duplicate or incomplete article entities.
     schema_files_changed, schema_pages = normalize_article_schemas()
     print(f"  article schema normalized: {schema_pages} page(s) in {schema_files_changed} file(s)")
+
+    metadata_files_changed, metadata_pages = normalize_seo_metadata()
+    print(f"  SEO metadata normalized: {metadata_pages} reviewed page(s) in {metadata_files_changed} file(s)")
 
     # 6. Sitemap outputs are generated after metadata normalization so their
     # indexability and date decisions observe the final page output.

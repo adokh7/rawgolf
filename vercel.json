@@ -11,6 +11,16 @@
     ],
     "redirects": [
         {
+            "source": "/news-2026-michael-block-leads-ally-challenge-final-round",
+            "destination": "/news-2026-michael-block-lead-ally-challenge",
+            "permanent": true
+        },
+        {
+            "source": "/news-2026-hovland-leads-tour-championship-final-day",
+            "destination": "/news-2026-tour-championship-final-round-hovland-leads",
+            "permanent": true
+        },
+        {
             "source": "/what-beginners-actually-search",
             "destination": "/news-2026-what-beginners-actually-search",
             "permanent": true

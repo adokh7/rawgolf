@@ -10,9 +10,11 @@ from pathlib import Path
 try:
     from scripts.image_markup import ROOT, normalize_image_markup
     from scripts.article_schema import normalize_article_schema
+    from scripts.seo_metadata import apply_metadata_overrides
 except ImportError:  # direct execution from the scripts directory
     from image_markup import ROOT, normalize_image_markup
     from article_schema import normalize_article_schema
+    from seo_metadata import apply_metadata_overrides
 
 
 H1_RE = re.compile(r"<h1(?:\s+[^>]*)?>.*?</h1>", re.IGNORECASE | re.DOTALL)
@@ -156,4 +158,5 @@ def finalize_article_template_metadata(
     normalized_schema = normalize_article_schema(
         normalized, Path(output_path), prefer_h1=True
     )
-    return normalize_image_markup(normalized_schema, Path(output_path), ROOT)
+    normalized_images = normalize_image_markup(normalized_schema, Path(output_path), ROOT)
+    return apply_metadata_overrides(normalized_images, output_path)

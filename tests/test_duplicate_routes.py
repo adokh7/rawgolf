@@ -15,6 +15,10 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://www.golfraw.com"
 
 REDIRECTS = {
+    "/news-2026-michael-block-leads-ally-challenge-final-round":
+        "/news-2026-michael-block-lead-ally-challenge",
+    "/news-2026-hovland-leads-tour-championship-final-day":
+        "/news-2026-tour-championship-final-round-hovland-leads",
     "/blog/morikawa-61-travelers-championship-2026":
         "/morikawa-61-travelers-championship-2026",
     "/golf-deals-equipment-tee-times-guide":
@@ -24,6 +28,10 @@ REDIRECTS = {
 }
 
 WINNERS = {
+    "/news-2026-michael-block-lead-ally-challenge":
+        "news-2026-michael-block-lead-ally-challenge.html",
+    "/news-2026-tour-championship-final-round-hovland-leads":
+        "news-2026-tour-championship-final-round-hovland-leads.html",
     "/morikawa-61-travelers-championship-2026":
         "morikawa-61-travelers-championship-2026.html",
     "/equipment/golf-deals-equipment-tee-times-guide":
@@ -77,6 +85,8 @@ class DuplicateRouteTests(unittest.TestCase):
         articles = registry["articles"]
         records = {article["url"]: article for article in articles}
         for winner in (
+            "/news-2026-michael-block-lead-ally-challenge",
+            "/news-2026-tour-championship-final-round-hovland-leads",
             "/morikawa-61-travelers-championship-2026",
             "/equipment/golf-deals-equipment-tee-times-guide",
             "/rules/golf-tournaments-rules-formats-tax-guide",
@@ -89,6 +99,8 @@ class DuplicateRouteTests(unittest.TestCase):
     def test_sitemap_contains_each_winner_once_and_no_redirect_source(self):
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
         for winner in (
+            "/news-2026-michael-block-lead-ally-challenge",
+            "/news-2026-tour-championship-final-round-hovland-leads",
             "/morikawa-61-travelers-championship-2026",
             "/equipment/golf-deals-equipment-tee-times-guide",
             "/rules/golf-tournaments-rules-formats-tax-guide",
@@ -97,6 +109,11 @@ class DuplicateRouteTests(unittest.TestCase):
             self.assertEqual(1, sitemap.count(f"<loc>{SITE}{winner}</loc>"))
         for deprecated in REDIRECTS:
             self.assertNotIn(f"<loc>{SITE}{deprecated}</loc>", sitemap)
+
+    def test_news_sitemap_contains_no_redirect_source(self):
+        news_sitemap = (ROOT / "news-sitemap.xml").read_text(encoding="utf-8")
+        for deprecated in REDIRECTS:
+            self.assertNotIn(f"<loc>{SITE}{deprecated}</loc>", news_sitemap)
 
     def test_production_html_has_no_direct_links_to_redirect_sources(self):
         offenders = []
@@ -157,6 +174,31 @@ class DuplicateRouteTests(unittest.TestCase):
         self.assertTrue(old_title and old_h1 and new_title and new_h1)
         self.assertNotEqual(old_title, new_title)
         self.assertNotEqual(old_h1, new_h1)
+
+    def test_task6b_hubs_have_useful_context_sections(self):
+        expectations = {
+            "ratings.html": ("ratings-methodology", "/ratings-manual"),
+            "full-board.html": ("full-board-scope", "/ratings-manual"),
+            "analysis.html": ("analysis-start-here", "/golf-swing-drills"),
+        }
+        for filename, (section_id, supporting_route) in expectations.items():
+            source = (ROOT / filename).read_text(encoding="utf-8")
+            self.assertIn(f'id="{section_id}"', source, filename)
+            self.assertIn(f'href="{supporting_route}"', source, filename)
+
+    def test_liv_return_has_contextual_inbound_links(self):
+        expected_sources = {
+            "news-2026-liv-golf-secures-lead-investor.html",
+            "news-2026-liv-golf-players-return-pga-tour-rules.html",
+        }
+        actual_sources = set()
+        for path in ROOT.rglob("*.html"):
+            if path.name == "article-template.html" or ".git" in path.parts:
+                continue
+            source = path.read_text(encoding="utf-8")
+            if re.search(r'href=["\']/liv-golf-pga-tour-return(?:[?#"\']|$)', source):
+                actual_sources.add(path.name)
+        self.assertTrue(expected_sources <= actual_sources)
 
 
 if __name__ == "__main__":

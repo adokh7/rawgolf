@@ -315,6 +315,10 @@ class TemplateMetadataTests(unittest.TestCase):
                 ROOT / "scripts" / "article_schema.py",
                 temp / "scripts" / "article_schema.py",
             )
+            shutil.copy2(
+                ROOT / "scripts" / "seo_metadata.py",
+                temp / "scripts" / "seo_metadata.py",
+            )
             generator = (ROOT / "create_hovland.py").read_text(encoding="utf-8")
             (temp / "create_hovland.py").write_text(generator, encoding="utf-8")
 

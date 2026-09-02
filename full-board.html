@@ -117,6 +117,33 @@ a { color: inherit; text-decoration: none }
   font-size: 16px;
   max-width: 600px;
 }
+.board-explainer {
+  max-width: 760px;
+  margin: 0 0 32px;
+  padding: 24px;
+  border: 2px solid rgba(255,255,255,0.18);
+  border-left: 6px solid var(--flag);
+}
+.board-explainer h2 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.board-explainer p {
+  color: #b7c0b9;
+  font-size: 15px;
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+.board-explainer p:last-child { margin-bottom: 0; }
+.board-explainer a {
+  color: #9CC9AE;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
 
 /* DATA TABLE */
 .table-wrapper {
@@ -221,10 +248,11 @@ table { max-width: 100%; }
     <p>The definitive world order. Data Golf model rankings, OWGR, and FedEx Cup standings combined into a single board of truth. Updated weekly.</p>
   </header>
 
-  <section class="board-explainer" aria-labelledby="board-explainer-title">
-    <h2 id="board-explainer-title">How to read the Full Board</h2>
+  <section class="board-explainer" id="full-board-scope" aria-labelledby="full-board-scope-title">
+    <h2 id="full-board-scope-title">How to read the Full Board: scope and update context</h2>
     <p>Full Board puts four reference points in one view: the Data Golf model rank, Data Golf points, the Official World Golf Ranking (OWGR), and FedExCup standings. They answer different questions, so use the columns side by side rather than treating one number as the whole story.</p>
-    <p>The Data Golf columns show the model's view, OWGR is the official world ranking, and FedExCup is the season standings. A dash means this table does not show a value for that player. The board is updated weekly.</p>
+    <p>The Data Golf columns show the model's view, OWGR is the official world ranking, and FedExCup is the season standings. A dash means this table does not show a value for that player. This page is a five-player reference snapshot, not a live feed or a new composite ranking. The board is updated weekly when the underlying source snapshots are refreshed.</p>
+    <p>Because the source systems update on different schedules, use the values as displayed rather than assuming every column represents the same moment. Compare the site's <a href="/ratings">Raw Player Ratings</a> with the <a href="/ratings-manual">Rating Manual</a> when you need the editorial scoring method.</p>
   </section>
 
   <div class="table-wrapper">

@@ -142,7 +142,7 @@ class ArticleSchemaTests(unittest.TestCase):
             if not article.get("author") or not article.get("publisher"):
                 failures.append(f"{route}: missing author/publisher")
 
-        self.assertEqual(306, page_count)
+        self.assertEqual(308, page_count)
         self.assertEqual(expected_unresolved, set(unresolved))
         self.assertEqual([], failures)
 
