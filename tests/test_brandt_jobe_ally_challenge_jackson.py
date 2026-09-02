@@ -63,7 +63,7 @@ class BrandtJobeArticleTests(unittest.TestCase):
         self.assertEqual("PGA TOUR", entry.get("section"))
 
     def test_metadata_hero_and_standard_layout_are_page_specific(self):
-        title = "Brandt Jobe's Ally Challenge: Best Week in Over a Year | GOLFRAW"
+        title = "Brandt Jobe's Ally Challenge: Best Week in Over a Year"
         description = (
             "A 69 on Sunday for his best result since last August, and a Tuesday night at Comerica "
             "watching his son pitch. The week nobody put on a highlight reel."

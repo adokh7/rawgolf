@@ -61,7 +61,7 @@ class SchefflerTrueStrokesGainedTests(unittest.TestCase):
         self.assertEqual("PGA TOUR", entry.get("section"))
 
     def test_metadata_hero_and_standard_layout_are_page_specific(self):
-        title = "Scottie Scheffler's True Strokes Gained: 12th Since 1983 | GOLFRAW"
+        title = "Scottie Scheffler's True Strokes Gained: 12th Since 1983"
         description = (
             "His 2026 rates as the 12th-best statistical season in 43 years, and eight above it belong to Tiger Woods. "
             "What the number does and doesn't say."

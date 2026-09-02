@@ -63,7 +63,7 @@ class MichaelBlockArticleTests(unittest.TestCase):
         self.assertEqual("PGA TOUR", record.get("section"))
 
     def test_metadata_and_hero_are_page_specific(self):
-        title = "Michael Block's Ally Challenge: A 36-Hole Record, Then 74 | GOLFRAW"
+        title = "Michael Block's Ally Challenge: A 36-Hole Record, Then 74"
         description = (
             "He set the tournament's 36-hole scoring record, led by two, then shot 74. "
             "Why a T3 is still the best result of his senior career, and what it buys him."

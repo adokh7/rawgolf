@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 from scripts import sync_site
 from scripts.article_header import finalize_article_template_metadata
-from scripts.fix_seo_audit import repair_source
+from scripts.fix_seo_audit import repair_source, validate_override_page
 from scripts.seo_metadata import (
     ARTICLE_SEO_OVERRIDES,
     apply_metadata_overrides,
@@ -232,6 +232,14 @@ class SeoMetadataTests(unittest.TestCase):
                 if metadata[field] != expected
             )
         self.assertEqual([], mismatches)
+
+    def test_override_only_validator_ignores_unrelated_page_contracts(self):
+        pages = dict(sync_site.production_html_pages())
+        problems = []
+        for route in ARTICLE_SEO_OVERRIDES:
+            path = Path(pages[route])
+            problems.extend(validate_override_page(path, path.read_text(encoding="utf-8")))
+        self.assertEqual([], problems)
 
 
 if __name__ == "__main__":

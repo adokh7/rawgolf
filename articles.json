@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 313,
+  "count": 314,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,24 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/news-2026-this-week-in-golf-liv-tiger-plea-pga-tour-rebrand",
+      "alias_of": "",
+      "slug": "news-2026-this-week-in-golf-liv-tiger-plea-pga-tour-rebrand",
+      "url": "/news-2026-this-week-in-golf-liv-tiger-plea-pga-tour-rebrand",
+      "title": "This Week in Golf: LIV, Tiger's Plea and a Capital Letter | GOLFRAW",
+      "excerpt": "LIV hasn't filed yet. Tiger's plea has two names. The PGA Tour rebrand is a case change. What's confirmed this week, and what's still a report.",
+      "category": [
+        "NEWS",
+        "LIV GOLF",
+        "PGA TOUR"
+      ],
+      "date": "2026-09-02",
+      "image": "/news-2026-this-week-in-golf-liv-tiger-plea.webp",
+      "keywords": "NEWS, LIV GOLF, PGA TOUR, Tiger Woods, Presidents Cup, Tour Championship ratings",
+      "category_source": "override",
+      "section": "NEWS"
+    },
     {
       "canonical": "/news-2026-tiger-woods-pleads-guilty-reckless-driving-jupiter-island",
       "alias_of": "",

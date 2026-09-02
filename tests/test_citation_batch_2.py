@@ -11,7 +11,7 @@ BASE = "https://www.golfraw.com"
 
 TARGETS = {
     "news-2026-liv-golf-pif-withdrawal-season-end.html": {
-        "title": "LIV Golf ends 2026 season early following PIF withdrawal | GOLFRAW",
+        "title": "LIV Golf Ends 2026 Season Early Following PIF Withdrawal",
         "description": "LIV Golf packed up its 2026 season two weeks early. The cancellation of the Team Championship traces to PIF's April withdrawal. See the full timeline.",
         "canonical": f"{BASE}/news-2026-liv-golf-pif-withdrawal-season-end",
         "citations": {
@@ -22,7 +22,7 @@ TARGETS = {
         },
     },
     "news-2026-jon-rahm-liv-golf-future.html": {
-        "title": "Jon Rahm LIV Golf future: where things stand as of August 2026",
+        "title": "Jon Rahm LIV Golf Future: August 2026 Update",
         "description": "Jon Rahm faces a short window to return to the PGA Tour. He settled a $3 million DP World Tour fine in May, but 2028 rules approach.",
         "canonical": f"{BASE}/news-2026-jon-rahm-liv-golf-future",
         "citations": {

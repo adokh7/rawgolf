@@ -235,9 +235,10 @@ def metadata_override_for(path: str | os.PathLike[str]) -> dict[str, str]:
 
 
 def _replace_tag_content(tag: str, value: str) -> str:
+    escaped_value = html.escape(value, quote=False).replace('"', "&quot;")
     pattern = re.compile(r"(\bcontent\s*=\s*)([\"'])(.*?)(\2)", re.I | re.S)
     updated, count = pattern.subn(
-        lambda match: f"{match.group(1)}{match.group(2)}{html.escape(value, quote=True)}{match.group(4)}",
+        lambda match: f"{match.group(1)}{match.group(2)}{escaped_value}{match.group(4)}",
         tag,
         count=1,
     )
@@ -265,7 +266,7 @@ def _replace_title(head: str, value: str) -> str:
     if len(matches) != 1:
         raise ValueError(f"expected one title tag, found {len(matches)}")
     match = matches[0]
-    replacement = f"<title>{html.escape(value)}</title>"
+    replacement = f"<title>{html.escape(value, quote=False)}</title>"
     return head[: match.start()] + replacement + head[match.end() :]
 
 

@@ -22,10 +22,10 @@ from urllib.parse import quote, urlparse
 
 try:
     from fix_template_metadata import finalize_html, has_template_contamination
-    from seo_metadata import apply_metadata_overrides, metadata_override_for
+    from seo_metadata import audit_metadata, apply_metadata_overrides, metadata_override_for
 except ModuleNotFoundError:  # imported as scripts.fix_seo_audit
     from scripts.fix_template_metadata import finalize_html, has_template_contamination
-    from scripts.seo_metadata import apply_metadata_overrides, metadata_override_for
+    from scripts.seo_metadata import audit_metadata, apply_metadata_overrides, metadata_override_for
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -645,6 +645,39 @@ def validate_page(path: Path, source: str) -> list[str]:
     return errors
 
 
+def validate_override_page(path: Path, source: str) -> list[str]:
+    """Validate only the reviewed title/description contract for one route."""
+    override = metadata_override_for(path)
+    metadata = audit_metadata(source)
+    errors: list[str] = []
+    title = str(metadata["title"])
+    description = str(metadata["description"])
+    if metadata["title_count"] != 1:
+        errors.append(f"title count is {metadata['title_count']}, expected 1")
+    if metadata["description_count"] != 1:
+        errors.append(
+            f"description count is {metadata['description_count']}, expected 1"
+        )
+    if "title" in override and title != override["title"]:
+        errors.append("title does not match the reviewed override")
+    if "description" in override and description != override["description"]:
+        errors.append("description does not match the reviewed override")
+    if len(title) > 60:
+        errors.append(f"title length is {len(title)}, over 60")
+    if len(description) > 160:
+        errors.append(f"description length is {len(description)}, over 160")
+    if "title" in override and (
+        metadata["og:title"] != title or metadata["twitter:title"] != title
+    ):
+        errors.append("reviewed title social mirrors do not match")
+    if "description" in override and (
+        metadata["og:description"] != description
+        or metadata["twitter:description"] != description
+    ):
+        errors.append("reviewed description social mirrors do not match")
+    return errors
+
+
 def main() -> int:
     args = argparse.ArgumentParser(description=__doc__)
     args.add_argument("--check", action="store_true", help="validate without writing files")
@@ -668,9 +701,12 @@ def main() -> int:
         for path in pages:
             try:
                 source = path.read_text(encoding="utf-8")
-                repaired, _ = repair_source(path, source)
-                if path.name != "article-template.html":
-                    repaired = finalize_html(repaired, path)
+                if options.only_overrides:
+                    repaired = apply_metadata_overrides(source, path)
+                else:
+                    repaired, _ = repair_source(path, source)
+                    if path.name != "article-template.html":
+                        repaired = finalize_html(repaired, path)
                 if repaired != source:
                     path.write_text(repaired, encoding="utf-8")
                     changed += 1
@@ -680,7 +716,8 @@ def main() -> int:
     validation_failures: list[tuple[Path, str]] = []
     for path in pages:
         try:
-            for error in validate_page(path, path.read_text(encoding="utf-8")):
+            validator = validate_override_page if options.only_overrides else validate_page
+            for error in validator(path, path.read_text(encoding="utf-8")):
                 validation_failures.append((path, error))
         except Exception as exc:
             validation_failures.append((path, f"validation failed: {exc}"))

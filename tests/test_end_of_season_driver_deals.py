@@ -12,6 +12,7 @@ SLUG = "news-2026-end-of-season-driver-deals"
 CANONICAL = f"https://www.golfraw.com/{SLUG}"
 IMAGE = "/public/end-of-season-driver-deals-2026.webp"
 TITLE = "End-of-Season Driver Deals: What's Actually Worth Buying | GOLFRAW"
+SEO_TITLE = "End-of-Season Driver Deals: What's Actually Worth Buying"
 DESCRIPTION = (
     "The driver with the most PGA Tour wins in 2026 costs $449, less than some new fairway woods. "
     "What's discounted now, and the one check before you buy."
@@ -73,11 +74,11 @@ class EndOfSeasonDriverDealsTests(unittest.TestCase):
             "in a golf fitting studio."
         )
         for marker in (
-            f"<title>{TITLE}</title>",
+            f"<title>{SEO_TITLE}</title>",
             f'<meta name="description" content="{DESCRIPTION}">',
             f'<link rel="canonical" href="{CANONICAL}">',
             '<meta name="robots" content="index, follow, max-image-preview:large">',
-            f'<meta property="og:title" content="{TITLE}">',
+            f'<meta property="og:title" content="{SEO_TITLE}">',
             f'<meta property="og:description" content="{DESCRIPTION}">',
             f'<meta property="og:url" content="{CANONICAL}">',
             f'<meta property="og:image" content="https://www.golfraw.com{IMAGE}">',

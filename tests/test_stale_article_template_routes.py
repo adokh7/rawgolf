@@ -21,7 +21,7 @@ ROUTES = (
     {
         "output": "news-2026-hovland-one-shot-lead-tour-championship.html",
         "h1": "Hovland's One-Shot Lead Came From Six Straight Putts",
-        "title": "Hovland's One-Shot Lead Came From Six Straight Putts | GOLFRAW",
+        "title": "Hovland's One-Shot Lead Came From Six Straight Putts",
         "description": "Six putts from seven feet or longer built it. Scheffler, Scott, Åberg and Gotterup are three back, McIlroy shot 63, and last place is 3 under.",
         "canonical": "https://www.golfraw.com/news-2026-hovland-one-shot-lead-tour-championship",
         "image": "https://www.golfraw.com/public/hovland-one-shot-lead-tour-championship-2026.webp",
@@ -30,7 +30,7 @@ ROUTES = (
     {
         "output": "news-2026-michael-block-lead-ally-challenge.html",
         "h1": "Michael Block's 2-Shot Lead at the Ally Challenge Explained",
-        "title": "Michael Block's 2-Shot Lead at the Ally Challenge Explained | GOLFRAW",
+        "title": "Michael Block's 2-Shot Lead at the Ally Challenge Explained",
         "description": "He eagled the first, made five birdies, dropped nothing, and leads by two. But the number he's actually chasing isn't first place. Here's what it is.",
         "canonical": "https://www.golfraw.com/news-2026-michael-block-lead-ally-challenge",
         "image": "https://www.golfraw.com/public/michael-block-lead-ally-challenge-2026.webp",
@@ -48,7 +48,7 @@ ROUTES = (
     {
         "output": "news-2026-pga-tour-winners-2026.html",
         "h1": "PGA Tour Winners 2026: 28 Names, 35 Events, One Left",
-        "title": "PGA Tour Winners 2026: 28 Names, 35 Events, One Left | GOLFRAW",
+        "title": "PGA Tour Winners 2026: 28 Names, 35 Events, One Left",
         "description": "Every winner from the Sony Open to the BMW, the three men who won three times, and why the best player in the world isn't one of them.",
         "canonical": "https://www.golfraw.com/news-2026-pga-tour-winners-2026",
         "image": "https://www.golfraw.com/public/pga-tour-winners-2026-season-recap.webp",
@@ -57,7 +57,7 @@ ROUTES = (
     {
         "output": "news-2026-tiger-woods-career-money-list-record.html",
         "h1": "Tiger Woods' Career Money List Record May Fall Today",
-        "title": "Tiger Woods' Career Money List Record May Fall Today | GOLFRAW",
+        "title": "Tiger Woods' Career Money List Record May Fall Today",
         "description": "Scheffler needs solo 13th, McIlroy needs solo 4th. One outlet already declared it done a week ago. Here's what's actually verified and what isn't.",
         "canonical": "https://www.golfraw.com/news-2026-tiger-woods-career-money-list-record",
         "image": "https://www.golfraw.com/public/tiger-woods-career-money-list-record.webp",
@@ -66,7 +66,7 @@ ROUTES = (
     {
         "output": "news-2026-tour-championship-final-round-hovland-leads.html",
         "h1": "Tour Championship Final Round: Hovland Leads by One",
-        "title": "Tour Championship Final Round: Hovland Leads by One | GOLFRAW",
+        "title": "Tour Championship Final Round: Hovland Leads by One",
         "description": "Hovland leads by one at 15 under, Scheffler's three back, McIlroy shot 63. Every number that matters before the final round of the season.",
         "canonical": "https://www.golfraw.com/news-2026-tour-championship-final-round-hovland-leads",
         "image": "https://www.golfraw.com/public/tour-championship-final-round-hovland-leads-2026.webp",
@@ -75,7 +75,7 @@ ROUTES = (
     {
         "output": "news-2026-tour-championship-round-3-tee-times-leaderboard.html",
         "h1": "Tour Championship Round 3: Hovland's 65 and Every Score",
-        "title": "Tour Championship Round 3: Hovland's 65 and Every Score | GOLFRAW",
+        "title": "Tour Championship Round 3: Hovland's 65 and Every Score",
         "description": "Nineteen players began Saturday within five shots and it ended with a one-shot lead. Full Round 3 draw, results, and the Sunday sheet nobody agrees on.",
         "canonical": "https://www.golfraw.com/news-2026-tour-championship-round-3-tee-times-leaderboard",
         "image": "https://www.golfraw.com/public/tour-championship-2026-round-3-tee-times-leaderboard.webp",
@@ -84,7 +84,7 @@ ROUTES = (
     {
         "output": "news-2026-tour-championship-sunday-tee-times-round-4.html",
         "h1": "2026 Tour Championship Sunday Tee Times: Everything Moved",
-        "title": "2026 Tour Championship Sunday Tee Times: Everything Moved | GOLFRAW",
+        "title": "2026 Tour Championship Sunday Tee Times: Everything Moved",
         "description": "The whole draw shifted about an hour earlier and the pairings were rebuilt. Full Round 4 tee sheet, TV windows, and the mismatch nobody has flagged.",
         "canonical": "https://www.golfraw.com/news-2026-tour-championship-sunday-tee-times-round-4",
         "image": "https://www.golfraw.com/public/2026-tour-championship-sunday-tee-times-round-4.webp",
@@ -93,7 +93,7 @@ ROUTES = (
     {
         "output": "why-pros-are-ditching-hybrids.html",
         "h1": "Why Pros Are Ditching Hybrids, and Why You Shouldn't",
-        "title": "Why Pros Are Ditching Hybrids, and Why You Shouldn't | GOLFRAW",
+        "title": "Why Pros Are Ditching Hybrids, and Why You Shouldn't",
         "description": "Hybrid use in the PGA Tour top 100 fell from 32% to 13%. On the LPGA it's 70%. The 15 mph gap explains both, and one man won a major with one.",
         "canonical": "https://www.golfraw.com/why-pros-are-ditching-hybrids",
         "image": "https://www.golfraw.com/public/why-pros-are-ditching-hybrids-analysis.webp",
@@ -102,7 +102,7 @@ ROUTES = (
     {
         "output": "news-every-shot-tiger-woods-80th-win-2018.html",
         "h1": "Every Shot From Tiger Woods' 80th Win: What to Watch For",
-        "title": "Every Shot From Tiger Woods' 80th Win: What to Watch For | GOLFRAW",
+        "title": "Every Shot From Tiger Woods' 80th Win: What to Watch For",
         "description": "He shot 71 on Sunday, made three bogeys, and won by two. What the full broadcast shows that the highlight reel cuts, and the trophy he didn't take home.",
         "canonical": "https://www.golfraw.com/news-every-shot-tiger-woods-80th-win-2018",
         "image": "https://www.golfraw.com/public/every-shot-tiger-woods-80th-win-2018.webp",

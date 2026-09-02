@@ -62,7 +62,7 @@ class HovlandArticleTests(unittest.TestCase):
         self.assertEqual("PGA TOUR", record.get("section"))
 
     def test_metadata_hero_and_standard_layout_are_page_specific(self):
-        title = "Hovland's Tour Championship Runner-Up and What He Said | GOLFRAW"
+        title = "Hovland's Tour Championship Runner-Up and What He Said"
         description = (
             "He led the field in putting by six strokes and still said his ceiling was nowhere close. "
             "The misses that cost him, and the coach he's gone back to."

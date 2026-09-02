@@ -61,7 +61,7 @@ class SchefflerTedScottArticleTests(unittest.TestCase):
         self.assertEqual("PGA TOUR", record.get("section"))
 
     def test_metadata_hero_and_standard_layout_are_page_specific(self):
-        title = "Scottie Scheffler and Ted Scott: How They Find the Number | GOLFRAW"
+        title = "Scottie Scheffler and Ted Scott: How They Find the Number"
         description = (
             "He passed Hovland for good with a birdie at the 16th. What goes into that club decision, "
             "and the rule stopping your rangefinder doing it for you."

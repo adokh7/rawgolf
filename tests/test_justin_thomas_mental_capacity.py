@@ -12,6 +12,7 @@ SLUG = "news-2026-justin-thomas-mental-capacity-bay-hill"
 CANONICAL = f"https://www.golfraw.com/{SLUG}"
 IMAGE = "/public/justin-thomas-mental-capacity-bay-hill-2026.webp"
 TITLE = "Justin Thomas's 'Mental Capacity' Line, Six Months On | GOLFRAW"
+SEO_TITLE = "Justin Thomas's 'Mental Capacity' Line, Six Months On"
 DESCRIPTION = (
     "He shot 79-79 and couldn't concentrate on the back nine. Two months later he finished "
     "fourth in a major. What that gap teaches about coming back."
@@ -71,11 +72,11 @@ class JustinThomasMentalCapacityTests(unittest.TestCase):
             "Invitational following his post-surgery return."
         )
         for marker in (
-            f"<title>{TITLE}</title>",
+            f"<title>{SEO_TITLE}</title>",
             f'<meta name="description" content="{DESCRIPTION}">',
             f'<link rel="canonical" href="{CANONICAL}">',
             '<meta name="robots" content="index, follow, max-image-preview:large">',
-            f'<meta property="og:title" content="{TITLE}">',
+            f'<meta property="og:title" content="{SEO_TITLE}">',
             f'<meta property="og:description" content="{DESCRIPTION}">',
             f'<meta property="og:url" content="{CANONICAL}">',
             f'<meta property="og:image" content="https://www.golfraw.com{IMAGE}">',
