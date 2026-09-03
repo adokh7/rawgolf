@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>David Puig at Crans-sur-Sierre: Position Over Power | GOLFRAW</title>
+      <link>https://www.golfraw.com/david-puig-crans-sur-sierre-position-over-power</link>
+      <guid isPermaLink="true">https://www.golfraw.com/david-puig-crans-sur-sierre-position-over-power</guid>
+      <pubDate>Thu, 03 Sep 2026 09:00:00 +0000</pubDate>
+      <category>TOURNAMENTS, DP WORLD TOUR, DAVID PUIG, COURSE STRATEGY</category>
+      <description>A 24-year-old who hits it as far as anyone says distance isn&#x27;t the point at 1,500 metres. Why he&#x27;s right, and the rule your rangefinder can&#x27;t bend.</description>
+      <enclosure url="https://www.golfraw.com/public/news-crans-sur-sierre-alps-altitude-fairway.webp" length="221176" type="image/webp"/>
+    </item>
+    <item>
       <title>Rory McIlroy&#x27;s 30 PGA Tour Wins: He&#x27;s Forgotten One Before | GOLFRAW</title>
       <link>https://www.golfraw.com/rory-mcilroy-30-pga-tour-wins</link>
       <guid isPermaLink="true">https://www.golfraw.com/rory-mcilroy-30-pga-tour-wins</guid>
@@ -134,15 +143,6 @@
       <category>LIV GOLF, TOURNAMENTS, NEWS</category>
       <description>The investor won&#x27;t commit until players sign. Players won&#x27;t sign for cents on the dollar. That standoff is why Chapter 11 is now the likeliest exit.</description>
       <enclosure url="https://www.golfraw.com/public/liv-golf-bankruptcy-deadlock-2026.webp" length="110586" type="image/webp"/>
-    </item>
-    <item>
-      <title>End-of-Season Driver Deals: What&#x27;s Actually Worth Buying | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-end-of-season-driver-deals</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-end-of-season-driver-deals</guid>
-      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
-      <category>GUIDES, GEAR, NEWS</category>
-      <description>The driver with the most PGA Tour wins in 2026 costs $449, less than some new fairway woods. What&#x27;s discounted now, and the one check before you buy.</description>
-      <enclosure url="https://www.golfraw.com/public/end-of-season-driver-deals-2026.webp" length="55980" type="image/webp"/>
     </item>
   </channel>
 </rss>

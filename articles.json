@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 318,
+  "count": 319,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,25 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/david-puig-crans-sur-sierre-position-over-power",
+      "alias_of": "",
+      "slug": "david-puig-crans-sur-sierre-position-over-power",
+      "url": "/david-puig-crans-sur-sierre-position-over-power",
+      "title": "David Puig at Crans-sur-Sierre: Position Over Power | GOLFRAW",
+      "excerpt": "A 24-year-old who hits it as far as anyone says distance isn't the point at 1,500 metres. Why he's right, and the rule your rangefinder can't bend.",
+      "category": [
+        "TOURNAMENTS",
+        "DP WORLD TOUR",
+        "DAVID PUIG",
+        "COURSE STRATEGY"
+      ],
+      "date": "2026-09-03",
+      "image": "/public/news-crans-sur-sierre-alps-altitude-fairway.webp",
+      "keywords": "TOURNAMENTS, DP WORLD TOUR, DAVID PUIG, COURSE STRATEGY, David Puig Crans-sur-Sierre, altitude golf strategy, Omega European Masters",
+      "category_source": "override",
+      "section": "TOURNAMENTS"
+    },
     {
       "canonical": "/rory-mcilroy-30-pga-tour-wins",
       "alias_of": "",
