@@ -1,96 +1,101 @@
 {
-    "$schema": "https://openapi.vercel.sh/vercel.json",
-    "outputDirectory": ".",
-    "cleanUrls": true,
-    "trailingSlash": false,
-    "crons": [
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "crons": [
+    {
+      "path": "/api/cron/weekly?template=field",
+      "schedule": "0 9 * * 1"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/news-2026-michael-block-leads-ally-challenge-final-round",
+      "destination": "/news-2026-michael-block-lead-ally-challenge",
+      "permanent": true
+    },
+    {
+      "source": "/news-2026-hovland-leads-tour-championship-final-day",
+      "destination": "/news-2026-tour-championship-final-round-hovland-leads",
+      "permanent": true
+    },
+    {
+      "source": "/what-beginners-actually-search",
+      "destination": "/news-2026-what-beginners-actually-search",
+      "permanent": true
+    },
+    {
+      "source": "/news-2026-lee-westwood-liv-golf-bedminster-different-course",
+      "destination": "/guides-playing-golf-in-your-fifties-distance-loss",
+      "permanent": true
+    },
+    {
+      "source": "/blog/morikawa-61-travelers-championship-2026",
+      "destination": "/morikawa-61-travelers-championship-2026",
+      "permanent": true
+    },
+    {
+      "source": "/golf-deals-equipment-tee-times-guide",
+      "destination": "/equipment/golf-deals-equipment-tee-times-guide",
+      "permanent": true
+    },
+    {
+      "source": "/golf-tournaments-rules-formats-tax-guide",
+      "destination": "/rules/golf-tournaments-rules-formats-tax-guide",
+      "permanent": true
+    },
+    {
+      "source": "/news-2026-pga-tour-fan-code-of-conduct-gambling",
+      "destination": "/pga-tour-fan-code-of-conduct-gambling",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/public/fonts/(.*)",
+      "headers": [
         {
-            "path": "/api/cron/weekly?template=field",
-            "schedule": "0 9 * * 1"
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
         }
-    ],
-    "redirects": [
+      ]
+    },
+    {
+      "source": "/public/(.*)\\.(webp|avif|png|jpg|jpeg|gif|svg|ico|mp4|webm)",
+      "headers": [
         {
-            "source": "/news-2026-michael-block-leads-ally-challenge-final-round",
-            "destination": "/news-2026-michael-block-lead-ally-challenge",
-            "permanent": true
-        },
-        {
-            "source": "/news-2026-hovland-leads-tour-championship-final-day",
-            "destination": "/news-2026-tour-championship-final-round-hovland-leads",
-            "permanent": true
-        },
-        {
-            "source": "/what-beginners-actually-search",
-            "destination": "/news-2026-what-beginners-actually-search",
-            "permanent": true
-        },
-        {
-            "source": "/news-2026-lee-westwood-liv-golf-bedminster-different-course",
-            "destination": "/guides-playing-golf-in-your-fifties-distance-loss",
-            "permanent": true
-        },
-        {
-            "source": "/blog/morikawa-61-travelers-championship-2026",
-            "destination": "/morikawa-61-travelers-championship-2026",
-            "permanent": true
-        },
-        {
-            "source": "/golf-deals-equipment-tee-times-guide",
-            "destination": "/equipment/golf-deals-equipment-tee-times-guide",
-            "permanent": true
-        },
-        {
-            "source": "/golf-tournaments-rules-formats-tax-guide",
-            "destination": "/rules/golf-tournaments-rules-formats-tax-guide",
-            "permanent": true
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
         }
-    ],
-    "headers": [
+      ]
+    },
+    {
+      "source": "/(.*)\\.(woff2|woff|ttf|otf)",
+      "headers": [
         {
-            "source": "/public/fonts/(.*)",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "public, max-age=31536000, immutable"
-                }
-            ]
-        },
-        {
-            "source": "/public/(.*)\\.(webp|avif|png|jpg|jpeg|gif|svg|ico|mp4|webm)",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "public, max-age=31536000, immutable"
-                }
-            ]
-        },
-        {
-            "source": "/(.*)\\.(woff2|woff|ttf|otf)",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "public, max-age=31536000, immutable"
-                }
-            ]
-        },
-        {
-            "source": "/(.*)\\.(css|js)",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "public, max-age=31536000, immutable"
-                }
-            ]
-        },
-        {
-            "source": "/(.*)\\.(html|xml|txt|json)",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "public, max-age=0, must-revalidate"
-                }
-            ]
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
         }
-    ]
+      ]
+    },
+    {
+      "source": "/(.*)\\.(css|js)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(html|xml|txt|json)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ]
 }

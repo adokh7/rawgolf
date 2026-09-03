@@ -59,7 +59,15 @@
     <loc>https://www.golfraw.com/in-memoriam</loc>
   </url>
   <url>
+    <loc>https://www.golfraw.com/pga-tour-fan-code-of-conduct-gambling</loc>
+    <lastmod>2026-09-03</lastmod>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/golf-ball-tee-holder-bag</loc>
+    <lastmod>2026-09-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.golfraw.com/club-glove-pro-traveler</loc>
     <lastmod>2026-09-03</lastmod>
   </url>
   <url>
@@ -1293,6 +1301,9 @@
     <loc>https://www.golfraw.com/fix-over-the-top</loc>
   </url>
   <url>
+    <loc>https://www.golfraw.com/gear</loc>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/golf-clubs-for-beginners</loc>
   </url>
   <url>
@@ -1345,17 +1356,5 @@
   </url>
   <url>
     <loc>https://www.golfraw.com/tools-tilt-meter</loc>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/club-glove-pro-traveler</loc>
-    <lastmod>2026-09-03</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/gear</loc>
-    <lastmod>2026-09-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
   </url>
 </urlset>

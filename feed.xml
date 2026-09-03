@@ -10,15 +10,23 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>PGA Tour Fan Code of Conduct Rewrite: The 5% Stat Behind It | GOLFRAW</title>
+      <link>https://www.golfraw.com/pga-tour-fan-code-of-conduct-gambling</link>
+      <guid isPermaLink="true">https://www.golfraw.com/pga-tour-fan-code-of-conduct-gambling</guid>
+      <pubDate>Thu, 03 Sep 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR, SPORTS BETTING, NEWS, FAN CONDUCT</category>
+      <description>The PGA Tour is rewriting its fan code of conduct for 2027 after a season of betting-fueled heckling. What changes, what the 5% stat admits, and what it can’t fix.</description>
+      <enclosure url="https://www.golfraw.com/public/news-pga-tour-fan-code-of-conduct-gallery.webp" length="356228" type="image/webp"/>
+    </item>
+    <item>
       <title>Club Glove Pro Traveler: Worth It If You Fly Twice a Year? | GOLFRAW</title>
       <link>https://www.golfraw.com/club-glove-pro-traveler</link>
       <guid isPermaLink="true">https://www.golfraw.com/club-glove-pro-traveler</guid>
-      <pubDate>Thu, 03 Sep 2026 10:00:00 +0200</pubDate>
+      <pubDate>Thu, 03 Sep 2026 09:00:00 +0000</pubDate>
       <category>GEAR, TRAVEL BAGS, BUYING GUIDES</category>
       <description>Two bags sell as the Club Glove Pro Traveler right now. What changed in 2025, whether your bag fits, the airline weight math, and when to buy the cheaper one.</description>
-      <enclosure url="https://www.golfraw.com/gear-club-glove-pro-traveler-guide.webp" length="120000" type="image/webp"/>
+      <enclosure url="https://www.golfraw.com/gear-club-glove-pro-traveler-guide.webp" length="170160" type="image/webp"/>
     </item>
-
     <item>
       <title>Golf Ball Tee Holder Bag: Do You Actually Need One? | GOLFRAW</title>
       <link>https://www.golfraw.com/golf-ball-tee-holder-bag</link>
@@ -125,7 +133,7 @@
       <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
       <category>GUIDES, GEAR, NEWS</category>
       <description>The driver with the most PGA Tour wins in 2026 costs $449, less than some new fairway woods. What&#x27;s discounted now, and the one check before you buy.</description>
-      <enclosure url="https://www.golfraw.com/public/end-of-season-driver-deals-2026.webp" length="110720" type="image/webp"/>
+      <enclosure url="https://www.golfraw.com/public/end-of-season-driver-deals-2026.webp" length="55980" type="image/webp"/>
     </item>
     <item>
       <title>Scottie Scheffler&#x27;s True Strokes Gained: 12th Since 1983 | GOLFRAW</title>
@@ -135,24 +143,6 @@
       <category>PGA TOUR, RATINGS, NEWS</category>
       <description>His 2026 rates as the 12th-best statistical season in 43 years, and eight above it belong to Tiger Woods. What the number does and doesn&#x27;t say.</description>
       <enclosure url="https://www.golfraw.com/public/scheffler-true-strokes-gained-2026.webp" length="120270" type="image/webp"/>
-    </item>
-    <item>
-      <title>Brandt Jobe&#x27;s Ally Challenge: Best Week in Over a Year | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-brandt-jobe-ally-challenge-jackson</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-brandt-jobe-ally-challenge-jackson</guid>
-      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR CHAMPIONS, TOURNAMENTS, NEWS</category>
-      <description>A 69 on Sunday for his best result since last August, and a Tuesday night at Comerica watching his son pitch. The week nobody put on a highlight reel.</description>
-      <enclosure url="https://www.golfraw.com/public/brandt-jobe-ally-challenge-jackson-2026.webp" length="106078" type="image/webp"/>
-    </item>
-    <item>
-      <title>Scottie Scheffler and Ted Scott: How They Find the Number | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-scheffler-ted-scott-finding-the-number</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-scheffler-ted-scott-finding-the-number</guid>
-      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR, GUIDES, NEWS</category>
-      <description>He passed Hovland for good with a birdie at the 16th. What goes into that club decision, and the rule stopping your rangefinder doing it for you.</description>
-      <enclosure url="https://www.golfraw.com/public/scheffler-ted-scott-finding-the-number-2026.webp" length="165906" type="image/webp"/>
     </item>
   </channel>
 </rss>

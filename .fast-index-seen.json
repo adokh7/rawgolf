@@ -6,6 +6,7 @@
   "/bmw-championship-2026-bellerive-yardage",
   "/charity-golf-scrambles-access-guide",
   "/club-championship-divisions-flights-explained",
+  "/club-glove-pro-traveler",
   "/equipment/golf-deals-equipment-tee-times-guide",
   "/fix-over-the-top",
   "/golf-ball-tee-holder-bag",
@@ -282,6 +283,7 @@
   "/news-every-shot-tiger-woods-80th-win-2018",
   "/pga-2026-travelers-championship-preview",
   "/pga-tour-2028-two-series-model",
+  "/pga-tour-fan-code-of-conduct-gambling",
   "/pga-tour-schedule-leaderboard-australia",
   "/raw-golf-mindset",
   "/rocket-classic-odds-cameron-young-detroit-golf-club",
@@ -317,6 +319,8 @@
   "/why-us-open-is-hardest-major"
  ],
  "fingerprints": {
+  "/pga-tour-fan-code-of-conduct-gambling": "4f87b72e426ff8ef168682688614934db659e452ab076f234f05ff0aeb5527de",
+  "/club-glove-pro-traveler": "75fd5ae62f72a95b4aeb96dcd6b07e72cdedc87c0b79647feca82a500a9eb42e",
   "/golf-ball-tee-holder-bag": "89851410f7bae3553f80a967194e1ff70f56e7fe6388074c68493fb11fc880bf",
   "/news-2026-jj-spaun-withdraws-tour-championship": "70bfaa62dc9e0b5dad54ce3335906ca55d5f72de61cf1fabca5f743b6401f39e",
   "/news-2026-this-week-in-golf-liv-tiger-plea-pga-tour-rebrand": "cbaeae3de31a2ab1e481b1e853d05136e3cfe0e6c6bf87cb41730931461b107d",
@@ -328,7 +332,7 @@
   "/news-2026-jon-rahm-liv-money-owed": "231f7cbd74cc2aebd36e8a700d0b5f5dc204fc836591b9a03ca84900e14d5b77",
   "/news-2026-justin-thomas-mental-capacity-bay-hill": "bddb3fa5de68ecd720dfdbeffe447c1ba2a372b650bbdad99a86c511b0da1118",
   "/news-2026-liv-golf-bankruptcy-player-settlements-deadlock": "ef92476feb7c991afa6080d84c7b2ffd7e97e9cc95f90d639f7eeccf70a2ca0b",
-  "/news-2026-end-of-season-driver-deals": "c52850b91dc19ae4334d08807acbe8bd2409f7c8746e3ba9526fac057405091e",
+  "/news-2026-end-of-season-driver-deals": "989e51f29be42781215a837e99613b846098c331b618a83a60f7b1850c4b2c08",
   "/news-2026-scheffler-true-strokes-gained": "af57332fc06613c9a917c6032714b6eff7a703ac14014470ce07d8900ad35d99",
   "/news-2026-brandt-jobe-ally-challenge-jackson": "f4d0bba1155fe74b5de5d5b24b06cf60b89aea680ba3ef097aed4c1ce1f2bd30",
   "/news-2026-scheffler-ted-scott-finding-the-number": "d098df3630baa9e9a41ec65558146f10f3d7c4b81e1dd4bc3c765b1bba1a8448",

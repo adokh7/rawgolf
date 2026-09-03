@@ -1,6 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.golfraw.com/pga-tour-fan-code-of-conduct-gambling</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GOLFRAW</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T09:00:00+02:00</news:publication_date>
+      <news:title>PGA Tour Fan Code of Conduct Rewrite: The 5% Stat Behind It</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/news-2026-jon-rahm-liv-money-owed</loc>
     <news:news>
       <news:publication>
