@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Bryson DeChambeau LIV Golf 2027: A Report, Not a Decision | GOLFRAW</title>
+      <link>https://www.golfraw.com/bryson-dechambeau-liv-golf-2027</link>
+      <guid isPermaLink="true">https://www.golfraw.com/bryson-dechambeau-liv-golf-2027</guid>
+      <pubDate>Thu, 03 Sep 2026 09:00:00 +0000</pubDate>
+      <category>LIV GOLF, BRYSON DECHAMBEAU, PGA TOUR, NEWS, CONTRACTS</category>
+      <description>He hasn&#x27;t said a word. A Spanish outlet says he&#x27;s all in on LIV 2.0, and three purse figures are circulating. What&#x27;s verified, and what&#x27;s not.</description>
+      <enclosure url="https://www.golfraw.com/public/news-bryson-dechambeau-liv-indianapolis-tee.webp" length="142482" type="image/webp"/>
+    </item>
+    <item>
       <title>David Puig at Crans-sur-Sierre: Position Over Power | GOLFRAW</title>
       <link>https://www.golfraw.com/david-puig-crans-sur-sierre-position-over-power</link>
       <guid isPermaLink="true">https://www.golfraw.com/david-puig-crans-sur-sierre-position-over-power</guid>
@@ -134,15 +143,6 @@
       <category>PGA TOUR, OPINION, NEWS</category>
       <description>He shot 79-79 and couldn&#x27;t concentrate on the back nine. Two months later he finished fourth in a major. What that gap teaches about coming back.</description>
       <enclosure url="https://www.golfraw.com/public/justin-thomas-mental-capacity-bay-hill-2026.webp" length="116286" type="image/webp"/>
-    </item>
-    <item>
-      <title>LIV Golf Bankruptcy: The Deadlock Nobody Can Break | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-liv-golf-bankruptcy-player-settlements-deadlock</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-liv-golf-bankruptcy-player-settlements-deadlock</guid>
-      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
-      <category>LIV GOLF, TOURNAMENTS, NEWS</category>
-      <description>The investor won&#x27;t commit until players sign. Players won&#x27;t sign for cents on the dollar. That standoff is why Chapter 11 is now the likeliest exit.</description>
-      <enclosure url="https://www.golfraw.com/public/liv-golf-bankruptcy-deadlock-2026.webp" length="110586" type="image/webp"/>
     </item>
   </channel>
 </rss>

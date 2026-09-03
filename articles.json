@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 319,
+  "count": 320,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -32,6 +32,26 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/bryson-dechambeau-liv-golf-2027",
+      "alias_of": "",
+      "slug": "bryson-dechambeau-liv-golf-2027",
+      "url": "/bryson-dechambeau-liv-golf-2027",
+      "title": "Bryson DeChambeau LIV Golf 2027: A Report, Not a Decision | GOLFRAW",
+      "excerpt": "He hasn't said a word. A Spanish outlet says he's all in on LIV 2.0, and three purse figures are circulating. What's verified, and what's not.",
+      "category": [
+        "LIV GOLF",
+        "BRYSON DECHAMBEAU",
+        "PGA TOUR",
+        "NEWS",
+        "CONTRACTS"
+      ],
+      "date": "2026-09-03",
+      "image": "/public/news-bryson-dechambeau-liv-indianapolis-tee.webp",
+      "keywords": "LIV GOLF, BRYSON DECHAMBEAU, PGA TOUR, NEWS, CONTRACTS, Bryson DeChambeau LIV Golf 2027, LIV 2.0, LIV contract expiration",
+      "category_source": "override",
+      "section": "LIV GOLF"
+    },
     {
       "canonical": "/david-puig-crans-sur-sierre-position-over-power",
       "alias_of": "",

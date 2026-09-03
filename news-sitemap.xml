@@ -1,6 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.golfraw.com/bryson-dechambeau-liv-golf-2027</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GOLFRAW</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T17:00:00+02:00</news:publication_date>
+      <news:title>Bryson DeChambeau LIV Golf 2027: A Report, Not a Decision</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/david-puig-crans-sur-sierre-position-over-power</loc>
     <news:news>
       <news:publication>
