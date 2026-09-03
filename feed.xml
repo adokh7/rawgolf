@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Rory McIlroy&#x27;s 30 PGA Tour Wins: He&#x27;s Forgotten One Before | GOLFRAW</title>
+      <link>https://www.golfraw.com/rory-mcilroy-30-pga-tour-wins</link>
+      <guid isPermaLink="true">https://www.golfraw.com/rory-mcilroy-30-pga-tour-wins</guid>
+      <pubDate>Thu, 03 Sep 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR, RORY MCILROY, MAJORS, RECORDS</category>
+      <description>Every one of his 30 titles, grouped by how forgettable they are. Plus the California win he told CBS he couldn&#x27;t remember having.</description>
+      <enclosure url="https://www.golfraw.com/public/news-rory-mcilroy-2026-masters-trophy.webp" length="66544" type="image/webp"/>
+    </item>
+    <item>
       <title>PGA Tour Fan Code of Conduct Rewrite: The 5% Stat Behind It | GOLFRAW</title>
       <link>https://www.golfraw.com/pga-tour-fan-code-of-conduct-gambling</link>
       <guid isPermaLink="true">https://www.golfraw.com/pga-tour-fan-code-of-conduct-gambling</guid>
@@ -134,15 +143,6 @@
       <category>GUIDES, GEAR, NEWS</category>
       <description>The driver with the most PGA Tour wins in 2026 costs $449, less than some new fairway woods. What&#x27;s discounted now, and the one check before you buy.</description>
       <enclosure url="https://www.golfraw.com/public/end-of-season-driver-deals-2026.webp" length="55980" type="image/webp"/>
-    </item>
-    <item>
-      <title>Scottie Scheffler&#x27;s True Strokes Gained: 12th Since 1983 | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-scheffler-true-strokes-gained</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-scheffler-true-strokes-gained</guid>
-      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR, RATINGS, NEWS</category>
-      <description>His 2026 rates as the 12th-best statistical season in 43 years, and eight above it belong to Tiger Woods. What the number does and doesn&#x27;t say.</description>
-      <enclosure url="https://www.golfraw.com/public/scheffler-true-strokes-gained-2026.webp" length="120270" type="image/webp"/>
     </item>
   </channel>
 </rss>
