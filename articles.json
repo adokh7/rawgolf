@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 323,
+  "count": 324,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -34,6 +34,26 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/jon-rahm-liv-golf-major-champions-leaving",
+      "alias_of": "",
+      "slug": "jon-rahm-liv-golf-major-champions-leaving",
+      "url": "/jon-rahm-liv-golf-major-champions-leaving",
+      "title": "Is Jon Rahm LIV Golf's Only Major Champion Leaving? No | GOLFRAW",
+      "excerpt": "A two-time Masters winner is reported out alongside him, and two more major champions already left this cycle. Here's who'd actually be left in 2027.",
+      "category": [
+        "LIV GOLF",
+        "JON RAHM",
+        "BUBBA WATSON",
+        "MAJOR CHAMPIONS",
+        "PGA TOUR"
+      ],
+      "date": "2026-09-04",
+      "image": "/public/news-jon-rahm-bubba-watson-liv-range.webp",
+      "keywords": "LIV GOLF, JON RAHM, BUBBA WATSON, MAJOR CHAMPIONS, PGA TOUR, Jon Rahm LIV Golf exit, Bubba Watson LIV Golf, LIV 2.0 roster",
+      "category_source": "override",
+      "section": "LIV GOLF"
+    },
     {
       "canonical": "/solheim-cup-all-star-challenge-2026",
       "alias_of": "",

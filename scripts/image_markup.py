@@ -270,6 +270,8 @@ def _context(
         "1980-golf-ads-golf-digest-flashback.html",
         "news-2026-solheim-cup-all-star-challenge.html",
         "solheim-cup-all-star-challenge-2026.html",
+        "news-2026-jon-rahm-liv-golf-major-champions-leaving.html",
+        "jon-rahm-liv-golf-major-champions-leaving.html",
     }:
         return "secondary"
     if "manifesto-video" in classes:
