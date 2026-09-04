@@ -272,6 +272,7 @@ def _context(
         "solheim-cup-all-star-challenge-2026.html",
         "news-2026-jon-rahm-liv-golf-major-champions-leaving.html",
         "jon-rahm-liv-golf-major-champions-leaving.html",
+        "bobby-jones-grand-slam-1930-merion-flashback.html",
     }:
         return "secondary"
     if "manifesto-video" in classes:

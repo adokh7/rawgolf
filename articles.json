@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 324,
+  "count": 325,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -34,6 +34,26 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/bobby-jones-grand-slam-1930-merion-flashback",
+      "alias_of": "",
+      "slug": "bobby-jones-grand-slam-1930-merion-flashback",
+      "url": "/bobby-jones-grand-slam-1930-merion-flashback",
+      "title": "Bobby Jones Grand Slam: Lightning, a Car and a 2-Shot Edge | GOLFRAW",
+      "excerpt": "Bobby Jones won the 1930 Grand Slam by two strokes in each Open and led only one round of eight. Lightning, a runaway car and the real reason he quit, in his own words.",
+      "category": [
+        "VINTAGE GOLF HISTORY",
+        "BOBBY JONES",
+        "GRAND SLAM",
+        "MERION",
+        "GOLF HISTORY"
+      ],
+      "date": "2026-09-04",
+      "image": "/public/vintage-1930-bobby-jones-grand-slam-golf-digest-excerpt.webp",
+      "keywords": "VINTAGE GOLF HISTORY, BOBBY JONES, GRAND SLAM, MERION, GOLF HISTORY, Bobby Jones Grand Slam, 1930 Merion, Golf Digest September 1980",
+      "category_source": "override",
+      "section": "VINTAGE GOLF HISTORY"
+    },
     {
       "canonical": "/jon-rahm-liv-golf-major-champions-leaving",
       "alias_of": "",
