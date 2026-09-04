@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 327,
+  "count": 328,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -34,6 +34,26 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/liv-golfer-disqualified-dp-world-tour-q-school",
+      "alias_of": "",
+      "slug": "liv-golfer-disqualified-dp-world-tour-q-school",
+      "url": "/liv-golfer-disqualified-dp-world-tour-q-school",
+      "title": "LIV Golfer Disqualified From DP World Tour Q School | GOLFRAW",
+      "excerpt": "Three LIV players entered at Huddersfield. One never played round three. What the rulebook says, and the part nobody has explained.",
+      "category": [
+        "LIV GOLF",
+        "DP WORLD TOUR",
+        "PETER UIHLEIN",
+        "Q SCHOOL",
+        "RULES OF GOLF"
+      ],
+      "date": "2026-09-04",
+      "image": "/public/news-2026-dp-world-tour-q-school-empty-first-tee.webp",
+      "keywords": "LIV GOLF, DP WORLD TOUR, PETER UIHLEIN, Q SCHOOL, RULES OF GOLF, Huddersfield Golf Club, Rule 5.3a, missed tee time",
+      "category_source": "override",
+      "section": "LIV GOLF"
+    },
     {
       "canonical": "/thriston-lawrence-european-masters-halfway-lead",
       "alias_of": "",
