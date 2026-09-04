@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 325,
+  "count": 326,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -34,6 +34,26 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/how-long-do-golf-clubs-last",
+      "alias_of": "",
+      "slug": "how-long-do-golf-clubs-last",
+      "url": "/how-long-do-golf-clubs-last",
+      "title": "How Long Do Golf Clubs Last? Testers Still Bag a 2008 Putter | GOLFRAW",
+      "excerpt": "Golf Monthly's testers still play a 2008 putter and a 2013 3-wood. Here's what actually wears out, Titleist's 75-round wedge rule, and the 2024 groove myth.",
+      "category": [
+        "GEAR",
+        "GUIDES",
+        "EQUIPMENT",
+        "WEDGES",
+        "GRIPS"
+      ],
+      "date": "2026-09-04",
+      "image": "/public/gear-how-long-do-golf-clubs-last-hero.webp",
+      "keywords": "GEAR, BUYING GUIDES, EQUIPMENT, WEDGES, GRIPS, golf club lifespan, when to replace golf clubs, wedge grooves, golf grips",
+      "category_source": "override",
+      "section": "GEAR"
+    },
     {
       "canonical": "/bobby-jones-grand-slam-1930-merion-flashback",
       "alias_of": "",
