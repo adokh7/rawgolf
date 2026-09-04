@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 326,
+  "count": 327,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -34,6 +34,26 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/thriston-lawrence-european-masters-halfway-lead",
+      "alias_of": "",
+      "slug": "thriston-lawrence-european-masters-halfway-lead",
+      "url": "/thriston-lawrence-european-masters-halfway-lead",
+      "title": "Thriston Lawrence Leads European Masters by Two at 13 Under | GOLFRAW",
+      "excerpt": "Six straight birdies, a chip-in from sand, and 36 holes without a bogey. He's two clear and one win from a record only Seve Ballesteros holds.",
+      "category": [
+        "DP WORLD TOUR",
+        "TOURNAMENTS",
+        "THRISTON LAWRENCE",
+        "CRANS-SUR-SIERRE",
+        "SEVE BALLESTEROS"
+      ],
+      "date": "2026-09-04",
+      "image": "/public/news-2026-thriston-lawrence-crans-sur-sierre-approach.webp",
+      "keywords": "DP WORLD TOUR, TOURNAMENTS, THRISTON LAWRENCE, CRANS-SUR-SIERRE, SEVE BALLESTEROS",
+      "category_source": "override",
+      "section": "TOURNAMENTS"
+    },
     {
       "canonical": "/how-long-do-golf-clubs-last",
       "alias_of": "",
