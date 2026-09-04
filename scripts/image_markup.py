@@ -266,7 +266,11 @@ def _context(
     # The vintage flashback uses four archival figures rather than a single
     # lead hero; keep every scan lazy so the long-form page does not compete
     # with the article text for first paint.
-    if page_path.name == "1980-golf-ads-golf-digest-flashback.html":
+    if page_path.name in {
+        "1980-golf-ads-golf-digest-flashback.html",
+        "news-2026-solheim-cup-all-star-challenge.html",
+        "solheim-cup-all-star-challenge-2026.html",
+    }:
         return "secondary"
     if "manifesto-video" in classes:
         return "brand"

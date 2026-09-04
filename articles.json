@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 321,
+  "count": 323,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -34,6 +34,26 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/solheim-cup-all-star-challenge-2026",
+      "alias_of": "",
+      "slug": "solheim-cup-all-star-challenge-2026",
+      "url": "/solheim-cup-all-star-challenge-2026",
+      "title": "Solheim Cup All-Star Challenge: A Darts Star Tees It Up | GOLFRAW",
+      "excerpt": "A world No. 3 darts player, a World Cup-winning cricketer and the woman who holed the 2019 winning putt, on three holes at Bernardus. Here's the plan.",
+      "category": [
+        "SOLHEIM CUP",
+        "TOURNAMENTS",
+        "BERNARDUS GOLF",
+        "WOMENS GOLF",
+        "LADIES EUROPEAN TOUR"
+      ],
+      "date": "2026-09-04",
+      "image": "/public/news-bernardus-golf-first-tee-grandstands.webp",
+      "keywords": "SOLHEIM CUP, TOURNAMENTS, BERNARDUS GOLF, WOMENS GOLF, LADIES EUROPEAN TOUR, 2026 Solheim Cup All-Star Challenge, Gian van Veen golf, Suzann Pettersen",
+      "category_source": "override",
+      "section": "TOURNAMENTS"
+    },
     {
       "canonical": "/1980-golf-ads-golf-digest-flashback",
       "alias_of": "",
