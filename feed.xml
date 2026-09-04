@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 03 Sep 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>What Golf Looked Like in 1980: 4 Ads That Still Hit Hard | GOLFRAW</title>
+      <link>https://www.golfraw.com/1980-golf-ads-golf-digest-flashback</link>
+      <guid isPermaLink="true">https://www.golfraw.com/1980-golf-ads-golf-digest-flashback</guid>
+      <pubDate>Fri, 04 Sep 2026 09:00:00 +0000</pubDate>
+      <category>VINTAGE GOLF HISTORY, GOLF DIGEST, VINTAGE EQUIPMENT, JACK NICKLAUS, 1980S GOLF</category>
+      <description>One 1980 Golf Digest, four old ads, and a Jack Nicklaus comeback. Persimmon woods, a 4.52-yard shaft test and balls that &quot;beat Titleist by 12 yards.&quot; Flashback inside.</description>
+      <enclosure url="https://www.golfraw.com/public/vintage-1980-golf-digest-september-jack-nicklaus-cover.webp" length="111100" type="image/webp"/>
+    </item>
     <item>
       <title>Bryson DeChambeau LIV Golf 2027: A Report, Not a Decision | GOLFRAW</title>
       <link>https://www.golfraw.com/bryson-dechambeau-liv-golf-2027</link>
@@ -134,15 +143,6 @@
       <category>LIV GOLF, MONEY, NEWS</category>
       <description>Three outlets give three different figures for what he&#x27;s owed. The bigger question is where a player ranks when the bankruptcy queue forms.</description>
       <enclosure url="https://www.golfraw.com/news-2026-jon-rahm-liv-money-owed.webp" length="151094" type="image/webp"/>
-    </item>
-    <item>
-      <title>Justin Thomas&#x27;s &#x27;Mental Capacity&#x27; Line, Six Months On | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-justin-thomas-mental-capacity-bay-hill</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-justin-thomas-mental-capacity-bay-hill</guid>
-      <pubDate>Tue, 01 Sep 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR, OPINION, NEWS</category>
-      <description>He shot 79-79 and couldn&#x27;t concentrate on the back nine. Two months later he finished fourth in a major. What that gap teaches about coming back.</description>
-      <enclosure url="https://www.golfraw.com/public/justin-thomas-mental-capacity-bay-hill-2026.webp" length="116286" type="image/webp"/>
     </item>
   </channel>
 </rss>

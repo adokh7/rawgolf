@@ -37,13 +37,14 @@ SECTION_PAGE = {
     'LIV GOLF':    'liv-golf.html',
     'PGA TOUR':    'pga-tour.html',
     'TOURNAMENTS': 'tournaments.html',
+    'VINTAGE GOLF HISTORY': 'vintage-golf-history.html',
 }
 
 # Pages that use the news-grid card format (article.news)
 NEWS_GRID_PAGES = {'news.html', 'liv-golf.html'}
 
 # Pages that use the guide-grid card format (a.guide-card)
-GUIDE_GRID_PAGES = {'pga-tour.html', 'guides.html', 'tournaments.html'}
+GUIDE_GRID_PAGES = {'pga-tour.html', 'guides.html', 'tournaments.html', 'vintage-golf-history.html'}
 
 # Keep the homepage useful as a crawl hub without turning it into a complete
 # archive. Priority URLs are guaranteed a slot even when they fall outside the

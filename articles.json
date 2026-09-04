@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 320,
+  "count": 321,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -14,6 +14,7 @@
     "PGA TOUR",
     "SOLHEIM CUP",
     "TOURNAMENTS",
+    "VINTAGE GOLF HISTORY",
     "WOMEN'S GOLF"
   ],
   "sections": [
@@ -29,9 +30,30 @@
     "PGA TOUR",
     "SOLHEIM CUP",
     "TOURNAMENTS",
+    "VINTAGE GOLF HISTORY",
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/1980-golf-ads-golf-digest-flashback",
+      "alias_of": "",
+      "slug": "1980-golf-ads-golf-digest-flashback",
+      "url": "/1980-golf-ads-golf-digest-flashback",
+      "title": "What Golf Looked Like in 1980: 4 Ads That Still Hit Hard | GOLFRAW",
+      "excerpt": "One 1980 Golf Digest, four old ads, and a Jack Nicklaus comeback. Persimmon woods, a 4.52-yard shaft test and balls that \"beat Titleist by 12 yards.\" Flashback inside.",
+      "category": [
+        "VINTAGE GOLF HISTORY",
+        "GOLF DIGEST",
+        "VINTAGE EQUIPMENT",
+        "JACK NICKLAUS",
+        "1980S GOLF"
+      ],
+      "date": "2026-09-04",
+      "image": "/public/vintage-1980-golf-digest-september-jack-nicklaus-cover.webp",
+      "keywords": "VINTAGE GOLF HISTORY, GOLF DIGEST, VINTAGE EQUIPMENT, JACK NICKLAUS, 1980S GOLF, 1980 golf ads, Golf Digest September 1980, vintage golf equipment",
+      "category_source": "override",
+      "section": "VINTAGE GOLF HISTORY"
+    },
     {
       "canonical": "/bryson-dechambeau-liv-golf-2027",
       "alias_of": "",

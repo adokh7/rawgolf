@@ -12,7 +12,7 @@ the site: URL, title, excerpt, category, section, date, image and keywords.
 | --- | --- |
 | `index.html` | marked 15-story homepage feed; newest first with priority crawl targets |
 | `news.html` | every article, newest first |
-| `guides.html`, `liv-golf.html`, `pga-tour.html`, `tournaments.html` | filtered by `section` |
+| `guides.html`, `liv-golf.html`, `pga-tour.html`, `tournaments.html`, `vintage-golf-history.html` | filtered by `section` |
 | `search.html` | the whole `ARTICLES` array |
 | `sitemap.xml` | every deployable, indexable, self-canonical HTML page |
 | `news-sitemap.xml` | only indexable news-section articles published in the last two days |

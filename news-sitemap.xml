@@ -44,48 +44,4 @@
       <news:title>PGA Tour Fan Code of Conduct Rewrite: The 5% Stat Behind It</news:title>
     </news:news>
   </url>
-  <url>
-    <loc>https://www.golfraw.com/news-2026-jon-rahm-liv-money-owed</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-01T21:30:00+02:00</news:publication_date>
-      <news:title>Jon Rahm's LIV Money: What He's Owed and Who Gets Paid</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/news-2026-scottie-scheffler-captures-fedex-cup</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-01T15:00:00+02:00</news:publication_date>
-      <news:title>Scottie Scheffler Captures the FedEx Cup and Passes Tiger</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/news-2026-blades-brown-19-pga-tour-card</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-01T12:00:00+02:00</news:publication_date>
-      <news:title>Blades Brown at 19: Two Paths to a PGA Tour Card</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/news-2026-justin-thomas-mental-capacity-bay-hill</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-01T10:00:00+02:00</news:publication_date>
-      <news:title>Justin Thomas's 'Mental Capacity' Line, Six Months On</news:title>
-    </news:news>
-  </url>
 </urlset>
