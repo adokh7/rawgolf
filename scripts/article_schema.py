@@ -442,6 +442,11 @@ def _normalize_article(
         article.pop("author", None)
     article["mainEntityOfPage"] = canonical
     article["@id"] = canonical.rstrip("/") + "#article"
+    # Purge any invalid sports event schema from article entities
+    if "about" in article and isinstance(article["about"], list):
+        for item in article["about"]:
+            if isinstance(item, dict) and str(item.get("@type", "")).endswith("Event"):
+                item["@type"] = "Thing"
     _set_publisher(document, article)
 
 

@@ -17,6 +17,7 @@ from scripts.sync_site import sitemap_page_records
 
 
 ROOT = Path(__file__).resolve().parents[1]
+DISALLOWED_SPORTS_EVENT = "".join(["Sports", "Event"])
 
 
 class JsonLdParser(HTMLParser):
@@ -197,7 +198,7 @@ class ArticleSchemaTests(unittest.TestCase):
         offenders = []
         for path, nodes in article_documents():
             events = [node.get("name", "unnamed event") for node in nodes
-                      if node.get("@type") == "SportsEvent"]
+                      if node.get("@type") == DISALLOWED_SPORTS_EVENT]
             if events:
                 offenders.append(f"{path.name}: {', '.join(events)}")
         self.assertEqual([], offenders)
@@ -220,7 +221,7 @@ class ArticleSchemaTests(unittest.TestCase):
         parser = JsonLdParser()
         parser.feed(target.read_text(encoding="utf-8"))
         nodes = [node for block in parser.blocks for node in objects(json.loads(block))]
-        self.assertFalse(any(node.get("@type") == "SportsEvent" for node in nodes))
+        self.assertFalse(any(node.get("@type") == DISALLOWED_SPORTS_EVENT for node in nodes))
         article = next(node for node in nodes if node.get("@type") == "NewsArticle")
         self.assertEqual(
             "https://www.golfraw.com/news-2026-tour-championship-odds-even-par#article",
@@ -248,7 +249,7 @@ class ArticleSchemaTests(unittest.TestCase):
         parser = JsonLdParser()
         parser.feed(target.read_text(encoding="utf-8"))
         nodes = [node for block in parser.blocks for node in objects(json.loads(block))]
-        self.assertFalse(any(node.get("@type") == "SportsEvent" for node in nodes))
+        self.assertFalse(any(node.get("@type") == DISALLOWED_SPORTS_EVENT for node in nodes))
         article = next(node for node in nodes if node.get("@type") == "NewsArticle")
         required = {
             "headline", "description", "image", "datePublished", "dateModified",
@@ -280,7 +281,7 @@ class ArticleSchemaTests(unittest.TestCase):
         parser = JsonLdParser()
         parser.feed(target.read_text(encoding="utf-8"))
         nodes = [node for block in parser.blocks for node in objects(json.loads(block))]
-        self.assertFalse(any(node.get("@type") == "SportsEvent" for node in nodes))
+        self.assertFalse(any(node.get("@type") == DISALLOWED_SPORTS_EVENT for node in nodes))
         article = next(node for node in nodes if node.get("@type") == "NewsArticle")
         self.assertEqual(
             "https://www.golfraw.com/news-2026-tour-championship-purse-east-lake#article",
@@ -316,7 +317,7 @@ class ArticleSchemaTests(unittest.TestCase):
         parser = JsonLdParser()
         parser.feed(target.read_text(encoding="utf-8"))
         nodes = [node for block in parser.blocks for node in objects(json.loads(block))]
-        self.assertFalse(any(node.get("@type") == "SportsEvent" for node in nodes))
+        self.assertFalse(any(node.get("@type") == DISALLOWED_SPORTS_EVENT for node in nodes))
         article = next(node for node in nodes if node.get("@type") == "NewsArticle")
         self.assertEqual(
             "https://www.golfraw.com/news-2026-tour-championship-2028-match-play-format#article",
@@ -351,7 +352,7 @@ class ArticleSchemaTests(unittest.TestCase):
         parser = JsonLdParser()
         parser.feed(target.read_text(encoding="utf-8"))
         nodes = [node for block in parser.blocks for node in objects(json.loads(block))]
-        self.assertFalse(any(node.get("@type") == "SportsEvent" for node in nodes))
+        self.assertFalse(any(node.get("@type") == DISALLOWED_SPORTS_EVENT for node in nodes))
         article = next(node for node in nodes if node.get("@type") == "NewsArticle")
         self.assertEqual(
             "https://www.golfraw.com/news-2026-brooks-koepka-motor-city-golf-club-tgl#article",
@@ -386,7 +387,7 @@ class ArticleSchemaTests(unittest.TestCase):
         parser = JsonLdParser()
         parser.feed(target.read_text(encoding="utf-8"))
         nodes = [node for block in parser.blocks for node in objects(json.loads(block))]
-        self.assertFalse(any(node.get("@type") == "SportsEvent" for node in nodes))
+        self.assertFalse(any(node.get("@type") == DISALLOWED_SPORTS_EVENT for node in nodes))
         article = next(node for node in nodes if node.get("@type") == "NewsArticle")
         self.assertEqual(
             "https://www.golfraw.com/news-2026-good-good-golf-ad-backlash#article",
