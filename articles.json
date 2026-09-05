@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 331,
+  "count": 332,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -34,6 +34,28 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/asian-tour-ceo-liv-golf-dp-world-tour-pivot",
+      "alias_of": "",
+      "slug": "asian-tour-ceo-liv-golf-dp-world-tour-pivot",
+      "url": "/asian-tour-ceo-liv-golf-dp-world-tour-pivot",
+      "title": "Asian Tour CEO on the Pivot From LIV Golf to DP World Tour | GOLFRAW",
+      "excerpt": "They were mid-renewal on another five years with LIV when PIF pulled out. Here's what Cho Minn Thant actually said, and the events still stuck in limbo.",
+      "category": [
+        "LIV GOLF",
+        "NEWS",
+        "ASIAN TOUR",
+        "DP WORLD TOUR",
+        "CHO MINN THANT",
+        "PGA TOUR",
+        "INTERNATIONAL SERIES"
+      ],
+      "date": "2026-09-05",
+      "image": "/public/news-2026-cho-minn-thant-asian-tour-ceo.webp",
+      "keywords": "LIV GOLF, ASIAN TOUR, DP WORLD TOUR, CHO MINN THANT, PGA TOUR, INTERNATIONAL SERIES",
+      "category_source": "override",
+      "section": "LIV GOLF"
+    },
     {
       "canonical": "/grehan-comeback-stout-walker-cup-saturday-singles",
       "alias_of": "",

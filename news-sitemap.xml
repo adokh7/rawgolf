@@ -1,6 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.golfraw.com/asian-tour-ceo-liv-golf-dp-world-tour-pivot</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GOLFRAW</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-05T22:30:00+02:00</news:publication_date>
+      <news:title>Asian Tour CEO on the Pivot From LIV Golf to DP World Tour</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/grehan-comeback-stout-walker-cup-saturday-singles</loc>
     <news:news>
       <news:publication>
