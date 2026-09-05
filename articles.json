@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 329,
+  "count": 330,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -34,6 +34,26 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/paul-casey-charity-vow-omega-european-masters",
+      "alias_of": "",
+      "slug": "paul-casey-charity-vow-omega-european-masters",
+      "url": "/paul-casey-charity-vow-omega-european-masters",
+      "title": "Paul Casey's Charity Vow at the European Masters, Explained | GOLFRAW",
+      "excerpt": "He shot 29 on the front nine, leads by three, and pledged every dollar of Sunday's cheque to the Crans-Montana fire victims. The whole picture.",
+      "category": [
+        "TOURNAMENTS",
+        "DP WORLD TOUR",
+        "PAUL CASEY",
+        "CRANS-SUR-SIERRE",
+        "OMEGA EUROPEAN MASTERS"
+      ],
+      "date": "2026-09-05",
+      "image": "/public/news-2026-paul-casey-crans-sur-sierre-charity-vow.webp",
+      "keywords": "DP WORLD TOUR, PAUL CASEY, TOURNAMENTS, CRANS-SUR-SIERRE, OMEGA EUROPEAN MASTERS, Crans-Montana fire charity, third round 63, European Masters",
+      "category_source": "override",
+      "section": "TOURNAMENTS"
+    },
     {
       "canonical": "/best-black-friday-golf-deals",
       "alias_of": "",

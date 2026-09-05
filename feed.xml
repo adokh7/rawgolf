@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 05 Sep 2026 08:30:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2026 19:30:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Paul Casey's Charity Vow at the European Masters, Explained | GOLFRAW</title>
+      <link>https://www.golfraw.com/paul-casey-charity-vow-omega-european-masters</link>
+      <guid isPermaLink="true">https://www.golfraw.com/paul-casey-charity-vow-omega-european-masters</guid>
+      <pubDate>Sat, 05 Sep 2026 19:30:00 +0000</pubDate>
+      <category>TOURNAMENTS, DP WORLD TOUR, PAUL CASEY, CRANS-SUR-SIERRE, OMEGA EUROPEAN MASTERS</category>
+      <description>He shot 29 on the front nine, leads by three, and pledged every dollar of Sunday&#x27;s cheque to the Crans-Montana fire victims. The whole picture.</description>
+      <enclosure url="https://www.golfraw.com/public/news-2026-paul-casey-crans-sur-sierre-charity-vow.webp" length="85508" type="image/webp"/>
+    </item>
     <item>
       <title>Best Black Friday Golf Deals 2026: What Drops, What to Skip | GOLFRAW</title>
       <link>https://www.golfraw.com/best-black-friday-golf-deals</link>
