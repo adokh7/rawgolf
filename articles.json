@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 328,
+  "count": 329,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -34,6 +34,26 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/best-black-friday-golf-deals",
+      "alias_of": "",
+      "slug": "best-black-friday-golf-deals",
+      "url": "/best-black-friday-golf-deals",
+      "title": "Best Black Friday Golf Deals 2026: What Drops, What to Skip | GOLFRAW",
+      "excerpt": "Which golf clubs actually drop on Black Friday, why last year's driver isn't worse, and the one USGA check before you buy anything discounted.",
+      "category": [
+        "GEAR",
+        "BUYING GUIDES",
+        "BLACK FRIDAY",
+        "DRIVERS",
+        "RANGEFINDERS"
+      ],
+      "date": "2026-09-05",
+      "image": "/public/gear-best-black-friday-golf-deals-hero.webp",
+      "keywords": "GEAR, BUYING GUIDES, BLACK FRIDAY, DRIVERS, RANGEFINDERS, Callaway Elyte, PING G440, Bushnell Tour V6, golf club deals",
+      "category_source": "override",
+      "section": "GEAR"
+    },
     {
       "canonical": "/liv-golfer-disqualified-dp-world-tour-q-school",
       "alias_of": "",
