@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 332,
+  "count": 333,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -34,6 +34,29 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/2026-european-solheim-cup-team",
+      "alias_of": "",
+      "slug": "2026-european-solheim-cup-team",
+      "url": "/2026-european-solheim-cup-team",
+      "title": "The 2026 European Solheim Cup Team: 4 Rookies, 1 Home Cup | GOLFRAW",
+      "excerpt": "Four debutants, eight returnees, one captain betting on aggression. Every player, how they qualified, and who missed out by a handful of ranking spots.",
+      "category": [
+        "TOURNAMENTS",
+        "NEWS",
+        "SOLHEIM CUP",
+        "TEAM EUROPE",
+        "ANNA NORDQVIST",
+        "BERNARDUS GOLF",
+        "CHARLEY HULL",
+        "LEONA MAGUIRE"
+      ],
+      "date": "2026-09-05",
+      "image": "/public/news-2026-european-solheim-cup-team-hero.webp",
+      "keywords": "SOLHEIM CUP, TEAM EUROPE, ANNA NORDQVIST, BERNARDUS GOLF, CHARLEY HULL, LEONA MAGUIRE",
+      "category_source": "override",
+      "section": "TOURNAMENTS"
+    },
     {
       "canonical": "/asian-tour-ceo-liv-golf-dp-world-tour-pivot",
       "alias_of": "",

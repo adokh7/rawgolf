@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>The 2026 European Solheim Cup Team: 4 Rookies, 1 Home Cup | GOLFRAW</title>
+      <link>https://www.golfraw.com/2026-european-solheim-cup-team</link>
+      <guid isPermaLink="true">https://www.golfraw.com/2026-european-solheim-cup-team</guid>
+      <pubDate>Sat, 05 Sep 2026 09:00:00 +0000</pubDate>
+      <category>TOURNAMENTS, NEWS, SOLHEIM CUP, TEAM EUROPE, ANNA NORDQVIST, BERNARDUS GOLF, CHARLEY HULL, LEONA MAGUIRE</category>
+      <description>Four debutants, eight returnees, one captain betting on aggression. Every player, how they qualified, and who missed out by a handful of ranking spots.</description>
+      <enclosure url="https://www.golfraw.com/public/news-2026-european-solheim-cup-team-hero.webp" length="62216" type="image/webp"/>
+    </item>
+    <item>
       <title>Asian Tour CEO on the Pivot From LIV Golf to DP World Tour | GOLFRAW</title>
       <link>https://www.golfraw.com/asian-tour-ceo-liv-golf-dp-world-tour-pivot</link>
       <guid isPermaLink="true">https://www.golfraw.com/asian-tour-ceo-liv-golf-dp-world-tour-pivot</guid>
@@ -134,15 +143,6 @@
       <category>PGA TOUR, RORY MCILROY, MAJORS, RECORDS</category>
       <description>Every one of his 30 titles, grouped by how forgettable they are. Plus the California win he told CBS he couldn&#x27;t remember having.</description>
       <enclosure url="https://www.golfraw.com/public/news-rory-mcilroy-2026-masters-trophy.webp" length="66544" type="image/webp"/>
-    </item>
-    <item>
-      <title>PGA Tour Fan Code of Conduct Rewrite: The 5% Stat Behind It | GOLFRAW</title>
-      <link>https://www.golfraw.com/pga-tour-fan-code-of-conduct-gambling</link>
-      <guid isPermaLink="true">https://www.golfraw.com/pga-tour-fan-code-of-conduct-gambling</guid>
-      <pubDate>Thu, 03 Sep 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR, SPORTS BETTING, NEWS, FAN CONDUCT</category>
-      <description>The PGA Tour is rewriting its fan code of conduct for 2027 after a season of betting-fueled heckling. What changes, what the 5% stat admits, and what it can’t fix.</description>
-      <enclosure url="https://www.golfraw.com/public/news-pga-tour-fan-code-of-conduct-gallery.webp" length="356228" type="image/webp"/>
     </item>
   </channel>
 </rss>
