@@ -5,15 +5,24 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 05 Sep 2026 19:30:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
-      <title>Paul Casey's Charity Vow at the European Masters, Explained | GOLFRAW</title>
+      <title>Grehan&#x27;s Comeback Over Stout: 3 Down After 3, Won on 18 | GOLFRAW</title>
+      <link>https://www.golfraw.com/grehan-comeback-stout-walker-cup-saturday-singles</link>
+      <guid isPermaLink="true">https://www.golfraw.com/grehan-comeback-stout-walker-cup-saturday-singles</guid>
+      <pubDate>Sat, 05 Sep 2026 09:00:00 +0000</pubDate>
+      <category>TOURNAMENTS, WALKER CUP, LAHINCH, STUART GREHAN, PRESTON STOUT, AMATEUR GOLF</category>
+      <description>Three down to the world No. 1 after three holes, eight under for the last 15. What Grehan did at Lahinch, what it means for Sunday, and the rules row.</description>
+      <enclosure url="https://www.golfraw.com/public/news-2026-stuart-grehan-walker-cup-lahinch-celebration.webp" length="186122" type="image/webp"/>
+    </item>
+    <item>
+      <title>Paul Casey&#x27;s Charity Vow at the European Masters, Explained | GOLFRAW</title>
       <link>https://www.golfraw.com/paul-casey-charity-vow-omega-european-masters</link>
       <guid isPermaLink="true">https://www.golfraw.com/paul-casey-charity-vow-omega-european-masters</guid>
-      <pubDate>Sat, 05 Sep 2026 19:30:00 +0000</pubDate>
+      <pubDate>Sat, 05 Sep 2026 09:00:00 +0000</pubDate>
       <category>TOURNAMENTS, DP WORLD TOUR, PAUL CASEY, CRANS-SUR-SIERRE, OMEGA EUROPEAN MASTERS</category>
       <description>He shot 29 on the front nine, leads by three, and pledged every dollar of Sunday&#x27;s cheque to the Crans-Montana fire victims. The whole picture.</description>
       <enclosure url="https://www.golfraw.com/public/news-2026-paul-casey-crans-sur-sierre-charity-vow.webp" length="85508" type="image/webp"/>
@@ -22,7 +31,7 @@
       <title>Best Black Friday Golf Deals 2026: What Drops, What to Skip | GOLFRAW</title>
       <link>https://www.golfraw.com/best-black-friday-golf-deals</link>
       <guid isPermaLink="true">https://www.golfraw.com/best-black-friday-golf-deals</guid>
-      <pubDate>Sat, 05 Sep 2026 08:30:00 +0000</pubDate>
+      <pubDate>Sat, 05 Sep 2026 09:00:00 +0000</pubDate>
       <category>GEAR, BUYING GUIDES, BLACK FRIDAY, DRIVERS, RANGEFINDERS</category>
       <description>Which golf clubs actually drop on Black Friday, why last year&#x27;s driver isn&#x27;t worse, and the one USGA check before you buy anything discounted.</description>
       <enclosure url="https://www.golfraw.com/public/gear-best-black-friday-golf-deals-hero.webp" length="240368" type="image/webp"/>
@@ -31,7 +40,7 @@
       <title>LIV Golfer Disqualified From DP World Tour Q School | GOLFRAW</title>
       <link>https://www.golfraw.com/liv-golfer-disqualified-dp-world-tour-q-school</link>
       <guid isPermaLink="true">https://www.golfraw.com/liv-golfer-disqualified-dp-world-tour-q-school</guid>
-      <pubDate>Fri, 04 Sep 2026 21:50:00 +0000</pubDate>
+      <pubDate>Fri, 04 Sep 2026 09:00:00 +0000</pubDate>
       <category>LIV GOLF, DP WORLD TOUR, PETER UIHLEIN, Q SCHOOL, RULES OF GOLF</category>
       <description>Three LIV players entered at Huddersfield. One never played round three. What the rulebook says, and the part nobody has explained.</description>
       <enclosure url="https://www.golfraw.com/public/news-2026-dp-world-tour-q-school-empty-first-tee.webp" length="77676" type="image/webp"/>
@@ -40,7 +49,7 @@
       <title>Thriston Lawrence Leads European Masters by Two at 13 Under | GOLFRAW</title>
       <link>https://www.golfraw.com/thriston-lawrence-european-masters-halfway-lead</link>
       <guid isPermaLink="true">https://www.golfraw.com/thriston-lawrence-european-masters-halfway-lead</guid>
-      <pubDate>Fri, 04 Sep 2026 21:20:00 +0000</pubDate>
+      <pubDate>Fri, 04 Sep 2026 09:00:00 +0000</pubDate>
       <category>DP WORLD TOUR, TOURNAMENTS, THRISTON LAWRENCE, CRANS-SUR-SIERRE, SEVE BALLESTEROS</category>
       <description>Six straight birdies, a chip-in from sand, and 36 holes without a bogey. He&#x27;s two clear and one win from a record only Seve Ballesteros holds.</description>
       <enclosure url="https://www.golfraw.com/public/news-2026-thriston-lawrence-crans-sur-sierre-approach.webp" length="96974" type="image/webp"/>
@@ -134,51 +143,6 @@
       <category>GEAR, TRAVEL BAGS, BUYING GUIDES</category>
       <description>Two bags sell as the Club Glove Pro Traveler right now. What changed in 2025, whether your bag fits, the airline weight math, and when to buy the cheaper one.</description>
       <enclosure url="https://www.golfraw.com/gear-club-glove-pro-traveler-guide.webp" length="170160" type="image/webp"/>
-    </item>
-    <item>
-      <title>Golf Ball Tee Holder Bag: Do You Actually Need One? | GOLFRAW</title>
-      <link>https://www.golfraw.com/golf-ball-tee-holder-bag</link>
-      <guid isPermaLink="true">https://www.golfraw.com/golf-ball-tee-holder-bag</guid>
-      <pubDate>Thu, 03 Sep 2026 09:00:00 +0000</pubDate>
-      <category>GEAR, BUYING GUIDES, ACCESSORIES</category>
-      <description>Three products share this name and only one might suit you. What a golf ball tee holder bag actually does, when to skip it, and the magnet myth explained.</description>
-      <enclosure url="https://www.golfraw.com/public/gear-golf-ball-tee-holder-bag-guide.webp" length="178066" type="image/webp"/>
-    </item>
-    <item>
-      <title>J.J. Spaun Withdraws From the Tour Championship: The Facts | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-jj-spaun-withdraws-tour-championship</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-jj-spaun-withdraws-tour-championship</guid>
-      <pubDate>Wed, 02 Sep 2026 09:00:00 +0000</pubDate>
-      <category>PGA TOUR, TOURNAMENTS, NEWS</category>
-      <description>A shoulder that flared Tuesday, four over through five, a walk off the sixth tee. What happened, what it paid, and what it cost him a week later.</description>
-      <enclosure url="https://www.golfraw.com/news-2026-jj-spaun-withdraws-tour-championship.webp" length="45594" type="image/webp"/>
-    </item>
-    <item>
-      <title>This Week in Golf: LIV, Tiger&#x27;s Plea and a Capital Letter | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-this-week-in-golf-liv-tiger-plea-pga-tour-rebrand</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-this-week-in-golf-liv-tiger-plea-pga-tour-rebrand</guid>
-      <pubDate>Wed, 02 Sep 2026 09:00:00 +0000</pubDate>
-      <category>NEWS, LIV GOLF, PGA TOUR</category>
-      <description>LIV hasn&#x27;t filed yet. Tiger&#x27;s plea has two names. The PGA Tour rebrand is a case change. What&#x27;s confirmed this week, and what&#x27;s still a report.</description>
-      <enclosure url="https://www.golfraw.com/news-2026-this-week-in-golf-liv-tiger-plea.webp" length="286052" type="image/webp"/>
-    </item>
-    <item>
-      <title>Tiger Woods Pleads Guilty: 5-Year Ban, $1,000 Fine, Explained | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-tiger-woods-pleads-guilty-reckless-driving-jupiter-island</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-tiger-woods-pleads-guilty-reckless-driving-jupiter-island</guid>
-      <pubDate>Wed, 02 Sep 2026 09:00:00 +0000</pubDate>
-      <category>PEOPLE, NEWS, OFF THE COURSE</category>
-      <description>Five-year license suspension, $1,000 fine, and two different words for the plea depending on the outlet. What&#x27;s verified, and why the wording matters.</description>
-      <enclosure url="https://www.golfraw.com/news-2026-tiger-woods-pleads-guilty-reckless-driving.webp" length="46416" type="image/webp"/>
-    </item>
-    <item>
-      <title>Small Grip Change, Big Swing Improvement: Count Your Knuckles | GOLFRAW</title>
-      <link>https://www.golfraw.com/news-2026-small-grip-change-big-swing-improvement</link>
-      <guid isPermaLink="true">https://www.golfraw.com/news-2026-small-grip-change-big-swing-improvement</guid>
-      <pubDate>Tue, 01 Sep 2026 09:00:00 +0000</pubDate>
-      <category>GUIDES, SWING TIPS, NEWS</category>
-      <description>Face angle sets about 85% of where the ball starts, and your hands set the face before you move. Count your knuckles, then read what it won&#x27;t fix.</description>
-      <enclosure url="https://www.golfraw.com/news-2026-small-grip-change-big-swing-improvement.webp" length="629294" type="image/webp"/>
     </item>
   </channel>
 </rss>

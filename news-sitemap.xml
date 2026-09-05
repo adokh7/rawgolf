@@ -1,6 +1,50 @@
 <?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.golfraw.com/grehan-comeback-stout-walker-cup-saturday-singles</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GOLFRAW</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-05T22:00:00+02:00</news:publication_date>
+      <news:title>Grehan's Comeback Over Stout: 3 Down After 3, Won on 18</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.golfraw.com/paul-casey-charity-vow-omega-european-masters</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GOLFRAW</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-05T21:30:00+02:00</news:publication_date>
+      <news:title>Paul Casey's Charity Vow at the European Masters, Explained</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.golfraw.com/liv-golfer-disqualified-dp-world-tour-q-school</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GOLFRAW</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-04T23:50:00+02:00</news:publication_date>
+      <news:title>LIV Golfer Disqualified From DP World Tour Q School</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.golfraw.com/thriston-lawrence-european-masters-halfway-lead</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GOLFRAW</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-04T23:20:00+02:00</news:publication_date>
+      <news:title>Thriston Lawrence Leads European Masters by Two at 13 Under</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/solheim-cup-all-star-challenge-2026</loc>
     <news:news>
       <news:publication>

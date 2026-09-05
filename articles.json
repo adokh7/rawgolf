@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 330,
+  "count": 331,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -34,6 +34,27 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/grehan-comeback-stout-walker-cup-saturday-singles",
+      "alias_of": "",
+      "slug": "grehan-comeback-stout-walker-cup-saturday-singles",
+      "url": "/grehan-comeback-stout-walker-cup-saturday-singles",
+      "title": "Grehan's Comeback Over Stout: 3 Down After 3, Won on 18 | GOLFRAW",
+      "excerpt": "Three down to the world No. 1 after three holes, eight under for the last 15. What Grehan did at Lahinch, what it means for Sunday, and the rules row.",
+      "category": [
+        "TOURNAMENTS",
+        "WALKER CUP",
+        "LAHINCH",
+        "STUART GREHAN",
+        "PRESTON STOUT",
+        "AMATEUR GOLF"
+      ],
+      "date": "2026-09-05",
+      "image": "/public/news-2026-stuart-grehan-walker-cup-lahinch-celebration.webp",
+      "keywords": "WALKER CUP, LAHINCH, STUART GREHAN, PRESTON STOUT, AMATEUR GOLF",
+      "category_source": "override",
+      "section": "TOURNAMENTS"
+    },
     {
       "canonical": "/paul-casey-charity-vow-omega-european-masters",
       "alias_of": "",
