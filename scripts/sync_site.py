@@ -574,6 +574,11 @@ def tool_pages():
     )
 
 
+SITEMAP_PRIORITIES = {
+    '/how-long-do-golf-clubs-last': '0.9',
+}
+
+
 def write_sitemap(arts):
     base = 'https://www.golfraw.com'
     records = sitemap_page_records()
@@ -588,9 +593,18 @@ def write_sitemap(arts):
     for route in ordered:
         record = records[route]
         lastmod = f'\n    <lastmod>{record["lastmod"]}</lastmod>' if record['lastmod'] else ''
-        out.append(f'  <url>\n    <loc>{base}{route}</loc>{lastmod}\n  </url>')
+        priority = f'\n    <priority>{SITEMAP_PRIORITIES[route]}</priority>' if route in SITEMAP_PRIORITIES else ''
+        out.append(f'  <url>\n    <loc>{base}{route}</loc>{lastmod}{priority}\n  </url>')
     out += ['</urlset>', '']
-    write_if_changed(os.path.join(ROOT, 'sitemap.xml'), '\n'.join(out))
+    sitemap_text = '\n'.join(out)
+    write_if_changed(os.path.join(ROOT, 'sitemap.xml'), sitemap_text)
+    public_dir = os.path.join(ROOT, 'public')
+    if os.path.isdir(public_dir):
+        write_if_changed(os.path.join(public_dir, 'sitemap.xml'), sitemap_text)
+        robots_file = os.path.join(ROOT, 'robots.txt')
+        if os.path.isfile(robots_file):
+            with open(robots_file, encoding='utf-8') as rf:
+                write_if_changed(os.path.join(public_dir, 'robots.txt'), rf.read())
     return len(records)
 
 
