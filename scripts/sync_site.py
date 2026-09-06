@@ -614,7 +614,7 @@ NEWS_NAMESPACE = 'http://www.google.com/schemas/sitemap-news/0.9'
 SITEMAP_NAMESPACE = 'http://www.sitemaps.org/schemas/sitemap/0.9'
 NEWS_PUBLICATION_NAME = 'GOLFRAW'
 NEWS_LANGUAGE = 'en'
-NEWS_SECTIONS = {'PGA TOUR', 'LIV GOLF', 'TOURNAMENTS'}
+NEWS_SECTIONS = {'PGA TOUR', 'LIV GOLF', 'TOURNAMENTS', 'NEWS'}
 NEWS_MAX_AGE_DAYS = 2
 
 

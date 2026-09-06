@@ -45,6 +45,17 @@
     </news:news>
   </url>
   <url>
+    <loc>https://www.golfraw.com/trump-west-palm-beach-presidential-golf-course-proposal</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GOLFRAW</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-05T09:00:00+02:00</news:publication_date>
+      <news:title>Trump's Presidential Golf Course Plan: The County Owns It</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/liv-golfer-disqualified-dp-world-tour-q-school</loc>
     <news:news>
       <news:publication>
@@ -86,50 +97,6 @@
       </news:publication>
       <news:publication_date>2026-09-04T11:00:00+02:00</news:publication_date>
       <news:title>Is Jon Rahm LIV Golf's Only Major Champion Leaving? No</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/bryson-dechambeau-liv-golf-2027</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-03T17:00:00+02:00</news:publication_date>
-      <news:title>Bryson DeChambeau LIV Golf 2027: A Report, Not a Decision</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/david-puig-crans-sur-sierre-position-over-power</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-03T16:00:00+02:00</news:publication_date>
-      <news:title>David Puig at Crans-sur-Sierre: Position Over Power</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/rory-mcilroy-30-pga-tour-wins</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-03T14:00:00+02:00</news:publication_date>
-      <news:title>Rory McIlroy's 30 PGA Tour Wins: He's Forgotten One Before</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/pga-tour-fan-code-of-conduct-gambling</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-03T09:00:00+02:00</news:publication_date>
-      <news:title>PGA Tour Fan Code of Conduct Rewrite: The 5% Stat Behind It</news:title>
     </news:news>
   </url>
 </urlset>
