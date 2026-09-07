@@ -1,6 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.golfraw.com/thriston-lawrence-omega-european-masters-2026-playoff-paul-casey</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GOLFRAW</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-07T13:00:00Z</news:publication_date>
+      <news:title>Lawrence Beats Casey in 4-Hole Playoff for 3rd Swiss Title</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/2026-european-solheim-cup-team</loc>
     <news:news>
       <news:publication>
@@ -53,50 +64,6 @@
       </news:publication>
       <news:publication_date>2026-09-05T09:00:00+02:00</news:publication_date>
       <news:title>Trump's Presidential Golf Course Plan: The County Owns It</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/liv-golfer-disqualified-dp-world-tour-q-school</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-04T23:50:00+02:00</news:publication_date>
-      <news:title>LIV Golfer Disqualified From DP World Tour Q School</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/thriston-lawrence-european-masters-halfway-lead</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-04T23:20:00+02:00</news:publication_date>
-      <news:title>Thriston Lawrence Leads European Masters by Two at 13 Under</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/solheim-cup-all-star-challenge-2026</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-04T11:00:00+02:00</news:publication_date>
-      <news:title>Solheim Cup All-Star Challenge: A Darts Star Tees It Up</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/jon-rahm-liv-golf-major-champions-leaving</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-04T11:00:00+02:00</news:publication_date>
-      <news:title>Is Jon Rahm LIV Golf's Only Major Champion Leaving? No</news:title>
     </news:news>
   </url>
 </urlset>

@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 05 Sep 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Lawrence Beats Casey in 4-Hole Playoff for 3rd Swiss Title | GOLFRAW</title>
+      <link>https://www.golfraw.com/thriston-lawrence-omega-european-masters-2026-playoff-paul-casey</link>
+      <guid isPermaLink="true">https://www.golfraw.com/thriston-lawrence-omega-european-masters-2026-playoff-paul-casey</guid>
+      <pubDate>Mon, 07 Sep 2026 09:00:00 +0000</pubDate>
+      <category>TOURNAMENTS, DP WORLD TOUR, THRISTON LAWRENCE, PAUL CASEY, OMEGA EUROPEAN MASTERS, CRANS-MONTANA, PLAYOFF</category>
+      <description>Lawrence erased six shots with a 62, then won a playoff Casey had four chances to end. The sequence, the money, and where the runner-up&#x27;s cheque goes.</description>
+      <enclosure url="https://www.golfraw.com/news-2026-thriston-lawrence-european-masters-playoff-win.webp" length="42104" type="image/webp"/>
+    </item>
     <item>
       <title>Trump&#x27;s Presidential Golf Course Plan: The County Owns It | GOLFRAW</title>
       <link>https://www.golfraw.com/trump-west-palm-beach-presidential-golf-course-proposal</link>
@@ -134,15 +143,6 @@
       <category>LIV GOLF, BRYSON DECHAMBEAU, PGA TOUR, NEWS, CONTRACTS</category>
       <description>He hasn&#x27;t said a word. A Spanish outlet says he&#x27;s all in on LIV 2.0, and three purse figures are circulating. What&#x27;s verified, and what&#x27;s not.</description>
       <enclosure url="https://www.golfraw.com/public/news-bryson-dechambeau-liv-indianapolis-tee.webp" length="142482" type="image/webp"/>
-    </item>
-    <item>
-      <title>David Puig at Crans-sur-Sierre: Position Over Power | GOLFRAW</title>
-      <link>https://www.golfraw.com/david-puig-crans-sur-sierre-position-over-power</link>
-      <guid isPermaLink="true">https://www.golfraw.com/david-puig-crans-sur-sierre-position-over-power</guid>
-      <pubDate>Thu, 03 Sep 2026 09:00:00 +0000</pubDate>
-      <category>TOURNAMENTS, DP WORLD TOUR, DAVID PUIG, COURSE STRATEGY</category>
-      <description>A 24-year-old who hits it as far as anyone says distance isn&#x27;t the point at 1,500 metres. Why he&#x27;s right, and the rule your rangefinder can&#x27;t bend.</description>
-      <enclosure url="https://www.golfraw.com/public/news-crans-sur-sierre-alps-altitude-fairway.webp" length="221176" type="image/webp"/>
     </item>
   </channel>
 </rss>
