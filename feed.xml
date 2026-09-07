@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Nelly Korda &amp; Team USA&#x27;s 11-Year Solheim Cup Curse in Europe | GOLFRAW</title>
+      <link>https://www.golfraw.com/nelly-korda-solheim-cup-european-drought-2026</link>
+      <guid isPermaLink="true">https://www.golfraw.com/nelly-korda-solheim-cup-european-drought-2026</guid>
+      <pubDate>Mon, 07 Sep 2026 09:00:00 +0000</pubDate>
+      <category>TOURNAMENTS, NEWS, SOLHEIM CUP, NELLY KORDA, ALLISEN CORPUZ, ANGELA STANFORD, BERNARDUS GOLF, TEAM USA</category>
+      <description>Team USA hasn&#x27;t won a Solheim Cup in Europe since 2015. Korda is unbeaten in foursomes with Corpuz and lost her last two singles. What it means at Bernardus.</description>
+      <enclosure url="https://www.golfraw.com/news-2026-nelly-korda-solheim-cup-focus.webp" length="53880" type="image/webp"/>
+    </item>
+    <item>
       <title>2026 Solheim Cup Rosters Finalized: Teams &amp; Captains Picks | GOLFRAW</title>
       <link>https://www.golfraw.com/2026-solheim-cup-rosters-finalized-captains-picks</link>
       <guid isPermaLink="true">https://www.golfraw.com/2026-solheim-cup-rosters-finalized-captains-picks</guid>
@@ -134,15 +143,6 @@
       <category>SOLHEIM CUP, TOURNAMENTS, BERNARDUS GOLF, WOMENS GOLF, LADIES EUROPEAN TOUR</category>
       <description>A world No. 3 darts player, a World Cup-winning cricketer and the woman who holed the 2019 winning putt, on three holes at Bernardus. Here&#x27;s the plan.</description>
       <enclosure url="https://www.golfraw.com/public/news-bernardus-golf-first-tee-grandstands.webp" length="168508" type="image/webp"/>
-    </item>
-    <item>
-      <title>What Golf Looked Like in 1980: 4 Ads That Still Hit Hard | GOLFRAW</title>
-      <link>https://www.golfraw.com/1980-golf-ads-golf-digest-flashback</link>
-      <guid isPermaLink="true">https://www.golfraw.com/1980-golf-ads-golf-digest-flashback</guid>
-      <pubDate>Fri, 04 Sep 2026 09:00:00 +0000</pubDate>
-      <category>VINTAGE GOLF HISTORY, GOLF DIGEST, VINTAGE EQUIPMENT, JACK NICKLAUS, 1980S GOLF</category>
-      <description>One 1980 Golf Digest, four old ads, and a Jack Nicklaus comeback. Persimmon woods, a 4.52-yard shaft test and balls that &quot;beat Titleist by 12 yards.&quot; Flashback inside.</description>
-      <enclosure url="https://www.golfraw.com/public/vintage-1980-golf-digest-september-jack-nicklaus-cover.webp" length="111100" type="image/webp"/>
     </item>
   </channel>
 </rss>

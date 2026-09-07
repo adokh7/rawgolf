@@ -1,6 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.golfraw.com/nelly-korda-solheim-cup-european-drought-2026</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GOLFRAW</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-07T22:00:00Z</news:publication_date>
+      <news:title>Nelly Korda &amp; Team USA's 11-Year Solheim Cup Curse in Europe</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/2026-solheim-cup-rosters-finalized-captains-picks</loc>
     <news:news>
       <news:publication>
@@ -20,61 +31,6 @@
       </news:publication>
       <news:publication_date>2026-09-07T13:00:00Z</news:publication_date>
       <news:title>Lawrence Beats Casey in 4-Hole Playoff for 3rd Swiss Title</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/2026-european-solheim-cup-team</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-05T23:00:00+02:00</news:publication_date>
-      <news:title>The 2026 European Solheim Cup Team: 4 Rookies, 1 Home Cup</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/asian-tour-ceo-liv-golf-dp-world-tour-pivot</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-05T22:30:00+02:00</news:publication_date>
-      <news:title>Asian Tour CEO on the Pivot From LIV Golf to DP World Tour</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/grehan-comeback-stout-walker-cup-saturday-singles</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-05T22:00:00+02:00</news:publication_date>
-      <news:title>Grehan's Comeback Over Stout: 3 Down After 3, Won on 18</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/paul-casey-charity-vow-omega-european-masters</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-05T21:30:00+02:00</news:publication_date>
-      <news:title>Paul Casey's Charity Vow at the European Masters, Explained</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.golfraw.com/trump-west-palm-beach-presidential-golf-course-proposal</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GOLFRAW</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-05T09:00:00+02:00</news:publication_date>
-      <news:title>Trump's Presidential Golf Course Plan: The County Owns It</news:title>
     </news:news>
   </url>
 </urlset>
