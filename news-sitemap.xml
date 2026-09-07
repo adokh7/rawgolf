@@ -1,6 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.golfraw.com/2026-solheim-cup-rosters-finalized-captains-picks</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GOLFRAW</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-07T13:45:00+02:00</news:publication_date>
+      <news:title>2026 Solheim Cup Rosters Finalized: Teams &amp; Captains Picks</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/thriston-lawrence-omega-european-masters-2026-playoff-paul-casey</loc>
     <news:news>
       <news:publication>

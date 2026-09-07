@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 334,
+  "count": 335,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -34,6 +34,28 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/2026-solheim-cup-rosters-finalized-captains-picks",
+      "alias_of": "",
+      "slug": "2026-solheim-cup-rosters-finalized-captains-picks",
+      "url": "/2026-solheim-cup-rosters-finalized-captains-picks",
+      "title": "2026 Solheim Cup Rosters Finalized: Teams & Captains Picks | GOLFRAW",
+      "excerpt": "Full USA and Europe rosters for Bernardus Golf, how each player qualified, the pick both captains explained, and the four Europeans who missed by a few ranking spots.",
+      "category": [
+        "TOURNAMENTS",
+        "NEWS",
+        "SOLHEIM CUP",
+        "BERNARDUS GOLF",
+        "TEAM USA",
+        "TEAM EUROPE",
+        "ANGELA STANFORD",
+        "ANNA NORDQVIST"
+      ],
+      "date": "2026-09-07",
+      "image": "/news-2026-bernardus-golf-solheim-cup-course-setup.webp",
+      "keywords": "SOLHEIM CUP, BERNARDUS GOLF, TEAM USA, TEAM EUROPE, ANGELA STANFORD, ANNA NORDQVIST",
+      "section": "TOURNAMENTS"
+    },
     {
       "canonical": "/thriston-lawrence-omega-european-masters-2026-playoff-paul-casey",
       "alias_of": "",
