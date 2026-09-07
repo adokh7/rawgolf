@@ -4,9 +4,11 @@
 # image thumbnails from news and article rich results.
 
 User-agent: *
+Disallow: /search
 Allow: /
 
 User-agent: Googlebot
+Disallow: /search
 Allow: /
 
 User-agent: Googlebot-Image
