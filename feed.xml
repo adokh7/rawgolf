@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 07 Sep 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Rory McIlroy: Irish Open Will Feel &#x27;Different&#x27; With Trump Visit | GOLFRAW</title>
+      <link>https://www.golfraw.com/rory-mcilroy-trump-irish-open-doonbeg</link>
+      <guid isPermaLink="true">https://www.golfraw.com/rory-mcilroy-trump-irish-open-doonbeg</guid>
+      <pubDate>Tue, 08 Sep 2026 09:00:00 +0000</pubDate>
+      <category>TOURNAMENTS, DP WORLD TOUR, RORY MCILROY, IRISH OPEN, DOONBEG, DONALD TRUMP, COUNTY CLARE</category>
+      <description>Rory McIlroy warns of crowd limits and logistics headaches as Donald Trump visits the Irish Open at Doonbeg. Here is what fans need to know.</description>
+      <enclosure url="https://www.golfraw.com/news-2026-rory-mcilroy-amgen-irish-open-doonbeg.webp" length="87710" type="image/webp"/>
+    </item>
     <item>
       <title>Nelly Korda &amp; Team USA&#x27;s 11-Year Solheim Cup Curse in Europe | GOLFRAW</title>
       <link>https://www.golfraw.com/nelly-korda-solheim-cup-european-drought-2026</link>
@@ -134,15 +143,6 @@
       <category>LIV GOLF, JON RAHM, BUBBA WATSON, MAJOR CHAMPIONS, PGA TOUR</category>
       <description>A two-time Masters winner is reported out alongside him, and two more major champions already left this cycle. Here&#x27;s who&#x27;d actually be left in 2027.</description>
       <enclosure url="https://www.golfraw.com/public/news-jon-rahm-bubba-watson-liv-range.webp" length="69308" type="image/webp"/>
-    </item>
-    <item>
-      <title>Solheim Cup All-Star Challenge: A Darts Star Tees It Up | GOLFRAW</title>
-      <link>https://www.golfraw.com/solheim-cup-all-star-challenge-2026</link>
-      <guid isPermaLink="true">https://www.golfraw.com/solheim-cup-all-star-challenge-2026</guid>
-      <pubDate>Fri, 04 Sep 2026 09:00:00 +0000</pubDate>
-      <category>SOLHEIM CUP, TOURNAMENTS, BERNARDUS GOLF, WOMENS GOLF, LADIES EUROPEAN TOUR</category>
-      <description>A world No. 3 darts player, a World Cup-winning cricketer and the woman who holed the 2019 winning putt, on three holes at Bernardus. Here&#x27;s the plan.</description>
-      <enclosure url="https://www.golfraw.com/public/news-bernardus-golf-first-tee-grandstands.webp" length="168508" type="image/webp"/>
     </item>
   </channel>
 </rss>
