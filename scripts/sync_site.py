@@ -1129,7 +1129,7 @@ if __name__ == '__main__':
     
     # 2. Category pages — filtered by section/category
     for section, page_file in SECTION_PAGE.items():
-        filtered = [a for a in arts if get_section(a) == section or (section == 'TOURNAMENTS' and a.get('slug') == 'asian-tour-ceo-liv-golf-dp-world-tour-pivot')]
+        filtered = [a for a in arts if get_section(a) == section or (section == 'LIV GOLF' and ('LIV GOLF' in (a.get('category') if isinstance(a.get('category'), list) else [a.get('category')]))) or (section == 'TOURNAMENTS' and a.get('slug') == 'asian-tour-ceo-liv-golf-dp-world-tour-pivot')]
         if page_file in NEWS_GRID_PAGES:
             if inject_news_grid(page_file, filtered):
                 print(f"  {page_file} rebuilt: {len(filtered)} articles")
