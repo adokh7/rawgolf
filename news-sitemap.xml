@@ -1,6 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.golfraw.com/charley-hull-solheim-cup-late-arrival-drinks-denial</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GOLFRAW</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-08T20:00:00Z</news:publication_date>
+      <news:title>Charley Hull 'Drinks' Story: Mel Reid Calls It False</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/rory-mcilroy-trump-irish-open-doonbeg</loc>
     <news:news>
       <news:publication>
