@@ -36,6 +36,7 @@ SECTION_PAGE = {
     'GUIDES':      'guides.html',
     'LIV GOLF':    'liv-golf.html',
     'PGA TOUR':    'pga-tour.html',
+    'PLAYERS':     'players.html',
     'TOURNAMENTS': 'tournaments.html',
     'VINTAGE GOLF HISTORY': 'vintage-golf-history.html',
 }
@@ -44,7 +45,7 @@ SECTION_PAGE = {
 NEWS_GRID_PAGES = {'news.html', 'liv-golf.html'}
 
 # Pages that use the guide-grid card format (a.guide-card)
-GUIDE_GRID_PAGES = {'pga-tour.html', 'guides.html', 'tournaments.html', 'vintage-golf-history.html'}
+GUIDE_GRID_PAGES = {'pga-tour.html', 'guides.html', 'tournaments.html', 'vintage-golf-history.html', 'players.html'}
 
 # Keep the homepage useful as a crawl hub without turning it into a complete
 # archive. Priority URLs are guaranteed a slot even when they fall outside the
@@ -62,6 +63,7 @@ HOMEPAGE_END = '<!-- END HOMEPAGE ARTICLE FEED -->'
 # self-canonical indexable page cannot be silently omitted just because it was
 # not added to this ordering list.
 STATIC = ['/', '/news', '/guides', '/liv-golf', '/pga-tour', '/tournaments',
+          '/players',
           '/vault', '/ratings', '/tools', '/analysis', '/about', '/contact',
           '/corrections', '/full-board', '/manifesto', '/past-issues',
           '/privacy', '/ratings-manual', '/terms', '/the-card',
@@ -1129,7 +1131,7 @@ if __name__ == '__main__':
     
     # 2. Category pages — filtered by section/category
     for section, page_file in SECTION_PAGE.items():
-        filtered = [a for a in arts if get_section(a) == section or (section == 'LIV GOLF' and ('LIV GOLF' in (a.get('category') if isinstance(a.get('category'), list) else [a.get('category')]))) or (section == 'TOURNAMENTS' and a.get('slug') == 'asian-tour-ceo-liv-golf-dp-world-tour-pivot')]
+        filtered = [a for a in arts if get_section(a) == section or (section == 'LIV GOLF' and ('LIV GOLF' in (a.get('category') if isinstance(a.get('category'), list) else [a.get('category')]))) or (section == 'PGA TOUR' and ('PGA TOUR' in (a.get('category') if isinstance(a.get('category'), list) else [a.get('category')]))) or (section == 'PLAYERS' and ('PLAYERS' in (a.get('category') if isinstance(a.get('category'), list) else [a.get('category')]))) or (section == 'TOURNAMENTS' and a.get('slug') == 'asian-tour-ceo-liv-golf-dp-world-tour-pivot')]
         if page_file in NEWS_GRID_PAGES:
             if inject_news_grid(page_file, filtered):
                 print(f"  {page_file} rebuilt: {len(filtered)} articles")

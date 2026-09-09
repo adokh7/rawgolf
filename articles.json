@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 344,
+  "count": 345,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -12,6 +12,7 @@
     "LPGA TOUR",
     "NEWS",
     "PGA TOUR",
+    "PLAYERS",
     "SOLHEIM CUP",
     "TOURNAMENTS",
     "VINTAGE GOLF HISTORY",
@@ -28,12 +29,34 @@
     "LPGA TOUR",
     "NEWS",
     "PGA TOUR",
+    "PLAYERS",
     "SOLHEIM CUP",
     "TOURNAMENTS",
     "VINTAGE GOLF HISTORY",
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/rory-mcilroy-scottie-scheffler-legend",
+      "alias_of": "",
+      "slug": "rory-mcilroy-scottie-scheffler-legend",
+      "url": "/rory-mcilroy-scottie-scheffler-legend",
+      "title": "Scottie Scheffler vs Rory McIlroy: Why Rory's Legend Is Bigger | GOLFRAW",
+      "excerpt": "Scheffler has broken Tiger Woods' earnings record. Here is the exact reason, in polling and in his own words, why Rory McIlroy is the bigger legend.",
+      "category": [
+        "PLAYERS",
+        "PGA TOUR",
+        "RORY MCILROY",
+        "SCOTTIE SCHEFFLER",
+        "TIGER WOODS",
+        "MASTERS",
+        "FEDEX CUP"
+      ],
+      "date": "2026-09-09",
+      "image": "/news-2026-rory-mcilroy-vs-scottie-scheffler-legend.webp",
+      "keywords": "RORY MCILROY, SCOTTIE SCHEFFLER, PGA TOUR, TIGER WOODS, MASTERS, FEDEX CUP",
+      "section": "PLAYERS"
+    },
     {
       "canonical": "/rory-mcilroy-liv-bankruptcy-dp-world-tour",
       "alias_of": "",
