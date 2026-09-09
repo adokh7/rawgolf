@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 343,
+  "count": 344,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -34,6 +34,27 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/rory-mcilroy-liv-bankruptcy-dp-world-tour",
+      "alias_of": "",
+      "slug": "rory-mcilroy-liv-bankruptcy-dp-world-tour",
+      "url": "/rory-mcilroy-liv-bankruptcy-dp-world-tour",
+      "title": "Rory McIlroy: LIV Bankruptcy Will Benefit DP World Tour | GOLFRAW",
+      "excerpt": "Following LIV Golf's Chapter 11 bankruptcy, Rory McIlroy says an exodus of players is \"inevitable\" and will ultimately benefit the DP World Tour.",
+      "category": [
+        "NEWS",
+        "LIV GOLF",
+        "RORY MCILROY",
+        "CHAPTER 11",
+        "DP WORLD TOUR",
+        "BANKRUPTCY",
+        "DOONBEG"
+      ],
+      "date": "2026-09-09",
+      "image": "/news-2026-rory-mcilroy-doonbeg-press-conference-liv-bankruptcy.webp",
+      "keywords": "RORY MCILROY, LIV GOLF, CHAPTER 11, DP WORLD TOUR, BANKRUPTCY, DOONBEG",
+      "section": "NEWS"
+    },
     {
       "canonical": "/mcilroy-keep-heads-down-trump-irish-open-doonbeg",
       "alias_of": "",

@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 08 Sep 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Rory McIlroy: LIV Bankruptcy Will Benefit DP World Tour | GOLFRAW</title>
+      <link>https://www.golfraw.com/rory-mcilroy-liv-bankruptcy-dp-world-tour</link>
+      <guid isPermaLink="true">https://www.golfraw.com/rory-mcilroy-liv-bankruptcy-dp-world-tour</guid>
+      <pubDate>Wed, 09 Sep 2026 09:00:00 +0000</pubDate>
+      <category>NEWS, LIV GOLF, RORY MCILROY, CHAPTER 11, DP WORLD TOUR, BANKRUPTCY, DOONBEG</category>
+      <description>Following LIV Golf&#x27;s Chapter 11 bankruptcy, Rory McIlroy says an exodus of players is &quot;inevitable&quot; and will ultimately benefit the DP World Tour.</description>
+      <enclosure url="https://www.golfraw.com/news-2026-rory-mcilroy-doonbeg-press-conference-liv-bankruptcy.webp" length="77364" type="image/webp"/>
+    </item>
     <item>
       <title>McIlroy: &#x27;We&#x27;ll Keep Our Heads Down and Play&#x27; During Trump Visit | GOLFRAW</title>
       <link>https://www.golfraw.com/mcilroy-keep-heads-down-trump-irish-open-doonbeg</link>
@@ -134,15 +143,6 @@
       <category>TOURNAMENTS, DP WORLD TOUR, PAUL CASEY, CRANS-SUR-SIERRE, OMEGA EUROPEAN MASTERS</category>
       <description>He shot 29 on the front nine, leads by three, and pledged every dollar of Sunday&#x27;s cheque to the Crans-Montana fire victims. The whole picture.</description>
       <enclosure url="https://www.golfraw.com/public/news-2026-paul-casey-crans-sur-sierre-charity-vow.webp" length="85508" type="image/webp"/>
-    </item>
-    <item>
-      <title>Best Black Friday Golf Deals 2026: What Drops, What to Skip | GOLFRAW</title>
-      <link>https://www.golfraw.com/best-black-friday-golf-deals</link>
-      <guid isPermaLink="true">https://www.golfraw.com/best-black-friday-golf-deals</guid>
-      <pubDate>Sat, 05 Sep 2026 09:00:00 +0000</pubDate>
-      <category>GEAR, BUYING GUIDES, BLACK FRIDAY, DRIVERS, RANGEFINDERS</category>
-      <description>Which golf clubs actually drop on Black Friday, why last year&#x27;s driver isn&#x27;t worse, and the one USGA check before you buy anything discounted.</description>
-      <enclosure url="https://www.golfraw.com/public/gear-best-black-friday-golf-deals-hero.webp" length="240368" type="image/webp"/>
     </item>
   </channel>
 </rss>

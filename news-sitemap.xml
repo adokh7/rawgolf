@@ -1,6 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.golfraw.com/rory-mcilroy-liv-bankruptcy-dp-world-tour</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GOLFRAW</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-09T14:30:00Z</news:publication_date>
+      <news:title>Rory McIlroy: LIV Bankruptcy Will Benefit DP World Tour</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/mcilroy-keep-heads-down-trump-irish-open-doonbeg</loc>
     <news:news>
       <news:publication>
