@@ -1,0 +1,318 @@
+/* ==========================================================================
+   GOLFRAW — "Golf Vibe" theme layer  (green & white)
+   --------------------------------------------------------------------------
+   Loaded AFTER each page's inline shell CSS, so it wins the cascade. Every
+   shell generation defines its palette through custom properties; this file
+   re-points those tokens, then overrides the handful of rules that hardcode a
+   colour or a red accent. Removing the THEME block from <head> restores the
+   original design in full.
+
+   Palette
+     forest   #0F3D2E  deep clubhouse green — headings, dark surfaces, pills
+     deep     #0A2A20  darkest green — footer, newsletter, dark panels
+     green    #1F7A45  vibrant green — links, CTAs, accents  (white on it 5.3:1)
+     bright   #2FB35C  rings / indicators only, never body text
+     canvas   #F5F8F4  turf off-white page ground
+     ink      #0E1F17  green-black text
+     muted    #5B6B60  secondary text (5.7:1 on white)
+     line     #D9E0DA / #C3CDC5  slate-green borders
+     amber    #A85F06  the one non-green: semantic caution/negative, replaces
+                       red where red meant "warning", not "brand"
+   ========================================================================== */
+
+html:root {
+  --gr-forest: #0F3D2E;
+  --gr-deep: #0A2A20;
+  --gr-green: #1F7A45;
+  --gr-bright: #2FB35C;
+  --gr-canvas: #F5F8F4;
+  --gr-white: #FFFFFF;
+  --gr-ink: #0E1F17;
+  --gr-muted: #5B6B60;
+  --gr-line: #D9E0DA;
+  --gr-line-strong: #C3CDC5;
+  --gr-soft: #E6F1E9;
+  --gr-amber: #A85F06;
+  --gr-amber-soft: #FFF4DD;
+  --gr-ease: cubic-bezier(.2, .7, .2, 1);
+
+  /* ---- re-point every shell generation's tokens ---- */
+  --flag: var(--gr-green);
+  --fairway: var(--gr-forest);
+  --fairway-deep: var(--gr-deep);
+  --paper: var(--gr-canvas);
+  --white: var(--gr-white);
+  --ink: var(--gr-ink);
+  --grey: var(--gr-muted);
+  --green: var(--gr-green);
+  --positive: var(--gr-green);
+  --positive-soft: var(--gr-soft);
+  --soft-green: var(--gr-soft);
+  --forest: var(--gr-forest);
+  --forest-strong: var(--gr-deep);
+  --forest-soft: var(--gr-soft);
+  --deep: var(--gr-deep);
+  --focus: var(--gr-green);
+  --canvas: var(--gr-canvas);
+  --muted: var(--gr-muted);
+  --soft: var(--gr-soft);
+  --accent: var(--gr-forest);
+  --accent-deep: var(--gr-deep);
+  --wash: var(--gr-soft);
+  --red: var(--gr-amber);
+  --caution: var(--gr-amber);
+  --caution-soft: var(--gr-amber-soft);
+}
+
+/* ==========================================================================
+   TYPOGRAPHY — Fraunces (serif, optical sizing) for editorial headlines and
+   deks; Archivo stays for body and UI; IBM Plex Mono stays for labels.
+   ========================================================================== */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/public/fonts/fraunces-var.woff2') format('woff2');
+}
+
+body {
+  background: var(--gr-canvas);
+  color: var(--gr-ink);
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2,
+.article-head h1, .article-body h2, .hub-hero h1, .doc-hero h1,
+.standfirst, .dek, blockquote.pull {
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-optical-sizing: auto;
+}
+h1, .article-head h1, .hub-hero h1, .doc-hero h1 {
+  font-weight: 700;
+  letter-spacing: -.022em;
+  line-height: 1.04;
+  text-transform: none;
+  font-variation-settings: "opsz" 144;
+  text-wrap: balance;
+}
+.article-head h1 { font-size: clamp(32px, 4.6vw, 56px); margin-bottom: 20px; }
+h2, .article-body h2 {
+  font-weight: 650;
+  letter-spacing: -.012em;
+  line-height: 1.14;
+  text-transform: none;
+  font-variation-settings: "opsz" 72;
+  text-wrap: balance;
+}
+.article-body h2 {
+  font-size: clamp(24px, 2.9vw, 32px);
+  border-top: 1px solid var(--gr-line-strong);
+  padding-top: 24px;
+  margin: 46px 0 16px;
+}
+.article-body h3 { font-family: 'Archivo', system-ui, sans-serif; font-weight: 800; letter-spacing: -.01em; }
+.article-body h3::before { color: var(--gr-green); }
+.standfirst, .dek {
+  font-weight: 400;
+  font-size: clamp(18px, 2.4vw, 21px);
+  line-height: 1.5;
+  letter-spacing: -.005em;
+  color: var(--gr-muted);
+  font-variation-settings: "opsz" 24;
+}
+.article-body { font-size: 17.5px; line-height: 1.72; }
+.article-body p { margin-bottom: 22px; }
+.article-body a { color: var(--gr-green); text-decoration: underline; text-decoration-color: var(--gr-line-strong); text-underline-offset: 3px; text-decoration-thickness: 1.5px; transition: text-decoration-color .2s, color .2s; }
+.article-body a:hover { text-decoration-color: var(--gr-green); color: var(--gr-forest); }
+blockquote.pull {
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: -.008em;
+  border: 1px solid var(--gr-line-strong);
+  border-left: 8px solid var(--gr-green);
+  border-radius: 0 12px 12px 0;
+  font-variation-settings: "opsz" 48;
+}
+
+/* ==========================================================================
+   BRAND — wordmark in forest + vibrant green with a flag mark
+   ========================================================================== */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--gr-forest);
+  font-family: 'Archivo', system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -.045em;
+  text-transform: uppercase;
+  line-height: 1;
+  transform-origin: left center;
+  transition: transform .3s var(--gr-ease), color .2s;
+}
+.logo::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%230F3D2E'/><path d='M9.2 5.2v13.1' stroke='%23fff' stroke-width='1.8' stroke-linecap='round'/><path d='M10 5.4l7.2 2.6-7.2 2.7z' fill='%232FB35C'/><circle cx='9.2' cy='19.1' r='2.2' fill='%23fff'/></svg>") center / contain no-repeat;
+  border-radius: 6px;
+}
+.logo .raw, .logo > span { color: var(--gr-green); }
+.logo .tag { color: var(--gr-muted); }
+.f-logo .raw { color: var(--gr-green); }
+.gr-scrolled .logo { transform: scale(.92); }
+@media (max-width: 760px) {
+  .logo { font-size: 22px; gap: 7px; }
+  .logo::before { width: 21px; height: 21px; }
+}
+
+/* ==========================================================================
+   HEADER — sticky bar gains blur + elevation once the page scrolls.
+   Height never changes (transform-only compaction), so there is no CLS.
+   ========================================================================== */
+.site-header, body > header, .board-header {
+  background: rgba(245, 248, 244, .96);
+  border-bottom: 1px solid var(--gr-line-strong);
+  transition: background .3s, box-shadow .3s, border-color .3s;
+}
+.gr-scrolled .site-header, .gr-scrolled body > header, .gr-scrolled .board-header {
+  background: rgba(245, 248, 244, .84);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  backdrop-filter: saturate(160%) blur(12px);
+  box-shadow: 0 8px 26px rgba(14, 31, 23, .09), 0 1px 0 rgba(14, 31, 23, .04);
+  border-bottom-color: transparent;
+}
+.nav-links a {
+  border-radius: 8px;
+  color: var(--gr-forest);
+  transition: background-color .2s, color .2s, transform .2s var(--gr-ease);
+}
+.nav-links a:hover, .nav-links a:focus-visible { background: var(--gr-forest); color: #fff; }
+.nav-links a.hot { background: var(--gr-green); color: #fff; }
+.burger { border-color: var(--gr-forest); border-radius: 8px; transition: background-color .2s, transform .2s var(--gr-ease); }
+.burger span { background: var(--gr-forest); }
+.burger:hover { background: var(--gr-soft); }
+@media (max-width: 760px) {
+  .nav-links { background: rgba(245, 248, 244, .98); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+  .nav-links a { border-top-color: var(--gr-line); border-radius: 0; }
+}
+
+/* ==========================================================================
+   PURGE RED — the rules that used the red accent for meaning, re-pointed
+   ========================================================================== */
+.crumbs a { color: var(--gr-green); }
+.article-head .cat, .cat.pill {
+  background: var(--gr-forest);
+  color: #fff;
+  border-radius: 999px;
+  padding: 6px 12px;
+  letter-spacing: .14em;
+}
+.badge-red, .badge.badge-red { background: var(--gr-green); color: #fff; }
+.byline .live-upd { color: var(--gr-green); }
+.ticker { border-bottom-color: var(--gr-green); }
+.sec-head { border-bottom: 2px solid var(--gr-forest); }
+.hub-hero { border-bottom-color: var(--gr-forest); }
+.hub-hero .eyebrow, .eyebrow, .vc-eyebrow, .ab-tag, .panel-head .step, .fc-n { color: var(--gr-green); }
+.rel-card .cat, .aside-item .mono, .coming-soon-box .cs-label { color: var(--gr-green); }
+.aside-item:hover, .rel-card:hover h3, .guide-card:hover h3, .story:hover h3 { text-decoration-color: var(--gr-green); }
+input:focus, select:focus, textarea:focus { outline-color: var(--gr-green); }
+/* semantic negatives: red meant "warning" here, so they become amber, not green */
+html .gr-lk-btn.danger { color: var(--gr-amber); border-color: #E8D2AE; }
+html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background: var(--gr-amber); color: #fff; border-color: var(--gr-amber); }
+.err { border-color: var(--gr-amber); }
+.tally b.warn { color: var(--gr-amber); }
+.stat-cell .n.red { color: #F2C078; }
+.verify { border-color: var(--gr-amber); background: var(--gr-amber-soft); }
+
+/* ==========================================================================
+   SURFACES, CARDS, BUTTONS
+   ========================================================================== */
+.site-footer { background: var(--gr-deep); color: #A7BBAF; border-top: 4px solid var(--gr-green); }
+.site-footer a:hover { color: #fff; }
+.newsletter-section {
+  background-color: var(--gr-deep) !important;
+  border-left-color: var(--gr-green) !important;
+  border-radius: 0 14px 14px 0;
+}
+#rawgolf-newsletter-form button {
+  background-color: var(--gr-green) !important;
+  transition: background-color .2s, transform .2s var(--gr-ease), box-shadow .25s var(--gr-ease) !important;
+}
+#rawgolf-newsletter-form button:hover { background-color: var(--gr-bright) !important; }
+#rawgolf-newsletter-form input { border-radius: 8px 0 0 8px !important; }
+#rawgolf-newsletter-form button { border-radius: 0 8px 8px 0 !important; }
+
+.guide-card, .news-grid > article, .news-grid > a, .story, .tool-card, .rel-card, .r-card,
+.coverage-card, .aside-box, .takeaways, .pcard, .myth, .faq-item, .vault-item, .evidence-item {
+  transition: transform .3s var(--gr-ease), box-shadow .3s var(--gr-ease), background-color .2s, border-color .2s;
+}
+.guide-card, .aside-box, .takeaways, .pcard, .myth, .coverage-card { border-color: var(--gr-line-strong); border-radius: 12px; background: var(--gr-white); }
+.guide-card:hover, .tool-card:hover, .coverage-card:hover, .pcard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(15, 61, 46, .10), 0 2px 6px rgba(15, 61, 46, .05);
+}
+.guide-card:hover { border-color: var(--gr-green); }
+.tool-card:hover { background: #12362A; }
+.rel-card:hover, .story:hover, .aside-item:hover { background: var(--gr-soft); }
+.aside-box .ab-head { background: var(--gr-forest); border-radius: 10px 10px 0 0; }
+.aside-item { border-bottom-color: var(--gr-line); transition: background-color .2s, padding-left .2s var(--gr-ease); }
+.aside-item:hover { padding-left: 22px; text-decoration: none; }
+.card-thumb { border-radius: 10px 10px 0 0; }
+.lead-img > img, figure.lead-img img, figure.inline-fig img { border-color: var(--gr-line-strong); border-radius: 12px; }
+.lead-img figcaption, figure figcaption { color: var(--gr-muted); }
+
+.btn, .card-cta, .pcta, .cs-back, a.button, button.button, button[type="submit"] {
+  transition: color .2s, background-color .2s, border-color .2s,
+              transform .25s var(--gr-ease), box-shadow .25s var(--gr-ease);
+  will-change: transform;
+}
+.btn:hover, .card-cta:hover, .pcta:hover, a.button:hover, button.button:hover, button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(15, 61, 46, .18);
+  background: var(--gr-green);
+  border-color: var(--gr-green);
+  color: #fff;
+}
+.btn:active, .card-cta:active, .pcta:active, a.button:active, button.button:active, button[type="submit"]:active,
+#rawgolf-newsletter-form button:active {
+  transform: translateY(0) scale(.98) !important;
+  box-shadow: 0 2px 6px rgba(15, 61, 46, .16) !important;
+  transition-duration: .08s !important;
+}
+.pcta { background: var(--gr-green); border-color: var(--gr-forest); border-radius: 10px; }
+.pcta:hover { background: var(--gr-forest); }
+.pcard-kicker, .takeaways .section-label, .verify .section-label, .sourcing .section-label { color: var(--gr-green); }
+.verdict-box, .raw-verdict, .related { background: var(--gr-forest); border-left-color: var(--gr-bright); border-radius: 0 14px 14px 0; }
+.lead-stat { background: var(--gr-deep); border-left-color: var(--gr-bright); border-radius: 0 12px 12px 0; }
+.myth { border-left-color: var(--gr-green); }
+.aff-disclosure { border-left-color: var(--gr-green); }
+.cmp-scroll thead th, .table-wrap thead th, .table-container thead th { background: var(--gr-forest); }
+
+:focus-visible { outline: 3px solid var(--gr-bright); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--gr-soft); color: var(--gr-forest); }
+
+/* ==========================================================================
+   SCROLL REVEALS — opacity/transform only, so nothing shifts layout.
+   Hidden state applies only once JS has run (html.gr-js); no-JS readers and
+   crawlers always see everything. A 2.5s fallback in <head> forces
+   everything visible if the observer script never arrives.
+   ========================================================================== */
+.gr-js .gr-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .55s var(--gr-ease), transform .55s var(--gr-ease);
+  transition-delay: calc(var(--gr-i, 0) * 55ms);
+  will-change: opacity, transform;
+}
+.gr-js .gr-reveal.is-in, .gr-reveal-all .gr-reveal { opacity: 1; transform: none; }
+.gr-js .gr-reveal.is-in { will-change: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .gr-reveal, .gr-js .gr-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .site-header, .logo, .btn, .card-cta, .pcta, .guide-card, .tool-card, .aside-item, .nav-links a, button { transition: none !important; }
+  .guide-card:hover, .tool-card:hover, .btn:hover, .card-cta:hover, .pcta:hover { transform: none !important; }
+}

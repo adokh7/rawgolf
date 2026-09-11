@@ -470,3 +470,25 @@ Vercel calls `/api/cron/weekly?template=field` every Monday at 09:00 UTC
 
 Writes both templates as `.html` and `.txt` to `.email-preview/` (gitignored).
 No credentials, no network, nothing sent.
+
+## The "Golf Vibe" theme layer (`apply_theme.py`)
+
+The site's colour, type and motion live in one global layer rather than in
+the per-page inline shells:
+
+- `public/theme-golf.css` — palette tokens (re-pointing every shell
+  generation's custom properties to the green/white system), Fraunces
+  editorial headlines, brand wordmark, header elevation, card/button motion,
+  scroll-reveal styles. Loaded after each page's inline CSS so it wins.
+- `public/theme-golf.js` — header `gr-scrolled` toggle and IntersectionObserver
+  reveals. Progressive enhancement only.
+- `public/fonts/fraunces-var.woff2` — self-hosted (SIL OFL), latin subset.
+
+`python3 scripts/apply_theme.py` injects the managed `<!-- THEME:START/END -->`
+block before `</head>` on every page and rewrites red literals that sit outside
+the token system (brand red → green accent, warning red → amber). Idempotent;
+`--check` reports without writing. **Bump `THEME_VER`** whenever the CSS or JS
+changes — `.css`/`.js` are served with an immutable one-year cache.
+
+To restore the original design: `git checkout backup/original-version`, or
+remove the THEME block and revert the literal rewrites from that branch.

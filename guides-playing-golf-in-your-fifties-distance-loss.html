@@ -108,7 +108,7 @@
     :root {
       --fairway: #14402A;
       --fairway-deep: #0B2418;
-      --flag: #E03E2D;
+      --flag: #1F7A45;
       --paper: #F3F4F0;
       --white: #fff;
       --ink: #101511;
@@ -458,7 +458,7 @@
     }
 
     .stat-cell .n.red {
-      color: #FF9486
+      color: #F2C078
     }
 
     .stat-cell .l {
@@ -768,6 +768,12 @@
   ]
 }
   </script>
+<!-- THEME:START -->
+  <link rel="preload" href="/public/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/public/theme-golf.css?v=3">
+  <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
+  <script src="/public/theme-golf.js?v=3" defer></script>
+<!-- THEME:END -->
 </head>
 
 <body>
@@ -919,13 +925,13 @@
 
   
   <!-- START NEWSLETTER SECTION -->
-  <div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #111; color: #fff; text-align: left; border-left: 8px solid #cc0000;">
+  <div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #111; color: #fff; text-align: left; border-left: 8px solid #1F7A45;">
       <h2 style="font-family: 'Archivo', sans-serif; text-transform: uppercase; font-weight: 900; font-size: 32px; margin-bottom: 10px; color: #fff;">THE STORIES THE GOLF MEDIA WON'T PUBLISH</h2>
       <p style="font-family: 'Archivo', sans-serif; color: #aaa; font-size: 16px; margin-bottom: 30px;">Every Friday, we drop <strong>The Card</strong>: Unfiltered player ratings, tour leaks, and the exact stories PR reps tried to kill. Join the inner circle. No spam, just the raw truth.</p>
     
       <form id="rawgolf-newsletter-form" style="display: flex; gap: 0; width: 100%; max-width: 600px; flex-wrap: wrap;">
           <input type="email" id="rawgolf-email" placeholder="you@email.com" required style="flex: 1; padding: 18px; border: none; font-family: 'Archivo', sans-serif; font-size: 16px; background: #fff; color: #111; outline: none; border-radius: 0; min-width: 250px;">
-          <button type="submit" style="background-color: #cc0000; color: #fff; border: none; padding: 18px 40px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; border-radius: 0;">✓ SIGNED</button>
+          <button type="submit" style="background-color: #1F7A45; color: #fff; border: none; padding: 18px 40px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; border-radius: 0;">✓ SIGNED</button>
       </form>
       <p id="rawgolf-form-message" style="display: none; font-family: 'Archivo', sans-serif; margin-top: 15px; font-weight: bold; color: #fff;"></p>
     
@@ -959,7 +965,7 @@
           .catch(function(err) {
               btn.innerText = '✓ SIGNED';
               messageEl.style.display = 'block';
-              messageEl.style.color = '#cc0000';
+              messageEl.style.color = '#A85F06';
               messageEl.innerText = 'Error connecting. Please try again.';
           });
       });

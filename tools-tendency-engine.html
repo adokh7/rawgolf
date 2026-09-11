@@ -125,7 +125,7 @@
     :root {
       --fairway: #14402A;
       --fairway-deep: #0B2418;
-      --flag: #E03E2D;
+      --flag: #1F7A45;
       --paper: #F3F4F0;
       --white: #fff;
       --ink: #101511;
@@ -240,7 +240,7 @@
     .vc-sub b { color: #fff }
 
     .badge-strip { border: 1px solid rgba(255,255,255,.18); padding: 20px; margin-bottom: 24px; text-align: center }
-    .badge-strip .bs-badge { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(13px, 3.1vw, 18px); letter-spacing: .06em; line-height: 1.5; color: #FF9486; text-transform: uppercase }
+    .badge-strip .bs-badge { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(13px, 3.1vw, 18px); letter-spacing: .06em; line-height: 1.5; color: #F2C078; text-transform: uppercase }
     .badge-strip .bs-badge.clean { color: #6FDB9A }
     .counts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.15); margin-top: 18px; padding-top: 16px }
     .counts div { text-align: center; border-right: 1px solid rgba(255,255,255,.12) }
@@ -254,13 +254,13 @@
     .ladder-lab { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: #8b958d; margin-bottom: 16px; display: block }
     .lad-row { display: grid; grid-template-columns: 92px 1fr 58px; gap: 10px; align-items: center; padding: 3px 0 }
     .lad-row .ln { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #d8ded6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
-    .lad-row .ln.dead { color: #FF9486; text-decoration: line-through }
+    .lad-row .ln.dead { color: #F2C078; text-decoration: line-through }
     .lad-row .lb { height: 13px; background: #4a5a4f; min-width: 3px }
     .lad-row .lb.dead { background: var(--flag) }
     .lad-row .ly { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b958d; text-align: right }
     .gap-row { display: grid; grid-template-columns: 92px 1fr 58px; gap: 10px; align-items: center; padding: 1px 0 }
     .gap-row .gtxt { grid-column: 2 / 4; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; padding-left: 2px }
-    .gap-row.hole .gtxt { color: #FF9486 }
+    .gap-row.hole .gtxt { color: #F2C078 }
     .gap-row.overlap .gtxt { color: #FFC97A }
     .lad-key { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.12); font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: #8b958d }
     .lad-key span { display: flex; align-items: center; gap: 6px }
@@ -472,6 +472,12 @@
     }
   </style>
   <link rel="stylesheet" href="/public/tool-premium.css?v=2">
+<!-- THEME:START -->
+  <link rel="preload" href="/public/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/public/theme-golf.css?v=3">
+  <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
+  <script src="/public/theme-golf.js?v=3" defer></script>
+<!-- THEME:END -->
 </head>
 <body>
   <!-- impeccable:direction 9a45384d | Tour Intelligence: warm zinc canvas, tournament green actions, white elevated work surfaces, quiet borders, editorial Archivo, numerical Plex Mono. Enter quickly, see state clearly, understand the result, keep it privately. Unreviewed and undocumented is unfinished. -->
@@ -944,7 +950,7 @@
       for (var k = 0; k < pts.length; k++) {
         var last = k === pts.length - 1;
         p.push('<circle cx="' + sx(k).toFixed(1) + '" cy="' + sy(pts[k]).toFixed(1) + '" r="' +
-          (last ? 5 : 3.5) + '" fill="' + (last ? '#E03E2D' : '#101511') + '"/>');
+          (last ? 5 : 3.5) + '" fill="' + (last ? '#A85F06' : '#101511') + '"/>');
       }
       /* end labels only: a value per point is unreadable at this width */
       p.push('<text x="' + padL + '" y="' + (H - 8) + '" font-size="9.5" fill="#5B665E" ' +
@@ -983,7 +989,7 @@
       for (var c = 0; c < cats.length; c++) {
         var y = padT + c * rowH + rowH / 2, v = cats[c].v;
         var x = v >= 0 ? mid : sx(v), w = Math.max(2, Math.abs(sx(v) - mid));
-        var fill = v >= 0 ? '#14402A' : '#E03E2D';
+        var fill = v >= 0 ? '#14402A' : '#A85F06';
         p.push('<rect x="' + x.toFixed(1) + '" y="' + (y - 9) + '" width="' + w.toFixed(1) +
           '" height="18" fill="' + fill + '" fill-opacity="0.85"/>');
         p.push('<text x="' + (labelW - 10) + '" y="' + (y + 4) + '" font-size="11" fill="#101511" ' +

@@ -216,7 +216,7 @@
     :root {
       --fairway: #14402A;
       --fairway-deep: #0B2418;
-      --flag: #E03E2D;
+      --flag: #1F7A45;
       --paper: #F3F4F0;
       --white: #fff;
       --ink: #101511;
@@ -338,11 +338,11 @@
     .swap .side { padding: 24px 14px; text-align: center }
     .swap .side .l { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: #8b958d; display: block; margin-bottom: 10px }
     .swap .side .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(40px, 11vw, 64px); line-height: 1; color: #d8ded6 }
-    .swap .side.real .n { color: #FF9486 }
+    .swap .side.real .n { color: #F2C078 }
     .swap .side.real.clean .n { color: #6FDB9A }
     .swap .arrow { text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 24px; color: var(--flag); border-left: 1px solid rgba(255,255,255,.18); border-right: 1px solid rgba(255,255,255,.18); align-self: stretch; display: flex; align-items: center; justify-content: center }
     .tier-badge { text-align: center; border: 1px solid rgba(255,255,255,.18); border-top: none; padding: 14px 12px; margin: -22px 0 22px }
-    .tier-badge .t { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(12px, 3vw, 16px); letter-spacing: .14em; text-transform: uppercase; color: #FF9486 }
+    .tier-badge .t { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(12px, 3vw, 16px); letter-spacing: .14em; text-transform: uppercase; color: #F2C078 }
     .tier-badge .t.clean { color: #6FDB9A }
     .tier-badge .p { font-size: 14px; color: #d8ded6; margin-top: 7px }
 
@@ -357,15 +357,15 @@
     .brk-row.none { opacity: .4 }
     .brk-row .k { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #fff }
     .brk-row .v { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #d8ded6 }
-    .brk-row .v.cost { color: #FF9486; font-weight: 700 }
+    .brk-row .v.cost { color: #F2C078; font-weight: 700 }
     .brk-row .v.cost.zero { color: #8b958d; font-weight: 400 }
     .brk-tot { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 13px 14px; background: rgba(255,255,255,.06); border-top: 1px solid rgba(255,255,255,.18) }
     .brk-tot .k { font-weight: 800; font-size: 14px }
-    .brk-tot .v { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 17px; color: #FF9486 }
+    .brk-tot .v { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 17px; color: #F2C078 }
     .brk-tot .v.zero { color: #6FDB9A }
 
     /* ============ THE CHAIN CTA ============ */
-    .chain { border: 2px solid var(--flag); background: rgba(224,62,45,.10); padding: 20px 18px; margin-bottom: 26px }
+    .chain { border: 2px solid var(--flag); background: rgba(31,122,69,.10); padding: 20px 18px; margin-bottom: 26px }
     .chain .c-lab { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 8px }
     .chain h3 { font-size: 19px; line-height: 1.2; margin-bottom: 8px; color: #fff; font-weight: 800 }
     .chain p { font-size: 13.5px; color: #d8ded6; line-height: 1.55; margin-bottom: 14px }
@@ -459,6 +459,12 @@
   ]
 }
   </script>
+<!-- THEME:START -->
+  <link rel="preload" href="/public/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/public/theme-golf.css?v=3">
+  <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
+  <script src="/public/theme-golf.js?v=3" defer></script>
+<!-- THEME:END -->
 </head>
 
 <body>

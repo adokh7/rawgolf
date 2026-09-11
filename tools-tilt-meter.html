@@ -216,7 +216,7 @@
     :root {
       --fairway: #14402A;
       --fairway-deep: #0B2418;
-      --flag: #E03E2D;
+      --flag: #1F7A45;
       --paper: #F3F4F0;
       --white: #fff;
       --ink: #101511;
@@ -326,7 +326,7 @@
 
     /* the index dial */
     .dial { border: 1px solid rgba(255,255,255,.18); padding: 26px 20px; text-align: center; margin-bottom: 24px }
-    .dial .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(46px, 13vw, 84px); line-height: 1; color: #FF9486 }
+    .dial .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(46px, 13vw, 84px); line-height: 1; color: #F2C078 }
     .dial .n.cool { color: #6FDB9A }
     .dial .n .of { font-size: .34em; color: #8b958d; letter-spacing: .04em }
     .dial .tier { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: #fff; margin-top: 14px; display: block; font-weight: 700 }
@@ -341,7 +341,7 @@
     .strip .col { flex: 1 1 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; height: 100%; position: relative }
     .strip .bar { background: #4a5a4f; min-height: 3px; transition: none}
     .strip .col.good .bar { background: #6FDB9A }
-    .strip .col.bad .bar { background: #FF9486 }
+    .strip .col.bad .bar { background: #F2C078 }
     .strip .col.blow .bar { background: var(--flag); box-shadow: 0 0 0 1px #fff }
     .strip .col.win .bar { background: #FFC7BF }
     .strip .col.empty .bar { background: rgba(255,255,255,.08) }
@@ -359,7 +359,7 @@
     .brk-row .k { font-size: 14px; color: #d8ded6 }
     .brk-row .k small { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8b958d; letter-spacing: .06em; margin-top: 2px }
     .brk-row .v { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 16px; white-space: nowrap }
-    .v.plus { color: #FF9486 }
+    .v.plus { color: #F2C078 }
     .v.minus { color: #6FDB9A }
     .v.zero { color: #8b958d }
 
@@ -367,7 +367,7 @@
     .bench { border-left: 1px solid #6FDB9A; padding: 12px 0 12px 14px; margin-bottom: 26px; font-size: 14.5px; color: #d8ded6; line-height: 1.55 }
     .bench b { color: #6FDB9A }
     .bench.cold { border-left-color: var(--flag) }
-    .bench.cold b { color: #FF9486 }
+    .bench.cold b { color: #F2C078 }
 
     .vc-foot { border-top: 1px solid rgba(255,255,255,.15); margin: 0 -26px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
     .vc-foot .mark { font-weight: 900; font-size: 17px; letter-spacing: -.03em; text-transform: uppercase }
@@ -446,6 +446,12 @@
   ]
 }
   </script>
+<!-- THEME:START -->
+  <link rel="preload" href="/public/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/public/theme-golf.css?v=3">
+  <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
+  <script src="/public/theme-golf.js?v=3" defer></script>
+<!-- THEME:END -->
 </head>
 
 <body>
@@ -543,8 +549,8 @@
             <div class="strip-key">
               <span><i style="background:#6FDB9A"></i> Par or better</span>
               <span><i style="background:#4a5a4f"></i> Bogey</span>
-              <span><i style="background:#FF9486"></i> Double+</span>
-              <span><i style="background:#E03E2D"></i> Blow-up</span>
+              <span><i style="background:#F2C078"></i> Double+</span>
+              <span><i style="background:#A85F06"></i> Blow-up</span>
               <span><i style="background:#FFC7BF"></i> Tilt window</span>
             </div>
           </div>
