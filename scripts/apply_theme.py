@@ -3,8 +3,9 @@
 
 Two things happen, both idempotent:
 
-1. A managed block is inserted before </head>: a preload for the Fraunces
-   font, the theme stylesheet, a one-line inline script that marks the
+1. A managed block is inserted before </head>: preloads for the Inter and
+   Plus Jakarta Sans variable
+   fonts, the theme stylesheet, a one-line inline script that marks the
    document as JS-capable (so scroll reveals can hide below-the-fold content
    without ever hiding it from no-JS readers or crawlers) with a 2.5s
    fallback that forces everything visible, and the deferred behaviour script.
@@ -21,11 +22,12 @@ be bumped whenever theme-golf.css or theme-golf.js changes.
 import glob, io, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-THEME_VER = '3'
+THEME_VER = '4'
 START, END = '<!-- THEME:START -->', '<!-- THEME:END -->'
 
 BLOCK = f"""{START}
-  <link rel="preload" href="/public/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/public/theme-golf.css?v={THEME_VER}">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){{document.documentElement.classList.add('gr-reveal-all')}},2500)</script>
   <script src="/public/theme-golf.js?v={THEME_VER}" defer></script>
@@ -61,6 +63,14 @@ def apply(path, check=False):
     s = s.replace('</head>', BLOCK + '</head>', 1)
     for pat, rep, fl in LITERALS:
         s = re.sub(pat, rep, s, flags=fl)
+    # ---- markup refinements (idempotent) ----
+    # the wordmark stands alone: no header badge
+    s = re.sub(r'\s*<span class="tag">NO PR REWRITES</span>', '', s)
+    # the Method card is a data box, not a numbered list
+    s = re.sub(r'\s*<span class="evidence-no">\d+</span>', '', s)
+    # header search is an icon button; the text stays for screen readers
+    s = re.sub(r'<a href="/search">(?:🔍\s*)?Search</a>',
+               '<a href="/search" class="nav-search" aria-label="Search">Search</a>', s)
     # rgba red: warning banner in the handicap tool is amber, the rest is brand
     rgba_to = AMBER_RGBA if os.path.basename(path) == 'tools-handicap-detector.html' else GREEN_RGBA
     s = re.sub(r'rgba\(\s*224\s*,\s*62\s*,\s*45', rgba_to, s)

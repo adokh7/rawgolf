@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GOLFRAW — "Golf Vibe" theme layer  (green & white)
+   GOLFRAW — "Golf Vibe" theme layer  (championship green & white)
    --------------------------------------------------------------------------
    Loaded AFTER each page's inline shell CSS, so it wins the cascade. Every
    shell generation defines its palette through custom properties; this file
@@ -8,33 +8,37 @@
    original design in full.
 
    Palette
-     forest   #0F3D2E  deep clubhouse green — headings, dark surfaces, pills
-     deep     #0A2A20  darkest green — footer, newsletter, dark panels
-     green    #1F7A45  vibrant green — links, CTAs, accents  (white on it 5.3:1)
+     masters  #0A4D2E  primary green — headings, pills, dark surfaces
+     canopy   #06331E  deepest green — hero, footer, dark panels
+     fairway  #1B7A43  interactive accent — links, CTAs   (white on it 5.36:1)
      bright   #2FB35C  rings / indicators only, never body text
-     canvas   #F5F8F4  turf off-white page ground
-     ink      #0E1F17  green-black text
-     muted    #5B6B60  secondary text (5.7:1 on white)
-     line     #D9E0DA / #C3CDC5  slate-green borders
-     amber    #A85F06  the one non-green: semantic caution/negative, replaces
-                       red where red meant "warning", not "brand"
+     canvas   #F7FAF7  turf-tint page ground; cards are pure white
+     ink      #0B1F15  green-black text
+     muted    #55655B  secondary text (5.9:1 on white)
+     hairline #E5E7EB  dividers;  line-strong #CBD5CF
+     amber    #A85F06  the one non-green: semantic caution, replaces red where
+                       red meant "warning", not "brand"
    ========================================================================== */
 
 html:root {
-  --gr-forest: #0F3D2E;
-  --gr-deep: #0A2A20;
-  --gr-green: #1F7A45;
+  --gr-forest: #0A4D2E;
+  --gr-deep: #06331E;
+  --gr-green: #1B7A43;
   --gr-bright: #2FB35C;
-  --gr-canvas: #F5F8F4;
+  --gr-canvas: #F7FAF7;
   --gr-white: #FFFFFF;
-  --gr-ink: #0E1F17;
-  --gr-muted: #5B6B60;
-  --gr-line: #D9E0DA;
-  --gr-line-strong: #C3CDC5;
-  --gr-soft: #E6F1E9;
+  --gr-ink: #0B1F15;
+  --gr-muted: #55655B;
+  --gr-line: #E5E7EB;
+  --gr-line-strong: #CBD5CF;
+  --gr-soft: #EAF4EE;
+  --gr-mint: #E6F4EA;
+  --gr-silver: #E2E8F0;
   --gr-amber: #A85F06;
   --gr-amber-soft: #FFF4DD;
   --gr-ease: cubic-bezier(.2, .7, .2, 1);
+  --gr-sans: 'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --gr-display: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', 'Inter', system-ui, Arial, sans-serif;
 
   /* ---- re-point every shell generation's tokens ---- */
   --flag: var(--gr-green);
@@ -65,140 +69,230 @@ html:root {
 }
 
 /* ==========================================================================
-   TYPOGRAPHY — Fraunces (serif, optical sizing) for editorial headlines and
-   deks; Archivo stays for body and UI; IBM Plex Mono stays for labels.
+   TYPOGRAPHY — Inter for body and UI, Plus Jakarta Sans for headlines.
+   Both are single variable files, preloaded from <head>. The *Fallback faces
+   are Arial metric-matched to each web font (frequency-weighted advance
+   widths), so if a swap ever happens, text occupies the same space: no CLS.
    ========================================================================== */
 @font-face {
-  font-family: 'Fraunces';
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url('/public/fonts/fraunces-var.woff2') format('woff2');
+  src: url('/public/fonts/inter-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Helvetica');
+  size-adjust: 107.48%;
+  ascent-override: 90.14%;
+  descent-override: 22.44%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('/public/fonts/plus-jakarta-sans-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Helvetica');
+  size-adjust: 106.05%;
+  ascent-override: 97.88%;
+  descent-override: 20.93%;
+  line-gap-override: 0%;
 }
 
+body, button, input, select, textarea {
+  font-family: var(--gr-sans);
+}
 body {
   background: var(--gr-canvas);
   color: var(--gr-ink);
   line-height: 1.7;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "cv11", "ss01";
 }
 
-h1, h2,
-.article-head h1, .article-body h2, .hub-hero h1, .doc-hero h1,
-.standfirst, .dek, blockquote.pull {
-  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
-  font-optical-sizing: auto;
+h1, h2, h3, .logo,
+.article-head h1, .article-body h2, .article-body h3, .hub-hero h1, .doc-hero h1,
+.rc-player .nm, .r-card .nm, .guide-card h3, .rel-card h3, .story h3, .pcard h3, .myth h3, .faq-item h3 {
+  font-family: var(--gr-display);
 }
 h1, .article-head h1, .hub-hero h1, .doc-hero h1 {
-  font-weight: 700;
-  letter-spacing: -.022em;
-  line-height: 1.04;
+  font-weight: 800;
+  letter-spacing: -.025em;
+  line-height: 1.06;
   text-transform: none;
-  font-variation-settings: "opsz" 144;
   text-wrap: balance;
 }
-.article-head h1 { font-size: clamp(32px, 4.6vw, 56px); margin-bottom: 20px; }
+.article-head h1 { font-size: clamp(31px, 4.4vw, 54px); margin-bottom: 20px; }
 h2, .article-body h2 {
-  font-weight: 650;
-  letter-spacing: -.012em;
+  font-weight: 800;
+  letter-spacing: -.02em;
   line-height: 1.14;
   text-transform: none;
-  font-variation-settings: "opsz" 72;
   text-wrap: balance;
 }
 .article-body h2 {
-  font-size: clamp(24px, 2.9vw, 32px);
-  border-top: 1px solid var(--gr-line-strong);
+  font-size: clamp(23px, 2.8vw, 31px);
+  border-top: 1px solid var(--gr-line);
   padding-top: 24px;
   margin: 46px 0 16px;
 }
-.article-body h3 { font-family: 'Archivo', system-ui, sans-serif; font-weight: 800; letter-spacing: -.01em; }
+.article-body h3 { font-weight: 700; letter-spacing: -.012em; }
 .article-body h3::before { color: var(--gr-green); }
 .standfirst, .dek {
-  font-weight: 400;
-  font-size: clamp(18px, 2.4vw, 21px);
-  line-height: 1.5;
+  font-family: var(--gr-sans);
+  font-weight: 450;
+  font-size: clamp(18px, 2.3vw, 20.5px);
+  line-height: 1.55;
   letter-spacing: -.005em;
   color: var(--gr-muted);
-  font-variation-settings: "opsz" 24;
 }
 .article-body { font-size: 17.5px; line-height: 1.72; }
 .article-body p { margin-bottom: 22px; }
 .article-body a { color: var(--gr-green); text-decoration: underline; text-decoration-color: var(--gr-line-strong); text-underline-offset: 3px; text-decoration-thickness: 1.5px; transition: text-decoration-color .2s, color .2s; }
 .article-body a:hover { text-decoration-color: var(--gr-green); color: var(--gr-forest); }
 blockquote.pull {
-  font-weight: 500;
-  line-height: 1.32;
-  letter-spacing: -.008em;
+  font-family: var(--gr-display);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.015em;
+  text-transform: none;
   border: 1px solid var(--gr-line-strong);
   border-left: 8px solid var(--gr-green);
   border-radius: 0 12px 12px 0;
-  font-variation-settings: "opsz" 48;
 }
 
 /* ==========================================================================
-   BRAND — wordmark in forest + vibrant green with a flag mark
+   BRAND — the wordmark stands alone: pure typography, no mark, no badge.
+   Masters green on light surfaces, pure white on dark ones.
    ========================================================================== */
 .logo {
   display: inline-flex;
-  align-items: center;
-  gap: 9px;
+  align-items: baseline;
+  gap: .18em;
   color: var(--gr-forest);
-  font-family: 'Archivo', system-ui, sans-serif;
-  font-weight: 900;
-  letter-spacing: -.045em;
+  font-weight: 800;
+  font-size: 25px;
+  letter-spacing: -.02em;
   text-transform: uppercase;
   line-height: 1;
   transform-origin: left center;
   transition: transform .3s var(--gr-ease), color .2s;
 }
-.logo::before {
-  content: "";
-  flex: 0 0 auto;
-  width: 24px;
-  height: 24px;
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%230F3D2E'/><path d='M9.2 5.2v13.1' stroke='%23fff' stroke-width='1.8' stroke-linecap='round'/><path d='M10 5.4l7.2 2.6-7.2 2.7z' fill='%232FB35C'/><circle cx='9.2' cy='19.1' r='2.2' fill='%23fff'/></svg>") center / contain no-repeat;
-  border-radius: 6px;
-}
-.logo .raw, .logo > span { color: var(--gr-green); }
-.logo .tag { color: var(--gr-muted); }
-.f-logo .raw { color: var(--gr-green); }
-.gr-scrolled .logo { transform: scale(.92); }
-@media (max-width: 760px) {
-  .logo { font-size: 22px; gap: 7px; }
-  .logo::before { width: 21px; height: 21px; }
-}
+.logo::before { content: none; }
+.logo .raw, .logo > span { color: var(--gr-forest); font-weight: 500; letter-spacing: .01em; }
+.logo .tag { display: none; }
+.site-footer .logo, .f-logo, .f-logo .raw, .board-header .logo, .board-header .logo span { color: #fff; }
+.gr-scrolled .logo { transform: scale(.94); }
+@media (max-width: 760px) { .logo { font-size: 22px; } }
 
 /* ==========================================================================
-   HEADER — sticky bar gains blur + elevation once the page scrolls.
-   Height never changes (transform-only compaction), so there is no CLS.
+   HEADER & NAVIGATION — quiet, wide-set, editorial. Height never changes on
+   scroll (transform-only compaction), so there is no CLS.
    ========================================================================== */
 .site-header, body > header, .board-header {
-  background: rgba(245, 248, 244, .96);
-  border-bottom: 1px solid var(--gr-line-strong);
+  background: rgba(255, 255, 255, .96);
+  border-bottom: 1px solid var(--gr-line);
   transition: background .3s, box-shadow .3s, border-color .3s;
 }
 .gr-scrolled .site-header, .gr-scrolled body > header, .gr-scrolled .board-header {
-  background: rgba(245, 248, 244, .84);
+  background: rgba(255, 255, 255, .86);
   -webkit-backdrop-filter: saturate(160%) blur(12px);
   backdrop-filter: saturate(160%) blur(12px);
-  box-shadow: 0 8px 26px rgba(14, 31, 23, .09), 0 1px 0 rgba(14, 31, 23, .04);
+  box-shadow: 0 8px 26px rgba(6, 51, 30, .09), 0 1px 0 rgba(6, 51, 30, .04);
   border-bottom-color: transparent;
 }
+.nav-links { gap: 1.75rem; }
 .nav-links a {
-  border-radius: 8px;
+  font-family: var(--gr-sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
   color: var(--gr-forest);
-  transition: background-color .2s, color .2s, transform .2s var(--gr-ease);
+  padding: 8px 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  position: relative;
+  transition: color .2s;
 }
-.nav-links a:hover, .nav-links a:focus-visible { background: var(--gr-forest); color: #fff; }
-.nav-links a.hot { background: var(--gr-green); color: #fff; }
-.burger { border-color: var(--gr-forest); border-radius: 8px; transition: background-color .2s, transform .2s var(--gr-ease); }
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 2px;
+  height: 2px;
+  background: var(--gr-green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s var(--gr-ease);
+}
+.nav-links a:hover, .nav-links a:focus-visible { background: transparent; color: var(--gr-green); }
+.nav-links a:hover::after, .nav-links a:focus-visible::after { transform: scaleX(1); }
+.nav-links a.hot { background: var(--gr-forest); color: #fff; padding: 8px 14px; border-radius: 999px; margin-left: 0; }
+.nav-links a.hot::after { content: none; }
+/* Search: a compact icon button. The link text stays in the DOM for screen
+   readers and search engines; only its rendering is replaced by the glyph. */
+.nav-links a.nav-search {
+  width: 40px; height: 40px; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--gr-line-strong);
+  border-radius: 999px;
+  color: var(--gr-forest);
+  text-indent: -9999px; overflow: hidden; white-space: nowrap;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A4D2E' stroke-width='2.2' stroke-linecap='round'><circle cx='11' cy='11' r='6.5'/><path d='M20 20l-4.2-4.2'/></svg>") center / 17px 17px no-repeat;
+  transition: border-color .2s, background-color .2s, transform .2s var(--gr-ease);
+}
+.nav-links a.nav-search::after { content: none; }
+.nav-links a.nav-search:hover, .nav-links a.nav-search:focus-visible { border-color: var(--gr-green); background-color: var(--gr-soft); }
+.burger { border: 1px solid var(--gr-line-strong); border-radius: 999px; padding: 10px 11px; transition: background-color .2s, border-color .2s; }
 .burger span { background: var(--gr-forest); }
-.burger:hover { background: var(--gr-soft); }
+.burger:hover { background: var(--gr-soft); border-color: var(--gr-green); }
 @media (max-width: 760px) {
-  .nav-links { background: rgba(245, 248, 244, .98); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
-  .nav-links a { border-top-color: var(--gr-line); border-radius: 0; }
+  .nav-links { gap: 0; background: rgba(255, 255, 255, .98); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+  .nav-links a { border-top: 1px solid var(--gr-line); padding: 14px 20px; }
+  .nav-links a::after { content: none; }
+  .nav-links a.nav-search { width: auto; height: auto; text-indent: 0; background-image: none; border: none; border-top: 1px solid var(--gr-line); border-radius: 0; justify-content: flex-start; padding: 14px 20px; }
 }
+
+/* ==========================================================================
+   HOMEPAGE HERO — every line of text on the canopy green must clear WCAG AA.
+   ========================================================================== */
+.hero { border-bottom: 1px solid var(--gr-line); }
+.hero-main { background: var(--gr-deep); border-right: none; }
+.hero-main .eyebrow { color: var(--gr-mint); }
+.hero-main .eyebrow .chip { background: var(--gr-green); color: #fff; border-radius: 4px; }
+.hero-main h1.hero-topic { color: #fff; font-family: var(--gr-display); font-weight: 800; text-transform: none; letter-spacing: -.03em; line-height: 1.02; }
+.hero-main h1.hero-topic .b { color: #fff; background: var(--gr-green); border-radius: 4px; }
+.hero-main .hero-punch, .hero-main .hero-punch mark { color: #fff; }
+.hero-main p { color: var(--gr-silver); font-size: 17px; }
+.hero-meta, .hero-meta b { color: var(--gr-mint); }
+.hero-meta b { color: #fff; }
+.cta-btn { background: var(--gr-green); border-color: var(--gr-green); border-radius: 10px; font-weight: 700; letter-spacing: .05em; }
+.cta-btn:hover { background: var(--gr-bright); border-color: var(--gr-bright); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(6, 51, 30, .28); }
+.cta-btn:active { transform: translateY(0) scale(.98); box-shadow: 0 2px 6px rgba(6, 51, 30, .25); }
+.cta-link { color: var(--gr-mint); border-bottom-color: var(--gr-bright); }
+.cta-link:hover { color: #fff; }
+
+/* ---- "The GolfRaw Method" data card: numbers removed, hairline rows ---- */
+.rating-card { border-left: 1px solid var(--gr-line); }
+.rc-head { border-bottom: 1px solid var(--gr-line); color: var(--gr-muted); }
+.rc-head .stamp { border: 1px solid var(--gr-green); color: var(--gr-green); border-radius: 4px; transform: none; font-weight: 600; }
+.evidence-card .rc-player { background: #fff; border-bottom: 1px solid var(--gr-line); }
+.rc-player .nm { font-weight: 800; text-transform: none; letter-spacing: -.02em; font-size: 24px; color: var(--gr-forest); }
+.rc-player .ev { color: var(--gr-muted); }
+.evidence-item { grid-template-columns: 1fr; gap: 0; padding: 16px 22px; border-bottom: 1px solid var(--gr-line); }
+.evidence-item .evidence-no { display: none; }
+.evidence-item b { font-family: var(--gr-sans); font-size: 14px; font-weight: 700; text-transform: none; letter-spacing: -.005em; color: var(--gr-forest); }
+.evidence-item small { font-family: var(--gr-sans); font-size: 13px; color: var(--gr-muted); margin-top: 3px; }
+.rc-total, .evidence-total { background: var(--gr-forest); }
+.rc-total .lbl { color: var(--gr-mint); }
+.rc-total .big sup { color: var(--gr-bright); }
 
 /* ==========================================================================
    PURGE RED — the rules that used the red accent for meaning, re-pointed
@@ -213,10 +307,10 @@ blockquote.pull {
 }
 .badge-red, .badge.badge-red { background: var(--gr-green); color: #fff; }
 .byline .live-upd { color: var(--gr-green); }
-.ticker { border-bottom-color: var(--gr-green); }
+.ticker { background: var(--gr-deep); border-bottom-color: var(--gr-green); }
 .sec-head { border-bottom: 2px solid var(--gr-forest); }
 .hub-hero { border-bottom-color: var(--gr-forest); }
-.hub-hero .eyebrow, .eyebrow, .vc-eyebrow, .ab-tag, .panel-head .step, .fc-n { color: var(--gr-green); }
+.hub-hero .eyebrow, .eyebrow, .vc-eyebrow, .ab-tag, .panel-head .step, .fc-n, .section-kicker { color: var(--gr-green); }
 .rel-card .cat, .aside-item .mono, .coming-soon-box .cs-label { color: var(--gr-green); }
 .aside-item:hover, .rel-card:hover h3, .guide-card:hover h3, .story:hover h3 { text-decoration-color: var(--gr-green); }
 input:focus, select:focus, textarea:focus { outline-color: var(--gr-green); }
@@ -231,19 +325,21 @@ html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background:
 /* ==========================================================================
    SURFACES, CARDS, BUTTONS
    ========================================================================== */
-.site-footer { background: var(--gr-deep); color: #A7BBAF; border-top: 4px solid var(--gr-green); }
+.site-footer { background: var(--gr-deep); color: #A9C4B3; border-top: 4px solid var(--gr-green); }
 .site-footer a:hover { color: #fff; }
 .newsletter-section {
   background-color: var(--gr-deep) !important;
   border-left-color: var(--gr-green) !important;
   border-radius: 0 14px 14px 0;
 }
+.newsletter-section h2, .newsletter-section p { font-family: var(--gr-sans) !important; }
 #rawgolf-newsletter-form button {
   background-color: var(--gr-green) !important;
+  font-family: var(--gr-sans) !important;
   transition: background-color .2s, transform .2s var(--gr-ease), box-shadow .25s var(--gr-ease) !important;
 }
 #rawgolf-newsletter-form button:hover { background-color: var(--gr-bright) !important; }
-#rawgolf-newsletter-form input { border-radius: 8px 0 0 8px !important; }
+#rawgolf-newsletter-form input { border-radius: 8px 0 0 8px !important; font-family: var(--gr-sans) !important; }
 #rawgolf-newsletter-form button { border-radius: 0 8px 8px 0 !important; }
 
 .guide-card, .news-grid > article, .news-grid > a, .story, .tool-card, .rel-card, .r-card,
@@ -253,10 +349,10 @@ html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background:
 .guide-card, .aside-box, .takeaways, .pcard, .myth, .coverage-card { border-color: var(--gr-line-strong); border-radius: 12px; background: var(--gr-white); }
 .guide-card:hover, .tool-card:hover, .coverage-card:hover, .pcard:hover {
   transform: translateY(-3px);
-  box-shadow: 0 14px 32px rgba(15, 61, 46, .10), 0 2px 6px rgba(15, 61, 46, .05);
+  box-shadow: 0 14px 32px rgba(6, 51, 30, .10), 0 2px 6px rgba(6, 51, 30, .05);
 }
 .guide-card:hover { border-color: var(--gr-green); }
-.tool-card:hover { background: #12362A; }
+.tool-card:hover { background: #0D5C3A; }
 .rel-card:hover, .story:hover, .aside-item:hover { background: var(--gr-soft); }
 .aside-box .ab-head { background: var(--gr-forest); border-radius: 10px 10px 0 0; }
 .aside-item { border-bottom-color: var(--gr-line); transition: background-color .2s, padding-left .2s var(--gr-ease); }
@@ -272,7 +368,7 @@ html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background:
 }
 .btn:hover, .card-cta:hover, .pcta:hover, a.button:hover, button.button:hover, button[type="submit"]:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(15, 61, 46, .18);
+  box-shadow: 0 10px 22px rgba(6, 51, 30, .18);
   background: var(--gr-green);
   border-color: var(--gr-green);
   color: #fff;
@@ -280,7 +376,7 @@ html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background:
 .btn:active, .card-cta:active, .pcta:active, a.button:active, button.button:active, button[type="submit"]:active,
 #rawgolf-newsletter-form button:active {
   transform: translateY(0) scale(.98) !important;
-  box-shadow: 0 2px 6px rgba(15, 61, 46, .16) !important;
+  box-shadow: 0 2px 6px rgba(6, 51, 30, .16) !important;
   transition-duration: .08s !important;
 }
 .pcta { background: var(--gr-green); border-color: var(--gr-forest); border-radius: 10px; }
@@ -314,5 +410,5 @@ html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background:
 @media (prefers-reduced-motion: reduce) {
   .gr-reveal, .gr-js .gr-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   .site-header, .logo, .btn, .card-cta, .pcta, .guide-card, .tool-card, .aside-item, .nav-links a, button { transition: none !important; }
-  .guide-card:hover, .tool-card:hover, .btn:hover, .card-cta:hover, .pcta:hover { transform: none !important; }
+  .guide-card:hover, .tool-card:hover, .btn:hover, .card-cta:hover, .pcta:hover, .cta-btn:hover { transform: none !important; }
 }

@@ -477,16 +477,19 @@ The site's colour, type and motion live in one global layer rather than in
 the per-page inline shells:
 
 - `public/theme-golf.css` — palette tokens (re-pointing every shell
-  generation's custom properties to the green/white system), Fraunces
-  editorial headlines, brand wordmark, header elevation, card/button motion,
-  scroll-reveal styles. Loaded after each page's inline CSS so it wins.
+  generation's custom properties to the championship-green system), Plus
+  Jakarta Sans headlines over an Inter body with Arial metric-matched
+  fallbacks (no CLS on swap), brand wordmark, header elevation, card/button
+  motion, scroll-reveal styles. Loaded after each page's inline CSS so it wins.
 - `public/theme-golf.js` — header `gr-scrolled` toggle and IntersectionObserver
   reveals. Progressive enhancement only.
-- `public/fonts/fraunces-var.woff2` — self-hosted (SIL OFL), latin subset.
+- `public/fonts/inter-var.woff2`, `plus-jakarta-sans-var.woff2` — self-hosted (SIL OFL), latin subsets.
 
 `python3 scripts/apply_theme.py` injects the managed `<!-- THEME:START/END -->`
-block before `</head>` on every page and rewrites red literals that sit outside
-the token system (brand red → green accent, warning red → amber). Idempotent;
+block before `</head>` on every page, rewrites red literals that sit outside
+the token system (brand red → green accent, warning red → amber), strips the
+header badge and Method-card numbers, and marks the header search link as an
+icon button. Idempotent;
 `--check` reports without writing. **Bump `THEME_VER`** whenever the CSS or JS
 changes — `.css`/`.js` are served with an immutable one-year cache.
 
