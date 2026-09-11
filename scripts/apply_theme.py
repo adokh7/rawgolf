@@ -22,7 +22,7 @@ be bumped whenever theme-golf.css or theme-golf.js changes.
 import glob, io, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-THEME_VER = '4'
+THEME_VER = '5'
 START, END = '<!-- THEME:START -->', '<!-- THEME:END -->'
 
 BLOCK = f"""{START}
@@ -71,6 +71,18 @@ def apply(path, check=False):
     # header search is an icon button; the text stays for screen readers
     s = re.sub(r'<a href="/search">(?:🔍\s*)?Search</a>',
                '<a href="/search" class="nav-search" aria-label="Search">Search</a>', s)
+    # ---- editorial numbering purge ----
+    # section index numbers ("04 Swing Analysis"), story catalog badges
+    # ("A-12"), footer document codes ("P-01") and hub ordinals ("HUB 01 ·").
+    # Patterns are shaped so genuine figures in <span class="n"> (stat cells,
+    # percentages, section signs) are never touched.
+    s = re.sub(r'\s*<span class="idx">[A-Z0-9]{1,3}</span>\s*', '', s)   # "04", "REL", "SEE" 
+    s = re.sub(r'\s*<span class="n">[A-Z]-\d{2}</span>\s*', '', s)
+    s = re.sub(r'<span class="fc-n">[A-Z]-\d{2}</span>', '', s)
+    s = re.sub(r'(<span class="hub-no">)HUB\s+\d+\s*[·•-]\s*', r'\1', s)
+    # Raw Guides: a balanced two-column grid instead of a forced single column
+    s = s.replace('<div class="news-grid reveal" style="grid-template-columns: 1fr;">',
+                  '<div class="news-grid guides-grid reveal">')
     # rgba red: warning banner in the handicap tool is amber, the rest is brand
     rgba_to = AMBER_RGBA if os.path.basename(path) == 'tools-handicap-detector.html' else GREEN_RGBA
     s = re.sub(r'rgba\(\s*224\s*,\s*62\s*,\s*45', rgba_to, s)

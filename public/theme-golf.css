@@ -412,3 +412,129 @@ html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background:
   .site-header, .logo, .btn, .card-cta, .pcta, .guide-card, .tool-card, .aside-item, .nav-links a, button { transition: none !important; }
   .guide-card:hover, .tool-card:hover, .btn:hover, .card-cta:hover, .pcta:hover, .cta-btn:hover { transform: none !important; }
 }
+
+/* ==========================================================================
+   EDITORIAL SECTIONS — numbering purged, hairline system, magazine cards.
+   The section numbers, story catalog badges and footer "P-0n" codes are
+   stripped from the markup by apply_theme.py; the display:none rules below
+   only guard against a regenerated fragment reintroducing one.
+   ========================================================================== */
+.sec-head h2 .idx, .idx, .story .n, .fc-n { display: none !important; }
+
+/* section headers: display type, sentence case, a short green accent line
+   above and a hairline below instead of the 3px ink rule */
+.sec-head {
+  border-bottom: 1px solid var(--gr-line);
+  padding-bottom: 16px;
+  margin-bottom: 28px;
+  align-items: flex-end;
+}
+.sec-head h2 {
+  position: relative;
+  padding-top: 14px;
+  font-family: var(--gr-display);
+  font-weight: 800;
+  font-size: clamp(24px, 2.8vw, 34px);
+  letter-spacing: -.022em;
+  line-height: 1.05;
+  text-transform: none;
+  color: var(--gr-forest);
+}
+.sec-head h2::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 34px; height: 3px;
+  border-radius: 2px;
+  background: var(--gr-green);
+}
+.sec-head a {
+  font-family: var(--gr-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--gr-green);
+  border-bottom: 1px solid var(--gr-line-strong);
+  padding-bottom: 3px;
+  transition: color .2s, border-color .2s;
+}
+.sec-head a:hover { color: var(--gr-forest); border-bottom-color: var(--gr-green); }
+.ratings .sec-head { border-bottom-color: rgba(255, 255, 255, .18); }
+.ratings .sec-head h2 { color: #fff; }
+.coverage-card .hub-no, .tool-card .tc-kicker { color: var(--gr-green); }
+
+/* ---- news / guides cards: hairline-separated magazine grid ---- */
+.news-grid {
+  border: 1px solid var(--gr-line);
+  background: var(--gr-line);
+  gap: 1px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.news-grid > .news, .news-grid > .news:nth-child(n), .news-grid > .news:nth-last-child(n) { border: 0 !important; }
+.news {
+  padding: 22px;
+  background: var(--gr-white);
+  transition: transform .3s var(--gr-ease), box-shadow .3s var(--gr-ease), background-color .2s;
+}
+.news:hover {
+  background: var(--gr-white);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(6, 51, 30, .10), 0 2px 6px rgba(6, 51, 30, .05);
+  z-index: 1;
+}
+.news:hover h3 { text-decoration-color: var(--gr-green); text-decoration-thickness: 2px; }
+/* strict thumbnail sizing: the image link becomes a 16:9 frame capped at
+   260px, so no card can turn into a full-width poster */
+.news > a:first-child {
+  display: block;
+  aspect-ratio: 16 / 9;
+  max-height: 260px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background: var(--gr-soft);
+}
+.news > a:first-child img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 0; }
+.news .cat { color: var(--gr-green); }
+.news h3 { font-family: var(--gr-display); font-weight: 700; font-size: 18.5px; letter-spacing: -.015em; }
+.news p { color: var(--gr-muted); }
+.news .meta { border-top: 1px solid var(--gr-line); color: var(--gr-muted); }
+.news.lead { background: var(--gr-forest); }
+.news.lead:hover { background: var(--gr-deep); }
+.news.lead p { color: var(--gr-silver); }
+.news.lead .meta { color: var(--gr-mint); border-top-color: rgba(255, 255, 255, .18); }
+/* the Raw Guides section: two balanced columns, one on phones */
+.news-grid.guides-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 760px) { .news-grid.guides-grid { grid-template-columns: 1fr; } }
+
+/* ---- Swing Analysis + The Vault: one hairline system for both columns ---- */
+.split { align-items: start; gap: 48px; }
+.story { grid-template-columns: 1fr auto; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--gr-silver); }
+.story .d { grid-column: auto; }
+.story h3 { font-family: var(--gr-display); font-weight: 700; font-size: 16.5px; letter-spacing: -.012em; transition: color .2s; }
+.story:hover h3 { color: var(--gr-green); text-decoration-color: var(--gr-green); text-decoration-thickness: 2px; }
+.story-list .rel-card { padding: 16px 0; border-right: none; border-bottom: 1px solid var(--gr-silver); border-radius: 0; background: transparent; }
+.story-list .rel-card:hover { background: transparent; }
+.story-list .rel-card:hover h3 { color: var(--gr-green); text-decoration-color: var(--gr-green); }
+.story-list .rel-card .cat { color: var(--gr-green); }
+.vault-box { border: 1px solid var(--gr-silver); border-radius: 12px; padding: 28px; background: var(--gr-white); }
+.vault-box .eyebrow { color: var(--gr-green); }
+.vault-box h3 { font-family: var(--gr-display); font-weight: 800; text-transform: none; letter-spacing: -.02em; color: var(--gr-forest); }
+.vault-item { border-top: 1px solid var(--gr-silver); transition: color .2s; }
+.vault-item b { color: var(--gr-green); }
+.vault-item:hover span { color: var(--gr-green); text-decoration-color: var(--gr-green); }
+
+/* ---- Raw Tools + coverage: same hairline discipline on dark and light ---- */
+.tools-grid { border: 1px solid rgba(255, 255, 255, .14); border-radius: 12px; overflow: hidden; }
+.tools-grid .tool-card, .tools-grid .tool-card:nth-child(n), .tools-grid .tool-card:nth-last-child(n) { border-color: rgba(255, 255, 255, .12) !important; }
+.tool-card { background: var(--gr-deep); }
+.tool-card h3 { font-family: var(--gr-display); text-transform: none; letter-spacing: -.02em; }
+.tool-card p { color: var(--gr-mint); opacity: .85; }
+.tool-card .tc-cta { border-bottom-color: var(--gr-bright); }
+.coverage-grid { border: 1px solid var(--gr-line); background: var(--gr-line); gap: 1px; border-radius: 12px; overflow: hidden; }
+.coverage-card, .coverage-card:last-child { border: 0 !important; }
+.coverage-card h3 { font-family: var(--gr-display); text-transform: none; letter-spacing: -.022em; color: var(--gr-forest); }
+.coverage-card .hub-example { border-top-color: var(--gr-line); }
+.coverage-card .hub-example a:hover { color: var(--gr-green); text-decoration-color: var(--gr-green); }
+.fc-link { gap: 4px; }
