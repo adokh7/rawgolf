@@ -523,6 +523,17 @@ Plex preload, so no page requests a third font file. The scale lives in
 measure is 72ch. Fallback faces are Arial metric-matched so a font swap is
 CLS-free. Google Fonts is deliberately not used (no preconnect needed).
 
+Favicons and the schema logo are installed by `python3 scripts/apply_icons.py`
+(idempotent): it replaces every icon/apple-touch/manifest/theme-color line with
+the Google Search set (48/32/16px PNGs, 180px Apple icon, `site.webmanifest`
+with the 192/512px icons) and re-points each JSON-LD publisher `logo` to
+`/icon-512.png` at the object level. The brand PNGs are served from the site
+root (`/favicon-48x48.png`, `/apple-touch-icon.png`, `/icon-192.png`,
+`/icon-512.png`, `/logo.png`; the `/public` copies are the originals), and
+`vercel.json` rewrites `/favicon.ico` onto the 48px PNG for clients that never
+read the markup. Run it after any page rebuild that regenerates a head from an
+old template.
+
 The eight hand-written tools (`tools-bag-audit`, `gimme-audit`,
 `handicap-detector`, `plays-like`, `round-autopsy`, `settle-up-calculator`,
 `tee-box-check`, `tilt-meter`) keep their layout CSS in two inline `<style>`

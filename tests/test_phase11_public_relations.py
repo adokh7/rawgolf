@@ -64,7 +64,9 @@ class Phase11PressPageTests(unittest.TestCase):
             if href.startswith("/") and not href.startswith("//")
         }
         for route in routes:
-            if route.startswith("/public/"):
+            # static assets: anything under /public/, plus the root-served brand
+            # files (favicons, apple-touch-icon, manifest) Google expects at /
+            if route.startswith("/public/") or Path(route).suffix:
                 self.assertTrue((ROOT / route.lstrip("/")).is_file(), route)
                 continue
             if route in {"/press"}:

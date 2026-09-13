@@ -25,7 +25,7 @@ SITE = inventory.SITE
 PUBLISHER_ID = f"{SITE}#organization"
 EDITORIAL_ID = f"{SITE}/about#editorial"
 PUBLISHER_URL = f"{SITE}/"
-PUBLISHER_LOGO = f"{SITE}/public/favicon-192.webp"
+PUBLISHER_LOGO = f"{SITE}/icon-512.png"
 
 JSON_LD_RE = re.compile(
     r'(<script\b[^>]*type\s*=\s*["\']application/ld\+json["\'][^>]*>)'
@@ -220,8 +220,8 @@ def _organization() -> dict:
         "logo": {
             "@type": "ImageObject",
             "url": PUBLISHER_LOGO,
-            "width": 1254,
-            "height": 1254,
+            "width": 512,
+            "height": 512,
         },
     }
 

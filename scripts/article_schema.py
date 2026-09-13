@@ -24,8 +24,8 @@ ARTICLE_TYPES = {"Article", "NewsArticle"}
 EDITORIAL_ID = f"{SITE}/about#editorial"
 PUBLISHER_ID = f"{SITE}#organization"
 PUBLISHER_URL = f"{SITE}/"
-PUBLISHER_LOGO = f"{SITE}/public/favicon-192.webp"
-PUBLISHER_LOGO_SIZE = 1254
+PUBLISHER_LOGO = f"{SITE}/icon-512.png"
+PUBLISHER_LOGO_SIZE = 512
 REQUIRED_FIELDS = (
     "headline",
     "image",
