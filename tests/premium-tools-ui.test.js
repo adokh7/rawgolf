@@ -27,7 +27,7 @@ check(toolPages.length >= 12, `expected at least 12 interactive tool pages, foun
 
 for (const page of toolPages) {
   const html = fs.readFileSync(path.join(root, page), 'utf8');
-  const link = '<link rel="stylesheet" href="/public/tool-premium.css?v=2">';
+  const link = '<link rel="stylesheet" href="/public/tool-premium.css?v=3">';
   const linkIndex = html.indexOf(link);
   check(linkIndex !== -1, `${page} must load the premium stylesheet`);
   check(linkIndex > html.lastIndexOf('</style>'), `${page} must load the premium stylesheet after embedded styles`);
@@ -49,7 +49,7 @@ check(fs.existsSync(cssPath), 'public/tool-premium.css must exist');
 if (fs.existsSync(cssPath)) {
   const css = fs.readFileSync(cssPath, 'utf8');
   const required = [
-    ['--gr-forest: #0f392b', 'forest-green design token'],
+    ['--gr-forest: #166534', 'forest-green design token'],
     ['--gr-canvas:', 'canvas design token'],
     ['--gr-radius-xl:', 'radius design token'],
     ['.te-opt', 'Tendency Engine tap-card styles'],
@@ -69,7 +69,7 @@ if (fs.existsSync(cssPath)) {
 
 for (const script of ['scripts/build_tendency_engine.py', 'scripts/build_field_reader.py']) {
   const source = fs.readFileSync(path.join(root, script), 'utf8');
-  check(source.includes('/public/tool-premium.css?v=2'), `${script} must preserve the premium stylesheet link`);
+  check(source.includes('/public/tool-premium.css?v=3'), `${script} must preserve the premium stylesheet link`);
   for (const lockerPath of lockerPaths) {
     check(source.includes(lockerPath), `${script} must preserve ${lockerPath} at the current asset version`);
   }

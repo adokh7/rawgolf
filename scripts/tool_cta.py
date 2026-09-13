@@ -20,7 +20,7 @@ if __package__ in (None, ""):
 from scripts import tool_inventory as inventory
 
 
-STYLESHEET_LINK = '<link rel="stylesheet" href="/public/tool-cta.css?v=1">'
+STYLESHEET_LINK = '<link rel="stylesheet" href="/public/tool-cta.css?v=2">'
 SUPPORTED_VARIANTS = frozenset({"inline", "card", "banner"})
 
 

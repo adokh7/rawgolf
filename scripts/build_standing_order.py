@@ -26,7 +26,7 @@ OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
 LM_VER = '1'
 # Pro client (paywall / entitlement). Bump when lib/pro/pro.js changes.
 PRO_VER = '1'
-PREMIUM_LINK = '  <link rel="stylesheet" href="/public/tool-premium.css?v=2">\n'
+PREMIUM_LINK = '  <link rel="stylesheet" href="/public/tool-premium.css?v=3">\n'
 HEAD_EXTRA = ('  <script src="/lib/pro/lm-import.js?v=%s" defer></script>\n' % LM_VER +
               '  <script src="/lib/pro/pro.js?v=%s" defer></script>\n' % PRO_VER)
 

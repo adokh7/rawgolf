@@ -162,14 +162,14 @@
   </style>
 <style>
     :root {
-      --fairway: #14402A;
-      --fairway-deep: #0B2418;
-      --flag: #1F7A45;
-      --paper: #F3F4F0;
+      --fairway: #166534;
+      --fairway-deep: #0f172a;
+      --flag: #15803d;
+      --paper: #f8fafc;
       --white: #fff;
-      --ink: #101511;
-      --grey: #5B665E;
-      --line: #DADDD4;
+      --ink: #0f172a;
+      --grey: #475569;
+      --line: #e2e8f0;
       --maxw: 1180px;
     }
 
@@ -195,7 +195,7 @@
     @media(max-width:760px) {
       .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
       .nav-links.open { display: flex }
-      .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+      .nav-links a { border-left: none; border-top: 1px solid #e2e8f0; padding: 14px 20px }
       .burger { display: block }
     }
 
@@ -203,7 +203,7 @@
     .hub-hero { background: var(--ink); color: #fff; border-bottom: 4px solid var(--flag); padding: 56px 0 48px }
     .hub-hero .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
     .hub-hero h1 { font-weight: 900; font-size: clamp(32px, 5.6vw, 64px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
-    .hub-hero p { font-size: 17px; color: #9CC9AE; max-width: 62ch; line-height: 1.6 }
+    .hub-hero p { font-size: 17px; color: #cbd5e1; max-width: 62ch; line-height: 1.6 }
 
     /* PANELS */
     .tool-body { padding: 40px 0 72px }
@@ -230,7 +230,7 @@
     .hole label { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--grey); text-align: center }
     .hole.is-blow input { border-color: var(--flag); box-shadow: inset 0 0 0 2px var(--flag); color: var(--flag) }
     .hole.is-blow label { color: var(--flag) }
-    .hole.is-window input { background: #FFF6F4 }
+    .hole.is-window input { background: #fffbeb }
 
     .card-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 18px; border-top: 2px solid var(--line) }
     .tally { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey) }
@@ -253,7 +253,7 @@
 
     /* AD SLOT — isolated from controls */
     .ad-zone { border: 1px dashed var(--line); background: #EFF1EC; padding: 18px; margin: 30px 0; text-align: center; min-height: 96px; display: flex; align-items: center; justify-content: center }
-    .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #a8aea3 }
+    .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #94a3b8 }
 
     /* ===== action utility bar (kept clear of ad zones) ===== */
     .act-bar { margin-top: 18px; padding-top: 16px; border-top: 2px solid rgba(16,21,17,.12); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between }
@@ -274,28 +274,28 @@
 
     /* the index dial */
     .dial { border: 1px solid rgba(255,255,255,.18); padding: 26px 20px; text-align: center; margin-bottom: 24px }
-    .dial .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(46px, 13vw, 84px); line-height: 1; color: #F2C078 }
-    .dial .n.cool { color: #6FDB9A }
-    .dial .n .of { font-size: .34em; color: #8b958d; letter-spacing: .04em }
+    .dial .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(46px, 13vw, 84px); line-height: 1; color: #fcd34d }
+    .dial .n.cool { color: #86efac }
+    .dial .n .of { font-size: .34em; color: #94a3b8; letter-spacing: .04em }
     .dial .tier { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: #fff; margin-top: 14px; display: block; font-weight: 700 }
     .meter { height: 8px; background: rgba(255,255,255,.14); margin-top: 18px; position: relative; overflow: hidden }
     .meter i { position: absolute; inset: 0 auto 0 0; background: var(--flag); display: block }
-    .meter i.cool { background: #6FDB9A }
+    .meter i.cool { background: #86efac }
 
     /* ============ THE HOLE STRIP (pure CSS, no images) ============ */
     .strip-wrap { border: 1px solid rgba(255,255,255,.18); padding: 18px 14px 12px; margin-bottom: 24px }
-    .strip-lab { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: #8b958d; margin-bottom: 14px; display: block }
+    .strip-lab { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: #94a3b8; margin-bottom: 14px; display: block }
     .strip { display: flex; align-items: flex-end; gap: 3px; height: 92px }
     .strip .col { flex: 1 1 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; height: 100%; position: relative }
     .strip .bar { background: #4a5a4f; min-height: 3px; transition: none}
-    .strip .col.good .bar { background: #6FDB9A }
-    .strip .col.bad .bar { background: #F2C078 }
+    .strip .col.good .bar { background: #86efac }
+    .strip .col.bad .bar { background: #fcd34d }
     .strip .col.blow .bar { background: var(--flag); box-shadow: 0 0 0 1px #fff }
     .strip .col.win .bar { background: #FFC7BF }
     .strip .col.empty .bar { background: rgba(255,255,255,.08) }
     .strip .h { font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: #6f7a72; text-align: center; margin-top: 5px }
     .strip .col.blow .h { color: var(--flag); font-weight: 700 }
-    .strip-key { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: #8b958d }
+    .strip-key { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: #94a3b8 }
     .strip-key span { display: flex; align-items: center; gap: 6px }
     .strip-key i { width: 10px; height: 10px; display: block }
 
@@ -305,22 +305,22 @@
     .brk-row:last-child { border-bottom: none }
     .brk-row.total { background: rgba(255,255,255,.06); font-weight: 800 }
     .brk-row .k { font-size: 14px; color: #d8ded6 }
-    .brk-row .k small { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8b958d; letter-spacing: .06em; margin-top: 2px }
+    .brk-row .k small { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #94a3b8; letter-spacing: .06em; margin-top: 2px }
     .brk-row .v { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 16px; white-space: nowrap }
-    .v.plus { color: #F2C078 }
-    .v.minus { color: #6FDB9A }
-    .v.zero { color: #8b958d }
+    .v.plus { color: #fcd34d }
+    .v.minus { color: #86efac }
+    .v.zero { color: #94a3b8 }
 
     /* benchmark bar */
-    .bench { border-left: 1px solid #6FDB9A; padding: 12px 0 12px 14px; margin-bottom: 26px; font-size: 14.5px; color: #d8ded6; line-height: 1.55 }
-    .bench b { color: #6FDB9A }
+    .bench { border-left: 1px solid #86efac; padding: 12px 0 12px 14px; margin-bottom: 26px; font-size: 14.5px; color: #d8ded6; line-height: 1.55 }
+    .bench b { color: #86efac }
     .bench.cold { border-left-color: var(--flag) }
-    .bench.cold b { color: #F2C078 }
+    .bench.cold b { color: #fcd34d }
 
     .vc-foot { border-top: 1px solid rgba(255,255,255,.15); margin: 0 -26px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
     .vc-foot .mark { font-weight: 900; font-size: 17px; letter-spacing: -.03em; text-transform: uppercase }
     .vc-foot .mark span { color: var(--flag) }
-    .vc-foot .url { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #8b958d }
+    .vc-foot .url { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #94a3b8 }
 
     .note { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--grey); line-height: 1.65; margin-top: 14px }
 
@@ -331,7 +331,7 @@
     .explain p { font-size: 15.5px; margin-bottom: 14px; max-width: 68ch; line-height: 1.65 }
 
     /* FOOTER */
-    .site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
+    .site-footer { background: var(--ink); color: #94a3b8; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
     .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
     .site-footer a:hover { color: #fff }
 
@@ -398,7 +398,7 @@
       font-weight: 600; font-size: 13px; color: #fff; transition: none; overflow: hidden;
       white-space: nowrap }
     .gm-odds .you { background: var(--fairway) }
-    .gm-odds .halve { background: #8b958d }
+    .gm-odds .halve { background: #94a3b8 }
     .gm-odds .them { background: var(--flag) }
     .gm-big { font-family: 'IBM Plex Mono', monospace; font-size: clamp(40px, 9vw, 68px); font-weight: 600;
       line-height: 1; letter-spacing: -.03em }
@@ -406,7 +406,7 @@
     .gm-fair .lab { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .2em;
       text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 8px }
     .gm-fair .num { font-size: clamp(24px, 5vw, 34px); font-weight: 900; letter-spacing: -.03em; line-height: 1.15 }
-    .gm-fair .sub { color: #9CC9AE; font-size: 14px; margin-top: 8px; line-height: 1.55 }
+    .gm-fair .sub { color: #cbd5e1; font-size: 14px; margin-top: 8px; line-height: 1.55 }
     .gm-hist { width: 100%; height: 190px; display: block; border: 2px solid var(--ink); background: #fff }
     .gm-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 14px }
     .gm-stat { border: 2px solid var(--ink); padding: 12px; background: #fff }
@@ -424,13 +424,13 @@
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
       clip: rect(0 0 0 0); white-space: nowrap; border: 0 }
   </style>
-  <link rel="stylesheet" href="/public/tool-premium.css?v=2">
+  <link rel="stylesheet" href="/public/tool-premium.css?v=3">
 <!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/public/theme-golf.css?v=7">
+  <link rel="stylesheet" href="/public/theme-golf.css?v=8">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
-  <script src="/public/theme-golf.js?v=7" defer></script>
+  <script src="/public/theme-golf.js?v=8" defer></script>
 <!-- THEME:END -->
 </head>
 
@@ -491,7 +491,7 @@
       <section class="panel">
         <div class="panel-head">
           <span><span class="step">01 ·</span> The Combatants</span>
-          <button class="btn ghost sm" id="sampleBtn" type="button" style="border-color:#8b958d;color:#fff">Load a typical argument</button>
+          <button class="btn ghost sm" id="sampleBtn" type="button" style="border-color:#94a3b8;color:#fff">Load a typical argument</button>
         </div>
         <div class="panel-in">
           <div class="err" id="err" role="alert"></div>
@@ -813,14 +813,14 @@
         var padB = 34, padT = 10, bw = W / span;
         for (i = 0; i < span; i++) {
           var v = lo + i, hgt = max ? (counts[i] / max) * (H - padB - padT) : 0;
-          ctx.fillStyle = v > 0 ? '#14402A' : (v === 0 ? '#8b958d' : '#A85F06');
+          ctx.fillStyle = v > 0 ? '#166534' : (v === 0 ? '#94a3b8' : '#b45309');
           ctx.fillRect(i * bw + 1, H - padB - hgt, Math.max(1, bw - 2), hgt);
         }
         /* Axis */
-        ctx.strokeStyle = '#101511'; ctx.lineWidth = 2;
+        ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.moveTo(0, H - padB); ctx.lineTo(W, H - padB); ctx.stroke();
 
-        ctx.fillStyle = '#101511';
+        ctx.fillStyle = '#0f172a';
         ctx.font = '600 15px "IBM Plex Mono", monospace';
         ctx.textAlign = 'left';
         ctx.fillText(themName + ' by ' + Math.abs(lo), 6, H - 12);
@@ -1043,9 +1043,9 @@
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=7" defer></script>
-  <script src="/lib/locker/store.js?v=7" defer></script>
-  <script src="/lib/locker/drawer.js?v=7" defer></script>
+  <script src="/lib/locker/schema.js?v=8" defer></script>
+  <script src="/lib/locker/store.js?v=8" defer></script>
+  <script src="/lib/locker/drawer.js?v=8" defer></script>
 <!-- LOCKER:END -->
   <!-- Ads + consent are deferred until the reader engages, or 6s, whichever
        comes first. Consent loads BEFORE AdSense so the EEA/UK gate still runs

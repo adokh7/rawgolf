@@ -163,14 +163,14 @@
   </style>
 <style>
     :root {
-      --fairway: #14402A;
-      --fairway-deep: #0B2418;
-      --flag: #1F7A45;
-      --paper: #F3F4F0;
+      --fairway: #166534;
+      --fairway-deep: #0f172a;
+      --flag: #15803d;
+      --paper: #f8fafc;
       --white: #fff;
-      --ink: #101511;
-      --grey: #5B665E;
-      --line: #DADDD4;
+      --ink: #0f172a;
+      --grey: #475569;
+      --line: #e2e8f0;
       --maxw: 1180px;
     }
 
@@ -196,7 +196,7 @@
     @media(max-width:760px) {
       .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
       .nav-links.open { display: flex }
-      .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+      .nav-links a { border-left: none; border-top: 1px solid #e2e8f0; padding: 14px 20px }
       .burger { display: block }
     }
 
@@ -204,7 +204,7 @@
     .hub-hero { background: var(--ink); color: #fff; border-bottom: 4px solid var(--flag); padding: 56px 0 48px }
     .hub-hero .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
     .hub-hero h1 { font-weight: 900; font-size: clamp(32px, 5.6vw, 64px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
-    .hub-hero p { font-size: 17px; color: #9CC9AE; max-width: 62ch; line-height: 1.6 }
+    .hub-hero p { font-size: 17px; color: #cbd5e1; max-width: 62ch; line-height: 1.6 }
 
     /* PANELS */
     .tool-body { padding: 40px 0 72px }
@@ -260,7 +260,7 @@
 
     /* AD SLOT — isolated from controls */
     .ad-zone { border: 1px dashed var(--line); background: #EFF1EC; padding: 18px; margin: 30px 0; text-align: center; min-height: 96px; display: flex; align-items: center; justify-content: center }
-    .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #a8aea3 }
+    .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #94a3b8 }
 
     /* ===== action utility bar (kept clear of ad zones) ===== */
     .act-bar { margin-top: 18px; padding-top: 16px; border-top: 2px solid rgba(16,21,17,.12); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between }
@@ -280,29 +280,29 @@
     .vc-sub b { color: #fff }
 
     .badge-strip { border: 1px solid rgba(255,255,255,.18); padding: 20px; margin-bottom: 24px; text-align: center }
-    .badge-strip .bs-badge { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(13px, 3.1vw, 18px); letter-spacing: .06em; line-height: 1.5; color: #F2C078; text-transform: uppercase }
-    .badge-strip .bs-badge.clean { color: #6FDB9A }
+    .badge-strip .bs-badge { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(13px, 3.1vw, 18px); letter-spacing: .06em; line-height: 1.5; color: #fcd34d; text-transform: uppercase }
+    .badge-strip .bs-badge.clean { color: #86efac }
     .counts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.15); margin-top: 18px; padding-top: 16px }
     .counts div { text-align: center; border-right: 1px solid rgba(255,255,255,.12) }
     .counts div:last-child { border-right: none }
     .counts .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 30px; line-height: 1; color: #fff }
-    .counts .n.zero { color: #6FDB9A }
-    .counts .l { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase; color: #8b958d; margin-top: 7px; display: block }
+    .counts .n.zero { color: #86efac }
+    .counts .l { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase; color: #94a3b8; margin-top: 7px; display: block }
 
     /* ============ THE YARDAGE LADDER (pure CSS) ============ */
     .ladder-wrap { border: 1px solid rgba(255,255,255,.18); padding: 18px 16px 14px; margin-bottom: 24px }
-    .ladder-lab { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: #8b958d; margin-bottom: 16px; display: block }
+    .ladder-lab { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: #94a3b8; margin-bottom: 16px; display: block }
     .lad-row { display: grid; grid-template-columns: 92px 1fr 58px; gap: 10px; align-items: center; padding: 3px 0 }
     .lad-row .ln { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #d8ded6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
-    .lad-row .ln.dead { color: #F2C078; text-decoration: line-through }
+    .lad-row .ln.dead { color: #fcd34d; text-decoration: line-through }
     .lad-row .lb { height: 13px; background: #4a5a4f; min-width: 3px }
     .lad-row .lb.dead { background: var(--flag) }
-    .lad-row .ly { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b958d; text-align: right }
+    .lad-row .ly { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #94a3b8; text-align: right }
     .gap-row { display: grid; grid-template-columns: 92px 1fr 58px; gap: 10px; align-items: center; padding: 1px 0 }
     .gap-row .gtxt { grid-column: 2 / 4; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; padding-left: 2px }
-    .gap-row.hole .gtxt { color: #F2C078 }
+    .gap-row.hole .gtxt { color: #fcd34d }
     .gap-row.overlap .gtxt { color: #FFC97A }
-    .lad-key { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.12); font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: #8b958d }
+    .lad-key { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.12); font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: #94a3b8 }
     .lad-key span { display: flex; align-items: center; gap: 6px }
     .lad-key i { width: 10px; height: 10px; display: block }
 
@@ -310,15 +310,15 @@
     .recs { margin-bottom: 26px }
     .rec { border-left: 1px solid var(--flag); padding: 12px 0 12px 14px; margin-bottom: 14px }
     .rec:last-child { margin-bottom: 0 }
-    .rec.good { border-left-color: #6FDB9A }
+    .rec.good { border-left-color: #86efac }
     .rec .rt { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 5px }
-    .rec.good .rt { color: #6FDB9A }
+    .rec.good .rt { color: #86efac }
     .rec p { font-size: 14.5px; color: #d8ded6; line-height: 1.55 }
 
     .vc-foot { border-top: 1px solid rgba(255,255,255,.15); margin: 0 -26px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
     .vc-foot .mark { font-weight: 900; font-size: 17px; letter-spacing: -.03em; text-transform: uppercase }
     .vc-foot .mark span { color: var(--flag) }
-    .vc-foot .url { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #8b958d }
+    .vc-foot .url { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #94a3b8 }
 
     .note { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--grey); line-height: 1.65; margin-top: 14px }
 
@@ -329,7 +329,7 @@
     .explain p { font-size: 15.5px; margin-bottom: 14px; max-width: 68ch; line-height: 1.65 }
 
     /* FOOTER */
-    .site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
+    .site-footer { background: var(--ink); color: #94a3b8; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
     .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
     .site-footer a:hover { color: #fff }
 
@@ -463,13 +463,13 @@
       .fr-course h3 { font-size: 19px }
     }
   </style>
-  <link rel="stylesheet" href="/public/tool-premium.css?v=2">
+  <link rel="stylesheet" href="/public/tool-premium.css?v=3">
 <!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/public/theme-golf.css?v=7">
+  <link rel="stylesheet" href="/public/theme-golf.css?v=8">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
-  <script src="/public/theme-golf.js?v=7" defer></script>
+  <script src="/public/theme-golf.js?v=8" defer></script>
 <!-- THEME:END -->
 </head>
 <body>
@@ -1102,9 +1102,9 @@
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=7" defer></script>
-  <script src="/lib/locker/store.js?v=7" defer></script>
-  <script src="/lib/locker/drawer.js?v=7" defer></script>
+  <script src="/lib/locker/schema.js?v=8" defer></script>
+  <script src="/lib/locker/store.js?v=8" defer></script>
+  <script src="/lib/locker/drawer.js?v=8" defer></script>
 <!-- LOCKER:END -->
 </body>
 

@@ -258,7 +258,7 @@
   <style>
     @font-face{font-family:Archivo;font-style:normal;font-weight:100 900;font-display:swap;src:url('/public/fonts/archivo-var.woff2') format('woff2')}
     @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('/public/fonts/ibm-plex-mono-600.woff2') format('woff2')}
-    :root{--forest:#0f392b;--forest-strong:#0a2a20;--forest-soft:#e7f0eb;--canvas:#f7f7f5;--white:#fff;--ink:#181c1a;--muted:#626a66;--line:#e4e4e1;--line-strong:#d3d5d1;--caution:#a85f06;--caution-soft:#fff4dd;--red:#b43b31;--focus:#2e8b67;--max:1180px}
+    :root{--forest:#166534;--forest-strong:#0f172a;--forest-soft:#f0fdf4;--canvas:#f7f7f5;--white:#fff;--ink:#0f172a;--muted:#475569;--line:#e2e8f0;--line-strong:#cbd5e1;--caution:#b45309;--caution-soft:#fffbeb;--red:#b45309;--focus:#15803d;--max:1180px}
     *{box-sizing:border-box}
     html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
     body{margin:0;background:var(--canvas);color:var(--ink);font:400 17px/1.68 Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -298,7 +298,7 @@
     h3{margin:28px 0 8px;font-size:18px;line-height:1.25}
     .answer{font-size:18px;line-height:1.6}
     blockquote{margin:28px 0;padding:22px 24px;background:var(--forest-strong);color:var(--white);border-radius:14px;font-size:22px;font-weight:700;line-height:1.45}
-    blockquote cite{display:block;margin-top:12px;color:#b8d2c5;font:600 11px/1.5 'IBM Plex Mono',monospace;letter-spacing:.04em;text-transform:uppercase}
+    blockquote cite{display:block;margin-top:12px;color:#cbd5e1;font:600 11px/1.5 'IBM Plex Mono',monospace;letter-spacing:.04em;text-transform:uppercase}
     .table-wrap{overflow-x:auto;margin:28px 0;border:1px solid var(--line-strong);border-radius:14px;background:var(--white);box-shadow:0 1px 2px rgba(16,24,20,.04)}
     table{width:100%;min-width:680px;border-collapse:collapse;font-size:15px;line-height:1.5}
     caption{padding:18px 18px 12px;text-align:left;color:var(--ink);font-weight:800}
@@ -322,7 +322,7 @@
     .related{margin-top:50px;padding:30px;background:var(--forest-strong);color:var(--white);border-radius:18px}
     .related a{color:var(--white)}
     .related ul{margin:12px 0 0;padding-left:20px}
-    .site-footer{padding:28px 0;background:var(--forest-strong);color:#b8d2c5;font:600 11px/1.6 'IBM Plex Mono',monospace}
+    .site-footer{padding:28px 0;background:var(--forest-strong);color:#cbd5e1;font:600 11px/1.6 'IBM Plex Mono',monospace}
     .site-footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     .site-footer a{color:var(--white)}
     @media(max-width:760px){
@@ -382,9 +382,9 @@
 <!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/public/theme-golf.css?v=7">
+  <link rel="stylesheet" href="/public/theme-golf.css?v=8">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
-  <script src="/public/theme-golf.js?v=7" defer></script>
+  <script src="/public/theme-golf.js?v=8" defer></script>
 <!-- THEME:END -->
 </head>
 <body>
@@ -598,7 +598,7 @@
           </div>
 
           <aside class="related" aria-label="Related GolfRaw reporting">
-            <p class="section-label" style="color:#b8d2c5">Keep reading</p>
+            <p class="section-label" style="color:#cbd5e1">Keep reading</p>
             <ul>
               <li><a href="/liv-golf">LIV Golf reporting and business context</a></li>
               <li><a href="/pga-tour">PGA Tour player pathways</a></li>
@@ -643,9 +643,9 @@
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=6" defer></script>
-  <script src="/lib/locker/store.js?v=6" defer></script>
-  <script src="/lib/locker/drawer.js?v=6" defer></script>
+  <script src="/lib/locker/schema.js?v=8" defer></script>
+  <script src="/lib/locker/store.js?v=8" defer></script>
+  <script src="/lib/locker/drawer.js?v=8" defer></script>
   <!-- LOCKER:END -->
 </body>
 </html>

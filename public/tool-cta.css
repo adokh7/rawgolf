@@ -2,9 +2,11 @@
 .tool-cta {
   margin: 32px 0;
   padding: 18px 20px;
-  border: 2px solid var(--ink, #101511);
+  border: 1px solid var(--gr-line, #e2e8f0);
+  border-radius: 12px;
   background: var(--white, #fff);
-  color: var(--ink, #101511);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .04), 0 8px 24px rgba(15, 23, 42, .05);
+  color: var(--ink, #0f172a);
 }
 
 .tool-cta__top {
@@ -17,14 +19,14 @@
 
 .tool-cta__kicker,
 .tool-cta__availability {
-  color: var(--flag, #1f7a45);
+  color: var(--flag, #15803d);
   font: 600 10px/1.2 'IBM Plex Mono', monospace;
   letter-spacing: .13em;
   text-transform: uppercase;
 }
 
 .tool-cta__availability {
-  color: var(--grey, #5b665e);
+  color: var(--grey, #475569);
   letter-spacing: .08em;
 }
 
@@ -39,13 +41,13 @@
 }
 
 .tool-cta__badge--free {
-  color: #0f392b;
-  background: #e6f3eb;
+  color: #166534;
+  background: #dcfce7;
 }
 
 .tool-cta__badge--pro {
-  color: #6b4600;
-  background: #fff0d6;
+  color: #92400e;
+  background: #fffbeb;
 }
 
 .tool-cta__title {
@@ -62,7 +64,7 @@
 .tool-cta__hook {
   max-width: 62ch;
   margin: 0 0 12px;
-  color: #344139;
+  color: #475569;
   font-size: 15px;
   line-height: 1.5;
 }
@@ -73,8 +75,9 @@
   gap: 5px;
   min-height: 44px;
   padding: 8px 12px;
-  border: 2px solid var(--ink, #101511);
-  background: var(--flag, #1f7a45);
+  border: 1px solid var(--flag, #15803d);
+  border-radius: 10px;
+  background: var(--flag, #15803d);
   color: #fff;
   font-weight: 800;
   line-height: 1.2;
@@ -82,11 +85,12 @@
 }
 
 .tool-cta__link:hover {
-  background: var(--ink, #101511);
+  background: var(--fairway, #166534);
+  border-color: var(--fairway, #166534);
 }
 
 .tool-cta__link:focus-visible {
-  outline: 3px solid var(--flag, #1f7a45);
+  outline: 3px solid var(--flag, #15803d);
   outline-offset: 3px;
 }
 
@@ -113,23 +117,23 @@
 }
 
 .tool-cta--banner {
-  border-color: var(--ink, #101511);
-  background: var(--fairway, #14402a);
+  border-color: var(--fairway, #166534);
+  background: var(--fairway, #166534);
   color: #fff;
 }
 
 .tool-cta--banner .tool-cta__kicker,
 .tool-cta--banner .tool-cta__hook {
-  color: #cfe3d6;
+  color: #cbd5e1;
 }
 
 .tool-cta--banner .tool-cta__availability {
-  color: #b9d8c4;
+  color: #dcfce7;
 }
 
 .tool-cta--banner .tool-cta__link {
   border-color: #fff;
-  background: var(--flag, #1f7a45);
+  background: var(--flag, #15803d);
 }
 
 @media (max-width: 600px) {

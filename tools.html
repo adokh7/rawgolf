@@ -425,14 +425,14 @@
   </style>
 <style>
     :root {
-      --fairway: #14402A;
-      --fairway-deep: #0B2418;
-      --flag: #1F7A45;
-      --paper: #F3F4F0;
+      --fairway: #166534;
+      --fairway-deep: #0f172a;
+      --flag: #15803d;
+      --paper: #f8fafc;
       --white: #fff;
-      --ink: #101511;
-      --grey: #5B665E;
-      --line: #DADDD4;
+      --ink: #0f172a;
+      --grey: #475569;
+      --line: #e2e8f0;
       --maxw: 1180px;
     }
 
@@ -458,7 +458,7 @@
     @media(max-width:760px) {
       .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); border-bottom: 3px solid var(--ink) }
       .nav-links.open { display: flex }
-      .nav-links a { border-left: none; border-top: 1px solid #D7DAD2; padding: 14px 20px }
+      .nav-links a { border-left: none; border-top: 1px solid #e2e8f0; padding: 14px 20px }
       .burger { display: block }
     }
 
@@ -466,14 +466,14 @@
     .masthead { background: var(--ink); color: #fff; border-bottom: 4px solid var(--flag); padding: 64px 0 56px }
     .masthead .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 18px }
     .masthead h1 { font-weight: 900; font-size: clamp(36px, 7vw, 78px); line-height: .92; letter-spacing: -.045em; text-transform: uppercase; margin-bottom: 20px }
-    .masthead p { font-size: 18px; color: #9CC9AE; max-width: 60ch; line-height: 1.6 }
+    .masthead p { font-size: 18px; color: #cbd5e1; max-width: 60ch; line-height: 1.6 }
     .masthead p b { color: #fff }
 
     .facts-strip { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid rgba(255,255,255,.18); margin-top: 34px }
     .facts-strip div { padding: 16px 12px; text-align: center; border-right: 1px solid rgba(255,255,255,.18) }
     .facts-strip div:last-child { border-right: none }
     .facts-strip .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 22px; line-height: 1; color: #fff }
-    .facts-strip .l { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase; color: #8b958d; margin-top: 7px; display: block }
+    .facts-strip .l { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase; color: #94a3b8; margin-top: 7px; display: block }
     @media(max-width:620px) {
       .facts-strip { grid-template-columns: 1fr 1fr }
       .facts-strip div { border-bottom: 1px solid rgba(255,255,255,.18) }
@@ -504,18 +504,18 @@
     /* Rules are positional, so the grid stays sealed at any multiple of the column count */
     .t-card:nth-child(4n) { border-right: none }
     .t-card:nth-last-child(-n+4) { border-bottom: none }
-    .t-card:hover { background: #1a221b }
+    .t-card:hover { background: #1e293b }
     .t-card:hover .t-cta { background: var(--flag); border-color: var(--flag); color: #fff }
     .t-card:hover h3 { color: #fff }
 
     .t-num { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 11px }
     .t-badge { display: inline-block; margin-left: 7px; padding: 3px 6px; border: 1px solid currentColor; letter-spacing: .08em; white-space: nowrap }
-    .t-badge--free { color: #9fe6b8 }
-    .t-badge--pro { color: #f0c674 }
-    .t-new { color: #6FDB9A }
+    .t-badge--free { color: #86efac }
+    .t-badge--pro { color: #fbbf24 }
+    .t-new { color: #86efac }
     .t-card h3 { font-weight: 900; font-size: clamp(18px, 1.8vw, 22px); line-height: 1.05; letter-spacing: -.02em; text-transform: uppercase; margin-bottom: 7px; transition: color .18s }
-    .t-tagline { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: #6FDB9A; margin-bottom: 12px; line-height: 1.5 }
-    .t-card p { font-size: 13.5px; color: #9CC9AE; line-height: 1.55; flex: 1; margin-bottom: 20px }
+    .t-tagline { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: #86efac; margin-bottom: 12px; line-height: 1.5 }
+    .t-card p { font-size: 13.5px; color: #cbd5e1; line-height: 1.55; flex: 1; margin-bottom: 20px }
     .t-cta {
       align-self: flex-start; font-family: 'IBM Plex Mono', monospace; font-size: 10px;
       font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
@@ -551,7 +551,7 @@
 
     /* AD SLOT — isolated, away from all CTAs */
     .ad-zone { border: 1px dashed var(--line); background: #EFF1EC; padding: 18px; margin: 34px 0 0; text-align: center; min-height: 110px; display: flex; align-items: center; justify-content: center }
-    .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #a8aea3 }
+    .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #94a3b8 }
 
     /* ===================== ENGINE UPGRADE: DASHBOARD ===================== */
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .02em; padding: 12px 18px; border: 2px solid var(--ink); background: var(--ink); color: var(--paper); cursor: pointer; text-decoration: none; transition: background .14s ease, color .14s ease }
@@ -584,19 +584,19 @@
     .passport { border: 2px solid var(--ink); background: var(--fairway); color: #fff; padding: 26px 24px; margin-top: 22px }
     .pp-label { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); margin-bottom: 10px }
     .passport h3 { font-size: 22px; line-height: 1.15; margin: 0 0 8px; color: #fff }
-    .passport p { font-size: 14px; line-height: 1.6; color: #c8d2c9; margin: 0; max-width: 62ch }
+    .passport p { font-size: 14px; line-height: 1.6; color: #cbd5e1; margin: 0; max-width: 62ch }
     .pp-row { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 20px }
     .pp-row .btn { border-color: #fff; background: #fff; color: var(--ink) }
     .pp-row .btn:hover { background: var(--flag); border-color: var(--flag); color: #fff }
     .pp-row .btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.5) }
     .pp-row .btn.ghost:hover { background: #fff; color: var(--ink); border-color: #fff }
-    .pp-row .btn.danger { border-color: rgba(31,122,69,.75); color: #f0a79f; background: transparent }
+    .pp-row .btn.danger { border-color: rgba(21,128,61,.75); color: #fcd34d; background: transparent }
     .pp-row .btn.danger:hover { background: var(--flag); color: #fff; border-color: var(--flag) }
     /* file input is visually replaced by its styled label */
     .pp-row label.btn { position: relative; overflow: hidden }
     .pp-row label.btn input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; font-size: 0 }
     .pp-note { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #a9b7ab; margin-top: 14px; min-height: 16px }
-    .pp-note.ok { color: #9fe6b8 }
+    .pp-note.ok { color: #86efac }
     .pp-note.bad { color: #ffb3a9 }
 
     /* Keep the ad zone well clear of the dashboard's delete/export controls */
@@ -611,7 +611,7 @@
     }
 
     /* FOOTER */
-    .site-footer { background: var(--ink); color: #8b958d; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
+    .site-footer { background: var(--ink); color: #94a3b8; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
     .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
     .site-footer a:hover { color: #fff }
 
@@ -628,9 +628,9 @@
 <!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/public/theme-golf.css?v=7">
+  <link rel="stylesheet" href="/public/theme-golf.css?v=8">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
-  <script src="/public/theme-golf.js?v=7" defer></script>
+  <script src="/public/theme-golf.js?v=8" defer></script>
 <!-- THEME:END -->
 </head>
 

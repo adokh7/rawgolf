@@ -27,9 +27,9 @@ from scripts.schema_normalizer import _pro_schema
 THEME_BLOCK = '''<!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/public/theme-golf.css?v=7">
+  <link rel="stylesheet" href="/public/theme-golf.css?v=8">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
-  <script src="/public/theme-golf.js?v=7" defer></script>
+  <script src="/public/theme-golf.js?v=8" defer></script>
 <!-- THEME:END -->
 '''
 

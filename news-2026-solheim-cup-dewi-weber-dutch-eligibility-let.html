@@ -112,13 +112,13 @@
   </style>
 <style>
     :root {
-      --fairway: #14402A;
-      --fairway-deep: #0B2418;
-      --flag: #1F7A45;
-      --paper: #F3F4F0;
+      --fairway: #166534;
+      --fairway-deep: #0f172a;
+      --flag: #15803d;
+      --paper: #f8fafc;
       --white: #fff;
-      --ink: #101511;
-      --grey: #5B665E;
+      --ink: #0f172a;
+      --grey: #475569;
       --maxw: 1180px;
     }
 
@@ -470,7 +470,7 @@
     }
 
     .stat-cell .n.red {
-      color: #F2C078
+      color: #fcd34d
     }
 
     .stat-cell .l {
@@ -478,7 +478,7 @@
       font-size: 10px;
       letter-spacing: .14em;
       text-transform: uppercase;
-      color: #9aa59d;
+      color: #94a3b8;
       margin-top: 6px;
       display: block
     }
@@ -543,7 +543,7 @@
     .aside-item {
       display: block;
       padding: 14px 18px;
-      border-bottom: 1px solid #DADDD4;
+      border-bottom: 1px solid #e2e8f0;
       font-weight: 700;
       font-size: 14px;
       line-height: 1.35
@@ -662,7 +662,7 @@
     /* FOOTER */
     .site-footer {
       background: var(--ink);
-      color: #8b958d;
+      color: #94a3b8;
       padding: 28px 0;
       font-family: 'IBM Plex Mono', monospace;
       font-size: 11px;
@@ -715,7 +715,7 @@
 
       .nav-links a {
         border-left: none;
-        border-top: 1px solid #D7DAD2;
+        border-top: 1px solid #e2e8f0;
         padding: 14px 20px
       }
 
@@ -785,9 +785,9 @@
 <!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/public/theme-golf.css?v=7">
+  <link rel="stylesheet" href="/public/theme-golf.css?v=8">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
-  <script src="/public/theme-golf.js?v=7" defer></script>
+  <script src="/public/theme-golf.js?v=8" defer></script>
 <!-- THEME:END -->
 </head>
 
@@ -922,13 +922,13 @@
 
   
   <!-- START NEWSLETTER SECTION -->
-  <div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #111; color: #fff; text-align: left; border-left: 8px solid #1F7A45;">
+  <div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #0f172a; color: #fff; text-align: left; border-left: 8px solid #15803d;">
       <h2 style="font-family: 'Archivo', sans-serif; text-transform: uppercase; font-weight: 900; font-size: 32px; margin-bottom: 10px; color: #fff;">THE STORIES THE GOLF MEDIA WON'T PUBLISH</h2>
-      <p style="font-family: 'Archivo', sans-serif; color: #aaa; font-size: 16px; margin-bottom: 30px;">Every Friday, we drop <strong>The Card</strong>: Unfiltered player ratings, tour leaks, and the exact stories PR reps tried to kill. Join the inner circle. No spam, just the raw truth.</p>
+      <p style="font-family: 'Archivo', sans-serif; color: #94a3b8; font-size: 16px; margin-bottom: 30px;">Every Friday, we drop <strong>The Card</strong>: Unfiltered player ratings, tour leaks, and the exact stories PR reps tried to kill. Join the inner circle. No spam, just the raw truth.</p>
     
       <form id="rawgolf-newsletter-form" style="display: flex; gap: 0; width: 100%; max-width: 600px; flex-wrap: wrap;">
-          <input type="email" id="rawgolf-email" placeholder="you@email.com" required style="flex: 1; padding: 18px; border: none; font-family: 'Archivo', sans-serif; font-size: 16px; background: #fff; color: #111; outline: none; border-radius: 0; min-width: 250px;">
-          <button type="submit" style="background-color: #1F7A45; color: #fff; border: none; padding: 18px 40px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; border-radius: 0;">✓ SIGNED</button>
+          <input type="email" id="rawgolf-email" placeholder="you@email.com" required style="flex: 1; padding: 18px; border: none; font-family: 'Archivo', sans-serif; font-size: 16px; background: #fff; color: #0f172a; outline: none; border-radius: 0; min-width: 250px;">
+          <button type="submit" style="background-color: #15803d; color: #fff; border: none; padding: 18px 40px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; border-radius: 0;">✓ SIGNED</button>
       </form>
       <p id="rawgolf-form-message" style="display: none; font-family: 'Archivo', sans-serif; margin-top: 15px; font-weight: bold; color: #fff;"></p>
     
@@ -962,7 +962,7 @@
           .catch(function(err) {
               btn.innerText = '✓ SIGNED';
               messageEl.style.display = 'block';
-              messageEl.style.color = '#A85F06';
+              messageEl.style.color = '#b45309';
               messageEl.innerText = 'Error connecting. Please try again.';
           });
       });

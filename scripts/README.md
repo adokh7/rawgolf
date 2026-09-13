@@ -486,12 +486,37 @@ the per-page inline shells:
 - `public/fonts/inter-var.woff2`, `plus-jakarta-sans-var.woff2` — self-hosted (SIL OFL), latin subsets.
 
 `python3 scripts/apply_theme.py` injects the managed `<!-- THEME:START/END -->`
-block before `</head>` on every page, rewrites red literals that sit outside
-the token system (brand red → green accent, warning red → amber), strips the
-header badge and Method-card numbers, and marks the header search link as an
-icon button. Idempotent;
+block before `</head>` on every page, rewrites every colour literal the
+pre-theme shells hardcoded onto the token scale (the `LITERALS` table: brand
+red → green accent, warning red → amber, and since v8 the old greys, greens and
+paper tints → slate/green), strips the header badge and Method-card numbers,
+and marks the header search link as an icon button. Idempotent;
 `--check` reports without writing. **Bump `THEME_VER`** whenever the CSS or JS
 changes — `.css`/`.js` are served with an immutable one-year cache.
+
+The palette (v8) is Tailwind-aligned: slate-900 `#0f172a` ink and dark
+surfaces, green-800 `#166534` brand, green-700 `#15803d` interactive, slate-50
+`#f8fafc` ground, slate-200/300 hairlines, amber-700 `#b45309` caution, and
+amber-500 `#f59e0b` as the Golf Raw Pro accent (overrides for the `.gr-pro-*`
+classes live at the end of `theme-golf.css`, prefixed with `html` so they
+out-rank the styles `pro.js` injects). Three more stylesheets consume the same
+tokens and carry their own cache versions:
+
+- `public/tool-premium.css?v=3` — the tools' shared presentation layer
+  (`PREMIUM_LINK` in the four builders, `schema_normalizer.py`, and the
+  contract test `tests/premium-tools-ui.test.js`). Its header/nav rules were
+  removed in v3: the theme owns the header on every page.
+- `public/tool-cta.css?v=2` — in-article tool CTAs (`tool_cta.py`).
+- `lib/locker/*.js?v=8` — the Locker drawer's injected CSS uses the palette
+  too, so a palette change bumps `VER` in `wire_locker.py` (which also
+  rewrites the article pages that carry the drawer).
+
+The eight hand-written tools (`tools-bag-audit`, `gimme-audit`,
+`handicap-detector`, `plays-like`, `round-autopsy`, `settle-up-calculator`,
+`tee-box-check`, `tilt-meter`) keep their layout CSS in two inline `<style>`
+blocks ahead of the THEME block. They were stripped by an early JSON-LD
+normalizer pass (commit 4e7a274) and restored from its parent; the current
+`_replace_all_json_ld` preserves anything between schema blocks.
 
 To restore the original design: `git checkout backup/original-version`, or
 remove the THEME block and revert the literal rewrites from that branch.

@@ -22,7 +22,7 @@ be bumped whenever theme-golf.css or theme-golf.js changes.
 import glob, io, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-THEME_VER = '7'
+THEME_VER = '8'
 START, END = '<!-- THEME:START -->', '<!-- THEME:END -->'
 
 BLOCK = f"""{START}
@@ -34,8 +34,8 @@ BLOCK = f"""{START}
 {END}
 """
 
-GREEN, AMBER = '#1F7A45', '#A85F06'
-GREEN_RGBA, AMBER_RGBA = 'rgba(31,122,69', 'rgba(168,95,6'
+GREEN, AMBER, LIGHT_AMBER = '#15803d', '#b45309', '#fcd34d'
+GREEN_RGBA, AMBER_RGBA = 'rgba(21,128,61', 'rgba(180,83,9'
 
 # (pattern, replacement, flags). Order matters: specific cases first.
 LITERALS = [
@@ -46,11 +46,53 @@ LITERALS = [
     # status cells like "Cancelled" / "Ending" = negative
     (r'#ef4444', AMBER, re.I),
     # light red on dark stat panels = light amber
-    (r'#ff9486', '#F2C078', re.I),
+    (r'#ff9486', LIGHT_AMBER, re.I),
     # the brand token definition itself
     (r'(--flag\s*:\s*)#e03e2d', r'\g<1>' + GREEN, re.I),
     # every remaining bare red literal is a swatch, marker or warning
     (r'#e03e2d', AMBER, re.I),
+    # v8 palette: the previous theme's literals move to the slate/green scale
+    (r'#1F7A45', GREEN, re.I),
+    (r'#A85F06', AMBER, re.I),
+    (r'#F2C078', LIGHT_AMBER, re.I),
+    # v8 palette: every literal the pre-theme shells hardcoded, mapped onto the slate/green scale
+    (r'#F3F4F0(?![0-9a-f])', '#f8fafc', re.I),
+    (r'#101511(?![0-9a-f])', '#0f172a', re.I),
+    (r'#181c1a(?![0-9a-f])', '#0f172a', re.I),
+    (r'#5B665E(?![0-9a-f])', '#475569', re.I),
+    (r'#626a66(?![0-9a-f])', '#475569', re.I),
+    (r'#8b958d(?![0-9a-f])', '#94a3b8', re.I),
+    (r'#14402A(?![0-9a-f])', '#166534', re.I),
+    (r'#0f392b(?![0-9a-f])', '#166534', re.I),
+    (r'#0B2418(?![0-9a-f])', '#0f172a', re.I),
+    (r'#0a2a20(?![0-9a-f])', '#0f172a', re.I),
+    (r'#DADDD4(?![0-9a-f])', '#e2e8f0', re.I),
+    (r'#D7DAD2(?![0-9a-f])', '#e2e8f0', re.I),
+    (r'#e4e4e1(?![0-9a-f])', '#e2e8f0', re.I),
+    (r'#d3d5d1(?![0-9a-f])', '#cbd5e1', re.I),
+    (r'#9CC9AE(?![0-9a-f])', '#cbd5e1', re.I),
+    (r'#CFE3D6(?![0-9a-f])', '#cbd5e1', re.I),
+    (r'#b9d2c2(?![0-9a-f])', '#cbd5e1', re.I),
+    (r'#b8d2c5(?![0-9a-f])', '#cbd5e1', re.I),
+    (r'#c8d2c9(?![0-9a-f])', '#cbd5e1', re.I),
+    (r'#6FDB9A(?![0-9a-f])', '#86efac', re.I),
+    (r'#9fe6b8(?![0-9a-f])', '#86efac', re.I),
+    (r'#f0c674(?![0-9a-f])', '#fbbf24', re.I),
+    (r'#a8aea3(?![0-9a-f])', '#94a3b8', re.I),
+    (r'#9aa59d(?![0-9a-f])', '#94a3b8', re.I),
+    (r'#344139(?![0-9a-f])', '#475569', re.I),
+    (r'#f0a79f(?![0-9a-f])', '#fcd34d', re.I),
+    (r'#e7f0eb(?![0-9a-f])', '#f0fdf4', re.I),
+    (r'#e7f6ee(?![0-9a-f])', '#f0fdf4', re.I),
+    (r'#1a221b(?![0-9a-f])', '#1e293b', re.I),
+    (r'#2e8b67(?![0-9a-f])', '#15803d', re.I),
+    (r'#b43b31(?![0-9a-f])', '#b45309', re.I),
+    (r'#fff0ed(?![0-9a-f])', '#fffbeb', re.I),
+    (r'#fff4dd(?![0-9a-f])', '#fffbeb', re.I),
+    (r'#fff6f4(?![0-9a-f])', '#fffbeb', re.I),
+    (r'#111(?![0-9a-f])', '#0f172a', re.I),
+    (r'#101010(?![0-9a-f])', '#0f172a', re.I),
+    (r'#aaa(?![0-9a-f])', '#94a3b8', re.I),
 ]
 
 
@@ -86,6 +128,9 @@ def apply(path, check=False):
     # rgba red: warning banner in the handicap tool is amber, the rest is brand
     rgba_to = AMBER_RGBA if os.path.basename(path) == 'tools-handicap-detector.html' else GREEN_RGBA
     s = re.sub(r'rgba\(\s*224\s*,\s*62\s*,\s*45', rgba_to, s)
+    # v7 rgba literals written by the previous palette
+    s = re.sub(r'rgba\(\s*31\s*,\s*122\s*,\s*69', GREEN_RGBA, s)
+    s = re.sub(r'rgba\(\s*168\s*,\s*95\s*,\s*6\b', AMBER_RGBA, s)
     if s != orig and not check:
         io.open(path, 'w', encoding='utf-8').write(s)
     return s != orig

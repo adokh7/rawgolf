@@ -1,41 +1,54 @@
 /* ==========================================================================
-   GOLFRAW — "Golf Vibe" theme layer  (championship green & white)
+   GOLFRAW — design system  (slate & championship green)
    --------------------------------------------------------------------------
    Loaded AFTER each page's inline shell CSS, so it wins the cascade. Every
    shell generation defines its palette through custom properties; this file
    re-points those tokens, then overrides the handful of rules that hardcode a
-   colour or a red accent. Removing the THEME block from <head> restores the
-   original design in full.
+   colour. Removing the THEME block from <head> restores the original design.
 
-   Palette
-     masters  #0A4D2E  primary green — headings, pills, dark surfaces
-     canopy   #06331E  deepest green — hero, footer, dark panels
-     fairway  #1B7A43  interactive accent — links, CTAs   (white on it 5.36:1)
-     bright   #2FB35C  rings / indicators only, never body text
-     canvas   #F7FAF7  turf-tint page ground; cards are pure white
-     ink      #0B1F15  green-black text
-     muted    #55655B  secondary text (5.9:1 on white)
-     hairline #E5E7EB  dividers;  line-strong #CBD5CF
-     amber    #A85F06  the one non-green: semantic caution, replaces red where
-                       red meant "warning", not "brand"
+   Palette (Tailwind-aligned so future utility work maps 1:1)
+     ink / deep   #0f172a  slate-900 — text, hero, footer, dark panels
+     slate        #1e293b  slate-800 — hover state of dark surfaces
+     forest       #166534  green-800 — brand green: headings, pills, lead cards
+     green        #15803d  green-700 — interactive accent: links, CTAs (5.0:1 on white)
+     bright       #22c55e  green-500 — rings / indicators on dark only
+     canvas       #f8fafc  slate-50  — page ground; cards are pure white
+     muted        #475569  slate-600 — secondary text (7.6:1 on white)
+     line         #e2e8f0  slate-200 — hairlines;  line-strong #cbd5e1 slate-300
+     soft / mint  #f0fdf4 / #dcfce7 — green tints
+     amber        #b45309  amber-700 — semantic caution, never brand
+     gold         #f59e0b  amber-500 — the Pro accent (with #92400e on light)
    ========================================================================== */
 
 html:root {
-  --gr-forest: #0A4D2E;
-  --gr-deep: #06331E;
-  --gr-green: #1B7A43;
-  --gr-bright: #2FB35C;
-  --gr-canvas: #F7FAF7;
-  --gr-white: #FFFFFF;
-  --gr-ink: #0B1F15;
-  --gr-muted: #55655B;
-  --gr-line: #E5E7EB;
-  --gr-line-strong: #CBD5CF;
-  --gr-soft: #EAF4EE;
-  --gr-mint: #E6F4EA;
-  --gr-silver: #E2E8F0;
-  --gr-amber: #A85F06;
-  --gr-amber-soft: #FFF4DD;
+  --gr-forest: #166534;
+  --gr-deep: #0f172a;
+  --gr-slate: #1e293b;
+  --gr-green: #15803d;
+  --gr-bright: #22c55e;
+  --gr-canvas: #f8fafc;
+  --gr-white: #ffffff;
+  --gr-ink: #0f172a;
+  --gr-muted: #475569;
+  --gr-line: #e2e8f0;
+  --gr-line-strong: #cbd5e1;
+  --gr-slate-400: #94a3b8;
+  --gr-soft: #f0fdf4;
+  --gr-mint: #dcfce7;
+  --gr-mint-strong: #86efac;
+  --gr-silver: #cbd5e1;
+  --gr-amber: #b45309;
+  --gr-amber-soft: #fffbeb;
+  --gr-gold: #f59e0b;
+  --gr-gold-deep: #92400e;
+  --gr-gold-line: #fde68a;
+  --gr-radius-sm: 10px;
+  --gr-radius-md: 12px;
+  --gr-radius-xl: 16px;
+  --gr-shadow-sm: 0 1px 2px rgba(15, 23, 42, .04), 0 8px 24px rgba(15, 23, 42, .05);
+  --gr-shadow-md: 0 2px 4px rgba(15, 23, 42, .05), 0 16px 36px rgba(15, 23, 42, .10);
+  --gr-shadow-lift: 0 14px 32px rgba(15, 23, 42, .10), 0 2px 6px rgba(15, 23, 42, .05);
+  --gr-ring: 0 0 0 4px rgba(21, 128, 61, .16);
   --gr-ease: cubic-bezier(.2, .7, .2, 1);
   --gr-sans: 'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
   --gr-display: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', 'Inter', system-ui, Arial, sans-serif;
@@ -60,12 +73,24 @@ html:root {
   --canvas: var(--gr-canvas);
   --muted: var(--gr-muted);
   --soft: var(--gr-soft);
+  --line: var(--gr-line);
+  --strong: var(--gr-line-strong);
   --accent: var(--gr-forest);
   --accent-deep: var(--gr-deep);
   --wash: var(--gr-soft);
   --red: var(--gr-amber);
   --caution: var(--gr-amber);
   --caution-soft: var(--gr-amber-soft);
+  /* tool-premium.css token names */
+  --gr-forest-strong: var(--gr-deep);
+  --gr-forest-soft: var(--gr-soft);
+  --gr-card: var(--gr-white);
+  --gr-positive: var(--gr-green);
+  --gr-positive-soft: var(--gr-soft);
+  --gr-caution: var(--gr-amber);
+  --gr-caution-soft: var(--gr-amber-soft);
+  --gr-negative: var(--gr-amber);
+  --gr-negative-soft: var(--gr-amber-soft);
 }
 
 /* ==========================================================================
@@ -166,10 +191,33 @@ blockquote.pull {
   border-left: 8px solid var(--gr-green);
   border-radius: 0 12px 12px 0;
 }
+/* long words and URLs never push a column wider than its track */
+h1, h2, h3, h4, p, li, blockquote, td, th, figcaption { overflow-wrap: break-word; }
+hr { border: 0; border-top: 1px solid var(--gr-line); color: var(--gr-line); }
+
+/* ==========================================================================
+   LAYOUT GUARDS — the measured mobile failures, fixed at the root.
+   A bare `1fr` track has a min-content floor, so a 600px table inside an
+   article column inflated the whole page at 375px; min-width:0 on the grid
+   children removes that floor on every shell generation.
+   ========================================================================== */
+body { overflow-x: clip; }
+img, svg, video, iframe, embed { max-width: 100%; }
+.page-grid > *, .split > *, .hero-grid > *, .news-grid > *, .guide-grid > *, .coverage-grid > *,
+.tool-grid > *, .lm-grid > *, .cr-grid > *, .rel-grid > * { min-width: 0; }
+.card-scroll, .table-wrap, .cmp-scroll, .table-container {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+@media (max-width: 760px) {
+  .article-body img, figure img { float: none; max-width: 100%; }
+}
 
 /* ==========================================================================
    BRAND — the wordmark stands alone: pure typography, no mark, no badge.
-   Masters green on light surfaces, pure white on dark ones.
+   Brand green on light surfaces, pure white on dark ones.
    ========================================================================== */
 .logo {
   display: inline-flex;
@@ -193,18 +241,20 @@ blockquote.pull {
 
 /* ==========================================================================
    HEADER & NAVIGATION — quiet, wide-set, editorial. Height never changes on
-   scroll (transform-only compaction), so there is no CLS.
+   scroll (transform-only compaction), so there is no CLS. One header for
+   every shell, tools included.
    ========================================================================== */
 .site-header, body > header, .board-header {
   background: rgba(255, 255, 255, .96);
   border-bottom: 1px solid var(--gr-line);
+  box-shadow: none;
   transition: background .3s, box-shadow .3s, border-color .3s;
 }
 .gr-scrolled .site-header, .gr-scrolled body > header, .gr-scrolled .board-header {
   background: rgba(255, 255, 255, .86);
   -webkit-backdrop-filter: saturate(160%) blur(12px);
   backdrop-filter: saturate(160%) blur(12px);
-  box-shadow: 0 8px 26px rgba(6, 51, 30, .09), 0 1px 0 rgba(6, 51, 30, .04);
+  box-shadow: 0 8px 26px rgba(15, 23, 42, .08), 0 1px 0 rgba(15, 23, 42, .04);
   border-bottom-color: transparent;
 }
 .nav-links { gap: 1.75rem; }
@@ -232,36 +282,50 @@ blockquote.pull {
   transform-origin: left;
   transition: transform .25s var(--gr-ease);
 }
-.nav-links a:hover, .nav-links a:focus-visible { background: transparent; color: var(--gr-green); }
-.nav-links a:hover::after, .nav-links a:focus-visible::after { transform: scaleX(1); }
+.nav-links a:hover, .nav-links a:focus-visible, .nav-links a.active { background: transparent; color: var(--gr-green); }
+.nav-links a:hover::after, .nav-links a:focus-visible::after, .nav-links a.active::after { transform: scaleX(1); }
 .nav-links a.hot { background: var(--gr-forest); color: #fff; padding: 8px 14px; border-radius: 999px; margin-left: 0; }
 .nav-links a.hot::after { content: none; }
 /* Search: a compact icon button. The link text stays in the DOM for screen
    readers and search engines; only its rendering is replaced by the glyph. */
-.nav-links a.nav-search {
+.nav-links a.nav-search, .nav-links a[href="/search"] {
   width: 40px; height: 40px; padding: 0;
   display: inline-flex; align-items: center; justify-content: center;
   border: 1px solid var(--gr-line-strong);
   border-radius: 999px;
   color: var(--gr-forest);
+  font-size: 0;
   text-indent: -9999px; overflow: hidden; white-space: nowrap;
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A4D2E' stroke-width='2.2' stroke-linecap='round'><circle cx='11' cy='11' r='6.5'/><path d='M20 20l-4.2-4.2'/></svg>") center / 17px 17px no-repeat;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23166534' stroke-width='2.2' stroke-linecap='round'><circle cx='11' cy='11' r='6.5'/><path d='M20 20l-4.2-4.2'/></svg>") center / 17px 17px no-repeat;
   transition: border-color .2s, background-color .2s, transform .2s var(--gr-ease);
 }
-.nav-links a.nav-search::after { content: none; }
-.nav-links a.nav-search:hover, .nav-links a.nav-search:focus-visible { border-color: var(--gr-green); background-color: var(--gr-soft); }
-.burger { border: 1px solid var(--gr-line-strong); border-radius: 999px; padding: 10px 11px; transition: background-color .2s, border-color .2s; }
+.nav-links a.nav-search::after, .nav-links a.nav-search::before,
+.nav-links a[href="/search"]::after, .nav-links a[href="/search"]::before { content: none; }
+.nav-links a.nav-search:hover, .nav-links a.nav-search:focus-visible,
+.nav-links a[href="/search"]:hover, .nav-links a[href="/search"]:focus-visible { border-color: var(--gr-green); background-color: var(--gr-soft); }
+.burger { border: 1px solid var(--gr-line-strong); border-radius: 999px; padding: 10px 11px; background: transparent; box-shadow: none; transition: background-color .2s, border-color .2s; }
 .burger span { background: var(--gr-forest); }
 .burger:hover { background: var(--gr-soft); border-color: var(--gr-green); }
+/* desktop and tablet: every link is a 40px target; between 761 and 1024px the
+   row tightens so seven items fit without spilling past the viewport */
+@media (min-width: 761px) {
+  .nav-links a { min-height: 40px; display: inline-flex; align-items: center; }
+  .nav-links a.nav-search, .nav-links a[href="/search"] { flex: 0 0 40px; }
+}
+@media (min-width: 761px) and (max-width: 1024px) {
+  .nav-links { gap: .85rem; }
+  .nav-links a { font-size: 12px; letter-spacing: .04em; }
+  .nav-links a.hot { padding: 8px 11px; }
+}
 @media (max-width: 760px) {
-  .nav-links { gap: 0; background: rgba(255, 255, 255, .98); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
-  .nav-links a { border-top: 1px solid var(--gr-line); padding: 14px 20px; }
+  .nav-links { gap: 0; background: rgba(255, 255, 255, .98); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-color: var(--gr-line); box-shadow: var(--gr-shadow-md); }
+  .nav-links a { min-height: 44px; border-top: 1px solid var(--gr-line); border-radius: 0; padding: 14px 20px; }
   .nav-links a::after { content: none; }
-  .nav-links a.nav-search { width: auto; height: auto; text-indent: 0; background-image: none; border: none; border-top: 1px solid var(--gr-line); border-radius: 0; justify-content: flex-start; padding: 14px 20px; }
+  .nav-links a.nav-search, .nav-links a[href="/search"] { width: auto; height: auto; font-size: 13.5px; text-indent: 0; background-image: none; border: none; border-top: 1px solid var(--gr-line); border-radius: 0; justify-content: flex-start; padding: 14px 20px; }
 }
 
 /* ==========================================================================
-   HOMEPAGE HERO — every line of text on the canopy green must clear WCAG AA.
+   HOMEPAGE HERO — every line of text on the slate ground clears WCAG AA.
    ========================================================================== */
 .hero { border-bottom: 1px solid var(--gr-line); }
 .hero-main { background: var(--gr-deep); border-right: none; }
@@ -273,9 +337,9 @@ blockquote.pull {
 .hero-main p { color: var(--gr-silver); font-size: 17px; }
 .hero-meta, .hero-meta b { color: var(--gr-mint); }
 .hero-meta b { color: #fff; }
-.cta-btn { background: var(--gr-green); border-color: var(--gr-green); border-radius: 10px; font-weight: 700; letter-spacing: .05em; }
-.cta-btn:hover { background: var(--gr-bright); border-color: var(--gr-bright); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(6, 51, 30, .28); }
-.cta-btn:active { transform: translateY(0) scale(.98); box-shadow: 0 2px 6px rgba(6, 51, 30, .25); }
+.cta-btn { background: var(--gr-green); border-color: var(--gr-green); border-radius: var(--gr-radius-sm); font-weight: 700; letter-spacing: .05em; min-height: 44px; }
+.cta-btn:hover { background: var(--gr-forest); border-color: var(--gr-forest); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(15, 23, 42, .28); }
+.cta-btn:active { transform: translateY(0) scale(.98); box-shadow: 0 2px 6px rgba(15, 23, 42, .25); }
 .cta-link { color: var(--gr-mint); border-bottom-color: var(--gr-bright); }
 .cta-link:hover { color: #fff; }
 
@@ -313,19 +377,18 @@ blockquote.pull {
 .hub-hero .eyebrow, .eyebrow, .vc-eyebrow, .ab-tag, .panel-head .step, .fc-n, .section-kicker { color: var(--gr-green); }
 .rel-card .cat, .aside-item .mono, .coming-soon-box .cs-label { color: var(--gr-green); }
 .aside-item:hover, .rel-card:hover h3, .guide-card:hover h3, .story:hover h3 { text-decoration-color: var(--gr-green); }
-input:focus, select:focus, textarea:focus { outline-color: var(--gr-green); }
 /* semantic negatives: red meant "warning" here, so they become amber, not green */
-html .gr-lk-btn.danger { color: var(--gr-amber); border-color: #E8D2AE; }
+html .gr-lk-btn.danger { color: var(--gr-amber); border-color: var(--gr-gold-line); }
 html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background: var(--gr-amber); color: #fff; border-color: var(--gr-amber); }
 .err { border-color: var(--gr-amber); }
 .tally b.warn { color: var(--gr-amber); }
-.stat-cell .n.red { color: #F2C078; }
+.stat-cell .n.red { color: #fcd34d; }
 .verify { border-color: var(--gr-amber); background: var(--gr-amber-soft); }
 
 /* ==========================================================================
-   SURFACES, CARDS, BUTTONS
+   SURFACES, CARDS, BUTTONS, BADGES — one radius scale, one shadow scale
    ========================================================================== */
-.site-footer { background: var(--gr-deep); color: #A9C4B3; border-top: 4px solid var(--gr-green); }
+.site-footer { background: var(--gr-deep); color: var(--gr-slate-400); border-top: 4px solid var(--gr-green); }
 .site-footer a:hover { color: #fff; }
 .newsletter-section {
   background-color: var(--gr-deep) !important;
@@ -338,7 +401,7 @@ html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background:
   font-family: var(--gr-sans) !important;
   transition: background-color .2s, transform .2s var(--gr-ease), box-shadow .25s var(--gr-ease) !important;
 }
-#rawgolf-newsletter-form button:hover { background-color: var(--gr-bright) !important; }
+#rawgolf-newsletter-form button:hover { background-color: var(--gr-forest) !important; }
 #rawgolf-newsletter-form input { border-radius: 8px 0 0 8px !important; font-family: var(--gr-sans) !important; }
 #rawgolf-newsletter-form button { border-radius: 0 8px 8px 0 !important; }
 
@@ -346,29 +409,42 @@ html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background:
 .coverage-card, .aside-box, .takeaways, .pcard, .myth, .faq-item, .vault-item, .evidence-item {
   transition: transform .3s var(--gr-ease), box-shadow .3s var(--gr-ease), background-color .2s, border-color .2s;
 }
-.guide-card, .aside-box, .takeaways, .pcard, .myth, .coverage-card { border-color: var(--gr-line-strong); border-radius: 12px; background: var(--gr-white); }
+.guide-card, .aside-box, .takeaways, .pcard, .myth, .coverage-card {
+  border-color: var(--gr-line);
+  border-radius: var(--gr-radius-md);
+  background: var(--gr-white);
+  box-shadow: var(--gr-shadow-sm);
+}
 .guide-card:hover, .tool-card:hover, .coverage-card:hover, .pcard:hover {
   transform: translateY(-3px);
-  box-shadow: 0 14px 32px rgba(6, 51, 30, .10), 0 2px 6px rgba(6, 51, 30, .05);
+  box-shadow: var(--gr-shadow-lift);
 }
 .guide-card:hover { border-color: var(--gr-green); }
-.tool-card:hover { background: #0D5C3A; }
+.tool-card:hover { background: var(--gr-slate); }
 .rel-card:hover, .story:hover, .aside-item:hover { background: var(--gr-soft); }
 .aside-box .ab-head { background: var(--gr-forest); border-radius: 10px 10px 0 0; }
 .aside-item { border-bottom-color: var(--gr-line); transition: background-color .2s, padding-left .2s var(--gr-ease); }
 .aside-item:hover { padding-left: 22px; text-decoration: none; }
 .card-thumb { border-radius: 10px 10px 0 0; }
-.lead-img > img, figure.lead-img img, figure.inline-fig img { border-color: var(--gr-line-strong); border-radius: 12px; }
+.lead-img > img, figure.lead-img img, figure.inline-fig img { border-color: var(--gr-line-strong); border-radius: var(--gr-radius-md); }
 .lead-img figcaption, figure figcaption { color: var(--gr-muted); }
 
-.btn, .card-cta, .pcta, .cs-back, a.button, button.button, button[type="submit"] {
+/* buttons: 44px targets, 10px radius, green fill / forest hover, everywhere */
+.btn, .card-cta, .pcta, .cs-back, a.button, button.button, button[type="submit"], .t-cta, .tc-cta {
   transition: color .2s, background-color .2s, border-color .2s,
               transform .25s var(--gr-ease), box-shadow .25s var(--gr-ease);
   will-change: transform;
 }
+.btn, .card-cta, .pcta, .cs-back, a.button, button.button, .t-cta {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--gr-radius-sm);
+}
 .btn:hover, .card-cta:hover, .pcta:hover, a.button:hover, button.button:hover, button[type="submit"]:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(6, 51, 30, .18);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, .16);
   background: var(--gr-green);
   border-color: var(--gr-green);
   color: #fff;
@@ -376,20 +452,77 @@ html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background:
 .btn:active, .card-cta:active, .pcta:active, a.button:active, button.button:active, button[type="submit"]:active,
 #rawgolf-newsletter-form button:active {
   transform: translateY(0) scale(.98) !important;
-  box-shadow: 0 2px 6px rgba(6, 51, 30, .16) !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, .14) !important;
   transition-duration: .08s !important;
 }
-.pcta { background: var(--gr-green); border-color: var(--gr-forest); border-radius: 10px; }
-.pcta:hover { background: var(--gr-forest); }
+.pcta { background: var(--gr-green); border-color: var(--gr-green); }
+.pcta:hover { background: var(--gr-forest); border-color: var(--gr-forest); }
 .pcard-kicker, .takeaways .section-label, .verify .section-label, .sourcing .section-label { color: var(--gr-green); }
-.verdict-box, .raw-verdict, .related { background: var(--gr-forest); border-left-color: var(--gr-bright); border-radius: 0 14px 14px 0; }
+.verdict-box, .raw-verdict, .related { background: var(--gr-deep); border-left-color: var(--gr-bright); border-radius: 0 14px 14px 0; }
 .lead-stat { background: var(--gr-deep); border-left-color: var(--gr-bright); border-radius: 0 12px 12px 0; }
 .myth { border-left-color: var(--gr-green); }
 .aff-disclosure { border-left-color: var(--gr-green); }
-.cmp-scroll thead th, .table-wrap thead th, .table-container thead th { background: var(--gr-forest); }
+.cmp-scroll thead th, .table-wrap thead th, .table-container thead th { background: var(--gr-deep); }
+
+/* badges: pill, 10.5px caps, one family */
+.badge, .t-badge, .tool-cta__badge, .article-category {
+  border-radius: 999px;
+  font-family: var(--gr-sans);
+  font-weight: 800;
+  font-size: 10.5px;
+  line-height: 1;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.t-badge, .tool-cta__badge { padding: 5px 9px; border-width: 1px; }
+.t-badge--free, .tool-cta__badge--free { color: var(--gr-forest); background: var(--gr-mint); border-color: transparent; }
+.t-badge--pro, .tool-cta__badge--pro { color: var(--gr-gold-deep); background: var(--gr-amber-soft); border-color: var(--gr-gold-line); }
+.t-card .t-badge--free { color: var(--gr-mint-strong); background: rgba(134, 239, 172, .12); border-color: rgba(134, 239, 172, .35); }
 
 :focus-visible { outline: 3px solid var(--gr-bright); outline-offset: 3px; border-radius: 4px; }
-::selection { background: var(--gr-soft); color: var(--gr-forest); }
+::selection { background: var(--gr-mint); color: var(--gr-deep); }
+
+/* ==========================================================================
+   FORM CONTROLS — one spec for every input on the site. 44px tall, 16px text
+   (no iOS zoom), hairline border, green focus ring. Number cells inside the
+   scorecard-style tables stay compact so nine of them fit a phone.
+   ========================================================================== */
+input[type="text"], input[type="email"], input[type="search"], input[type="url"], input[type="tel"],
+input[type="number"], input[type="date"], select, textarea {
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--gr-line-strong);
+  border-radius: var(--gr-radius-sm);
+  background: var(--gr-white);
+  color: var(--gr-ink);
+  font-family: var(--gr-sans);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, .03);
+  transition: border-color .18s, box-shadow .18s, background-color .18s;
+}
+input[type="number"] { padding-inline: 6px; text-align: center; font-variant-numeric: tabular-nums; }
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 34px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 11px center;
+  background-size: 15px 15px;
+}
+input::placeholder, textarea::placeholder { color: var(--gr-slate-400); opacity: 1; }
+input:hover, select:hover, textarea:hover { border-color: var(--gr-slate-400); }
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--gr-green);
+  box-shadow: var(--gr-ring);
+}
+input[type="checkbox"], input[type="radio"] { width: 22px; height: 22px; accent-color: var(--gr-green); }
+input[type="range"] { height: 32px; accent-color: var(--gr-green); }
+input[type="checkbox"]:focus, input[type="radio"]:focus, input[type="range"]:focus, input[type="file"]:focus { box-shadow: none; }
+label { color: var(--gr-ink); }
 
 /* ==========================================================================
    SCROLL REVEALS — opacity/transform only, so nothing shifts layout.
@@ -421,8 +554,6 @@ html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background:
    ========================================================================== */
 .sec-head h2 .idx, .idx, .story .n, .fc-n { display: none !important; }
 
-/* section headers: display type, sentence case, a short green accent line
-   above and a hairline below instead of the 3px ink rule */
 .sec-head {
   border-bottom: 1px solid var(--gr-line);
   padding-bottom: 16px;
@@ -468,7 +599,7 @@ html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background:
   border: 1px solid var(--gr-line);
   background: var(--gr-line);
   gap: 1px;
-  border-radius: 12px;
+  border-radius: var(--gr-radius-md);
   overflow: hidden;
 }
 .news-grid > .news, .news-grid > .news:nth-child(n), .news-grid > .news:nth-last-child(n) { border: 0 !important; }
@@ -480,12 +611,10 @@ html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background:
 .news:hover {
   background: var(--gr-white);
   transform: translateY(-3px);
-  box-shadow: 0 14px 32px rgba(6, 51, 30, .10), 0 2px 6px rgba(6, 51, 30, .05);
+  box-shadow: var(--gr-shadow-lift);
   z-index: 1;
 }
 .news:hover h3 { text-decoration-color: var(--gr-green); text-decoration-thickness: 2px; }
-/* strict thumbnail sizing: the image link becomes a 16:9 frame capped at
-   260px, so no card can turn into a full-width poster */
 .news > a:first-child {
   display: block;
   aspect-ratio: 16 / 9;
@@ -504,49 +633,110 @@ html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background:
 .news.lead:hover { background: var(--gr-deep); }
 .news.lead p { color: var(--gr-silver); }
 .news.lead .meta { color: var(--gr-mint); border-top-color: rgba(255, 255, 255, .18); }
-/* the Raw Guides section: two balanced columns, one on phones */
-.news-grid.guides-grid { grid-template-columns: repeat(2, 1fr); }
-@media (max-width: 760px) { .news-grid.guides-grid { grid-template-columns: 1fr; } }
+.news-grid.guides-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 /* ---- Swing Analysis + The Vault: one hairline system for both columns ---- */
 .split { align-items: start; gap: 48px; }
-.story { grid-template-columns: 1fr auto; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--gr-silver); }
+.story { grid-template-columns: 1fr auto; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--gr-line); }
 .story .d { grid-column: auto; }
 .story h3 { font-family: var(--gr-display); font-weight: 700; font-size: 16.5px; letter-spacing: -.012em; transition: color .2s; }
 .story:hover h3 { color: var(--gr-green); text-decoration-color: var(--gr-green); text-decoration-thickness: 2px; }
-.story-list .rel-card { padding: 16px 0; border-right: none; border-bottom: 1px solid var(--gr-silver); border-radius: 0; background: transparent; }
+.story-list .rel-card { padding: 16px 0; border-right: none; border-bottom: 1px solid var(--gr-line); border-radius: 0; background: transparent; }
 .story-list .rel-card:hover { background: transparent; }
 .story-list .rel-card:hover h3 { color: var(--gr-green); text-decoration-color: var(--gr-green); }
 .story-list .rel-card .cat { color: var(--gr-green); }
-.vault-box { border: 1px solid var(--gr-silver); border-radius: 12px; padding: 28px; background: var(--gr-white); }
+.vault-box { border: 1px solid var(--gr-line); border-radius: var(--gr-radius-md); padding: 28px; background: var(--gr-white); box-shadow: var(--gr-shadow-sm); }
 .vault-box .eyebrow { color: var(--gr-green); }
 .vault-box h3 { font-family: var(--gr-display); font-weight: 800; text-transform: none; letter-spacing: -.02em; color: var(--gr-forest); }
-.vault-item { border-top: 1px solid var(--gr-silver); transition: color .2s; }
+.vault-item { border-top: 1px solid var(--gr-line); transition: color .2s; }
 .vault-item b { color: var(--gr-green); }
 .vault-item:hover span { color: var(--gr-green); text-decoration-color: var(--gr-green); }
 
 /* ---- Raw Tools + coverage: same hairline discipline on dark and light ---- */
-.tools-grid { border: 1px solid rgba(255, 255, 255, .14); border-radius: 12px; overflow: hidden; }
+.tools-grid { border: 1px solid rgba(255, 255, 255, .14); border-radius: var(--gr-radius-md); overflow: hidden; }
 .tools-grid .tool-card, .tools-grid .tool-card:nth-child(n), .tools-grid .tool-card:nth-last-child(n) { border-color: rgba(255, 255, 255, .12) !important; }
 .tool-card { background: var(--gr-deep); }
 .tool-card h3 { font-family: var(--gr-display); text-transform: none; letter-spacing: -.02em; }
-.tool-card p { color: var(--gr-mint); opacity: .85; }
+.tool-card p { color: var(--gr-silver); }
 .tool-card .tc-cta { border-bottom-color: var(--gr-bright); }
-.coverage-grid { border: 1px solid var(--gr-line); background: var(--gr-line); gap: 1px; border-radius: 12px; overflow: hidden; }
-.coverage-card, .coverage-card:last-child { border: 0 !important; }
+.coverage-grid { border: 1px solid var(--gr-line); background: var(--gr-line); gap: 1px; border-radius: var(--gr-radius-md); overflow: hidden; }
+.coverage-card, .coverage-card:last-child { border: 0 !important; box-shadow: none; border-radius: 0; }
 .coverage-card h3 { font-family: var(--gr-display); text-transform: none; letter-spacing: -.022em; color: var(--gr-forest); }
 .coverage-card .hub-example { border-top-color: var(--gr-line); }
 .coverage-card .hub-example a:hover { color: var(--gr-green); text-decoration-color: var(--gr-green); }
 .fc-link { gap: 4px; }
 
+/* ---- Tools hub: slate cards, hairline seams, one CTA spec ---- */
+.tool-grid { border-color: var(--gr-deep); border-radius: var(--gr-radius-md); overflow: hidden; }
+.t-card { background: var(--gr-deep); }
+.t-card:hover { background: var(--gr-slate); }
+.t-num { color: var(--gr-bright); }
+.t-tagline, .t-new { color: var(--gr-mint-strong); }
+.t-card p { color: var(--gr-silver); }
+.t-cta { padding: 0 16px; border: 1px solid rgba(255, 255, 255, .4); font-size: 10.5px; }
+.t-card:hover .t-cta, .t-cta:hover { background: var(--gr-green); border-color: var(--gr-green); color: #fff; }
+
 /* ==========================================================================
-   TOOLS — touch-target floor. The mobile sweep found preset chips at 34px,
-   round-delete buttons at 36px, 18px checkboxes and 22px range tracks on four
-   tools; everything else already clears 40px. Floors only, so keypads and
-   full-width CTAs are untouched.
+   RESPONSIVE — three explicit tiers.  mobile ≤640 · tablet 641–1024 ·
+   desktop ≥1025.  Every card grid is two columns on tablet and one on a
+   phone, whatever its shell originally decided.
    ========================================================================== */
-/* unscoped on purpose: the older tool shells have no <main> element */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .news-grid, .news-grid.guides-grid, .coverage-grid, .guide-grid, .rel-grid, .tool-grid, .lm-grid, .cr-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .news.lead { grid-column: 1 / -1; }
+  /* an odd last card spans the row instead of leaving a hole */
+  .coverage-card:last-child:nth-child(odd), .guide-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .split { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+}
+@media (max-width: 640px) {
+  .news-grid, .news-grid.guides-grid, .coverage-grid, .guide-grid, .rel-grid, .tool-grid, .lm-grid, .cr-grid, .split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .news.lead { grid-column: auto; }
+  .t-card { border-right: none !important; }
+  .news { padding: 18px; }
+  .vault-box { padding: 22px; }
+  .sec-head { margin-bottom: 20px; }
+  .sec-head h2 { font-size: clamp(22px, 6.5vw, 28px); }
+  .split { gap: 28px; }
+  .btn, .pcta, .card-cta, .cta-btn, .t-cta { width: 100%; }
+}
+
+/* ==========================================================================
+   GOLF RAW PRO — the one non-green accent: gold on light, so a paywalled
+   surface reads as a different tier at a glance.  These out-rank the rules
+   pro.js injects (its <style> lands after this file) by the html prefix.
+   ========================================================================== */
+html .gr-pro-badge { background: var(--gr-gold); color: var(--gr-deep); font-family: var(--gr-sans); }
+html .gr-pro-badge.is-preview { background: var(--gr-amber-soft); color: var(--gr-gold-deep); border-color: var(--gr-gold-line); }
+html .gr-pro-badge.is-pro { background: var(--gr-gold-deep); color: #fff; }
+html .gr-pro-cover { border-color: var(--gr-gold); border-radius: var(--gr-radius-md); background: linear-gradient(180deg, rgba(248, 250, 252, .6), rgba(248, 250, 252, .94)); }
+html .gr-pro-cover h3, html .gr-pro-mh b { color: var(--gr-deep); }
+html .gr-pro-cover p { color: var(--gr-muted); }
+html .gr-pro-btn { background: var(--gr-amber); border-color: var(--gr-amber); border-radius: var(--gr-radius-sm); }
+html .gr-pro-btn:hover { background: var(--gr-gold-deep); border-color: var(--gr-gold-deep); box-shadow: 0 10px 22px rgba(146, 64, 14, .22); }
+html .gr-pro-btn.alt { background: #fff; color: var(--gr-deep); border-color: var(--gr-line-strong); }
+html .gr-pro-btn.alt:hover { background: var(--gr-amber-soft); color: var(--gr-gold-deep); border-color: var(--gr-gold); }
+html .gr-pro-link { color: var(--gr-amber); }
+html .gr-pro-scrim { background: rgba(15, 23, 42, .6); }
+html .gr-pro-modal { border-color: var(--gr-line-strong); box-shadow: 0 30px 60px rgba(15, 23, 42, .28); color: var(--gr-ink); }
+html .gr-pro-mh, html .gr-pro-sep { border-color: var(--gr-line); }
+html .gr-pro-x { color: var(--gr-ink); }
+html .gr-pro-x:hover { background: var(--gr-amber-soft); }
+html .gr-pro-plan { border-color: var(--gr-line-strong); border-radius: var(--gr-radius-md); }
+html .gr-pro-plan:hover { border-color: var(--gr-gold); }
+html .gr-pro-plan .amt { color: var(--gr-gold-deep); }
+html .gr-pro-plan small, html .gr-pro-fine, html .gr-pro-mb label { color: var(--gr-muted); }
+html .gr-pro-mb input[type="email"] { border: 1px solid var(--gr-line-strong); }
+html .gr-pro-mb input:focus { outline: none; border-color: var(--gr-gold); box-shadow: 0 0 0 4px rgba(245, 158, 11, .2); }
+html .gr-pro-msg.bad { background: var(--gr-amber-soft); color: var(--gr-gold-deep); }
+html .gr-pro-msg.good { background: var(--gr-soft); color: var(--gr-forest); }
+
+/* ==========================================================================
+   TOOLS — touch-target floor. Floors only, so keypads and full-width CTAs
+   are untouched. Unscoped on purpose: some tool shells have no <main>.
+   ========================================================================== */
 button:not(.gr-lk-btn):not(.burger):not(.gr-lk-close) { min-height: 40px; }
 button.kill { min-width: 44px; min-height: 44px; }
-input[type="checkbox"], input[type="radio"] { width: 22px; height: 22px; accent-color: var(--gr-green); }
-input[type="range"] { height: 32px; accent-color: var(--gr-green); }
