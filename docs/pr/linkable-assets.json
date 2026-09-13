@@ -1,0 +1,114 @@
+{
+  "verified_on": "2026-09-13",
+  "source_of_truth": "The linked page and the current repository content, not a product roadmap.",
+  "assets": [
+    {
+      "id": "tools-hub",
+      "route": "/tools",
+      "type": "interactive-tool-portfolio",
+      "audiences": ["golf media", "golf newsletters", "amateur golfers"],
+      "link_reason": "A single public index for the current 13-tool portfolio.",
+      "verified_claims": ["13 tools total", "12 Free tools", "Coach Report Pro preview"],
+      "pitch_angles": ["golf tools roundup", "browser-based utility reference", "free resource for readers"]
+    },
+    {
+      "id": "standing-order",
+      "route": "/tools-standing-order",
+      "type": "interactive-calculation",
+      "audiences": ["equipment publications", "coaches", "golf newsletters"],
+      "link_reason": "It exposes the calculation and thresholds instead of hiding them behind a result.",
+      "verified_claims": ["median carry", "80% shot band", "median-to-median gaps", "five-shot minimum"],
+      "pitch_angles": ["median versus average in club gapping", "golf range workflow reference", "free gapping utility"]
+    },
+    {
+      "id": "ratings-manual",
+      "route": "/ratings-manual",
+      "type": "editorial-methodology",
+      "audiences": ["data/sports journalists", "golf media", "research-minded newsletters"],
+      "link_reason": "A public explanation of the rating components, weights, judgment boundary, and lock rule.",
+      "verified_claims": ["weighted rating components", "judgment is disclosed", "ratings lock at publication", "method is versioned"],
+      "pitch_angles": ["how a golf rating is built", "transparent sports methodology", "methodology reference"]
+    },
+    {
+      "id": "corrections-log",
+      "route": "/corrections",
+      "type": "transparency-ledger",
+      "audiences": ["journalism newsletters", "golf media", "media-ethics writers"],
+      "link_reason": "The ledger leaves confirmed mistakes visible and explains what changed.",
+      "verified_claims": ["dated entries", "original mistake remains visible", "severity labels", "reader credit where applicable"],
+      "pitch_angles": ["corrections transparency case study", "reader-led fact checking", "how a small publication records errors"]
+    },
+    {
+      "id": "about-editorial",
+      "route": "/about",
+      "type": "editorial-background",
+      "audiences": ["golf media", "data/sports journalists", "course/travel publications"],
+      "link_reason": "The page states who publishes GolfRaw, how it is funded, and how the desk works.",
+      "verified_claims": ["GOLFRAW Editorial byline", "independent publication", "display advertising funding", "public methodology and corrections"],
+      "pitch_angles": ["independent golf publication background", "editorial standards reference", "source verification"]
+    },
+    {
+      "id": "pro-overview",
+      "route": "/pro",
+      "type": "public-product-overview",
+      "audiences": ["equipment publications", "coaches", "golf software writers"],
+      "link_reason": "The public product page explains the current Pro surface without requiring access to gated logic.",
+      "verified_claims": ["12 free browser-based tools remain", "launch-monitor CSV import", "one-page Coach and Fitter Report"],
+      "pitch_angles": ["golf data workflow", "coach handover output", "product reference for a tools comparison"]
+    },
+    {
+      "id": "coach-report-preview",
+      "route": "/tools-coach-report",
+      "type": "public-report-preview",
+      "audiences": ["coaches", "club fitters", "equipment publications"],
+      "link_reason": "A public preview makes the report output inspectable without exposing entitlement or security logic.",
+      "verified_claims": ["one-page report", "device-held numbers", "print to PDF", "share by link"],
+      "pitch_angles": ["coach-friendly golf report", "turning range numbers into a handover", "golf fitter workflow reference"]
+    },
+    {
+      "id": "swing-drills-guide",
+      "route": "/golf-swing-drills",
+      "type": "evergreen-guide",
+      "audiences": ["golf newsletters", "amateur golf organizations", "instruction publications"],
+      "link_reason": "An evergreen instructional page that can support a relevant practice or tools reference.",
+      "verified_claims": ["page exists as a public golf guide"],
+      "pitch_angles": ["practice resource list", "instruction reference", "tool-connected guide"]
+    },
+    {
+      "id": "swing-speed-guide",
+      "route": "/swing-speed-guide",
+      "type": "evergreen-guide",
+      "audiences": ["equipment publications", "golf newsletters", "amateur golfers"],
+      "link_reason": "A public guide for a durable equipment and performance question.",
+      "verified_claims": ["page exists as a public golf guide"],
+      "pitch_angles": ["equipment explainer", "practice reference", "guide update or citation"]
+    },
+    {
+      "id": "beginners-clubs-guide",
+      "route": "/golf-clubs-for-beginners",
+      "type": "evergreen-guide",
+      "audiences": ["amateur golf organizations", "equipment publications", "course/travel publications"],
+      "link_reason": "A beginner-facing reference suitable for genuinely helpful resource pages.",
+      "verified_claims": ["page exists as a public golf guide"],
+      "pitch_angles": ["beginner resource list", "new-golfer guide", "equipment education"]
+    },
+    {
+      "id": "tournament-rules-guide",
+      "route": "/rules/golf-tournaments-rules-formats-tax-guide",
+      "type": "rules-guide",
+      "audiences": ["amateur golf organizations", "golf newsletters", "course/travel publications"],
+      "link_reason": "A rules and formats reference with a clear fit for tournament organizers and players.",
+      "verified_claims": ["page exists as a public tournament guide"],
+      "pitch_angles": ["tournament organizer resource", "format explainer", "amateur golf reference"]
+    },
+    {
+      "id": "equipment-deals-guide",
+      "route": "/equipment/golf-deals-equipment-tee-times-guide",
+      "type": "equipment-guide",
+      "audiences": ["equipment publications", "course/travel publications", "golf newsletters"],
+      "link_reason": "A guide that can be cited when a story needs a grounded equipment or golf-deal reference.",
+      "verified_claims": ["page exists as a public equipment guide"],
+      "pitch_angles": ["equipment guide update", "golf deal explainer", "consumer reference"]
+    }
+  ]
+}
