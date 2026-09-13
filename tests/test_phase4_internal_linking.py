@@ -1,6 +1,7 @@
 """Regression checks for the Phase 4 tool and guide link architecture."""
 
 import importlib
+import json
 import re
 import unittest
 from collections import Counter
@@ -167,9 +168,8 @@ class Phase4InternalLinkingTests(unittest.TestCase):
 
     def test_all_site_internal_links_resolve_or_use_a_configured_redirect(self):
         redirect_sources = {
-            "/courses/doonbeg-links-review-cost",
-            "/news/mcilroy-trump-irish-open-doonbeg",
-            "/news/trump-martin-doonbeg-irish-open-united-ireland",
+            item["source"]
+            for item in json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))["redirects"]
         }
         missing = []
         for source in site_html_files():

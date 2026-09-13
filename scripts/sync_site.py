@@ -582,6 +582,7 @@ SITEMAP_PRIORITIES = {
     '/irish-open-2026-final-round-tee-times-tv': '0.9',
     '/solheim-cup-prize-money-ryder-cup-500k': '0.8',
     '/europe-wins-solheim-cup-sunday-singles-rout': '0.9',
+    '/mcilroy-sunday-67-doonbeg-irish-open': '0.9',
 }
 
 

@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 349,
+  "count": 350,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -36,6 +36,26 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/mcilroy-sunday-67-doonbeg-irish-open",
+      "alias_of": "",
+      "slug": "mcilroy-sunday-67-doonbeg-irish-open",
+      "url": "/mcilroy-sunday-67-doonbeg-irish-open",
+      "title": "McIlroy's Sunday 67 at Doonbeg: Seven Birdies, One Double | GOLFRAW",
+      "excerpt": "McIlroy shot his best round of the week on Sunday and still gave three shots back in two holes. The card, the quote, and what it means before Wentworth.",
+      "category": [
+        "NEWS",
+        "IRISH OPEN",
+        "RORY MCILROY",
+        "DOONBEG",
+        "DP WORLD TOUR",
+        "TOURNAMENTS"
+      ],
+      "date": "2026-09-13",
+      "image": "/images/news/rory-mcilroy-18th-green-doonbeg-irish-open-hero.webp",
+      "keywords": "RORY MCILROY, IRISH OPEN, DOONBEG, SUNDAY 67, SHANE LOWRY, WENTWORTH",
+      "section": "NEWS"
+    },
     {
       "canonical": "/europe-wins-solheim-cup-sunday-singles-rout",
       "alias_of": "",

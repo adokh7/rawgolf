@@ -1,6 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.golfraw.com/mcilroy-sunday-67-doonbeg-irish-open</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GOLFRAW</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-13T17:15:00+01:00</news:publication_date>
+      <news:title>McIlroy's Sunday 67 at Doonbeg: Seven Birdies, One Double</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.golfraw.com/europe-wins-solheim-cup-sunday-singles-rout</loc>
     <news:news>
       <news:publication>

@@ -79,6 +79,8 @@ REDIRECTS = {
         "/solheim-cup-prize-money-ryder-cup-500k",
     "/news-2026-europe-wins-solheim-cup-sunday-singles-rout":
         "/europe-wins-solheim-cup-sunday-singles-rout",
+    "/news-2026-mcilroy-sunday-67-doonbeg-irish-open":
+        "/mcilroy-sunday-67-doonbeg-irish-open",
 }
 
 WINNERS = {

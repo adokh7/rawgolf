@@ -187,7 +187,7 @@
     },
     {
       "source": "/courses/doonbeg-links-review-cost",
-      "destination": "/donald-trump-amgen-irish-open-doonbeg",
+      "destination": "/news-2026-donald-trump-amgen-irish-open-doonbeg",
       "permanent": true
     },
     {
@@ -203,6 +203,11 @@
     {
       "source": "/news-2026-solheim-cup-prize-money-ryder-cup-500k",
       "destination": "/solheim-cup-prize-money-ryder-cup-500k",
+      "permanent": true
+    },
+    {
+      "source": "/news/2026-solheim-cup-rosters-finalized-captains-picks",
+      "destination": "/2026-solheim-cup-rosters-finalized-captains-picks",
       "permanent": true
     },
     {
@@ -233,6 +238,16 @@
     {
       "source": "/explainers/solheim-cup-prize-money-players-paid",
       "destination": "/solheim-cup-prize-money-ryder-cup-500k",
+      "permanent": true
+    },
+    {
+      "source": "/news-2026-mcilroy-sunday-67-doonbeg-irish-open",
+      "destination": "/mcilroy-sunday-67-doonbeg-irish-open",
+      "permanent": true
+    },
+    {
+      "source": "/news/mcilroy-sunday-67-doonbeg-irish-open",
+      "destination": "/mcilroy-sunday-67-doonbeg-irish-open",
       "permanent": true
     }
   ],

@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>McIlroy&#x27;s Sunday 67 at Doonbeg: Seven Birdies, One Double | GOLFRAW</title>
+      <link>https://www.golfraw.com/mcilroy-sunday-67-doonbeg-irish-open</link>
+      <guid isPermaLink="true">https://www.golfraw.com/mcilroy-sunday-67-doonbeg-irish-open</guid>
+      <pubDate>Sun, 13 Sep 2026 09:00:00 +0000</pubDate>
+      <category>NEWS, IRISH OPEN, RORY MCILROY, DOONBEG, DP WORLD TOUR, TOURNAMENTS</category>
+      <description>McIlroy shot his best round of the week on Sunday and still gave three shots back in two holes. The card, the quote, and what it means before Wentworth.</description>
+      <enclosure url="https://www.golfraw.com/images/news/rory-mcilroy-18th-green-doonbeg-irish-open-hero.webp" length="238258" type="image/webp"/>
+    </item>
+    <item>
       <title>Europe Wins the Solheim Cup as Sunday Singles Rout Lands | GOLFRAW</title>
       <link>https://www.golfraw.com/europe-wins-solheim-cup-sunday-singles-rout</link>
       <guid isPermaLink="true">https://www.golfraw.com/europe-wins-solheim-cup-sunday-singles-rout</guid>
@@ -134,15 +143,6 @@
       <category>TOURNAMENTS, NEWS, SOLHEIM CUP, BERNARDUS GOLF, TEAM USA, TEAM EUROPE, ANGELA STANFORD, ANNA NORDQVIST</category>
       <description>Full USA and Europe rosters for Bernardus Golf, how each player qualified, the pick both captains explained, and the four Europeans who missed by a few ranking spots.</description>
       <enclosure url="https://www.golfraw.com/news-2026-bernardus-golf-solheim-cup-course-setup.webp" length="182200" type="image/webp"/>
-    </item>
-    <item>
-      <title>Lawrence Beats Casey in 4-Hole Playoff for 3rd Swiss Title | GOLFRAW</title>
-      <link>https://www.golfraw.com/thriston-lawrence-omega-european-masters-2026-playoff-paul-casey</link>
-      <guid isPermaLink="true">https://www.golfraw.com/thriston-lawrence-omega-european-masters-2026-playoff-paul-casey</guid>
-      <pubDate>Mon, 07 Sep 2026 09:00:00 +0000</pubDate>
-      <category>TOURNAMENTS, DP WORLD TOUR, THRISTON LAWRENCE, PAUL CASEY, OMEGA EUROPEAN MASTERS, CRANS-MONTANA, PLAYOFF</category>
-      <description>Lawrence erased six shots with a 62, then won a playoff Casey had four chances to end. The sequence, the money, and where the runner-up&#x27;s cheque goes.</description>
-      <enclosure url="https://www.golfraw.com/news-2026-thriston-lawrence-european-masters-playoff-win.webp" length="42104" type="image/webp"/>
     </item>
   </channel>
 </rss>
