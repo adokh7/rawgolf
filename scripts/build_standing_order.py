@@ -195,6 +195,9 @@ STYLE = '''<style>
     .so-go:hover { background: var(--fairway); border-color: var(--fairway) }
     .so-go:focus-visible { outline: 3px solid var(--flag); outline-offset: 3px }
     .so-go[disabled] { background: var(--line); border-color: var(--line); color: var(--grey); cursor: not-allowed }
+    a.so-go { display: inline-flex; align-items: center; text-decoration: none }
+    .so-go.alt { background: var(--white); color: var(--ink) }
+    .so-go.alt:hover { background: var(--paper); color: var(--ink); border-color: var(--ink) }
 
     /* results */
     .so-chart { width: 100%; max-width: 560px; height: auto; display: block; margin: 0 auto }
@@ -267,8 +270,6 @@ STYLE = '''<style>
     .lm-prev { margin-top: 12px }
     .lm-prev .so-tbl th:nth-child(2), .lm-prev .so-tbl td:nth-child(2) { text-align: left; font-family: 'IBM Plex Mono', monospace; font-weight: 500; color: var(--grey) }
     .lm-acts { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 16px }
-    .so-go.alt { background: var(--white); color: var(--ink) }
-    .so-go.alt:hover { background: var(--paper); color: var(--ink); border-color: var(--ink) }
     @media (max-width: 520px) { .lm-grid { grid-template-columns: 1fr } }
 
     /* modal */
@@ -485,6 +486,7 @@ MAIN = '''
           <div class="so-acts">
             <button type="button" class="so-go" id="saveBag">Save these to my bag</button>
             <button type="button" class="so-go" id="chartBtn">Get my gapping chart</button>
+            <a class="so-go alt" href="/tools-coach-report">Build the coach report &rarr;</a>
           </div>
           <div class="so-msg" id="resMsg" role="status"></div>
           <p class="so-note">The <b>80% band</b> is where 80% of your shots with that club finished &mdash;
