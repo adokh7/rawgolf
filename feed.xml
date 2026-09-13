@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Europe Wins the Solheim Cup as Sunday Singles Rout Lands | GOLFRAW</title>
+      <link>https://www.golfraw.com/europe-wins-solheim-cup-sunday-singles-rout</link>
+      <guid isPermaLink="true">https://www.golfraw.com/europe-wins-solheim-cup-sunday-singles-rout</guid>
+      <pubDate>Sun, 13 Sep 2026 09:00:00 +0000</pubDate>
+      <category>NEWS, SOLHEIM CUP, TOURNAMENTS, TEAM EUROPE, CHARLEY HULL, LOTTIE WOAD</category>
+      <description>Europe beat the USA at Bernardus to regain the Solheim Cup. How a tied match became a rout, who delivered the clinching point, and the record set in defeat.</description>
+      <enclosure url="https://www.golfraw.com/images/news/team-europe-solheim-cup-2026-champions-bernardus-hero.webp" length="195200" type="image/webp"/>
+    </item>
+    <item>
       <title>Solheim Cup Prize Money: $0, and the Ryder Cup&#x27;s $500K | GOLFRAW</title>
       <link>https://www.golfraw.com/solheim-cup-prize-money-ryder-cup-500k</link>
       <guid isPermaLink="true">https://www.golfraw.com/solheim-cup-prize-money-ryder-cup-500k</guid>
@@ -134,15 +143,6 @@
       <category>TOURNAMENTS, DP WORLD TOUR, THRISTON LAWRENCE, PAUL CASEY, OMEGA EUROPEAN MASTERS, CRANS-MONTANA, PLAYOFF</category>
       <description>Lawrence erased six shots with a 62, then won a playoff Casey had four chances to end. The sequence, the money, and where the runner-up&#x27;s cheque goes.</description>
       <enclosure url="https://www.golfraw.com/news-2026-thriston-lawrence-european-masters-playoff-win.webp" length="42104" type="image/webp"/>
-    </item>
-    <item>
-      <title>Trump&#x27;s Presidential Golf Course Plan: The County Owns It | GOLFRAW</title>
-      <link>https://www.golfraw.com/trump-west-palm-beach-presidential-golf-course-proposal</link>
-      <guid isPermaLink="true">https://www.golfraw.com/trump-west-palm-beach-presidential-golf-course-proposal</guid>
-      <pubDate>Sat, 05 Sep 2026 09:00:00 +0000</pubDate>
-      <category>NEWS, PGA TOUR, TRUMP GOLF, PALM BEACH COUNTY, WEST PALM BEACH, PRESIDENTIAL GOLF COURSE, BUSINESS OF GOLF</category>
-      <description>The club is privately owned. The ground under it isn&#x27;t. What the letter to Palm Beach County actually proposes, and the rent figure nobody is quoting.</description>
-      <enclosure url="https://www.golfraw.com/news-2026-trump-international-golf-club-west-palm-beach-aerial.webp" length="53400" type="image/webp"/>
     </item>
   </channel>
 </rss>

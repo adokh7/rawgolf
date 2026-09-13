@@ -45,61 +45,117 @@
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "The Standing Order",
-  "alternateName": "Range Session Gapping Logger",
-  "url": "https://www.golfraw.com/tools-standing-order",
-  "applicationCategory": "SportsApplication",
-  "operatingSystem": "Any browser",
-  "browserRequirements": "Requires JavaScript",
-  "description": "Free range session logger. Tap in 5-10 carries per club and get your real median distance, shot dispersion and the exact gaps and overlaps in your bag.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "featureList": [
-    "Import a launch-monitor CSV export (TrackMan, Foresight, Garmin, FlightScope, Rapsodo, SkyTrak)",
-    "Log 5-10 carry distances per club",
-    "Median carry and shot dispersion per club",
-    "80% shot band from your own numbers",
-    "Automatic overlap and gap detection",
-    "Saves to your bag, entirely on your device"
-  ],
-  "publisher": { "@type": "Organization", "name": "GOLFRAW", "url": "https://www.golfraw.com/" }
-}
-  </script>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.golfraw.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.golfraw.com/tools" },
-    { "@type": "ListItem", "position": 3, "name": "The Standing Order", "item": "https://www.golfraw.com/tools-standing-order" }
-  ]
-}
-  </script>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "How many shots per club do I need to gap my bag?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Five is the working minimum and eight to ten is where the numbers settle down. Below five shots a single fat strike drags the median far enough to make the gap chart wrong, which is worse than having no chart at all." }
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
     },
     {
-      "@type": "Question",
-      "name": "Should I use my average or my median carry distance?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Median. One thinned 7-iron that goes 40 yards short pulls an average down by several yards and quietly invents a gap that is not there. The median ignores it, so it describes the shot you actually hit most of the time." }
+      "@type": "WebApplication",
+      "@id": "https://www.golfraw.com/tools-standing-order#application",
+      "name": "The Standing Order",
+      "url": "https://www.golfraw.com/tools-standing-order",
+      "applicationCategory": "SportsApplication",
+      "operatingSystem": "Any browser",
+      "browserRequirements": "Requires JavaScript",
+      "description": "Free range session logger. Tap in 5-10 carries per club and get your real median distance, shot dispersion and the exact gaps and overlaps in your bag.",
+      "publisher": {
+        "@id": "https://www.golfraw.com#organization"
+      },
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.golfraw.com/tools-standing-order",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
     },
     {
-      "@type": "Question",
-      "name": "What is a normal distance gap between golf clubs?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Ten to fifteen yards between irons is the usual target. Once a gap passes 25 yards you have a distance with no club for it, and under 8 yards two clubs are doing the same job and one of them is taking up a slot for nothing." }
+      "@type": "BreadcrumbList",
+      "@id": "https://www.golfraw.com/tools-standing-order#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.golfraw.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://www.golfraw.com/tools"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The Standing Order",
+          "item": "https://www.golfraw.com/tools-standing-order"
+        }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Does this range logger send my numbers anywhere?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. Every shot is stored in your own browser using IndexedDB and never leaves the device. There is no account, no upload and no third party. Clearing your browser data deletes it, so export a backup from the locker if you want to keep it." }
+      "@type": "FAQPage",
+      "@id": "https://www.golfraw.com/tools-standing-order#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many shots per club do I need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Five is the working minimum, eight to ten is where it settles. Below five, one fat strike drags the median far enough to make the chart wrong — worse than no chart at all. This tool marks any club with fewer than five shots as unreliable rather than quietly scoring it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I use my average or my median?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Median, every time. One thinned iron pulls an average down several yards and invents a gap that is not there. The median ignores the outlier and describes the shot you actually hit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a normal gap between clubs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ten to fifteen yards between irons. Past 25 yards you have a distance with no club for it; under 8 yards two clubs overlap and one is redundant."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the import free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The logger, the medians, the gap verdicts and the bag sync are free and stay free. Importing a launch-monitor file is a Golf Raw Pro feature. While Pro is not yet on sale it is open to everyone as a preview; once it is, the panel asks you to upgrade or to restore a pass you already own. Nothing in the free tool is taken away."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I import my launch monitor data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Export the session as a CSV from TrackMan, Foresight, Garmin, FlightScope, Rapsodo or SkyTrak and drop it into the import panel at the top of this page. The tool finds the club and carry columns, converts meters if the file uses them, skips the summary rows vendors append, and logs the shots into today’s session. You can correct the column mapping before anything is written, and the file never leaves your device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this send my numbers anywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Every shot is stored in your own browser and never leaves the device — no account, no upload, no third party. Clearing your browser data deletes it, so export a backup from the locker if you want to keep it."
+          }
+        }
+      ]
     }
   ]
 }

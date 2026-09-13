@@ -23,6 +23,18 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
       "@type": "WebPage",
       "@id": "https://www.golfraw.com/pro#webpage",
       "name": "GolfRaw Pro: What Pro Adds to the Free Golf Tools | GOLFRAW",
@@ -32,9 +44,7 @@
         "@id": "https://www.golfraw.com/pro#product"
       },
       "publisher": {
-        "@type": "Organization",
-        "name": "GOLFRAW",
-        "url": "https://www.golfraw.com/"
+        "@id": "https://www.golfraw.com#organization"
       },
       "inLanguage": "en"
     },
@@ -52,13 +62,13 @@
         "Coach & Fitter Report: Build a one-page report from the numbers already on this device, then print it to PDF or share it by link."
       ],
       "publisher": {
-        "@type": "Organization",
-        "name": "GOLFRAW",
-        "url": "https://www.golfraw.com/"
-      }
+        "@id": "https://www.golfraw.com#organization"
+      },
+      "inLanguage": "en"
     },
     {
       "@type": "BreadcrumbList",
+      "@id": "https://www.golfraw.com/pro#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",

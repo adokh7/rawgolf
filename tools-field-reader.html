@@ -47,59 +47,101 @@
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "The Field Reader",
-  "alternateName": "Golf Course Fit Model",
-  "url": "https://www.golfraw.com/tools-field-reader",
-  "applicationCategory": "SportsApplication",
-  "operatingSystem": "Any browser",
-  "browserRequirements": "Requires JavaScript",
-  "description": "Rank any golf field by course fit. Adjust distance, approach, short game and putting demands to reveal which players are best suited to the week.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "featureList": [
-    "Weight distance, approach, short game and putting to match the week",
-    "The field re-ranks live as the weights move",
-    "Fit score out of 100 with the reason behind it",
-    "Lock four picks and keep them on your device"
-  ],
-  "publisher": { "@type": "Organization", "name": "GOLFRAW", "url": "https://www.golfraw.com/" }
-}
-  </script>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.golfraw.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.golfraw.com/tools" },
-    { "@type": "ListItem", "position": 3, "name": "The Field Reader", "item": "https://www.golfraw.com/tools-field-reader" }
-  ]
-}
-  </script>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "What is course fit in golf?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Course fit is the idea that a golf course rewards particular skills more than others. A long par 71 with small greens asks for approach play, a short course with thick rough asks for accuracy and scrambling, and the same player can be a contender at one and miss the cut at the other. A fit model weights each skill by how much the week demands it." }
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
     },
     {
-      "@type": "Question",
-      "name": "Does putting surface really matter for course fit?",
-      "acceptedAnswer": { "@type": "Answer", "text": "It matters more than most other single factors. Bermuda grain, Poa annua bumpiness in the afternoon and the true roll of bentgrass all reward different reads and different stroke types. Players with a genuine surface preference show it in their putting numbers, which is why this model splits putting by surface rather than treating it as one skill." }
+      "@type": "WebApplication",
+      "@id": "https://www.golfraw.com/tools-field-reader#application",
+      "name": "The Field Reader",
+      "url": "https://www.golfraw.com/tools-field-reader",
+      "applicationCategory": "SportsApplication",
+      "operatingSystem": "Any browser",
+      "browserRequirements": "Requires JavaScript",
+      "description": "Rank any golf field by course fit. Adjust distance, approach, short game and putting demands to reveal which players are best suited to the week.",
+      "publisher": {
+        "@id": "https://www.golfraw.com#organization"
+      },
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.golfraw.com/tools-field-reader",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
     },
     {
-      "@type": "Question",
-      "name": "Are the players in this tool real?",
-      "acceptedAnswer": { "@type": "Answer", "text": "The list shipped with the tool is made of archetypes, not real golfers, and each one is labelled as an archetype on the board. They exist so the model works out of the box. A real field can be loaded by editing the tournament feed with real, sourced strokes-gained numbers." }
+      "@type": "BreadcrumbList",
+      "@id": "https://www.golfraw.com/tools-field-reader#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.golfraw.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://www.golfraw.com/tools"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The Field Reader",
+          "item": "https://www.golfraw.com/tools-field-reader"
+        }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Is this a betting tool?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. It is a course fit model that shows which skills a week rewards and which players in the loaded field have them. It does not price markets, take stakes or predict winners, and a fit score is not a probability. Golf is won by whoever plays best over four days, not by whoever fits the course best on Tuesday." }
+      "@type": "FAQPage",
+      "@id": "https://www.golfraw.com/tools-field-reader#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does putting surface really matter that much?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "More than almost any other single factor. Bermuda grain, afternoon Poa bumpiness and the true roll of bentgrass reward different reads and different strokes. Players with a real surface preference show it in their numbers, which is why putting is split three ways here."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are these real players?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The shipped list is archetypes, each one labelled on the board. Load a real field by editing the tournament feed with sourced numbers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this a betting tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It ranks skills against course demands. It does not price markets, take stakes or predict winners, and a fit score is not a probability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where do my picks go?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Into your own browser, alongside everything else in the locker. Nothing is uploaded and there is no account. Clearing browser data deletes them."
+          }
+        }
+      ]
     }
   ]
 }

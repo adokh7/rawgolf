@@ -41,7 +41,7 @@ class StandardSitemapRegressionTests(unittest.TestCase):
     def test_standard_sitemap_does_not_emit_ignored_change_frequency_or_priority(self):
         source = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
         self.assertNotRegex(source, r"<changefreq>")
-        non_boosted = re.sub(r"<url>\s*<loc>[^<]*/how-long-do-golf-clubs-last</loc>.*?</url>", "", source, flags=re.S)
+        non_boosted = re.sub(r"<url>\s*<loc>[^<]*(?:/how-long-do-golf-clubs-last|/trump-martin-doonbeg-irish-open-united-ireland|/irish-open-2026-final-round-tee-times-tv|/solheim-cup-prize-money-ryder-cup-500k|/europe-wins-solheim-cup-sunday-singles-rout)</loc>.*?</url>", "", source, flags=re.S)
         self.assertNotRegex(non_boosted, r"<priority>")
 
 

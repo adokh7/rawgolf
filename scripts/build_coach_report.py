@@ -11,6 +11,7 @@ SHELL = os.path.join(ROOT, 'tools-bag-audit.html')
 OUT = os.path.join(ROOT, 'tools-coach-report.html')
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tool_shell import shell_parts as _shell_parts
+from scripts.schema_normalizer import normalize_tool_page
 
 SITE = 'https://www.golfraw.com'
 SLUG = 'tools-coach-report'
@@ -434,6 +435,7 @@ def main():
         p['head_tail'].replace(PREMIUM_LINK, '').replace('</head>', STYLE + PREMIUM_LINK + HEAD_EXTRA + '</head>'),
         p['body_open'], MAIN, p['footer'], '', p['nav_script'], SCRIPT, p['gtag'], TAIL + '</body>', '', '</html>',
     ])
+    doc = normalize_tool_page(doc, OUT)
     io.open(OUT, 'w', encoding='utf-8').write(doc)
     print('  wrote %s (%d bytes)' % (os.path.basename(OUT), len(doc.encode('utf-8'))))
     return 0

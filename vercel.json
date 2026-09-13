@@ -219,6 +219,21 @@
       "source": "/explainers/tour-championship-points-and-payouts-2026",
       "destination": "/news-2026-tour-championship-points-and-payouts",
       "permanent": true
+    },
+    {
+      "source": "/news-2026-europe-wins-solheim-cup-sunday-singles-rout",
+      "destination": "/europe-wins-solheim-cup-sunday-singles-rout",
+      "permanent": true
+    },
+    {
+      "source": "/news/europe-wins-solheim-cup-sunday-singles-rout",
+      "destination": "/europe-wins-solheim-cup-sunday-singles-rout",
+      "permanent": true
+    },
+    {
+      "source": "/explainers/solheim-cup-prize-money-players-paid",
+      "destination": "/solheim-cup-prize-money-ryder-cup-500k",
+      "permanent": true
     }
   ],
   "headers": [

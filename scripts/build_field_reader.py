@@ -18,6 +18,7 @@ OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
 
 
 from tool_shell import shell_parts as _shell_parts
+from scripts.schema_normalizer import normalize_tool_page
 
 
 def shell_parts():
@@ -804,6 +805,7 @@ def main():
         '',
         '</html>',
     ])
+    doc = normalize_tool_page(doc, OUT)
     io.open(OUT, 'w', encoding='utf-8').write(doc)
     print('  wrote %s (%d bytes)' % (os.path.basename(OUT), len(doc.encode('utf-8'))))
     return 0

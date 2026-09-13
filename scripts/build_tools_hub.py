@@ -24,6 +24,7 @@ HUB_PATH = ROOT / "tools.html"
 sys.path.insert(0, str(ROOT))
 
 from scripts import tool_inventory as inventory
+from scripts.schema_normalizer import _hub_schema
 
 
 MARKER_NAMES = ("METADATA", "SCHEMA", "HERO", "CARDS", "PRO-VALUE", "DASHBOARD", "EMPTY")
@@ -82,75 +83,7 @@ def render_metadata():
 
 
 def _schema_document():
-    counts = inventory.tool_counts()
-    items = []
-    for position, tool in enumerate(inventory.TOOLS, start=1):
-        item = {
-            "@type": "WebApplication",
-            "name": tool["name"],
-            "url": inventory.SITE + tool["route"],
-            "applicationCategory": "SportsApplication",
-            "operatingSystem": "Any browser",
-            "browserRequirements": "Requires JavaScript",
-            "description": tool["description"],
-        }
-        if tool["access"] == "free":
-            item["offers"] = {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD",
-            }
-        items.append({"@type": "ListItem", "position": position, "item": item})
-
-    return {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "name": "Raw Golf Tools Suite",
-        "url": inventory.HUB_CANONICAL,
-        "description": (
-            f"A suite of {counts['free']} free client-side golf tools plus the "
-            "Coach Report Pro preview. The catalog is grouped into performance "
-            "and practice, course management, bag and equipment, games and "
-            "scoring, and Pro output."
-        ),
-        "publisher": {
-            "@type": "Organization",
-            "name": "GOLFRAW",
-            "url": inventory.SITE + "/",
-            "logo": {
-                "@type": "ImageObject",
-                "url": inventory.SITE + "/public/favicon-192.webp",
-                "width": 1254,
-                "height": 1254,
-            },
-        },
-        "mainEntity": {
-            "@type": "ItemList",
-            "itemListElement": items,
-            "numberOfItems": counts["total"],
-            "name": f"The {counts['total']} Raw Golf tools",
-        },
-        "alternateName": "Unfiltered Client-Side Golf Utility Apps",
-        "inLanguage": "en",
-        "keywords": (
-            "client-side golf calculators, free golf utility apps, no-signup golf tools, "
-            "golf betting calculator, strokes lost calculator, WHS handicap calculator, "
-            "club gapping calculator, psychological golf performance diagnostics, "
-            "golf mental game calculator, privacy-first golf apps"
-        ),
-        "about": [
-            {"@type": "Thing", "name": "Golf betting settlement"},
-            {"@type": "Thing", "name": "Golf performance diagnostics"},
-            {"@type": "Thing", "name": "World Handicap System"},
-            {"@type": "Thing", "name": "Golf club gapping"},
-            {"@type": "Thing", "name": "Golf course management"},
-            {"@type": "Thing", "name": "Golf psychology and mental game"},
-        ],
-        "audience": {
-            "@type": "PeopleAudience",
-            "audienceType": "Amateur and club golfers",
-        },
-    }
+    return _hub_schema()
 
 
 def render_schema():

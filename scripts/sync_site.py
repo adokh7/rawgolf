@@ -581,6 +581,7 @@ SITEMAP_PRIORITIES = {
     '/trump-martin-doonbeg-irish-open-united-ireland': '0.9',
     '/irish-open-2026-final-round-tee-times-tv': '0.9',
     '/solheim-cup-prize-money-ryder-cup-500k': '0.8',
+    '/europe-wins-solheim-cup-sunday-singles-rout': '0.9',
 }
 
 

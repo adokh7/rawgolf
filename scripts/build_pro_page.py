@@ -22,6 +22,7 @@ PAGE_PATH = ROOT / "pro.html"
 sys.path.insert(0, str(ROOT))
 
 from scripts import tool_inventory as inventory
+from scripts.schema_normalizer import _pro_schema
 
 THEME_BLOCK = '''<!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -66,46 +67,7 @@ def render_metadata(free, pro):
 
 
 def render_schema(free, pro):
-    page_url = inventory.SITE + pro["route"]
-    feature_list = [feature["label"] + ": " + feature["summary"] for feature in pro["features"]]
-    document = {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "WebPage",
-                "@id": page_url + "#webpage",
-                "name": pro["title"],
-                "url": page_url,
-                "description": pro["description"],
-                "mainEntity": {"@id": page_url + "#product"},
-                "publisher": {"@type": "Organization", "name": "GOLFRAW", "url": inventory.SITE + "/"},
-                "inLanguage": "en",
-            },
-            {
-                "@type": "SoftwareApplication",
-                "@id": page_url + "#product",
-                "name": pro["label"],
-                "url": page_url,
-                "applicationCategory": "SportsApplication",
-                "operatingSystem": "Any browser",
-                "browserRequirements": "Requires JavaScript",
-                "description": (
-                    f"{free['tool_count']} free browser-based golf tools remain available. "
-                    "The current Pro surface adds the following verified capabilities."
-                ),
-                "featureList": feature_list,
-                "publisher": {"@type": "Organization", "name": "GOLFRAW", "url": inventory.SITE + "/"},
-            },
-            {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                    {"@type": "ListItem", "position": 1, "name": "Home", "item": inventory.SITE + "/"},
-                    {"@type": "ListItem", "position": 2, "name": "Tools", "item": inventory.SITE + "/tools"},
-                    {"@type": "ListItem", "position": 3, "name": pro["label"], "item": page_url},
-                ],
-            },
-        ],
-    }
+    document = _pro_schema()
     payload = json.dumps(document, indent=2, ensure_ascii=False).replace("</script>", "<\\/script>")
     return f'''  <script type="application/ld+json">
 {payload}

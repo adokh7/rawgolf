@@ -77,6 +77,8 @@ REDIRECTS = {
         "/irish-open-2026-final-round-tee-times-tv",
     "/news-2026-solheim-cup-prize-money-ryder-cup-500k":
         "/solheim-cup-prize-money-ryder-cup-500k",
+    "/news-2026-europe-wins-solheim-cup-sunday-singles-rout":
+        "/europe-wins-solheim-cup-sunday-singles-rout",
 }
 
 WINNERS = {

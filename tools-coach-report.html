@@ -47,40 +47,104 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
       "@type": "WebApplication",
+      "@id": "https://www.golfraw.com/tools-coach-report#application",
       "name": "The Coach Report",
-      "alternateName": "Golf Coach and Fitter Report Builder",
       "url": "https://www.golfraw.com/tools-coach-report",
       "applicationCategory": "SportsApplication",
       "operatingSystem": "Any browser",
       "browserRequirements": "Requires JavaScript",
       "description": "Golf Raw Pro coach report from your range session, bag and rounds: dispersion, gaps, passengers and tendencies. Open as a preview; print or share.",
+      "publisher": {
+        "@id": "https://www.golfraw.com#organization"
+      },
+      "inLanguage": "en",
       "featureList": [
-        "One-page report from your own range session, bag and rounds",
-        "Carry dispersion chart with medians and 80% bands",
-        "Gap and passenger verdicts using the same thresholds as the tools",
-        "On-course tendencies from the Tendency Engine",
-        "Print or save as PDF; share by a link that carries the data itself"
-      ],
-      "publisher": { "@type": "Organization", "name": "GOLFRAW", "url": "https://www.golfraw.com/" }
+        "One-page report from your range session, bag and rounds",
+        "Print or save the report as PDF",
+        "Share the report by link"
+      ]
     },
     {
       "@type": "BreadcrumbList",
+      "@id": "https://www.golfraw.com/tools-coach-report#breadcrumb",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.golfraw.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.golfraw.com/tools" },
-        { "@type": "ListItem", "position": 3, "name": "The Coach Report", "item": "https://www.golfraw.com/tools-coach-report" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.golfraw.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://www.golfraw.com/tools"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The Coach Report",
+          "item": "https://www.golfraw.com/tools-coach-report"
+        }
       ]
     },
     {
       "@type": "FAQPage",
+      "@id": "https://www.golfraw.com/tools-coach-report#faq",
       "mainEntity": [
-        { "@type": "Question", "name": "Where does the report get its numbers?",
-          "acceptedAnswer": { "@type": "Answer", "text": "From the tools you already used on this device: the Standing Order range session (typed or imported from a launch monitor), the Bag Audit usage and trust scores, and completed rounds from the Tendency Engine. It uses the same thresholds those tools use, so nothing on the page contradicts what you saw in the tool." } },
-        { "@type": "Question", "name": "How do I get a PDF?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Use the Print / save as PDF button and choose Save as PDF in your browser's print dialog. The page is laid out for a single A4 or Letter sheet. Nothing is generated on a server and nothing is uploaded." } },
-        { "@type": "Question", "name": "How does the share link work if nothing is uploaded?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The link carries the report itself, encoded after the hash in the address. Browsers never send that part to a server, so GolfRaw never receives it. Anyone you give the link to can open the report; treat it like sending the PDF." } }
+        {
+          "@type": "Question",
+          "name": "Is the report free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Building the report is a Golf Raw Pro feature. While Pro is not yet on sale it is open to everyone as a preview; once it is, this page asks you to upgrade or restore a pass you already own. Opening a report someone shared with you is always free, and every free tool stays free."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does the report get its numbers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From the tools you already used on this device: the Standing Order range session (typed in or imported from a launch monitor), the Bag Audit usage and trust scores, and completed rounds from the Tendency Engine. It applies the same thresholds those tools use, so nothing on the page contradicts what you saw in the tool."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get a PDF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Press Print / save as PDF and choose Save as PDF in your browser’s print dialog. The page is laid out for a single A4 or Letter sheet. No server generates it and nothing is uploaded."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the share link work if nothing is uploaded?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The link carries the report itself, encoded after the hash in the address. Browsers never send that part to a server, so GolfRaw never receives it. Anyone you give the link to can open the report, so treat it exactly as you would treat sending the PDF."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if a section says there is no data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Then there is none on this device yet. Log a range session in the Standing Order (or import a launch-monitor CSV there), enter usage in the Bag Audit, and tap in rounds in the Tendency Engine. The report never fills a gap with a guess."
+          }
+        }
       ]
     }
   ]

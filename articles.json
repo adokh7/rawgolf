@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 345,
+  "count": 349,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -36,6 +36,26 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/europe-wins-solheim-cup-sunday-singles-rout",
+      "alias_of": "",
+      "slug": "europe-wins-solheim-cup-sunday-singles-rout",
+      "url": "/europe-wins-solheim-cup-sunday-singles-rout",
+      "title": "Europe Wins the Solheim Cup as Sunday Singles Rout Lands | GOLFRAW",
+      "excerpt": "Europe beat the USA at Bernardus to regain the Solheim Cup. How a tied match became a rout, who delivered the clinching point, and the record set in defeat.",
+      "category": [
+        "NEWS",
+        "SOLHEIM CUP",
+        "TOURNAMENTS",
+        "TEAM EUROPE",
+        "CHARLEY HULL",
+        "LOTTIE WOAD"
+      ],
+      "date": "2026-09-13",
+      "image": "/images/news/team-europe-solheim-cup-2026-champions-bernardus-hero.webp",
+      "keywords": "SOLHEIM CUP, BERNARDUS GOLF, TEAM EUROPE, CHARLEY HULL, LOTTIE WOAD, SUNDAY SINGLES",
+      "section": "NEWS"
+    },
     {
       "canonical": "/solheim-cup-prize-money-ryder-cup-500k",
       "alias_of": "",

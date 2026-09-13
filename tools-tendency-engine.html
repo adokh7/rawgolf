@@ -47,61 +47,101 @@
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "The Tendency Engine",
-  "alternateName": "Golf Miss Pattern and Shot Tracker",
-  "url": "https://www.golfraw.com/tools-tendency-engine",
-  "applicationCategory": "SportsApplication",
-  "operatingSystem": "Any browser",
-  "browserRequirements": "Requires JavaScript",
-  "description": "Track your real golf miss patterns across 18 holes. See directional bias, distance-control trends, and which parts of your game cost the most shots.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "featureList": [
-    "Tap in 18 holes after the round in about 90 seconds",
-    "Directional miss bias off the tee, left versus right",
-    "Approach distance control, short versus long",
-    "Estimated shots gained or lost across four parts of the game",
-    "Rolling trend across your last 3 to 10 rounds",
-    "Stored on your device only"
-  ],
-  "publisher": { "@type": "Organization", "name": "GOLFRAW", "url": "https://www.golfraw.com/" }
-}
-  </script>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.golfraw.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.golfraw.com/tools" },
-    { "@type": "ListItem", "position": 3, "name": "The Tendency Engine", "item": "https://www.golfraw.com/tools-tendency-engine" }
-  ]
-}
-  </script>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "How many rounds before my miss pattern means anything?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Three rounds is the earliest anything is worth reading, and the tool will not call a directional bias until it has seen at least eight missed fairways. Below that a two-shot run of pulls looks identical to a genuine pattern, and acting on it sends you to the range to fix a problem you do not have." }
+      "@type": "Organization",
+      "@id": "https://www.golfraw.com#organization",
+      "name": "GOLFRAW",
+      "url": "https://www.golfraw.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.golfraw.com/public/favicon-192.webp",
+        "width": 1254,
+        "height": 1254
+      }
     },
     {
-      "@type": "Question",
-      "name": "Is this real strokes gained?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No, and it does not claim to be. Real strokes gained needs the distance and lie of every shot you hit. This estimates where your shots went by comparing your fairway, green, scrambling and putting rates against a 15-handicap benchmark. The split between the four categories is reliable in direction and rough in magnitude." }
+      "@type": "WebApplication",
+      "@id": "https://www.golfraw.com/tools-tendency-engine#application",
+      "name": "The Tendency Engine",
+      "url": "https://www.golfraw.com/tools-tendency-engine",
+      "applicationCategory": "SportsApplication",
+      "operatingSystem": "Any browser",
+      "browserRequirements": "Requires JavaScript",
+      "description": "Track your real golf miss patterns across 18 holes. See directional bias, distance-control trends, and which parts of your game cost the most shots.",
+      "publisher": {
+        "@id": "https://www.golfraw.com#organization"
+      },
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.golfraw.com/tools-tendency-engine",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
     },
     {
-      "@type": "Question",
-      "name": "What is the difference between this and The Round Autopsy?",
-      "acceptedAnswer": { "@type": "Answer", "text": "The Round Autopsy dissects one round in detail. The Tendency Engine watches many rounds and finds the pattern that repeats: which way you miss, whether you come up short or run through the green, and which part of the game is quietly taking the most from you." }
+      "@type": "BreadcrumbList",
+      "@id": "https://www.golfraw.com/tools-tendency-engine#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.golfraw.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://www.golfraw.com/tools"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The Tendency Engine",
+          "item": "https://www.golfraw.com/tools-tendency-engine"
+        }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Does the tracker upload my scores?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. Every round is stored in your own browser and never leaves the device. There is no account and no upload. Clearing your browser data deletes it, so export a backup from the locker if you want to keep it." }
+      "@type": "FAQPage",
+      "@id": "https://www.golfraw.com/tools-tendency-engine#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many rounds before the pattern means anything?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three is the earliest anything is worth reading, and no directional call is made until at least eight missed fairways have been seen. Below that, a short run of pulls looks exactly like a genuine bias."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this real strokes gained?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Real strokes gained needs the distance and lie of every shot. This compares your fairway, green, scrambling and putting rates to a 15-handicap benchmark. Reliable in direction, rough in magnitude."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from The Round Autopsy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Round Autopsy dissects a single round in detail. This watches many rounds and finds what repeats. Use the Autopsy after a strange round, and this one every round."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it upload my scores?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Everything stays in your browser and never leaves the device. Clearing browser data deletes it, so export a backup from the locker if you want to keep it."
+          }
+        }
+      ]
     }
   ]
 }
