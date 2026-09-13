@@ -26,6 +26,7 @@ OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
 LM_VER = '1'
 # Pro client (paywall / entitlement). Bump when lib/pro/pro.js changes.
 PRO_VER = '1'
+PREMIUM_LINK = '  <link rel="stylesheet" href="/public/tool-premium.css?v=2">\n'
 HEAD_EXTRA = ('  <script src="/lib/pro/lm-import.js?v=%s" defer></script>\n' % LM_VER +
               '  <script src="/lib/pro/pro.js?v=%s" defer></script>\n' % PRO_VER)
 
@@ -361,7 +362,9 @@ MAIN = '''
         <blockquote>Hit five to ten balls with each club, write down every carry, and take the
           <b>median</b> rather than the average &mdash; one thinned shot ruins an average. Aim for 10&ndash;15
           yards between clubs. Over 25 yards is a hole in your bag; under 8 yards means two clubs are
-          doing one job.</blockquote>
+          doing one job. The <a href="/news-2026-golf-club-distances-guide">realistic golf club distance chart</a>
+          gives you a useful baseline, while the <a href="/swing-speed-guide">swing-speed guide</a> explains
+          why your repeatable carry matters more than a single flushed shot.</blockquote>
       </section>
 
       <!-- ============ LAUNCH-MONITOR IMPORT (PRO) ============ -->
@@ -371,6 +374,7 @@ MAIN = '''
           <p class="lm-intro">Export the session as a CSV from TrackMan, Foresight, Garmin, FlightScope, Rapsodo or
             SkyTrak and drop it here. The file is read on this device, mapped to your clubs, and logged into
             today&rsquo;s session exactly as if you had tapped the shots in. Nothing is uploaded.</p>
+          <p class="lm-intro"><a href="/pro">See what stays free and what Pro adds &rarr;</a></p>
 
           <label class="lm-drop" id="lmDrop" for="lmFile">
             <b>Drop a CSV here</b>
@@ -1331,7 +1335,7 @@ def main():
     doc = '\n'.join([
         rewrite_meta(p['head_top']),
         JSONLD,
-        p['head_tail'].replace('</head>', STYLE + HEAD_EXTRA + '</head>'),
+        p['head_tail'].replace(PREMIUM_LINK, '').replace('</head>', STYLE + PREMIUM_LINK + HEAD_EXTRA + '</head>'),
         p['body_open'],
         MAIN,
         p['footer'],

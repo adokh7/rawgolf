@@ -281,7 +281,11 @@ MAIN = '''
         <blockquote>Record which side you miss on every tee shot and whether each approach finished
           <b>short or long</b>, then look at the totals across at least three rounds. A genuine bias shows up
           as roughly <b>60% or more</b> of your misses landing on one side. Anything less than that, over
-          fewer than eight misses, is noise you should not be practising against.</blockquote>
+          fewer than eight misses, is noise you should not be practising against. The
+          <a href="/golf-swing-analysis-apps">swing-analysis apps</a> guide covers the same discipline of
+          looking at evidence rather than a single memorable swing, and the
+          <a href="/news-2026-raw-golf-honest-practice-guide">honest practice guide</a> shows how to keep
+          the record useful.</blockquote>
       </section>
 
       <!-- ============ LOG A ROUND ============ -->
@@ -1120,9 +1124,9 @@ LOCKER = '''<!-- LOCKER:START -->
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=4" defer></script>
-  <script src="/lib/locker/store.js?v=4" defer></script>
-  <script src="/lib/locker/drawer.js?v=5" defer></script>
+  <script src="/lib/locker/schema.js?v=7" defer></script>
+  <script src="/lib/locker/store.js?v=7" defer></script>
+  <script src="/lib/locker/drawer.js?v=7" defer></script>
 <!-- LOCKER:END -->
 '''
 

@@ -73,6 +73,8 @@ REDIRECTS = {
         "/trump-west-palm-beach-presidential-golf-course-proposal",
     "/news-2026-trump-martin-doonbeg-irish-open-united-ireland":
         "/trump-martin-doonbeg-irish-open-united-ireland",
+    "/news-2026-irish-open-2026-final-round-tee-times-tv":
+        "/irish-open-2026-final-round-tee-times-tv",
 }
 
 WINNERS = {

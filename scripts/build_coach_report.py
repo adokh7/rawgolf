@@ -21,6 +21,7 @@ OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
 REPORT_VER = '1'
 # Pro client (paywall / entitlement). Bump when lib/pro/pro.js changes.
 PRO_VER = '1'
+PREMIUM_LINK = '  <link rel="stylesheet" href="/public/tool-premium.css?v=2">\n'
 HEAD_EXTRA = ('  <script src="/lib/pro/report.js?v=%s" defer></script>\n' % REPORT_VER +
               '  <script src="/lib/pro/pro.js?v=%s" defer></script>\n' % PRO_VER)
 
@@ -202,6 +203,7 @@ MAIN = '''
         passengers in the bag, and what your last rounds say about where you miss. Built from the numbers
         already on this device &mdash; the Standing Order, the Bag Audit and the Tendency Engine &mdash; then
         printed to PDF or handed over as a link. Nothing is uploaded to build it.</p>
+      <p class="cr-hint"><a href="/pro">See what stays free and what Pro adds &rarr;</a></p>
     </div>
   </div>
 
@@ -213,7 +215,10 @@ MAIN = '''
         <h2 id="aeo-q">What should a golf fitting or coaching report contain?</h2>
         <blockquote>The player&rsquo;s <b>median carry per club</b> with its dispersion, the <b>gaps</b> between
           adjacent clubs, which clubs are <b>passengers</b>, and any on-course <b>tendency</b> the data
-          supports. Medians, not averages; bands, not single numbers; and a stated sample size for each.</blockquote>
+          supports. Medians, not averages; bands, not single numbers; and a stated sample size for each.
+          The <a href="/news-2026-golf-club-distances-guide">realistic club-distance chart</a> explains
+          the baseline, while the <a href="/golf-swing-analysis-apps">swing-analysis app guide</a> shows
+          why recorded evidence beats a remembered swing.</blockquote>
       </section>
 
       <div class="cr-shared" id="sharedNote" hidden><b>Shared report.</b> This was built on someone else&rsquo;s device and
@@ -426,7 +431,7 @@ def main():
     p = shell_parts()
     doc = '\n'.join([
         rewrite_meta(p['head_top']), JSONLD,
-        p['head_tail'].replace('</head>', STYLE + HEAD_EXTRA + '</head>'),
+        p['head_tail'].replace(PREMIUM_LINK, '').replace('</head>', STYLE + PREMIUM_LINK + HEAD_EXTRA + '</head>'),
         p['body_open'], MAIN, p['footer'], '', p['nav_script'], SCRIPT, p['gtag'], TAIL + '</body>', '', '</html>',
     ])
     io.open(OUT, 'w', encoding='utf-8').write(doc)

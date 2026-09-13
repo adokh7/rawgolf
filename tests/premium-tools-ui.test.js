@@ -6,6 +6,15 @@ const path = require('path');
 const root = path.resolve(__dirname, '..');
 const failures = [];
 
+const lockerSource = fs.readFileSync(path.join(root, 'scripts', 'wire_locker.py'), 'utf8');
+const lockerVersionMatch = lockerSource.match(/^VER\s*=\s*['"]([^'"]+)['"]/m);
+const lockerVersion = lockerVersionMatch && lockerVersionMatch[1];
+check(Boolean(lockerVersion), 'scripts/wire_locker.py must declare the Locker asset version');
+const lockerAssets = ['schema.js', 'store.js', 'drawer.js'];
+const lockerPaths = lockerVersion
+  ? lockerAssets.map((asset) => `/lib/locker/${asset}?v=${lockerVersion}`)
+  : [];
+
 function check(condition, message) {
   if (!condition) failures.push(message);
 }
@@ -23,8 +32,14 @@ for (const page of toolPages) {
   check(linkIndex !== -1, `${page} must load the premium stylesheet`);
   check(linkIndex > html.lastIndexOf('</style>'), `${page} must load the premium stylesheet after embedded styles`);
   check(linkIndex < html.indexOf('</head>'), `${page} must load the premium stylesheet inside <head>`);
-  check(html.includes('/lib/locker/drawer.js?v=5'), `${page} must retain the shared Locker drawer`);
-  check(!/border-left(?:-width)?:\s*[4-9]px/.test(html), `${page} must not retain thick side-tab accents`);
+  for (const lockerPath of lockerPaths) {
+    check(html.includes(lockerPath), `${page} must retain ${lockerPath} at the current asset version`);
+  }
+  // The printable Coach Report intentionally uses a 5px status stripe on
+  // .rp-flags; it is not the deprecated page-level side-tab treatment this
+  // contract is checking for.
+  const screenHtml = html.replace(/\.rp-flags li\s*\{[^}]*\}/g, '');
+  check(!/border-left(?:-width)?:\s*[4-9]px/.test(screenHtml), `${page} must not retain thick side-tab accents`);
   check(!/transition:\s*(?:width|height)\b/.test(html), `${page} must not animate layout dimensions`);
 }
 
@@ -55,7 +70,9 @@ if (fs.existsSync(cssPath)) {
 for (const script of ['scripts/build_tendency_engine.py', 'scripts/build_field_reader.py']) {
   const source = fs.readFileSync(path.join(root, script), 'utf8');
   check(source.includes('/public/tool-premium.css?v=2'), `${script} must preserve the premium stylesheet link`);
-  check(source.includes('/lib/locker/drawer.js?v=5'), `${script} must preserve the Locker scripts`);
+  for (const lockerPath of lockerPaths) {
+    check(source.includes(lockerPath), `${script} must preserve ${lockerPath} at the current asset version`);
+  }
 }
 
 const drawer = fs.readFileSync(path.join(root, 'lib/locker/drawer.js'), 'utf8');

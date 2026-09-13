@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Regression checks for the Phase 3 public Free/Pro product architecture."""
 
+import html
 import importlib
 import json
 import re
@@ -136,8 +137,9 @@ class FreeProArchitectureTests(unittest.TestCase):
         self.assertRegex(source.lower(), r"free forever")
         self.assertRegex(source.lower(), r"no login")
         self.assertIn("What Pro adds", source)
-        self.assertIn("Launch-monitor CSV import", source)
-        self.assertIn("Coach &amp; Fitter Report", source)
+        for feature in pro["features"]:
+            self.assertIn(html.escape(feature["label"]), source)
+            self.assertIn(html.escape(feature["summary"]), source)
         self.assertIn("PDF", source)
         self.assertIn("share link", source)
 
@@ -152,6 +154,11 @@ class FreeProArchitectureTests(unittest.TestCase):
         self.assertIn("WebPage", types)
         self.assertIn("SoftwareApplication", types)
         self.assertFalse(any("offers" in node or "price" in node for node in nodes))
+        app = next(node for node in nodes if node.get("@type") == "SoftwareApplication")
+        self.assertEqual(
+            [feature["label"] + ": " + feature["summary"] for feature in pro["features"]],
+            app["featureList"],
+        )
 
     def test_tools_hub_exposes_public_pro_value_path(self):
         source = HUB_PATH.read_text(encoding="utf-8")
@@ -160,6 +167,9 @@ class FreeProArchitectureTests(unittest.TestCase):
         self.assertIn('href="/pro"', source)
         self.assertIn("Free forever", source)
         self.assertIn("What Pro adds", source)
+        for feature in self.inventory.PRODUCT_MODEL["pro"]["features"]:
+            self.assertIn(html.escape(feature["label"]), source)
+            self.assertIn(html.escape(feature["summary"]), source)
 
     def test_pro_entry_points_link_to_the_public_value_surface(self):
         coach_source = COACH_PATH.read_text(encoding="utf-8")
@@ -169,7 +179,7 @@ class FreeProArchitectureTests(unittest.TestCase):
 
         for source in (coach_source, standing_source, coach_builder, standing_builder):
             self.assertIn('href="/pro"', source)
-            self.assertIn("what stays free and what Pro adds", source.lower())
+            self.assertIn("what stays free and what pro adds", source.lower())
 
     def test_existing_free_and_pro_schema_surfaces_remain_truthful(self):
         hub = parse(HUB_PATH)

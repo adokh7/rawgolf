@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>Irish Open Final Round Tee Times, TV Times and Leaderboard | GOLFRAW</title>
+      <link>https://www.golfraw.com/irish-open-2026-final-round-tee-times-tv</link>
+      <guid isPermaLink="true">https://www.golfraw.com/irish-open-2026-final-round-tee-times-tv</guid>
+      <pubDate>Sun, 13 Sep 2026 09:00:00 +0000</pubDate>
+      <category>NEWS, IRISH OPEN, SHANE LOWRY, DOONBEG, TEE TIMES, TV SCHEDULE</category>
+      <description>Lowry and Olesen went out at 2.05pm local. Full final round details for the Amgen Irish Open at Doonbeg, plus TV windows and the 54-hole leaderboard.</description>
+      <enclosure url="https://www.golfraw.com/images/news/shane-lowry-final-round-irish-open-doonbeg-hero.webp" length="70366" type="image/webp"/>
+    </item>
+    <item>
       <title>Trump and Martin Meet Again at Doonbeg After Ireland Row | GOLFRAW</title>
       <link>https://www.golfraw.com/trump-martin-doonbeg-irish-open-united-ireland</link>
       <guid isPermaLink="true">https://www.golfraw.com/trump-martin-doonbeg-irish-open-united-ireland</guid>
@@ -134,15 +143,6 @@
       <category>TOURNAMENTS, NEWS, SOLHEIM CUP, TEAM EUROPE, ANNA NORDQVIST, BERNARDUS GOLF, CHARLEY HULL, LEONA MAGUIRE</category>
       <description>Four debutants, eight returnees, one captain betting on aggression. Every player, how they qualified, and who missed out by a handful of ranking spots.</description>
       <enclosure url="https://www.golfraw.com/public/news-2026-european-solheim-cup-team-hero.webp" length="62216" type="image/webp"/>
-    </item>
-    <item>
-      <title>Asian Tour CEO on the Pivot From LIV Golf to DP World Tour | GOLFRAW</title>
-      <link>https://www.golfraw.com/asian-tour-ceo-liv-golf-dp-world-tour-pivot</link>
-      <guid isPermaLink="true">https://www.golfraw.com/asian-tour-ceo-liv-golf-dp-world-tour-pivot</guid>
-      <pubDate>Sat, 05 Sep 2026 09:00:00 +0000</pubDate>
-      <category>LIV GOLF, NEWS, ASIAN TOUR, DP WORLD TOUR, CHO MINN THANT, PGA TOUR, INTERNATIONAL SERIES</category>
-      <description>They were mid-renewal on another five years with LIV when PIF pulled out. Here&#x27;s what Cho Minn Thant actually said, and the events still stuck in limbo.</description>
-      <enclosure url="https://www.golfraw.com/public/news-2026-cho-minn-thant-asian-tour-ceo.webp" length="91004" type="image/webp"/>
     </item>
   </channel>
 </rss>

@@ -1,0 +1,158 @@
+/* GolfRaw in-article Tool CTA system. Keep this layer small and page-agnostic. */
+.tool-cta {
+  margin: 32px 0;
+  padding: 18px 20px;
+  border: 2px solid var(--ink, #101511);
+  background: var(--white, #fff);
+  color: var(--ink, #101511);
+}
+
+.tool-cta__top {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-bottom: 9px;
+}
+
+.tool-cta__kicker,
+.tool-cta__availability {
+  color: var(--flag, #1f7a45);
+  font: 600 10px/1.2 'IBM Plex Mono', monospace;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.tool-cta__availability {
+  color: var(--grey, #5b665e);
+  letter-spacing: .08em;
+}
+
+.tool-cta__badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 3px 8px;
+  border: 1px solid currentColor;
+  font: 700 10px/1 'IBM Plex Mono', monospace;
+  letter-spacing: .12em;
+}
+
+.tool-cta__badge--free {
+  color: #0f392b;
+  background: #e6f3eb;
+}
+
+.tool-cta__badge--pro {
+  color: #6b4600;
+  background: #fff0d6;
+}
+
+.tool-cta__title {
+  margin: 0 0 7px;
+  font-size: 20px;
+  line-height: 1.12;
+  letter-spacing: -.02em;
+}
+
+.article-body .tool-cta__title::before {
+  content: none;
+}
+
+.tool-cta__hook {
+  max-width: 62ch;
+  margin: 0 0 12px;
+  color: #344139;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.tool-cta__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 2px solid var(--ink, #101511);
+  background: var(--flag, #1f7a45);
+  color: #fff;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.tool-cta__link:hover {
+  background: var(--ink, #101511);
+}
+
+.tool-cta__link:focus-visible {
+  outline: 3px solid var(--flag, #1f7a45);
+  outline-offset: 3px;
+}
+
+.tool-cta--inline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 18px;
+  align-items: end;
+}
+
+.tool-cta--inline .tool-cta__top,
+.tool-cta--inline .tool-cta__title,
+.tool-cta--inline .tool-cta__hook {
+  grid-column: 1;
+}
+
+.tool-cta--inline .tool-cta__link {
+  grid-column: 2;
+  grid-row: 2 / span 3;
+}
+
+.tool-cta--card {
+  max-width: 560px;
+}
+
+.tool-cta--banner {
+  border-color: var(--ink, #101511);
+  background: var(--fairway, #14402a);
+  color: #fff;
+}
+
+.tool-cta--banner .tool-cta__kicker,
+.tool-cta--banner .tool-cta__hook {
+  color: #cfe3d6;
+}
+
+.tool-cta--banner .tool-cta__availability {
+  color: #b9d8c4;
+}
+
+.tool-cta--banner .tool-cta__link {
+  border-color: #fff;
+  background: var(--flag, #1f7a45);
+}
+
+@media (max-width: 600px) {
+  .tool-cta {
+    margin: 28px 0;
+    padding: 16px;
+  }
+
+  .tool-cta--inline {
+    display: block;
+  }
+
+  .tool-cta--inline .tool-cta__link {
+    margin-top: 2px;
+  }
+
+  .tool-cta__link {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-cta__link {
+    transition: none;
+  }
+}

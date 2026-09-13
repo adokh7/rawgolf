@@ -189,6 +189,16 @@
       "source": "/courses/doonbeg-links-review-cost",
       "destination": "/donald-trump-amgen-irish-open-doonbeg",
       "permanent": true
+    },
+    {
+      "source": "/news-2026-irish-open-2026-final-round-tee-times-tv",
+      "destination": "/irish-open-2026-final-round-tee-times-tv",
+      "permanent": true
+    },
+    {
+      "source": "/news/irish-open-2026-final-round-tee-times-tv",
+      "destination": "/irish-open-2026-final-round-tee-times-tv",
+      "permanent": true
     }
   ],
   "headers": [

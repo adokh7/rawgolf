@@ -41,7 +41,7 @@ PRODUCT_MODEL = {
         "description": (
             "GolfRaw keeps 12 browser-based golf tools free forever with no login. "
             "GolfRaw Pro currently adds launch-monitor CSV import to Standing Order "
-            "and a one-page Coach and Fitter Report with PDF and share-link output."
+            "and a one-page Coach and Fitter Report with PDF and share link output."
         ),
         "features": (
             {
