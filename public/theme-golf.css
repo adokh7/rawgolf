@@ -10,7 +10,7 @@
      ink / deep   #0f172a  slate-900 — text, hero, footer, dark panels
      slate        #1e293b  slate-800 — hover state of dark surfaces
      forest       #166534  green-800 — brand green: headings, pills, lead cards
-     green        #15803d  green-700 — interactive accent: links, CTAs (5.0:1 on white)
+     green        #147a3b  green-700 (darkened) — interactive accent: links, CTAs (5.4:1 on white, 5.2:1 on canvas)
      bright       #22c55e  green-500 — rings / indicators on dark only
      canvas       #f8fafc  slate-50  — page ground; cards are pure white
      muted        #475569  slate-600 — secondary text (7.6:1 on white)
@@ -24,7 +24,8 @@ html:root {
   --gr-forest: #166534;
   --gr-deep: #0f172a;
   --gr-slate: #1e293b;
-  --gr-green: #15803d;
+  --gr-green: #147a3b;
+  --gr-on-dark: #4ade80;
   --gr-bright: #22c55e;
   --gr-canvas: #f8fafc;
   --gr-white: #ffffff;
@@ -48,9 +49,17 @@ html:root {
   --gr-shadow-sm: 0 1px 2px rgba(15, 23, 42, .04), 0 8px 24px rgba(15, 23, 42, .05);
   --gr-shadow-md: 0 2px 4px rgba(15, 23, 42, .05), 0 16px 36px rgba(15, 23, 42, .10);
   --gr-shadow-lift: 0 14px 32px rgba(15, 23, 42, .10), 0 2px 6px rgba(15, 23, 42, .05);
-  --gr-ring: 0 0 0 4px rgba(21, 128, 61, .16);
+  --gr-ring: 0 0 0 4px rgba(20, 122, 59, .16);
   --gr-ease: cubic-bezier(.2, .7, .2, 1);
-  --gr-sans: 'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --gr-sans: 'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --gr-meta: var(--gr-sans);
+  /* fluid type scale (rem-based so user zoom and Dynamic Type still apply) */
+  --gr-h1: clamp(2rem, 4vw + 1rem, 3.25rem);
+  --gr-h2: clamp(1.5rem, 2.5vw + .75rem, 2.25rem);
+  --gr-h3: clamp(1.25rem, 1vw + .95rem, 1.5rem);
+  --gr-lead: 1.125rem;
+  --gr-body: 1rem;
+  --gr-meta-size: .6875rem;
   --gr-display: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', 'Inter', system-ui, Arial, sans-serif;
 
   /* ---- re-point every shell generation's tokens ---- */
@@ -94,10 +103,17 @@ html:root {
 }
 
 /* ==========================================================================
-   TYPOGRAPHY — Inter for body and UI, Plus Jakarta Sans for headlines.
-   Both are single variable files, preloaded from <head>. The *Fallback faces
-   are Arial metric-matched to each web font (frequency-weighted advance
-   widths), so if a swap ever happens, text occupies the same space: no CLS.
+   TYPOGRAPHY — an editorial system in three layers, two self-hosted files.
+     display  Plus Jakarta Sans 700/800, tight tracking  — headlines, big numbers
+     text     Inter 400/500, 1rem / 1.65, 72ch measure    — reading text
+     meta     Inter 600 uppercase, .05em tracking, tabular figures — bylines,
+              dates, badges, scores (the shells' IBM Plex Mono stacks are
+              re-pointed to var(--gr-meta) by apply_theme.py, so no third
+              font file is requested)
+   Both faces are single variable woff2 files, preloaded from <head>, with
+   font-display: swap. The *Fallback faces are Arial metric-matched
+   (frequency-weighted advance widths, ascent/descent overrides), so a late
+   swap occupies the same lines: CLS from fonts is 0.
    ========================================================================== */
 @font-face {
   font-family: 'Inter';
@@ -130,59 +146,85 @@ html:root {
   line-gap-override: 0%;
 }
 
+html { -webkit-text-size-adjust: 100%; }
 body, button, input, select, textarea {
   font-family: var(--gr-sans);
 }
 body {
   background: var(--gr-canvas);
   color: var(--gr-ink);
-  line-height: 1.7;
+  font-size: var(--gr-body);
+  font-weight: 400;
+  line-height: 1.65;
   text-rendering: optimizeLegibility;
   font-feature-settings: "cv11", "ss01";
 }
 
-h1, h2, h3, .logo,
+/* ---- display layer ---- */
+h1, h2, h3, h4, .logo,
 .article-head h1, .article-body h2, .article-body h3, .hub-hero h1, .doc-hero h1,
-.rc-player .nm, .r-card .nm, .guide-card h3, .rel-card h3, .story h3, .pcard h3, .myth h3, .faq-item h3 {
+.rc-player .nm, .r-card .nm, .guide-card h3, .rel-card h3, .story h3, .pcard h3, .myth h3, .faq-item h3,
+.news h3, .coverage-card h3, .tool-card h3, .t-card h3, .vault-box h3 {
   font-family: var(--gr-display);
 }
-h1, .article-head h1, .hub-hero h1, .doc-hero h1 {
+h1, .article-head h1, .hub-hero h1, .doc-hero h1, main h1, .hero-main h1.hero-topic {
+  font-size: var(--gr-h1);
   font-weight: 800;
-  letter-spacing: -.025em;
-  line-height: 1.06;
+  letter-spacing: -.03em;
+  line-height: 1.05;
   text-transform: none;
   text-wrap: balance;
 }
-.article-head h1 { font-size: clamp(31px, 4.4vw, 54px); margin-bottom: 20px; }
-h2, .article-body h2 {
+.article-head h1 { margin-bottom: 20px; }
+h2, .article-body h2, .sec-head h2 {
+  font-size: var(--gr-h2);
   font-weight: 800;
-  letter-spacing: -.02em;
-  line-height: 1.14;
+  letter-spacing: -.025em;
+  line-height: 1.12;
   text-transform: none;
   text-wrap: balance;
 }
 .article-body h2 {
-  font-size: clamp(23px, 2.8vw, 31px);
   border-top: 1px solid var(--gr-line);
   padding-top: 24px;
-  margin: 46px 0 16px;
+  margin: 44px 0 14px;
 }
-.article-body h3 { font-weight: 700; letter-spacing: -.012em; }
+h3, .article-body h3, .faq-item h3 {
+  font-size: var(--gr-h3);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  text-transform: none;
+}
+.article-body h3 { margin: 30px 0 10px; }
 .article-body h3::before { color: var(--gr-green); }
-.standfirst, .dek {
-  font-family: var(--gr-sans);
-  font-weight: 450;
-  font-size: clamp(18px, 2.3vw, 20.5px);
-  line-height: 1.55;
-  letter-spacing: -.005em;
-  color: var(--gr-muted);
+/* big numbers and scores share the display face with tabular figures */
+.rc-total .big, .counts .n, .stat-cell .n, .vc-head, .fr-score, .fr-rank, .fr-s .val,
+.te-verdict .lead, .lead-stat .big, .brk-row .v, .tally b, .lad-row .ly, .lad-row .ln,
+.r-card .rank, .gr-lk-num, html .gr-pro-plan .amt {
+  font-family: var(--gr-display);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
 }
-.article-body { font-size: 17.5px; line-height: 1.72; }
-.article-body p { margin-bottom: 22px; }
+
+/* ---- text layer ---- */
+.standfirst, .dek, .lead, .article-lead, .hub-hero p, .hero-main p, .answer-block blockquote, .ab-answer {
+  font-family: var(--gr-sans);
+  font-size: var(--gr-lead);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -.005em;
+}
+.standfirst, .dek { color: var(--gr-muted); }
+.article-body { font-size: var(--gr-body); line-height: 1.65; max-width: 72ch; }
+.article-body p { margin-bottom: 1.35em; }
+.article-body li { line-height: 1.6; }
 .article-body a { color: var(--gr-green); text-decoration: underline; text-decoration-color: var(--gr-line-strong); text-underline-offset: 3px; text-decoration-thickness: 1.5px; transition: text-decoration-color .2s, color .2s; }
 .article-body a:hover { text-decoration-color: var(--gr-green); color: var(--gr-forest); }
 blockquote.pull {
   font-family: var(--gr-display);
+  font-size: clamp(1.25rem, 1.2vw + .9rem, 1.625rem);
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -.015em;
@@ -191,6 +233,37 @@ blockquote.pull {
   border-left: 8px solid var(--gr-green);
   border-radius: 0 12px 12px 0;
 }
+figcaption, .lead-img figcaption, figure figcaption {
+  font-family: var(--gr-sans);
+  font-size: .8125rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--gr-muted);
+}
+
+/* ---- meta layer: bylines, dates, kickers, badges, table heads ---- */
+.byline, .crumbs, .mono, .cat, .kicker, .eyebrow, .section-label, .section-kicker, .tag-row a,
+.article-category, .badge, .t-num, .t-tagline, .t-badge, .tool-cta__kicker, .tool-cta__badge,
+.tool-cta__availability, .panel-head, .hub-hero .eyebrow, .vc-eyebrow, .ab-tag, .rc-head, .hero-meta,
+.news .cat, .news .meta, .rel-card .cat, .rel-card .d, .aside-box h2, .aside-box .ab-head,
+.stat-cell .l, .counts .l, .quick-summary .qs-label, .card-meta, .timeline time, .rc-total .lbl,
+.story .d, .sec-head a, .act-lab, .ladder-lab, .te-q, .fr-tag, blockquote cite, blockquote.pull footer, th {
+  font-family: var(--gr-meta);
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  font-style: normal;
+}
+.byline, .crumbs, .cat, .eyebrow, .section-label, .section-kicker, .tag-row a, .article-category, .badge,
+.t-num, .t-tagline, .panel-head, .hub-hero .eyebrow, .vc-eyebrow, .ab-tag, .rc-head, .hero-meta,
+.news .cat, .news .meta, .rel-card .cat, .rel-card .d, .card-meta, .stat-cell .l, .counts .l,
+.quick-summary .qs-label, .rc-total .lbl, .story .d, blockquote cite, blockquote.pull footer {
+  font-size: var(--gr-meta-size);
+}
+td, th, time, .meta, .byline { font-variant-numeric: tabular-nums; }
 /* long words and URLs never push a column wider than its track */
 h1, h2, h3, h4, p, li, blockquote, td, th, figcaption { overflow-wrap: break-word; }
 hr { border: 0; border-top: 1px solid var(--gr-line); color: var(--gr-line); }
@@ -331,10 +404,10 @@ img, svg, video, iframe, embed { max-width: 100%; }
 .hero-main { background: var(--gr-deep); border-right: none; }
 .hero-main .eyebrow { color: var(--gr-mint); }
 .hero-main .eyebrow .chip { background: var(--gr-green); color: #fff; border-radius: 4px; }
-.hero-main h1.hero-topic { color: #fff; font-family: var(--gr-display); font-weight: 800; text-transform: none; letter-spacing: -.03em; line-height: 1.02; }
+.hero-main h1.hero-topic { color: #fff; line-height: 1.02; }
 .hero-main h1.hero-topic .b { color: #fff; background: var(--gr-green); border-radius: 4px; }
 .hero-main .hero-punch, .hero-main .hero-punch mark { color: #fff; }
-.hero-main p { color: var(--gr-silver); font-size: 17px; }
+.hero-main p { color: var(--gr-silver); }
 .hero-meta, .hero-meta b { color: var(--gr-mint); }
 .hero-meta b { color: #fff; }
 .cta-btn { background: var(--gr-green); border-color: var(--gr-green); border-radius: var(--gr-radius-sm); font-weight: 700; letter-spacing: .05em; min-height: 44px; }
@@ -374,7 +447,10 @@ img, svg, video, iframe, embed { max-width: 100%; }
 .ticker { background: var(--gr-deep); border-bottom-color: var(--gr-green); }
 .sec-head { border-bottom: 2px solid var(--gr-forest); }
 .hub-hero { border-bottom-color: var(--gr-forest); }
-.hub-hero .eyebrow, .eyebrow, .vc-eyebrow, .ab-tag, .panel-head .step, .fc-n, .section-kicker { color: var(--gr-green); }
+.eyebrow, .vc-eyebrow, .ab-tag, .panel-head .step, .fc-n, .section-kicker { color: var(--gr-green); }
+.hub-hero .eyebrow, .masthead .eyebrow, .hero-main .eyebrow, .ratings .eyebrow, .aeo-faq .section-kicker, .tool-card .tc-kicker,
+.te-verdict .vc-eyebrow, .verdict-card .vc-eyebrow, .fr-course .ev { color: var(--gr-on-dark); }
+.passport .pp-label, .pcard-kicker, .news.lead .cat, .rc-total .lbl { color: var(--gr-mint); }
 .rel-card .cat, .aside-item .mono, .coming-soon-box .cs-label { color: var(--gr-green); }
 .aside-item:hover, .rel-card:hover h3, .guide-card:hover h3, .story:hover h3 { text-decoration-color: var(--gr-green); }
 /* semantic negatives: red meant "warning" here, so they become amber, not green */
@@ -457,8 +533,17 @@ html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background:
 }
 .pcta { background: var(--gr-green); border-color: var(--gr-green); }
 .pcta:hover { background: var(--gr-forest); border-color: var(--gr-forest); }
-.pcard-kicker, .takeaways .section-label, .verify .section-label, .sourcing .section-label { color: var(--gr-green); }
-.verdict-box, .raw-verdict, .related { background: var(--gr-deep); border-left-color: var(--gr-bright); border-radius: 0 14px 14px 0; }
+.takeaways .section-label, .verify .section-label, .sourcing .section-label { color: var(--gr-green); }
+/* CTAs inside article copy keep their own colour, not the body-link green */
+.article-body a.pcta, .article-body a.btn, .article-body a.card-cta, .article-body a.tool-cta__link, .article-body a.cta-btn { color: #fff; text-decoration: none; }
+.verdict-box, .raw-verdict { background: var(--gr-deep); border-left-color: var(--gr-bright); border-radius: 0 14px 14px 0; }
+.verdict-box a, .raw-verdict a, .lead-stat a { color: var(--gr-mint); text-decoration-color: rgba(255, 255, 255, .35); }
+.verdict-box a:hover, .raw-verdict a:hover { color: #fff; }
+/* Related: light section on the magazine shells, dark aside on the news shells; links follow the box */
+.related a { color: inherit; text-decoration-color: currentColor; }
+.related a:hover { color: inherit; }
+section.related { background: var(--gr-white); border-top: 1px solid var(--gr-line); }
+section.related .rel-card { border-color: var(--gr-line); }
 .lead-stat { background: var(--gr-deep); border-left-color: var(--gr-bright); border-radius: 0 12px 12px 0; }
 .myth { border-left-color: var(--gr-green); }
 .aff-disclosure { border-left-color: var(--gr-green); }
@@ -565,9 +650,8 @@ label { color: var(--gr-ink); }
   padding-top: 14px;
   font-family: var(--gr-display);
   font-weight: 800;
-  font-size: clamp(24px, 2.8vw, 34px);
-  letter-spacing: -.022em;
-  line-height: 1.05;
+  letter-spacing: -.025em;
+  line-height: 1.12;
   text-transform: none;
   color: var(--gr-forest);
 }
@@ -592,7 +676,7 @@ label { color: var(--gr-ink); }
 .sec-head a:hover { color: var(--gr-forest); border-bottom-color: var(--gr-green); }
 .ratings .sec-head { border-bottom-color: rgba(255, 255, 255, .18); }
 .ratings .sec-head h2 { color: #fff; }
-.coverage-card .hub-no, .tool-card .tc-kicker { color: var(--gr-green); }
+.coverage-card .hub-no { color: var(--gr-green); }
 
 /* ---- news / guides cards: hairline-separated magazine grid ---- */
 .news-grid {
@@ -631,7 +715,7 @@ label { color: var(--gr-ink); }
 .news .meta { border-top: 1px solid var(--gr-line); color: var(--gr-muted); }
 .news.lead { background: var(--gr-forest); }
 .news.lead:hover { background: var(--gr-deep); }
-.news.lead p { color: var(--gr-silver); }
+.news.lead p { color: var(--gr-mint); }
 .news.lead .meta { color: var(--gr-mint); border-top-color: rgba(255, 255, 255, .18); }
 .news-grid.guides-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
@@ -673,7 +757,13 @@ label { color: var(--gr-ink); }
 .t-num { color: var(--gr-bright); }
 .t-tagline, .t-new { color: var(--gr-mint-strong); }
 .t-card p { color: var(--gr-silver); }
-.t-cta { padding: 0 16px; border: 1px solid rgba(255, 255, 255, .4); font-size: 10.5px; }
+.t-cta { padding: 0 16px; border: 1px solid var(--gr-line-strong); color: var(--gr-forest); font-size: 10.5px; }
+.t-card .t-cta { border-color: rgba(255, 255, 255, .4); color: #fff; }
+.masthead h1 { font-size: var(--gr-h1); font-weight: 800; letter-spacing: -.03em; line-height: 1.05; text-transform: none; }
+.masthead p { font-size: var(--gr-lead); line-height: 1.6; }
+.hero-main .hero-punch { font-size: var(--gr-h2); font-weight: 800; letter-spacing: -.025em; line-height: 1.12; text-transform: none; }
+.ad-zone span, .ad-slot { color: var(--gr-muted); }
+.tool-body span.mono[style*="#94a3b8"] { color: var(--gr-muted) !important; }
 .t-card:hover .t-cta, .t-cta:hover { background: var(--gr-green); border-color: var(--gr-green); color: #fff; }
 
 /* ==========================================================================
@@ -699,7 +789,6 @@ label { color: var(--gr-ink); }
   .news { padding: 18px; }
   .vault-box { padding: 22px; }
   .sec-head { margin-bottom: 20px; }
-  .sec-head h2 { font-size: clamp(22px, 6.5vw, 28px); }
   .split { gap: 28px; }
   .btn, .pcta, .card-cta, .cta-btn, .t-cta { width: 100%; }
 }
@@ -709,7 +798,7 @@ label { color: var(--gr-ink); }
    surface reads as a different tier at a glance.  These out-rank the rules
    pro.js injects (its <style> lands after this file) by the html prefix.
    ========================================================================== */
-html .gr-pro-badge { background: var(--gr-gold); color: var(--gr-deep); font-family: var(--gr-sans); }
+html .gr-pro-badge { background: var(--gr-gold); color: var(--gr-deep); font-family: var(--gr-meta); letter-spacing: .06em; }
 html .gr-pro-badge.is-preview { background: var(--gr-amber-soft); color: var(--gr-gold-deep); border-color: var(--gr-gold-line); }
 html .gr-pro-badge.is-pro { background: var(--gr-gold-deep); color: #fff; }
 html .gr-pro-cover { border-color: var(--gr-gold); border-radius: var(--gr-radius-md); background: linear-gradient(180deg, rgba(248, 250, 252, .6), rgba(248, 250, 252, .94)); }

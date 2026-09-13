@@ -139,6 +139,7 @@
   ]
 }
   </script>
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -154,7 +155,7 @@
     :root {
       --fairway: #166534;
       --fairway-deep: #0f172a;
-      --flag: #15803d;
+      --flag: #147a3b;
       --paper: #f8fafc;
       --white: #fff;
       --ink: #0f172a;
@@ -165,11 +166,11 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box }
     html { scroll-behavior: smooth }
-    body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased }
+    body { font-family: var(--gr-sans, Inter, system-ui, sans-serif); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased }
     a { color: inherit; text-decoration: none }
     img { max-width: 100%; height: auto; display: block }
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
-    .mono { font-family: 'IBM Plex Mono', monospace }
+    .mono { font-family: var(--gr-meta, Inter, system-ui, sans-serif) }
 
     /* HEADER */
     .site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
@@ -191,21 +192,21 @@
 
     /* HERO */
     .hub-hero { background: var(--ink); color: #fff; border-bottom: 4px solid var(--flag); padding: 56px 0 48px }
-    .hub-hero .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
+    .hub-hero .eyebrow { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
     .hub-hero h1 { font-weight: 900; font-size: clamp(32px, 5.6vw, 64px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
     .hub-hero p { font-size: 17px; color: #cbd5e1; max-width: 62ch; line-height: 1.6 }
 
     /* PANELS */
     .tool-body { padding: 40px 0 72px }
     .panel { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
-    .panel-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .panel-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
     .panel-head .step { color: var(--flag) }
     .panel-in { padding: 24px 20px }
 
-    label.fld { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--grey); font-weight: 600; margin-bottom: 6px }
+    label.fld { display: block; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--grey); font-weight: 600; margin-bottom: 6px }
     input[type=number], select {
       width: 100%; padding: 13px 12px; border: 2px solid var(--ink); background: var(--white);
-      font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 700; color: var(--ink); border-radius: 0;
+      font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 18px; font-weight: 700; color: var(--ink); border-radius: 0;
     }
     input:focus, select:focus { outline: 3px solid var(--flag); outline-offset: -1px }
     input[type=number] { -moz-appearance: textfield }
@@ -216,10 +217,10 @@
     @media(max-width:760px) { .row { grid-template-columns: 1fr } }
 
     .quick { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 9px }
-    .quick button { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: .06em; padding: 6px 10px; border: 2px solid var(--line); background: var(--white); cursor: pointer; transition: border-color .15s, background .15s }
+    .quick button { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10.5px; font-weight: 600; letter-spacing: .06em; padding: 6px 10px; border: 2px solid var(--line); background: var(--white); cursor: pointer; transition: border-color .15s, background .15s }
     .quick button:hover { border-color: var(--ink); background: #FBFBF8 }
 
-    .btn { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 14px 22px; border: 2px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; transition: background .15s, color .15s }
+    .btn { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 14px 22px; border: 2px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; transition: background .15s, color .15s }
     .btn:hover { background: var(--flag); border-color: var(--flag) }
     .btn.ghost { background: transparent; color: var(--ink) }
     .btn.ghost:hover { background: var(--ink); color: #fff }
@@ -230,11 +231,11 @@
 
     /* AD SLOT — deliberately isolated from all interactive controls */
     .ad-zone { border: 1px dashed var(--line); background: #EFF1EC; padding: 18px; margin: 30px 0; text-align: center; min-height: 96px; display: flex; align-items: center; justify-content: center }
-    .ad-zone span { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #94a3b8 }
+    .ad-zone span { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #94a3b8 }
 
     /* ===== ENGINE UPGRADE: action utility bar (kept clear of ad zones) ===== */
     .act-bar { margin-top: 18px; padding-top: 16px; border-top: 2px solid rgba(16,21,17,.12); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between }
-    .act-lab { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--grey) }
+    .act-lab { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--grey) }
     .act-btns { display: flex; gap: 10px; flex-wrap: wrap }
     /* Dead-zone so a mis-tap on an action button can never land on an ad */
     .out-wrap + .ad-zone, .act-bar + .ad-zone { margin-top: 46px }
@@ -244,21 +245,21 @@
     .out-wrap { display: none }
     .out-wrap.show { display: block }
     .verdict-card { background: var(--ink); color: #fff; border: 3px solid var(--ink); padding: 32px 26px 0; overflow: hidden }
-    .vc-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 12px }
+    .vc-eyebrow { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 12px }
     .vc-head { font-weight: 900; font-size: clamp(26px, 5.4vw, 44px); line-height: .98; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 14px }
     .vc-sub { font-size: 16px; color: #d8ded6; line-height: 1.6; margin-bottom: 28px; max-width: 60ch }
     .vc-sub b { color: #fff }
 
     .big-num { border: 1px solid rgba(255,255,255,.18); padding: 22px 20px; text-align: center; margin-bottom: 24px }
-    .big-num .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: clamp(38px, 9vw, 62px); line-height: 1; color: #fcd34d }
+    .big-num .n { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-weight: 700; font-size: clamp(38px, 9vw, 62px); line-height: 1; color: #fcd34d }
     .big-num .n.good { color: #86efac }
-    .big-num .l { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #94a3b8; margin-top: 10px; display: block }
+    .big-num .l { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #94a3b8; margin-top: 10px; display: block }
 
     .compare { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(255,255,255,.18); margin-bottom: 24px }
     .compare div { padding: 18px 14px; text-align: center; border-right: 1px solid rgba(255,255,255,.18) }
     .compare div:last-child { border-right: none }
-    .compare .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 24px; line-height: 1 }
-    .compare .l { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #94a3b8; margin-top: 7px; display: block }
+    .compare .n { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-weight: 700; font-size: 24px; line-height: 1 }
+    .compare .l { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #94a3b8; margin-top: 7px; display: block }
     .compare .good .n { color: #86efac }
 
     .facts { display: grid; gap: 10px; margin-bottom: 26px }
@@ -268,9 +269,9 @@
     .vc-foot { border-top: 1px solid rgba(255,255,255,.15); margin: 0 -26px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
     .vc-foot .mark { font-weight: 900; font-size: 17px; letter-spacing: -.03em; text-transform: uppercase }
     .vc-foot .mark span { color: var(--flag) }
-    .vc-foot .url { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #94a3b8 }
+    .vc-foot .url { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #94a3b8 }
 
-    .note { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--grey); line-height: 1.65; margin-top: 14px }
+    .note { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11.5px; color: var(--grey); line-height: 1.65; margin-top: 14px }
 
     /* EXPLAINER */
     .explain h2 { font-weight: 900; font-size: clamp(20px, 3vw, 26px); text-transform: uppercase; letter-spacing: -.02em; margin-bottom: 12px; padding-top: 16px; border-top: 3px solid var(--ink) }
@@ -279,20 +280,20 @@
     .explain p { font-size: 15.5px; margin-bottom: 14px; max-width: 68ch; line-height: 1.65 }
 
     /* FOOTER */
-    .site-footer { background: var(--ink); color: #94a3b8; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
+    .site-footer { background: var(--ink); color: #94a3b8; padding: 28px 0; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .06em }
     .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
     .site-footer a:hover { color: #fff }
 
 
     /* ===================== AEO/GEO: DIRECT ANSWER + FAQ ===================== */
     .answer-block { border: 2px solid var(--ink); background: var(--white); padding: 26px 24px 24px; margin-bottom: 28px }
-    .ab-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
+    .ab-tag { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
     .answer-block h2 { font-weight: 900; font-size: clamp(19px, 2.6vw, 27px); line-height: 1.15; letter-spacing: -.02em; margin-bottom: 14px }
     .ab-answer { font-size: clamp(16px, 2vw, 18.5px); line-height: 1.5; font-weight: 700; color: var(--ink); border-left: 1px solid var(--flag); padding: 2px 0 2px 15px; margin-bottom: 16px }
     .ab-body { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
     .ab-body b { color: var(--ink); font-weight: 700 }
     .ab-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line) }
-    .ab-facts li { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); border: 1px solid var(--line); padding: 5px 10px }
+    .ab-facts li { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); border: 1px solid var(--line); padding: 5px 10px }
     .ab-facts li b { color: var(--ink) }
 
     .faq-block { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
@@ -314,13 +315,13 @@
   .nav-links { flex-wrap: wrap; row-gap: 2px; }
   @media(min-width:761px){ .nav-links a { padding: 7px 10px; font-size: 11.5px; letter-spacing: .03em; } }
   </style>
-  <link rel="stylesheet" href="/public/tool-premium.css?v=3">
+  <link rel="stylesheet" href="/public/tool-premium.css?v=4">
 <!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/public/theme-golf.css?v=8">
+  <link rel="stylesheet" href="/public/theme-golf.css?v=9">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
-  <script src="/public/theme-golf.js?v=8" defer></script>
+  <script src="/public/theme-golf.js?v=9" defer></script>
 <!-- THEME:END -->
 </head>
 
@@ -871,9 +872,9 @@
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=8" defer></script>
-  <script src="/lib/locker/store.js?v=8" defer></script>
-  <script src="/lib/locker/drawer.js?v=8" defer></script>
+  <script src="/lib/locker/schema.js?v=9" defer></script>
+  <script src="/lib/locker/store.js?v=9" defer></script>
+  <script src="/lib/locker/drawer.js?v=9" defer></script>
 <!-- LOCKER:END -->
   <!-- Ads + consent are deferred until the reader engages, or 6s, whichever
        comes first. Consent loads BEFORE AdSense so the EEA/UK gate still runs

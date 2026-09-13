@@ -22,7 +22,7 @@ be bumped whenever theme-golf.css or theme-golf.js changes.
 import glob, io, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-THEME_VER = '8'
+THEME_VER = '9'
 START, END = '<!-- THEME:START -->', '<!-- THEME:END -->'
 
 BLOCK = f"""{START}
@@ -34,8 +34,8 @@ BLOCK = f"""{START}
 {END}
 """
 
-GREEN, AMBER, LIGHT_AMBER = '#15803d', '#b45309', '#fcd34d'
-GREEN_RGBA, AMBER_RGBA = 'rgba(21,128,61', 'rgba(180,83,9'
+GREEN, AMBER, LIGHT_AMBER = '#147a3b', '#b45309', '#fcd34d'
+GREEN_RGBA, AMBER_RGBA = 'rgba(20,122,59', 'rgba(180,83,9'
 
 # (pattern, replacement, flags). Order matters: specific cases first.
 LITERALS = [
@@ -85,13 +85,19 @@ LITERALS = [
     (r'#e7f0eb(?![0-9a-f])', '#f0fdf4', re.I),
     (r'#e7f6ee(?![0-9a-f])', '#f0fdf4', re.I),
     (r'#1a221b(?![0-9a-f])', '#1e293b', re.I),
-    (r'#2e8b67(?![0-9a-f])', '#15803d', re.I),
+    (r'#2e8b67(?![0-9a-f])', GREEN, re.I),
+    # v9: the interactive green darkens one step so it clears 4.8:1 on the canvas
+    (r'#15803d(?![0-9a-f])', GREEN, re.I),
     (r'#b43b31(?![0-9a-f])', '#b45309', re.I),
     (r'#fff0ed(?![0-9a-f])', '#fffbeb', re.I),
     (r'#fff4dd(?![0-9a-f])', '#fffbeb', re.I),
     (r'#fff6f4(?![0-9a-f])', '#fffbeb', re.I),
     (r'#111(?![0-9a-f])', '#0f172a', re.I),
     (r'#101010(?![0-9a-f])', '#0f172a', re.I),
+    # v9 typography: the shells' mono metadata stacks become the Inter meta layer
+    (r'''['"]IBM Plex Mono['"]\s*,\s*(?:ui-monospace\s*,\s*)?monospace''', 'var(--gr-meta, Inter, system-ui, sans-serif)', 0),
+    # the shells' Archivo body stacks: the theme renders Inter, so the face must not be requested
+    (r'''['"]Archivo['"]\s*,\s*(?:system-ui\s*,\s*)?sans-serif''', 'var(--gr-sans, Inter, system-ui, sans-serif)', 0),
     (r'#aaa(?![0-9a-f])', '#94a3b8', re.I),
 ]
 
@@ -106,6 +112,9 @@ def apply(path, check=False):
     for pat, rep, fl in LITERALS:
         s = re.sub(pat, rep, s, flags=fl)
     # ---- markup refinements (idempotent) ----
+    # the mono face is no longer used by any rule, so its preload is dead weight
+    s = re.sub(r'\s*<link rel="preload" href="/public/fonts/ibm-plex-mono-[^"]*" as="font" type="font/woff2" crossorigin>', '', s)
+    s = re.sub(r'\s*<link rel="preload" href="/public/fonts/archivo-var\.woff2" as="font" type="font/woff2" crossorigin>', '', s)
     # the wordmark stands alone: no header badge
     s = re.sub(r'\s*<span class="tag">NO PR REWRITES</span>', '', s)
     # the Method card is a data box, not a numbered list
@@ -131,6 +140,7 @@ def apply(path, check=False):
     # v7 rgba literals written by the previous palette
     s = re.sub(r'rgba\(\s*31\s*,\s*122\s*,\s*69', GREEN_RGBA, s)
     s = re.sub(r'rgba\(\s*168\s*,\s*95\s*,\s*6\b', AMBER_RGBA, s)
+    s = re.sub(r'rgba\(\s*21\s*,\s*128\s*,\s*61', GREEN_RGBA, s)
     if s != orig and not check:
         io.open(path, 'w', encoding='utf-8').write(s)
     return s != orig

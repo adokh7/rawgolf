@@ -59,7 +59,6 @@
 </script>
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
-  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" href="/public/raw-golf-practice-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
@@ -77,7 +76,7 @@
 :root {
   --fairway: #166534;
   --fairway-deep: #0f172a;
-  --flag: #15803d;
+  --flag: #147a3b;
   --paper: #f8fafc;
   --white: #fff;
   --ink: #0f172a;
@@ -87,7 +86,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box }
 html { scroll-behavior: smooth }
 body {
-  font-family: 'Archivo', system-ui, sans-serif;
+  font-family: var(--gr-sans, Inter, system-ui, sans-serif);
   background: var(--paper);
   color: var(--ink);
   line-height: 1.65;
@@ -145,7 +144,7 @@ img { max-width: 100%; height: auto; display: block }
 
 /* ============ BREADCRUMB ============ */
 .crumbs {
-  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px;
   letter-spacing: .1em; text-transform: uppercase;
   color: var(--grey); margin-bottom: 20px;
 }
@@ -154,7 +153,7 @@ img { max-width: 100%; height: auto; display: block }
 
 /* ============ ARTICLE HEAD ============ */
 .article-head .cat {
-  display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  display: inline-block; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px;
   letter-spacing: .16em; text-transform: uppercase; font-weight: 600;
   background: var(--fairway); color: #cbd5e1; padding: 4px 12px; margin-bottom: 18px;
 }
@@ -170,7 +169,7 @@ img { max-width: 100%; height: auto; display: block }
   display: flex; flex-wrap: wrap; gap: 20px; align-items: center;
   border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink);
   padding: 14px 0; margin-bottom: 28px;
-  font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;
+  font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11.5px;
   letter-spacing: .08em; text-transform: uppercase; color: var(--grey);
 }
 .byline b { color: var(--ink); font-weight: 600 }
@@ -207,7 +206,7 @@ blockquote.pull {
   line-height: 1.2; letter-spacing: -.02em; text-transform: uppercase;
 }
 blockquote.pull footer {
-  margin-top: 12px; font-family: 'IBM Plex Mono', monospace; font-weight: 500;
+  margin-top: 12px; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-weight: 500;
   font-size: 11px; letter-spacing: .14em; color: var(--grey); text-transform: uppercase;
 }
 
@@ -217,7 +216,7 @@ blockquote.pull footer {
   background: var(--white); padding: 22px 24px; margin: 34px 0;
 }
 .callout .callout-label {
-  font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .18em;
+  font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10px; letter-spacing: .18em;
   text-transform: uppercase; font-weight: 600; color: var(--fairway); margin-bottom: 10px;
 }
 .callout p { font-size: 16px; margin-bottom: 0; color: var(--grey) }
@@ -226,7 +225,7 @@ blockquote.pull footer {
 /* ============ TAGS ============ */
 .tag-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 40px 0 0 }
 .tag-row a {
-  font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .1em;
+  font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .1em;
   text-transform: uppercase; font-weight: 600; border: 2px solid var(--ink);
   padding: 6px 14px; transition: background .15s, color .15s;
 }
@@ -236,7 +235,7 @@ blockquote.pull footer {
 .aside-box { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
 .aside-box .ab-head {
   background: var(--ink); color: #fff; padding: 12px 18px;
-  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px;
   letter-spacing: .16em; text-transform: uppercase; font-weight: 600;
 }
 .aside-item {
@@ -262,7 +261,7 @@ blockquote.pull footer {
   text-transform: uppercase; letter-spacing: -.02em; margin-bottom: 28px;
 }
 .related h2 .idx {
-  font-family: 'IBM Plex Mono', monospace; font-size: .45em;
+  font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: .45em;
   color: var(--flag); vertical-align: top; margin-right: 8px; font-weight: 600;
 }
 .rel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 2px solid var(--ink) }
@@ -270,7 +269,7 @@ blockquote.pull footer {
 .rel-card:last-child { border-right: none }
 .rel-card:hover { background: #FBFBF8 }
 .rel-card .cat {
-  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px;
+  font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10.5px;
   letter-spacing: .16em; text-transform: uppercase; color: var(--flag);
   font-weight: 600; margin-bottom: 10px;
 }
@@ -282,7 +281,7 @@ blockquote.pull footer {
   text-decoration: underline; text-decoration-color: var(--flag);
   text-decoration-thickness: 2px;
 }
-.rel-card .d { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--grey) }
+.rel-card .d { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; color: var(--grey) }
 @media(max-width: 760px) {
   .rel-grid { grid-template-columns: 1fr }
   .rel-card { border-right: none; border-bottom: 2px solid var(--ink) }
@@ -292,7 +291,7 @@ blockquote.pull footer {
 /* ============ FOOTER ============ */
 footer {
   background: var(--ink); color: #94a3b8;
-  font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em;
+  font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .06em;
 }
 footer a:hover { color: #fff }
 .foot-core {
@@ -306,7 +305,7 @@ footer a:hover { color: #fff }
 .fc-link:last-child { border-right: none }
 .fc-link:hover { background: rgba(255,255,255,.04) }
 .fc-n { font-size: 10px; letter-spacing: .18em; color: var(--flag); font-weight: 600 }
-.fc-link b { color: #fff; font-family: 'Archivo', sans-serif; font-size: 14px; font-weight: 800 }
+.fc-link b { color: #fff; font-family: var(--gr-sans, Inter, system-ui, sans-serif); font-size: 14px; font-weight: 800 }
 .fc-d { font-size: 10.5px; color: #5c665e; line-height: 1.5 }
 .foot-grid {
   display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; padding: 40px 0;
@@ -314,13 +313,13 @@ footer a:hover { color: #fff }
 .foot-grid > div { padding: 0 20px; border-right: 1px solid rgba(255,255,255,.08) }
 .foot-grid > div:last-child { border-right: none }
 .foot-grid h4 {
-  font-family: 'Archivo', sans-serif; font-size: 11px; font-weight: 800;
+  font-family: var(--gr-sans, Inter, system-ui, sans-serif); font-size: 11px; font-weight: 800;
   text-transform: uppercase; letter-spacing: .1em; color: #fff; margin-bottom: 14px;
 }
 .foot-grid a { display: block; margin-bottom: 8px; font-size: 11.5px; transition: color .15s }
 .foot-grid a:hover { color: #fff }
 .f-logo {
-  font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 22px;
+  font-family: var(--gr-sans, Inter, system-ui, sans-serif); font-weight: 900; font-size: 22px;
   letter-spacing: -.04em; text-transform: uppercase; color: #fff; margin-bottom: 12px;
 }
 .f-logo .raw { color: var(--flag) }
@@ -401,9 +400,9 @@ table { max-width: 100%; }
 <!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/public/theme-golf.css?v=8">
+  <link rel="stylesheet" href="/public/theme-golf.css?v=9">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
-  <script src="/public/theme-golf.js?v=8" defer></script>
+  <script src="/public/theme-golf.js?v=9" defer></script>
 <!-- THEME:END -->
 </head>
 <body>
@@ -583,15 +582,15 @@ table { max-width: 100%; }
 
 
 <!-- START NEWSLETTER SECTION -->
-<div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #0f172a; color: #fff; text-align: left; border-left: 8px solid #15803d;">
-    <h2 style="font-family: 'Archivo', sans-serif; text-transform: uppercase; font-weight: 900; font-size: 32px; margin-bottom: 10px; color: #fff;">THE STORIES THE GOLF MEDIA WON'T PUBLISH</h2>
-    <p style="font-family: 'Archivo', sans-serif; color: #94a3b8; font-size: 16px; margin-bottom: 30px;">Every Friday, we drop <strong>The Card</strong>: Unfiltered player ratings, tour leaks, and the exact stories PR reps tried to kill. Join the inner circle. No spam, just the raw truth.</p>
+<div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #0f172a; color: #fff; text-align: left; border-left: 8px solid #147a3b;">
+    <h2 style="font-family: var(--gr-sans, Inter, system-ui, sans-serif); text-transform: uppercase; font-weight: 900; font-size: 32px; margin-bottom: 10px; color: #fff;">THE STORIES THE GOLF MEDIA WON'T PUBLISH</h2>
+    <p style="font-family: var(--gr-sans, Inter, system-ui, sans-serif); color: #94a3b8; font-size: 16px; margin-bottom: 30px;">Every Friday, we drop <strong>The Card</strong>: Unfiltered player ratings, tour leaks, and the exact stories PR reps tried to kill. Join the inner circle. No spam, just the raw truth.</p>
     
     <form id="rawgolf-newsletter-form" style="display: flex; gap: 0; width: 100%; max-width: 600px; flex-wrap: wrap;">
-        <input type="email" id="rawgolf-email" placeholder="you@email.com" required style="flex: 1; padding: 18px; border: none; font-family: 'Archivo', sans-serif; font-size: 16px; background: #fff; color: #0f172a; outline: none; border-radius: 0; min-width: 250px;">
-        <button type="submit" style="background-color: #15803d; color: #fff; border: none; padding: 18px 40px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; border-radius: 0;">✓ SIGNED</button>
+        <input type="email" id="rawgolf-email" placeholder="you@email.com" required style="flex: 1; padding: 18px; border: none; font-family: var(--gr-sans, Inter, system-ui, sans-serif); font-size: 16px; background: #fff; color: #0f172a; outline: none; border-radius: 0; min-width: 250px;">
+        <button type="submit" style="background-color: #147a3b; color: #fff; border: none; padding: 18px 40px; font-family: var(--gr-sans, Inter, system-ui, sans-serif); font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; border-radius: 0;">✓ SIGNED</button>
     </form>
-    <p id="rawgolf-form-message" style="display: none; font-family: 'Archivo', sans-serif; margin-top: 15px; font-weight: bold; color: #fff;"></p>
+    <p id="rawgolf-form-message" style="display: none; font-family: var(--gr-sans, Inter, system-ui, sans-serif); margin-top: 15px; font-weight: bold; color: #fff;"></p>
     
     <script>
     document.getElementById('rawgolf-newsletter-form').addEventListener('submit', function(e) {

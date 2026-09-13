@@ -32,7 +32,6 @@
 
 <link rel="alternate" type="application/rss+xml" title="GOLFRAW" href="https://www.golfraw.com/feed.xml">
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
-  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -46,34 +45,34 @@
   </style>
 <style>
 :root{
-  --fairway:#166534;--fairway-deep:#0f172a;--flag:#15803d;
+  --fairway:#166534;--fairway-deep:#0f172a;--flag:#147a3b;
   --paper:#f8fafc;--white:#fff;--ink:#0f172a;--grey:#475569;--maxw:920px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+body{font-family:var(--gr-sans, Inter, system-ui, sans-serif);background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 /* clickable contact emails — inherits type, flag-red underline as the affordance */
 .mail{color:inherit;text-decoration:underline;text-decoration-color:var(--flag);text-decoration-thickness:2px;text-underline-offset:3px;transition:background .14s ease,color .14s ease}
 .mail:hover,.mail:focus-visible{background:var(--flag);color:#fff;text-decoration-color:transparent;outline:none}
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
-.mono{font-family:'IBM Plex Mono',monospace}
+.mono{font-family:var(--gr-meta, Inter, system-ui, sans-serif)}
 
 header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:3px solid var(--ink)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1240px;margin:0 auto;padding:0 20px}
 .logo{font-weight:900;font-size:26px;letter-spacing:-.04em;text-transform:uppercase}
 .logo .raw{color:var(--flag)}
-.back{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;border:2px solid var(--ink);padding:8px 16px;transition:background .15s,color .15s}
+.back{font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;border:2px solid var(--ink);padding:8px 16px;transition:background .15s,color .15s}
 .back:hover{background:var(--ink);color:#fff}
 
 .doc-hero{background:var(--ink);color:#fff;border-bottom:3px solid var(--flag);padding:60px 0;position:relative;overflow:hidden}
 .doc-hero::before{
   content:"P-04";position:absolute;top:-50px;right:-20px;
-  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:260px;
+  font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-weight:600;font-size:260px;
   line-height:1;color:rgba(255,255,255,.04);pointer-events:none;
 }
-.doc-id{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#94a3b8;display:flex;gap:18px;flex-wrap:wrap;margin-bottom:20px}
+.doc-id{font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#94a3b8;display:flex;gap:18px;flex-wrap:wrap;margin-bottom:20px}
 .doc-id b{color:#fff;font-weight:600}
 .doc-hero h1{font-weight:900;font-size:clamp(32px,5.4vw,58px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;max-width:16ch;margin-bottom:16px}
 .doc-hero h1 mark{background:var(--flag);color:#fff;padding:0 8px}
@@ -87,7 +86,7 @@ header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:3p
 .t-cell .n{font-weight:900;font-size:30px;line-height:1}
 .t-cell .n.red{color:#fcd34d}
 .t-cell .n.green{color:#86efac}
-.t-cell .l{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#94a3b8;margin-top:4px;display:block}
+.t-cell .l{font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#94a3b8;margin-top:4px;display:block}
 @media(max-width:640px){.tally{grid-template-columns:1fr 1fr}.t-cell:nth-child(2){border-right:none}.t-cell:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.25)}}
 
 /* LEDGER */
@@ -102,7 +101,7 @@ header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:3p
 .e-head{
   display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
   background:var(--ink);color:#fff;padding:12px 20px;
-  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
 }
 .e-head .eid{color:#fcd34d;font-weight:600}
 .e-head .sev{border:1.5px solid currentColor;padding:2px 8px;font-weight:600}
@@ -112,21 +111,21 @@ header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:3p
 .e-story{font-weight:800;font-size:16px;margin-bottom:14px}
 .e-story a:hover{text-decoration:underline;text-decoration-color:var(--flag);text-decoration-thickness:2px}
 .e-row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:10px 0;border-top:1px solid #e2e8f0;font-size:14.5px}
-.e-row .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);font-weight:600;padding-top:3px}
+.e-row .k{font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);font-weight:600;padding-top:3px}
 .e-row .wrong s{text-decoration-color:var(--flag);text-decoration-thickness:2px;color:var(--grey)}
 .e-row .right b{font-weight:800}
-.e-row .credit{font-family:'IBM Plex Mono',monospace;font-size:13px}
+.e-row .credit{font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:13px}
 .e-row .credit b{color:var(--flag);font-weight:600}
 @media(max-width:560px){.e-row{grid-template-columns:1fr;gap:4px}}
 
 /* EMPTY STATE STYLE FOR FUTURE */
 .standing{
   border:2px dashed #B9BFB2;padding:26px;text-align:center;
-  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;
+  font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:12px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--grey);
 }
 
-footer{background:var(--ink);color:#94a3b8;padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em}
+footer{background:var(--ink);color:#94a3b8;padding:28px 0;font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:11px;letter-spacing:.06em}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 footer a:hover{color:#fff}
 
@@ -172,9 +171,9 @@ table { max-width: 100%; }
 <!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/public/theme-golf.css?v=8">
+  <link rel="stylesheet" href="/public/theme-golf.css?v=9">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
-  <script src="/public/theme-golf.js?v=8" defer></script>
+  <script src="/public/theme-golf.js?v=9" defer></script>
 <!-- THEME:END -->
 </head>
 <body>
@@ -291,15 +290,15 @@ table { max-width: 100%; }
 
 
 <!-- START NEWSLETTER SECTION -->
-<div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #0f172a; color: #fff; text-align: left; border-left: 8px solid #15803d;">
-    <h2 style="font-family: 'Archivo', sans-serif; text-transform: uppercase; font-weight: 900; font-size: 32px; margin-bottom: 10px; color: #fff;">THE STORIES THE GOLF MEDIA WON'T PUBLISH</h2>
-    <p style="font-family: 'Archivo', sans-serif; color: #94a3b8; font-size: 16px; margin-bottom: 30px;">Every Friday, we drop <strong>The Card</strong>: Unfiltered player ratings, tour leaks, and the exact stories PR reps tried to kill. Join the inner circle. No spam, just the raw truth.</p>
+<div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #0f172a; color: #fff; text-align: left; border-left: 8px solid #147a3b;">
+    <h2 style="font-family: var(--gr-sans, Inter, system-ui, sans-serif); text-transform: uppercase; font-weight: 900; font-size: 32px; margin-bottom: 10px; color: #fff;">THE STORIES THE GOLF MEDIA WON'T PUBLISH</h2>
+    <p style="font-family: var(--gr-sans, Inter, system-ui, sans-serif); color: #94a3b8; font-size: 16px; margin-bottom: 30px;">Every Friday, we drop <strong>The Card</strong>: Unfiltered player ratings, tour leaks, and the exact stories PR reps tried to kill. Join the inner circle. No spam, just the raw truth.</p>
     
     <form id="rawgolf-newsletter-form" style="display: flex; gap: 0; width: 100%; max-width: 600px; flex-wrap: wrap;">
-        <input type="email" id="rawgolf-email" placeholder="you@email.com" required style="flex: 1; padding: 18px; border: none; font-family: 'Archivo', sans-serif; font-size: 16px; background: #fff; color: #0f172a; outline: none; border-radius: 0; min-width: 250px;">
-        <button type="submit" style="background-color: #15803d; color: #fff; border: none; padding: 18px 40px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; border-radius: 0;">✓ SIGNED</button>
+        <input type="email" id="rawgolf-email" placeholder="you@email.com" required style="flex: 1; padding: 18px; border: none; font-family: var(--gr-sans, Inter, system-ui, sans-serif); font-size: 16px; background: #fff; color: #0f172a; outline: none; border-radius: 0; min-width: 250px;">
+        <button type="submit" style="background-color: #147a3b; color: #fff; border: none; padding: 18px 40px; font-family: var(--gr-sans, Inter, system-ui, sans-serif); font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; border-radius: 0;">✓ SIGNED</button>
     </form>
-    <p id="rawgolf-form-message" style="display: none; font-family: 'Archivo', sans-serif; margin-top: 15px; font-weight: bold; color: #fff;"></p>
+    <p id="rawgolf-form-message" style="display: none; font-family: var(--gr-sans, Inter, system-ui, sans-serif); margin-top: 15px; font-weight: bold; color: #fff;"></p>
     
     <script>
     document.getElementById('rawgolf-newsletter-form').addEventListener('submit', function(e) {

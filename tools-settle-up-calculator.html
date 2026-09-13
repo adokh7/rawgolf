@@ -138,6 +138,7 @@
   ]
 }
   </script>
+<!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -153,7 +154,7 @@
     :root {
       --fairway: #166534;
       --fairway-deep: #0f172a;
-      --flag: #15803d;
+      --flag: #147a3b;
       --paper: #f8fafc;
       --white: #fff;
       --ink: #0f172a;
@@ -165,11 +166,11 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box }
     html { scroll-behavior: smooth }
-    body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased }
+    body { font-family: var(--gr-sans, Inter, system-ui, sans-serif); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased }
     a { color: inherit; text-decoration: none }
     img { max-width: 100%; height: auto; display: block }
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
-    .mono { font-family: 'IBM Plex Mono', monospace }
+    .mono { font-family: var(--gr-meta, Inter, system-ui, sans-serif) }
 
     /* HEADER */
     .site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
@@ -191,21 +192,21 @@
 
     /* HERO */
     .hub-hero { background: var(--ink); color: #fff; border-bottom: 4px solid var(--flag); padding: 56px 0 48px }
-    .hub-hero .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
+    .hub-hero .eyebrow { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
     .hub-hero h1 { font-weight: 900; font-size: clamp(34px, 6vw, 68px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
     .hub-hero p { font-size: 17px; color: #cbd5e1; max-width: 60ch; line-height: 1.6 }
 
     /* PANELS */
     .tool-body { padding: 40px 0 72px }
     .panel { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
-    .panel-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+    .panel-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
     .panel-head .step { color: var(--flag) }
     .panel-in { padding: 22px 18px }
 
-    label.fld { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--grey); font-weight: 600; margin-bottom: 6px }
+    label.fld { display: block; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--grey); font-weight: 600; margin-bottom: 6px }
     input[type=text], input[type=number], select {
       width: 100%; padding: 11px 12px; border: 2px solid var(--ink); background: var(--white);
-      font-family: 'Archivo', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); border-radius: 0;
+      font-family: var(--gr-sans, Inter, system-ui, sans-serif); font-size: 15px; font-weight: 700; color: var(--ink); border-radius: 0;
     }
     input:focus, select:focus { outline: 3px solid var(--flag); outline-offset: -1px }
     input[type=number] { -moz-appearance: textfield }
@@ -221,7 +222,7 @@
     .player-row { display: grid; grid-template-columns: 1fr 96px 40px; gap: 8px; align-items: center }
     @media(max-width:520px) { .player-row { grid-template-columns: 1fr 76px 38px } }
 
-    .btn { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 12px 18px; border: 2px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; transition: background .15s, color .15s }
+    .btn { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 12px 18px; border: 2px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; transition: background .15s, color .15s }
     .btn:hover { background: var(--flag); border-color: var(--flag) }
     .btn.ghost { background: transparent; color: var(--ink) }
     .btn.ghost:hover { background: var(--ink); color: #fff }
@@ -232,7 +233,7 @@
 
     /* ===== ENGINE UPGRADE: action utility bar ===== */
     .act-bar { margin-top: 18px; padding-top: 16px; border-top: 2px solid rgba(16,21,17,.12); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between }
-    .act-lab { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--grey) }
+    .act-lab { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--grey) }
     .act-btns { display: flex; gap: 10px; flex-wrap: wrap }
     @media (max-width:520px){ .act-bar { justify-content: flex-start } .act-btns .btn { flex: 1 1 auto; min-height: 44px } }
 
@@ -248,14 +249,14 @@
 
     /* SCORECARD */
     .card-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 2px solid var(--ink) }
-    table.sc { border-collapse: collapse; width: 100%; min-width: 480px; font-family: 'IBM Plex Mono', monospace; font-size: 14px }
+    table.sc { border-collapse: collapse; width: 100%; min-width: 480px; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 14px }
     table.sc th, table.sc td { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); padding: 0; text-align: center }
     table.sc th { background: var(--ink); color: #fff; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; padding: 10px 6px; position: sticky; top: 0; z-index: 2 }
     table.sc th:first-child, table.sc td:first-child { position: sticky; left: 0; z-index: 1; background: var(--paper); font-weight: 700; width: 62px; min-width: 62px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase }
     table.sc th:first-child { background: var(--ink); z-index: 3 }
     table.sc tr.turn td { background: #ECEFE8; font-weight: 800 }
     table.sc tr.turn td:first-child { background: #ECEFE8 }
-    table.sc input, table.sc select { border: none; text-align: center; padding: 11px 2px; font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600; background: transparent }
+    table.sc input, table.sc select { border: none; text-align: center; padding: 11px 2px; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 15px; font-weight: 600; background: transparent }
     table.sc input:focus { outline: 2px solid var(--flag); outline-offset: -2px; background: #fff }
     table.sc td.parcell input { color: var(--grey); font-size: 13px }
 
@@ -265,66 +266,66 @@
     @media(max-width:560px) { .junk-row { grid-template-columns: 1fr; gap: 10px } }
     .junk-name { font-weight: 800; font-size: 15px }
     .stepper { display: flex; align-items: center; gap: 8px }
-    .stepper .lbl { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--grey); min-width: 58px }
+    .stepper .lbl { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--grey); min-width: 58px }
     .stepper button { width: 34px; height: 34px; border: 2px solid var(--ink); background: var(--white); font-weight: 900; font-size: 16px; cursor: pointer; line-height: 1 }
     .stepper button:hover { background: var(--ink); color: #fff }
-    .stepper .val { font-family: 'IBM Plex Mono', monospace; font-weight: 700; min-width: 22px; text-align: center; font-size: 16px }
+    .stepper .val { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-weight: 700; min-width: 22px; text-align: center; font-size: 16px }
 
     /* OUTPUT CARD */
     .out-wrap { display: none }
     .out-wrap.show { display: block }
     .settle-card { background: var(--ink); color: #fff; border: 3px solid var(--ink); padding: 30px 26px 0; position: relative; overflow: hidden }
-    .settle-card .sc-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
+    .settle-card .sc-eyebrow { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
     .settle-card h2 { font-weight: 900; font-size: clamp(28px, 6vw, 44px); line-height: .98; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 6px }
-    .settle-card .sc-sub { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .1em; color: #cbd5e1; text-transform: uppercase; margin-bottom: 26px }
+    .settle-card .sc-sub { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .1em; color: #cbd5e1; text-transform: uppercase; margin-bottom: 26px }
 
     .owe-list { display: grid; gap: 10px; margin-bottom: 26px }
     .owe { display: flex; align-items: center; justify-content: space-between; gap: 14px; background: rgba(255,255,255,.05); border-left: 1px solid var(--flag); padding: 14px 16px }
     .owe .who { font-weight: 800; font-size: 16px; line-height: 1.3 }
     .owe .who i { font-style: normal; color: #cbd5e1; font-weight: 600 }
-    .owe .amt { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 20px; color: #86efac; white-space: nowrap }
+    .owe .amt { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-weight: 700; font-size: 20px; color: #86efac; white-space: nowrap }
     .all-square { text-align: center; padding: 26px 12px; background: rgba(255,255,255,.05); font-weight: 800; font-size: 17px }
 
-    .net-table { width: 100%; border-collapse: collapse; margin-bottom: 26px; font-family: 'IBM Plex Mono', monospace; font-size: 13px }
+    .net-table { width: 100%; border-collapse: collapse; margin-bottom: 26px; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 13px }
     .net-table th { text-align: left; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: #94a3b8; font-weight: 600; padding: 0 8px 8px 0; border-bottom: 1px solid rgba(255,255,255,.15) }
     .net-table th:last-child, .net-table td:last-child { text-align: right; padding-right: 0 }
     .net-table td { padding: 9px 8px 9px 0; border-bottom: 1px solid rgba(255,255,255,.08) }
-    .net-table td.nm { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 14.5px }
+    .net-table td.nm { font-family: var(--gr-sans, Inter, system-ui, sans-serif); font-weight: 800; font-size: 14.5px }
     .pos { color: #86efac; font-weight: 700 }
     .neg { color: #fcd34d; font-weight: 700 }
     .zero { color: #94a3b8 }
 
     .badges { display: grid; gap: 10px; margin-bottom: 26px }
     .badge-item { border: 1px dashed rgba(255,255,255,.28); padding: 13px 15px }
-    .badge-item .bt { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 4px }
+    .badge-item .bt { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 4px }
     .badge-item .bn { font-weight: 900; font-size: 17px; letter-spacing: -.01em }
     .badge-item .bd { font-size: 12.5px; color: #94a3b8; line-height: 1.5; margin-top: 3px }
 
     .sc-foot { border-top: 1px solid rgba(255,255,255,.15); margin: 0 -26px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
     .sc-foot .mark { font-weight: 900; font-size: 17px; letter-spacing: -.03em; text-transform: uppercase }
     .sc-foot .mark span { color: var(--flag) }
-    .sc-foot .url { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #94a3b8 }
+    .sc-foot .url { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #94a3b8 }
 
-    .note { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--grey); line-height: 1.6; margin-top: 12px }
+    .note { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11.5px; color: var(--grey); line-height: 1.6; margin-top: 12px }
     .err { border: 2px solid var(--flag); background: #FDF0EE; color: #8f2015; padding: 12px 14px; font-size: 13.5px; font-weight: 600; margin-bottom: 16px; display: none }
     .err.show { display: block }
     .hint { font-size: 12.5px; color: var(--grey); margin-top: 8px; line-height: 1.5 }
 
     /* FOOTER */
-    .site-footer { background: var(--ink); color: #94a3b8; padding: 28px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em }
+    .site-footer { background: var(--ink); color: #94a3b8; padding: 28px 0; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .06em }
     .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px }
     .site-footer a:hover { color: #fff }
 
 
     /* ===================== AEO/GEO: DIRECT ANSWER + FAQ ===================== */
     .answer-block { border: 2px solid var(--ink); background: var(--white); padding: 26px 24px 24px; margin-bottom: 28px }
-    .ab-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
+    .ab-tag { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--flag); font-weight: 700; margin-bottom: 10px }
     .answer-block h2 { font-weight: 900; font-size: clamp(19px, 2.6vw, 27px); line-height: 1.15; letter-spacing: -.02em; margin-bottom: 14px }
     .ab-answer { font-size: clamp(16px, 2vw, 18.5px); line-height: 1.5; font-weight: 700; color: var(--ink); border-left: 1px solid var(--flag); padding: 2px 0 2px 15px; margin-bottom: 16px }
     .ab-body { font-size: 15px; line-height: 1.65; color: var(--grey); max-width: 74ch }
     .ab-body b { color: var(--ink); font-weight: 700 }
     .ab-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line) }
-    .ab-facts li { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); border: 1px solid var(--line); padding: 5px 10px }
+    .ab-facts li { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); border: 1px solid var(--line); padding: 5px 10px }
     .ab-facts li b { color: var(--ink) }
 
     .faq-block { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
@@ -346,13 +347,13 @@
   .nav-links { flex-wrap: wrap; row-gap: 2px; }
   @media(min-width:761px){ .nav-links a { padding: 7px 10px; font-size: 11.5px; letter-spacing: .03em; } }
   </style>
-  <link rel="stylesheet" href="/public/tool-premium.css?v=3">
+  <link rel="stylesheet" href="/public/tool-premium.css?v=4">
 <!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/public/theme-golf.css?v=8">
+  <link rel="stylesheet" href="/public/theme-golf.css?v=9">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
-  <script src="/public/theme-golf.js?v=8" defer></script>
+  <script src="/public/theme-golf.js?v=9" defer></script>
 <!-- THEME:END -->
 </head>
 
@@ -1254,9 +1255,9 @@
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=8" defer></script>
-  <script src="/lib/locker/store.js?v=8" defer></script>
-  <script src="/lib/locker/drawer.js?v=8" defer></script>
+  <script src="/lib/locker/schema.js?v=9" defer></script>
+  <script src="/lib/locker/store.js?v=9" defer></script>
+  <script src="/lib/locker/drawer.js?v=9" defer></script>
 <!-- LOCKER:END -->
   <!-- Ads + consent are deferred until the reader engages, or 6s, whichever
        comes first. Consent loads BEFORE AdSense so the EEA/UK gate still runs

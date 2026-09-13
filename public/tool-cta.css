@@ -19,8 +19,8 @@
 
 .tool-cta__kicker,
 .tool-cta__availability {
-  color: var(--flag, #15803d);
-  font: 600 10px/1.2 'IBM Plex Mono', monospace;
+  color: var(--flag, #147a3b);
+  font: 600 10px/1.2 var(--gr-meta, Inter, system-ui, sans-serif);
   letter-spacing: .13em;
   text-transform: uppercase;
 }
@@ -36,7 +36,7 @@
   min-height: 24px;
   padding: 3px 8px;
   border: 1px solid currentColor;
-  font: 700 10px/1 'IBM Plex Mono', monospace;
+  font: 700 10px/1 var(--gr-meta, Inter, system-ui, sans-serif);
   letter-spacing: .12em;
 }
 
@@ -75,9 +75,9 @@
   gap: 5px;
   min-height: 44px;
   padding: 8px 12px;
-  border: 1px solid var(--flag, #15803d);
+  border: 1px solid var(--flag, #147a3b);
   border-radius: 10px;
-  background: var(--flag, #15803d);
+  background: var(--flag, #147a3b);
   color: #fff;
   font-weight: 800;
   line-height: 1.2;
@@ -90,7 +90,7 @@
 }
 
 .tool-cta__link:focus-visible {
-  outline: 3px solid var(--flag, #15803d);
+  outline: 3px solid var(--flag, #147a3b);
   outline-offset: 3px;
 }
 
@@ -133,7 +133,7 @@
 
 .tool-cta--banner .tool-cta__link {
   border-color: #fff;
-  background: var(--flag, #15803d);
+  background: var(--flag, #147a3b);
 }
 
 @media (max-width: 600px) {

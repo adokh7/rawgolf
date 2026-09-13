@@ -95,7 +95,6 @@
 </script>
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
-  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" href="/public/dundonald-links-scottish-open-round-1-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
@@ -110,17 +109,17 @@
   </style>
 <style>
     :root {
-      --fairway: #166534; --fairway-deep: #0f172a; --flag: #15803d;
+      --fairway: #166534; --fairway-deep: #0f172a; --flag: #147a3b;
       --paper: #f8fafc; --white: #fff; --ink: #0f172a; --grey: #475569; --maxw: 1180px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box }
     html { scroll-behavior: smooth }
-    body { font-family: 'Archivo', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased }
+    body { font-family: var(--gr-sans, Inter, system-ui, sans-serif); background: var(--paper); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased }
     a { color: inherit; text-decoration: none }
     img { max-width: 100%; height: auto; display: block; backface-visibility: hidden; transform: translateZ(0) }
 
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px }
-    .mono { font-family: 'IBM Plex Mono', monospace }
+    .mono { font-family: var(--gr-meta, Inter, system-ui, sans-serif) }
 
     /* HEADER */
     .site-header { position: sticky; top: 0; z-index: 60; background: var(--paper); border-bottom: 3px solid var(--ink) }
@@ -136,15 +135,15 @@
     @media(max-width:980px) { .page-grid { grid-template-columns: 1fr } .article-aside { display: none } }
 
     /* BREADCRUMB */
-    .crumbs { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); margin-bottom: 20px }
+    .crumbs { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); margin-bottom: 20px }
     .crumbs a { color: var(--flag); font-weight: 600 }
     .crumbs a:hover { text-decoration: underline }
 
     /* ARTICLE */
-    .article-head .cat { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; background: var(--flag); color: #fff; padding: 4px 12px; margin-bottom: 18px }
+    .article-head .cat { display: inline-block; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; background: var(--flag); color: #fff; padding: 4px 12px; margin-bottom: 18px }
     .article-head h1 { font-weight: 900; font-size: clamp(30px,4.4vw,52px); line-height: 1.02; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 18px }
     .standfirst { font-size: 19px; color: var(--grey); max-width: 62ch; margin-bottom: 24px; font-weight: 500 }
-    .byline { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); padding: 14px 0; margin-bottom: 28px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--grey) }
+    .byline { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); padding: 14px 0; margin-bottom: 28px; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--grey) }
     .byline b { color: var(--ink); font-weight: 600 }
     .article-body { font-size: 17.5px; max-width: 68ch }
     .article-body p { margin-bottom: 22px }
@@ -157,18 +156,18 @@
 
     /* QUICK SUMMARY BOX */
     .quick-summary { border: 2px solid var(--ink); border-left: 8px solid var(--fairway); background: var(--white); padding: 22px 26px; margin-bottom: 32px }
-    .quick-summary .qs-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; color: var(--fairway); margin-bottom: 12px }
+    .quick-summary .qs-label { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; color: var(--fairway); margin-bottom: 12px }
     .quick-summary p { font-size: 16px; line-height: 1.55; margin-bottom: 12px }
     .quick-summary p:last-child { margin-bottom: 0 }
 
     /* TAGS */
     .tag-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 40px 0 0 }
-    .tag-row a { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; border: 2px solid var(--ink); padding: 6px 14px; transition: background .15s, color .15s }
+    .tag-row a { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; border: 2px solid var(--ink); padding: 6px 14px; transition: background .15s, color .15s }
     .tag-row a:hover { background: var(--ink); color: #fff }
 
     /* SIDEBAR */
     .aside-box { border: 2px solid var(--ink); background: var(--white); margin-bottom: 28px }
-    .aside-box .ab-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600 }
+    .aside-box .ab-head { background: var(--ink); color: #fff; padding: 12px 18px; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600 }
     .aside-item { display: block; padding: 14px 18px; border-bottom: 1px solid #e2e8f0; font-weight: 700; font-size: 14px; line-height: 1.35 }
     .aside-item:last-child { border-bottom: none }
     .aside-item:hover { text-decoration: underline; text-decoration-color: var(--flag); text-decoration-thickness: 2px }
@@ -177,15 +176,15 @@
     /* RELATED */
     .related { border-top: 3px solid var(--ink); background: var(--white); padding: 56px 0 }
     .related h2 { font-weight: 900; font-size: clamp(24px,3vw,36px); text-transform: uppercase; letter-spacing: -.02em; margin-bottom: 28px }
-    .related h2 .idx { font-family: 'IBM Plex Mono', monospace; font-size: .45em; color: var(--flag); vertical-align: top; margin-right: 8px; font-weight: 600 }
+    .related h2 .idx { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: .45em; color: var(--flag); vertical-align: top; margin-right: 8px; font-weight: 600 }
     .rel-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 2px solid var(--ink) }
     .rel-card { padding: 24px; border-right: 2px solid var(--ink); transition: background .15s }
     .rel-card:last-child { border-right: none }
     .rel-card:hover { background: #FBFBF8 }
-    .rel-card .cat { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 10px }
+    .rel-card .cat { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 10px }
     .rel-card h3 { font-weight: 800; font-size: 17px; line-height: 1.3; letter-spacing: -.01em; margin-bottom: 10px }
     .rel-card:hover h3 { text-decoration: underline; text-decoration-color: var(--flag); text-decoration-thickness: 2px }
-    .rel-card .d { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--grey) }
+    .rel-card .d { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; color: var(--grey) }
 
     /* Burger Menu Styling */
     .burger { display: none; background: none; border: 2px solid var(--ink); cursor: pointer; padding: 8px 10px }
@@ -230,9 +229,9 @@
 <!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/public/theme-golf.css?v=8">
+  <link rel="stylesheet" href="/public/theme-golf.css?v=9">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
-  <script src="/public/theme-golf.js?v=8" defer></script>
+  <script src="/public/theme-golf.js?v=9" defer></script>
 <!-- THEME:END -->
 </head>
 
@@ -288,7 +287,7 @@
           <h2>What happened in round one?</h2>
           <p>Coughlin, the defending champion from 2024, and South Korea's Jenny Shin both fired six-under 66s to grab a share of the clubhouse lead. Both players started their rounds on the back nine. Both took full advantage of a course playing nothing like its usual self, courtesy of a recent heat wave across Europe that's left the turf firm, fast, and unforgiving off the tee.</p>
 
-          <table style="width: 100%; border-collapse: collapse; border: 2px solid var(--ink); margin: 24px 0; background: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 14px;">
+          <table style="width: 100%; border-collapse: collapse; border: 2px solid var(--ink); margin: 24px 0; background: #fff; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 14px;">
             <thead>
               <tr style="background: var(--ink); color: #fff; text-transform: uppercase;">
                 <th style="padding: 12px; border: 1px solid var(--ink); text-align: left;">Category</th>
@@ -399,15 +398,15 @@
   </main>
 
   <!-- START NEWSLETTER SECTION -->
-  <div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #0f172a; color: #fff; text-align: left; border-left: 8px solid #15803d;">
-    <h2 style="font-family: 'Archivo', sans-serif; text-transform: uppercase; font-weight: 900; font-size: 32px; margin-bottom: 10px; color: #fff;">THE STORIES THE GOLF MEDIA WON'T PUBLISH</h2>
-    <p style="font-family: 'Archivo', sans-serif; color: #94a3b8; font-size: 16px; margin-bottom: 30px;">Every Friday, we drop <strong>The Card</strong>: Unfiltered player ratings, tour leaks, and the exact stories PR reps tried to kill. Join the inner circle. No spam, just the raw truth.</p>
+  <div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #0f172a; color: #fff; text-align: left; border-left: 8px solid #147a3b;">
+    <h2 style="font-family: var(--gr-sans, Inter, system-ui, sans-serif); text-transform: uppercase; font-weight: 900; font-size: 32px; margin-bottom: 10px; color: #fff;">THE STORIES THE GOLF MEDIA WON'T PUBLISH</h2>
+    <p style="font-family: var(--gr-sans, Inter, system-ui, sans-serif); color: #94a3b8; font-size: 16px; margin-bottom: 30px;">Every Friday, we drop <strong>The Card</strong>: Unfiltered player ratings, tour leaks, and the exact stories PR reps tried to kill. Join the inner circle. No spam, just the raw truth.</p>
 
     <form id="rawgolf-newsletter-form" style="display: flex; gap: 0; width: 100%; max-width: 600px; flex-wrap: wrap;">
-      <input type="email" id="rawgolf-email" placeholder="you@email.com" required style="flex: 1; padding: 18px; border: none; font-family: 'Archivo', sans-serif; font-size: 16px; background: #fff; color: #0f172a; outline: none; border-radius: 0; min-width: 250px;">
-      <button type="submit" style="background-color: #15803d; color: #fff; border: none; padding: 18px 40px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; border-radius: 0;">✓ SIGNED</button>
+      <input type="email" id="rawgolf-email" placeholder="you@email.com" required style="flex: 1; padding: 18px; border: none; font-family: var(--gr-sans, Inter, system-ui, sans-serif); font-size: 16px; background: #fff; color: #0f172a; outline: none; border-radius: 0; min-width: 250px;">
+      <button type="submit" style="background-color: #147a3b; color: #fff; border: none; padding: 18px 40px; font-family: var(--gr-sans, Inter, system-ui, sans-serif); font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; border-radius: 0;">✓ SIGNED</button>
     </form>
-    <p id="rawgolf-form-message" style="display: none; font-family: 'Archivo', sans-serif; margin-top: 15px; font-weight: bold; color: #fff;"></p>
+    <p id="rawgolf-form-message" style="display: none; font-family: var(--gr-sans, Inter, system-ui, sans-serif); margin-top: 15px; font-weight: bold; color: #fff;"></p>
 
     <script>
       document.getElementById('rawgolf-newsletter-form').addEventListener('submit', function (e) {
@@ -440,7 +439,7 @@
   <!-- END NEWSLETTER SECTION -->
 
   <!-- ============ FOOTER ============ -->
-  <footer class="site-footer" style="background:var(--ink);color:#94a3b8;padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em">
+  <footer class="site-footer" style="background:var(--ink);color:#94a3b8;padding:28px 0;font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:11px;letter-spacing:.06em">
     <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
       <span>© 2026 GOLFRAW — ALL RATINGS FINAL</span>
       <nav aria-label="Footer navigation" style="display:flex;gap:20px">

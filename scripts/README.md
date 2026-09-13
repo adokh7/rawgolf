@@ -511,6 +511,18 @@ tokens and carry their own cache versions:
   too, so a palette change bumps `VER` in `wire_locker.py` (which also
   rewrites the article pages that carry the drawer).
 
+Typography (v9) is three layers from two self-hosted variable fonts: Plus
+Jakarta Sans for headlines and big numbers, Inter for reading text, and Inter
+600 uppercase with `.05em` tracking and tabular figures as the meta layer
+(bylines, dates, badges, scores, table heads). `apply_theme.py` re-points every
+shell's `'IBM Plex Mono', monospace` stack to `var(--gr-meta)` and strips the
+Plex preload, so no page requests a third font file. The scale lives in
+`html:root`: `--gr-h1` `clamp(2rem, 4vw + 1rem, 3.25rem)`, `--gr-h2`
+`clamp(1.5rem, 2.5vw + .75rem, 2.25rem)`, `--gr-h3`, `--gr-lead` 1.125rem,
+`--gr-body` 1rem at 1.65 line-height, `--gr-meta-size` .6875rem; the article
+measure is 72ch. Fallback faces are Arial metric-matched so a font swap is
+CLS-free. Google Fonts is deliberately not used (no preconnect needed).
+
 The eight hand-written tools (`tools-bag-audit`, `gimme-audit`,
 `handicap-detector`, `plays-like`, `round-autopsy`, `settle-up-calculator`,
 `tee-box-check`, `tilt-meter`) keep their layout CSS in two inline `<style>`

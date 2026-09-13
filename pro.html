@@ -93,12 +93,11 @@
   ]
 }
   </script>
-  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;src:url('/public/fonts/archivo-var.woff2') format('woff2')}
     @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url('/public/fonts/ibm-plex-mono-400.woff2') format('woff2')}
-    :root{--ink:#0f172a;--paper:#f8fafc;--white:#fff;--green:#15803d;--muted:#475569;--line:#e2e8f0;--maxw:1180px}
-    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:'Archivo',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+    :root{--ink:#0f172a;--paper:#f8fafc;--white:#fff;--green:#147a3b;--muted:#475569;--line:#e2e8f0;--maxw:1180px}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--gr-sans, Inter, system-ui, sans-serif);line-height:1.6;-webkit-font-smoothing:antialiased}
     a{color:inherit} .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
     .site-header{position:sticky;top:0;z-index:2;background:var(--paper);border-bottom:3px solid var(--ink)}
     .nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:var(--maxw);margin:0 auto;padding:0 20px}
@@ -106,7 +105,7 @@
     .nav-links{display:flex;gap:0} .nav-links a{font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;padding:8px 14px;text-decoration:none}
     .nav-links a:hover,.nav-links a.active{background:var(--ink);color:#fff}
     .hero{background:var(--ink);color:#fff;border-bottom:4px solid var(--green);padding:64px 0 54px}
-    .eyebrow,.pro-feature-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:700}
+    .eyebrow,.pro-feature-label{font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:700}
     h1{max-width:760px;margin:14px 0 18px;font-size:clamp(36px,6vw,72px);line-height:.96;letter-spacing:-.045em;text-transform:uppercase}
     .hero p{max-width:680px;margin:0;color:#C8D8CC;font-size:18px;line-height:1.6}
     main{padding:42px 0 72px} .intro{max-width:760px;margin:0 0 28px;font-size:18px}
@@ -116,20 +115,20 @@
     .lane p,.pro-feature p,.access-note p{margin:0 0 16px;color:#334039}
     .button,.pro-feature a{display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:.06em;text-decoration:none}
     .button{padding:13px 18px;background:var(--ink);color:#fff;border:2px solid var(--ink)} .button:hover{background:var(--green);border-color:var(--green)}
-    .section-label{margin:44px 0 12px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700}
+    .section-label{margin:44px 0 12px;font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700}
     .feature-heading{margin:0 0 18px;font-size:38px} .pro-feature h3{margin:8px 0 9px;font-size:24px;line-height:1.1}
     .pro-feature a{color:var(--green)} .access-note{margin-top:18px;border-color:var(--green)}
     .access-note h2{font-size:24px} .access-note p:last-child{margin-bottom:0}
-    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px} .site-footer{border-top:3px solid var(--ink);padding:26px 0 40px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px} .site-footer{border-top:3px solid var(--ink);padding:26px 0 40px;font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:10px;letter-spacing:.08em}
     .site-footer nav{display:flex;flex-wrap:wrap;gap:18px;margin-top:14px} .site-footer a{text-decoration:none}
     @media(max-width:760px){.nav{height:auto;min-height:68px;align-items:flex-start;flex-direction:column;padding-top:14px;padding-bottom:12px}.nav-links{width:100%;flex-wrap:wrap;margin-top:10px}.nav-links a{padding:7px 10px 7px 0}.lane-grid,.feature-grid{grid-template-columns:1fr}.hero{padding:46px 0 40px}}
   </style>
 <!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/public/theme-golf.css?v=8">
+  <link rel="stylesheet" href="/public/theme-golf.css?v=9">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
-  <script src="/public/theme-golf.js?v=8" defer></script>
+  <script src="/public/theme-golf.js?v=9" defer></script>
 <!-- THEME:END -->
 </head>
 <body>

@@ -167,7 +167,6 @@
 </script>
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
-  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" href="/public/what-beginners-actually-search-800.webp" fetchpriority="high">
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
@@ -184,7 +183,7 @@
     :root {
       --fairway: #166534;
       --fairway-deep: #0f172a;
-      --flag: #15803d;
+      --flag: #147a3b;
       --paper: #f8fafc;
       --white: #fff;
       --ink: #0f172a;
@@ -203,7 +202,7 @@
     }
 
     body {
-      font-family: 'Archivo', system-ui, sans-serif;
+      font-family: var(--gr-sans, Inter, system-ui, sans-serif);
       background: var(--paper);
       color: var(--ink);
       line-height: 1.65;
@@ -231,7 +230,7 @@
     }
 
     .mono {
-      font-family: 'IBM Plex Mono', monospace
+      font-family: var(--gr-meta, Inter, system-ui, sans-serif)
     }
 
     /* HEADER */
@@ -291,7 +290,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--gr-meta, Inter, system-ui, sans-serif);
       font-size: 10px;
       letter-spacing: .16em;
       color: #9aa194;
@@ -344,7 +343,7 @@
 
     /* BREADCRUMB */
     .crumbs {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--gr-meta, Inter, system-ui, sans-serif);
       font-size: 11px;
       letter-spacing: .1em;
       text-transform: uppercase;
@@ -364,7 +363,7 @@
     /* ARTICLE */
     .article-head .cat {
       display: inline-block;
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--gr-meta, Inter, system-ui, sans-serif);
       font-size: 11px;
       letter-spacing: .16em;
       text-transform: uppercase;
@@ -401,7 +400,7 @@
       border-bottom: 2px solid var(--ink);
       padding: 14px 0;
       margin-bottom: 28px;
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--gr-meta, Inter, system-ui, sans-serif);
       font-size: 11.5px;
       letter-spacing: .08em;
       text-transform: uppercase;
@@ -447,7 +446,7 @@
     }
 
     figcaption {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--gr-meta, Inter, system-ui, sans-serif);
       font-size: 11px;
       color: var(--grey);
       padding: 10px 0 0;
@@ -506,7 +505,7 @@
 
     blockquote.pull footer {
       margin-top: 12px;
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--gr-meta, Inter, system-ui, sans-serif);
       font-weight: 500;
       font-size: 11px;
       letter-spacing: .14em;
@@ -544,7 +543,7 @@
     }
 
     .stat-cell .l {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--gr-meta, Inter, system-ui, sans-serif);
       font-size: 10px;
       letter-spacing: .14em;
       text-transform: uppercase;
@@ -577,7 +576,7 @@
     }
 
     .tag-row a {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--gr-meta, Inter, system-ui, sans-serif);
       font-size: 11px;
       letter-spacing: .1em;
       text-transform: uppercase;
@@ -603,7 +602,7 @@
       background: var(--ink);
       color: #fff;
       padding: 12px 18px;
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--gr-meta, Inter, system-ui, sans-serif);
       font-size: 11px;
       letter-spacing: .16em;
       text-transform: uppercase;
@@ -655,7 +654,7 @@
     }
 
     .related h2 .idx {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--gr-meta, Inter, system-ui, sans-serif);
       font-size: .45em;
       color: var(--flag);
       vertical-align: top;
@@ -685,7 +684,7 @@
     }
 
     .rel-card .cat {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--gr-meta, Inter, system-ui, sans-serif);
       font-size: 10.5px;
       letter-spacing: .16em;
       text-transform: uppercase;
@@ -709,7 +708,7 @@
     }
 
     .rel-card .d {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--gr-meta, Inter, system-ui, sans-serif);
       font-size: 11px;
       color: var(--grey)
     }
@@ -734,7 +733,7 @@
       background: var(--ink);
       color: #94a3b8;
       padding: 28px 0;
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--gr-meta, Inter, system-ui, sans-serif);
       font-size: 11px;
       letter-spacing: .06em
     }
@@ -900,9 +899,9 @@
 <!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/public/theme-golf.css?v=8">
+  <link rel="stylesheet" href="/public/theme-golf.css?v=9">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
-  <script src="/public/theme-golf.js?v=8" defer></script>
+  <script src="/public/theme-golf.js?v=9" defer></script>
 <!-- THEME:END -->
 </head>
 
@@ -966,7 +965,7 @@
 
           <h2>LIV Golf Restructuring vs Original Structure</h2>
           <div class="table-container" style="overflow-x:auto;">
-            <table style="width:100%; border-collapse: collapse; font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem;">
+            <table style="width:100%; border-collapse: collapse; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 0.9rem;">
               <thead>
                 <tr style="border-bottom: 2px solid var(--ink); text-align: left;">
                   <th style="padding: 10px 5px;">Metric</th>
@@ -1082,15 +1081,15 @@
 
   
   <!-- START NEWSLETTER SECTION -->
-  <div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #0f172a; color: #fff; text-align: left; border-left: 8px solid #15803d;">
-      <h2 style="font-family: 'Archivo', sans-serif; text-transform: uppercase; font-weight: 900; font-size: 32px; margin-bottom: 10px; color: #fff;">THE STORIES THE GOLF MEDIA WON'T PUBLISH</h2>
-      <p style="font-family: 'Archivo', sans-serif; color: #94a3b8; font-size: 16px; margin-bottom: 30px;">Every Friday, we drop <strong>The Card</strong>: Unfiltered player ratings, tour leaks, and the exact stories PR reps tried to kill. Join the inner circle. No spam, just the raw truth.</p>
+  <div class="newsletter-section" style="max-width: 800px; margin: 60px auto; padding: 50px 40px; background-color: #0f172a; color: #fff; text-align: left; border-left: 8px solid #147a3b;">
+      <h2 style="font-family: var(--gr-sans, Inter, system-ui, sans-serif); text-transform: uppercase; font-weight: 900; font-size: 32px; margin-bottom: 10px; color: #fff;">THE STORIES THE GOLF MEDIA WON'T PUBLISH</h2>
+      <p style="font-family: var(--gr-sans, Inter, system-ui, sans-serif); color: #94a3b8; font-size: 16px; margin-bottom: 30px;">Every Friday, we drop <strong>The Card</strong>: Unfiltered player ratings, tour leaks, and the exact stories PR reps tried to kill. Join the inner circle. No spam, just the raw truth.</p>
     
       <form id="rawgolf-newsletter-form" style="display: flex; gap: 0; width: 100%; max-width: 600px; flex-wrap: wrap;">
-          <input type="email" id="rawgolf-email" placeholder="you@email.com" required style="flex: 1; padding: 18px; border: none; font-family: 'Archivo', sans-serif; font-size: 16px; background: #fff; color: #0f172a; outline: none; border-radius: 0; min-width: 250px;">
-          <button type="submit" style="background-color: #15803d; color: #fff; border: none; padding: 18px 40px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; border-radius: 0;">✓ SIGNED</button>
+          <input type="email" id="rawgolf-email" placeholder="you@email.com" required style="flex: 1; padding: 18px; border: none; font-family: var(--gr-sans, Inter, system-ui, sans-serif); font-size: 16px; background: #fff; color: #0f172a; outline: none; border-radius: 0; min-width: 250px;">
+          <button type="submit" style="background-color: #147a3b; color: #fff; border: none; padding: 18px 40px; font-family: var(--gr-sans, Inter, system-ui, sans-serif); font-weight: 800; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; border-radius: 0;">✓ SIGNED</button>
       </form>
-      <p id="rawgolf-form-message" style="display: none; font-family: 'Archivo', sans-serif; margin-top: 15px; font-weight: bold; color: #fff;"></p>
+      <p id="rawgolf-form-message" style="display: none; font-family: var(--gr-sans, Inter, system-ui, sans-serif); margin-top: 15px; font-weight: bold; color: #fff;"></p>
     
       <script>
       document.getElementById('rawgolf-newsletter-form').addEventListener('submit', function(e) {

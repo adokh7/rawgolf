@@ -27,7 +27,7 @@ def shell_parts():
     return _shell_parts(SHELL)
 
 
-PREMIUM_LINK = '  <link rel="stylesheet" href="/public/tool-premium.css?v=3">\n'
+PREMIUM_LINK = '  <link rel="stylesheet" href="/public/tool-premium.css?v=4">\n'
 
 
 def rewrite_meta(s):
@@ -1125,9 +1125,9 @@ LOCKER = '''<!-- LOCKER:START -->
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=8" defer></script>
-  <script src="/lib/locker/store.js?v=8" defer></script>
-  <script src="/lib/locker/drawer.js?v=8" defer></script>
+  <script src="/lib/locker/schema.js?v=9" defer></script>
+  <script src="/lib/locker/store.js?v=9" defer></script>
+  <script src="/lib/locker/drawer.js?v=9" defer></script>
 <!-- LOCKER:END -->
 '''
 

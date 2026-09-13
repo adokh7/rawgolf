@@ -34,7 +34,6 @@
 
 
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
-  <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
     @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
@@ -48,15 +47,15 @@
   </style>
 <style>
 :root{
-  --fairway:#166534;--fairway-deep:#0f172a;--flag:#15803d;
+  --fairway:#166534;--fairway-deep:#0f172a;--flag:#147a3b;
   --paper:#f8fafc;--white:#fff;--ink:#0f172a;--grey:#475569;--maxw:1180px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+body{font-family:var(--gr-sans, Inter, system-ui, sans-serif);background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
-.mono{font-family:'IBM Plex Mono',monospace}
+.mono{font-family:var(--gr-meta, Inter, system-ui, sans-serif)}
 
 /* HEADER */
 .site-header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:3px solid var(--ink)}
@@ -82,7 +81,7 @@ a{color:inherit;text-decoration:none}
   padding:72px 0 64px;
 }
 .hub-hero .eyebrow{
-  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;
+  font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:11px;letter-spacing:.22em;
   text-transform:uppercase;color:var(--flag);font-weight:600;margin-bottom:18px;
 }
 .hub-hero h1{
@@ -97,7 +96,7 @@ a{color:inherit;text-decoration:none}
   display:flex;flex-direction:column;align-items:flex-start;gap:18px;
 }
 .coming-soon-box .cs-label{
-  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;
+  font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:10px;letter-spacing:.22em;
   text-transform:uppercase;color:var(--flag);font-weight:600;
 }
 .coming-soon-box h2{
@@ -106,7 +105,7 @@ a{color:inherit;text-decoration:none}
 }
 .coming-soon-box p{font-size:16px;color:var(--grey);max-width:58ch;line-height:1.7}
 .cs-back{
-  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;
+  font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:12px;letter-spacing:.1em;
   text-transform:uppercase;font-weight:700;color:var(--flag);
   border-bottom:2px solid var(--flag);padding-bottom:2px;
   transition:color .15s;
@@ -125,32 +124,32 @@ a{color:inherit;text-decoration:none}
 .card-thumb{width:100%;height:220px;object-fit:cover;object-position:center;border-bottom:2px solid var(--ink);display:block}
 .card-body{padding:28px 28px 32px;display:flex;flex-direction:column;flex:1}
 .badge-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
-.badge{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;font-weight:600;text-transform:uppercase;padding:2px 8px}
+.badge{font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:9.5px;letter-spacing:.14em;font-weight:600;text-transform:uppercase;padding:2px 8px}
 .badge-red{background:var(--flag);color:#fff}
 .badge-grey{background:#D0D4CC;color:#475569}
 .card-body h3{font-weight:900;font-size:20px;line-height:1.2;letter-spacing:-.02em;margin-bottom:12px}
 .guide-card:hover h3{text-decoration:underline;text-decoration-color:var(--flag);text-decoration-thickness:3px;text-underline-offset:4px}
 .card-body p{font-size:14.5px;color:var(--grey);flex:1;margin-bottom:24px}
 .card-meta{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #e2e8f0;padding-top:16px;margin-top:auto}
-.card-meta .author{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--grey)}
-.card-cta{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border:2px solid var(--ink);background:var(--ink);color:#fff;transition:background .15s,color .15s;white-space:nowrap}
+.card-meta .author{font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--grey)}
+.card-cta{font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border:2px solid var(--ink);background:var(--ink);color:#fff;transition:background .15s,color .15s;white-space:nowrap}
 .card-cta:hover{background:var(--flag);border-color:var(--flag)}
 
 /* SEARCH UI */
 .search-wrap{padding:64px 0 24px}
-.search-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--flag);font-weight:600;margin-bottom:18px}
+.search-eyebrow{font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--flag);font-weight:600;margin-bottom:18px}
 .search-box{position:relative;border-bottom:3px solid var(--ink);display:flex;align-items:center;gap:16px;padding-bottom:10px}
 .search-box .icon{font-size:28px;line-height:1;color:var(--grey);flex-shrink:0}
-#search-input{flex:1;border:none;outline:none;background:transparent;font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,5vw,46px);letter-spacing:-.03em;color:var(--ink);padding:6px 0}
+#search-input{flex:1;border:none;outline:none;background:transparent;font-family:var(--gr-sans, Inter, system-ui, sans-serif);font-weight:900;font-size:clamp(26px,5vw,46px);letter-spacing:-.03em;color:var(--ink);padding:6px 0}
 #search-input::placeholder{color:#b8bdb3;font-weight:800}
-.search-hint{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);margin-top:14px}
+.search-hint{font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);margin-top:14px}
 .search-hint b{color:var(--flag)}
-.search-count{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);font-weight:600;margin:36px 0 18px}
-.search-empty{border:2px dashed #c4c9bf;padding:56px 32px;text-align:center;color:var(--grey);font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-top:36px}
+.search-count{font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);font-weight:600;margin:36px 0 18px}
+.search-empty{border:2px dashed #c4c9bf;padding:56px 32px;text-align:center;color:var(--grey);font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-top:36px}
 @media(max-width:640px){.search-wrap{padding:40px 0 16px}}
 
 /* FOOTER */
-.site-footer{background:var(--ink);color:#94a3b8;padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em}
+.site-footer{background:var(--ink);color:#94a3b8;padding:28px 0;font-family:var(--gr-meta, Inter, system-ui, sans-serif);font-size:11px;letter-spacing:.06em}
 .site-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .site-footer a:hover{color:#fff}
 
@@ -191,9 +190,9 @@ table { max-width: 100%; }
 <!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/public/theme-golf.css?v=8">
+  <link rel="stylesheet" href="/public/theme-golf.css?v=9">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
-  <script src="/public/theme-golf.js?v=8" defer></script>
+  <script src="/public/theme-golf.js?v=9" defer></script>
 <!-- THEME:END -->
 </head>
 <body>

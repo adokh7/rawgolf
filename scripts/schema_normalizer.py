@@ -324,7 +324,7 @@ def _replace_all_json_ld(source: str, payload: object) -> str:
 
 
 def _ensure_tool_stylesheet(source: str) -> str:
-    link = '  <link rel="stylesheet" href="/public/tool-premium.css?v=3">'
+    link = '  <link rel="stylesheet" href="/public/tool-premium.css?v=4">'
     if link in source:
         return source
     head_end = re.search(r"</head\s*>", source, re.IGNORECASE)
