@@ -580,6 +580,7 @@ SITEMAP_PRIORITIES = {
     '/how-long-do-golf-clubs-last': '0.9',
     '/trump-martin-doonbeg-irish-open-united-ireland': '0.9',
     '/irish-open-2026-final-round-tee-times-tv': '0.9',
+    '/solheim-cup-prize-money-ryder-cup-500k': '0.8',
 }
 
 

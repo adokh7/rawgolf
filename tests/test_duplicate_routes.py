@@ -75,6 +75,8 @@ REDIRECTS = {
         "/trump-martin-doonbeg-irish-open-united-ireland",
     "/news-2026-irish-open-2026-final-round-tee-times-tv":
         "/irish-open-2026-final-round-tee-times-tv",
+    "/news-2026-solheim-cup-prize-money-ryder-cup-500k":
+        "/solheim-cup-prize-money-ryder-cup-500k",
 }
 
 WINNERS = {

@@ -1,0 +1,32 @@
+/* Phase 6: small answer-first treatment for curated guide passages. */
+.article-body .aeo-answer {
+  margin: 0 0 20px;
+  padding: 14px 16px;
+  border-left: 3px solid #0a2a20;
+  border-radius: 0 10px 10px 0;
+  background: #f3f7f2;
+}
+
+.article-body .aeo-answer__text {
+  margin: 0 0 8px;
+  color: #10241c;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.article-body .aeo-answer__basis {
+  margin: 0;
+  color: #52635b;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.article-body .aeo-answer__basis strong {
+  color: #0a2a20;
+}
+
+@media (max-width: 560px) {
+  .article-body .aeo-answer {
+    padding: 13px 14px;
+  }
+}

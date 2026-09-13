@@ -199,6 +199,26 @@
       "source": "/news/irish-open-2026-final-round-tee-times-tv",
       "destination": "/irish-open-2026-final-round-tee-times-tv",
       "permanent": true
+    },
+    {
+      "source": "/news-2026-solheim-cup-prize-money-ryder-cup-500k",
+      "destination": "/solheim-cup-prize-money-ryder-cup-500k",
+      "permanent": true
+    },
+    {
+      "source": "/explainers/solheim-cup-prize-money-ryder-cup-500k",
+      "destination": "/solheim-cup-prize-money-ryder-cup-500k",
+      "permanent": true
+    },
+    {
+      "source": "/guides/solheim-cup-format-scoring-explained",
+      "destination": "/solheim-cup-all-star-challenge-2026",
+      "permanent": true
+    },
+    {
+      "source": "/explainers/tour-championship-points-and-payouts-2026",
+      "destination": "/news-2026-tour-championship-points-and-payouts",
+      "permanent": true
     }
   ],
   "headers": [
