@@ -495,3 +495,28 @@ changes — `.css`/`.js` are served with an immutable one-year cache.
 
 To restore the original design: `git checkout backup/original-version`, or
 remove the THEME block and revert the literal rewrites from that branch.
+
+## Generated tools share one shell extractor (`tool_shell.py`)
+
+`build_standing_order.py`, `build_tendency_engine.py` and `build_field_reader.py`
+lift their head, header, footer and behaviour scripts from `tools-bag-audit.html`
+through `tool_shell.shell_parts()`. It finds each part by marker, never by line
+number, and strips the managed LOCKER/THEME blocks (the wiring scripts re-add
+them). After any rebuild run, in order: the builder, `wire_locker.py`,
+`apply_theme.py`.
+
+## Golf Raw Pro: launch-monitor import (`lib/pro/lm-import.js`)
+
+The Standing Order can ingest a CSV export from TrackMan, Foresight, Garmin,
+FlightScope, Rapsodo, SkyTrak or any file with a club column and a carry column.
+The engine is a standalone UMD module (no network code): delimiter sniffing,
+RFC 4180 tokenizing, preamble/units-row/summary-row detection, heuristic column
+mapping the reader can override, club-name normalisation to the tool's own
+list, metres→yards conversion against the profile unit, and an optional mishit
+filter. It emits the same `{name, shots[]}` records the keypad produces, so all
+statistics and the bag sync are unchanged.
+
+- Test: `node scripts/test_lm_import.js` (synthetic exports shaped like each
+  vendor's real headers plus the edge cases).
+- **Bump `LM_VER`** in `build_standing_order.py` whenever the module changes
+  (immutable `.js` cache), then rebuild, wire, theme.

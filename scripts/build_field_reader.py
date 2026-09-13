@@ -17,16 +17,11 @@ DESC = ('Rank any golf field by course fit. Adjust distance, approach, short gam
 OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
 
 
+from tool_shell import shell_parts as _shell_parts
+
+
 def shell_parts():
-    lines = io.open(SHELL, encoding='utf-8').read().split('\n')
-    return {
-        'head_top': '\n'.join(lines[0:45]),
-        'head_tail': '\n'.join(lines[200:420]),
-        'body_open': '\n'.join(lines[421:442]),
-        'footer': '\n'.join(lines[639:658]),
-        'nav_script': '\n'.join(lines[662:677]),
-        'gtag': '\n'.join(lines[1171:1177]),
-    }
+    return _shell_parts(SHELL)
 
 
 PREMIUM_LINK = '  <link rel="stylesheet" href="/public/tool-premium.css?v=2">\n'
@@ -798,9 +793,7 @@ def main():
         MAIN,
         p['footer'],
         '',
-        '  <script>',
-        p['nav_script'].split('<script>', 1)[1] if '<script>' in p['nav_script'] else '',
-        '  </script>',
+        p['nav_script'],
         SCRIPT,
         SCRIPT2,
         p['gtag'],
