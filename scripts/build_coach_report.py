@@ -19,7 +19,10 @@ DESC = ('A one-page coach or fitter report from your own range session, bag and 
 OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
 # Bump when lib/pro/report.js changes (immutable .js cache).
 REPORT_VER = '1'
-HEAD_EXTRA = '  <script src="/lib/pro/report.js?v=%s" defer></script>\n' % REPORT_VER
+# Pro client (paywall / entitlement). Bump when lib/pro/pro.js changes.
+PRO_VER = '1'
+HEAD_EXTRA = ('  <script src="/lib/pro/report.js?v=%s" defer></script>\n' % REPORT_VER +
+              '  <script src="/lib/pro/pro.js?v=%s" defer></script>\n' % PRO_VER)
 
 
 def shell_parts():
@@ -93,9 +96,6 @@ JSONLD = '''  <!-- ============ STRUCTURED DATA ============ -->
 STYLE = '''<style>
     /* ---- The Coach Report -------------------------------------------- */
     .cr-wrap { max-width: 760px; margin: 0 auto }
-    .so-pro { display: inline-block; vertical-align: middle; margin-left: 10px; padding: 4px 9px;
-      background: var(--fairway); color: #fff; font: 800 10px/1.2 'Archivo', system-ui, sans-serif;
-      letter-spacing: .12em; text-transform: uppercase; border-radius: 999px }
     .cr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px }
     .cr-grid .full { grid-column: 1 / -1 }
     .cr-grid label { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .08em;
@@ -222,8 +222,8 @@ MAIN = '''
         <a href="/tools-coach-report">build your own</a>.</div>
 
       <section class="panel" id="setup" aria-labelledby="set-h">
-        <h2 id="set-h">Build the report <span class="so-pro">Golf Raw Pro &middot; free in preview</span></h2>
-        <div class="cr-wrap">
+        <h2 id="set-h">Build the report <span class="gr-pro-badge" id="crBadge">Golf Raw Pro</span></h2>
+        <div class="cr-wrap" id="crGate">
           <div class="cr-src" aria-label="Data found on this device">
             <div id="srcSession"><b>Range session</b><span>Looking&hellip;</span></div>
             <div id="srcBag"><b>Bag audit</b><span>Looking&hellip;</span></div>
@@ -262,6 +262,10 @@ MAIN = '''
 
       <section class="faq-block panel" aria-labelledby="faq-h">
         <h2 id="faq-h">Questions</h2>
+        <details><summary>Is the report free?</summary>
+          <p>Building the report is a <b>Golf Raw Pro</b> feature. While Pro is not yet on sale it is open
+            to everyone as a preview; once it is, this page asks you to upgrade or restore a pass you already
+            own. Opening a report someone shared with you is always free, and every free tool stays free.</p></details>
         <details><summary>Where does the report get its numbers?</summary>
           <p>From the tools you already used on this device: the Standing Order range session (typed in or
             imported from a launch monitor), the Bag Audit usage and trust scores, and completed rounds from
@@ -380,6 +384,16 @@ SCRIPT = r'''  <script>
 
       var m = /[#&]r=([A-Za-z0-9_-]+)/.exec(location.hash || '');
       if (m) { openShared(m[1]); return; }
+
+      /* Paywall on the builder only. The recipient of a shared report is the
+         player or the coach on the other side of the handover; they never
+         need a pass to read it. */
+      var Pro = window.GolfrawPro || null;
+      if (Pro) {
+        Pro.gate($('crGate'), 'coach-report', $('crBadge'));
+        Pro.subscribe(function () { Pro.gate($('crGate'), 'coach-report', $('crBadge')); });
+        if (Pro.noteCancelled()) msg('setMsg', 'Checkout was cancelled — nothing was charged.', 'bad');
+      }
 
       if (!L) { msg('setMsg', 'Storage is unavailable in this browser, so there is nothing to report from.', 'bad'); return; }
       L.ready().then(function () {

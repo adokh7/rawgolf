@@ -24,7 +24,10 @@ OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
 # node (scripts/test_lm_import.js). Bump LM_VER whenever that file changes:
 # vercel.json serves .js with a one-year immutable cache.
 LM_VER = '1'
-HEAD_EXTRA = '  <script src="/lib/pro/lm-import.js?v=%s" defer></script>\n' % LM_VER
+# Pro client (paywall / entitlement). Bump when lib/pro/pro.js changes.
+PRO_VER = '1'
+HEAD_EXTRA = ('  <script src="/lib/pro/lm-import.js?v=%s" defer></script>\n' % LM_VER +
+              '  <script src="/lib/pro/pro.js?v=%s" defer></script>\n' % PRO_VER)
 
 # ---------------------------------------------------------------- shell parts
 
@@ -226,9 +229,6 @@ STYLE = '''<style>
     .so-note { font-size: 12.5px; color: var(--grey); line-height: 1.55; margin-top: 12px }
 
     /* ---- Launch-monitor import (Pro) ------------------------------------ */
-    .so-pro { display: inline-block; vertical-align: middle; margin-left: 10px; padding: 4px 9px;
-      background: var(--fairway); color: #fff; font: 800 10px/1.2 'Archivo', system-ui, sans-serif;
-      letter-spacing: .12em; text-transform: uppercase; border-radius: 999px }
     .lm-intro { font-size: 14.5px; line-height: 1.55; color: var(--grey); margin-bottom: 14px }
     .lm-drop { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
       min-height: 112px; padding: 18px; border: 2px dashed var(--ink); background: var(--white);
@@ -366,8 +366,8 @@ MAIN = '''
 
       <!-- ============ LAUNCH-MONITOR IMPORT (PRO) ============ -->
       <section class="panel" id="lmPanel" aria-labelledby="lm-h">
-        <h2 id="lm-h">Bring in a launch-monitor session <span class="so-pro">Golf Raw Pro &middot; free in preview</span></h2>
-        <div class="so-wrap">
+        <h2 id="lm-h">Bring in a launch-monitor session <span class="gr-pro-badge" id="lmBadge">Golf Raw Pro</span></h2>
+        <div class="so-wrap" id="lmGate">
           <p class="lm-intro">Export the session as a CSV from TrackMan, Foresight, Garmin, FlightScope, Rapsodo or
             SkyTrak and drop it here. The file is read on this device, mapped to your clubs, and logged into
             today&rsquo;s session exactly as if you had tapped the shots in. Nothing is uploaded.</p>
@@ -529,6 +529,11 @@ MAIN = '''
         <details><summary>What is a normal gap between clubs?</summary>
           <p>Ten to fifteen yards between irons. Past 25 yards you have a distance with no club for it;
             under 8 yards two clubs overlap and one is redundant.</p></details>
+        <details><summary>Is the import free?</summary>
+          <p>The logger, the medians, the gap verdicts and the bag sync are free and stay free. Importing a
+            launch-monitor file is a <b>Golf Raw Pro</b> feature. While Pro is not yet on sale it is open to
+            everyone as a preview; once it is, the panel asks you to upgrade or to restore a pass you
+            already own. Nothing in the free tool is taken away.</p></details>
         <details><summary>Can I import my launch monitor data?</summary>
           <p>Yes. Export the session as a CSV from TrackMan, Foresight, Garmin, FlightScope, Rapsodo or
             SkyTrak and drop it into the import panel at the top of this page. The tool finds the club and
@@ -1153,6 +1158,14 @@ SCRIPT = r'''  <script>
       LM = window.GolfrawLMImport || null;
       var drop = $('lmDrop');
       if (!drop) return;
+      /* Paywall: opens in preview when Pro is not on sale or the API is
+         unreachable, gates when it is on sale and this browser holds no pass. */
+      var Pro = window.GolfrawPro || null;
+      if (Pro) {
+        Pro.gate($('lmGate'), 'lm-import', $('lmBadge'));
+        Pro.subscribe(function () { Pro.gate($('lmGate'), 'lm-import', $('lmBadge')); });
+        if (Pro.noteCancelled()) setState('Checkout was cancelled — nothing was charged. The free logger below works exactly as before.');
+      }
       $('lmFile').addEventListener('change', function () { lmReadFile(this.files && this.files[0]); });
       ['dragenter', 'dragover'].forEach(function (ev) {
         drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('over'); });

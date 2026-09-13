@@ -71,7 +71,7 @@ STATIC = ['/', '/news', '/guides', '/liv-golf', '/pga-tour', '/tournaments',
 
 # Development-only HTML that is present locally for generators or hosting
 # fallbacks but is not an indexable production destination.
-NON_PRODUCTION_HTML = {'article-template.html', '404.html'}
+NON_PRODUCTION_HTML = {'article-template.html', '404.html', 'pro-thanks.html', 'pro-restore.html'}
 
 # ---------------------------------------------------------------------------
 # Helpers

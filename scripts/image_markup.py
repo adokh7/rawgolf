@@ -41,7 +41,7 @@ DEPLOY_IGNORED_DIRS = {
     ".email-preview",
     "golfraw.com-audit",
 }
-NON_PRODUCTION_HTML = {"404.html", "article-template.html"}
+NON_PRODUCTION_HTML = {"404.html", "article-template.html", "pro-thanks.html", "pro-restore.html"}
 
 ATTR_RE = re.compile(
     r"([:\w-]+)\s*=\s*(?:\"([^\"]*)\"|'([^']*)'|([^\s>]+))", re.S
