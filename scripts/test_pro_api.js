@@ -61,6 +61,16 @@ var pro = require('../api/_lib/pro');
   var plans = await pro.plans(); eq(plans.map(function (p) { return p.id + ':' + p.mode + ':' + p.display; }), ['price_month:subscription:$5', 'price_year:subscription:$39', 'price_once:payment:£19.99'], 'plans from Stripe, no hardcoded prices');
   eq(plans[1].label, 'GolfRaw Pro', 'label falls back to product name');
 
+  console.log('resilience');
+  process.env.PRO_PRICE_IDS = 'price_month,price_missing,price_year'; pro._cache.plans = null;
+  var errs = []; var origErr = console.error; console.error = function () { errs.push(Array.prototype.slice.call(arguments).join(' ')); };
+  var pl2 = await pro.plans(); console.error = origErr;
+  eq(pl2.map(function (p) { return p.id; }), ['price_month', 'price_year'], 'one unknown price skipped, the others still offered');
+  ok(errs.some(function (l) { return /price_missing/.test(l) && /404/.test(l); }), 'failure logged with price id and status');
+  res = mockRes(); await require('../api/pro-config')({ method: 'GET' }, res); ok(res.body.enabled === true && res.body.warnings && /price_missing/.test(res.body.warnings[0]), 'config still enabled, warning reported');
+  eq(pro.sanitize('Invalid API Key provided: sk_test_****abcd and rk_live_xyz'), 'Invalid API Key provided: [key] and [key]', 'keys redacted from messages');
+  process.env.PRO_PRICE_IDS = 'price_month, price_year,price_once'; pro._cache.plans = null;
+
   console.log('endpoints');
   var res = mockRes(); await require('../api/pro-config')({ method: 'GET' }, res); ok(res.body.enabled === true && res.body.plans.length === 3 && res.body.restoreByEmail === false, 'config enabled, mail off');
   res = mockRes(); await require('../api/create-checkout-session')({ method: 'POST', headers: { origin: 'https://www.golfraw.com' }, body: { priceId: 'price_once' } }, res);
@@ -98,7 +108,7 @@ var pro = require('../api/_lib/pro');
   console.log('unconfigured');
   delete process.env.STRIPE_SECRET_KEY; delete require.cache[require.resolve('../api/_lib/pro')];
   var pro2 = require('../api/_lib/pro'); eq(pro2.enabled(), false, 'disabled without keys'); eq(pro2.missing(), ['STRIPE_SECRET_KEY'], 'names what is missing');
-  res = mockRes(); await require('../api/pro-config')({ method: 'GET' }, res); eq(res.body, { enabled: false, restoreByEmail: false, plans: [] }, 'config says disabled -> client keeps tools open');
+  res = mockRes(); await require('../api/pro-config')({ method: 'GET' }, res); eq(res.body, { enabled: false, restoreByEmail: false, plans: [], reason: 'missing STRIPE_SECRET_KEY' }, 'config says disabled and names the missing variable');
 
   console.log('\n' + (n - fails) + '/' + n + ' checks passed' + (fails ? '  <-- FAILURES' : ''));
   process.exit(fails ? 1 : 0);

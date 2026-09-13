@@ -77,10 +77,22 @@ async function stripe(method, path, params) {
   var url = STRIPE + path, opts = { method: method, headers: { 'Authorization': 'Bearer ' + key } };
   if (method === 'GET' && params) url += (url.indexOf('?') === -1 ? '?' : '&') + formEncode(params);
   else if (params) { opts.headers['Content-Type'] = 'application/x-www-form-urlencoded'; opts.body = formEncode(params); }
+  if (typeof fetch !== 'function') throw new Error('global fetch is unavailable: the function runtime must be Node 18 or newer');
   var res = await fetch(url, opts);
   var body = await res.json()['catch'](function () { return {}; });
-  if (!res.ok) { var e = new Error((body.error && body.error.message) || ('Stripe ' + res.status)); e.status = res.status; e.stripe = body.error; throw e; }
+  if (!res.ok) {
+    var msg = (body.error && body.error.message) || ('HTTP ' + res.status);
+    var e = new Error('Stripe ' + res.status + (body.error && body.error.code ? ' [' + body.error.code + ']' : '') + ': ' + msg);
+    e.status = res.status; e.stripe = body.error;
+    console.error('[pro] Stripe %s %s -> %s', method, path, e.message);
+    throw e;
+  }
   return body;
+}
+
+/* Strip anything that looks like a key before a message leaves the server. */
+function sanitize(msg) {
+  return String(msg || '').replace(/\b(sk|rk|pk|whsec)_(live|test)?_?[A-Za-z0-9*]+/g, '[key]').slice(0, 240);
 }
 
 var planCache = { at: 0, plans: null };
@@ -91,10 +103,12 @@ function money(amount, currency) {
 /* The plan list the paywall shows. Read from Stripe, cached per instance. */
 async function plans() {
   if (planCache.plans && Date.now() - planCache.at < 5 * 60 * 1000) return planCache.plans;
-  var ids = priceIds(), out = [];
+  var ids = priceIds(), out = [], errors = [];
   for (var i = 0; i < ids.length; i++) {
-    var p = await stripe('GET', '/prices/' + encodeURIComponent(ids[i]), { 'expand[]': 'product' });
-    if (!p.active) continue;
+    var p;
+    try { p = await stripe('GET', '/prices/' + encodeURIComponent(ids[i]), { 'expand[]': 'product' }); }
+    catch (e) { errors.push(ids[i] + ': ' + sanitize(e.message)); continue; }
+    if (!p.active) { console.error('[pro] price %s is archived (active=false) in Stripe; skipping', ids[i]); errors.push(ids[i] + ': archived in Stripe'); continue; }
     var rec = p.recurring || null, product = (p.product && typeof p.product === 'object') ? p.product : {};
     out.push({
       id: p.id,
@@ -105,7 +119,10 @@ async function plans() {
       interval: rec ? rec.interval : null, intervalCount: rec ? rec.interval_count : null
     });
   }
-  planCache = { at: Date.now(), plans: out };
+  /* Any currency Stripe supports is fine here: amounts are displayed with
+     Intl in the price's own currency, never compared or converted. */
+  planCache = { at: Date.now(), plans: out, errors: errors };
+  if (errors.length) console.error('[pro] %d of %d configured price(s) unusable: %s', errors.length, ids.length, errors.join(' | '));
   return out;
 }
 
@@ -226,6 +243,6 @@ module.exports = {
   mint: mint, verify: verify, mintEntitlement: mintEntitlement, mintRestore: mintRestore,
   passFromSession: passFromSession, passForCustomer: passForCustomer,
   sendMail: sendMail, restoreMail: restoreMail,
-  json: json, sameSite: sameSite, bodyOf: bodyOf, nowSec: nowSec,
+  json: json, sameSite: sameSite, bodyOf: bodyOf, nowSec: nowSec, sanitize: sanitize,
   _cache: planCache
 };
