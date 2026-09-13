@@ -25,6 +25,54 @@ REDIRECTS = {
         "/equipment/golf-deals-equipment-tee-times-guide",
     "/golf-tournaments-rules-formats-tax-guide":
         "/rules/golf-tournaments-rules-formats-tax-guide",
+    "/news-2026-angel-yin-solheim-cup-fitness-team-usa-europe":
+        "/angel-yin-solheim-cup-fitness-team-usa-europe",
+    "/news-2026-asian-tour-ceo-liv-golf-dp-world-tour-pivot":
+        "/asian-tour-ceo-liv-golf-dp-world-tour-pivot",
+    "/news-2026-bryson-dechambeau-liv-golf-2027":
+        "/bryson-dechambeau-liv-golf-2027",
+    "/news-2026-charley-hull-solheim-cup-late-arrival-drinks-denial":
+        "/charley-hull-solheim-cup-late-arrival-drinks-denial",
+    "/news-2026-david-puig-crans-sur-sierre-position-over-power":
+        "/david-puig-crans-sur-sierre-position-over-power",
+    "/news-2026-european-solheim-cup-team":
+        "/2026-european-solheim-cup-team",
+    "/news-2026-grehan-comeback-stout-walker-cup-saturday-singles":
+        "/grehan-comeback-stout-walker-cup-saturday-singles",
+    "/news-2026-jon-rahm-dodges-pga-tour-pathway-liv-golf-contract":
+        "/jon-rahm-dodges-pga-tour-pathway-liv-golf-contract",
+    "/news-2026-jon-rahm-liv-golf-major-champions-leaving":
+        "/jon-rahm-liv-golf-major-champions-leaving",
+    "/news-2026-liv-golfer-disqualified-dp-world-tour-q-school":
+        "/liv-golfer-disqualified-dp-world-tour-q-school",
+    "/news-2026-mcilroy-keep-heads-down-trump-irish-open-doonbeg":
+        "/mcilroy-keep-heads-down-trump-irish-open-doonbeg",
+    "/news-2026-nelly-korda-solheim-cup-european-drought-2026":
+        "/nelly-korda-solheim-cup-european-drought-2026",
+    "/news-2026-paul-casey-charity-vow-omega-european-masters":
+        "/paul-casey-charity-vow-omega-european-masters",
+    "/news-2026-presidents-cup-captain-liv-golf-restrictions-international-team":
+        "/presidents-cup-captain-liv-golf-restrictions-international-team",
+    "/news-2026-rory-mcilroy-30-pga-tour-wins":
+        "/rory-mcilroy-30-pga-tour-wins",
+    "/news-2026-rory-mcilroy-liv-bankruptcy-dp-world-tour":
+        "/rory-mcilroy-liv-bankruptcy-dp-world-tour",
+    "/news-2026-rory-mcilroy-scottie-scheffler-legend":
+        "/rory-mcilroy-scottie-scheffler-legend",
+    "/news-2026-rory-mcilroy-trump-irish-open-doonbeg":
+        "/rory-mcilroy-trump-irish-open-doonbeg",
+    "/news-2026-solheim-cup-all-star-challenge":
+        "/solheim-cup-all-star-challenge-2026",
+    "/news-2026-solheim-cup-rosters-finalized-captains-picks":
+        "/2026-solheim-cup-rosters-finalized-captains-picks",
+    "/news-2026-thriston-lawrence-european-masters-halfway-lead":
+        "/thriston-lawrence-european-masters-halfway-lead",
+    "/news-2026-thriston-lawrence-omega-european-masters-playoff-paul-casey":
+        "/thriston-lawrence-omega-european-masters-2026-playoff-paul-casey",
+    "/news-2026-trump-west-palm-beach-presidential-golf-course-proposal":
+        "/trump-west-palm-beach-presidential-golf-course-proposal",
+    "/news-2026-trump-martin-doonbeg-irish-open-united-ireland":
+        "/trump-martin-doonbeg-irish-open-united-ireland",
 }
 
 WINNERS = {
@@ -174,6 +222,28 @@ class DuplicateRouteTests(unittest.TestCase):
         self.assertTrue(old_title and old_h1 and new_title and new_h1)
         self.assertNotEqual(old_title, new_title)
         self.assertNotEqual(old_h1, new_h1)
+
+    def test_canonical_duplicate_winners_exist_and_are_self_canonical(self):
+        redirects = set(REDIRECTS)
+        for source, destination in REDIRECTS.items():
+            if source in {
+                "/news-2026-michael-block-leads-ally-challenge-final-round",
+                "/news-2026-hovland-leads-tour-championship-final-day",
+                "/blog/morikawa-61-travelers-championship-2026",
+                "/golf-deals-equipment-tee-times-guide",
+                "/golf-tournaments-rules-formats-tax-guide",
+                "/what-beginners-actually-search",
+                "/news-2026-lee-westwood-liv-golf-bedminster-different-course",
+                "/news-2026-pga-tour-fan-code-of-conduct-gambling",
+            }:
+                continue
+            winner = ROOT / (destination.lstrip("/") + ".html")
+            self.assertTrue(winner.exists(), destination)
+            self.assertEqual(f"{SITE}{destination}", canonical_in(winner), destination)
+            self.assertNotRegex(
+                winner.read_text(encoding="utf-8"),
+                r'<meta[^>]+name=["\']robots["\'][^>]+noindex',
+            )
 
     def test_task6b_hubs_have_useful_context_sections(self):
         expectations = {

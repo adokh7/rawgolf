@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 09 Sep 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Trump and Martin Meet Again at Doonbeg After Ireland Row | GOLFRAW</title>
+      <link>https://www.golfraw.com/trump-martin-doonbeg-irish-open-united-ireland</link>
+      <guid isPermaLink="true">https://www.golfraw.com/trump-martin-doonbeg-irish-open-united-ireland</guid>
+      <pubDate>Sun, 13 Sep 2026 09:00:00 +0000</pubDate>
+      <category>NEWS, TRUMP, MICHEAL MARTIN, DOONBEG, IRISH OPEN, SHANE LOWRY</category>
+      <description>Trump said Irish unification may as well happen now. Today he and Micheál Martin are at Doonbeg, where Shane Lowry leads the Irish Open by four.</description>
+      <enclosure url="https://www.golfraw.com/images/news/trump-martin-irish-open-doonbeg-hero.webp" length="75090" type="image/webp"/>
+    </item>
     <item>
       <title>Scottie Scheffler vs Rory McIlroy: Why Rory&#x27;s Legend Is Bigger | GOLFRAW</title>
       <link>https://www.golfraw.com/rory-mcilroy-scottie-scheffler-legend</link>
@@ -134,15 +143,6 @@
       <category>LIV GOLF, NEWS, ASIAN TOUR, DP WORLD TOUR, CHO MINN THANT, PGA TOUR, INTERNATIONAL SERIES</category>
       <description>They were mid-renewal on another five years with LIV when PIF pulled out. Here&#x27;s what Cho Minn Thant actually said, and the events still stuck in limbo.</description>
       <enclosure url="https://www.golfraw.com/public/news-2026-cho-minn-thant-asian-tour-ceo.webp" length="91004" type="image/webp"/>
-    </item>
-    <item>
-      <title>Grehan&#x27;s Comeback Over Stout: 3 Down After 3, Won on 18 | GOLFRAW</title>
-      <link>https://www.golfraw.com/grehan-comeback-stout-walker-cup-saturday-singles</link>
-      <guid isPermaLink="true">https://www.golfraw.com/grehan-comeback-stout-walker-cup-saturday-singles</guid>
-      <pubDate>Sat, 05 Sep 2026 09:00:00 +0000</pubDate>
-      <category>TOURNAMENTS, WALKER CUP, LAHINCH, STUART GREHAN, PRESTON STOUT, AMATEUR GOLF</category>
-      <description>Three down to the world No. 1 after three holes, eight under for the last 15. What Grehan did at Lahinch, what it means for Sunday, and the rules row.</description>
-      <enclosure url="https://www.golfraw.com/public/news-2026-stuart-grehan-walker-cup-lahinch-celebration.webp" length="186122" type="image/webp"/>
     </item>
   </channel>
 </rss>

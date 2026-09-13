@@ -578,6 +578,7 @@ def tool_pages():
 
 SITEMAP_PRIORITIES = {
     '/how-long-do-golf-clubs-last': '0.9',
+    '/trump-martin-doonbeg-irish-open-united-ireland': '0.9',
 }
 
 

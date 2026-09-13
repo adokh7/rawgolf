@@ -15,7 +15,7 @@ from tool_shell import shell_parts as _shell_parts
 SITE = 'https://www.golfraw.com'
 SLUG = 'tools-coach-report'
 TITLE = 'Coach &amp; Fitter Report: Gapping, Bag, Tendencies | GOLFRAW'
-DESC = ('A one-page coach or fitter report from your own range session, bag and rounds: dispersion, gaps, passengers, tendencies. Print to PDF or share by link.')
+DESC = ('Golf Raw Pro coach report from your range session, bag and rounds: dispersion, gaps, passengers and tendencies. Open as a preview; print or share.')
 OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
 # Bump when lib/pro/report.js changes (immutable .js cache).
 REPORT_VER = '1'
@@ -58,7 +58,6 @@ JSONLD = '''  <!-- ============ STRUCTURED DATA ============ -->
       "operatingSystem": "Any browser",
       "browserRequirements": "Requires JavaScript",
       "description": "%(desc)s",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "featureList": [
         "One-page report from your own range session, bag and rounds",
         "Carry dispersion chart with medians and 80%% bands",
