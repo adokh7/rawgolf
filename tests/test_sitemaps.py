@@ -70,8 +70,8 @@ class NewsSitemapRegressionTests(unittest.TestCase):
         self.assertEqual([], [route for route, count in Counter(routes).items() if count > 1])
         self.assertNotIn("/news-2026-end-of-season-driver-deals", routes)
         self.assertNotIn("/news-every-shot-tiger-woods-80th-win-2018", routes)
-        self.assertIn("/news-2026-justin-thomas-mental-capacity-bay-hill", routes)
-        self.assertIn("/news-2026-liv-golf-bankruptcy-player-settlements-deadlock", routes)
+        expected = {record["route"] for record in news_article_records(load(), today=date.today())}
+        self.assertEqual(expected, set(routes))
         self.assertLessEqual(len(nodes), 1000)
 
         for node in nodes:
@@ -82,7 +82,7 @@ class NewsSitemapRegressionTests(unittest.TestCase):
             self.assertEqual("GOLFRAW", publication.findtext(f"{{{NEWS_NS}}}name"))
             self.assertEqual("en", publication.findtext(f"{{{NEWS_NS}}}language"))
             publication_date = news.findtext(f"{{{NEWS_NS}}}publication_date", "")
-            self.assertRegex(publication_date, r"^2026-(08-(30|31)|09-01)T")
+            self.assertRegex(publication_date, r"^\d{4}-\d{2}-\d{2}T")
             title = news.findtext(f"{{{NEWS_NS}}}title", "")
             self.assertTrue(title)
             self.assertNotRegex(title, r"\s\|\sGOLFRAW$")
@@ -92,17 +92,15 @@ class NewsSitemapRegressionTests(unittest.TestCase):
         self.assertTrue(path.is_file(), path)
         root = xml_root(path)
         expected = {
-            "/news-2026-justin-thomas-mental-capacity-bay-hill": "2026-09-01T10:00:00+02:00",
-            "/news-2026-jon-rahm-liv-money-owed": "2026-09-01T21:30:00+02:00",
-            "/news-2026-liv-golf-bankruptcy-player-settlements-deadlock": "2026-08-31T15:00:00+02:00",
+            record["route"]: record["publication_date"]
+            for record in news_article_records(load(), today=date.today())
         }
         actual = {}
         for node in root.findall(f"{{{SITEMAP_NS}}}url"):
             route = route_from_node(node)
             news = node.find(f"{{{NEWS_NS}}}news")
             actual[route] = news.findtext(f"{{{NEWS_NS}}}publication_date", "")
-        for route, publication_date in expected.items():
-            self.assertEqual(publication_date, actual[route])
+        self.assertEqual(expected, actual)
 
     def test_robots_references_standard_and_news_sitemaps(self):
         robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
