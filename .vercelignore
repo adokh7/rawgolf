@@ -12,3 +12,4 @@ __pycache__
 # Development-only scaffold; generators read it locally, but production must
 # not expose it as an indexable static route.
 article-template.html
+docs

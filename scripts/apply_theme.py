@@ -22,7 +22,7 @@ be bumped whenever theme-golf.css or theme-golf.js changes.
 import glob, io, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-THEME_VER = '5'
+THEME_VER = '7'
 START, END = '<!-- THEME:START -->', '<!-- THEME:END -->'
 
 BLOCK = f"""{START}

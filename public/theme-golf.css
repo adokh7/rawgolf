@@ -538,3 +538,15 @@ html .gr-lk-btn.danger:hover, html .gr-lk-btn.danger:focus-visible { background:
 .coverage-card .hub-example { border-top-color: var(--gr-line); }
 .coverage-card .hub-example a:hover { color: var(--gr-green); text-decoration-color: var(--gr-green); }
 .fc-link { gap: 4px; }
+
+/* ==========================================================================
+   TOOLS — touch-target floor. The mobile sweep found preset chips at 34px,
+   round-delete buttons at 36px, 18px checkboxes and 22px range tracks on four
+   tools; everything else already clears 40px. Floors only, so keypads and
+   full-width CTAs are untouched.
+   ========================================================================== */
+/* unscoped on purpose: the older tool shells have no <main> element */
+button:not(.gr-lk-btn):not(.burger):not(.gr-lk-close) { min-height: 40px; }
+button.kill { min-width: 44px; min-height: 44px; }
+input[type="checkbox"], input[type="radio"] { width: 22px; height: 22px; accent-color: var(--gr-green); }
+input[type="range"] { height: 32px; accent-color: var(--gr-green); }
