@@ -114,7 +114,8 @@ class PageParser(HTMLParser):
             self._buffer = []
         elif tag == "img" and self._body_depth:
             src = attributes.get("src", "")
-            if src:
+            # the header wordmark is chrome, never an article image
+            if src and not src.endswith("/logo.png"):
                 self.body_images.append(src)
 
     def handle_data(self, data: str) -> None:

@@ -195,7 +195,8 @@ class PageParser(HTMLParser):
             rels = {part.lower() for part in attr.get("rel", "").split()}
             if "canonical" in rels:
                 self.canonicals.append(attr.get("href", ""))
-        elif tag == "img" and self._in_body and attr.get("src"):
+        elif tag == "img" and self._in_body and attr.get("src") and not attr["src"].endswith("/logo.png"):
+            # the header wordmark is chrome, never a social/article image
             self.body_images.append(attr["src"])
 
         # Void elements never receive a matching end tag.

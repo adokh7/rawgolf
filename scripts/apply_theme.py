@@ -22,7 +22,7 @@ be bumped whenever theme-golf.css or theme-golf.js changes.
 import glob, io, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-THEME_VER = '9'
+THEME_VER = '10'
 START, END = '<!-- THEME:START -->', '<!-- THEME:END -->'
 
 BLOCK = f"""{START}
@@ -33,6 +33,9 @@ BLOCK = f"""{START}
   <script src="/public/theme-golf.js?v={THEME_VER}" defer></script>
 {END}
 """
+
+LOGO_MARKUP = ('<a href="/" class="logo" aria-label="GolfRaw home">'
+               '<img src="/logo.png" alt="GolfRaw" width="500" height="109" decoding="async" fetchpriority="high"></a>')
 
 GREEN, AMBER, LIGHT_AMBER = '#147a3b', '#b45309', '#fcd34d'
 GREEN_RGBA, AMBER_RGBA = 'rgba(20,122,59', 'rgba(180,83,9'
@@ -112,6 +115,11 @@ def apply(path, check=False):
     for pat, rep, fl in LITERALS:
         s = re.sub(pat, rep, s, flags=fl)
     # ---- markup refinements (idempotent) ----
+    # the header home link carries the official wordmark image (text wordmark -> /logo.png)
+    s = re.sub(r'<a\b[^>]*\bclass="logo"[^>]*>\s*(?:Golf|GOLF)\s*<span[^>]*>\s*(?:Raw|RAW)\s*</span>\s*</a>',
+               LOGO_MARKUP, s)
+    # intrinsic dimensions on the wordmark image (500x109); CSS sets the rendered height
+    s = re.sub(r'<img src="/logo.png" alt="GolfRaw" width="\d+" height="\d+"', '<img src="/logo.png" alt="GolfRaw" width="500" height="109"', s)
     # the mono face is no longer used by any rule, so its preload is dead weight
     s = re.sub(r'\s*<link rel="preload" href="/public/fonts/ibm-plex-mono-[^"]*" as="font" type="font/woff2" crossorigin>', '', s)
     s = re.sub(r'\s*<link rel="preload" href="/public/fonts/archivo-var\.woff2" as="font" type="font/woff2" crossorigin>', '', s)

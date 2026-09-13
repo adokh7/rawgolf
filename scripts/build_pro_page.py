@@ -135,7 +135,7 @@ def render_page():
 <body>
   <header class="site-header">
     <div class="nav">
-      <a href="/" class="logo">Golf<span class="raw">Raw</span></a>
+      <a href="/" class="logo" aria-label="GolfRaw home"><img src="/logo.png" alt="GolfRaw" width="184" height="40" decoding="async" fetchpriority="high"></a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/news">Latest News</a><a href="/pga-tour">PGA Tour</a><a href="/liv-golf">LIV Golf</a>
         <a href="/tournaments">Tournaments</a><a href="/guides">Guides</a><a href="/tools">Tools</a><a href="{_escape(pro["route"])}" class="active">Pro</a>

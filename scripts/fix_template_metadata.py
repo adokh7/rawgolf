@@ -150,6 +150,8 @@ class PageParser(HTMLParser):
         elif tag == "img" and self._body_depth and not self._head_depth:
             src = attr.get("src", "")
             if src:
+                if src.endswith("/logo.png"):  # header wordmark is chrome, not a lead image
+                    return
                 self.body_images.append((src, attr.get("alt", "")))
         elif "tag-row" in attr.get("class", "").split():
             self._tag_row_tag = tag

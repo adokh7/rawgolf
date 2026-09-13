@@ -289,28 +289,43 @@ img, svg, video, iframe, embed { max-width: 100%; }
 }
 
 /* ==========================================================================
-   BRAND — the wordmark stands alone: pure typography, no mark, no badge.
-   Brand green on light surfaces, pure white on dark ones.
+   BRAND — the official wordmark (/logo.png, 500×109) in the home link.
+   Height is fixed per breakpoint and the <img> carries width/height, so the
+   box is known before the file arrives: no layout shift. The negative block
+   margin keeps the header at the same 69px it had with the text wordmark.
    ========================================================================== */
-.logo {
+a.logo {
   display: inline-flex;
-  align-items: baseline;
-  gap: .18em;
-  color: var(--gr-forest);
-  font-weight: 800;
-  font-size: 25px;
-  letter-spacing: -.02em;
-  text-transform: uppercase;
-  line-height: 1;
+  align-items: center;
+  flex: 0 0 auto;
+  height: 40px;
+  margin-block: -8px;
+  line-height: 0;
+  font-size: 0;
+  color: transparent;
+  text-decoration: none;
   transform-origin: left center;
-  transition: transform .3s var(--gr-ease), color .2s;
+  transition: transform .3s var(--gr-ease), opacity .2s;
 }
+a.logo img { display: block; height: 40px; width: auto; max-width: none; }
 .logo::before { content: none; }
-.logo .raw, .logo > span { color: var(--gr-forest); font-weight: 500; letter-spacing: .01em; }
-.logo .tag { display: none; }
+a.logo .raw, a.logo > span, a.logo .tag { display: none; }
+/* non-link marks (the full-board header) stay typographic */
+div.logo { font-family: var(--gr-display); font-weight: 800; font-size: 25px; letter-spacing: -.02em; text-transform: uppercase; line-height: 1; }
+a.logo:hover { opacity: .88; }
+/* the footer keeps its typographic mark */
 .site-footer .logo, .f-logo, .f-logo .raw, .board-header .logo, .board-header .logo span { color: #fff; }
+.f-logo { font-family: var(--gr-display); font-weight: 800; letter-spacing: -.02em; text-transform: uppercase; }
 .gr-scrolled .logo { transform: scale(.94); }
-@media (max-width: 760px) { .logo { font-size: 22px; } }
+/* tablet: the mark drops to 32px so seven links, search and the mark share one 69px row */
+@media (min-width: 761px) and (max-width: 1024px) {
+  a.logo { height: 32px; margin-block: -4px; }
+  a.logo img { height: 32px; }
+}
+@media (max-width: 760px) {
+  a.logo { height: 32px; margin-block: -5px; }
+  a.logo img { height: 32px; }
+}
 
 /* ==========================================================================
    HEADER & NAVIGATION — quiet, wide-set, editorial. Height never changes on
@@ -386,9 +401,9 @@ img, svg, video, iframe, embed { max-width: 100%; }
   .nav-links a.nav-search, .nav-links a[href="/search"] { flex: 0 0 40px; }
 }
 @media (min-width: 761px) and (max-width: 1024px) {
-  .nav-links { gap: .85rem; }
-  .nav-links a { font-size: 12px; letter-spacing: .04em; }
-  .nav-links a.hot { padding: 8px 11px; }
+  .nav-links { gap: .7rem; }
+  .nav-links a { font-size: 11.5px; letter-spacing: .03em; }
+  .nav-links a.hot { padding: 8px 10px; }
 }
 @media (max-width: 760px) {
   .nav-links { gap: 0; background: rgba(255, 255, 255, .98); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-color: var(--gr-line); box-shadow: var(--gr-shadow-md); }

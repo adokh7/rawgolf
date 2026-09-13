@@ -845,7 +845,7 @@ html_content = """<!DOCTYPE html>
   <!-- ============ SITE HEADER ============ -->
   <header class="site-header">
     <div class="nav">
-      <a href="/" class="logo">Golf<span class="raw">Raw</span></a>
+      <a href="/" class="logo" aria-label="GolfRaw home"><img src="/logo.png" alt="GolfRaw" width="184" height="40" decoding="async" fetchpriority="high"></a>
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
         <a href="/news">Latest News</a>
         <a href="/pga-tour">PGA Tour</a>
