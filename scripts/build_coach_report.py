@@ -15,8 +15,7 @@ from tool_shell import shell_parts as _shell_parts
 SITE = 'https://www.golfraw.com'
 SLUG = 'tools-coach-report'
 TITLE = 'Coach &amp; Fitter Report: Gapping, Bag, Tendencies | GOLFRAW'
-DESC = ('One-page coach or fitter report from your own range session, bag and rounds: carry dispersion, '
-        'gap verdicts, passengers, on-course tendencies. Print to PDF or share by link.')
+DESC = ('A one-page coach or fitter report from your own range session, bag and rounds: dispersion, gaps, passengers, tendencies. Print to PDF or share by link.')
 OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
 # Bump when lib/pro/report.js changes (immutable .js cache).
 REPORT_VER = '1'
