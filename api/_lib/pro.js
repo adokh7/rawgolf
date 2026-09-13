@@ -95,15 +95,18 @@ function sanitize(msg) {
   return String(msg || '').replace(/\b(sk|rk|pk|whsec)_(live|test)?_?[A-Za-z0-9*]+/g, '[key]').slice(0, 240);
 }
 
-var planCache = { at: 0, plans: null };
+var planCache = { at: 0, plans: null, errors: [] };   /* mutated in place: it is exported as _cache */
 function money(amount, currency) {
   try { return new Intl.NumberFormat('en', { style: 'currency', currency: currency.toUpperCase(), minimumFractionDigits: amount % 100 ? 2 : 0 }).format(amount / 100); }
   catch (e) { return (amount / 100).toFixed(2) + ' ' + currency.toUpperCase(); }
 }
 /* The plan list the paywall shows. Read from Stripe, cached per instance. */
 async function plans() {
-  if (planCache.plans && Date.now() - planCache.at < 5 * 60 * 1000) return planCache.plans;
+  /* an empty result is never cached: a transient Stripe error must not
+     keep the paywall off for five minutes */
+  if (planCache.plans && planCache.plans.length && Date.now() - planCache.at < 5 * 60 * 1000) return planCache.plans;
   var ids = priceIds(), out = [], errors = [];
+  if (!ids.length) errors.push('PRO_PRICE_IDS is empty after trimming');
   for (var i = 0; i < ids.length; i++) {
     var p;
     try { p = await stripe('GET', '/prices/' + encodeURIComponent(ids[i]), { 'expand[]': 'product' }); }
@@ -121,7 +124,7 @@ async function plans() {
   }
   /* Any currency Stripe supports is fine here: amounts are displayed with
      Intl in the price's own currency, never compared or converted. */
-  planCache = { at: Date.now(), plans: out, errors: errors };
+  planCache.at = Date.now(); planCache.plans = out; planCache.errors = errors;
   if (errors.length) console.error('[pro] %d of %d configured price(s) unusable: %s', errors.length, ids.length, errors.join(' | '));
   return out;
 }
