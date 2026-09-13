@@ -193,7 +193,7 @@ class FreeProArchitectureTests(unittest.TestCase):
         coach_apps = [node for node in coach_nodes if node.get("@type") == "WebApplication"]
         self.assertTrue(coach_apps)
         self.assertFalse(any("offers" in node for node in coach_apps))
-        self.assertIn("Golf Raw Pro", coach.meta["description"])
+        self.assertIn("GolfRaw Pro", coach.meta["description"])
         self.assertIn("every free tool stays free", coach_source.lower())
 
 

@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SLUG = "news-2026-liv-golf-bankruptcy-player-settlements-deadlock"
 CANONICAL = f"https://www.golfraw.com/{SLUG}"
 IMAGE = "/public/liv-golf-bankruptcy-deadlock-2026.webp"
-TITLE = "LIV Golf Bankruptcy: The Deadlock Nobody Can Break | GOLFRAW"
+TITLE = "LIV Golf Bankruptcy: The Deadlock Nobody Can Break | GolfRaw"
 DESCRIPTION = (
     "The investor won't commit until players sign. Players won't sign for cents on the dollar. "
     "That standoff is why Chapter 11 is now the likeliest exit."

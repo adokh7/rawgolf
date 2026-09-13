@@ -79,13 +79,13 @@ class NewsSitemapRegressionTests(unittest.TestCase):
             self.assertTrue(loc.startswith(BASE + "/"), loc)
             news = node.find(f"{{{NEWS_NS}}}news")
             publication = news.find(f"{{{NEWS_NS}}}publication")
-            self.assertEqual("GOLFRAW", publication.findtext(f"{{{NEWS_NS}}}name"))
+            self.assertEqual("GolfRaw", publication.findtext(f"{{{NEWS_NS}}}name"))
             self.assertEqual("en", publication.findtext(f"{{{NEWS_NS}}}language"))
             publication_date = news.findtext(f"{{{NEWS_NS}}}publication_date", "")
             self.assertRegex(publication_date, r"^\d{4}-\d{2}-\d{2}T")
             title = news.findtext(f"{{{NEWS_NS}}}title", "")
             self.assertTrue(title)
-            self.assertNotRegex(title, r"\s\|\sGOLFRAW$")
+            self.assertNotRegex(title, r"\s\|\sGolfRaw$")
 
     def test_news_sitemap_publication_dates_are_real_page_dates(self):
         path = ROOT / "news-sitemap.xml"

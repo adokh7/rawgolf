@@ -104,7 +104,7 @@ class Phase1CriticalFixTests(unittest.TestCase):
         parser = parse(path)
         source = path.read_text(encoding="utf-8")
         self.assertEqual(
-            "Golf Tools: 12 Free Utilities + Coach Report | GOLFRAW", parser.title
+            "Golf Tools: 12 Free Utilities + Coach Report | GolfRaw", parser.title
         )
         expected_description = (
             "Twelve free client-side golf tools plus the Coach Report Pro preview. "
@@ -123,13 +123,13 @@ class Phase1CriticalFixTests(unittest.TestCase):
         item_list = collection["mainEntity"]
         self.assertEqual("ItemList", item_list["@type"])
         self.assertEqual(13, item_list["numberOfItems"])
-        self.assertEqual("The 13 Raw Golf tools", item_list["name"])
+        self.assertEqual("The 13 GolfRaw tools", item_list["name"])
         items = [entry["item"] for entry in item_list["itemListElement"]]
         self.assertEqual(TOOL_ROUTES, {item["url"].replace(SITE, "") for item in items})
         self.assertEqual(13, len(items))
         coach = next(item for item in items if item["url"].endswith("tools-coach-report"))
         self.assertNotIn("offers", coach)
-        self.assertIn("Golf Raw Pro", coach["description"])
+        self.assertIn("GolfRaw Pro", coach["description"])
         self.assertIn("preview", coach["description"].lower())
         self.assertNotIn("isAccessibleForFree", collection)
 
@@ -138,12 +138,12 @@ class Phase1CriticalFixTests(unittest.TestCase):
         parser = parse(page)
         app = schema_nodes(parser, "WebApplication")[0]
         self.assertNotIn("offers", app)
-        self.assertIn("Golf Raw Pro", app["description"])
+        self.assertIn("GolfRaw Pro", app["description"])
         self.assertIn("preview", app["description"].lower())
 
         generator = (ROOT / "scripts/build_coach_report.py").read_text(encoding="utf-8")
         self.assertNotIn('"offers": { "@type": "Offer", "price": "0"', generator)
-        self.assertIn("Golf Raw Pro", generator)
+        self.assertIn("GolfRaw Pro", generator)
 
     def test_all_eight_stale_internal_links_are_gone(self):
         found = {target: 0 for target in STALE_LINKS}

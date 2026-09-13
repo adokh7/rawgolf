@@ -20,7 +20,7 @@ html_content = """<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ============ PRIMARY SEO ============ -->
-  <title>Golf Deals: Save $2,176 Annually on Equipment and Rounds | GOLFRAW</title>
+  <title>Golf Deals: Save $2,176 Annually on Equipment and Rounds | GolfRaw</title>
   <meta name="description" content="Save $2,176 annually on golf equipment, balls, and tee times. The data-backed guide to equipment release cycles, direct-to-consumer urethane balls, and twilight rates.">
   <link rel="canonical" href="https://www.golfraw.com/equipment/golf-deals-equipment-tee-times-guide">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -29,7 +29,7 @@ html_content = """<!DOCTYPE html>
   <!-- ============ OPEN GRAPH ============ -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="GolfRaw">
-  <meta property="og:title" content="Golf Deals: Save $2,176 Annually on Equipment and Rounds | GOLFRAW">
+  <meta property="og:title" content="Golf Deals: Save $2,176 Annually on Equipment and Rounds | GolfRaw">
   <meta property="og:description" content="Save $2,176 annually on golf equipment, balls, and tee times. The data-backed guide to equipment release cycles, direct-to-consumer urethane balls, and twilight rates.">
   <meta property="og:url" content="https://www.golfraw.com/equipment/golf-deals-equipment-tee-times-guide">
   <meta property="og:image" content="https://www.golfraw.com/public/golf-deals-optimization-hero.webp">
@@ -47,7 +47,7 @@ html_content = """<!DOCTYPE html>
 
   <!-- ============ TWITTER CARD ============ -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Golf Deals: Save $2,176 Annually on Equipment and Rounds | GOLFRAW">
+  <meta name="twitter:title" content="Golf Deals: Save $2,176 Annually on Equipment and Rounds | GolfRaw">
   <meta name="twitter:description" content="Save $2,176 annually on golf equipment, balls, and tee times. The data-backed guide to equipment release cycles, direct-to-consumer urethane balls, and twilight rates.">
   <meta name="twitter:image" content="https://www.golfraw.com/public/golf-deals-optimization-hero.webp">
 
@@ -868,7 +868,7 @@ html_content = """<!DOCTYPE html>
       <!-- ============ ARTICLE ============ -->
       <article>
         <nav class="crumbs" aria-label="Breadcrumb">
-          <a href="/">RawGolf</a> / <a href="/guides">Equipment</a> / <span>Deals & Optimization</span>
+          <a href="/">GolfRaw</a> / <a href="/guides">Equipment</a> / <span>Deals & Optimization</span>
         </nav>
 
         <header class="article-head">
@@ -884,7 +884,7 @@ html_content = """<!DOCTYPE html>
         <figure class="lead-img">
           <img src="/public/golf-deals-optimization-hero.webp" alt="Golf Deals and Equipment Optimization Guide" loading="eager" fetchpriority="high" srcset="/public/golf-deals-optimization-hero-400.webp 400w, /public/golf-deals-optimization-hero-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
         </figure>
-        <figcaption>THE RAWGOLF EQUIPMENT AND TEE TIME EFFICIENCY BLUEPRINT. PHOTO: RAWGOLF</figcaption>
+        <figcaption>THE GolfRaw EQUIPMENT AND TEE TIME EFFICIENCY BLUEPRINT. PHOTO: GolfRaw</figcaption>
 
         <div class="article-body">
           <p>Every spring, the golf industry conducts an identical marketing ritual: $650 drivers promising an extra 4.2 yards, tour-branded golf balls priced at $4.75 apiece, and automated booking engines jacking up green fees with surge algorithms.</p>
@@ -969,7 +969,7 @@ html_content = """<!DOCTYPE html>
 
           <blockquote class="pull">
             "A fitted shaft in a two-year-old driver head will beat an off-the-rack $650 current release ten times out of ten on launch monitor dispersion."
-            <footer>— RawGolf Hardware Testing Lab</footer>
+            <footer>— GolfRaw Hardware Testing Lab</footer>
           </blockquote>
 
           <h2>Pillar 2: The Ball Formulation Truth (Urethane vs Surlyn)</h2>
@@ -1056,7 +1056,7 @@ html_content = """<!DOCTYPE html>
           <a class="rel-card" href="/news-2026-driver-fitting-guide-fitzpatrick">
             <div class="cat">Equipment Guide</div>
             <h3>Driver Fitting Guide: Why Proper Specs Beat New Models</h3>
-            <div class="d">RAWGOLF HARDWARE LAB</div>
+            <div class="d">GolfRaw HARDWARE LAB</div>
           </a>
           <a class="rel-card" href="/news-2026-golf-ball-deals-buying-guide">
             <div class="cat">Ball Testing</div>
@@ -1125,7 +1125,7 @@ html_content = """<!DOCTYPE html>
   <!-- ============ FOOTER ============ -->
   <footer class="site-footer">
     <div class="wrap">
-      <span>© 2026 GOLFRAW — ALL RATINGS FINAL</span>
+      <span>© 2026 GolfRaw — ALL RATINGS FINAL</span>
       <nav aria-label="Footer navigation" style="display:flex;gap:20px;flex-wrap:wrap">
         <a href="/manifesto">MANIFESTO</a>
         <a href="/about">ABOUT</a>

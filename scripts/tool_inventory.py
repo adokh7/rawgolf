@@ -11,7 +11,7 @@ SITE = "https://www.golfraw.com"
 HUB_ROUTE = "/tools"
 HUB_CANONICAL = SITE + HUB_ROUTE
 HUB_OG_IMAGE = SITE + "/public/raw-golf-practice.webp"
-HUB_TITLE = "Golf Tools: 12 Free Utilities + Coach Report | GOLFRAW"
+HUB_TITLE = "Golf Tools: 12 Free Utilities + Coach Report | GolfRaw"
 HUB_DESCRIPTION = (
     "Twelve free client-side golf tools plus the Coach Report Pro preview. "
     "Run them in your browser with no signup, account or data upload."
@@ -37,7 +37,7 @@ PRODUCT_MODEL = {
         "label": "GolfRaw Pro",
         "status": "preview",
         "route": "/pro",
-        "title": "GolfRaw Pro: What Pro Adds to the Free Golf Tools | GOLFRAW",
+        "title": "GolfRaw Pro: What Pro Adds to the Free Golf Tools | GolfRaw",
         "description": (
             "GolfRaw keeps 12 browser-based golf tools free forever with no login. "
             "GolfRaw Pro currently adds launch-monitor CSV import to Standing Order "
@@ -244,7 +244,7 @@ TOOLS = (
         13,
         "The Coach Report",
         "One-Page PDF · Gapping, Bag, Tendencies",
-        "Golf Raw Pro coach and fitter report builder from the numbers already on this device: carry dispersion, club gaps, passengers and on-course tendencies. Open as a preview while Pro is not on sale; print to PDF or share by link.",
+        "GolfRaw Pro coach and fitter report builder from the numbers already on this device: carry dispersion, club gaps, passengers and on-course tendencies. Open as a preview while Pro is not on sale; print to PDF or share by link.",
         "Build the report →",
         "pro-output",
         access="pro_preview",

@@ -160,7 +160,7 @@ def news_card(a):
           </div>
           <h3><a href="{esc(get_url(a))}">{esc(get_title(a))}</a></h3>
           <p>{esc(get_excerpt(a))}</p>
-          <div class="meta"><span>BY GOLFRAW Editorial</span><span class="mono">{esc(get_date(a))}</span></div>
+          <div class="meta"><span>BY GolfRaw Editorial</span><span class="mono">{esc(get_date(a))}</span></div>
         </article>'''
 
 
@@ -175,7 +175,7 @@ def guide_card(a):
             <h3>{esc(get_title(a))}</h3>
             <p>{esc(get_excerpt(a))}</p>
             <div class="card-meta">
-              <span class="author">GOLFRAW Editorial · {esc(get_date(a))}</span>
+              <span class="author">GolfRaw Editorial · {esc(get_date(a))}</span>
               <span class="card-cta">Read →</span>
             </div>
           </div>
@@ -191,7 +191,7 @@ def search_entry(a):
             f'img:"{js_esc(get_image(a))}", '
             f'cat:"{js_esc(get_category(a))}", '
             f'date:"{js_esc(get_date(a))}", '
-            f'author:"GOLFRAW Editorial", '
+            f'author:"GolfRaw Editorial", '
             f'x:"{js_esc(get_excerpt(a))}", '
             f'k:"{js_esc(get_keywords(a))}"}}')
 
@@ -601,7 +601,7 @@ def write_sitemap(arts):
 NEWS_SITEMAP_PATH = 'news-sitemap.xml'
 NEWS_NAMESPACE = 'http://www.google.com/schemas/sitemap-news/0.9'
 SITEMAP_NAMESPACE = 'http://www.sitemaps.org/schemas/sitemap/0.9'
-NEWS_PUBLICATION_NAME = 'GOLFRAW'
+NEWS_PUBLICATION_NAME = 'GolfRaw'
 NEWS_LANGUAGE = 'en'
 NEWS_SECTIONS = {'PGA TOUR', 'LIV GOLF', 'TOURNAMENTS', 'NEWS'}
 NEWS_MAX_AGE_DAYS = 2
@@ -752,7 +752,7 @@ def write_feed(arts):
            '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" '
            'xmlns:content="http://purl.org/rss/1.0/modules/content/">',
            '  <channel>',
-           '    <title>GOLFRAW</title>',
+           '    <title>GolfRaw</title>',
            f'    <link>{base}/</link>',
            '    <description>Golf news without the press-release language. '
            'Evidence first, opinion labeled.</description>',

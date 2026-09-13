@@ -534,6 +534,20 @@ root (`/favicon-48x48.png`, `/apple-touch-icon.png`, `/icon-192.png`,
 read the markup. Run it after any page rebuild that regenerates a head from an
 old template.
 
+One brand spelling, `GolfRaw`, is enforced by `python3 scripts/apply_brand.py`
+(idempotent). Google's Site Names system picks a name from the homepage
+`WebSite` markup, `og:site_name`, the `<title>` and headings, and falls back to
+the bare domain when they disagree; this site had carried GOLFRAW, GolfRaw,
+Golf Raw and RawGolf side by side. The pass rewrites visible text and head
+metadata outside `<script>`/`<style>`, edits JSON-LD at the object level
+(publisher `GolfRaw`, author `GolfRaw Editorial`, product `GolfRaw Pro`), keeps
+the legacy spellings as `alternateName` on the `WebSite` and `#organization`
+nodes only, sets `og:site_name` and adds `application-name`. The generators
+(`article_schema.py`, `schema_normalizer.py`, `sync_site.py`, `tool_inventory.py`,
+the builders) and `articles.json` emit the same spelling, so the pass is a
+guard rather than a dependency. Pipeline order after any rebuild: builder,
+`wire_locker.py`, `apply_theme.py`, `apply_icons.py`, `apply_brand.py`.
+
 The eight hand-written tools (`tools-bag-audit`, `gimme-audit`,
 `handicap-detector`, `plays-like`, `round-autopsy`, `settle-up-calculator`,
 `tee-box-check`, `tilt-meter`) keep their layout CSS in two inline `<style>`

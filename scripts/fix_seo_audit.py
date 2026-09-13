@@ -30,7 +30,7 @@ except ModuleNotFoundError:  # imported as scripts.fix_seo_audit
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://www.golfraw.com"
-BRAND_SUFFIX = " | GOLFRAW"
+BRAND_SUFFIX = " | GolfRaw"
 ROBOTS_VALUE = "index, follow, max-image-preview:large"
 
 # Pages that must stay out of the index. Internal search results are thin

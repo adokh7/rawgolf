@@ -35,7 +35,7 @@ crumbs = soup.find("nav", class_="crumbs")
 if crumbs:
     crumbs.clear()
     a1 = soup.new_tag("a", href="/")
-    a1.string = "RawGolf"
+    a1.string = "GolfRaw"
     a2 = soup.new_tag("a", href="news")
     a2.string = "Latest News"
     sp = soup.new_tag("span")

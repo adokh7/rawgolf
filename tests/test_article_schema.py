@@ -150,8 +150,8 @@ class ArticleSchemaTests(unittest.TestCase):
     def test_normalizer_completes_and_deduplicates_article_entity(self):
         source = '''<!doctype html>
 <html><head>
-  <title>Example story | GOLFRAW</title>
-  <meta name="author" content="GOLFRAW Editorial">
+  <title>Example story | GolfRaw</title>
+  <meta name="author" content="GolfRaw Editorial">
   <meta property="og:image" content="https://www.golfraw.com/public/example.webp">
   <meta property="article:published_time" content="2026-08-31T10:00:00+02:00">
   <meta property="article:modified_time" content="2026-08-31T12:00:00+02:00">
@@ -159,12 +159,12 @@ class ArticleSchemaTests(unittest.TestCase):
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"NewsArticle",
    "headline":"Old headline","datePublished":"2026-08-31",
-   "publisher":{"@type":"Organization","name":"GOLFRAW"}}
+   "publisher":{"@type":"Organization","name":"GolfRaw"}}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"NewsArticle",
    "headline":"Old headline","datePublished":"2026-08-31",
-   "publisher":{"@type":"Organization","name":"GOLFRAW"}}
+   "publisher":{"@type":"Organization","name":"GolfRaw"}}
   </script>
 </head><body><h1>Example story</h1></body></html>'''
 
@@ -180,7 +180,7 @@ class ArticleSchemaTests(unittest.TestCase):
         article = articles[0]
         self.assertEqual("https://www.golfraw.com/example-story", article["mainEntityOfPage"])
         self.assertEqual("https://www.golfraw.com/public/example.webp", article["image"])
-        self.assertEqual("GOLFRAW Editorial", article["author"]["name"])
+        self.assertEqual("GolfRaw Editorial", article["author"]["name"])
         self.assertEqual("2026-08-31T12:00:00+02:00", article["dateModified"])
 
     def test_normalizer_reports_missing_authoritative_modification_date(self):
@@ -258,11 +258,11 @@ class ArticleSchemaTests(unittest.TestCase):
         self.assertEqual(set(), required - article.keys())
         self.assertTrue(article["image"]["url"].endswith("scottie-scheffler-tour-championship-2026-odds.webp"))
         html = target.read_text(encoding="utf-8")
-        self.assertIn("Scottie Scheffler's 2026 Tour Championship odds: +310 | GOLFRAW", html)
+        self.assertIn("Scottie Scheffler's 2026 Tour Championship odds: +310 | GolfRaw", html)
         self.assertIn("24.39%", html)
         self.assertIn("7.3x", html)
         self.assertIn("+3735", html)
-        self.assertIn("SCOTTIE SCHEFFLER ENTERS EAST LAKE AS THE +310 BETTING FAVOURITE. PHOTO: RAWGOLF", html)
+        self.assertIn("SCOTTIE SCHEFFLER ENTERS EAST LAKE AS THE +310 BETTING FAVOURITE. PHOTO: GolfRaw", html)
 
     def test_scheffler_tour_championship_odds_page_is_registered(self):
         slug = "news-2026-scottie-scheffler-tour-championship-odds"
@@ -294,11 +294,11 @@ class ArticleSchemaTests(unittest.TestCase):
         self.assertEqual(set(), required - article.keys())
         self.assertTrue(article["image"]["url"].endswith("tour-championship-2026-purse-east-lake.webp"))
         html = target.read_text(encoding="utf-8")
-        self.assertIn("2026 Tour Championship Purse: The Winner Gets $10 Million | GOLFRAW", html)
+        self.assertIn("2026 Tour Championship Purse: The Winner Gets $10 Million | GolfRaw", html)
         self.assertIn("$40,000,000", html)
         self.assertIn("$10,000,000", html)
         self.assertIn("$23,000,000", html)
-        self.assertIn("THE 2026 TOUR CHAMPIONSHIP CARRIES A $40 MILLION OFFICIAL PURSE WITH $10 MILLION TO THE WINNER. PHOTO: RAWGOLF", html)
+        self.assertIn("THE 2026 TOUR CHAMPIONSHIP CARRIES A $40 MILLION OFFICIAL PURSE WITH $10 MILLION TO THE WINNER. PHOTO: GolfRaw", html)
 
     def test_tour_championship_purse_page_is_registered(self):
         slug = "news-2026-tour-championship-purse-east-lake"
@@ -330,10 +330,10 @@ class ArticleSchemaTests(unittest.TestCase):
         self.assertEqual(set(), required - article.keys())
         self.assertTrue(article["image"]["url"].endswith("tour-championship-2028-match-play-format.webp"))
         html = target.read_text(encoding="utf-8")
-        self.assertIn("The Tour Championship 2028 Match Play Format, Explained Without the Spin | GOLFRAW", html)
+        self.assertIn("The Tour Championship 2028 Match Play Format, Explained Without the Spin | GolfRaw", html)
         self.assertIn("32 Players", html)
         self.assertIn("16 Players", html)
-        self.assertIn("SCOTTIE SCHEFFLER ADDRESSED THE 2028 TWO-WEEK MATCH PLAY RESTRUCTURE AT EAST LAKE. PHOTO: RAWGOLF", html)
+        self.assertIn("SCOTTIE SCHEFFLER ADDRESSED THE 2028 TWO-WEEK MATCH PLAY RESTRUCTURE AT EAST LAKE. PHOTO: GolfRaw", html)
 
     def test_tour_championship_2028_match_play_page_is_registered(self):
         slug = "news-2026-tour-championship-2028-match-play-format"
@@ -365,10 +365,10 @@ class ArticleSchemaTests(unittest.TestCase):
         self.assertEqual(set(), required - article.keys())
         self.assertTrue(article["image"]["url"].endswith("brooks-koepka-motor-city-golf-club-tgl.webp"))
         html = target.read_text(encoding="utf-8")
-        self.assertIn("Koepka Joins Detroit's TGL Team. Catch: No Detroit | GOLFRAW", html)
+        self.assertIn("Koepka Joins Detroit's TGL Team. Catch: No Detroit | GolfRaw", html)
         self.assertIn("Motor City Golf Club", html)
         self.assertIn("SoFi Center", html)
-        self.assertIn("BROOKS KOEPKA WAS NAMED THE FIRST PLAYER FOR TGL'S MOTOR CITY GOLF CLUB AHEAD OF ITS 2027 DEBUT. PHOTO: RAWGOLF", html)
+        self.assertIn("BROOKS KOEPKA WAS NAMED THE FIRST PLAYER FOR TGL'S MOTOR CITY GOLF CLUB AHEAD OF ITS 2027 DEBUT. PHOTO: GolfRaw", html)
 
     def test_brooks_koepka_motor_city_tgl_page_is_registered(self):
         slug = "news-2026-brooks-koepka-motor-city-golf-club-tgl"
@@ -400,11 +400,11 @@ class ArticleSchemaTests(unittest.TestCase):
         self.assertEqual(set(), required - article.keys())
         self.assertTrue(article["image"]["url"].endswith("good-good-golf-ad-backlash-callaway-2026.webp"))
         html = target.read_text(encoding="utf-8")
-        self.assertIn("Good Good Golf Ad Backlash: What's Actually Been Pulled | GOLFRAW", html)
+        self.assertIn("Good Good Golf Ad Backlash: What's Actually Been Pulled | GolfRaw", html)
         self.assertIn("Dick's Sporting Goods", html)
         self.assertIn("Golf Galaxy", html)
         self.assertIn("PGA Tour Superstore", html)
-        self.assertIn("GOOD GOOD GOLF MERCHANDISE WAS PULLED BY THREE MAJOR RETAILERS FOLLOWING THE AUGUST 2026 ADVERT. PHOTO: RAWGOLF", html)
+        self.assertIn("GOOD GOOD GOLF MERCHANDISE WAS PULLED BY THREE MAJOR RETAILERS FOLLOWING THE AUGUST 2026 ADVERT. PHOTO: GolfRaw", html)
 
     def test_good_good_ad_backlash_page_is_registered(self):
         slug = "news-2026-good-good-golf-ad-backlash"

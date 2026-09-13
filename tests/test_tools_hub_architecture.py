@@ -134,7 +134,7 @@ class ToolsHubArchitectureTests(unittest.TestCase):
     def test_hub_renders_inventory_groups_access_badges_and_schema(self):
         parser = parse_hub()
         source = HUB_PATH.read_text(encoding="utf-8")
-        self.assertEqual("Golf Tools: 12 Free Utilities + Coach Report | GOLFRAW", parser.title)
+        self.assertEqual("Golf Tools: 12 Free Utilities + Coach Report | GolfRaw", parser.title)
         self.assertNotRegex(source, r"\beight\b")
         self.assertEqual(13, len(parser.tool_slugs))
         self.assertEqual(13, len(set(parser.tool_slugs)))
@@ -158,7 +158,7 @@ class ToolsHubArchitectureTests(unittest.TestCase):
         self.assertEqual(12, sum("offers" in item for item in items))
         coach = next(item for item in items if item["url"].endswith("tools-coach-report"))
         self.assertNotIn("offers", coach)
-        self.assertIn("Golf Raw Pro", coach["description"])
+        self.assertIn("GolfRaw Pro", coach["description"])
 
     def test_inventory_metadata_is_shared_by_visible_cards_and_schema(self):
         sys.path.insert(0, str(ROOT))

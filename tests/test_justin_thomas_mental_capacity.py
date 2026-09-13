@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SLUG = "news-2026-justin-thomas-mental-capacity-bay-hill"
 CANONICAL = f"https://www.golfraw.com/{SLUG}"
 IMAGE = "/public/justin-thomas-mental-capacity-bay-hill-2026.webp"
-TITLE = "Justin Thomas's 'Mental Capacity' Line, Six Months On | GOLFRAW"
+TITLE = "Justin Thomas's 'Mental Capacity' Line, Six Months On | GolfRaw"
 SEO_TITLE = "Justin Thomas's 'Mental Capacity' Line, Six Months On"
 DESCRIPTION = (
     "He shot 79-79 and couldn't concentrate on the back nine. Two months later he finished "

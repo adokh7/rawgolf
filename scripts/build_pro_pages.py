@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tool_shell import shell_parts as _shell_parts
 
 SITE = 'https://www.golfraw.com'
-PRO_VER = '1'
+PRO_VER = '2'
 
 
 def rewrite_meta(s, slug, title, desc):
@@ -61,7 +61,7 @@ STYLE = '''<style>
 '''.replace('__PRO_VER__', PRO_VER)
 
 THANKS_MAIN = '''
-  <div class="hub-hero"><div class="wrap"><div class="eyebrow">RAWGOLF &middot; PRO</div><h1>Thank you</h1>
+  <div class="hub-hero"><div class="wrap"><div class="eyebrow">GolfRaw &middot; PRO</div><h1>Thank you</h1>
     <p>Your pass is being switched on in this browser. Keep this page&rsquo;s address: opening it on another
       device switches Pro on there too.</p></div></div>
   <div class="tool-body"><div class="wrap"><div class="pp-wrap">
@@ -83,7 +83,7 @@ THANKS_MAIN = '''
 '''
 
 RESTORE_MAIN = '''
-  <div class="hub-hero"><div class="wrap"><div class="eyebrow">RAWGOLF &middot; PRO</div><h1>Restore your Pro pass</h1>
+  <div class="hub-hero"><div class="wrap"><div class="eyebrow">GolfRaw &middot; PRO</div><h1>Restore your Pro pass</h1>
     <p>Pro lives in your browser, never on our servers. This page puts it back on a new device.</p></div></div>
   <div class="tool-body"><div class="wrap"><div class="pp-wrap">
     <div class="pp-card" aria-live="polite">
@@ -113,7 +113,7 @@ SCRIPT = r'''  <script>
     function show(kind, head, text) { $('ppStatus').className = 'pp-status ' + kind; $('ppStatus').textContent = kind === 'ok' ? 'Pro is on' : (kind === 'bad' ? 'Not confirmed' : 'Working'); $('ppHead').textContent = head; $('ppText').innerHTML = text; }
     function done(r) {
       if (!r.ok) { show('bad', 'That did not work', esc(r.error)); if ($('ppForm')) $('ppForm').hidden = false; return; }
-      show('ok', 'Welcome to Golf Raw Pro', 'Your pass is stored in this browser' + (r.email ? ' for ' + esc(r.email) : '') + '. Every Pro feature is open now.');
+      show('ok', 'Welcome to GolfRaw Pro', 'Your pass is stored in this browser' + (r.email ? ' for ' + esc(r.email) : '') + '. Every Pro feature is open now.');
       $('ppPlan').textContent = r.plan || 'Pro'; $('ppExp').textContent = r.exp ? new Date(r.exp * 1000).toLocaleDateString() : '—';
       $('ppKv').hidden = false; $('ppActs').hidden = false;
     }
@@ -152,8 +152,8 @@ TAIL = '''  <script>window.__gr_consent=true;window.__gr_ads=false;</script>
 '''
 
 PAGES = [
-    ('pro-thanks', 'Thank you | Golf Raw Pro', 'Your Golf Raw Pro pass is being switched on.', THANKS_MAIN),
-    ('pro-restore', 'Restore your pass | Golf Raw Pro', 'Restore your Golf Raw Pro pass on this device.', RESTORE_MAIN),
+    ('pro-thanks', 'Thank you | GolfRaw', 'Your GolfRaw Pro pass is being switched on.', THANKS_MAIN),
+    ('pro-restore', 'Restore your pass | GolfRaw', 'Restore your GolfRaw Pro pass on this device.', RESTORE_MAIN),
 ]
 
 

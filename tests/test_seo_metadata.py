@@ -88,11 +88,11 @@ class SeoMetadataTests(unittest.TestCase):
 
     def test_apply_overrides_updates_head_metadata_but_preserves_page_identity(self):
         source = '''<!doctype html><html><head>
-<title>Old title | GOLFRAW</title>
+<title>Old title | GolfRaw</title>
 <meta name="description" content="Old description">
-<meta property="og:title" content="Old title | GOLFRAW">
+<meta property="og:title" content="Old title | GolfRaw">
 <meta property="og:description" content="Old description">
-<meta name="twitter:title" content="Old title | GOLFRAW">
+<meta name="twitter:title" content="Old title | GolfRaw">
 <meta name="twitter:description" content="Old description">
 <link rel="canonical" href="https://golfraw.com/news-2026-bmw-championship-round-3-scores-odds-recap">
 </head><body><h1>BMW Championship Round 3: Wyndham Clark Leads by 5 at Bellerive</h1>
@@ -127,11 +127,11 @@ class SeoMetadataTests(unittest.TestCase):
 
     def test_description_only_override_preserves_title(self):
         source = '''<html><head>
-<title>Donald Trump at Doonbeg | GOLFRAW</title>
+<title>Donald Trump at Doonbeg | GolfRaw</title>
 <meta name="description" content="Old Donald Trump description">
-<meta property="og:title" content="Donald Trump at Doonbeg | GOLFRAW">
+<meta property="og:title" content="Donald Trump at Doonbeg | GolfRaw">
 <meta property="og:description" content="Old Donald Trump description">
-<meta name="twitter:title" content="Donald Trump at Doonbeg | GOLFRAW">
+<meta name="twitter:title" content="Donald Trump at Doonbeg | GolfRaw">
 <meta name="twitter:description" content="Old Donald Trump description">
 </head><body></body></html>'''
 
@@ -139,7 +139,7 @@ class SeoMetadataTests(unittest.TestCase):
             source, "/news-2026-donald-trump-amgen-irish-open-doonbeg"
         )
         metadata = audit_metadata(updated)
-        self.assertEqual(metadata["title"], "Donald Trump at Doonbeg | GOLFRAW")
+        self.assertEqual(metadata["title"], "Donald Trump at Doonbeg | GolfRaw")
         self.assertEqual(metadata["description"], EXPECTED_DESCRIPTIONS["/news-2026-donald-trump-amgen-irish-open-doonbeg"])
         self.assertEqual(metadata["og:description"], metadata["description"])
         self.assertEqual(metadata["twitter:description"], metadata["description"])

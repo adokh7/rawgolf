@@ -25,7 +25,7 @@ class SchefflerBrandelChambleeTests(unittest.TestCase):
 
     def test_page_metadata_and_hero_are_page_specific(self):
         self.assertIn(
-            "<title>Scheffler and Brandel Chamblee: The Full 2026 Arc | GOLFRAW</title>",
+            "<title>Scheffler and Brandel Chamblee: The Full 2026 Arc | GolfRaw</title>",
             self.html,
         )
         self.assertIn(
@@ -52,7 +52,7 @@ class SchefflerBrandelChambleeTests(unittest.TestCase):
             self.html,
         )
         self.assertIn(
-            "SCOTTIE SCHEFFLER JOINED BRANDEL CHAMBLEE ON GOLF CENTRAL POSTGAME AFTER WINNING THE 2026 TOUR CHAMPIONSHIP, CAPPING A SEASON-LONG NARRATIVE ARC. PHOTO: RAWGOLF",
+            "SCOTTIE SCHEFFLER JOINED BRANDEL CHAMBLEE ON GOLF CENTRAL POSTGAME AFTER WINNING THE 2026 TOUR CHAMPIONSHIP, CAPPING A SEASON-LONG NARRATIVE ARC. PHOTO: GolfRaw",
             self.html,
         )
 

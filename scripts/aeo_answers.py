@@ -51,7 +51,7 @@ ARTICLE_AEO_UPGRADES = {
     },
     "/news-2026-raw-golf-honest-practice-guide": {
         "tool_id": "tools-standing-order",
-        "heading": "What Is Raw Golf?",
+        "heading": "What Is GolfRaw?",
         "answer": (
             "Raw golf is a way of practising and playing at your real level, inside the "
             "time and attention your life actually gives you. It is not a swing system; it "

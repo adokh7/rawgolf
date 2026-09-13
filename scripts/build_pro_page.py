@@ -27,9 +27,9 @@ from scripts.schema_normalizer import _pro_schema
 THEME_BLOCK = '''<!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/public/theme-golf.css?v=9">
+  <link rel="stylesheet" href="/public/theme-golf.css?v=10">
   <script>document.documentElement.classList.add('gr-js');setTimeout(function(){document.documentElement.classList.add('gr-reveal-all')},2500)</script>
-  <script src="/public/theme-golf.js?v=9" defer></script>
+  <script src="/public/theme-golf.js?v=10" defer></script>
 <!-- THEME:END -->
 '''
 
@@ -55,6 +55,7 @@ def render_metadata(free, pro):
   <link rel="canonical" href="{_escape(inventory.SITE + pro["route"])}">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta property="og:site_name" content="GolfRaw">
+  <meta name="application-name" content="GolfRaw">
   <meta property="og:type" content="website">
   <meta property="og:title" content="{_escape(pro["title"])}">
   <meta property="og:description" content="{_escape(pro["description"])}">
@@ -98,7 +99,7 @@ def render_page():
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {metadata}
-  <meta name="author" content="GOLFRAW Editorial">
+  <meta name="author" content="GolfRaw Editorial">
 {schema}
   <link rel="preload" href="/public/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
@@ -191,7 +192,7 @@ def render_page():
 
   <footer class="site-footer">
     <div class="wrap">
-      <span>© 2026 GOLFRAW — ALL RATINGS FINAL</span>
+      <span>© 2026 GolfRaw — ALL RATINGS FINAL</span>
       <nav aria-label="Footer navigation"><a href="/privacy">PRIVACY</a><a href="/terms">TERMS</a><a href="/contact">CONTACT</a><a href="/">← FRONT PAGE</a></nav>
     </div>
   </footer>

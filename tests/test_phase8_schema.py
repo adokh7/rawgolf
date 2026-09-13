@@ -119,7 +119,7 @@ class Phase8SchemaContractTests(unittest.TestCase):
         self.assertEqual(1, len(collection))
         collection = collection[0]
         self.assertEqual(inventory.HUB_CANONICAL + "#webpage", collection.get("@id"))
-        self.assertEqual("Raw Golf Tools Suite", collection.get("name"))
+        self.assertEqual("GolfRaw Tools Suite", collection.get("name"))
         self.assertEqual(inventory.HUB_DESCRIPTION, collection.get("description"))
         item_list = collection["mainEntity"]
         self.assertEqual("ItemList", item_list["@type"])

@@ -333,7 +333,7 @@
     var text = clean(o.text, 500);
 
     if (w.navigator.share) {
-      w.navigator.share({ title: o.title || 'Golf Raw', text: text, url: url })
+      w.navigator.share({ title: o.title || 'GolfRaw', text: text, url: url })
         ['catch'](function (err) {
           /* User dismissed the sheet — that is not a failure worth shouting about. */
           if (err && err.name === 'AbortError') return;

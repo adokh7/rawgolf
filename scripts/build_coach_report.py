@@ -15,13 +15,13 @@ from scripts.schema_normalizer import normalize_tool_page
 
 SITE = 'https://www.golfraw.com'
 SLUG = 'tools-coach-report'
-TITLE = 'Coach &amp; Fitter Report: Gapping, Bag, Tendencies | GOLFRAW'
-DESC = ('Golf Raw Pro coach report from your range session, bag and rounds: dispersion, gaps, passengers and tendencies. Open as a preview; print or share.')
+TITLE = 'Coach &amp; Fitter Report: Gapping, Bag, Tendencies | GolfRaw'
+DESC = ('GolfRaw Pro coach report from your range session, bag and rounds: dispersion, gaps, passengers and tendencies. Open as a preview; print or share.')
 OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
 # Bump when lib/pro/report.js changes (immutable .js cache).
 REPORT_VER = '2'
 # Pro client (paywall / entitlement). Bump when lib/pro/pro.js changes.
-PRO_VER = '1'
+PRO_VER = '2'
 PREMIUM_LINK = '  <link rel="stylesheet" href="/public/tool-premium.css?v=4">\n'
 HEAD_EXTRA = ('  <script src="/lib/pro/report.js?v=%s" defer></script>\n' % REPORT_VER +
               '  <script src="/lib/pro/pro.js?v=%s" defer></script>\n' % PRO_VER)
@@ -67,7 +67,7 @@ JSONLD = '''  <!-- ============ STRUCTURED DATA ============ -->
         "On-course tendencies from the Tendency Engine",
         "Print or save as PDF; share by a link that carries the data itself"
       ],
-      "publisher": { "@type": "Organization", "name": "GOLFRAW", "url": "%(site)s/" }
+      "publisher": { "@type": "Organization", "name": "GolfRaw", "url": "%(site)s/" }
     },
     {
       "@type": "BreadcrumbList",
@@ -198,7 +198,7 @@ STYLE = '''<style>
 MAIN = '''
   <div class="hub-hero">
     <div class="wrap">
-      <div class="eyebrow">RAWGOLF &middot; TOOLS &middot; PRO</div>
+      <div class="eyebrow">GolfRaw &middot; TOOLS &middot; PRO</div>
       <h1>The Coach Report</h1>
       <p>One page a coach or fitter can actually use: your carry dispersion by club, the gaps and the
         passengers in the bag, and what your last rounds say about where you miss. Built from the numbers
@@ -227,7 +227,7 @@ MAIN = '''
         <a href="/tools-coach-report">build your own</a>.</div>
 
       <section class="panel" id="setup" aria-labelledby="set-h">
-        <h2 id="set-h">Build the report <span class="gr-pro-badge" id="crBadge">Golf Raw Pro</span></h2>
+        <h2 id="set-h">Build the report <span class="gr-pro-badge" id="crBadge">GolfRaw Pro</span></h2>
         <div class="cr-wrap" id="crGate">
           <div class="cr-src" aria-label="Data found on this device">
             <div id="srcSession"><b>Range session</b><span>Looking&hellip;</span></div>
@@ -268,7 +268,7 @@ MAIN = '''
       <section class="faq-block panel" aria-labelledby="faq-h">
         <h2 id="faq-h">Questions</h2>
         <details><summary>Is the report free?</summary>
-          <p>Building the report is a <b>Golf Raw Pro</b> feature. While Pro is not yet on sale it is open
+          <p>Building the report is a <b>GolfRaw Pro</b> feature. While Pro is not yet on sale it is open
             to everyone as a preview; once it is, this page asks you to upgrade or restore a pass you already
             own. Opening a report someone shared with you is always free, and every free tool stays free.</p></details>
         <details><summary>Where does the report get its numbers?</summary>

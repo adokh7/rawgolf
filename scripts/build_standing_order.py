@@ -15,7 +15,7 @@ OUT = os.path.join(ROOT, 'tools-standing-order.html')
 
 SITE = 'https://www.golfraw.com'
 SLUG = 'tools-standing-order'
-TITLE = 'The Standing Order: Range Session Gapping Logger | GOLFRAW'
+TITLE = 'The Standing Order: Range Session Gapping Logger | GolfRaw'
 DESC = ('Free range session logger. Tap in 5-10 carries per club and get your real median '
         'distance, shot dispersion and the exact gaps and overlaps in your bag.')
 OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
@@ -25,7 +25,7 @@ OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
 # vercel.json serves .js with a one-year immutable cache.
 LM_VER = '1'
 # Pro client (paywall / entitlement). Bump when lib/pro/pro.js changes.
-PRO_VER = '1'
+PRO_VER = '2'
 PREMIUM_LINK = '  <link rel="stylesheet" href="/public/tool-premium.css?v=4">\n'
 HEAD_EXTRA = ('  <script src="/lib/pro/lm-import.js?v=%s" defer></script>\n' % LM_VER +
               '  <script src="/lib/pro/pro.js?v=%s" defer></script>\n' % PRO_VER)
@@ -77,7 +77,7 @@ JSONLD = '''  <!-- ============ STRUCTURED DATA ============ -->
     "Automatic overlap and gap detection",
     "Saves to your bag, entirely on your device"
   ],
-  "publisher": { "@type": "Organization", "name": "GOLFRAW", "url": "%(site)s/" }
+  "publisher": { "@type": "Organization", "name": "GolfRaw", "url": "%(site)s/" }
 }
   </script>
   <script type="application/ld+json">
@@ -344,7 +344,7 @@ STYLE = '''<style>
 MAIN = '''
   <div class="hub-hero">
     <div class="wrap">
-      <div class="eyebrow">RAWGOLF &middot; TOOLS</div>
+      <div class="eyebrow">GolfRaw &middot; TOOLS</div>
       <h1>The Standing Order</h1>
       <p>Your bag is gapped on numbers a fitter read off a launch monitor once, on a good day, indoors.
         This logs what you actually hit on the range &mdash; five to ten balls a club &mdash; and gives you the
@@ -370,7 +370,7 @@ MAIN = '''
 
       <!-- ============ LAUNCH-MONITOR IMPORT (PRO) ============ -->
       <section class="panel" id="lmPanel" aria-labelledby="lm-h">
-        <h2 id="lm-h">Bring in a launch-monitor session <span class="gr-pro-badge" id="lmBadge">Golf Raw Pro</span></h2>
+        <h2 id="lm-h">Bring in a launch-monitor session <span class="gr-pro-badge" id="lmBadge">GolfRaw Pro</span></h2>
         <div class="so-wrap" id="lmGate">
           <p class="lm-intro">Export the session as a CSV from TrackMan, Foresight, Garmin, FlightScope, Rapsodo or
             SkyTrak and drop it here. The file is read on this device, mapped to your clubs, and logged into
@@ -536,7 +536,7 @@ MAIN = '''
             under 8 yards two clubs overlap and one is redundant.</p></details>
         <details><summary>Is the import free?</summary>
           <p>The logger, the medians, the gap verdicts and the bag sync are free and stay free. Importing a
-            launch-monitor file is a <b>Golf Raw Pro</b> feature. While Pro is not yet on sale it is open to
+            launch-monitor file is a <b>GolfRaw Pro</b> feature. While Pro is not yet on sale it is open to
             everyone as a preview; once it is, the panel asks you to upgrade or to restore a pass you
             already own. Nothing in the free tool is taken away.</p></details>
         <details><summary>Can I import my launch monitor data?</summary>
@@ -589,7 +589,7 @@ MAIN = '''
     <p class="sub" id="printSub"></p>
     <div id="printChart"></div>
     <div id="printTable"></div>
-    <p class="foot">Median carry distances measured on the range with GOLFRAW &mdash; The Standing Order.
+    <p class="foot">Median carry distances measured on the range with GolfRaw &mdash; The Standing Order.
       golfraw.com/tools-standing-order</p>
   </div>
 '''

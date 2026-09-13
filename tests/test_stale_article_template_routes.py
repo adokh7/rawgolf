@@ -12,7 +12,7 @@ ROUTES = (
     {
         "output": "news-2026-hovland-leads-tour-championship-final-day.html",
         "h1": "Hovland Leads the Tour Championship by One Into Sunday",
-        "title": "Hovland Leads the Tour Championship by One Into Sunday | GOLFRAW",
+        "title": "Hovland Leads the Tour Championship by One Into Sunday | GolfRaw",
         "description": "He closed with six putts from 7 feet or longer to lead by one. Scheffler's three back, McIlroy shot 63, and nobody agrees on Sunday's tee times.",
         "canonical": "https://www.golfraw.com/news-2026-hovland-leads-tour-championship-final-day",
         "image": "https://www.golfraw.com/public/hovland-leads-tour-championship-final-day-2026.webp",
@@ -39,7 +39,7 @@ ROUTES = (
     {
         "output": "news-2026-michael-block-leads-ally-challenge-final-round.html",
         "h1": "Michael Block Leads the Ally Challenge Into Sunday by Two",
-        "title": "Michael Block Leads the Ally Challenge Into Sunday by Two | GOLFRAW",
+        "title": "Michael Block Leads the Ally Challenge Into Sunday by Two | GolfRaw",
         "description": "He's in on an invitation, his son is on the bag, and he opened Saturday with an eagle. What Block actually needs from Sunday, and it isn't the trophy.",
         "canonical": "https://www.golfraw.com/news-2026-michael-block-leads-ally-challenge-final-round",
         "image": "https://www.golfraw.com/public/michael-block-leads-ally-challenge-final-round-2026.webp",

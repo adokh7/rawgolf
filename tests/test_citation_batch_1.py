@@ -10,7 +10,7 @@ BASE = "https://www.golfraw.com"
 
 TARGETS = {
     "news-2026-liv-golf-300-million-funding-explained.html": {
-        "title": "LIV Golf $300 Million Funding: It Might Be a Loan | GOLFRAW",
+        "title": "LIV Golf $300 Million Funding: It Might Be a Loan | GolfRaw",
         "description": "The CEO says an investor signed. Bloomberg says it's a loan. Four vendors are suing. Here's what's actually confirmed, and the September date that decides it.",
         "canonical": f"{BASE}/news-2026-liv-golf-300-million-funding-explained",
         "citations": {
@@ -20,7 +20,7 @@ TARGETS = {
         },
     },
     "news-2026-henrik-stenson-pga-tour-champions-debut.html": {
-        "title": "Henrik Stenson's PGA Tour Champions Debut | GOLFRAW",
+        "title": "Henrik Stenson's PGA Tour Champions Debut | GolfRaw",
         "description": "He didn't leave LIV. LIV dropped him. Here is the real date his ban ended, where he tees it up this week, and the one thing nobody can confirm yet.",
         "canonical": f"{BASE}/news-2026-henrik-stenson-pga-tour-champions-debut",
         "citations": {
@@ -29,7 +29,7 @@ TARGETS = {
         },
     },
     "news-2026-liv-golf-players-return-pga-tour-rules.html": {
-        "title": "LIV Golf to PGA Tour: What the Rules Say | GOLFRAW",
+        "title": "LIV Golf to PGA Tour: What the Rules Say | GolfRaw",
         "description": "LIV Golf players returning to the PGA Tour? The route closed on 2 February 2026. Here is what the rules allow and what remains a 2027 question.",
         "canonical": f"{BASE}/news-2026-liv-golf-players-return-pga-tour-rules",
         "citations": {
@@ -37,7 +37,7 @@ TARGETS = {
         },
     },
     "news-2026-scheffler-illness-update-95-percent-recovered.html": {
-        "title": "Scheffler Illness Update: 95% Recovered | GOLFRAW",
+        "title": "Scheffler Illness Update: 95% Recovered | GolfRaw",
         "description": "Scottie Scheffler says he is 95 percent recovered from hand, foot and mouth disease. Why his BMW Championship T12 looked worse than it was.",
         "canonical": f"{BASE}/news-2026-scheffler-illness-update-95-percent-recovered",
         "citations": {
@@ -45,7 +45,7 @@ TARGETS = {
         },
     },
     "news-2026-scottie-scheffler-hand-foot-and-mouth-disease.html": {
-        "title": "Scottie Scheffler's Hand-Foot-and-Mouth Disease | GOLFRAW",
+        "title": "Scottie Scheffler's Hand-Foot-and-Mouth Disease | GolfRaw",
         "description": "Scottie Scheffler played the 2026 BMW Championship with hand-foot-and-mouth disease. The World No. 1 shot 68 on Sunday despite painful grip blisters.",
         "og_description": "World No. 1 golfer Scottie Scheffler fought through painful blisters to finish T12 at the 2026 BMW Championship, revealing his pediatric viral illness on Sunday.",
         "canonical": f"{BASE}/news-2026-scottie-scheffler-hand-foot-and-mouth-disease",

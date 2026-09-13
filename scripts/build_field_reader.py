@@ -64,7 +64,7 @@ JSONLD = '''  <!-- ============ STRUCTURED DATA ============ -->
     "Fit score out of 100 with the reason behind it",
     "Lock four picks and keep them on your device"
   ],
-  "publisher": { "@type": "Organization", "name": "GOLFRAW", "url": "%(site)s/" }
+  "publisher": { "@type": "Organization", "name": "GolfRaw", "url": "%(site)s/" }
 }
   </script>
   <script type="application/ld+json">
@@ -212,7 +212,7 @@ STYLE = '''<style>
 MAIN = '''
   <div class="hub-hero">
     <div class="wrap">
-      <div class="eyebrow">RAWGOLF &middot; TOOLS</div>
+      <div class="eyebrow">GolfRaw &middot; TOOLS</div>
       <h1>The Field Reader</h1>
       <p>Every course asks a different question. Some weeks it is length, some weeks it is a wedge to
         fifteen feet, and some weeks it is whether you can read grainy Bermuda at five in the afternoon.

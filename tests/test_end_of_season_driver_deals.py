@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SLUG = "news-2026-end-of-season-driver-deals"
 CANONICAL = f"https://www.golfraw.com/{SLUG}"
 IMAGE = "/public/end-of-season-driver-deals-2026.webp"
-TITLE = "End-of-Season Driver Deals: What's Actually Worth Buying | GOLFRAW"
+TITLE = "End-of-Season Driver Deals: What's Actually Worth Buying | GolfRaw"
 SEO_TITLE = "End-of-Season Driver Deals: What's Actually Worth Buying"
 DESCRIPTION = (
     "The driver with the most PGA Tour wins in 2026 costs $449, less than some new fairway woods. "

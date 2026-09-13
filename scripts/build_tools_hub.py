@@ -71,6 +71,7 @@ def render_metadata():
   <link rel="canonical" href="{canonical}">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta property="og:site_name" content="GolfRaw">
+  <meta name="application-name" content="GolfRaw">
   <meta property="og:type" content="website">
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{description}">
@@ -100,7 +101,7 @@ def render_hero():
     free_word = _number_word(counts["free"])
     pro_count = counts["pro_preview"]
     return f"""      <p>{free_word} free <b>unfiltered client-side golf utility apps</b> that do the jobs golf software charges a subscription
-        for, plus the <b>Coach Report</b>, a Golf Raw Pro feature currently open as a preview. They cover golf betting
+        for, plus the <b>Coach Report</b>, a GolfRaw Pro feature currently open as a preview. They cover golf betting
         settlement, strokes-lost round diagnostics, World Handicap System maths, club gapping and
         <b>psychological golf performance diagnostics</b> — and every one runs <b>100% inside your browser</b>.
         No account, no signup, no round data uploaded anywhere, nothing tracked. Close the tab and it is gone.</p>

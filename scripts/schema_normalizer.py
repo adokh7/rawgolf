@@ -215,7 +215,8 @@ def _organization() -> dict:
     return {
         "@type": "Organization",
         "@id": PUBLISHER_ID,
-        "name": "GOLFRAW",
+        "name": "GolfRaw",
+        "alternateName": ["GOLFRAW", "Golf Raw"],
         "url": PUBLISHER_URL,
         "logo": {
             "@type": "ImageObject",
@@ -383,14 +384,14 @@ def _hub_schema() -> dict:
     collection = {
         "@type": "CollectionPage",
         "@id": inventory.HUB_CANONICAL + "#webpage",
-        "name": "Raw Golf Tools Suite",
+        "name": "GolfRaw Tools Suite",
         "url": inventory.HUB_CANONICAL,
         "description": inventory.HUB_DESCRIPTION,
         "publisher": {"@id": PUBLISHER_ID},
         "mainEntity": {
             "@type": "ItemList",
             "@id": inventory.HUB_CANONICAL + "#tool-list",
-            "name": "The 13 Raw Golf tools",
+            "name": "The 13 GolfRaw tools",
             "numberOfItems": len(inventory.TOOLS),
             "itemListElement": items,
         },
@@ -457,9 +458,9 @@ def _article_node(metadata: dict[str, object], route: str) -> dict:
     canonical = _canonical_for_route(route)
     record = _load_record(route)
     headline = str(record.get("title") or metadata.get("title") or route.lstrip("/"))
-    author_name = str(metadata.get("author") or "GOLFRAW Editorial")
+    author_name = str(metadata.get("author") or "GolfRaw Editorial")
     if author_name.casefold() == "golfraw editorial":
-        author_name = "GOLFRAW Editorial"
+        author_name = "GolfRaw Editorial"
     published = str(metadata.get("published") or "")
     node = {
         "@type": "Article",

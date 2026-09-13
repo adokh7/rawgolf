@@ -17,28 +17,29 @@
   <meta name="theme-color" content="#166534">
 
   <!-- SEO audit metadata: managed by scripts/fix_seo_audit.py -->
-  <title>Thank you | Golf Raw Pro</title>
-  <meta name="description" content="Your Golf Raw Pro pass is being switched on.">
+  <title>Thank you | GolfRaw</title>
+  <meta name="description" content="Your GolfRaw Pro pass is being switched on.">
   <link rel="canonical" href="https://www.golfraw.com/pro-thanks">
   <meta name="robots" content="noindex, nofollow">
   <meta property="og:site_name" content="GolfRaw">
+  <meta name="application-name" content="GolfRaw">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Thank you | Golf Raw Pro">
-  <meta property="og:description" content="Your Golf Raw Pro pass is being switched on.">
+  <meta property="og:title" content="Thank you | GolfRaw">
+  <meta property="og:description" content="Your GolfRaw Pro pass is being switched on.">
   <meta property="og:url" content="https://www.golfraw.com/pro-thanks">
   <meta property="og:image" content="https://www.golfraw.com/public/raw-golf-practice.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Thank you | Golf Raw Pro">
-  <meta name="twitter:description" content="Your Golf Raw Pro pass is being switched on.">
+  <meta name="twitter:title" content="Thank you | GolfRaw">
+  <meta name="twitter:description" content="Your GolfRaw Pro pass is being switched on.">
   <meta name="twitter:image" content="https://www.golfraw.com/public/raw-golf-practice.webp">
   <meta name="p:domain_verify" content="b7225cf07b728cc1691b9a4c7a938dbe"/>
 
   <!-- ============ PRIMARY SEO ============ -->
 
 
-  <link rel="alternate" type="application/rss+xml" title="GOLFRAW" href="https://www.golfraw.com/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="GolfRaw" href="https://www.golfraw.com/feed.xml">
 
-  <meta name="author" content="GOLFRAW Editorial">
+  <meta name="author" content="GolfRaw Editorial">
 
   <!-- ============ OPEN GRAPH ============ -->
 
@@ -285,7 +286,7 @@
     .pp-fine { font-size: 12.5px; color: var(--grey); line-height: 1.55; margin-top: 14px }
     @media (max-width: 520px) { .pp-kv { grid-template-columns: 1fr } .pp-card { padding: 20px 18px } }
   </style>
-  <script src="/lib/pro/pro.js?v=1" defer></script>
+  <script src="/lib/pro/pro.js?v=2" defer></script>
 <!-- THEME:START -->
   <link rel="preload" href="/public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/fonts/plus-jakarta-sans-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -299,7 +300,7 @@
 
   <header class="site-header">
     <div class="nav">
-      <a href="/" class="logo" aria-label="GolfRaw home"><img src="/logo.png" alt="GolfRaw" width="500" height="109" decoding="async" fetchpriority="high"></a>
+      <a href="/" class="logo" aria-label="GolfRaw home"><img src="/logo.png" alt="GolfRaw" decoding="async" width="500" height="109" loading="eager" fetchpriority="high"></a>
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
         <a href="/news">Latest News</a>
         <a href="/pga-tour">PGA Tour</a>
@@ -315,7 +316,7 @@
     </div>
   </header>
 
-  <div class="hub-hero"><div class="wrap"><div class="eyebrow">RAWGOLF &middot; PRO</div><h1>Thank you</h1>
+  <div class="hub-hero"><div class="wrap"><div class="eyebrow">GolfRaw &middot; PRO</div><h1>Thank you</h1>
     <p>Your pass is being switched on in this browser. Keep this page&rsquo;s address: opening it on another
       device switches Pro on there too.</p></div></div>
   <div class="tool-body"><div class="wrap"><div class="pp-wrap">
@@ -337,7 +338,7 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <span>© 2026 GOLFRAW — ALL RATINGS FINAL</span>
+      <span>© 2026 GolfRaw — ALL RATINGS FINAL</span>
       <nav aria-label="Footer navigation" style="display:flex;gap:20px;flex-wrap:wrap">
         <a href="./manifesto">MANIFESTO</a>
         <a href="./about">ABOUT</a>
@@ -376,7 +377,7 @@
     function show(kind, head, text) { $('ppStatus').className = 'pp-status ' + kind; $('ppStatus').textContent = kind === 'ok' ? 'Pro is on' : (kind === 'bad' ? 'Not confirmed' : 'Working'); $('ppHead').textContent = head; $('ppText').innerHTML = text; }
     function done(r) {
       if (!r.ok) { show('bad', 'That did not work', esc(r.error)); if ($('ppForm')) $('ppForm').hidden = false; return; }
-      show('ok', 'Welcome to Golf Raw Pro', 'Your pass is stored in this browser' + (r.email ? ' for ' + esc(r.email) : '') + '. Every Pro feature is open now.');
+      show('ok', 'Welcome to GolfRaw Pro', 'Your pass is stored in this browser' + (r.email ? ' for ' + esc(r.email) : '') + '. Every Pro feature is open now.');
       $('ppPlan').textContent = r.plan || 'Pro'; $('ppExp').textContent = r.exp ? new Date(r.exp * 1000).toLocaleDateString() : '—';
       $('ppKv').hidden = false; $('ppActs').hidden = false;
     }

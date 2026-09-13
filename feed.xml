@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>GOLFRAW</title>
+    <title>GolfRaw</title>
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
@@ -10,7 +10,7 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
-      <title>McIlroy&#x27;s Sunday 67 at Doonbeg: Seven Birdies, One Double | GOLFRAW</title>
+      <title>McIlroy&#x27;s Sunday 67 at Doonbeg: Seven Birdies, One Double | GolfRaw</title>
       <link>https://www.golfraw.com/mcilroy-sunday-67-doonbeg-irish-open</link>
       <guid isPermaLink="true">https://www.golfraw.com/mcilroy-sunday-67-doonbeg-irish-open</guid>
       <pubDate>Sun, 13 Sep 2026 09:00:00 +0000</pubDate>
@@ -19,7 +19,7 @@
       <enclosure url="https://www.golfraw.com/mcilroy-final-round-doonbeg-2026-hero.webp" length="57610" type="image/webp"/>
     </item>
     <item>
-      <title>Europe Wins the Solheim Cup as Sunday Singles Rout Lands | GOLFRAW</title>
+      <title>Europe Wins the Solheim Cup as Sunday Singles Rout Lands | GolfRaw</title>
       <link>https://www.golfraw.com/europe-wins-solheim-cup-sunday-singles-rout</link>
       <guid isPermaLink="true">https://www.golfraw.com/europe-wins-solheim-cup-sunday-singles-rout</guid>
       <pubDate>Sun, 13 Sep 2026 09:00:00 +0000</pubDate>
@@ -28,7 +28,7 @@
       <enclosure url="https://www.golfraw.com/images/news/team-europe-solheim-cup-2026-champions-bernardus-hero.webp" length="195200" type="image/webp"/>
     </item>
     <item>
-      <title>Solheim Cup Prize Money: $0, and the Ryder Cup&#x27;s $500K | GOLFRAW</title>
+      <title>Solheim Cup Prize Money: $0, and the Ryder Cup&#x27;s $500K | GolfRaw</title>
       <link>https://www.golfraw.com/solheim-cup-prize-money-ryder-cup-500k</link>
       <guid isPermaLink="true">https://www.golfraw.com/solheim-cup-prize-money-ryder-cup-500k</guid>
       <pubDate>Sun, 13 Sep 2026 09:00:00 +0000</pubDate>
@@ -37,7 +37,7 @@
       <enclosure url="https://www.golfraw.com/images/explainers/solheim-cup-trophy-bernardus-golf-2026-hero.webp" length="107808" type="image/webp"/>
     </item>
     <item>
-      <title>Irish Open Final Round Tee Times, TV Times and Leaderboard | GOLFRAW</title>
+      <title>Irish Open Final Round Tee Times, TV Times and Leaderboard | GolfRaw</title>
       <link>https://www.golfraw.com/irish-open-2026-final-round-tee-times-tv</link>
       <guid isPermaLink="true">https://www.golfraw.com/irish-open-2026-final-round-tee-times-tv</guid>
       <pubDate>Sun, 13 Sep 2026 09:00:00 +0000</pubDate>
@@ -46,7 +46,7 @@
       <enclosure url="https://www.golfraw.com/images/news/shane-lowry-final-round-irish-open-doonbeg-hero.webp" length="70366" type="image/webp"/>
     </item>
     <item>
-      <title>Trump and Martin Meet Again at Doonbeg After Ireland Row | GOLFRAW</title>
+      <title>Trump and Martin Meet Again at Doonbeg After Ireland Row | GolfRaw</title>
       <link>https://www.golfraw.com/trump-martin-doonbeg-irish-open-united-ireland</link>
       <guid isPermaLink="true">https://www.golfraw.com/trump-martin-doonbeg-irish-open-united-ireland</guid>
       <pubDate>Sun, 13 Sep 2026 09:00:00 +0000</pubDate>
@@ -55,7 +55,7 @@
       <enclosure url="https://www.golfraw.com/images/news/trump-martin-irish-open-doonbeg-hero.webp" length="75090" type="image/webp"/>
     </item>
     <item>
-      <title>Scottie Scheffler vs Rory McIlroy: Why Rory&#x27;s Legend Is Bigger | GOLFRAW</title>
+      <title>Scottie Scheffler vs Rory McIlroy: Why Rory&#x27;s Legend Is Bigger | GolfRaw</title>
       <link>https://www.golfraw.com/rory-mcilroy-scottie-scheffler-legend</link>
       <guid isPermaLink="true">https://www.golfraw.com/rory-mcilroy-scottie-scheffler-legend</guid>
       <pubDate>Wed, 09 Sep 2026 09:00:00 +0000</pubDate>
@@ -64,7 +64,7 @@
       <enclosure url="https://www.golfraw.com/news-2026-rory-mcilroy-vs-scottie-scheffler-legend.webp" length="98188" type="image/webp"/>
     </item>
     <item>
-      <title>Rory McIlroy: LIV Bankruptcy Will Benefit DP World Tour | GOLFRAW</title>
+      <title>Rory McIlroy: LIV Bankruptcy Will Benefit DP World Tour | GolfRaw</title>
       <link>https://www.golfraw.com/rory-mcilroy-liv-bankruptcy-dp-world-tour</link>
       <guid isPermaLink="true">https://www.golfraw.com/rory-mcilroy-liv-bankruptcy-dp-world-tour</guid>
       <pubDate>Wed, 09 Sep 2026 09:00:00 +0000</pubDate>
@@ -73,7 +73,7 @@
       <enclosure url="https://www.golfraw.com/news-2026-rory-mcilroy-doonbeg-press-conference-liv-bankruptcy.webp" length="77364" type="image/webp"/>
     </item>
     <item>
-      <title>McIlroy: &#x27;We&#x27;ll Keep Our Heads Down and Play&#x27; During Trump Visit | GOLFRAW</title>
+      <title>McIlroy: &#x27;We&#x27;ll Keep Our Heads Down and Play&#x27; During Trump Visit | GolfRaw</title>
       <link>https://www.golfraw.com/mcilroy-keep-heads-down-trump-irish-open-doonbeg</link>
       <guid isPermaLink="true">https://www.golfraw.com/mcilroy-keep-heads-down-trump-irish-open-doonbeg</guid>
       <pubDate>Tue, 08 Sep 2026 09:00:00 +0000</pubDate>
@@ -82,7 +82,7 @@
       <enclosure url="https://www.golfraw.com/news-2026-rory-mcilroy-doonbeg-practice-fairway.webp" length="85654" type="image/webp"/>
     </item>
     <item>
-      <title>Jon Rahm Dodges PGA Tour Return Questions Over LIV Contract | GOLFRAW</title>
+      <title>Jon Rahm Dodges PGA Tour Return Questions Over LIV Contract | GolfRaw</title>
       <link>https://www.golfraw.com/jon-rahm-dodges-pga-tour-pathway-liv-golf-contract</link>
       <guid isPermaLink="true">https://www.golfraw.com/jon-rahm-dodges-pga-tour-pathway-liv-golf-contract</guid>
       <pubDate>Tue, 08 Sep 2026 09:00:00 +0000</pubDate>
@@ -91,7 +91,7 @@
       <enclosure url="https://www.golfraw.com/news-2026-jon-rahm-doonbeg-press-conference.webp" length="119568" type="image/webp"/>
     </item>
     <item>
-      <title>Presidents Cup Captain: LIV Golf Bans Hurt International Team | GOLFRAW</title>
+      <title>Presidents Cup Captain: LIV Golf Bans Hurt International Team | GolfRaw</title>
       <link>https://www.golfraw.com/presidents-cup-captain-liv-golf-restrictions-international-team</link>
       <guid isPermaLink="true">https://www.golfraw.com/presidents-cup-captain-liv-golf-restrictions-international-team</guid>
       <pubDate>Tue, 08 Sep 2026 09:00:00 +0000</pubDate>
@@ -100,7 +100,7 @@
       <enclosure url="https://www.golfraw.com/news-2026-geoff-ogilvy-presidents-cup-medinah-practice.webp" length="65900" type="image/webp"/>
     </item>
     <item>
-      <title>Angel Yin Solheim Cup Fitness: What Team USA&#x27;s Spin Really Means | GOLFRAW</title>
+      <title>Angel Yin Solheim Cup Fitness: What Team USA&#x27;s Spin Really Means | GolfRaw</title>
       <link>https://www.golfraw.com/angel-yin-solheim-cup-fitness-team-usa-europe</link>
       <guid isPermaLink="true">https://www.golfraw.com/angel-yin-solheim-cup-fitness-team-usa-europe</guid>
       <pubDate>Tue, 08 Sep 2026 09:00:00 +0000</pubDate>
@@ -109,7 +109,7 @@
       <enclosure url="https://www.golfraw.com/news-2026-angel-yin-solheim-practice-tee.webp" length="154076" type="image/webp"/>
     </item>
     <item>
-      <title>Charley Hull &#x27;Drinks&#x27; Story: Mel Reid Calls It False | GOLFRAW</title>
+      <title>Charley Hull &#x27;Drinks&#x27; Story: Mel Reid Calls It False | GolfRaw</title>
       <link>https://www.golfraw.com/charley-hull-solheim-cup-late-arrival-drinks-denial</link>
       <guid isPermaLink="true">https://www.golfraw.com/charley-hull-solheim-cup-late-arrival-drinks-denial</guid>
       <pubDate>Tue, 08 Sep 2026 09:00:00 +0000</pubDate>
@@ -118,7 +118,7 @@
       <enclosure url="https://www.golfraw.com/news-2026-charley-hull-solheim-practice-fairway.webp" length="162222" type="image/webp"/>
     </item>
     <item>
-      <title>Rory McIlroy: Irish Open Will Feel &#x27;Different&#x27; With Trump Visit | GOLFRAW</title>
+      <title>Rory McIlroy: Irish Open Will Feel &#x27;Different&#x27; With Trump Visit | GolfRaw</title>
       <link>https://www.golfraw.com/rory-mcilroy-trump-irish-open-doonbeg</link>
       <guid isPermaLink="true">https://www.golfraw.com/rory-mcilroy-trump-irish-open-doonbeg</guid>
       <pubDate>Tue, 08 Sep 2026 09:00:00 +0000</pubDate>
@@ -127,7 +127,7 @@
       <enclosure url="https://www.golfraw.com/news-2026-rory-mcilroy-amgen-irish-open-doonbeg.webp" length="87710" type="image/webp"/>
     </item>
     <item>
-      <title>Nelly Korda &amp; Team USA&#x27;s 11-Year Solheim Cup Curse in Europe | GOLFRAW</title>
+      <title>Nelly Korda &amp; Team USA&#x27;s 11-Year Solheim Cup Curse in Europe | GolfRaw</title>
       <link>https://www.golfraw.com/nelly-korda-solheim-cup-european-drought-2026</link>
       <guid isPermaLink="true">https://www.golfraw.com/nelly-korda-solheim-cup-european-drought-2026</guid>
       <pubDate>Mon, 07 Sep 2026 09:00:00 +0000</pubDate>
@@ -136,7 +136,7 @@
       <enclosure url="https://www.golfraw.com/news-2026-nelly-korda-solheim-cup-focus.webp" length="53880" type="image/webp"/>
     </item>
     <item>
-      <title>2026 Solheim Cup Rosters Finalized: Teams &amp; Captains Picks | GOLFRAW</title>
+      <title>2026 Solheim Cup Rosters Finalized: Teams &amp; Captains Picks | GolfRaw</title>
       <link>https://www.golfraw.com/2026-solheim-cup-rosters-finalized-captains-picks</link>
       <guid isPermaLink="true">https://www.golfraw.com/2026-solheim-cup-rosters-finalized-captains-picks</guid>
       <pubDate>Mon, 07 Sep 2026 09:00:00 +0000</pubDate>

@@ -68,7 +68,7 @@ JSONLD = '''  <!-- ============ STRUCTURED DATA ============ -->
     "Rolling trend across your last 3 to 10 rounds",
     "Stored on your device only"
   ],
-  "publisher": { "@type": "Organization", "name": "GOLFRAW", "url": "%(site)s/" }
+  "publisher": { "@type": "Organization", "name": "GolfRaw", "url": "%(site)s/" }
 }
   </script>
   <script type="application/ld+json">
@@ -264,7 +264,7 @@ STYLE = '''<style>
 MAIN = '''
   <div class="hub-hero">
     <div class="wrap">
-      <div class="eyebrow">RAWGOLF &middot; TOOLS</div>
+      <div class="eyebrow">GolfRaw &middot; TOOLS</div>
       <h1>The Tendency Engine</h1>
       <p>One bad round tells you nothing. Ten of them tell you everything. Tap in your card afterwards
         &mdash; ninety seconds, no phone out on the course &mdash; and this finds the miss that keeps

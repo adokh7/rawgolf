@@ -270,7 +270,7 @@ def _editorial_author() -> dict[str, str]:
     return {
         "@type": "Organization",
         "@id": EDITORIAL_ID,
-        "name": "GOLFRAW Editorial",
+        "name": "GolfRaw Editorial",
         "url": f"{SITE}/about",
     }
 
@@ -364,7 +364,8 @@ def _publisher_object() -> dict:
     return {
         "@type": "Organization",
         "@id": PUBLISHER_ID,
-        "name": "GOLFRAW",
+        "name": "GolfRaw",
+        "alternateName": ["GOLFRAW", "Golf Raw"],
         "url": PUBLISHER_URL,
         "logo": {
             "@type": "ImageObject",

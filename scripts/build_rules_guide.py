@@ -20,7 +20,7 @@ html_content = """<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ============ PRIMARY SEO ============ -->
-  <title>Golf Tournament Rules, Formats, and Tax Guide | GOLFRAW</title>
+  <title>Golf Tournament Rules, Formats, and Tax Guide | GolfRaw</title>
   <meta name="description" content="Complete guide to competitive golf tournament formats, USGA handicap allowances, Rule 3.3b scorecard compliance, amateur prize limits, and IRS tax reporting.">
   <link rel="canonical" href="https://www.golfraw.com/rules/golf-tournaments-rules-formats-tax-guide">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -29,7 +29,7 @@ html_content = """<!DOCTYPE html>
   <!-- ============ OPEN GRAPH ============ -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="GolfRaw">
-  <meta property="og:title" content="Golf Tournament Rules, Formats, and Tax Guide | GOLFRAW">
+  <meta property="og:title" content="Golf Tournament Rules, Formats, and Tax Guide | GolfRaw">
   <meta property="og:description" content="Complete guide to competitive golf tournament formats, USGA handicap allowances, Rule 3.3b scorecard compliance, amateur prize limits, and IRS tax reporting.">
   <meta property="og:url" content="https://www.golfraw.com/rules/golf-tournaments-rules-formats-tax-guide">
   <meta property="og:image" content="https://www.golfraw.com/public/golf-tournaments-scoring-hero.webp">
@@ -47,7 +47,7 @@ html_content = """<!DOCTYPE html>
 
   <!-- ============ TWITTER CARD ============ -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Golf Tournament Rules, Formats, and Tax Guide | GOLFRAW">
+  <meta name="twitter:title" content="Golf Tournament Rules, Formats, and Tax Guide | GolfRaw">
   <meta name="twitter:description" content="Complete guide to competitive golf tournament formats, USGA handicap allowances, Rule 3.3b scorecard compliance, amateur prize limits, and IRS tax reporting.">
   <meta name="twitter:image" content="https://www.golfraw.com/public/golf-tournaments-scoring-hero.webp">
 
@@ -868,7 +868,7 @@ html_content = """<!DOCTYPE html>
       <!-- ============ ARTICLE ============ -->
       <article>
         <nav class="crumbs" aria-label="Breadcrumb">
-          <a href="/">RawGolf</a> / <a href="/tournaments">Tournaments</a> / <span>Rules &amp; Formats</span>
+          <a href="/">GolfRaw</a> / <a href="/tournaments">Tournaments</a> / <span>Rules &amp; Formats</span>
         </nav>
 
         <header class="article-head">
@@ -884,7 +884,7 @@ html_content = """<!DOCTYPE html>
         <figure class="lead-img">
           <img src="/public/golf-tournaments-scoring-hero.webp" alt="Golf Tournament Rules, Formats, and Tax Guide" loading="eager" fetchpriority="high" srcset="/public/golf-tournaments-scoring-hero-400.webp 400w, /public/golf-tournaments-scoring-hero-800.webp 800w" sizes="(max-width: 700px) 100vw, 740px" decoding="async">
         </figure>
-        <figcaption>OFFICIAL COMPETITIVE SCORING, HANDICAP ALLOWANCES, AND COMPLIANCE. PHOTO: RAWGOLF</figcaption>
+        <figcaption>OFFICIAL COMPETITIVE SCORING, HANDICAP ALLOWANCES, AND COMPLIANCE. PHOTO: GolfRaw</figcaption>
 
         <div class="article-body">
           <p>Every weekend across the world, thousands of club championships, invitationals, and member-guests descend into administrative chaos over three predictable issues: incorrect handicap percentages, improperly certified scorecards, and confusion regarding prize limits.</p>
@@ -1078,7 +1078,7 @@ html_content = """<!DOCTYPE html>
           <a class="rel-card" href="/amateur-tournament-guide">
             <div class="cat">Amateur Golf</div>
             <h3>How to Play in Your First Competitive Tournament</h3>
-            <div class="d">RAWGOLF TOURNAMENT DESK</div>
+            <div class="d">GolfRaw TOURNAMENT DESK</div>
           </a>
           <a class="rel-card" href="/match-play">
             <div class="cat">Formats</div>
@@ -1147,7 +1147,7 @@ html_content = """<!DOCTYPE html>
   <!-- ============ FOOTER ============ -->
   <footer class="site-footer">
     <div class="wrap">
-      <span>© 2026 GOLFRAW — ALL RATINGS FINAL</span>
+      <span>© 2026 GolfRaw — ALL RATINGS FINAL</span>
       <nav aria-label="Footer navigation" style="display:flex;gap:20px;flex-wrap:wrap">
         <a href="/manifesto">MANIFESTO</a>
         <a href="/about">ABOUT</a>

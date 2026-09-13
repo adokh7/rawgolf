@@ -33,7 +33,7 @@ TARGETS = {
         },
     },
     "news-2026-liv-golf-vendor-lawsuit-settlement-offers.html": {
-        "title": "The LIV Golf vendor lawsuit: a $1.23m claim | GOLFRAW",
+        "title": "The LIV Golf vendor lawsuit: a $1.23m claim | GolfRaw",
         "canonical": f"{BASE}/news-2026-liv-golf-vendor-lawsuit-settlement-offers",
         "citations": {
             "https://frontofficesports.com/liv-golf-sued-for-1-2m-by-company-that-produced-preseason-event/",
@@ -43,7 +43,7 @@ TARGETS = {
         },
     },
     "news-2026-jon-rahm-pga-tour-return-2027-unconfirmed.html": {
-        "title": "Jon Rahm PGA Tour return 2027: What is confirmed | GOLFRAW",
+        "title": "Jon Rahm PGA Tour return 2027: What is confirmed | GolfRaw",
         "description": "Jon Rahm PGA Tour return 2027 remains unconfirmed. We trace the PGA rules, his real DP World Tour deal and the 197-day gap since the window shut.",
         "canonical": f"{BASE}/news-2026-jon-rahm-pga-tour-return-2027-unconfirmed",
         "citations": {
@@ -53,7 +53,7 @@ TARGETS = {
         },
     },
     "news-2026-jon-rahm-liv-money-list-contract-debt.html": {
-        "title": 'Jon Rahm Has "Earned" $87.7 Million on LIV | GOLFRAW',
+        "title": 'Jon Rahm Has "Earned" $87.7 Million on LIV | GolfRaw',
         "description": "Rahm tops LIV's earnings list at $87.7m — but $36m of that is bonus, and none of it includes his reported $300m signing fee. What the numbers really show.",
         "canonical": f"{BASE}/news-2026-jon-rahm-liv-money-list-contract-debt",
         "citations": {

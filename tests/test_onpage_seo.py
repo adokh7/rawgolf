@@ -16,19 +16,19 @@ SITEMAP_NS = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 
 ARTICLE_TITLES = {
     "news-2026-tour-championship-winners-losers-friday.html": "Tour Championship Winners & Losers: Scheffler Surges",
-    "news-2026-tour-championship-prize-money-payout.html": "2026 Tour Championship Payout: $355K for 30th | GOLFRAW",
-    "news-2026-cameron-young-new-putter-62-tour-championship.html": "Cameron Young's New Putter Led to a 62 | GOLFRAW",
-    "news-2026-hovland-tie-for-lead-tour-championship.html": "Hovland Ties Tour Championship Lead: 12 of 14 | GOLFRAW",
-    "news-2026-henrik-stenson-pga-tour-champions-debut.html": "Henrik Stenson's PGA Tour Champions Debut | GOLFRAW",
-    "news-2026-good-good-golf-ad-backlash.html": "Good Good Golf Ad Backlash: What Was Pulled | GOLFRAW",
-    "news-2026-tour-championship-2028-match-play-format.html": "Tour Championship 2028 Match Play Format Explained | GOLFRAW",
-    "news-2026-tour-championship-purse-east-lake.html": "2026 Tour Championship Purse: $10 Million to Win | GOLFRAW",
-    "news-2026-liv-golf-players-return-pga-tour-rules.html": "LIV Golf to PGA Tour: What the Rules Say | GOLFRAW",
-    "news-2026-scheffler-illness-update-95-percent-recovered.html": "Scheffler Illness Update: 95% Recovered | GOLFRAW",
-    "news-2026-scottie-scheffler-tour-championship-odds.html": "Scottie Scheffler's 2026 Tour Championship Odds | GOLFRAW",
-    "news-2026-tour-championship-odds-even-par.html": "2026 Tour Championship Odds at Even Par | GOLFRAW",
-    "news-2026-us-presidents-cup-team-standings.html": "2026 U.S. Presidents Cup Team Standings | GOLFRAW",
-    "news-2026-scottie-scheffler-hand-foot-and-mouth-disease.html": "Scottie Scheffler's Hand-Foot-and-Mouth Disease | GOLFRAW",
+    "news-2026-tour-championship-prize-money-payout.html": "2026 Tour Championship Payout: $355K for 30th | GolfRaw",
+    "news-2026-cameron-young-new-putter-62-tour-championship.html": "Cameron Young's New Putter Led to a 62 | GolfRaw",
+    "news-2026-hovland-tie-for-lead-tour-championship.html": "Hovland Ties Tour Championship Lead: 12 of 14 | GolfRaw",
+    "news-2026-henrik-stenson-pga-tour-champions-debut.html": "Henrik Stenson's PGA Tour Champions Debut | GolfRaw",
+    "news-2026-good-good-golf-ad-backlash.html": "Good Good Golf Ad Backlash: What Was Pulled | GolfRaw",
+    "news-2026-tour-championship-2028-match-play-format.html": "Tour Championship 2028 Match Play Format Explained | GolfRaw",
+    "news-2026-tour-championship-purse-east-lake.html": "2026 Tour Championship Purse: $10 Million to Win | GolfRaw",
+    "news-2026-liv-golf-players-return-pga-tour-rules.html": "LIV Golf to PGA Tour: What the Rules Say | GolfRaw",
+    "news-2026-scheffler-illness-update-95-percent-recovered.html": "Scheffler Illness Update: 95% Recovered | GolfRaw",
+    "news-2026-scottie-scheffler-tour-championship-odds.html": "Scottie Scheffler's 2026 Tour Championship Odds | GolfRaw",
+    "news-2026-tour-championship-odds-even-par.html": "2026 Tour Championship Odds at Even Par | GolfRaw",
+    "news-2026-us-presidents-cup-team-standings.html": "2026 U.S. Presidents Cup Team Standings | GolfRaw",
+    "news-2026-scottie-scheffler-hand-foot-and-mouth-disease.html": "Scottie Scheffler's Hand-Foot-and-Mouth Disease | GolfRaw",
 }
 
 EXPECTED_DESCRIPTIONS = {
@@ -41,8 +41,8 @@ EXPECTED_DESCRIPTIONS = {
 }
 
 EXPECTED_TOOL_TITLES = {
-    "tools-round-autopsy.html": "The Round Autopsy: Golf Round Stats Analyser | GOLFRAW",
-    "tools-tilt-meter.html": "The Tilt Meter: Amateur Meltdown Index | GOLFRAW",
+    "tools-round-autopsy.html": "The Round Autopsy: Golf Round Stats Analyser | GolfRaw",
+    "tools-tilt-meter.html": "The Tilt Meter: Amateur Meltdown Index | GolfRaw",
 }
 
 TASK5_INLINE_CITATION_HREFS = {
