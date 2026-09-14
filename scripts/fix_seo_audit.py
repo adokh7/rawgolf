@@ -61,6 +61,16 @@ TWITTER_NAMES = {
 }
 MANAGED_NAMES = {"description", "robots"} | TWITTER_NAMES
 
+# Google Search Console ownership (HTML-tag method). Google reads it from the
+# homepage only. It lives inside the managed block below, so every repair run
+# strips any stray copy and re-emits exactly one, and validation fails if it is
+# ever missing or changed. Do not remove: losing it drops Search Console access.
+HOMEPAGE_NAME = "index.html"
+GOOGLE_SITE_VERIFICATION = "vOoo-SAOJObX4sDlOxnabLsAX2gnOOGdloMJ0ePIHvY"
+GOOGLE_VERIFICATION_TAG = (
+    f'<meta name="google-site-verification" content="{GOOGLE_SITE_VERIFICATION}" />'
+)
+
 # Home, section, archive, utility and policy pages represent a website rather
 # than a single editorial story. Everything else defaults to an article.
 WEBSITE_PAGES = {
@@ -522,12 +532,14 @@ def metadata_block(
     og_type: str,
     image: str,
     robots_value: str = ROBOTS_VALUE,
+    verification: bool = False,
 ) -> str:
+    verification_line = f"\n  {GOOGLE_VERIFICATION_TAG}" if verification else ""
     return f'''  <!-- SEO audit metadata: managed by scripts/fix_seo_audit.py -->
   <title>{escaped(title)}</title>
   <meta name="description" content="{escaped(description)}">
   <link rel="canonical" href="{escaped(canonical)}">
-  <meta name="robots" content="{robots_value}">
+  <meta name="robots" content="{robots_value}">{verification_line}
   <meta property="og:site_name" content="GolfRaw">
   <meta property="og:type" content="{og_type}">
   <meta property="og:title" content="{escaped(title)}">
@@ -559,10 +571,20 @@ def repair_source(path: Path, source: str) -> tuple[str, dict[str, str]]:
     head = MANAGED_COMMENT_RE.sub("\n", head)
     head = TITLE_RE.sub("", head)
     head = META_RE.sub(lambda m: "" if is_managed_meta(m.group(0)) else m.group(0), head)
+    is_homepage = path.name == HOMEPAGE_NAME
+    if is_homepage:
+        head = META_RE.sub(
+            lambda m: ""
+            if attributes(m.group(0)).get("name", "").casefold() == "google-site-verification"
+            else m.group(0),
+            head,
+        )
     head = LINK_RE.sub(lambda m: "" if is_canonical_link(m.group(0)) else m.group(0), head)
     head = re.sub(r"[ \t]+\n", "\n", head)
     head = re.sub(r"\n{4,}", "\n\n\n", head).rstrip()
-    block = metadata_block(title, description, canonical, og_type, image, robots_for(path.name))
+    block = metadata_block(
+        title, description, canonical, og_type, image, robots_for(path.name), verification=is_homepage
+    )
 
     # Keep discovery metadata near the top of <head>, after the viewport (or
     # charset fallback), rather than below large inline stylesheets.
@@ -643,6 +665,12 @@ def validate_page(path: Path, source: str) -> list[str]:
         errors.append(f"og:image is not a live local /public asset: {og_image!r}")
     if path.name != "article-template.html" and has_template_contamination(source):
         errors.append("template-derived Oakmont metadata remains in production HTML")
+    if path.name == HOMEPAGE_NAME:
+        tokens = parsed.meta.get("google-site-verification", [])
+        if tokens != [GOOGLE_SITE_VERIFICATION]:
+            errors.append(
+                f"google-site-verification is {tokens!r}, expected exactly [{GOOGLE_SITE_VERIFICATION!r}]"
+            )
     return errors
 
 

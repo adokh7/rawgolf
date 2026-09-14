@@ -548,6 +548,14 @@ the builders) and `articles.json` emit the same spelling, so the pass is a
 guard rather than a dependency. Pipeline order after any rebuild: builder,
 `wire_locker.py`, `apply_theme.py`, `apply_icons.py`, `apply_brand.py`.
 
+Google Search Console ownership uses the HTML-tag method on the homepage
+(`<meta name="google-site-verification" content="vOoo-…" />`, token in
+`GOOGLE_SITE_VERIFICATION` in `fix_seo_audit.py`). The tag sits inside that
+script's managed metadata block on `index.html`: a repair strips any stray copy
+and re-emits exactly one, validation fails if it is missing or altered, and
+`tests/test_site_verification.py` guards all of it. Never delete it by hand;
+if the token ever changes, change the constant and the test together.
+
 The eight hand-written tools (`tools-bag-audit`, `gimme-audit`,
 `handicap-detector`, `plays-like`, `round-autopsy`, `settle-up-calculator`,
 `tee-box-check`, `tilt-meter`) keep their layout CSS in two inline `<style>`
