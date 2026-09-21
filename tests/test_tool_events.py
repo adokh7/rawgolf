@@ -32,6 +32,10 @@ ALLOWED_ARGS = {
     "", "'manual'", "'sample'", "'import'", "'copy_result'", "'copy_link'", "'native_share'",
     "'download'", "'print'", "'import_too_large'", "'import_unreadable'", "'feed_unavailable'",
     "'share_link_too_long'", "'shared_link_invalid'", "method",
+    # The Distance Check reports which kind of number it started from; the
+    # helper enum-validates it (tests/tool-events.test.js) and the model can only
+    # return the four anchor ids checked below.
+    "{ anchor_type: res.anchor }",
 }
 CALL = re.compile(r"GRTrack\.(\w+)\(([^()]*)\)")
 
@@ -89,11 +93,20 @@ class ToolEventsWiringTests(unittest.TestCase):
         keys = set(re.findall(r"'([a-z_]+)'", events))
         self.assertEqual(
             {"tool_id", "tool_name", "tool_access", "page_path", "view_type", "input_mode",
-             "share_method", "from_tool", "to_tool", "placement", "error_code"},
+             "share_method", "from_tool", "to_tool", "placement", "error_code", "anchor_type"},
             keys,
         )
         for reserved in ("round_logged", "pro_preview_viewed", "pro_waitlist_joined", "review_unlocked"):
             self.assertNotIn(reserved + ":", events)
+
+    def test_distance_anchor_types_are_the_helper_enum(self):
+        helper_enum = set(re.search(r"anchor_type: \[([^\]]*)\]", HELPER).group(1).replace("'", "").replace(" ", "").split(","))
+        model = (ROOT / "lib" / "distance" / "club-distance.js").read_text(encoding="utf-8")
+        page = (ROOT / "tools-club-distance-calculator.html").read_text(encoding="utf-8")
+        radios = set(re.findall(r'name="cdAnchor" value="([a-z_]+)"', page))
+        self.assertEqual({"driver_carry", "iron_carry", "swing_speed", "handicap_band"}, helper_enum)
+        self.assertEqual(helper_enum, radios)
+        self.assertIn("anchor: anchor", model)
 
     def test_chained_score_never_reaches_the_query_string(self):
         gimme = page("tools-gimme-audit")

@@ -58,7 +58,7 @@ def _schema_faq(node: dict) -> list[tuple[str, str]]:
 
 class Phase8SchemaContractTests(unittest.TestCase):
     def test_tool_pages_have_one_consistent_schema_document(self):
-        self.assertEqual(13, len(inventory.TOOLS))
+        self.assertEqual(14, len(inventory.TOOLS))
         for tool in inventory.TOOLS:
             with self.subTest(tool=tool["slug"]):
                 source = _read(tool["route"])
@@ -112,7 +112,7 @@ class Phase8SchemaContractTests(unittest.TestCase):
                     self.assertEqual(visible_faq, _schema_faq(faq[0]))
                 self.assertEqual([], _nodes(source, "HowTo"))
 
-    def test_hub_schema_uses_the_authoritative_thirteen_tool_catalog(self):
+    def test_hub_schema_uses_the_authoritative_fourteen_tool_catalog(self):
         source = _read("/tools")
         self.assertEqual(1, len(_docs(source)))
         collection = _nodes(source, "CollectionPage")
@@ -123,8 +123,8 @@ class Phase8SchemaContractTests(unittest.TestCase):
         self.assertEqual(inventory.HUB_DESCRIPTION, collection.get("description"))
         item_list = collection["mainEntity"]
         self.assertEqual("ItemList", item_list["@type"])
-        self.assertEqual(13, item_list["numberOfItems"])
-        self.assertEqual(13, len(item_list["itemListElement"]))
+        self.assertEqual(14, item_list["numberOfItems"])
+        self.assertEqual(14, len(item_list["itemListElement"]))
         for tool, list_item in zip(inventory.TOOLS, item_list["itemListElement"]):
             app = list_item["item"]
             with self.subTest(tool=tool["slug"]):

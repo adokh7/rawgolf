@@ -11,9 +11,9 @@ SITE = "https://www.golfraw.com"
 HUB_ROUTE = "/tools"
 HUB_CANONICAL = SITE + HUB_ROUTE
 HUB_OG_IMAGE = SITE + "/public/raw-golf-practice.webp"
-HUB_TITLE = "Golf Tools: 12 Free Utilities + Coach Report | GolfRaw"
+HUB_TITLE = "Golf Tools: 13 Free Utilities + Coach Report | GolfRaw"
 HUB_DESCRIPTION = (
-    "Twelve free client-side golf tools plus the Coach Report Pro preview. "
+    "Thirteen free client-side golf tools plus the Coach Report Pro preview. "
     "Run them in your browser with no signup, account or data upload."
 )
 
@@ -25,9 +25,9 @@ PRODUCT_MODEL = {
     "free": {
         "label": "Free",
         "promise": "Free forever, no login",
-        "tool_count": 12,
+        "tool_count": 13,
         "description": (
-            "All 12 core golf tools stay free forever, with no login, account or "
+            "All 13 core golf tools stay free forever, with no login, account or "
             "data upload. Their calculations and current browser-based outputs "
             "remain available on the device."
         ),
@@ -39,7 +39,7 @@ PRODUCT_MODEL = {
         "route": "/pro",
         "title": "GolfRaw Pro: What Pro Adds to the Free Golf Tools | GolfRaw",
         "description": (
-            "GolfRaw keeps 12 browser-based golf tools free forever with no login. "
+            "GolfRaw keeps 13 browser-based golf tools free forever with no login. "
             "GolfRaw Pro currently adds launch-monitor CSV import to Standing Order "
             "and a one-page Coach and Fitter Report with PDF and share link output."
         ),
@@ -190,7 +190,6 @@ TOOLS = (
         "Every course asks a different question. Set what this week actually demands — length, iron play, short game, the grass on the greens — and watch the field reorder itself as you move the sliders.",
         "Who does this course suit? →",
         "course-management",
-        newest=True,
     ),
     _tool(
         "tools-plays-like",
@@ -211,6 +210,17 @@ TOOLS = (
         "Check my tees →",
         "course-management",
         search_name="What Tees Should I Play?",
+    ),
+    _tool(
+        "tools-club-distance-calculator",
+        14,
+        "The Distance Check",
+        "Club Distance Calculator · Yards or Metres",
+        "One number you actually know, your driver or 7-iron carry or your swing speed, and it works out the rest of your bag. A range to plan on and a best-strike range for every club, in yards or metres.",
+        "How far should I hit it? →",
+        "bag-equipment",
+        newest=True,
+        search_name="Golf Club Distance Calculator",
     ),
     _tool(
         "tools-bag-audit",
@@ -288,16 +298,16 @@ def tool_counts():
 def validate_inventory():
     """Raise a useful error if the public catalog is internally inconsistent."""
     group_ids = {group["id"] for group in GROUPS}
-    if len(TOOLS) != 13:
-        raise ValueError("The public tools inventory must contain exactly 13 tools")
+    if len(TOOLS) != 14:
+        raise ValueError("The public tools inventory must contain exactly 14 tools")
     if len({tool["slug"] for tool in TOOLS}) != len(TOOLS):
         raise ValueError("Tool slugs must be unique")
     if len({tool["route"] for tool in TOOLS}) != len(TOOLS):
         raise ValueError("Tool routes must be unique")
     if {tool["group"] for tool in TOOLS} != group_ids:
         raise ValueError("Every visible hub group must have at least one tool")
-    if len(free_tools()) != 12 or len(pro_tools()) != 1:
-        raise ValueError("The hub must expose 12 Free tools and one Pro preview")
+    if len(free_tools()) != 13 or len(pro_tools()) != 1:
+        raise ValueError("The hub must expose 13 Free tools and one Pro preview")
     for tool in TOOLS:
         if not tool["route"].startswith("/"):
             raise ValueError(f"Tool route is not root-relative: {tool['route']}")

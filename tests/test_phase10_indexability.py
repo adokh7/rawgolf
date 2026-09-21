@@ -143,12 +143,12 @@ class Phase10RobotsAndIndexabilityTests(unittest.TestCase):
         for line in expected:
             self.assertTrue((ROOT / urlsplit(line.split(": ", 1)[1]).path.lstrip("/")).exists())
 
-    def test_pro_and_all_thirteen_tools_are_indexable_self_canonical_and_sitemapped(self):
+    def test_pro_and_all_fourteen_tools_are_indexable_self_canonical_and_sitemapped(self):
         inventory = page_inventory()
         sitemap_routes = {route_from_node(node) for node in sitemap_nodes(ROOT / "sitemap.xml")}
         required = {"/tools", "/pro", *(tool["route"] for tool in tool_inventory.TOOLS)}
 
-        self.assertEqual(15, len(required))
+        self.assertEqual(16, len(required))
         for route in required:
             self.assertIn(route, inventory, route)
             self.assertIn(route, sitemap_routes, route)

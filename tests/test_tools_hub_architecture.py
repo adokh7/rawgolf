@@ -26,6 +26,7 @@ EXPECTED_ROUTES = {
     "/tools-tilt-meter",
     "/tools-bag-audit",
     "/tools-gimme-audit",
+    "/tools-club-distance-calculator",
     "/tools-the-grudge-match",
     "/tools-standing-order",
     "/tools-tendency-engine",
@@ -99,16 +100,16 @@ def schema_nodes(value):
 
 
 class ToolsHubArchitectureTests(unittest.TestCase):
-    def test_single_inventory_defines_thirteen_tools_and_access_counts(self):
+    def test_single_inventory_defines_fourteen_tools_and_access_counts(self):
         self.assertTrue(INVENTORY_PATH.exists())
         if not INVENTORY_PATH.exists():
             return
         sys.path.insert(0, str(ROOT))
         inventory = importlib.import_module("scripts.tool_inventory")
         tools = inventory.TOOLS
-        self.assertEqual(13, len(tools))
+        self.assertEqual(14, len(tools))
         self.assertEqual(EXPECTED_ROUTES, {tool["route"] for tool in tools})
-        self.assertEqual(12, sum(tool["access"] == "free" for tool in tools))
+        self.assertEqual(13, sum(tool["access"] == "free" for tool in tools))
         self.assertEqual(1, sum(tool["access"] == "pro_preview" for tool in tools))
         self.assertEqual(
             {"performance-practice", "course-management", "bag-equipment", "games-scoring", "pro-output"},
@@ -134,15 +135,15 @@ class ToolsHubArchitectureTests(unittest.TestCase):
     def test_hub_renders_inventory_groups_access_badges_and_schema(self):
         parser = parse_hub()
         source = HUB_PATH.read_text(encoding="utf-8")
-        self.assertEqual("Golf Tools: 12 Free Utilities + Coach Report | GolfRaw", parser.title)
+        self.assertEqual("Golf Tools: 13 Free Utilities + Coach Report | GolfRaw", parser.title)
         self.assertNotRegex(source, r"\beight\b")
-        self.assertEqual(13, len(parser.tool_slugs))
-        self.assertEqual(13, len(set(parser.tool_slugs)))
+        self.assertEqual(14, len(parser.tool_slugs))
+        self.assertEqual(14, len(set(parser.tool_slugs)))
         self.assertEqual(EXPECTED_ROUTES, set(parser.tool_routes))
         self.assertEqual(5, len(parser.groups))
         self.assertIn('data-access="free"', source)
         self.assertIn('data-access="pro_preview"', source)
-        self.assertEqual(12, source.count('data-access="free"'))
+        self.assertEqual(13, source.count('data-access="free"'))
         self.assertEqual(1, source.count('data-access="pro_preview"'))
 
         collection = next(
@@ -153,9 +154,9 @@ class ToolsHubArchitectureTests(unittest.TestCase):
         )
         item_list = collection["mainEntity"]
         items = [entry["item"] for entry in item_list["itemListElement"]]
-        self.assertEqual(13, item_list["numberOfItems"])
+        self.assertEqual(14, item_list["numberOfItems"])
         self.assertEqual(EXPECTED_ROUTES, {item["url"].replace("https://www.golfraw.com", "") for item in items})
-        self.assertEqual(12, sum("offers" in item for item in items))
+        self.assertEqual(13, sum("offers" in item for item in items))
         coach = next(item for item in items if item["url"].endswith("tools-coach-report"))
         self.assertNotIn("offers", coach)
         self.assertIn("GolfRaw Pro", coach["description"])

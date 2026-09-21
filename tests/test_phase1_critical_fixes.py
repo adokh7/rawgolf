@@ -20,6 +20,7 @@ TOOL_ROUTES = {
     "/tools-tilt-meter",
     "/tools-bag-audit",
     "/tools-gimme-audit",
+    "/tools-club-distance-calculator",
     "/tools-the-grudge-match",
     "/tools-standing-order",
     "/tools-tendency-engine",
@@ -99,22 +100,22 @@ def schema_nodes(parser, schema_type):
 
 
 class Phase1CriticalFixTests(unittest.TestCase):
-    def test_tools_hub_metadata_and_visible_copy_match_thirteen_tool_model(self):
+    def test_tools_hub_metadata_and_visible_copy_match_fourteen_tool_model(self):
         path = ROOT / "tools.html"
         parser = parse(path)
         source = path.read_text(encoding="utf-8")
         self.assertEqual(
-            "Golf Tools: 12 Free Utilities + Coach Report | GolfRaw", parser.title
+            "Golf Tools: 13 Free Utilities + Coach Report | GolfRaw", parser.title
         )
         expected_description = (
-            "Twelve free client-side golf tools plus the Coach Report Pro preview. "
+            "Thirteen free client-side golf tools plus the Coach Report Pro preview. "
             "Run them in your browser with no signup, account or data upload."
         )
         self.assertEqual(expected_description, parser.meta["description"])
         self.assertEqual(expected_description, parser.meta["og:description"])
         self.assertEqual(expected_description, parser.meta["twitter:description"])
         self.assertNotRegex(source, r"\beight\b")
-        for marker in ("13", "12", "Pro preview", "Tools live", "Free tools"):
+        for marker in ("14", "13", "Pro preview", "Tools live", "Free tools"):
             self.assertIn(marker, source)
 
     def test_tools_hub_schema_contains_each_tool_once_and_no_false_free_claim(self):
@@ -122,11 +123,11 @@ class Phase1CriticalFixTests(unittest.TestCase):
         collection = schema_nodes(parser, "CollectionPage")[0]
         item_list = collection["mainEntity"]
         self.assertEqual("ItemList", item_list["@type"])
-        self.assertEqual(13, item_list["numberOfItems"])
-        self.assertEqual("The 13 GolfRaw tools", item_list["name"])
+        self.assertEqual(14, item_list["numberOfItems"])
+        self.assertEqual("The 14 GolfRaw tools", item_list["name"])
         items = [entry["item"] for entry in item_list["itemListElement"]]
         self.assertEqual(TOOL_ROUTES, {item["url"].replace(SITE, "") for item in items})
-        self.assertEqual(13, len(items))
+        self.assertEqual(14, len(items))
         coach = next(item for item in items if item["url"].endswith("tools-coach-report"))
         self.assertNotIn("offers", coach)
         self.assertIn("GolfRaw Pro", coach["description"])

@@ -38,9 +38,9 @@ ARTICLE_TOOL_CTAS = {
         "anchor": "audit your set",
     },
     "/news-2026-golf-club-distances-guide": {
-        "tool_id": "tools-coach-report",
+        "tool_id": "tools-club-distance-calculator",
         "variant": "banner",
-        "anchor": "Coach Report",
+        "anchor": "work out your own club distances",
     },
     "/swing-speed-guide": {
         "tool_id": "tools-standing-order",

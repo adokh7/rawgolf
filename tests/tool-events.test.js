@@ -210,8 +210,23 @@ function names(p) {
     'the view is recorded before the first start: ' + names(p).join(','));
 }
 
+// 14. anchor_type is an enum of what a distance estimate was built from, never a value.
+{
+  const p = page('/tools-club-distance-calculator');
+  check(p.GRTrack.tool && p.GRTrack.tool.id === 'club_distance_check', 'the distance check is registered');
+  p.GRTrack.completed({ anchor_type: 'iron_carry', value: 152 });
+  const done = p.events().find((e) => e.event === 'tool_completed');
+  check(done && done.params.anchor_type === 'iron_carry', 'a known anchor type is sent');
+  check(done && !('value' in done.params), 'extra detail keys are dropped');
+  const q = page('/tools-club-distance-calculator');
+  q.GRTrack.completed({ anchor_type: '152' });
+  const bad = q.events().find((e) => e.event === 'tool_completed');
+  check(bad && !('anchor_type' in bad.params), 'an unknown anchor type is dropped, not sent');
+  check(!/152/.test(JSON.stringify(p.events().concat(q.events()))), 'no anchor value is ever sent');
+}
+
 if (failures.length) {
   console.error('Tool events contract failed:\n- ' + failures.join('\n- '));
   process.exit(1);
 }
-console.log('Tool events contract passed (13 scenarios).');
+console.log('Tool events contract passed (14 scenarios).');

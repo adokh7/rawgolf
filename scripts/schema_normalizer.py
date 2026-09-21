@@ -391,7 +391,7 @@ def _hub_schema() -> dict:
         "mainEntity": {
             "@type": "ItemList",
             "@id": inventory.HUB_CANONICAL + "#tool-list",
-            "name": "The 13 GolfRaw tools",
+            "name": f"The {len(inventory.TOOLS)} GolfRaw tools",
             "numberOfItems": len(inventory.TOOLS),
             "itemListElement": items,
         },

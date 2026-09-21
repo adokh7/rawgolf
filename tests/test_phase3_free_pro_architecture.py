@@ -133,7 +133,7 @@ class FreeProArchitectureTests(unittest.TestCase):
         self.assertEqual(self.inventory.SITE + "/pro", parser.canonical)
         self.assertEqual("index, follow, max-image-preview:large", parser.meta["robots"])
         self.assertIn('href="/tools"', source)
-        self.assertIn("12", source)
+        self.assertIn("13", source)
         self.assertRegex(source.lower(), r"free forever")
         self.assertRegex(source.lower(), r"no login")
         self.assertIn("What Pro adds", source)
@@ -187,7 +187,7 @@ class FreeProArchitectureTests(unittest.TestCase):
         hub_source = HUB_PATH.read_text(encoding="utf-8")
         coach_source = COACH_PATH.read_text(encoding="utf-8")
 
-        self.assertEqual(12, hub_source.count('data-access="free"'))
+        self.assertEqual(13, hub_source.count('data-access="free"'))
         self.assertEqual(1, hub_source.count('data-access="pro_preview"'))
         coach_nodes = [node for document in coach.json_ld for node in schema_nodes(document)]
         coach_apps = [node for node in coach_nodes if node.get("@type") == "WebApplication"]

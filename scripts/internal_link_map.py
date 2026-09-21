@@ -42,12 +42,14 @@ CONTEXTUAL_LINKS = (
     _link("/tools-tilt-meter", "/amateur-tournament-guide", "tournament-pressure guide", "tool_to_guide"),
     _link("/tools-coach-report", "/news-2026-golf-club-distances-guide", "realistic club-distance chart", "tool_to_guide"),
     _link("/tools-coach-report", "/golf-swing-analysis-apps", "swing-analysis app guide", "tool_to_guide"),
+    _link("/tools-club-distance-calculator", "/news-2026-golf-club-distances-guide", "average golf club distance chart", "tool_to_guide"),
 
     # Guide -> matching tool
     _link("/golf-clubs-for-beginners", "/tools-bag-audit", "audit your bag", "guide_to_tool"),
     _link("/how-long-do-golf-clubs-last", "/tools-bag-audit", "audit your set", "guide_to_tool"),
     _link("/news-2026-golf-club-distances-guide", "/tools-standing-order", "log your own carry distances", "guide_to_tool"),
     _link("/news-2026-golf-club-distances-guide", "/tools-coach-report", "Coach Report", "guide_to_tool"),
+    _link("/news-2026-golf-club-distances-guide", "/tools-club-distance-calculator", "work out your own club distances", "guide_to_tool"),
     _link("/swing-speed-guide", "/tools-standing-order", "measure your repeatable carry", "guide_to_tool"),
     _link("/golf-swing-analysis-apps", "/tools-tendency-engine", "track repeated miss patterns", "guide_to_tool"),
     _link("/golf-swing-drills", "/tools-round-autopsy", "measure where your shots go", "guide_to_tool"),

@@ -9,8 +9,10 @@ the window closes, not estimated before it.
 1. **Register event-scoped custom dimensions** (Admin → Custom definitions),
    parameter name = dimension name: `tool_id`, `tool_name`, `input_mode`,
    `share_method`, `from_tool`, `to_tool`, `placement`, `error_code`,
-   `view_type`, `tool_access`. Until they exist the events arrive but cannot be
-   broken down. They are not retroactive, so do this first.
+   `view_type`, `tool_access`, `anchor_type`. Until they exist the events arrive
+   but cannot be broken down. They are not retroactive, so do this first.
+   `anchor_type` only appears on The Distance Check's `tool_completed`:
+   `driver_carry`, `iron_carry`, `swing_speed` or `handicap_band`.
 2. **Keep test traffic out.** Events sent from `localhost`, or with
    `localStorage.gr_track_debug = '1'`, carry `debug_mode`. Activate the
    Developer traffic data filter, or filter every report to
@@ -83,6 +85,7 @@ rate".
 | Tendency Engine | a hole tap or course name | See my tendencies / Next on 18, with ≥1 finished round (not the render on load) | none | Round Autopsy; Handicap handover link |
 | Field Reader | slider, surface or pick | first re-rank after an edit (not the ranking on load) | none | none |
 | Coach Report | form edit or Build (import) | Build with at least one data source | print, copy share link | none |
+| Distance Check | unit, anchor, number, band or group edit; Show my distances | Show my distances with a valid number or band (Enter too) | copy | Bag Audit, Tee Box, Standing Order |
 
 ## Read with care
 
@@ -95,5 +98,8 @@ rate".
   That gap is itself the signal to watch.
 - Tendency Engine needs 18 holes before anything completes, so expect a low
   completion rate and read return use alongside it.
+- The Distance Check sends `anchor_type` on the first completion of a page view
+  only. A golfer who runs a 7-iron carry and then a handicap band counts once,
+  as `iron_carry`. Read the split as "what golfers start from", not every run.
 - Don't compare rates across tools until each has at least 100 views in the
   window.

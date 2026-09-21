@@ -184,7 +184,7 @@ def render_page():
       </section>
 
       <div class="cta-row">
-        <a class="button" href="/tools">Start with all 12 free tools &rarr;</a>
+        <a class="button" href="/tools">Start with all {free["tool_count"]} free tools &rarr;</a>
         <a class="button" href="/tools-standing-order">Open Standing Order &rarr;</a>
       </div>
     </div>
