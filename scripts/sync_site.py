@@ -35,6 +35,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECTION_PAGE = {
     'GUIDES':      'guides.html',
     'LIV GOLF':    'liv-golf.html',
+    'LPGA TOUR':   'lpga-tour.html',
     'PGA TOUR':    'pga-tour.html',
     'PLAYERS':     'players.html',
     'TOURNAMENTS': 'tournaments.html',
@@ -45,7 +46,7 @@ SECTION_PAGE = {
 NEWS_GRID_PAGES = {'news.html', 'liv-golf.html'}
 
 # Pages that use the guide-grid card format (a.guide-card)
-GUIDE_GRID_PAGES = {'pga-tour.html', 'guides.html', 'tournaments.html', 'vintage-golf-history.html', 'players.html'}
+GUIDE_GRID_PAGES = {'lpga-tour.html', 'pga-tour.html', 'guides.html', 'tournaments.html', 'vintage-golf-history.html', 'players.html'}
 
 # Keep the homepage useful as a crawl hub without turning it into a complete
 # archive. Priority URLs are guaranteed a slot even when they fall outside the
@@ -63,7 +64,7 @@ HOMEPAGE_END = '<!-- END HOMEPAGE ARTICLE FEED -->'
 # self-canonical indexable page cannot be silently omitted just because it was
 # not added to this ordering list.
 STATIC = ['/', '/news', '/guides', '/liv-golf', '/pga-tour', '/tournaments',
-          '/players',
+          '/lpga-tour', '/players',
           '/vault', '/ratings', '/tools', '/analysis', '/about', '/contact',
           '/corrections', '/full-board', '/manifesto', '/past-issues',
           '/privacy', '/ratings-manual', '/terms', '/the-card',

@@ -45,7 +45,7 @@ REGISTRY_RECORD = {
     "url": f"/{SLUG}",
     "title": TITLE,
     "excerpt": DESCRIPTION,
-    "category": ["PRO GOLF", "LPGA", "NEWS"],
+    "category": ["LPGA TOUR", "WOMEN'S GOLF", "PRO GOLF", "MONEY", "NEWS"],
     "date": "2026-09-21",
     "image": HERO,
     "keywords": (
@@ -53,9 +53,9 @@ REGISTRY_RECORD = {
         "LPGA prize money 2026, median LPGA earnings, Nelly Korda earnings"
     ),
     "category_source": "editorial",
-    # NEWS is the existing crawl/feed routing section; PRO GOLF remains the
-    # reader-facing category in the record and on the article.
-    "section": "NEWS",
+    # LPGA TOUR is the primary section; the other values are supporting
+    # taxonomy used by cards, search and contextual links.
+    "section": "LPGA TOUR",
 }
 
 
@@ -97,7 +97,7 @@ ARTICLE_SCHEMA = {
             "@id": f"{CANONICAL}#article",
             "headline": H1,
             "description": DESCRIPTION,
-            "articleSection": "Pro Golf",
+            "articleSection": "LPGA Tour",
             "keywords": REGISTRY_RECORD["keywords"],
             "inLanguage": "en",
             "image": {
@@ -136,7 +136,7 @@ ARTICLE_SCHEMA = {
             "@id": f"{CANONICAL}#breadcrumb",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.golfraw.com/"},
-                {"@type": "ListItem", "position": 2, "name": "Pro Golf", "item": "https://www.golfraw.com/news"},
+                {"@type": "ListItem", "position": 2, "name": "LPGA Tour", "item": "https://www.golfraw.com/lpga-tour"},
                 {"@type": "ListItem", "position": 3, "name": H1, "item": CANONICAL},
             ],
         },
@@ -157,18 +157,23 @@ def replace_meta(source: str, pattern: str, value: str, *, attribute: str = "con
 
 
 def ensure_registry() -> None:
-    source = REGISTRY.read_text(encoding="utf-8")
-    if f'"slug": "{SLUG}"' in source:
-        return
-    record = json.dumps(REGISTRY_RECORD, ensure_ascii=False, indent=2)
-    record = "\n".join(f"    {line}" if index else f"    {line}" for index, line in enumerate(record.splitlines()))
-    marker = '  "articles": [\n'
-    if marker not in source:
-        raise ValueError("articles.json inventory marker not found")
-    source = source.replace(marker, marker + record + ",\n", 1)
-    if '    "PRO GOLF",\n' not in source.split('  "articles": [', 1)[0]:
-        source = source.replace('    "PGA TOUR",\n', '    "PGA TOUR",\n    "PRO GOLF",\n', 1)
-    REGISTRY.write_text(source, encoding="utf-8")
+    data = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    articles = data.setdefault("articles", [])
+    existing = next((item for item in articles if item.get("slug") == SLUG), None)
+    if existing is None:
+        articles.insert(0, REGISTRY_RECORD)
+    else:
+        existing.update(REGISTRY_RECORD)
+    categories = data.setdefault("categories", [])
+    for value in REGISTRY_RECORD["category"]:
+        if value not in categories:
+            categories.append(value)
+    data["categories"] = sorted(set(categories), key=lambda value: value.casefold())
+    sections = data.setdefault("sections", [])
+    if REGISTRY_RECORD["section"] not in sections:
+        sections.append(REGISTRY_RECORD["section"])
+    data["sections"] = sorted(set(sections), key=lambda value: value.casefold())
+    REGISTRY.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def build() -> None:
@@ -190,7 +195,7 @@ def build() -> None:
     source = replace_meta(source, "og:image:alt", HERO_ALT, attribute="property")
     source = replace_meta(source, "article:published_time", "2026-09-21", attribute="property")
     source = replace_meta(source, "article:modified_time", "2026-09-21", attribute="property")
-    source = replace_meta(source, "article:section", "Pro Golf", attribute="property")
+    source = replace_meta(source, "article:section", "LPGA Tour", attribute="property")
     source = re.sub(
         r'(<meta\s+property=["\']article:author["\']\s+content=["\'])[^"\']*(["\'])',
         r"\g<1>GolfRaw Editorial\g<2>",
@@ -202,7 +207,7 @@ def build() -> None:
     source = re.sub(
         r'<nav class="crumbs".*?</nav>',
         '<nav class="crumbs" aria-label="Breadcrumb">\n'
-        '          <a href="/">GolfRaw</a> / <a href="/news">Pro Golf</a> / '
+        '          <a href="/">GolfRaw</a> / <a href="/lpga-tour">LPGA Tour</a> / '
         '<span>LPGA Player Earnings</span>\n        </nav>',
         source,
         count=1,
@@ -210,7 +215,7 @@ def build() -> None:
     )
     source = re.sub(
         r'<span class="cat">.*?</span>',
-        '<span class="cat">Pro Golf · LPGA Earnings</span>',
+        '<span class="cat">LPGA Tour · Earnings</span>',
         source,
         count=1,
         flags=re.I | re.S,
@@ -339,7 +344,7 @@ def build() -> None:
           </div>
 
           <nav class="tag-row" aria-label="Article tags">
-            <a href="/news">Pro Golf</a><a href="/what-does-lpga-stand-for">LPGA</a><a href="/how-far-lpga-players-drive">Women's golf</a><a href="/solheim-cup-prize-money-ryder-cup-500k">Prize money</a>
+            <a href="/lpga-tour">LPGA Tour</a><a href="/what-does-lpga-stand-for">LPGA</a><a href="/how-far-lpga-players-drive">Women's golf</a><a href="/solheim-cup-prize-money-ryder-cup-500k">Prize money</a>
           </nav>
         </div>'''
     body_start = source.index('<div class="article-body">')
