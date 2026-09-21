@@ -169,6 +169,10 @@ def guide_card(a):
     """Generate an <a class="guide-card"> card for pga-tour/guides/tournaments."""
     image = get_image(a)
     image_attrs = image_attribute_string(image, "card", Path(ROOT))
+    reading_time = a.get('reading_time', '')
+    date_label = get_date(a)
+    if reading_time:
+        date_label = f"{date_label} · {reading_time}"
     return f'''        <a class="guide-card" href="{esc(get_url(a))}">
           <img src="{esc(image)}" alt="{esc(get_title(a))}"{image_attrs} class="card-thumb" loading="lazy" decoding="async">
           <div class="card-body">
@@ -176,7 +180,7 @@ def guide_card(a):
             <h3>{esc(get_title(a))}</h3>
             <p>{esc(get_excerpt(a))}</p>
             <div class="card-meta">
-              <span class="author">GolfRaw Editorial · {esc(get_date(a))}</span>
+              <span class="author">GolfRaw Editorial · {esc(date_label)}</span>
               <span class="card-cta">Read →</span>
             </div>
           </div>

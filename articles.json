@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-05",
-  "count": 350,
+  "count": 351,
   "categories": [
     "AMATEUR GOLF",
     "ANALYSIS",
@@ -18,7 +18,10 @@
     "SOLHEIM CUP",
     "TOURNAMENTS",
     "VINTAGE GOLF HISTORY",
-    "WOMEN'S GOLF"
+    "WOMEN'S GOLF",
+    "3-HYBRID",
+    "3-WOOD",
+    "CLUB FITTING"
   ],
   "sections": [
     "AMATEUR GOLF",
@@ -38,6 +41,27 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/3-wood-vs-3-hybrid",
+      "alias_of": "",
+      "slug": "3-wood-vs-3-hybrid",
+      "url": "/3-wood-vs-3-hybrid",
+      "title": "3-Wood vs 3-Hybrid: Distance, Forgiveness and Which One Belongs in Your Bag",
+      "excerpt": "A 3-wood offers maximum distance from tees and clean fairways, while a 3-hybrid offers launch and versatility from rough. Here is how to test, gap, and choose.",
+      "category": [
+        "GUIDES",
+        "EQUIPMENT",
+        "CLUB FITTING",
+        "3-WOOD",
+        "3-HYBRID"
+      ],
+      "date": "2026-09-21",
+      "image": "/public/3-wood-vs-3-hybrid-distance-forgiveness-comparison.webp",
+      "keywords": "3 wood vs 3 hybrid, 3 wood or 3 hybrid, 3 hybrid vs 3 wood distance, which is easier to hit, golf club gapping, fairway wood from rough, 3 wood for high handicapper, golf club fitting",
+      "category_source": "editorial",
+      "section": "GUIDES",
+      "reading_time": "10 min read"
+    },
     {
       "canonical": "/how-much-do-lpga-players-make",
       "alias_of": "",

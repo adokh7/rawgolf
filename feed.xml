@@ -10,6 +10,15 @@
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
     <item>
+      <title>3-Wood vs 3-Hybrid: Distance, Forgiveness and Which One Belongs in Your Bag</title>
+      <link>https://www.golfraw.com/3-wood-vs-3-hybrid</link>
+      <guid isPermaLink="true">https://www.golfraw.com/3-wood-vs-3-hybrid</guid>
+      <pubDate>Mon, 21 Sep 2026 09:00:00 +0000</pubDate>
+      <category>GUIDES, EQUIPMENT, CLUB FITTING, 3-WOOD, 3-HYBRID</category>
+      <description>A 3-wood offers maximum distance from tees and clean fairways, while a 3-hybrid offers launch and versatility from rough. Here is how to test, gap, and choose.</description>
+      <enclosure url="https://www.golfraw.com/public/3-wood-vs-3-hybrid-distance-forgiveness-comparison.webp" length="113224" type="image/webp"/>
+    </item>
+    <item>
       <title>How Much Do LPGA Players Make? Korda $6.2M, Median $205K</title>
       <link>https://www.golfraw.com/how-much-do-lpga-players-make</link>
       <guid isPermaLink="true">https://www.golfraw.com/how-much-do-lpga-players-make</guid>
@@ -134,15 +143,6 @@
       <category>TOURNAMENTS, DP WORLD TOUR, RORY MCILROY, IRISH OPEN, DOONBEG, DONALD TRUMP, COUNTY CLARE</category>
       <description>Rory McIlroy warns of crowd limits and logistics headaches as Donald Trump visits the Irish Open at Doonbeg. Here is what fans need to know.</description>
       <enclosure url="https://www.golfraw.com/news-2026-rory-mcilroy-amgen-irish-open-doonbeg.webp" length="87710" type="image/webp"/>
-    </item>
-    <item>
-      <title>Nelly Korda &amp; Team USA&#x27;s 11-Year Solheim Cup Curse in Europe | GolfRaw</title>
-      <link>https://www.golfraw.com/nelly-korda-solheim-cup-european-drought-2026</link>
-      <guid isPermaLink="true">https://www.golfraw.com/nelly-korda-solheim-cup-european-drought-2026</guid>
-      <pubDate>Mon, 07 Sep 2026 09:00:00 +0000</pubDate>
-      <category>TOURNAMENTS, NEWS, SOLHEIM CUP, NELLY KORDA, ALLISEN CORPUZ, ANGELA STANFORD, BERNARDUS GOLF, TEAM USA</category>
-      <description>Team USA hasn&#x27;t won a Solheim Cup in Europe since 2015. Korda is unbeaten in foursomes with Corpuz and lost her last two singles. What it means at Bernardus.</description>
-      <enclosure url="https://www.golfraw.com/news-2026-nelly-korda-solheim-cup-focus.webp" length="53880" type="image/webp"/>
     </item>
   </channel>
 </rss>
