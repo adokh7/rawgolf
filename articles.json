@@ -12,6 +12,7 @@
     "LPGA TOUR",
     "NEWS",
     "PGA TOUR",
+    "PRO GOLF",
     "PLAYERS",
     "SOLHEIM CUP",
     "TOURNAMENTS",
@@ -36,6 +37,24 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/how-much-do-lpga-players-make",
+      "alias_of": "",
+      "slug": "how-much-do-lpga-players-make",
+      "url": "/how-much-do-lpga-players-make",
+      "title": "How Much Do LPGA Players Make? Korda $6.2M, Median $205K",
+      "excerpt": "How much do LPGA players make? Nelly Korda has $6.2M, but the median player has $205,066. See prize money, caddie costs and what salary searches miss.",
+      "category": [
+        "PRO GOLF",
+        "LPGA",
+        "NEWS"
+      ],
+      "date": "2026-09-21",
+      "image": "/public/lpga-tour-players-prize-money-earnings.webp",
+      "keywords": "how much do LPGA players make, LPGA average salary, LPGA player earnings, LPGA prize money 2026, median LPGA earnings, Nelly Korda earnings",
+      "category_source": "editorial",
+      "section": "NEWS"
+    },
     {
       "canonical": "/mcilroy-sunday-67-doonbeg-irish-open",
       "alias_of": "",

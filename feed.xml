@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 13 Sep 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>How Much Do LPGA Players Make? Korda $6.2M, Median $205K</title>
+      <link>https://www.golfraw.com/how-much-do-lpga-players-make</link>
+      <guid isPermaLink="true">https://www.golfraw.com/how-much-do-lpga-players-make</guid>
+      <pubDate>Mon, 21 Sep 2026 09:00:00 +0000</pubDate>
+      <category>PRO GOLF, LPGA, NEWS</category>
+      <description>How much do LPGA players make? Nelly Korda has $6.2M, but the median player has $205,066. See prize money, caddie costs and what salary searches miss.</description>
+      <enclosure url="https://www.golfraw.com/public/lpga-tour-players-prize-money-earnings.webp" length="100332" type="image/webp"/>
+    </item>
     <item>
       <title>McIlroy&#x27;s Sunday 67 at Doonbeg: Seven Birdies, One Double | GolfRaw</title>
       <link>https://www.golfraw.com/mcilroy-sunday-67-doonbeg-irish-open</link>
@@ -134,15 +143,6 @@
       <category>TOURNAMENTS, NEWS, SOLHEIM CUP, NELLY KORDA, ALLISEN CORPUZ, ANGELA STANFORD, BERNARDUS GOLF, TEAM USA</category>
       <description>Team USA hasn&#x27;t won a Solheim Cup in Europe since 2015. Korda is unbeaten in foursomes with Corpuz and lost her last two singles. What it means at Bernardus.</description>
       <enclosure url="https://www.golfraw.com/news-2026-nelly-korda-solheim-cup-focus.webp" length="53880" type="image/webp"/>
-    </item>
-    <item>
-      <title>2026 Solheim Cup Rosters Finalized: Teams &amp; Captains Picks | GolfRaw</title>
-      <link>https://www.golfraw.com/2026-solheim-cup-rosters-finalized-captains-picks</link>
-      <guid isPermaLink="true">https://www.golfraw.com/2026-solheim-cup-rosters-finalized-captains-picks</guid>
-      <pubDate>Mon, 07 Sep 2026 09:00:00 +0000</pubDate>
-      <category>TOURNAMENTS, NEWS, SOLHEIM CUP, BERNARDUS GOLF, TEAM USA, TEAM EUROPE, ANGELA STANFORD, ANNA NORDQVIST</category>
-      <description>Full USA and Europe rosters for Bernardus Golf, how each player qualified, the pick both captains explained, and the four Europeans who missed by a few ranking spots.</description>
-      <enclosure url="https://www.golfraw.com/news-2026-bernardus-golf-solheim-cup-course-setup.webp" length="182200" type="image/webp"/>
     </item>
   </channel>
 </rss>
