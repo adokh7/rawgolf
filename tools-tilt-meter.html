@@ -412,7 +412,7 @@
       <p>Everybody has one hole that ruins a card. Almost nobody notices it is the three holes <em>after</em> it that
         actually cost them the round. Put your 18 holes in relative to par and this works out exactly how many shots
         your temper threw away — and whether you reset faster or slower than a tour pro. Runs entirely in your
-        browser. Nothing uploaded, nothing tracked.</p>
+        browser. Nothing you enter is uploaded or tracked.</p>
     </div>
   </div>
 
@@ -429,10 +429,10 @@
       </section>
 
       <!-- ============ STEP 1: THE CARD ============ -->
-      <section class="panel">
+      <section class="panel" data-gr-inputs>
         <div class="panel-head">
           <span><span class="step">01 ·</span> Your Card, Relative To Par</span>
-          <button class="btn ghost sm" id="sampleBtn" type="button"
+          <button class="btn ghost sm" id="sampleBtn" data-gr-mode="sample" data-gr-saved type="button"
             style="border-color:#94a3b8;color:#fff">Load a sample meltdown</button>
         </div>
         <div class="panel-in">
@@ -450,12 +450,12 @@
           <div class="card-tools">
             <span class="tally" id="tally">Holes entered: <b>0</b> &nbsp;·&nbsp; To par: <b>E</b></span>
             <div style="display:flex;gap:10px;flex-wrap:wrap">
-              <button class="btn ghost sm" id="clearBtn" type="button">Clear card</button>
+              <button class="btn ghost sm" id="clearBtn" data-gr-ignore type="button">Clear card</button>
             </div>
           </div>
 
           <div class="btn-row">
-            <button class="btn" id="runBtn" type="button">Run the meltdown index →</button>
+            <button class="btn" id="runBtn" data-gr-run type="button">Run the meltdown index →</button>
           </div>
         </div>
       </section>
@@ -556,7 +556,7 @@
       </div>
       <!-- /Future AdSense Slot -->
 
-      <section class="panel">
+      <section class="panel" data-gr-placement="suite_links">
         <div class="panel-head"><span><span class="step">03 ·</span> The Rest Of The Suite</span></div>
         <div class="panel-in">
           <p style="font-size:15.5px;margin-bottom:14px;max-width:68ch">Found your leak? The
@@ -619,7 +619,7 @@
   </footer>
 
   <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
-  <script src="./rawgolf-tools.js"></script>
+  <script src="./rawgolf-tools.js?v=2"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -964,6 +964,7 @@
       $('outWrap').classList.add('show');
       $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
       persist();
+      if (window.GRTrack) GRTrack.completed();
       if (window.RawGolf) RawGolf.save(cardData());
     }
 
@@ -1034,6 +1035,7 @@
       var txt = lines.join('\n');
 
       var done = function () {
+        if (window.GRTrack) GRTrack.shared('copy_result');
         var b = $('copyBtn'), old = b.textContent;
         b.textContent = 'Copied ✓';
         setTimeout(function () { b.textContent = old; }, 1900);
@@ -1091,6 +1093,11 @@
     gtag('config', 'G-PMECW4VW66');
   </script>
   <script>window.__gr_consent=true;window.__gr_ads=false;</script>
+<!-- TOOL-EVENTS:START -->
+  <!-- Tool events: which tools people start, finish and share. Actions only,
+       never the numbers typed in; see lib/analytics/tool-events.js. -->
+  <script src="/lib/analytics/tool-events.js?v=1" defer></script>
+<!-- TOOL-EVENTS:END -->
 <!-- LOCKER:START -->
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is

@@ -488,7 +488,7 @@ MAIN = '''
             </table>
           </div>
           <div id="verdicts"></div>
-          <div class="so-acts">
+          <div class="so-acts" data-gr-placement="result_actions">
             <button type="button" class="so-go" id="saveBag">Save these to my bag</button>
             <button type="button" class="so-go" id="chartBtn">Get my gapping chart</button>
             <a class="so-go alt" href="/tools-coach-report">Build the coach report &rarr;</a>
@@ -869,6 +869,7 @@ SCRIPT = r'''  <script>
       renderClubs(); renderShots(); renderReadout(); renderBar();
       setState('Saved on this device.');
       persist();
+      if (window.GRTrack) { GRTrack.inputMode('manual'); GRTrack.started(); }
     }
 
     function delShot(idx) {
@@ -956,6 +957,7 @@ SCRIPT = r'''  <script>
 
       $('results').hidden = false;
       $('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (window.GRTrack) GRTrack.completed();
     }
 
     /* ==================== SYNC TO THE LOCKER BAG ==================== */
@@ -1056,10 +1058,10 @@ SCRIPT = r'''  <script>
 
     function lmReadFile(file) {
       if (!file) return;
-      if (file.size > 5 * 1024 * 1024) { lmMsg('That file is over 5 MB. A session export is a few hundred KB at most.', 'bad'); return; }
+      if (file.size > 5 * 1024 * 1024) { if (window.GRTrack) GRTrack.error('import_too_large'); lmMsg('That file is over 5 MB. A session export is a few hundred KB at most.', 'bad'); return; }
       var rd = new FileReader();
       rd.onload = function () { lmPreview(String(rd.result || ''), file.name); };
-      rd.onerror = function () { lmMsg('Could not read that file.', 'bad'); };
+      rd.onerror = function () { if (window.GRTrack) GRTrack.error('import_unreadable'); lmMsg('Could not read that file.', 'bad'); };
       rd.readAsText(file);
     }
 
@@ -1078,7 +1080,7 @@ SCRIPT = r'''  <script>
       if (!LM) { lmMsg('The import engine did not load. Reload the page and try again.', 'bad'); return; }
       lmText = text;
       var first = LM.run(text, { target: profileUnits });
-      if (!first.ok) { lmMsg(first.error || 'Could not read that as a CSV.', 'bad'); return; }
+      if (!first.ok) { if (window.GRTrack) GRTrack.error('import_unreadable'); lmMsg(first.error || 'Could not read that as a CSV.', 'bad'); return; }
       var heads = first.parsed.headers, opts = [];
       for (var i = 0; i < heads.length; i++) opts.push('<option value="' + i + '">' + esc(heads[i] || ('column ' + (i + 1))) + '</option>');
       $('lmClubCol').innerHTML = opts.join('');
@@ -1154,6 +1156,7 @@ SCRIPT = r'''  <script>
       lmMsg(text, 'good');
       setState(text + ' Saved on this device.');
       $('lmMap').classList.remove('on'); lmText = ''; lmResult = null; $('lmFile').value = ''; $('lmPaste').value = '';
+      if (window.GRTrack) { GRTrack.inputMode('import'); GRTrack.started(); }
       var live = 0;
       for (var k = 0; k < session.clubs.length; k++) if (session.clubs[k].shots.length) live++;
       if (live >= 2) showResults();
@@ -1233,7 +1236,10 @@ SCRIPT = r'''  <script>
       $('chartBtn').addEventListener('click', openModal);
       $('modalX').addEventListener('click', closeModal);
       $('scrim').addEventListener('click', closeModal);
-      $('printBtn').addEventListener('click', function () { window.print(); });
+      $('printBtn').addEventListener('click', function () {
+        window.print();
+        if (window.GRTrack) GRTrack.shared('print');
+      });
       document.addEventListener('keydown', function (e) {
         if (!$('modal').classList.contains('on')) return;
         if (e.key === 'Escape') { e.preventDefault(); closeModal(); }

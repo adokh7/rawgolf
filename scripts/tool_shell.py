@@ -14,7 +14,7 @@ builder must never bake a stale copy in.
 import io
 import re
 
-MANAGED = re.compile(r'\s*<!-- (LOCKER|THEME):START -->.*?<!-- \1:END -->\n?', re.S)
+MANAGED = re.compile(r'\s*<!-- (LOCKER|THEME|TOOL-EVENTS):START -->.*?<!-- \1:END -->\n?', re.S)
 
 
 def _between(text, start_pat, end_pat, inclusive_end=True, label=''):

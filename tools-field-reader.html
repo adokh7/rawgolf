@@ -211,6 +211,7 @@
     .hub-hero .eyebrow { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
     .hub-hero h1 { font-weight: 900; font-size: clamp(32px, 5.6vw, 64px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
     .hub-hero p { font-size: 17px; color: #cbd5e1; max-width: 62ch; line-height: 1.6 }
+    .hub-hero .tool-brand { margin: -6px 0 14px; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gr-mint, #dcfce7) }
 
     /* PANELS */
     .tool-body { padding: 40px 0 72px }
@@ -526,7 +527,7 @@
 
       <section class="panel" aria-labelledby="board-h">
         <h2 id="board-h">Set the week</h2>
-        <div class="fr-wrap">
+        <div class="fr-wrap" data-gr-inputs>
 
           <div class="fr-course" id="courseCard"></div>
 
@@ -571,8 +572,8 @@
           </div>
 
           <div class="fr-acts">
-            <button type="button" class="fr-go ghost" id="resetBtn">Reset to this course</button>
-            <button type="button" class="fr-go ghost" id="clearPicks">Clear my picks</button>
+            <button type="button" class="fr-go ghost" id="resetBtn" data-gr-ignore>Reset to this course</button>
+            <button type="button" class="fr-go ghost" id="clearPicks" data-gr-ignore>Clear my picks</button>
           </div>
 
           <div class="fr-board" id="board" aria-live="polite" aria-label="Field ranked by fit"></div>
@@ -1004,6 +1005,7 @@
             $('v' + cap).textContent = weights[k];
             renderBoard();
             savePicks();
+            if (window.GRTrack) GRTrack.completed();
           });
         })(KEYS[i]);
       }
@@ -1012,10 +1014,13 @@
         if (!b) return;
         surface = b.dataset.surface;
         renderWeights(); renderBoard(); savePicks();
+        if (window.GRTrack) GRTrack.completed();
       });
       $('board').addEventListener('click', function (e) {
         var b = e.target.closest && e.target.closest('[data-pick]');
-        if (b) togglePick(b.getAttribute('data-pick'));
+        if (!b) return;
+        togglePick(b.getAttribute('data-pick'));
+        if (window.GRTrack) GRTrack.completed();
       });
       $('resetBtn').addEventListener('click', function () {
         applyCourseDefaults(); renderWeights(); renderBoard(); savePicks();
@@ -1053,6 +1058,7 @@
     }
 
     function fail(reason) {
+      if (window.GRTrack) GRTrack.error('feed_unavailable');
       $('board').innerHTML = '';
       msg('Could not load the tournament feed: ' + esc(reason) +
         '. The board is not shown rather than shown half-built.', 'bad');
@@ -1101,6 +1107,11 @@
   </script>
   <script>window.__gr_consent=true;window.__gr_ads=false;</script>
 
+<!-- TOOL-EVENTS:START -->
+  <!-- Tool events: which tools people start, finish and share. Actions only,
+       never the numbers typed in; see lib/analytics/tool-events.js. -->
+  <script src="/lib/analytics/tool-events.js?v=1" defer></script>
+<!-- TOOL-EVENTS:END -->
 <!-- LOCKER:START -->
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is

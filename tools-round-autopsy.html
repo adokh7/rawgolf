@@ -399,7 +399,7 @@
       </section>
 
       <!-- ============ STEP 1: SETUP ============ -->
-      <section class="panel">
+      <section class="panel" data-gr-inputs>
         <div class="panel-head"><span><span class="step">01 ·</span> The Round</span>
           <span id="tag" class="mono" style="font-size:10px;color:#94a3b8"></span>
         </div>
@@ -427,14 +427,14 @@
           <p class="hint">The benchmarks below are rough averages for each scoring tier. They tell you where you
             sit relative to the level you are chasing, not where you sit against a tour pro.</p>
           <div class="btn-row" style="margin-top:18px">
-            <button class="btn ghost sm" id="fillPar" type="button">Reset card to standard par</button>
-            <button class="btn ghost sm" id="clearRound" type="button">Clear the card</button>
+            <button class="btn ghost sm" id="fillPar" data-gr-ignore type="button">Reset card to standard par</button>
+            <button class="btn ghost sm" id="clearRound" data-gr-ignore type="button">Clear the card</button>
           </div>
         </div>
       </section>
 
       <!-- ============ STEP 2: THE CARD ============ -->
-      <section class="panel">
+      <section class="panel" data-gr-inputs>
         <div class="panel-head"><span><span class="step">02 ·</span> The Card</span>
           <span class="mono" style="font-size:10px;color:#94a3b8">Tap Y/N · scroll sideways on mobile</span>
         </div>
@@ -446,8 +446,8 @@
           <p class="hint">FIR is disabled on par 3s — there is no fairway to hit. Leave a hole blank and it is
             excluded from the analysis.</p>
           <div class="btn-row" style="margin-top:20px">
-            <button class="btn" id="runBtn" type="button">Run the autopsy →</button>
-            <button class="btn ghost sm" id="saveBtn" type="button">Save round to history</button>
+            <button class="btn" id="runBtn" data-gr-run type="button">Run the autopsy →</button>
+            <button class="btn ghost sm" id="saveBtn" data-gr-run type="button">Save round to history</button>
           </div>
         </div>
       </section>
@@ -542,7 +542,7 @@
 
 
   <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
-  <script src="./rawgolf-tools.js"></script>
+  <script src="./rawgolf-tools.js?v=2"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -872,6 +872,7 @@
       $('outWrap').classList.add('show');
       $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
       persist();
+      if (window.GRTrack) GRTrack.completed();
       if (window.RawGolf) RawGolf.save(cardData());
       return a;
     }
@@ -1074,6 +1075,11 @@
     gtag('config', 'G-PMECW4VW66');
   </script>
   <script>window.__gr_consent=true;window.__gr_ads=false;</script>
+<!-- TOOL-EVENTS:START -->
+  <!-- Tool events: which tools people start, finish and share. Actions only,
+       never the numbers typed in; see lib/analytics/tool-events.js. -->
+  <script src="/lib/analytics/tool-events.js?v=1" defer></script>
+<!-- TOOL-EVENTS:END -->
 <!-- LOCKER:START -->
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is

@@ -469,7 +469,7 @@
       <p>He says he would beat you. You say the strokes are wrong. One round settles nothing, because one round is
         mostly luck wearing a scorecard. So this plays the match <em>ten thousand times</em> and reports what actually
         happens — including the number of strokes that would make it an honest game, which is almost never the number
-        you have been arguing about. Runs entirely in your browser. Nothing uploaded, nothing tracked.</p>
+        you have been arguing about. Runs entirely in your browser. Nothing you enter is uploaded or tracked.</p>
     </div>
   </div>
 
@@ -495,10 +495,10 @@
       </section>
 
       <!-- ============ STEP 1: THE COMBATANTS ============ -->
-      <section class="panel">
+      <section class="panel" data-gr-inputs>
         <div class="panel-head">
           <span><span class="step">01 ·</span> The Combatants</span>
-          <button class="btn ghost sm" id="sampleBtn" type="button" style="border-color:#94a3b8;color:#fff">Load a typical argument</button>
+          <button class="btn ghost sm" id="sampleBtn" data-gr-mode="sample" type="button" style="border-color:#94a3b8;color:#fff">Load a typical argument</button>
         </div>
         <div class="panel-in">
           <div class="err" id="err" role="alert"></div>
@@ -549,7 +549,7 @@
           </div>
 
           <div class="btn-row" style="margin-top:16px">
-            <button class="btn" id="runBtn" type="button">Run 10,000 matches</button>
+            <button class="btn" id="runBtn" data-gr-run type="button">Run 10,000 matches</button>
             <button class="btn ghost" id="swapBtn" type="button">Swap sides</button>
           </div>
         </div>
@@ -644,7 +644,7 @@
   </footer>
 
   <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
-  <script src="./rawgolf-tools.js"></script>
+  <script src="./rawgolf-tools.js?v=2"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -932,6 +932,7 @@
           t: t, you: youName, them: themName, yH: yH, tH: tH,
           shots: shots, fair: fair, fmt: state.fmt, v: v
         };
+        if (window.GRTrack) GRTrack.completed();
         if (window.RawGolf) RawGolf.save(cardData());
       }
 
@@ -1017,7 +1018,9 @@
 
       $('copyBtn').addEventListener('click', function () {
         if (!state.last) return;
-        if (window.RawGolf && RawGolf.copyText) RawGolf.copyText(summaryText());
+        if (window.RawGolf && RawGolf.copyText) RawGolf.copyText(summaryText()).then(function () {
+          if (window.GRTrack) GRTrack.shared('copy_result');
+        }, function () { /* clipboard refused; nothing was shared */ });
       });
       $('pngBtn').addEventListener('click', function () {
         if (!state.last || !window.RawGolf) return;
@@ -1046,6 +1049,11 @@
     gtag('config', 'G-PMECW4VW66');
   </script>
   <script>window.__gr_consent=true;window.__gr_ads=false;</script>
+<!-- TOOL-EVENTS:START -->
+  <!-- Tool events: which tools people start, finish and share. Actions only,
+       never the numbers typed in; see lib/analytics/tool-events.js. -->
+  <script src="/lib/analytics/tool-events.js?v=1" defer></script>
+<!-- TOOL-EVENTS:END -->
 <!-- LOCKER:START -->
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is

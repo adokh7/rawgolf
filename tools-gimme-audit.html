@@ -442,10 +442,10 @@
       </section>
 
       <!-- ============ STEP 1: THE CARD ============ -->
-      <section class="panel">
+      <section class="panel" data-gr-inputs>
         <div class="panel-head">
           <span><span class="step">01 ·</span> What You Wrote Down</span>
-          <button class="btn ghost sm" id="sampleBtn" type="button"
+          <button class="btn ghost sm" id="sampleBtn" data-gr-mode="sample" data-gr-saved type="button"
             style="border-color:#94a3b8;color:#fff">Load a typical round</button>
         </div>
         <div class="panel-in">
@@ -481,12 +481,12 @@
           <div class="totals">
             <span class="tally" id="tally">Gimmes taken: <b>0</b></span>
             <div style="display:flex;gap:10px;flex-wrap:wrap">
-              <button class="btn ghost sm" id="clearBtn" type="button">Reset</button>
+              <button class="btn ghost sm" id="clearBtn" data-gr-ignore type="button">Reset</button>
             </div>
           </div>
 
           <div class="btn-row">
-            <button class="btn" id="runBtn" type="button">What did I actually shoot? →</button>
+            <button class="btn" id="runBtn" data-gr-run type="button">What did I actually shoot? →</button>
           </div>
         </div>
       </section>
@@ -520,7 +520,7 @@
           </div>
 
           <!-- ============ DATA CHAIN ============ -->
-          <div class="chain">
+          <div class="chain" data-gr-placement="result_chain">
             <div class="c-lab">Chain it</div>
             <h3>Now find out what that does to your handicap</h3>
             <p id="chainCopy">Your corrected score is the one that should have gone on the card. Send it straight
@@ -603,7 +603,7 @@
       </div>
       <!-- /Future AdSense Slot -->
 
-      <section class="panel">
+      <section class="panel" data-gr-placement="suite_links">
         <div class="panel-head"><span><span class="step">03 ·</span> The Rest Of The Suite</span></div>
         <div class="panel-in">
           <p style="font-size:15.5px;margin-bottom:14px;max-width:68ch">Corrected your score? Run it through the
@@ -666,7 +666,7 @@
   </footer>
 
   <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
-  <script src="./rawgolf-tools.js"></script>
+  <script src="./rawgolf-tools.js?v=2"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -930,7 +930,7 @@
       /* ---- the data chain ---- */
       var chained = a.realRounded;
       $('chainBtn').setAttribute('href',
-        'tools-handicap-detector.html?score=' + chained + '&from=gimme-audit');
+        'tools-handicap-detector#score=' + chained + '&from=gimme-audit');
       $('chainBtn').textContent = 'Feed ' + chained + ' to the Handicap Detector →';
       $('chainCopy').textContent = a.honest
         ? 'Your card holds up, so ' + chained + ' is the number either way. Send it through and see what your ' +
@@ -947,6 +947,7 @@
       $('outWrap').classList.add('show');
       $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
       persist();
+      if (window.GRTrack) GRTrack.completed();
       if (window.RawGolf) RawGolf.save(cardData());
     }
 
@@ -1015,6 +1016,7 @@
       var txt = lines.join('\n');
 
       var done = function () {
+        if (window.GRTrack) GRTrack.shared('copy_result');
         var b = $('copyBtn'), old = b.textContent;
         b.textContent = 'Copied ✓';
         setTimeout(function () { b.textContent = old; }, 1900);
@@ -1085,6 +1087,11 @@
     gtag('config', 'G-PMECW4VW66');
   </script>
   <script>window.__gr_consent=true;window.__gr_ads=false;</script>
+<!-- TOOL-EVENTS:START -->
+  <!-- Tool events: which tools people start, finish and share. Actions only,
+       never the numbers typed in; see lib/analytics/tool-events.js. -->
+  <script src="/lib/analytics/tool-events.js?v=1" defer></script>
+<!-- TOOL-EVENTS:END -->
 <!-- LOCKER:START -->
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is

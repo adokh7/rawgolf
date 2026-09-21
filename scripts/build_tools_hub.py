@@ -104,7 +104,7 @@ def render_hero():
         for, plus the <b>Coach Report</b>, a GolfRaw Pro feature currently open as a preview. They cover golf betting
         settlement, strokes-lost round diagnostics, World Handicap System maths, club gapping and
         <b>psychological golf performance diagnostics</b> — and every one runs <b>100% inside your browser</b>.
-        No account, no signup, no round data uploaded anywhere, nothing tracked. Close the tab and it is gone.</p>
+        No account, no signup, no round data uploaded anywhere, and nothing you type is tracked. Close the tab and it is gone.</p>
 
       <div class="facts-strip">
         <div><span class="n">{counts['total']}</span><span class="l">Tools live</span></div>

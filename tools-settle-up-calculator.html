@@ -412,7 +412,7 @@
       </section>
 
       <!-- ============ STEP 1: SETUP ============ -->
-      <section class="panel">
+      <section class="panel" data-gr-inputs>
         <div class="panel-head"><span><span class="step">01 ·</span> The Game</span>
           <span id="groupTag" class="mono" style="font-size:10px;color:#94a3b8"></span>
         </div>
@@ -480,13 +480,13 @@
             <button class="btn" id="buildCard" type="button">Build the scorecard →</button>
             <button class="btn ghost sm" id="saveGroup" type="button">Save this group</button>
             <button class="btn ghost sm" id="loadGroup" type="button">Load saved group</button>
-            <button class="btn ghost sm" id="clearAll" type="button">Reset everything</button>
+            <button class="btn ghost sm" id="clearAll" data-gr-ignore type="button">Reset everything</button>
           </div>
         </div>
       </section>
 
       <!-- ============ STEP 2: SCORECARD ============ -->
-      <section class="panel" id="cardPanel" style="display:none">
+      <section class="panel" id="cardPanel" data-gr-inputs style="display:none">
         <div class="panel-head"><span><span class="step">02 ·</span> The Card</span>
           <span class="mono" style="font-size:10px;color:#94a3b8">Scroll sideways on mobile</span>
         </div>
@@ -501,7 +501,7 @@
       </section>
 
       <!-- ============ STEP 3: JUNK ============ -->
-      <section class="panel" id="junkPanel" style="display:none">
+      <section class="panel" id="junkPanel" data-gr-inputs style="display:none">
         <div class="panel-head"><span><span class="step">03 ·</span> The Junk</span></div>
         <div class="panel-in">
           <div class="junk-grid" id="junkGrid"></div>
@@ -590,7 +590,7 @@
 
 
   <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
-  <script src="./rawgolf-tools.js"></script>
+  <script src="./rawgolf-tools.js?v=2"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -1046,6 +1046,7 @@
       $('outWrap').classList.add('show');
       $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
       persistRound();
+      if (window.GRTrack) GRTrack.completed();
       if (window.RawGolf) RawGolf.save(cardData());
     }
 
@@ -1081,6 +1082,7 @@
       var txt = lines.join('\n');
 
       var done = function () {
+        if (window.GRTrack) GRTrack.shared('copy_result');
         var btn = $('copyBtn'), old = btn.textContent;
         btn.textContent = 'Copied ✓';
         setTimeout(function () { btn.textContent = old; }, 1800);
@@ -1262,6 +1264,11 @@
     gtag('config', 'G-PMECW4VW66');
   </script>
   <script>window.__gr_consent=true;window.__gr_ads=false;</script>
+<!-- TOOL-EVENTS:START -->
+  <!-- Tool events: which tools people start, finish and share. Actions only,
+       never the numbers typed in; see lib/analytics/tool-events.js. -->
+  <script src="/lib/analytics/tool-events.js?v=1" defer></script>
+<!-- TOOL-EVENTS:END -->
 <!-- LOCKER:START -->
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is

@@ -237,7 +237,7 @@ MAIN = '''
 
       <section class="panel" aria-labelledby="board-h">
         <h2 id="board-h">Set the week</h2>
-        <div class="fr-wrap">
+        <div class="fr-wrap" data-gr-inputs>
 
           <div class="fr-course" id="courseCard"></div>
 
@@ -282,8 +282,8 @@ MAIN = '''
           </div>
 
           <div class="fr-acts">
-            <button type="button" class="fr-go ghost" id="resetBtn">Reset to this course</button>
-            <button type="button" class="fr-go ghost" id="clearPicks">Clear my picks</button>
+            <button type="button" class="fr-go ghost" id="resetBtn" data-gr-ignore>Reset to this course</button>
+            <button type="button" class="fr-go ghost" id="clearPicks" data-gr-ignore>Clear my picks</button>
           </div>
 
           <div class="fr-board" id="board" aria-live="polite" aria-label="Field ranked by fit"></div>
@@ -682,6 +682,7 @@ SCRIPT2 = r'''  <script>
             $('v' + cap).textContent = weights[k];
             renderBoard();
             savePicks();
+            if (window.GRTrack) GRTrack.completed();
           });
         })(KEYS[i]);
       }
@@ -690,10 +691,13 @@ SCRIPT2 = r'''  <script>
         if (!b) return;
         surface = b.dataset.surface;
         renderWeights(); renderBoard(); savePicks();
+        if (window.GRTrack) GRTrack.completed();
       });
       $('board').addEventListener('click', function (e) {
         var b = e.target.closest && e.target.closest('[data-pick]');
-        if (b) togglePick(b.getAttribute('data-pick'));
+        if (!b) return;
+        togglePick(b.getAttribute('data-pick'));
+        if (window.GRTrack) GRTrack.completed();
       });
       $('resetBtn').addEventListener('click', function () {
         applyCourseDefaults(); renderWeights(); renderBoard(); savePicks();
@@ -731,6 +735,7 @@ SCRIPT2 = r'''  <script>
     }
 
     function fail(reason) {
+      if (window.GRTrack) GRTrack.error('feed_unavailable');
       $('board').innerHTML = '';
       msg('Could not load the tournament feed: ' + esc(reason) +
         '. The board is not shown rather than shown half-built.', 'bad');

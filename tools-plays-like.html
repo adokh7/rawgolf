@@ -390,7 +390,7 @@
       <p class="tool-brand">The Plays Like Calculator</p>
       <p>You did not lose 20 yards over the winter. The air did. Put in the conditions and find out what your shot
         is genuinely playing today, then pull the club that number demands instead of the one your ego wants.
-        Runs entirely in your browser — no weather service, no tracking, nothing uploaded.</p>
+        Runs entirely in your browser — no weather service, and nothing you enter is tracked or uploaded.</p>
     </div>
   </div>
 
@@ -407,7 +407,7 @@
       </section>
 
       <!-- ============ INPUT ============ -->
-      <section class="panel">
+      <section class="panel" data-gr-inputs>
         <div class="panel-head"><span><span class="step">01 ·</span> The Conditions</span>
           <span id="tag" class="mono" style="font-size:10px;color:#94a3b8"></span>
         </div>
@@ -469,8 +469,8 @@
           </div>
 
           <div class="btn-row">
-            <button class="btn" id="runBtn" type="button">What does it play? →</button>
-            <button class="btn ghost" id="resetBtn" type="button">Reset</button>
+            <button class="btn" id="runBtn" data-gr-run type="button">What does it play? →</button>
+            <button class="btn ghost" id="resetBtn" data-gr-ignore type="button">Reset</button>
           </div>
         </div>
       </section>
@@ -606,7 +606,7 @@
 
 
   <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
-  <script src="./rawgolf-tools.js"></script>
+  <script src="./rawgolf-tools.js?v=2"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -786,6 +786,7 @@
         'thumb, not launch-monitor readings — treat them as a strong steer, not gospel.';
 
       $('outWrap').classList.add('show');
+      if (window.GRTrack) GRTrack.completed();
       if (window.RawGolf) RawGolf.save(cardData());
       $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
       save();
@@ -838,6 +839,7 @@
       var txt = lines.join('\n');
 
       var done = function () {
+        if (window.GRTrack) GRTrack.shared('copy_result');
         var b = $('copyBtn'), old = b.textContent;
         b.textContent = 'Copied ✓';
         setTimeout(function () { b.textContent = old; }, 1900);
@@ -987,6 +989,11 @@
     gtag('config', 'G-PMECW4VW66');
   </script>
   <script>window.__gr_consent=true;window.__gr_ads=false;</script>
+<!-- TOOL-EVENTS:START -->
+  <!-- Tool events: which tools people start, finish and share. Actions only,
+       never the numbers typed in; see lib/analytics/tool-events.js. -->
+  <script src="/lib/analytics/tool-events.js?v=1" defer></script>
+<!-- TOOL-EVENTS:END -->
 <!-- LOCKER:START -->
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is

@@ -226,7 +226,7 @@ MAIN = '''
         the data travelled inside the link you opened &mdash; GolfRaw never received it. You can print it or
         <a href="/tools-coach-report">build your own</a>.</div>
 
-      <section class="panel" id="setup" aria-labelledby="set-h">
+      <section class="panel" id="setup" data-gr-inputs="import" aria-labelledby="set-h">
         <h2 id="set-h">Build the report <span class="gr-pro-badge" id="crBadge">GolfRaw Pro</span></h2>
         <div class="cr-wrap" id="crGate">
           <div class="cr-src" aria-label="Data found on this device">
@@ -304,6 +304,10 @@ SCRIPT = r'''  <script>
     var model = null;
     var TOOL = 'coach-report';
 
+    /* A shared link shows someone else's report; the tool-events layer counts
+       that reader separately from people building their own. */
+    if (/[#&]r=/.test(location.hash || '')) document.documentElement.setAttribute('data-gr-view', 'shared_result');
+
     function esc(s) { return String(s === null || s === undefined ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
     function msg(id, text, kind) { var el = $(id); el.className = 'so-msg on ' + (kind || ''); el.innerHTML = text; }
     function dateText(ts) { try { return new Date(ts).toLocaleDateString(); } catch (e) { return ''; } }
@@ -347,6 +351,13 @@ SCRIPT = r'''  <script>
       if (L) L.setToolState(TOOL, { client: f.client, coach: f.coach, notes: f.notes })['catch'](function () {});
       $('out').hidden = false;
       $('out').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      /* The report is built from other tools' data; with none of it there is
+         only a placeholder page, which counts as a start, not a finished report. */
+      if (window.GRTrack) {
+        GRTrack.inputMode('import');
+        if (currentSession() || (data.bag && data.bag.clubs && data.bag.clubs.length) || (data.cards && data.cards.length)) GRTrack.completed();
+        else GRTrack.started();
+      }
     }
 
     function render(m) {
@@ -358,9 +369,9 @@ SCRIPT = r'''  <script>
     function share() {
       if (!model) return;
       var enc = R.encodeShare(model);
-      if (!enc.ok) { msg('outMsg', enc.error, 'bad'); return; }
+      if (!enc.ok) { if (window.GRTrack) GRTrack.error('share_link_too_long'); msg('outMsg', enc.error, 'bad'); return; }
       var url = location.origin + '/tools-coach-report#r=' + enc.payload;
-      var done = function () { msg('outMsg', 'Link copied — ' + Math.round(url.length / 100) / 10 + ' KB, carries the whole report, never touches a server.', 'good'); };
+      var done = function () { if (window.GRTrack) GRTrack.shared('copy_link'); msg('outMsg', 'Link copied — ' + Math.round(url.length / 100) / 10 + ' KB, carries the whole report, never touches a server.', 'good'); };
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done)['catch'](function () { fallback(url); });
       else fallback(url);
       function fallback(u) { msg('outMsg', 'Copy this link: <input type="text" readonly value="' + esc(u) + '" style="width:100%;margin-top:6px;font-size:12px" onclick="this.select()">', ''); }
@@ -372,7 +383,7 @@ SCRIPT = r'''  <script>
       var dec = R ? R.decodeShare(payload) : { ok: false, error: 'Engine unavailable.' };
       $('setup').hidden = true;
       $('sharedNote').hidden = false;
-      if (!dec.ok) { $('sharedNote').innerHTML = '<b>Could not open this report.</b> ' + esc(dec.error); return; }
+      if (!dec.ok) { if (window.GRTrack) GRTrack.error('shared_link_invalid'); $('sharedNote').innerHTML = '<b>Could not open this report.</b> ' + esc(dec.error); return; }
       model = dec.model;
       render(model);
       $('out').hidden = false;
@@ -383,7 +394,10 @@ SCRIPT = r'''  <script>
       L = window.GolfrawLocker || null;
       R = window.GolfrawReport || null;
       $('buildBtn').addEventListener('click', build);
-      $('printBtn').addEventListener('click', function () { window.print(); });
+      $('printBtn').addEventListener('click', function () {
+        window.print();
+        if (window.GRTrack) GRTrack.shared('print');
+      });
       $('shareBtn').addEventListener('click', share);
       $('fSession').addEventListener('change', function () { if (model) build(); });
 

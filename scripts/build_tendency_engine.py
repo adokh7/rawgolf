@@ -292,14 +292,14 @@ MAIN = '''
       <!-- ============ LOG A ROUND ============ -->
       <section class="panel" aria-labelledby="log-h">
         <h2 id="log-h">Tap in the round</h2>
-        <div class="te-wrap">
+        <div class="te-wrap" data-gr-inputs>
 
           <div class="te-meta">
             <input type="text" id="course" maxlength="80" placeholder="Course (optional)" aria-label="Course name">
-            <button type="button" class="te-go ghost" id="newRound">New round</button>
+            <button type="button" class="te-go ghost" id="newRound" data-gr-ignore>New round</button>
           </div>
 
-          <div class="te-steps" id="steps" role="group" aria-label="Hole progress"></div>
+          <div class="te-steps" id="steps" data-gr-ignore role="group" aria-label="Hole progress"></div>
 
           <div class="te-card">
             <div class="te-head">
@@ -338,7 +338,7 @@ MAIN = '''
                 <button type="button" class="te-opt" data-putts="3">3+</button>
               </div>
 
-              <div class="te-nav">
+              <div class="te-nav" data-gr-ignore>
                 <button type="button" id="prevHole">&larr; Back</button>
                 <button type="button" id="nextHole" class="pri">Next &rarr;</button>
               </div>
@@ -347,7 +347,7 @@ MAIN = '''
 
           <div class="te-bar">
             <span><b id="doneCount">0</b> of 18 holes &middot; <b id="runTotal">&mdash;</b> to par</span>
-            <button type="button" class="te-go" id="analyseBtn" disabled>See my tendencies</button>
+            <button type="button" class="te-go" id="analyseBtn" data-gr-run disabled>See my tendencies</button>
           </div>
           <p class="te-note" id="saveState">Every tap saves to this device. Put the phone away mid-round
             &mdash; this is built to be filled in afterwards, in the car park.</p>
@@ -379,12 +379,12 @@ MAIN = '''
           <p class="te-q" style="margin-top:4px">Rounds logged</p>
           <div class="te-list" id="roundList"></div>
 
-          <div class="te-acts">
+          <div class="te-acts" data-gr-placement="result_actions">
             <button type="button" class="te-go" id="pushBtn">Send scores to the Handicap Lie Detector</button>
             <a class="te-go ghost" href="/tools-round-autopsy"
                style="display:inline-flex;align-items:center;text-decoration:none">Dissect one round instead</a>
           </div>
-          <div class="te-msg" id="resMsg" role="status"></div>
+          <div class="te-msg" id="resMsg" role="status" data-gr-placement="result_message"></div>
 
           <div class="te-tile" style="margin-top:20px">
             <div class="k">Keep an eye on it</div>
@@ -900,7 +900,9 @@ SCRIPT2 = r'''  <script>
       });
     }
 
-    function showResults() {
+    /* fromUser is true only for the golfer's own request (the button, or Next on
+       hole 18); the automatic render on load is not a completion. */
+    function showResults(fromUser) {
       loadRounds().then(function (rounds) {
         $('results').hidden = false;
         var wins = $('winPick').querySelectorAll('[data-win]');
@@ -911,6 +913,7 @@ SCRIPT2 = r'''  <script>
         }
         renderAnalysis();
         $('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (fromUser === true && rounds.length && window.GRTrack) GRTrack.completed();
       });
     }
 
@@ -1007,9 +1010,9 @@ SCRIPT2 = r'''  <script>
       });
       $('prevHole').addEventListener('click', function () { go(idx - 1); });
       $('nextHole').addEventListener('click', function () {
-        if (idx === HOLES - 1) showResults(); else go(idx + 1);
+        if (idx === HOLES - 1) showResults(true); else go(idx + 1);
       });
-      $('analyseBtn').addEventListener('click', showResults);
+      $('analyseBtn').addEventListener('click', function () { showResults(true); });
       $('course').addEventListener('input', function () {
         card.course = $('course').value.slice(0, 80); persist();
       });

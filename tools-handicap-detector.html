@@ -404,7 +404,7 @@
       </section>
 
       <!-- ============ INPUT ============ -->
-      <section class="panel">
+      <section class="panel" data-gr-inputs>
         <div class="panel-head"><span><span class="step">01 ·</span> The Claim</span>
           <span id="tag" class="mono" style="font-size:10px;color:#94a3b8"></span>
         </div>
@@ -419,7 +419,7 @@
         </div>
       </section>
 
-      <section class="panel">
+      <section class="panel" data-gr-inputs>
         <div class="panel-head"><span><span class="step">02 ·</span> The Evidence</span>
           <span class="mono" id="cntTag" style="font-size:10px;color:#94a3b8"></span>
         </div>
@@ -431,13 +431,13 @@
           <div class="btn-row">
             <button class="btn ghost sm" id="addRow" type="button">+ Add a round</button>
             <button class="btn ghost sm" id="fillDefaults" type="button">Fill blanks with 72 / 113</button>
-            <button class="btn ghost sm" id="clearAll" type="button">Clear everything</button>
+            <button class="btn ghost sm" id="clearAll" data-gr-ignore type="button">Clear everything</button>
           </div>
           <p class="sub" style="margin-top:14px">Minimum 5 rounds, maximum 20 — that is what the World Handicap
             System uses. Leave rating and slope blank and we will assume a standard par-72 course of 113 slope.</p>
 
           <div class="btn-row">
-            <button class="btn" id="runBtn" type="button">Run the lie detector →</button>
+            <button class="btn" id="runBtn" data-gr-run type="button">Run the lie detector →</button>
           </div>
         </div>
       </section>
@@ -568,7 +568,7 @@
 
 
   <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
-  <script src="./rawgolf-tools.js"></script>
+  <script src="./rawgolf-tools.js?v=2"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -847,6 +847,7 @@
         'that a licensed handicapping body would.';
 
       $('outWrap').classList.add('show');
+      if (window.GRTrack) GRTrack.completed();
       if (window.RawGolf) RawGolf.save(cardData());
       $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
       save();
@@ -877,6 +878,7 @@
       var txt = lines.join('\n');
 
       var done = function () {
+        if (window.GRTrack) GRTrack.shared('copy_result');
         var b = $('copyBtn'), old = b.textContent;
         b.textContent = 'Copied ✓';
         setTimeout(function () { b.textContent = old; }, 1900);
@@ -1009,16 +1011,25 @@
     refresh();
 
     /* ============ DATA CHAIN: accept a corrected score from The Gimme Audit ============
-       Arrives as ?score=89&from=gimme-audit. Dropped into the first empty score row, or
-       a new row if the card is already full. The URL is scrubbed afterwards so a refresh
-       cannot silently add the same score twice. */
+       Arrives as #score=89&from=gimme-audit (older links used ?score=). Dropped into the
+       first empty score row, or a new row if the card is already full. */
     (function receiveChainedScore() {
-      var params;
-      try { params = new URLSearchParams(window.location.search); }
+      var params, inFragment = /^#score=/.test(window.location.hash);
+      try { params = new URLSearchParams(inFragment ? window.location.hash.slice(1) : window.location.search); }
       catch (e) { return; }
 
       var raw = params.get('score');
       if (!raw) return;
+
+      /* Scrub first, valid or not: this runs ahead of the GA4 config below, whose
+         page_view sends the query string, and a refresh must not re-import the score.
+         Other query parameters (utm_*) are kept. */
+      try {
+        var keep = new URLSearchParams(window.location.search);
+        keep['delete']('score'); keep['delete']('from');
+        var rest = keep.toString();
+        window.history.replaceState(null, '', window.location.pathname + (rest ? '?' + rest : ''));
+      } catch (e) { /* older browsers keep the URL; the import below still happens once */ }
 
       var score = parseInt(raw, 10);
       if (!isFinite(score) || score < 55 || score > 200) return;   // ignore anything odd
@@ -1059,11 +1070,6 @@
       if (host && host.parentNode) host.parentNode.insertBefore(banner, host);
 
       target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-      /* scrub the query string so a reload does not re-import */
-      try {
-        window.history.replaceState({}, '', window.location.pathname);
-      } catch (e) { /* older browsers just keep the URL — the import already happened */ }
     })();
   </script>
   <script>
@@ -1073,6 +1079,11 @@
     gtag('config', 'G-PMECW4VW66');
   </script>
   <script>window.__gr_consent=true;window.__gr_ads=false;</script>
+<!-- TOOL-EVENTS:START -->
+  <!-- Tool events: which tools people start, finish and share. Actions only,
+       never the numbers typed in; see lib/analytics/tool-events.js. -->
+  <script src="/lib/analytics/tool-events.js?v=1" defer></script>
+<!-- TOOL-EVENTS:END -->
 <!-- LOCKER:START -->
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is

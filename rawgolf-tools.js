@@ -1,7 +1,9 @@
 /* ==========================================================================
    RAWGOLF TOOLS ENGINE  v1.0
    Shared client-side layer for all 5 Raw Tools.
-   100% local. No network calls, no cookies, no third parties.
+   100% local: results never leave the browser. When a share or download
+   succeeds it tells window.GRTrack (lib/analytics/tool-events.js), which
+   records only that it happened, never what was shared.
 
    Public API (window.RawGolf):
      .save(entry)        -> push a sanitized result into rawgolf_history
@@ -276,6 +278,12 @@
     return c;
   }
 
+  /* Tell the shared tool-events layer a result left the page. It is optional:
+     the call is skipped when that script is blocked or absent. */
+  function tracked(method) {
+    try { if (w.GRTrack) w.GRTrack.shared(method); } catch (e) { /* never break a share */ }
+  }
+
   function downloadCard(o) {
     o = o || {};
     var name = (o.filename || 'golfraw-result') + '-' + stamp() + '.png';
@@ -289,6 +297,7 @@
           if (!b) { toast('Could not build that card.'); return; }
           saveBlob(b, name);
           toast('Card downloaded.');
+          tracked('download');
         }, 'image/png');
       } else {                                   /* older Safari */
         var a = d.createElement('a');
@@ -296,6 +305,7 @@
         a.download = name;
         d.body.appendChild(a); a.click(); d.body.removeChild(a);
         toast('Card downloaded.');
+        tracked('download');
       }
     };
     /* Wait for webfonts so the card never renders in a fallback face. */
@@ -334,16 +344,16 @@
 
     if (w.navigator.share) {
       w.navigator.share({ title: o.title || 'GolfRaw', text: text, url: url })
-        ['catch'](function (err) {
+        .then(function () { tracked('native_share'); }, function (err) {
           /* User dismissed the sheet — that is not a failure worth shouting about. */
           if (err && err.name === 'AbortError') return;
-          copyText(text + '\n' + url).then(function () { toast('Copied to clipboard.'); },
+          copyText(text + '\n' + url).then(function () { toast('Copied to clipboard.'); tracked('copy_result'); },
             function () { toast('Could not share on this device.'); });
         });
       return;
     }
     copyText(text + '\n' + url).then(
-      function () { toast('Copied — paste it in the group chat.'); },
+      function () { toast('Copied — paste it in the group chat.'); tracked('copy_result'); },
       function () { toast('Could not copy on this device.'); }
     );
   }
