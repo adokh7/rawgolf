@@ -715,3 +715,26 @@ Forward chart).
 - Analytics: `GRTrack.completed({ anchor_type })` sends which kind of number the
   golfer started from, never the number, the band or any output.
 
+
+## Plays Like and Tee Box models (`lib/distance/plays-like.js`, `lib/distance/tee-box.js`)
+
+Both pages are hand-written (no builder); their maths lives in these two UMD
+modules so it can be tested in Node. Each module header cites its sources and
+names the places where GolfRaw simplifies beyond them.
+
+- **Plays Like:** altitude 1.16% per 1,000 ft (Titleist), full from 100 yards
+  and fading to none at 50; air temperature 0.75% per 10°F from 70°F
+  (Titleist); wind 1 yd/mph into it and half downwind (Rice/Broadie, PING),
+  applied at 150 yards and scaled with the shot; elevation a yard for a yard;
+  humidity 0. Each effect is worked out alone and added, and the rounded
+  breakdown always sums to the rounded total.
+- **Tee Box:** needs `club-distance.js` loaded first. It reads the Tee It
+  Forward chart and the USGA carry-to-total fit from that module, so it and
+  The Distance Check always agree. Stroke cost uses the USGA Course Rating
+  length formulas (1 per 220 yds scratch, 1 per 160 bogey), placed by score.
+- Tests: `node tests/plays-like.test.js`, `node tests/tee-box.test.js`, and
+  `python3 -m unittest tests.test_playslike_teebox_method` (sources, rules
+  note, static numbers against the models, unchanged title and H1).
+- **Bump `version`** in a module whenever it changes, and the matching
+  `?v=` on the page (the page test fails if they differ). A change to
+  `club-distance.js` also means bumping `MODEL_VER` in `build_club_distance.py`.

@@ -73,8 +73,8 @@ rate".
 | Tool | Start | Complete | Share | Related |
 |---|---|---|---|---|
 | Settle Up | edit setup, card or junk; Build scorecard | Settle up renders a result | copy, PNG, native share | none in body |
-| Tee Box | carry/score/yards edit or preset chip | Check my tees / Enter | copy, PNG, native share | none |
-| Plays Like | condition edit, chip or toggle | What does it play / Enter | copy, PNG, native share | none |
+| Tee Box | carry/score/yards edit or preset chip | Check my tees / Enter | copy, PNG, native share | Distance Check (`input_distance_check`) |
+| Plays Like | condition edit, chip or toggle | What does it play / Enter | copy, PNG, native share | Distance Check (`result_distance_check`) |
 | Bag Audit | club edit; Load a typical bag (sample) | Audit the bag | copy, PNG, native share | Rest of the Suite links |
 | Handicap Lie Detector | claim or round edit, Add a round | Run the lie detector | copy, PNG, native share | none |
 | Round Autopsy | setup or card edit | Run the autopsy | PNG, native share | none |

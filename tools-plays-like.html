@@ -123,7 +123,7 @@
           "name": "How much does cold weather affect golf ball distance?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Roughly 2 yards for every 10 degrees Fahrenheit below a 70 degree baseline. At 40 degrees a 150 yard shot plays about 6 yards longer, because both the ball and the denser cold air cost you carry."
+            "text": "About 0.75% of the distance for every 10 degrees Fahrenheit below 70, from the colder, denser air alone (Titleist). At 40 degrees a 150-yard shot plays about 153 to 154 yards, and a 250-yard drive loses about 6 yards. A ball that has been left in the cold loses more."
           }
         },
         {
@@ -131,7 +131,7 @@
           "name": "How much club should I take into the wind?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "About 1 yard per mph into a headwind, and roughly half a yard per mph downwind. A 10 mph headwind makes a 150 yard shot play around 160 yards, which is usually one extra club."
+            "text": "For a 150-yard shot, about 1 yard per mph into the wind and half a yard per mph downwind (Andrew Rice and PING’s Chris Broadie). A 10 mph headwind makes it play about 160, usually one extra club. Longer shots move more, and in strong wind a headwind costs more than the rule says."
           }
         },
         {
@@ -139,7 +139,7 @@
           "name": "Does humid air make the golf ball fly shorter?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. This is a myth. Water vapour is lighter than dry air, so humid air is actually less dense and the ball flies marginally further, not shorter. The effect is small enough to ignore."
+            "text": "No. Water vapour is lighter than dry air, so humid air is slightly less dense and the ball flies a touch further, not shorter. The difference between dry and muggy air is about a yard. Rain and a wet ball are a different matter and do cost distance."
           }
         },
         {
@@ -147,7 +147,15 @@
           "name": "How much further does a golf ball travel at altitude?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Around 2 percent extra carry for every 1,000 feet of elevation. In Denver at roughly 5,280 feet a 150 yard shot plays about 16 yards shorter."
+            "text": "About 1.16% more for every 1,000 feet, according to Titleist, so about 6% in Denver: a 250-yard drive goes about 265. A full 150-yard shot there plays about 141. Short shots gain less, and greenside shots barely change."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use a plays-like calculator in a competition?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not during the round. Rule 4.3 allows distances from a rangefinder and weather from a forecast, but not measuring elevation changes or using a device to turn distances into an adjusted yardage or a club. Working your numbers out before the round is allowed. Check the competition terms for anything stricter."
           }
         }
       ]
@@ -301,6 +309,11 @@
 
     .myth { border-left: 1px solid #86efac; padding: 12px 0 12px 14px; margin-bottom: 26px; font-size: 14.5px; color: #d8ded6; line-height: 1.55 }
     .myth b { color: #86efac }
+    .myth.caution { border-left-color: #fbbf24 }
+    .myth.caution b { color: #fbbf24 }
+    .explain ul.src { margin: 0 0 16px 18px; max-width: 68ch }
+    .explain ul.src li { font-size: 14.5px; line-height: 1.6; margin-bottom: 8px }
+    .explain a, .note a, .sub a { color: var(--flag); font-weight: 600; text-decoration: underline; text-underline-offset: 2px }
 
     .vc-foot { border-top: 1px solid rgba(255,255,255,.15); margin: 0 -26px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
     .vc-foot .mark { font-weight: 900; font-size: 17px; letter-spacing: -.03em; text-transform: uppercase }
@@ -388,9 +401,9 @@
       <div class="eyebrow">GolfRaw · TOOLS</div>
       <h1>Golf Altitude &amp; Elevation Distance Calculator</h1>
       <p class="tool-brand">The Plays Like Calculator</p>
-      <p>You did not lose 20 yards over the winter. The air did. Put in the conditions and find out what your shot
-        is genuinely playing today, then pull the club that number demands instead of the one your ego wants.
-        Runs entirely in your browser — no weather service, and nothing you enter is tracked or uploaded.</p>
+      <p>Cold air, wind, altitude and a raised green all move the number on the sprinkler head. Put in the
+        conditions and get an estimate of what the shot is playing, then pick the club for that number instead of
+        the one your ego wants. It runs in your browser: no weather service, and nothing you type is uploaded.</p>
     </div>
   </div>
 
@@ -401,8 +414,8 @@
       <section class="answer-block" aria-labelledby="aeo-q">
         <div class="ab-tag">The short answer</div>
         <h2 id="aeo-q">How far does a golf ball actually fly in cold weather and into the wind?</h2>
-        <p class="ab-answer">Cold costs roughly 2 yards per 10°F and a headwind about 1 yard per mph — this free plays-like calculator turns conditions into the club to pull.</p>
-        <p class="ab-body">The Plays Like Calculator is a <b>free online golf yardage calculator</b> that converts temperature, wind, altitude and elevation change into the distance a shot is genuinely playing. It is the only tool in this suite designed to be opened mid-round. If you need to <b>calculate your adjusted golf yardage now</b>, enter the target number and the conditions. If you are <b>understanding how weather affects golf ball distance</b>, it also settles the humid-air argument permanently: humid air is less dense than dry air, so the ball flies marginally further, not shorter. Compare your result with the <a href="/news-2026-golf-club-distances-guide">golf club distance chart</a>, then see the <a href="/news-2026-the-renaissance-club-course-guide">wind and course-conditions guide</a> for a tournament-course example.</p>
+        <p class="ab-answer">Cold air costs about 0.75% of distance per 10°F, altitude adds about 1.2% per 1,000 feet, and a headwind costs about 1 yard per mph on a 150-yard shot. This free plays-like calculator turns the conditions into an adjusted yardage and a club.</p>
+        <p class="ab-body">The Plays Like Calculator is a <b>free online golf yardage calculator</b> that turns temperature, wind, altitude and elevation change into an estimate of the distance a shot is playing. Use it before the round to learn your numbers for a cold day or a trip to altitude; in a competition, the Rules limit using it during play (see the rules note below). It also settles the humid-air argument: humid air is slightly less dense than dry air, so the ball flies a touch further, not shorter. Compare your result with the <a href="/news-2026-golf-club-distances-guide">golf club distance chart</a>, then see the <a href="/news-2026-the-renaissance-club-course-guide">wind and course-conditions guide</a> for a tournament-course example.</p>
         <ul class="ab-facts"><li><b>Free</b> forever</li><li><b>No</b> signup</li><li><b>0</b> data uploaded</li><li><b>100%</b> in your browser</li></ul>
       </section>
 
@@ -443,7 +456,7 @@
                 <button type="button" data-v="head" aria-pressed="true">Headwind</button>
                 <button type="button" data-v="tail" aria-pressed="false">Tailwind</button>
               </div>
-              <p class="sub">Crosswind barely changes distance — leave it at zero.</p>
+              <p class="sub">For wind straight into you or straight behind. For a crosswind, leave it at zero and aim off. Take the speed from a forecast.</p>
             </div>
             <div>
               <label class="fld" for="slope">Elevation change (feet)</label>
@@ -459,7 +472,7 @@
                 <button type="button" data-v="low" aria-pressed="true">Low / dry</button>
                 <button type="button" data-v="high" aria-pressed="false">High / muggy</button>
               </div>
-              <p class="sub">Included purely so we can tell you it does not do what you think.</p>
+              <p class="sub">Humid air is slightly thinner than dry air. We count it as zero either way.</p>
             </div>
             <div>
               <label class="fld" for="gap">Yards per club (optional)</label>
@@ -497,6 +510,7 @@
           <div class="brk" id="brk"></div>
 
           <div class="myth" id="myth"></div>
+          <div class="myth caution" id="cautions" hidden></div>
 
           <div class="vc-foot">
             <span class="mark">Golf<span>Raw</span></span>
@@ -509,6 +523,8 @@
           <button class="btn ghost" id="againBtn" type="button">Change the conditions</button>
         </div>
         <p class="note" id="method"></p>
+        <p class="note" data-gr-placement="result_distance_check">These adjustments are only as good as your own
+          numbers. <a href="/tools-club-distance-calculator">Estimate your carry for every club</a>.</p>
         <div class="act-bar">
           <span class="act-lab">Take it with you</span>
           <div class="act-btns">
@@ -530,33 +546,91 @@
         <div class="panel-head"><span><span class="step">02 ·</span> The Numbers Behind It</span></div>
         <div class="panel-in">
           <h2>Why your shot is not playing its yardage</h2>
-          <p>The sprinkler head says 150. The sprinkler head does not know it is 4°C, blowing 15 into your face,
-            and the green sits 20 feet above you. Four separate forces are moving that number, and amateurs
-            routinely ignore all of them and then blame the strike.</p>
+          <p>The sprinkler head says 150. It does not know it is 40°F, blowing 15 into your face, and the green
+            sits 20 feet above you. Each of those moves the number, and most amateurs ignore all of them and then
+            blame the strike.</p>
 
           <h3>Cold air and a cold ball</h3>
-          <p>Roughly <b>2 yards per 10°F</b> below a 70°F baseline. A cold golf ball is less elastic and cold air
-            is denser, so you lose carry twice over. At near freezing you can be a full club down before you have
-            done anything wrong.</p>
+          <p>Titleist&rsquo;s rule of thumb is about <b>1.5% of distance per 20°F</b> from the air alone, so a
+            200-yard shot at 50°F comes up about 3 yards short of its 70°F number. That assumes the ball was kept
+            indoors. A ball left in a cold car boot loses more on top, which is why Titleist suggests swapping two
+            balls and keeping the spare in a warm pocket.</p>
 
           <h3>Wind is not symmetrical</h3>
-          <p>A headwind hurts roughly twice as much as a tailwind helps: about <b>1 yard per mph into it</b>,
-            around <b>half a yard per mph downwind</b>. That asymmetry is why "it is only a two-club wind" is
-            almost always an underestimate when you are hitting into it.</p>
+          <p>Coach Andrew Rice and PING engineer Chris Broadie give everyday golfers a simple rule: into the wind,
+            add <b>1 yard per mph</b>; downwind, take off <b>half that</b>. We apply it at 150 yards and scale it
+            with the length of the shot, so a pitch moves less and a long iron more. Treat it as a floor in strong wind: TrackMan
+            points out the effect is not linear, and a hard headwind costs more than any simple rule allows.</p>
 
-          <h3>Altitude is free distance</h3>
-          <p>Thin air means about <b>2% extra carry per 1,000 feet</b>. In Denver at 5,280 feet a 150-yard shot
-            plays roughly 16 yards shorter. This is why holiday golf in the mountains briefly convinces people
-            they have found something.</p>
+          <h3>Altitude adds distance to longer shots</h3>
+          <p>Thinner air means less drag. Titleist puts the gain at about <b>1.16% per 1,000 feet</b>: a
+            250-yard drive at sea level goes about 265 in Denver. The shorter and slower the shot, the less it
+            gains, and Titleist says greenside shots need no adjustment at all, so the calculator fades the altitude
+            effect out below 100 yards. At 5,280 feet a full 150-yard shot plays about 141.</p>
 
           <h3>The humidity myth</h3>
-          <p>Here is the one everybody gets backwards. Humid air feels heavy, so golfers assume it is denser. It is
-            not. A water molecule is <b>lighter</b> than the nitrogen and oxygen it displaces, so humid air is
-            marginally <b>less</b> dense and the ball flies a fraction <b>further</b>. The effect is small enough
-            to ignore entirely — but it is certainly not costing you distance.</p>
+          <p>Humid air feels heavy, so golfers assume it is denser. It is not. A water molecule is <b>lighter</b>
+            than the nitrogen and oxygen it replaces, so humid air is slightly <b>less</b> dense and the ball flies
+            a touch <b>further</b>. TrackMan&rsquo;s figures put the whole gap between dry and muggy air at about a
+            yard, so the calculator counts it as zero. Rain is different: a wet ball and wet grass cost real
+            distance, and this tool does not model them.</p>
+
+          <h3>Uphill and downhill</h3>
+          <p>TrackMan&rsquo;s rule for a normal trajectory is a yard for a yard: a green 30 feet (10 yards) above
+            you plays about 10 yards longer. Shots that land steeply, like wedges, move a little less; low, running
+            shots move more.</p>
         </div>
       </section>
 
+
+      <!-- ============ METHOD, LIMITS, RULES ============ -->
+      <section class="panel explain" aria-labelledby="pl-method-h">
+        <div class="panel-head"><span><span class="step">03 ·</span> Method &amp; Sources</span></div>
+        <div class="panel-in">
+          <h2 id="pl-method-h">How the estimate works</h2>
+          <p>Each condition is worked out on its own against your flat, still-air yardage, and the results are
+            added, so the breakdown always sums to the total. Numbers are rounded to the yard because the rules of
+            thumb behind them are not more precise than that.</p>
+          <ul class="src">
+            <li><b>Altitude:</b> about 1.16% per 1,000 feet, full effect from 100 yards, fading to none at 50 yards.
+              Titleist Learning Lab, <a href="https://www.titleist.com/learning-lab/performance/altitude-and-golf-ball-flight" rel="noopener">Altitude and ball flight</a>;
+              Titleist&rsquo;s Steve Aoyama in <a href="https://www.pgatour.com/article/news/long-form/2017/02/28/elevated-expectations-wgc-mexico-championship-altitude" rel="noopener">PGA TOUR, 28 February 2017</a>.
+              TrackMan says mid and short irons gain the most, while Titleist says greenside shots barely change;
+              the fade below 100 yards is our simplification of the two.</li>
+            <li><b>Temperature:</b> about 0.75% per 10°F either side of 70°F, air only. Titleist Learning Lab,
+              <a href="https://www.titleist.com/learning-lab/performance/temperature-and-golf-ball-performance" rel="noopener">Temperature and golf balls</a>.</li>
+            <li><b>Wind:</b> 1 yard per mph into the wind, half that downwind. Andrew Rice with PING&rsquo;s Chris Broadie,
+              <a href="https://www.andrewricegolf.com/andrew-rice-golf/2023/3/a-better-way-to-play-in-the-wind" rel="noopener">A better way to play in the wind</a>, March 2023.
+              Applying it at 150 yards and scaling it with the shot is our simplification.</li>
+            <li><b>Elevation change and humidity:</b> a yard for a yard of rise or drop, and humidity worth about a
+              yard at most. TrackMan University training figures, as published in a certified coach&rsquo;s notes
+              (a secondary source).</li>
+          </ul>
+
+          <h3>Limitations</h3>
+          <ul class="src">
+            <li>These are averages. Your launch, spin and ball speed change every line, and high-flight players
+              gain more at altitude than low-flight players.</li>
+            <li>Wind is straight into you or straight behind only. Strong wind, high shots and long clubs into the
+              wind move more than the rule says.</li>
+            <li>Temperature counts the air. A cold ball costs extra.</li>
+            <li>Rain, a wet ball, soft or firm ground and roll after landing are not modelled.</li>
+            <li>Inputs are in yards, °F, feet and mph.</li>
+          </ul>
+
+          <h3>Using it on the course</h3>
+          <p>In a friendly round you will not post, use it whenever you like. In a competition, or a round you post
+            for handicap, the Rules of Golf apply. <a href="https://www.randa.org/en/rog/the-rules-of-golf/rule-4" rel="noopener">Rule 4.3</a>
+            lets you get distances from a rangefinder, take weather (wind speed included) from a forecast, and measure
+            temperature and humidity. It does not let you measure elevation changes, measure wind speed on the
+            course, or use a device to interpret distances, such as turning them into a club or an adjusted
+            yardage, during the round. The penalty is two strokes (loss of the hole in match play) for a first
+            breach and disqualification for a second.</p>
+          <p>Doing the sums before the round is allowed: Rule 4.3 lets you use information gathered before you
+            tee off. Committees can restrict devices further, for example with Model Local Rule G-5, so check the
+            competition terms, and the R&amp;A or USGA rules pages if you are unsure.</p>
+        </div>
+      </section>
 
       <!-- ============ AEO: VISIBLE FAQ (mirrors FAQPage schema) ============ -->
       <section class="faq-block panel" aria-labelledby="faq-h">
@@ -564,19 +638,23 @@
         <div class="faq-in">
           <div class="faq-item">
             <h3>How much does cold weather affect golf ball distance?</h3>
-            <p>Roughly 2 yards for every 10 degrees Fahrenheit below a 70 degree baseline. At 40 degrees a 150 yard shot plays about 6 yards longer, because both the ball and the denser cold air cost you carry.</p>
+            <p>About 0.75% of the distance for every 10 degrees Fahrenheit below 70, from the colder, denser air alone (Titleist). At 40 degrees a 150-yard shot plays about 153 to 154 yards, and a 250-yard drive loses about 6 yards. A ball that has been left in the cold loses more.</p>
           </div>
           <div class="faq-item">
             <h3>How much club should I take into the wind?</h3>
-            <p>About 1 yard per mph into a headwind, and roughly half a yard per mph downwind. A 10 mph headwind makes a 150 yard shot play around 160 yards, which is usually one extra club.</p>
+            <p>For a 150-yard shot, about 1 yard per mph into the wind and half a yard per mph downwind (Andrew Rice and PING&rsquo;s Chris Broadie). A 10 mph headwind makes it play about 160, usually one extra club. Longer shots move more, and in strong wind a headwind costs more than the rule says.</p>
           </div>
           <div class="faq-item">
             <h3>Does humid air make the golf ball fly shorter?</h3>
-            <p>No. This is a myth. Water vapour is lighter than dry air, so humid air is actually less dense and the ball flies marginally further, not shorter. The effect is small enough to ignore.</p>
+            <p>No. Water vapour is lighter than dry air, so humid air is slightly less dense and the ball flies a touch further, not shorter. The difference between dry and muggy air is about a yard. Rain and a wet ball are a different matter and do cost distance.</p>
           </div>
           <div class="faq-item">
             <h3>How much further does a golf ball travel at altitude?</h3>
-            <p>Around 2 percent extra carry for every 1,000 feet of elevation. In Denver at roughly 5,280 feet a 150 yard shot plays about 16 yards shorter.</p>
+            <p>About 1.16% more for every 1,000 feet, according to Titleist, so about 6% in Denver: a 250-yard drive goes about 265. A full 150-yard shot there plays about 141. Short shots gain less, and greenside shots barely change.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Can I use a plays-like calculator in a competition?</h3>
+            <p>Not during the round. Rule 4.3 allows distances from a rangefinder and weather from a forecast, but not measuring elevation changes or using a device to turn distances into an adjusted yardage or a club. Working your numbers out before the round is allowed. Check the competition terms for anything stricter.</p>
           </div>
         </div>
       </section>
@@ -607,6 +685,7 @@
 
   <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
   <script src="./rawgolf-tools.js?v=2"></script>
+  <script src="/lib/distance/plays-like.js?v=1"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -620,50 +699,16 @@
       }
     })();
 
-    /* ==================== PHYSICS COEFFICIENTS (hardcoded) ==================== */
-    var TEMP_BASELINE = 70;      // °F
-    var TEMP_YDS_PER_10F = 2;    // yards per 10°F away from baseline
-    var ALT_PCT_PER_1000FT = 0.02; // +2% carry per 1,000 ft
-    var WIND_HEAD_PER_MPH = 1.0;   // +1 yard per mph into wind
-    var WIND_TAIL_PER_MPH = 0.5;   // -0.5 yard per mph downwind
-    var SLOPE_DIVISOR = 3;         // 1/3 of elevation change, in yards
-    var HUMIDITY_PENALTY = 0;      // deliberately zero — see myth-bust
-    var DEFAULT_GAP = 11;          // yards between clubs
+    /* ==================== ENGINE ====================
+       The maths lives in /lib/distance/plays-like.js (window.GolfrawPlaysLike),
+       with every rate cited there. This script reads, renders and shares. */
+    var PL = window.GolfrawPlaysLike;
+    var TEMP_BASELINE = PL.TEMP_BASE_F;
+    var DEFAULT_GAP = PL.DEFAULT_GAP;
     var LS_KEY = 'golfraw_playslike';
 
     var $ = function (id) { return document.getElementById(id); };
-    var r1 = function (n) { return Math.round(n * 10) / 10; };
-    var sign = function (n) { return (n > 0 ? '+' : '') + r1(n); };
-
-    /* ==================== ENGINE ==================== */
-    function compute(o) {
-      // Cold air/ball costs distance -> shot plays LONGER (positive adjustment)
-      var temp = ((TEMP_BASELINE - o.temp) / 10) * TEMP_YDS_PER_10F;
-
-      // Thin air adds carry -> shot plays SHORTER (negative adjustment)
-      var alt = -(o.yards * ALT_PCT_PER_1000FT * (o.alt / 1000));
-
-      // Headwind lengthens, tailwind shortens
-      var wind = o.windDir === 'head'
-        ? o.wind * WIND_HEAD_PER_MPH
-        : -(o.wind * WIND_TAIL_PER_MPH);
-
-      // Uphill plays longer, downhill plays shorter
-      var slope = o.slope / SLOPE_DIVISOR;
-
-      // Humidity: always zero. Kept explicit so the breakdown can prove the point.
-      var humid = HUMIDITY_PENALTY;
-
-      var total = temp + alt + wind + slope + humid;
-      var playsLike = o.yards + total;
-      var gap = o.gap > 0 ? o.gap : DEFAULT_GAP;
-      var clubs = total / gap;
-
-      return {
-        input: o, temp: temp, alt: alt, wind: wind, slope: slope, humid: humid,
-        total: total, playsLike: playsLike, clubs: clubs, gap: gap
-      };
-    }
+    var sign = function (n) { return (n > 0 ? '+' : '') + Math.round(n); };
 
     function clubPhrase(c) {
       var a = Math.abs(c);
@@ -671,56 +716,58 @@
       var n = Math.round(a * 2) / 2;             // nearest half club
       var unit = n === 1 ? 'club' : 'clubs';
       var txt = (n % 1 === 0 ? n : n.toFixed(1)) + ' ' + unit;
-      return c > 0 ? ('Take ' + txt + ' more.') : ('Take ' + txt + ' less.');
+      return c > 0 ? ('About ' + txt + ' more.') : ('About ' + txt + ' less.');
     }
 
     /* ==================== VERDICTS ==================== */
     function verdictFor(r) {
-      var d = r.total, y = r.input.yards, pl = Math.round(r.playsLike);
+      var d = r.total, y = r.input.yards, pl = Math.round(r.playsLike), p = r.parts;
+      var yd = function (n) { return Math.round(Math.abs(n)); };
       var bits = [];
-      if (r.temp >= 2) bits.push('cold ball');
-      if (r.wind >= 5) bits.push('proper breeze in your face');
-      else if (r.wind <= -5) bits.push('helping wind');
-      if (r.slope >= 3) bits.push('uphill');
-      else if (r.slope <= -3) bits.push('downhill');
-      if (r.alt <= -4) bits.push('thin mountain air');
+      if (p.temp >= 2) bits.push('cold air');
+      else if (p.temp <= -2) bits.push('warm air');
+      if (p.wind >= 5) bits.push('proper breeze in your face');
+      else if (p.wind <= -5) bits.push('helping wind');
+      if (p.slope >= 3) bits.push('uphill');
+      else if (p.slope <= -3) bits.push('downhill');
+      if (p.alt <= -4) bits.push('thin mountain air');
       var why = bits.length ? bits.join(', ') : 'conditions close to neutral';
 
       if (d >= 15) {
         return {
           head: 'Your ' + y + '-yard shot is playing ' + pl + '.',
-          sub: '<b>' + why.charAt(0).toUpperCase() + why.slice(1) + '.</b> That is ' + r1(d) +
-            ' yards of conditions you cannot feel and have never accounted for. ' + clubPhrase(r.clubs) +
+          sub: '<b>' + why.charAt(0).toUpperCase() + why.slice(1) + '.</b> That is about ' + yd(d) +
+            ' yards the conditions are adding. ' + clubPhrase(r.clubs) +
             ' Then stop blaming your swing when you come up short.'
         };
       }
       if (d >= 6) {
         return {
           head: 'It is playing ' + pl + ', not ' + y + '.',
-          sub: '<b>' + why.charAt(0).toUpperCase() + why.slice(1) + '</b> is quietly adding ' + r1(d) +
-            ' yards. ' + clubPhrase(r.clubs) + ' This is the exact gap between pin high and short of the green.'
+          sub: '<b>' + why.charAt(0).toUpperCase() + why.slice(1) + '</b> is adding about ' + yd(d) +
+            ' yards. ' + clubPhrase(r.clubs) + ' That is roughly the gap between pin high and short of the green.'
         };
       }
       if (d <= -15) {
         return {
           head: 'It is only playing ' + pl + '.',
-          sub: '<b>' + why.charAt(0).toUpperCase() + why.slice(1) + '.</b> The conditions are handing you ' +
-            r1(Math.abs(d)) + ' free yards. ' + clubPhrase(r.clubs) +
+          sub: '<b>' + why.charAt(0).toUpperCase() + why.slice(1) + '.</b> The conditions are handing you about ' +
+            yd(d) + ' free yards. ' + clubPhrase(r.clubs) +
             ' Fire at this with your normal club and you are through the back, in the rubbish, wondering why.'
         };
       }
       if (d <= -6) {
         return {
           head: 'It is playing ' + pl + ', not ' + y + '.',
-          sub: '<b>' + why.charAt(0).toUpperCase() + why.slice(1) + '</b> is taking ' + r1(Math.abs(d)) +
+          sub: '<b>' + why.charAt(0).toUpperCase() + why.slice(1) + '</b> is taking about ' + yd(d) +
             ' yards off it. ' + clubPhrase(r.clubs) + ' Long is usually worse than short here.'
         };
       }
       return {
-        head: 'It plays what it says: ' + pl + '.',
-        sub: 'Conditions are basically neutral — everything cancels out to ' + sign(d) +
-          ' yards. Hit your normal club. For once the number on the sprinkler head is telling the truth, ' +
-          'which means any bad result from here is entirely your own work.'
+        head: 'It plays about what it says: ' + pl + '.',
+        sub: 'Conditions are close to neutral. Everything nets out to ' + sign(d) +
+          ' yards, so hit your normal club. For once the number on the sprinkler head is telling the truth, ' +
+          'which means any bad result from here is your own work.'
       };
     }
 
@@ -740,18 +787,29 @@
       };
     }
 
+    var ERRORS = {
+      yards_missing: 'Enter the target yardage first.',
+      yards: 'Target yardage should be between 20 and 400.',
+      temp: 'Temperature should be between -20 and 130 °F.',
+      alt: 'Altitude should be between 0 and 12,000 feet.',
+      wind: 'Wind speed should be between 0 and 60 mph.',
+      windDir: 'Pick headwind or tailwind.',
+      slope: 'Elevation change should be between -200 and 200 feet.',
+      slope_ratio: 'That elevation change is more than half the shot. The yard-for-a-yard rule does not hold there, so check the numbers.'
+    };
+    var CAUTIONS = {
+      strong_wind: 'Strong wind: from about 20 mph the real effect grows faster than this rule, especially into the wind. Treat the wind line as a floor.',
+      cold_ball: 'Below 40°F: this counts the air only. A cold ball loses more, so keep the spare in a warm pocket.',
+      short_altitude: 'Short shot at altitude: Titleist says shorter, slower shots gain less, so the altitude line fades out below 100 yards.',
+      steep: 'Big elevation change for the distance: steep-landing shots move less than a yard for a yard, low shots more. Read it loosely.'
+    };
+
     function run() {
       var o = readInputs();
-      if (isNaN(o.yards)) return err('Enter the target yardage first.');
-      if (o.yards < 20 || o.yards > 400) return err('Target yardage should be between 20 and 400.');
-      if (isNaN(o.temp) || o.temp < -20 || o.temp > 130) return err('Temperature should be between -20 and 130 °F.');
-      if (isNaN(o.alt) || o.alt < 0 || o.alt > 12000) return err('Altitude should be between 0 and 12,000 feet.');
-      if (isNaN(o.wind) || o.wind < 0 || o.wind > 60) return err('Wind speed should be between 0 and 60 mph.');
-      if (isNaN(o.slope) || o.slope < -200 || o.slope > 200) return err('Elevation change should be between -200 and 200 feet.');
-      if (isNaN(o.gap) || o.gap < 5 || o.gap > 25) o.gap = DEFAULT_GAP;
+      var r = PL.compute(o);
+      if (!r.ok) return err(ERRORS[r.code] || 'Check the numbers and try again.');
       err('');
-
-      var r = compute(o);
+      o = r.input;
       last = r;
       var v = verdictFor(r);
 
@@ -763,27 +821,32 @@
       bn.className = 'n' + (r.total < 0 ? ' short' : '');
       $('clubLine').textContent = clubPhrase(r.clubs);
 
+      var humidity = segValue('humid');
       $('brk').innerHTML =
-        brkRow('Temperature', o.temp + '°F vs 70°F baseline', r.temp) +
-        brkRow('Wind', o.wind + ' mph ' + (o.windDir === 'head' ? 'headwind' : 'tailwind'), r.wind) +
-        brkRow('Elevation', o.slope + ' ft ' + (o.slope >= 0 ? 'uphill' : 'downhill'), r.slope) +
-        brkRow('Altitude', o.alt.toLocaleString() + ' ft above sea level', r.alt) +
-        brkRow('Humidity', o.humidity === 'high' ? 'High / muggy' : 'Low / dry', r.humid) +
-        '<div class="brk-row total"><span class="k">Plays like</span><span class="v">' +
+        brkRow('Temperature', o.temp + '°F vs 70°F', r.shown.temp) +
+        brkRow('Wind', o.wind + ' mph ' + (o.windDir === 'head' ? 'headwind' : 'tailwind'), r.shown.wind) +
+        brkRow('Elevation', Math.abs(o.slope) + ' ft ' + (o.slope >= 0 ? 'uphill' : 'downhill'), r.shown.slope) +
+        brkRow('Altitude', o.alt.toLocaleString() + ' ft above sea level', r.shown.alt) +
+        brkRow('Humidity', humidity === 'high' ? 'High / muggy' : 'Low / dry', r.shown.humid) +
+        '<div class="brk-row total"><span class="k">Plays like, about</span><span class="v">' +
         Math.round(r.playsLike) + ' yds (' + sign(r.total) + ')</span></div>';
 
-      $('myth').innerHTML = o.humidity === 'high'
-        ? '<b>Humidity: 0 yards.</b> You picked muggy, and it changes nothing. Water vapour is lighter than the ' +
-          'nitrogen and oxygen it replaces, so humid air is actually <b>less</b> dense and the ball flies a ' +
-          'fraction further. Heavy air is a feeling, not a force. Blame something else.'
-        : '<b>Humidity: 0 yards.</b> For the record, it would still be 0 if you picked muggy. Humid air is less ' +
-          'dense than dry air, so it helps marginally rather than hurting. The "heavy air" excuse has never been real.';
+      $('myth').innerHTML = humidity === 'high'
+        ? '<b>Humidity: 0 yards.</b> You picked muggy, and it barely matters. Water vapour is lighter than the ' +
+          'nitrogen and oxygen it replaces, so humid air is <b>less</b> dense and the ball flies a touch further: ' +
+          'about a yard across the whole range, by TrackMan\'s numbers. Rain and a wet ball are a different story.'
+        : '<b>Humidity: 0 yards.</b> It would still be about 0 if you picked muggy. Humid air is less dense than ' +
+          'dry air, so it helps by a yard at most rather than hurting. Rain and a wet ball are a different story.';
 
-      $('method').textContent = 'Temperature ' + TEMP_YDS_PER_10F + ' yds per 10°F from a ' + TEMP_BASELINE +
-        '°F baseline · altitude +' + (ALT_PCT_PER_1000FT * 100) + '% carry per 1,000 ft · headwind ' +
-        WIND_HEAD_PER_MPH + ' yd/mph, tailwind ' + WIND_TAIL_PER_MPH + ' yd/mph · elevation ÷ ' + SLOPE_DIVISOR +
-        ' · humidity 0. Club change assumes ' + r.gap + ' yards between clubs. These are established rules of ' +
-        'thumb, not launch-monitor readings — treat them as a strong steer, not gospel.';
+      var cautions = r.flags.map(function (f) { return CAUTIONS[f]; }).filter(Boolean);
+      $('cautions').innerHTML = cautions.length ? '<b>Read with care.</b> ' + cautions.join(' ') : '';
+      $('cautions').hidden = !cautions.length;
+
+      $('method').textContent = 'An estimate from published rules of thumb, not a launch monitor. Altitude: about ' +
+        '1.16% per 1,000 ft (Titleist), fading out on shots under 100 yards. Temperature: about 0.75% per 10°F ' +
+        'from 70°F, air only (Titleist). Wind: 1 yard per mph into it and half that downwind (Andrew Rice and ' +
+        'PING), applied at 150 yards and scaled with the shot. Elevation: a yard for a yard (TrackMan). Humidity: 0. ' +
+        'Club change assumes ' + r.gap + ' yards between clubs.';
 
       $('outWrap').classList.add('show');
       if (window.GRTrack) GRTrack.completed();
@@ -793,7 +856,7 @@
     }
 
     function brkRow(k, detail, v) {
-      var cls = Math.abs(v) < 0.05 ? 'zero' : (v > 0 ? 'plus' : 'minus');
+      var cls = v === 0 ? 'zero' : (v > 0 ? 'plus' : 'minus');
       return '<div class="brk-row"><span class="k">' + k + '<small>' + detail + '</small></span>' +
         '<span class="v ' + cls + '">' + sign(v) + ' yds</span></div>';
     }
@@ -826,13 +889,13 @@
       var r = last, o = r.input, v = verdictFor(r);
       var lines = ['THE PLAYS LIKE CALCULATOR', '', v.head.toUpperCase(), ''];
       lines.push('Target:      ' + o.yards + ' yds');
-      lines.push('Plays like:  ' + Math.round(r.playsLike) + ' yds (' + sign(r.total) + ')');
+      lines.push('Plays like:  about ' + Math.round(r.playsLike) + ' yds (' + sign(r.total) + ')');
       lines.push('');
-      lines.push('Temperature (' + o.temp + 'F):  ' + sign(r.temp));
-      lines.push('Wind (' + o.wind + 'mph ' + o.windDir + '): ' + sign(r.wind));
-      lines.push('Elevation (' + o.slope + 'ft):  ' + sign(r.slope));
-      lines.push('Altitude (' + o.alt + 'ft):     ' + sign(r.alt));
-      lines.push('Humidity:              +0 (it is a myth)');
+      lines.push('Temperature (' + o.temp + 'F):  ' + sign(r.shown.temp));
+      lines.push('Wind (' + o.wind + 'mph ' + o.windDir + '): ' + sign(r.shown.wind));
+      lines.push('Elevation (' + o.slope + 'ft):  ' + sign(r.shown.slope));
+      lines.push('Altitude (' + o.alt + 'ft):     ' + sign(r.shown.alt));
+      lines.push('Humidity:              0');
       lines.push('');
       lines.push(clubPhrase(r.clubs));
       lines.push('', 'Work out yours: golfraw.com/tools-plays-like');
@@ -939,7 +1002,7 @@
           { k: 'Adjustment', v: sign(r.total) + ' yds' },
           { k: 'Wind', v: o.wind + 'mph ' + o.windDir },
           { k: 'Club', v: clubPhrase(r.clubs) },
-          { k: 'Humidity', v: '+0 — a myth' }
+          { k: 'Humidity', v: '0 yds' }
         ]
       };
     }

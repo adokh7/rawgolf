@@ -198,8 +198,8 @@ ARTICLE_SEO_OVERRIDES.update({
     "/tools-tee-box-check": {
         "title": "What Tees Should I Play? Tee Calculator by Driver Distance",
         "description": (
-            "Enter your driver carry to see the course yardage you should play and "
-            "which tees get you there. It uses the Tee It Forward rule of thumb: carry × 28."
+            "Enter your driver carry to see the course length the Tee It Forward chart "
+            "suggests for your drive, and roughly what longer tees cost you a round."
         ),
     },
     "/tools-plays-like": {

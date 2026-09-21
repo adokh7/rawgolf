@@ -18,19 +18,19 @@
 
   <!-- SEO audit metadata: managed by scripts/fix_seo_audit.py -->
   <title>What Tees Should I Play? Tee Calculator by Driver Distance</title>
-  <meta name="description" content="Enter your driver carry to see the course yardage you should play and which tees get you there. It uses the Tee It Forward rule of thumb: carry × 28.">
+  <meta name="description" content="Enter your driver carry to see the course length the Tee It Forward chart suggests for your drive, and roughly what longer tees cost you a round.">
   <link rel="canonical" href="https://www.golfraw.com/tools-tee-box-check">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta property="og:site_name" content="GolfRaw">
   <meta name="application-name" content="GolfRaw">
   <meta property="og:type" content="website">
   <meta property="og:title" content="What Tees Should I Play? Tee Calculator by Driver Distance">
-  <meta property="og:description" content="Enter your driver carry to see the course yardage you should play and which tees get you there. It uses the Tee It Forward rule of thumb: carry × 28.">
+  <meta property="og:description" content="Enter your driver carry to see the course length the Tee It Forward chart suggests for your drive, and roughly what longer tees cost you a round.">
   <meta property="og:url" content="https://www.golfraw.com/tools-tee-box-check">
   <meta property="og:image" content="https://www.golfraw.com/public/raw-golf-practice.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="What Tees Should I Play? Tee Calculator by Driver Distance">
-  <meta name="twitter:description" content="Enter your driver carry to see the course yardage you should play and which tees get you there. It uses the Tee It Forward rule of thumb: carry × 28.">
+  <meta name="twitter:description" content="Enter your driver carry to see the course length the Tee It Forward chart suggests for your drive, and roughly what longer tees cost you a round.">
   <meta name="twitter:image" content="https://www.golfraw.com/public/raw-golf-practice.webp">
   <meta name="p:domain_verify" content="b7225cf07b728cc1691b9a4c7a938dbe"/>
 
@@ -76,7 +76,7 @@
       "applicationCategory": "SportsApplication",
       "operatingSystem": "Any browser",
       "browserRequirements": "Requires JavaScript",
-      "description": "Enter your driver carry to see the course yardage you should play and which tees get you there. It uses the Tee It Forward rule of thumb: carry × 28.",
+      "description": "Enter your driver carry to see the course length the Tee It Forward chart suggests for your drive, and roughly what longer tees cost you a round.",
       "publisher": {
         "@id": "https://www.golfraw.com#organization"
       },
@@ -123,7 +123,7 @@
           "name": "What tees should I play?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Multiply your driver carry distance by 28 to get your ideal course yardage. A player who carries their driver 220 yards should be playing a course of roughly 6,160 yards."
+            "text": "Start from your average driving distance, carry plus roll. The PGA of America and USGA Tee It Forward chart suggests about 5,200 to 5,400 yards for a 200-yard drive and 6,200 to 6,400 for a 250-yard drive. Treat it as a starting point, then adjust for how many greens you reach."
           }
         },
         {
@@ -131,7 +131,7 @@
           "name": "How many shots does playing the wrong tees cost you?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Roughly 1.5 shots for every 200 yards you play beyond your ideal course yardage. Playing 800 yards too far back costs about six shots a round."
+            "text": "The USGA Course Rating formulas suggest about 0.9 strokes for every extra 200 yards for a scratch golfer and about 1.25 for a bogey golfer (men’s formulas; the women’s are higher). Playing 600 yards too far back costs a bogey golfer close to four strokes a round."
           }
         },
         {
@@ -140,6 +140,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "No. Tee boxes are designed so that players of different distances face the same approach shots. Playing tees that are too long means hitting long irons into greens built for wedges."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the Tee It Forward chart?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 2011 guide from the PGA of America and the USGA that matches average driving distance to an 18-hole course length, from 2,100 to 2,300 yards for a 100-yard drive up to 6,700 to 6,900 for a 275-yard drive. This calculator reads it for your drive, between rows in a straight line."
           }
         }
       ]
@@ -270,6 +278,10 @@
     .compare .n { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-weight: 700; font-size: 24px; line-height: 1 }
     .compare .l { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #94a3b8; margin-top: 7px; display: block }
     .compare .good .n { color: #86efac }
+    .compare .n.rng { font-size: 19px }
+    .explain ul.src { margin: 0 0 16px 18px; max-width: 68ch }
+    .explain ul.src li { font-size: 14.5px; line-height: 1.6; margin-bottom: 8px }
+    .explain a, .note a, .sub a { color: var(--flag); font-weight: 600; text-decoration: underline; text-underline-offset: 2px }
 
     .facts { display: grid; gap: 10px; margin-bottom: 26px }
     .fact { border-left: 1px solid var(--flag); padding: 4px 0 4px 14px; font-size: 14.5px; color: #d8ded6; line-height: 1.55 }
@@ -360,9 +372,9 @@
       <div class="eyebrow">GolfRaw · TOOLS</div>
       <h1>What Tees Should I Play?</h1>
       <p class="tool-brand">The Tee Box Reality Check</p>
-      <p>Three numbers and thirty seconds. We will tell you the course length you should actually be playing, how
-        far back you have wandered, and roughly what your ego is costing you every single round. Runs entirely in
-        your browser — nothing is uploaded anywhere.</p>
+      <p>Three numbers and thirty seconds. You get the course length the official Tee It Forward chart suggests
+        for your drive, how far back you have wandered, and a rough idea of what that costs you each round. It runs
+        in your browser, and nothing is uploaded.</p>
     </div>
   </div>
 
@@ -373,8 +385,8 @@
       <section class="answer-block" aria-labelledby="aeo-q">
         <div class="ab-tag">The short answer</div>
         <h2 id="aeo-q">What tees should I play based on my driver distance?</h2>
-        <p class="ab-answer">Multiply your driver carry by 28 — that is the course yardage you have earned, and this free tee calculator shows what playing further back costs.</p>
-        <p class="ab-body">The Tee Box Reality Check is a <b>free online golf tee selection calculator</b> built on the widely used driver-carry × 28 rule. Enter three honest numbers and it returns the course length that matches your actual distance, how far back your ego has wandered, and the shots per round it is costing you. If you want to <b>find the right tees for your game now</b>, this takes about thirty seconds. If you are <b>understanding golf course yardage and approach distances</b> more generally, it also shows the average par four approach you are leaving yourself and the club that implies. The <a href="/guides-playing-golf-in-your-fifties-distance-loss">distance-loss guide</a> explains when moving forward becomes the sensible play, not a concession; the <a href="/news-2026-golf-club-distances-guide">club-distance guide</a> covers the yardage side of that decision.</p>
+        <p class="ab-answer">Match the course to your driving distance. The PGA of America and USGA Tee It Forward chart puts a 200-yard drive (carry plus roll) at 5,200 to 5,400 yards and a 250-yard drive at 6,200 to 6,400. This free tee calculator reads the chart for your drive and shows what playing further back costs.</p>
+        <p class="ab-body">The Tee Box Reality Check is a <b>free online golf tee selection calculator</b> built on the Tee It Forward chart from the PGA of America and the USGA. Enter three honest numbers and it returns a starting course length for your drive, how far past it your tees are, and a rough stroke cost from the USGA&rsquo;s Course Rating formulas. If you want to <b>find the right tees for your game now</b>, this takes about thirty seconds. If you are <b>understanding golf course yardage and approach distances</b> more generally, it also shows the average par four approach you are leaving yourself and the club that implies. The <a href="/guides-playing-golf-in-your-fifties-distance-loss">distance-loss guide</a> explains when moving forward becomes the sensible play, not a concession; the <a href="/news-2026-golf-club-distances-guide">club-distance guide</a> covers the yardage side of that decision.</p>
         <ul class="ab-facts"><li><b>Free</b> forever</li><li><b>No</b> signup</li><li><b>0</b> data uploaded</li><li><b>100%</b> in your browser</li></ul>
       </section>
 
@@ -390,12 +402,13 @@
               <input type="number" id="carry" min="50" max="400" step="1" inputmode="numeric" placeholder="220">
               <p class="sub">The number you would admit to under oath, not the one you tell the lads in the car
                 park.</p>
+              <p class="sub" data-gr-placement="input_distance_check">Not sure? <a href="/tools-club-distance-calculator">Estimate it</a> from your 7-iron or swing speed.</p>
               <div class="quick" id="carryQuick"></div>
             </div>
             <div>
               <label class="fld" for="score">Typical 18-hole score</label>
               <input type="number" id="score" min="55" max="200" step="1" inputmode="numeric" placeholder="95">
-              <p class="sub">Your realistic average, including the holes you would rather forget.</p>
+              <p class="sub">Your realistic average, including the holes you would rather forget. It sets how much each extra yard costs you.</p>
             </div>
             <div>
               <label class="fld" for="yards">Tees you currently play (yards)</label>
@@ -466,9 +479,11 @@
         <div class="panel-head"><span><span class="step">02 ·</span> Why This Matters</span></div>
         <div class="panel-in">
           <h2>What tees should I play?</h2>
-          <p>The simplest rule in golf: multiply your driver carry by 28. Carry it 220 and you belong on roughly a
-            6,160-yard course. Carry it 250 and you have earned 7,000 yards. Most amateurs are playing a course
-            built for someone who hits it 40 yards past them.</p>
+          <p>Start from the Tee It Forward chart that the PGA of America and the USGA published in 2011. It matches
+            average driving distance, carry plus roll, to an 18-hole length: a 200-yard drive suggests 5,200 to
+            5,400 yards, a 250-yard drive 6,200 to 6,400. Plenty of golfers are further back than that. A 2023 USGA
+            study found about half of male golfers and three quarters of female golfers play tees too long for
+            them.</p>
 
           <h3>The approach shot is the whole argument</h3>
           <p>Tee boxes exist so that different players face the same second shot. A par 4 is designed to be a drive
@@ -481,12 +496,54 @@
             not care which coloured post you started from.</p>
 
           <h3>How many shots is it really worth?</h3>
-          <p>About 1.5 shots for every 200 yards you play beyond your ideal length. Play 800 yards too far back and
-            you are handing away six shots before you hit a ball. That is more than most golfers gain from a winter
-            of lessons.</p>
+          <p>The USGA&rsquo;s Course Rating formulas give a fair guide. On the men&rsquo;s formulas, every extra
+            200 yards adds about 0.9 strokes to a scratch golfer&rsquo;s rating and about 1.25 to a bogey
+            golfer&rsquo;s; the women&rsquo;s formulas give about 1.1 and 1.7. Play 600 yards too far back as a bogey
+            golfer and that is close to four strokes a round, more than most golfers gain from a winter of lessons.</p>
         </div>
       </section>
 
+
+      <!-- ============ METHOD & LIMITS ============ -->
+      <section class="panel explain" aria-labelledby="tb-method-h">
+        <div class="panel-head"><span><span class="step">03 ·</span> Method &amp; Sources</span></div>
+        <div class="panel-in">
+          <h2 id="tb-method-h">How the estimate works</h2>
+          <p>Your driver carry becomes an estimated total drive, which is read against the Tee It Forward chart in
+            a straight line between its rows and rounded to 50 yards. The chart gives a 200-yard band for each
+            drive, so the answer is a range, not a single number.</p>
+          <ul class="src">
+            <li><b>Course length:</b> PGA of America and USGA,
+              <a href="https://pdf.pgalinks.com/p-g-a/Tee_It_Forward_Guidelines.pdf" rel="noopener">Tee It Forward guidelines</a>, 2011.
+              Its driving distance is carry plus roll, as the R&amp;A and USGA&rsquo;s 2019 playing-lengths study reads it.</li>
+            <li><b>Carry to total:</b> USGA, D. Pierce, recreational golfer distance study, 1 December 2023
+              (627 golfers): driver carry = &minus;34.38 + 1.03 &times; total.</li>
+            <li><b>Stroke cost:</b> USGA Course Rating length formulas: a scratch rating rises 1 stroke per 220
+              yards, a bogey rating 1 per 160 (men). Your typical score places you between the two: 72 or better
+              counts as scratch, 92 or worse as bogey. That placing is our simplification.</li>
+            <li><b>Approach and club:</b> an average par 4 is taken as about 6% of the course (our approximation);
+              the club comes from The Distance Check&rsquo;s estimate for your driver.</li>
+            <li><b>Who plays too far back:</b> USGA Green Section Record, D. Pierce, June 2023 (the Best Tees research).</li>
+          </ul>
+
+          <h3>A second opinion</h3>
+          <p>The USGA&rsquo;s newer <a href="https://www.usga.org/content/usga/home-page/course-care/golfer-experience/golfer-experience-information.html" rel="noopener">7-iron
+            tee selector</a>, from its 2023 Best Tees research, starts from your 7-iron instead and can suggest a
+            longer course than this chart. If the two disagree, try both sets for a few rounds and keep the one
+            where you reach more greens.</p>
+
+          <h3>Limitations</h3>
+          <ul class="src">
+            <li>The chart only knows length. Forced carries, elevation, altitude, wind, firm or soft ground and hole
+              design all change how long a course plays.</li>
+            <li>Roll depends on your flight and the turf, so the total drive is an estimate.</li>
+            <li>The stroke cost uses the men&rsquo;s formulas for everyone; the women&rsquo;s formulas charge about a
+              quarter to a third more per yard. The formulas stop at bogey golfers, so for higher scores the real
+              cost is probably larger.</li>
+            <li>Yards only.</li>
+          </ul>
+        </div>
+      </section>
 
       <!-- ============ AEO: VISIBLE FAQ (mirrors FAQPage schema) ============ -->
       <section class="faq-block panel" aria-labelledby="faq-h">
@@ -494,15 +551,19 @@
         <div class="faq-in">
           <div class="faq-item">
             <h3>What tees should I play?</h3>
-            <p>Multiply your driver carry distance by 28 to get your ideal course yardage. A player who carries their driver 220 yards should be playing a course of roughly 6,160 yards.</p>
+            <p>Start from your average driving distance, carry plus roll. The PGA of America and USGA Tee It Forward chart suggests about 5,200 to 5,400 yards for a 200-yard drive and 6,200 to 6,400 for a 250-yard drive. Treat it as a starting point, then adjust for how many greens you reach.</p>
           </div>
           <div class="faq-item">
             <h3>How many shots does playing the wrong tees cost you?</h3>
-            <p>Roughly 1.5 shots for every 200 yards you play beyond your ideal course yardage. Playing 800 yards too far back costs about six shots a round.</p>
+            <p>The USGA Course Rating formulas suggest about 0.9 strokes for every extra 200 yards for a scratch golfer and about 1.25 for a bogey golfer (men&rsquo;s formulas; the women&rsquo;s are higher). Playing 600 yards too far back costs a bogey golfer close to four strokes a round.</p>
           </div>
           <div class="faq-item">
             <h3>Is moving up a tee box cheating?</h3>
             <p>No. Tee boxes are designed so that players of different distances face the same approach shots. Playing tees that are too long means hitting long irons into greens built for wedges.</p>
+          </div>
+          <div class="faq-item">
+            <h3>What is the Tee It Forward chart?</h3>
+            <p>A 2011 guide from the PGA of America and the USGA that matches average driving distance to an 18-hole course length, from 2,100 to 2,300 yards for a 100-yard drive up to 6,700 to 6,900 for a 275-yard drive. This calculator reads it for your drive, between rows in a straight line.</p>
           </div>
         </div>
       </section>
@@ -533,6 +594,8 @@
 
   <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
   <script src="./rawgolf-tools.js?v=2"></script>
+  <script src="/lib/distance/club-distance.js?v=1"></script>
+  <script src="/lib/distance/tee-box.js?v=1"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -546,118 +609,77 @@
       }
     })();
 
-    /* ==================== CONSTANTS (hardcoded heuristics) ==================== */
-    var YARD_MULTIPLIER = 28;      // industry standard: driver carry x 28 = ideal course yardage
-    var SHOTS_PER_200 = 1.5;       // 1.5 shots lost per 200 yards played over ideal
-    var PAR4_SHARE = 0.0594;       // an average par 4 is ~5.94% of total course yardage
+    /* ==================== ENGINE ====================
+       The maths lives in /lib/distance/tee-box.js (window.GolfrawTeeBox), which
+       reads the Tee It Forward chart through The Distance Check's model, with
+       every source cited there. This script reads, renders and shares. */
+    var TB = window.GolfrawTeeBox;
     var LS_KEY = 'golfraw_teebox_last';
 
     var $ = function (id) { return document.getElementById(id); };
     var r1 = function (n) { return Math.round(n * 10) / 10; };
     var comma = function (n) { return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); };
-
-    /* ==================== ENGINE ==================== */
-    function clubFor(y) {
-      if (y <= 0) return 'a tap-in';
-      if (y < 105) return 'a wedge';
-      if (y < 120) return 'a 9-iron';
-      if (y < 135) return 'an 8-iron';
-      if (y < 150) return 'a 7-iron';
-      if (y < 165) return 'a 6-iron';
-      if (y < 180) return 'a 5-iron';
-      if (y < 200) return 'a 4-iron';
-      if (y < 225) return 'a hybrid';
-      return 'a 3-wood';
-    }
-
-    function analyse(carry, score, yards) {
-      var optimal = carry * YARD_MULTIPLIER;
-      var overage = yards - optimal;
-      var shotsLost = Math.max(0, (overage / 200) * SHOTS_PER_200);
-
-      // approach shot into an average par 4, now vs from the right tees
-      var avgPar4Now = yards * PAR4_SHARE;
-      var avgPar4Ideal = optimal * PAR4_SHARE;
-      var approachNow = Math.max(0, avgPar4Now - carry);
-      var approachIdeal = Math.max(0, avgPar4Ideal - carry);
-
-      return {
-        carry: carry, score: score, yards: yards,
-        optimal: optimal, overage: overage, shotsLost: shotsLost,
-        approachNow: approachNow, approachIdeal: approachIdeal,
-        clubNow: clubFor(approachNow), clubIdeal: clubFor(approachIdeal),
-        projectedScore: Math.max(18, score - shotsLost)
-      };
-    }
+    var span = function (a) { return comma(a.range[0]) + '–' + comma(a.range[1]); };
 
     /* ==================== VERDICTS ==================== */
     function verdictFor(a) {
-      var over = a.overage;
-
-      // Playing far too short is also a wrong answer — the brief only covers
-      // the ego direction, but staying silent here would be dishonest.
-      if (over < -300) {
+      if (a.status === 'forward') {
         return {
-          head: "You're playing too far forward.",
-          sub: 'You carry it <b>' + a.carry + ' yards</b> and you are playing a course ' +
-            comma(Math.abs(over)) + ' yards shorter than you have earned. Nothing wrong with an easy day, ' +
-            'but you are hitting wedge into everything and calling it a score. Move back a set and give ' +
-            'yourself an actual test.',
+          head: "You're playing further forward than the guide suggests.",
+          sub: 'You carry it <b>' + a.carry + ' yards</b>, and the Tee It Forward chart points you at about <b>' +
+            span(a) + ' yards</b>. You are playing ' + comma(a.yards) + '. Nothing wrong with an easy day, but if ' +
+            'every par 4 is a wedge in, try the next set back.',
           tone: 'forward'
         };
       }
-
-      if (over > 800) {
+      if (a.status === 'far_back') {
         return {
           head: 'You are playing far too far back.',
-          sub: 'You belong on a shorter course. You carry your driver <b>' + a.carry + ' yards</b> and you have ' +
-            'signed up for <b>' + comma(a.yards) + '</b>. That is <b>' + comma(over) + ' yards</b> of pure ego. ' +
-            "You're not a golfer here, you're a tourist.",
+          sub: 'You carry your driver <b>' + a.carry + ' yards</b> and you have signed up for <b>' + comma(a.yards) +
+            '</b>. The Tee It Forward chart puts your starting point at about <b>' + span(a) + '</b>. That is <b>' +
+            comma(a.over) + ' yards</b> past it. You\'re not a golfer here, you\'re a tourist.',
           tone: 'bad'
         };
       }
-
-      if (over >= 300) {
+      if (a.status === 'back') {
         return {
           head: "You're hitting " + a.clubNow + ' into par 4s. Nobody is impressed.',
-          sub: 'You are <b>' + comma(over) + ' yards</b> too far back. The greens you are firing at were ' +
-            'designed to be attacked with ' + a.clubIdeal + ', and you are standing over ' +
-            Math.round(a.approachNow) + ' yards. Move up a tee box.',
+          sub: 'You are about <b>' + comma(a.over) + ' yards</b> past the length the Tee It Forward chart suggests ' +
+            'for your drive. From tees in that range, an average par 4 would leave you ' + a.clubIdeal +
+            ' instead. Try the next set forward.',
           tone: 'mid'
         };
       }
-
       return {
-        head: 'Honest tee choice. Genuinely.',
-        sub: 'You carry it <b>' + a.carry + ' yards</b> and you are playing <b>' + comma(a.yards) + '</b>. ' +
-          'That is within touching distance of where you should be. Rare. Whatever is wrong with your golf, ' +
-          'it is not the tee box — so you will have to blame the swing like everyone else.',
+        head: 'Honest tee choice.',
+        sub: 'You carry it <b>' + a.carry + ' yards</b> and you are playing <b>' + comma(a.yards) + '</b>. The ' +
+          'Tee It Forward chart suggests about <b>' + span(a) + '</b>, so you are close to where the guide puts ' +
+          'you. Whatever is wrong with your golf, it is probably not the tee box.',
         tone: 'good'
       };
     }
 
     function factsFor(a) {
       var f = [];
-      if (a.overage >= 300) {
-        f.push('<b>Right now:</b> average par 4 leaves you ' + Math.round(a.approachNow) + ' yards — ' +
+      f.push('<b>Starting point for your drive:</b> about ' + span(a) + ' yards, read at an estimated total drive ' +
+        'of ' + Math.round(a.total) + ' yards.' +
+        (a.beyond === 'long' ? ' Your drive is past the top of the chart, so this is its longest row.' :
+         a.beyond === 'short' ? ' Your drive is below the bottom of the chart, so this is its shortest row.' : ''));
+      if (a.status === 'back' || a.status === 'far_back') {
+        f.push('<b>Right now:</b> an average par 4 leaves you about ' + Math.round(a.approachNow) + ' yards, ' +
           a.clubNow + '.');
-        f.push('<b>From the right tees:</b> ' + Math.round(a.approachIdeal) + ' yards — ' + a.clubIdeal +
-          '. Same hole, completely different game.');
-        f.push('<b>The cost:</b> roughly <b>' + r1(a.shotsLost) + ' shots a round</b>. Over a season that is ' +
-          'more than any lesson you have ever paid for.');
-        f.push('<b>Projected score from the correct tees:</b> around <b>' + Math.round(a.projectedScore) +
-          '</b>, without changing a single thing about your swing.');
-      } else if (a.overage < -300) {
-        f.push('<b>Right now:</b> average par 4 leaves you ' + Math.round(a.approachNow) + ' yards — ' +
-          a.clubNow + '. Too easy to learn anything.');
-        f.push('<b>Your earned yardage:</b> ' + comma(a.optimal) + ' yards.');
+        f.push('<b>From tees in your range:</b> about ' + Math.round(a.approachIdeal) + ' yards, ' + a.clubIdeal + '.');
+        f.push('<b>Rough cost:</b> about <b>' + r1(a.strokes) + ' strokes a round</b>, at the USGA Course Rating rate ' +
+          'of ' + (Math.round(a.strokesPer200 * 100) / 100) + ' strokes per 200 yards for your scoring level.');
+        f.push('<b>From the right tees:</b> a round of about <b>' + Math.round(a.projectedScore) +
+          '</b> is a fair guess, swing unchanged.');
+      } else if (a.status === 'forward') {
+        f.push('<b>Right now:</b> an average par 4 leaves you about ' + Math.round(a.approachNow) + ' yards, ' +
+          a.clubNow + '.');
       } else {
-        f.push('<b>Your ideal course length:</b> ' + comma(a.optimal) + ' yards. You are playing ' +
-          comma(a.yards) + '.');
-        f.push('<b>Average par 4 approach:</b> ' + Math.round(a.approachNow) + ' yards — ' + a.clubNow +
-          '. That is exactly what the architect had in mind.');
-        f.push('<b>Shots left on the table by tee choice:</b> ' + r1(a.shotsLost) +
-          '. There is nothing to gain here. The problem is elsewhere.');
+        f.push('<b>Average par 4 approach:</b> about ' + Math.round(a.approachNow) + ' yards, ' + a.clubNow + '.');
+        f.push('<b>Strokes lost to tee choice:</b> ' + (a.strokes >= 0.5 ? 'about ' + r1(a.strokes) : 'next to none') +
+          '. The problem, if there is one, is elsewhere.');
       }
       return f;
     }
@@ -665,18 +687,19 @@
     /* ==================== RENDER ==================== */
     var last = null;
 
+    var ERRORS = {
+      missing: 'Fill in all three numbers first.',
+      carry: 'Driver carry should be between 50 and 400 yards. Be honest.',
+      score: 'Typical score should be between 55 and 200.',
+      yards: 'Course yardage should be between 3,000 and 8,500.'
+    };
+
     function run() {
-      var carry = parseInt($('carry').value, 10);
-      var score = parseInt($('score').value, 10);
-      var yards = parseInt($('yards').value, 10);
-
-      if (isNaN(carry) || isNaN(score) || isNaN(yards)) return err('Fill in all three numbers first.');
-      if (carry < 50 || carry > 400) return err('Driver carry should be between 50 and 400 yards. Be honest.');
-      if (score < 55 || score > 200) return err('Typical score should be between 55 and 200.');
-      if (yards < 3000 || yards > 8500) return err('Course yardage should be between 3,000 and 8,500.');
+      var a = TB.analyse({
+        carry: parseInt($('carry').value, 10), score: parseInt($('score').value, 10), yards: parseInt($('yards').value, 10)
+      });
+      if (!a.ok) return err(ERRORS[a.code]);
       err('');
-
-      var a = analyse(carry, score, yards);
       last = a;
       var v = verdictFor(a);
 
@@ -684,29 +707,30 @@
       $('vSub').innerHTML = v.sub;
 
       var bn = $('bigN'), bl = $('bigL');
-      if (a.overage > 0) {
-        bn.textContent = comma(a.overage); bn.className = 'n';
-        bl.textContent = 'yards too far back';
-      } else if (a.overage < 0) {
-        bn.textContent = comma(Math.abs(a.overage)); bn.className = 'n good';
-        bl.textContent = 'yards inside your limit';
+      if (a.over > 0) {
+        bn.textContent = comma(a.over); bn.className = 'n' + (a.status === 'fits' ? ' good' : '');
+        bl.textContent = 'yards longer than the guide suggests';
+      } else if (a.under > 0) {
+        bn.textContent = comma(a.under); bn.className = 'n good';
+        bl.textContent = 'yards shorter than the guide suggests';
       } else {
         bn.textContent = '0'; bn.className = 'n good';
-        bl.textContent = 'yards out — bang on';
+        bl.textContent = 'yards: inside the suggested range';
       }
-
       $('compare').innerHTML =
         '<div><span class="n">' + comma(a.yards) + '</span><span class="l">Tees you play</span></div>' +
-        '<div class="good"><span class="n">' + comma(a.optimal) + '</span><span class="l">Tees you have earned</span></div>';
+        '<div class="good"><span class="n rng">' + span(a) + '</span><span class="l">Tee It Forward range</span></div>';
 
       $('facts').innerHTML = factsFor(a).map(function (x) {
         return '<div class="fact">' + x + '</div>';
       }).join('');
 
-      $('method').textContent = 'Ideal yardage = driver carry × ' + YARD_MULTIPLIER + ' (' + a.carry + ' × ' +
-        YARD_MULTIPLIER + ' = ' + comma(a.optimal) + '). Shots lost estimated at ' + SHOTS_PER_200 +
-        ' per 200 yards over that figure. Approach numbers assume an average par 4 is about 6% of total ' +
-        'course yardage. Heuristics, not laser measurements — but the direction of travel is not up for debate.';
+      $('method').textContent = 'A starting point, not a rule. Suggested length: the PGA of America and USGA Tee It ' +
+        'Forward chart (2011), read at an estimated total drive of ' + Math.round(a.total) + ' yards (your carry ' +
+        'converted with the USGA\'s 2023 carry-to-total fit), straight-line between rows, rounded to 50. Strokes: ' +
+        'USGA Course Rating length formulas, 1 stroke per 220 yards at scratch to 1 per 160 at bogey, placed by ' +
+        'your typical score. Approaches assume an average par 4 is about 6% of the course; clubs come from The ' +
+        'Distance Check\'s estimate for your driver.';
 
       $('outWrap').classList.add('show');
       if (window.GRTrack) GRTrack.completed();
@@ -729,13 +753,13 @@
       var lines = ['THE TEE BOX REALITY CHECK', '', v.head.toUpperCase(), ''];
       lines.push('Driver carry: ' + a.carry + ' yds');
       lines.push('Tees I play: ' + comma(a.yards) + ' yds');
-      lines.push('Tees I have earned: ' + comma(a.optimal) + ' yds');
-      if (a.overage > 0) {
-        lines.push('Too far back by: ' + comma(a.overage) + ' yds');
-        lines.push('Estimated cost: ' + r1(a.shotsLost) + ' shots a round');
-        lines.push('Average par 4 approach: ' + Math.round(a.approachNow) + ' yds (' + a.clubNow + ')');
+      lines.push('Tee It Forward range: ' + span(a) + ' yds');
+      if (a.status === 'back' || a.status === 'far_back') {
+        lines.push('Past the range by: ' + comma(a.over) + ' yds');
+        lines.push('Rough cost: about ' + r1(a.strokes) + ' strokes a round');
+        lines.push('Average par 4 approach: about ' + Math.round(a.approachNow) + ' yds (' + a.clubNow + ')');
       } else {
-        lines.push('Verdict: correct tees.');
+        lines.push('Verdict: ' + (a.status === 'forward' ? 'further forward than the guide suggests.' : 'about the right tees.'));
       }
       lines.push('', 'Check yours: golfraw.com/tools-tee-box-check');
       var txt = lines.join('\n');
@@ -809,25 +833,26 @@
     /* ============ ENGINE UPGRADE: history · PNG card · Web Share ============ */
     function cardData() {
       var a = last, v = verdictFor(a);
+      var backish = a.status === 'back' || a.status === 'far_back';
       var m = [
         { k: 'Driver carry', v: a.carry + ' yds' },
         { k: 'Tees played', v: comma(a.yards) + ' yds' },
-        { k: 'Tees earned', v: comma(a.optimal) + ' yds' }
+        { k: 'Suggested', v: span(a) + ' yds' }
       ];
-      if (a.overage > 0) {
-        m.push({ k: 'Too far back', v: comma(a.overage) + ' yds' });
-        m.push({ k: 'Costing you', v: r1(a.shotsLost) + ' shots' });
+      if (backish) {
+        m.push({ k: 'Past the range', v: comma(a.over) + ' yds' });
+        m.push({ k: 'Rough cost', v: r1(a.strokes) + ' strokes' });
         m.push({ k: 'Avg approach', v: Math.round(a.approachNow) + ' yds · ' + a.clubNow });
       } else {
-        m.push({ k: 'Verdict', v: 'Correct tees' });
+        m.push({ k: 'Verdict', v: a.status === 'forward' ? 'Further forward' : 'About right' });
       }
       return {
         tool: 'The Tee Box Reality Check',
         slug: 'tools-tee-box-check',
         eyebrow: 'The Tee Box Reality Check',
         verdict: v.head,
-        big: a.overage > 0 ? comma(a.overage) : 'OK',
-        bigLabel: a.overage > 0 ? 'Yards too far back' : 'You are on the right tees',
+        big: backish ? comma(a.over) : 'OK',
+        bigLabel: backish ? 'Yards past the Tee It Forward range' : 'Close to the Tee It Forward range',
         filename: 'tee-box-check',
         metrics: m
       };
@@ -847,10 +872,10 @@
       var c = cardData(), a = last;
       RawGolf.shareResult({
         title: c.tool,
-        text: a.overage > 0
-          ? 'I am playing tees ' + comma(a.overage) + ' yards too far back — costing me about ' +
-            r1(a.shotsLost) + ' shots a round.'
-          : 'Checked it: I am playing the right tees.',
+        text: (a.status === 'back' || a.status === 'far_back')
+          ? 'I am playing tees about ' + comma(a.over) + ' yards past what the Tee It Forward chart suggests ' +
+            'for my drive, worth roughly ' + r1(a.strokes) + ' strokes a round.'
+          : 'Checked it: my tees are close to what the Tee It Forward chart suggests.',
         url: 'https://www.golfraw.com/' + c.slug
       });
     }

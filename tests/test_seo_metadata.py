@@ -70,7 +70,7 @@ EXPECTED_DESCRIPTIONS = {
     "/news-2026-scottie-scheffler-final-press-conference-answer": "After winning $10 million and a second FedEx Cup, Scottie Scheffler passed Tiger Woods on the money list and discussed wind and family travel.",
     "/news-2026-wyndham-clark-gary-woodland-bmw-championship-recap": "Wyndham Clark leads the BMW Championship by five at Bellerive as Gary Woodland's 199 protects his Tour Championship bubble.",
     "/tools-settle-up-calculator": "Free golf skins calculator with carryovers. Enter gross or net scores, add a Nassau and presses, then settle up with one who-owes-who card.",
-    "/tools-tee-box-check": "Enter your driver carry to see the course yardage you should play and which tees get you there. It uses the Tee It Forward rule of thumb: carry × 28.",
+    "/tools-tee-box-check": "Enter your driver carry to see the course length the Tee It Forward chart suggests for your drive, and roughly what longer tees cost you a round.",
     "/tools-plays-like": "Enter a target distance with altitude, elevation change, wind and temperature. Get the adjusted yardage your golf shot plays and the club to hit.",
     "/tools-bag-audit": "Enter each club's carry to find gaps over 20 yards and clubs less than 8 yards apart, then see which clubs earn their spot in your bag.",
 }
