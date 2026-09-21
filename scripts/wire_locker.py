@@ -10,7 +10,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Bumped whenever a file under lib/locker/ changes. vercel.json serves .js with
 # a one-year immutable Cache-Control, so without a new query string readers keep
 # running the old locker until their cache expires.
-VER = '9'
+VER = '10'
 
 START = '<!-- LOCKER:START -->'
 END = '<!-- LOCKER:END -->'
@@ -29,17 +29,19 @@ BRIDGE_BAG = """  <script>
        truth that other tools and the drawer read. Writes are debounced so a
        burst of keystrokes is one transaction, and each club is validated
        individually — one nonsense yardage must not cost the reader the other
-       thirteen clubs. */
+       thirteen clubs. Stored carries are in the profile's units; the page holds
+       yards, so each write reads the profile first and converts in the same
+       step (a switch halfway through an edit cannot convert twice). */
     window.addEventListener('DOMContentLoaded', function () {
       var L = window.GolfrawLocker;
       if (!L || typeof SLOTS === 'undefined') return;
       var timer = null, hydrating = false, missedWrite = false;
 
-      function collect() {
+      function collect(units) {
         var clubs = [];
         for (var i = 0; i < SLOTS; i++) {
           var name = String($('n' + i).value || '').replace(/^\\s+|\\s+$/g, '');
-          var carry = L.util.toNum($('y' + i).value);
+          var carry = typeof bagCarryOut === 'function' ? bagCarryOut(i, units) : L.util.toNum($('y' + i).value);
           if (!name && carry === null) continue;
           var conf = L.util.toInt($('c' + i).value);
           var candidate = {
@@ -61,12 +63,15 @@ BRIDGE_BAG = """  <script>
         if (hydrating) { missedWrite = true; return; }
         if (timer) clearTimeout(timer);
         timer = setTimeout(function () {
-          L.saveActiveBagClubs(collect())['catch'](function () { /* local-only; the form still works */ });
+          L.getProfile().then(function (p) {
+            return L.saveActiveBagClubs(collect(p.units));
+          })['catch'](function () { /* local-only; the form still works */ });
         }, 400);
       }
 
       function hydrate(force) {
-        return L.getActiveBag().then(function (bag) {
+        return Promise.all([L.getActiveBag(), L.getProfile()]).then(function (res) {
+          var bag = res[0], units = res[1] && res[1].units;
           var clubs = (bag && bag.clubs) || [];
           if (!clubs.length && !force) return;
           hydrating = true;
@@ -74,12 +79,14 @@ BRIDGE_BAG = """  <script>
             var c = clubs[i];
             if (!c) {
               if (!force) continue;
-              $('n' + i).value = ''; $('y' + i).value = ''; $('u' + i).value = '';
+              $('n' + i).value = ''; $('u' + i).value = '';
+              if (typeof bagCarryIn === 'function') bagCarryIn(i, null, units); else $('y' + i).value = '';
               $('c' + i).value = '3';
               continue;
             }
             $('n' + i).value = c.name || '';
-            $('y' + i).value = c.carry === null ? '' : c.carry;
+            if (typeof bagCarryIn === 'function') bagCarryIn(i, c.carry, units);
+            else $('y' + i).value = c.carry === null ? '' : c.carry;
             $('u' + i).value = c.usage === null ? '' : c.usage;
             $('c' + i).value = c.conf || 3;
           }
@@ -100,22 +107,15 @@ BRIDGE_BAG = """  <script>
 BRIDGE_PLAYSLIKE = """  <script>
     /* ---- Locker bridge: Tool #05 Plays Like -----------------------------
        Conditions are this tool's own state, so they live in toolState rather
-       than in a shared schema. The reader's unit preference does come from the
-       shared profile — it is a property of the person, not of one calculator. */
+       than in a shared schema. They are stored in the model's own units
+       (yards, °F, feet, mph) with the temperature and wind units the golfer
+       picked, so switching yards and metres later cannot change what they
+       mean. The page owns the conversion (plState / plApply). */
     window.addEventListener('DOMContentLoaded', function () {
       var L = window.GolfrawLocker;
-      if (!L) return;
+      if (!L || typeof plState !== 'function' || typeof plApply !== 'function') return;
       var TOOL = 'plays-like';
-      var FIELDS = ['yards', 'temp', 'alt', 'wind', 'slope', 'gap'];
       var timer = null, hydrating = false, missedWrite = false;
-
-      function collect() {
-        var d = {};
-        for (var i = 0; i < FIELDS.length; i++) d[FIELDS[i]] = $(FIELDS[i]).value;
-        d.windDir = segValue('windDir');
-        d.humidity = segValue('humid');
-        return d;
-      }
 
       function push() {
         /* A keystroke during hydration must not be lost: remember it and
@@ -124,35 +124,24 @@ BRIDGE_PLAYSLIKE = """  <script>
         if (hydrating) { missedWrite = true; return; }
         if (timer) clearTimeout(timer);
         timer = setTimeout(function () {
-          L.setToolState(TOOL, collect())['catch'](function () { });
+          L.setToolState(TOOL, plState())['catch'](function () { });
         }, 400);
       }
 
       function hydrate(force) {
         return L.getToolState(TOOL).then(function (d) {
-          if (!d) { if (force) clearFields(); return; }
+          if (!d && !force) return;
           hydrating = true;
-          for (var i = 0; i < FIELDS.length; i++) {
-            var k = FIELDS[i];
-            if (d[k] !== undefined && d[k] !== '') $(k).value = d[k];
-          }
-          if (d.windDir) setSeg('windDir', d.windDir);
-          if (d.humidity) setSeg('humid', d.humidity);
+          plApply(d || null);
           hydrating = false;
           if (missedWrite) { missedWrite = false; push(); }
         })['catch'](function () { hydrating = false; missedWrite = false; });
       }
 
-      function clearFields() {
-        hydrating = true;
-        for (var i = 0; i < FIELDS.length; i++) $(FIELDS[i]).value = '';
-        setSeg('windDir', 'head'); setSeg('humid', 'low');
-        hydrating = false;
-      }
-
-      for (var i = 0; i < FIELDS.length; i++) $(FIELDS[i]).addEventListener('input', push);
-      $('windDir').addEventListener('click', push);
-      $('humid').addEventListener('click', push);
+      // Typing, the direction and humidity buttons, the quick picks and the
+      // unit switches all live in the conditions panel.
+      $('plInputs').addEventListener('input', push);
+      $('plInputs').addEventListener('click', push);
 
       L.ready().then(function () { return hydrate(false); });
       L.subscribe(function (kind) { if (kind === 'import' || kind === 'clear') hydrate(true); });
@@ -253,6 +242,29 @@ def build_block(name):
     return START + '\n' + body + END + '\n'
 
 
+LOCKER_SRC = re.compile(r'(/lib/locker/(?:schema|store|drawer)\.js\?v=)\d+')
+
+
+def refresh_other_pages(skip):
+    """Articles and hubs carry a Locker block from an earlier site-wide pass.
+    They are not rewired here, but their asset version must follow VER: .js is
+    served immutable, so a stale ?v= keeps a returning reader's drawer on old
+    Locker code (for example one that relabels units instead of converting)."""
+    changed = []
+    for path in sorted(glob.glob(os.path.join(ROOT, '**', '*.html'), recursive=True)):
+        if os.path.basename(path) in skip or os.sep + 'node_modules' + os.sep in path:
+            continue
+        s = io.open(path, encoding='utf-8').read()
+        if START not in s:
+            continue
+        t = re.sub(re.escape(START) + r'.*?' + re.escape(END),
+                   lambda m: LOCKER_SRC.sub(lambda v: v.group(1) + VER, m.group(0)), s, flags=re.S)
+        if t != s:
+            io.open(path, 'w', encoding='utf-8').write(t)
+            changed.append(os.path.relpath(path, ROOT))
+    return changed
+
+
 def main():
     # Pro account pages store the pass in the Locker's meta store too.
     files = sorted(glob.glob(os.path.join(ROOT, 'tools-*.html')) + glob.glob(os.path.join(ROOT, 'pro-*.html')))
@@ -284,6 +296,8 @@ def main():
     print('  wired %d tool page(s)' % len(changed))
     for c in changed:
         print('    - %s%s' % (c, '  [+ bridge]' if c in BRIDGES else ''))
+    others = refresh_other_pages(set(os.path.basename(f) for f in files))
+    print('  refreshed the Locker version on %d other page(s)' % len(others))
     return 0
 
 

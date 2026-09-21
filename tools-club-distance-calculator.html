@@ -145,7 +145,7 @@
           "name": "Does it work in metres?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Switch to metres and your input, every club, the course length and the swing speed (km/h) convert together."
+            "text": "Yes. Switch to metres and your input, every club, the course length and the swing speed (km/h) convert together. It is the same data converted, not a separate metric table, and GolfRaw remembers the choice on this device for its other distance tools."
           }
         },
         {
@@ -388,6 +388,7 @@
     .cd-panel .panel-in { max-width: 620px }
     .cd-seg { border: 0; margin: 0 0 18px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px }
     .cd-legend { width: 100%; padding: 0; margin-bottom: 8px; font-size: 13px; font-weight: 700; color: var(--ink) }
+    .cd-legend-note { font-weight: 500; color: var(--grey); margin-left: 6px }
     .cd-seg label { position: relative; flex: 1 1 calc(50% - 8px); min-width: 0 }
     .cd-units label, .cd-group label { flex: 0 1 auto }
     .cd-seg input { position: absolute; opacity: 0; width: 1px; height: 1px }
@@ -535,8 +536,8 @@
             <label><input type="radio" name="cdAnchor" value="handicap_band"><span>Only my handicap</span></label>
           </fieldset>
 
-          <fieldset class="cd-seg cd-units">
-            <legend class="cd-legend">Units</legend>
+          <fieldset class="cd-seg cd-units" data-gr-ignore>
+            <legend class="cd-legend">Units <span class="cd-legend-note">Pick once. GolfRaw remembers it on this device.</span></legend>
             <label><input type="radio" name="cdUnit" value="yd" checked><span>Yards</span></label>
             <label><input type="radio" name="cdUnit" value="m"><span>Metres</span></label>
           </fieldset>
@@ -688,21 +689,23 @@
 
           <h2 id="cd-metres-h">Yards or metres</h2>
           <p>Switch units and everything converts: your input, every club, the course length and swing speed
-            (km/h). One yard is 0.9144 metres, so a 150-yard carry is about 137 metres and a 6,000-yard course is
-            about 5,490 metres. Many courses in Australia and Europe are measured in metres; use whichever your
-            card uses.</p>
+            (km/h). It is the same data converted at the edges, not a separate metric table: the calculator works
+            in yards and converts at exactly 0.9144 metres to the yard, so a 150-yard carry is about 137 metres and
+            a 6,000-yard course about 5,490 metres. Many courses in Australia and Europe are measured in metres;
+            use whichever your card uses. Pick once and GolfRaw remembers it on this device, so its other distance
+            tools open in the same units.</p>
 
           <h3>What it returns for three golfers</h3>
           <table class="cd-examples">
-            <caption class="cd-sr">Plan-on carry ranges in yards for three example golfers, from their typical 7-iron carry</caption>
+            <caption class="cd-sr">Plan-on carry ranges in <span data-cd-word>yards</span> for three example golfers, from their typical 7-iron carry</caption>
             <thead><tr><th scope="col">Typical 7-iron carry</th><th scope="col">Driver</th><th scope="col">5-iron</th><th scope="col">Pitching wedge</th></tr></thead>
             <tbody>
-              <tr><td>120 yards</td><td>158&ndash;193</td><td>134&ndash;145</td><td>92&ndash;103</td></tr>
-              <tr><td>145 yards</td><td>195&ndash;238</td><td>161&ndash;175</td><td>107&ndash;121</td></tr>
-              <tr><td>170 yards</td><td>238&ndash;291</td><td>185&ndash;201</td><td>127&ndash;143</td></tr>
+              <tr><td data-cd-ex="120">120 yards</td><td data-cd-ex="157.996,193.106">158&ndash;193</td><td data-cd-ex="133.729,144.873">134&ndash;145</td><td data-cd-ex="91.646,103.345">92&ndash;103</td></tr>
+              <tr><td data-cd-ex="145">145 yards</td><td data-cd-ex="194.946,238.267">195&ndash;238</td><td data-cd-ex="161.334,174.779">161&ndash;175</td><td data-cd-ex="107.109,120.783">107&ndash;121</td></tr>
+              <tr><td data-cd-ex="170">170 yards</td><td data-cd-ex="237.923,290.794">238&ndash;291</td><td data-cd-ex="185.422,200.874">185&ndash;201</td><td data-cd-ex="126.546,142.701">127&ndash;143</td></tr>
             </tbody>
           </table>
-          <p class="cd-hint">Yards, carry, plan-on ranges straight from the calculator. The driver ranges are wider
+          <p class="cd-hint"><span data-cd-cap>Yards</span>, carry, plan-on ranges straight from the calculator. The driver ranges are wider
             because they sit furthest from the 7-iron that was entered.</p>
         </div>
       </section>
@@ -743,7 +746,8 @@
             hybrid often replaces a 4- or 5-iron.</p></details>
         <details><summary>Does it work in metres?</summary>
           <p>Yes. Switch to metres and your input, every club, the course length and the swing speed (km/h)
-            convert together.</p></details>
+            convert together. It is the same data converted, not a separate metric table, and GolfRaw remembers the
+            choice on this device for its other distance tools.</p></details>
         <details><summary>Is anything I type stored or sent anywhere?</summary>
           <p>No. The calculation runs in your browser. GolfRaw counts that the calculator was used and which kind
             of number it started from, never the number itself or the result.</p></details>
@@ -787,7 +791,8 @@
       }
     })();
   </script>
-  <script src="/lib/distance/club-distance.js?v=1"></script>
+  <script src="/lib/distance/units.js?v=1"></script>
+  <script src="/lib/distance/club-distance.js?v=2"></script>
   <script>
     /* ---- The Distance Check: page wiring ------------------------------------
        All maths lives in /lib/distance/club-distance.js (window.GolfrawDistance),
@@ -797,8 +802,10 @@
       'use strict';
       var D = window.GolfrawDistance;
       var $ = function (id) { return document.getElementById(id); };
-      var M_PER_YD = 0.9144, KMH_PER_MPH = 1.609344;
-      var state = { anchor: 'iron_carry', unit: 'yd', last: null, used: null, hidden: {} };
+      // Conversions and the shared yards/metres preference: /lib/distance/units.js.
+      var U = window.GolfrawUnits;
+      var state = { anchor: 'iron_carry', unit: U ? U.distUnit(U.distance()) : 'yd', last: null, used: null, hidden: {} };
+      var fDist = null, fSpeed = null;
 
       var COPY = {
         driver_carry: { label: 'Your typical driver carry', hint: 'How far it flies before landing, on a normal swing. Not your best one.' },
@@ -810,24 +817,18 @@
       function distUnit() { return state.unit === 'm' ? 'm' : 'yds'; }
       function distWord() { return state.unit === 'm' ? 'metres' : 'yards'; }
 
-      // Model units (yards, mph) <-> what the golfer sees.
-      function toModel(v) {
-        if (state.anchor === 'swing_speed') return state.unit === 'm' ? v / KMH_PER_MPH : v;
-        return state.unit === 'm' ? v / M_PER_YD : v;
-      }
-      function fromModel(v, isSpeed) {
-        if (isSpeed) return state.unit === 'm' ? v * KMH_PER_MPH : v;
-        return state.unit === 'm' ? v * M_PER_YD : v;
-      }
-      function limits() {
-        var l = D.LIMITS[state.anchor];
-        var sp = state.anchor === 'swing_speed';
-        return [Math.round(fromModel(l[0], sp)), Math.round(fromModel(l[1], sp))];
-      }
+      // Model units (yards, mph) <-> what the golfer sees. Speed follows the
+      // distance choice: km/h with metres, mph with yards.
+      function speedCode() { return state.unit === 'm' ? 'kmh' : 'mph'; }
+      function kindNow() { return state.anchor === 'swing_speed' ? 'speed' : 'distance'; }
+      function codeNow() { return kindNow() === 'speed' ? speedCode() : state.unit; }
+      function activeField() { return state.anchor === 'swing_speed' ? fSpeed : fDist; }
+      function fromModel(v, isSpeed) { return U.fromCanon(isSpeed ? 'speed' : 'distance', v, isSpeed ? speedCode() : state.unit); }
+      function limits() { return U.limits(kindNow(), D.LIMITS[state.anchor], codeNow()); }
       function show(yd) { return Math.round(fromModel(yd, false)); }
       function range(r) { return show(r[0]) + '–' + show(r[1]); }
-      function thousands(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
-      function course(yd) { return thousands(Math.round(fromModel(yd, false) / 50) * 50); }
+      // Course lengths round once, to 50 in the unit on screen, from the unrounded chart.
+      function course(yd) { return U.show('distance', yd, state.unit, 50); }
 
       function syncInputs() {
         var hcp = state.anchor === 'handicap_band';
@@ -856,18 +857,19 @@
         if (state.anchor === 'handicap_band') {
           return { anchor: 'handicap_band', band: $('cdBand').value, group: document.querySelector('input[name="cdGroup"]:checked').value };
         }
-        var raw = $('cdValue').value.trim().replace(',', '.');
-        if (raw === '') return { error: 'Enter ' + COPY[state.anchor].label.toLowerCase() + ' first.' };
-        var v = parseFloat(raw);
-        var l = limits();
+        // The exact value behind the field, already in model units.
+        var c = activeField().canon();
+        if (c === null) return { error: 'Enter ' + COPY[state.anchor].label.toLowerCase() + ' first.' };
+        if (isNaN(c)) return { error: 'That is not a number we can use.' };
+        var l = limits(), lim = D.LIMITS[state.anchor];
         var unit = state.anchor === 'swing_speed' ? speedUnit() : distWord();
-        if (!isFinite(v)) return { error: 'That is not a number we can use.' };
-        if (v < l[0] || v > l[1]) {
+        if (c < lim[0] - 1e-9 || c > lim[1] + 1e-9) {
+          var low = c < lim[0];
           return { error: 'This works from ' + l[0] + ' to ' + l[1] + ' ' + unit + '. ' +
-            (v < l[0] && state.unit === 'yd' && state.anchor !== 'swing_speed' ? 'Did you mean metres?' :
-             v > l[1] && state.unit === 'm' && state.anchor !== 'swing_speed' ? 'Did you mean yards?' : 'Check the number.') };
+            (low && state.unit === 'yd' && state.anchor !== 'swing_speed' ? 'Did you mean metres?' :
+             !low && state.unit === 'm' && state.anchor !== 'swing_speed' ? 'Did you mean yards?' : 'Check the number.') };
         }
-        return { anchor: state.anchor, value: toModel(v) };
+        return { anchor: state.anchor, value: c };
       }
 
       var QUALITY = {
@@ -904,7 +906,7 @@
         for (var h = 0; h < heads.length; h++) heads[h].textContent = heads[h].getAttribute('data-cd-head') + ' (' + distUnit() + ')';
         if (res.tee) {
           $('cdTee').hidden = false;
-          $('cdTeeRange').textContent = course(res.tee.course[0]) + '–' + course(res.tee.course[1]) + ' ' + distWord() +
+          $('cdTeeRange').textContent = course(res.tee.courseRaw[0]) + '–' + course(res.tee.courseRaw[1]) + ' ' + distWord() +
             (res.tee.beyondChart ? ' (your drive sits at the edge of the chart, so read this loosely)' : '');
           $('cdTeeBasis').textContent = 'That is the Tee It Forward chart read at an estimated total drive of ' +
             range(res.tee.total) + ' ' + distUnit() + ' (your carry plus normal roll). Guidance, not a rule: firm, flat courses play shorter than the card.';
@@ -970,21 +972,34 @@
         $('cdClubs').innerHTML = html.join('');
       }
 
+      // The worked examples carry exact model values; show them in the chosen unit.
+      function renderExamples() {
+        var cells = document.querySelectorAll('[data-cd-ex]');
+        for (var i = 0; i < cells.length; i++) {
+          var v = cells[i].getAttribute('data-cd-ex').split(',').map(parseFloat);
+          cells[i].textContent = v.length === 1 ? show(v[0]) + ' ' + distWord() : range(v);
+        }
+        var words = document.querySelectorAll('[data-cd-word]');
+        for (var w = 0; w < words.length; w++) words[w].textContent = distWord();
+        var caps = document.querySelectorAll('[data-cd-cap]');
+        for (var k = 0; k < caps.length; k++) caps[k].textContent = state.unit === 'm' ? 'Metres' : 'Yards';
+      }
+
+      function syncUnitRadios() {
+        var radios = document.querySelectorAll('input[name="cdUnit"]');
+        for (var i = 0; i < radios.length; i++) radios[i].checked = radios[i].value === state.unit;
+      }
+
+      // Switching keeps the exact value typed: the field redraws from it, so
+      // yards -> metres -> yards returns the original number.
       function setUnit(next) {
         if (next === state.unit) return;
-        var v = parseFloat($('cdValue').value.replace(',', '.'));
-        var wasSpeed = state.anchor === 'swing_speed';
-        if (isFinite(v)) {
-          // Convert what is already typed so switching units never means retyping.
-          var model = wasSpeed ? (state.unit === 'm' ? v / KMH_PER_MPH : v) : (state.unit === 'm' ? v / M_PER_YD : v);
-          state.unit = next;
-          $('cdValue').value = Math.round(fromModel(model, wasSpeed));
-        } else {
-          state.unit = next;
-        }
+        U.switchFields([activeField()], function () { state.unit = next; });
+        syncUnitRadios();
         syncInputs();
         err('');
         render();
+        renderExamples();
       }
 
       function boot() {
@@ -995,17 +1010,25 @@
         $('cdBand').value = D.DEFAULT_BAND;
         buildClubList();
 
+        fDist = U.field($('cdValue'), 'distance', function () { return state.unit; });
+        fSpeed = U.field($('cdValue'), 'speed', speedCode);
         var anchors = document.querySelectorAll('input[name="cdAnchor"]');
         for (var a = 0; a < anchors.length; a++) {
           anchors[a].addEventListener('change', function (e) {
             state.anchor = e.target.value;
-            $('cdValue').value = '';
+            fDist.set(null); fSpeed.set(null);
             err('');
             syncInputs();
           });
         }
+        // One preference for every GolfRaw distance tool, kept in the Locker.
         var units = document.querySelectorAll('input[name="cdUnit"]');
-        for (var u = 0; u < units.length; u++) units[u].addEventListener('change', function (e) { setUnit(e.target.value); });
+        for (var u = 0; u < units.length; u++) {
+          units[u].addEventListener('change', function (e) { U.setDistance(e.target.value === 'm' ? 'meters' : 'yards'); });
+        }
+        U.onChange(function (pref) { setUnit(U.distUnit(pref)); });
+        syncUnitRadios();
+        renderExamples();
         $('cdValue').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); run(); } });
         $('cdGo').addEventListener('click', run);
         $('cdCopy').addEventListener('click', copySummary);
@@ -1035,9 +1058,9 @@
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=9" defer></script>
-  <script src="/lib/locker/store.js?v=9" defer></script>
-  <script src="/lib/locker/drawer.js?v=9" defer></script>
+  <script src="/lib/locker/schema.js?v=10" defer></script>
+  <script src="/lib/locker/store.js?v=10" defer></script>
+  <script src="/lib/locker/drawer.js?v=10" defer></script>
 <!-- LOCKER:END -->
 </body>
 

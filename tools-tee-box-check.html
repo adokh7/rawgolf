@@ -236,6 +236,16 @@
     .quick { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 9px }
     .quick button { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10.5px; font-weight: 600; letter-spacing: .06em; padding: 6px 10px; border: 2px solid var(--line); background: var(--white); cursor: pointer; transition: border-color .15s, background .15s }
     .quick button:hover { border-color: var(--ink); background: #FBFBF8 }
+    .unit-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 18px }
+    .unit-lab { font-size: 13px; font-weight: 700; color: var(--ink) }
+    .unit-seg { display: inline-flex; border: 2px solid var(--ink); border-radius: 10px; overflow: hidden }
+    .unit-seg button { min-height: 44px; min-width: 88px; padding: 8px 16px; margin: 0; font-family: inherit; font-size: 15px; font-weight: 700; line-height: 1.2; letter-spacing: normal; text-transform: none; background: var(--white); color: var(--ink); border: 0; border-radius: 0; cursor: pointer; box-shadow: none }
+    .unit-seg button + button { border-left: 2px solid var(--ink) }
+    .unit-seg button[aria-pressed="true"] { background: var(--ink); color: #fff }
+    .unit-seg button:focus-visible { outline: 3px solid var(--flag); outline-offset: -4px }
+    .unit-note { font-size: 12.5px; color: var(--grey) }
+    /* The theme gives every button 40px; the id wins so the switch keeps 44px targets. */
+    #tbUnits button { min-height: 44px }
 
     .btn { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 14px 22px; border: 2px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; transition: background .15s, color .15s }
     .btn:hover { background: var(--flag); border-color: var(--flag) }
@@ -394,11 +404,20 @@
       <section class="panel" data-gr-inputs>
         <div class="panel-head"><span><span class="step">01 ·</span> The Honest Numbers</span></div>
         <div class="panel-in">
-          <div class="err" id="err"></div>
+          <div class="err" id="err" role="alert"></div>
+
+          <div class="unit-row" role="group" aria-labelledby="tbUnitLab">
+            <span class="unit-lab" id="tbUnitLab">Distances in</span>
+            <div class="unit-seg" id="tbUnits">
+              <button type="button" data-units="yards" data-gr-ignore aria-pressed="true">Yards</button>
+              <button type="button" data-units="meters" data-gr-ignore aria-pressed="false">Metres</button>
+            </div>
+            <span class="unit-note">Pick once. GolfRaw remembers it on this device.</span>
+          </div>
 
           <div class="row">
             <div>
-              <label class="fld" for="carry">Driver carry (yards)</label>
+              <label class="fld" for="carry" id="carryLab">Driver carry (yards)</label>
               <input type="number" id="carry" min="50" max="400" step="1" inputmode="numeric" placeholder="220">
               <p class="sub">The number you would admit to under oath, not the one you tell the lads in the car
                 park.</p>
@@ -411,9 +430,9 @@
               <p class="sub">Your realistic average, including the holes you would rather forget. It sets how much each extra yard costs you.</p>
             </div>
             <div>
-              <label class="fld" for="yards">Tees you currently play (yards)</label>
+              <label class="fld" for="yards" id="yardsLab">Tees you currently play (yards)</label>
               <input type="number" id="yards" min="3000" max="8500" step="10" inputmode="numeric" placeholder="6700">
-              <p class="sub">Total scorecard yardage of the tees you tee off from.</p>
+              <p class="sub">The total length on the scorecard for the tees you tee off from.</p>
               <div class="quick" id="yardQuick"></div>
             </div>
           </div>
@@ -526,6 +545,10 @@
             <li><b>Who plays too far back:</b> USGA Green Section Record, D. Pierce, June 2023 (the Best Tees research).</li>
           </ul>
 
+          <p>Yards or metres: the chart is published in yards, so the calculator converts a carry in metres to
+            yards, reads the chart, and converts the answer back. Both units give the same course; only the
+            rounding differs.</p>
+
           <h3>A second opinion</h3>
           <p>The USGA&rsquo;s newer <a href="https://www.usga.org/content/usga/home-page/course-care/golfer-experience/golfer-experience-information.html" rel="noopener">7-iron
             tee selector</a>, from its 2023 Best Tees research, starts from your 7-iron instead and can suggest a
@@ -594,8 +617,9 @@
 
   <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
   <script src="./rawgolf-tools.js?v=2"></script>
-  <script src="/lib/distance/club-distance.js?v=1"></script>
-  <script src="/lib/distance/tee-box.js?v=1"></script>
+  <script src="/lib/distance/units.js?v=1"></script>
+  <script src="/lib/distance/club-distance.js?v=2"></script>
+  <script src="/lib/distance/tee-box.js?v=2"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -612,22 +636,38 @@
     /* ==================== ENGINE ====================
        The maths lives in /lib/distance/tee-box.js (window.GolfrawTeeBox), which
        reads the Tee It Forward chart through The Distance Check's model, with
-       every source cited there. This script reads, renders and shares. */
-    var TB = window.GolfrawTeeBox;
+       every source cited there. It works in yards; this script converts at the
+       edge with /lib/distance/units.js and rounds once, for the screen. */
+    var TB = window.GolfrawTeeBox, U = window.GolfrawUnits;
     var LS_KEY = 'golfraw_teebox_last';
 
     var $ = function (id) { return document.getElementById(id); };
     var r1 = function (n) { return Math.round(n * 10) / 10; };
     var comma = function (n) { return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); };
-    var span = function (a) { return comma(a.range[0]) + '–' + comma(a.range[1]); };
+
+    /* ==================== UNITS ==================== */
+    var unitPref = U.distance();                 /* 'yards' | 'meters', shared */
+    function du() { return U.distUnit(unitPref); }
+    function metric() { return du() === 'm'; }
+    function W() { return metric() ? 'metres' : 'yards'; }          /* plural word */
+    function W1() { return metric() ? 'metre' : 'yard'; }           /* adjective: a 220-yard carry */
+    /* A yardage from the model, shown in the unit on screen. */
+    function D(yd, step) { return U.show('distance', yd, du(), step || 1); }
+    /* The chart range rounds once, to 50 in the unit on screen. */
+    var span = function (a) { return D(a.rangeRaw[0], 50) + '–' + D(a.rangeRaw[1], 50); };
+    /* Course Rating rate per 200 of whichever unit is on. */
+    function per200(a) { return Math.round(a.strokesPer200 * (metric() ? 1 / U.M_PER_YD : 1) * 100) / 100; }
+
+    var fCarry = U.field($('carry'), 'distance', du);
+    var fYards = U.field($('yards'), 'distance', du);
 
     /* ==================== VERDICTS ==================== */
     function verdictFor(a) {
       if (a.status === 'forward') {
         return {
           head: "You're playing further forward than the guide suggests.",
-          sub: 'You carry it <b>' + a.carry + ' yards</b>, and the Tee It Forward chart points you at about <b>' +
-            span(a) + ' yards</b>. You are playing ' + comma(a.yards) + '. Nothing wrong with an easy day, but if ' +
+          sub: 'You carry it <b>' + D(a.carry) + ' ' + W() + '</b>, and the Tee It Forward chart points you at about <b>' +
+            span(a) + ' ' + W() + '</b>. You are playing ' + D(a.yards) + '. Nothing wrong with an easy day, but if ' +
             'every par 4 is a wedge in, try the next set back.',
           tone: 'forward'
         };
@@ -635,16 +675,16 @@
       if (a.status === 'far_back') {
         return {
           head: 'You are playing far too far back.',
-          sub: 'You carry your driver <b>' + a.carry + ' yards</b> and you have signed up for <b>' + comma(a.yards) +
+          sub: 'You carry your driver <b>' + D(a.carry) + ' ' + W() + '</b> and you have signed up for <b>' + D(a.yards) +
             '</b>. The Tee It Forward chart puts your starting point at about <b>' + span(a) + '</b>. That is <b>' +
-            comma(a.over) + ' yards</b> past it. You\'re not a golfer here, you\'re a tourist.',
+            D(a.over, 10) + ' ' + W() + '</b> past it. You\'re not a golfer here, you\'re a tourist.',
           tone: 'bad'
         };
       }
       if (a.status === 'back') {
         return {
           head: "You're hitting " + a.clubNow + ' into par 4s. Nobody is impressed.',
-          sub: 'You are about <b>' + comma(a.over) + ' yards</b> past the length the Tee It Forward chart suggests ' +
+          sub: 'You are about <b>' + D(a.over, 10) + ' ' + W() + '</b> past the length the Tee It Forward chart suggests ' +
             'for your drive. From tees in that range, an average par 4 would leave you ' + a.clubIdeal +
             ' instead. Try the next set forward.',
           tone: 'mid'
@@ -652,7 +692,7 @@
       }
       return {
         head: 'Honest tee choice.',
-        sub: 'You carry it <b>' + a.carry + ' yards</b> and you are playing <b>' + comma(a.yards) + '</b>. The ' +
+        sub: 'You carry it <b>' + D(a.carry) + ' ' + W() + '</b> and you are playing <b>' + D(a.yards) + '</b>. The ' +
           'Tee It Forward chart suggests about <b>' + span(a) + '</b>, so you are close to where the guide puts ' +
           'you. Whatever is wrong with your golf, it is probably not the tee box.',
         tone: 'good'
@@ -661,23 +701,23 @@
 
     function factsFor(a) {
       var f = [];
-      f.push('<b>Starting point for your drive:</b> about ' + span(a) + ' yards, read at an estimated total drive ' +
-        'of ' + Math.round(a.total) + ' yards.' +
+      f.push('<b>Starting point for your drive:</b> about ' + span(a) + ' ' + W() + ', read at an estimated total drive ' +
+        'of ' + D(a.total) + ' ' + W() + '.' +
         (a.beyond === 'long' ? ' Your drive is past the top of the chart, so this is its longest row.' :
          a.beyond === 'short' ? ' Your drive is below the bottom of the chart, so this is its shortest row.' : ''));
       if (a.status === 'back' || a.status === 'far_back') {
-        f.push('<b>Right now:</b> an average par 4 leaves you about ' + Math.round(a.approachNow) + ' yards, ' +
+        f.push('<b>Right now:</b> an average par 4 leaves you about ' + D(a.approachNow) + ' ' + W() + ', ' +
           a.clubNow + '.');
-        f.push('<b>From tees in your range:</b> about ' + Math.round(a.approachIdeal) + ' yards, ' + a.clubIdeal + '.');
+        f.push('<b>From tees in your range:</b> about ' + D(a.approachIdeal) + ' ' + W() + ', ' + a.clubIdeal + '.');
         f.push('<b>Rough cost:</b> about <b>' + r1(a.strokes) + ' strokes a round</b>, at the USGA Course Rating rate ' +
-          'of ' + (Math.round(a.strokesPer200 * 100) / 100) + ' strokes per 200 yards for your scoring level.');
+          'of ' + per200(a) + ' strokes per 200 ' + W() + ' for your scoring level.');
         f.push('<b>From the right tees:</b> a round of about <b>' + Math.round(a.projectedScore) +
           '</b> is a fair guess, swing unchanged.');
       } else if (a.status === 'forward') {
-        f.push('<b>Right now:</b> an average par 4 leaves you about ' + Math.round(a.approachNow) + ' yards, ' +
+        f.push('<b>Right now:</b> an average par 4 leaves you about ' + D(a.approachNow) + ' ' + W() + ', ' +
           a.clubNow + '.');
       } else {
-        f.push('<b>Average par 4 approach:</b> about ' + Math.round(a.approachNow) + ' yards, ' + a.clubNow + '.');
+        f.push('<b>Average par 4 approach:</b> about ' + D(a.approachNow) + ' ' + W() + ', ' + a.clubNow + '.');
         f.push('<b>Strokes lost to tee choice:</b> ' + (a.strokes >= 0.5 ? 'about ' + r1(a.strokes) : 'next to none') +
           '. The problem, if there is one, is elsewhere.');
       }
@@ -687,38 +727,49 @@
     /* ==================== RENDER ==================== */
     var last = null;
 
-    var ERRORS = {
-      missing: 'Fill in all three numbers first.',
-      carry: 'Driver carry should be between 50 and 400 yards. Be honest.',
-      score: 'Typical score should be between 55 and 200.',
-      yards: 'Course yardage should be between 3,000 and 8,500.'
-    };
+    function errors(code) {
+      var c = U.limits('distance', TB.LIMITS.carry, du()), y = U.limits('distance', TB.LIMITS.yards, du());
+      return {
+        missing: 'Fill in all three numbers first.',
+        carry: 'Driver carry should be between ' + c[0] + ' and ' + c[1] + ' ' + W() + '. Be honest.',
+        score: 'Typical score should be between 55 and 200.',
+        yards: 'Course length should be between ' + comma(y[0]) + ' and ' + comma(y[1]) + ' ' + W() + '.'
+      }[code];
+    }
+
+    function canonOrNaN(f) { var c = f.canon(); return c === null ? NaN : c; }
 
     function run() {
-      var a = TB.analyse({
-        carry: parseInt($('carry').value, 10), score: parseInt($('score').value, 10), yards: parseInt($('yards').value, 10)
-      });
-      if (!a.ok) return err(ERRORS[a.code]);
+      var a = TB.analyse({ carry: canonOrNaN(fCarry), score: parseInt($('score').value, 10), yards: canonOrNaN(fYards) });
+      if (!a.ok) return err(errors(a.code));
       err('');
       last = a;
-      var v = verdictFor(a);
+      render(a);
+      $('outWrap').classList.add('show');
+      if (window.GRTrack) GRTrack.completed();
+      if (window.RawGolf) RawGolf.save(cardData());
+      $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      save();
+    }
 
+    function render(a) {
+      var v = verdictFor(a);
       $('vHead').textContent = v.head;
       $('vSub').innerHTML = v.sub;
 
       var bn = $('bigN'), bl = $('bigL');
       if (a.over > 0) {
-        bn.textContent = comma(a.over); bn.className = 'n' + (a.status === 'fits' ? ' good' : '');
-        bl.textContent = 'yards longer than the guide suggests';
+        bn.textContent = D(a.over, 10); bn.className = 'n' + (a.status === 'fits' ? ' good' : '');
+        bl.textContent = W() + ' longer than the guide suggests';
       } else if (a.under > 0) {
-        bn.textContent = comma(a.under); bn.className = 'n good';
-        bl.textContent = 'yards shorter than the guide suggests';
+        bn.textContent = D(a.under, 10); bn.className = 'n good';
+        bl.textContent = W() + ' shorter than the guide suggests';
       } else {
         bn.textContent = '0'; bn.className = 'n good';
-        bl.textContent = 'yards: inside the suggested range';
+        bl.textContent = W() + ': inside the suggested range';
       }
       $('compare').innerHTML =
-        '<div><span class="n">' + comma(a.yards) + '</span><span class="l">Tees you play</span></div>' +
+        '<div><span class="n">' + D(a.yards) + '</span><span class="l">Tees you play (' + (metric() ? 'm' : 'yds') + ')</span></div>' +
         '<div class="good"><span class="n rng">' + span(a) + '</span><span class="l">Tee It Forward range</span></div>';
 
       $('facts').innerHTML = factsFor(a).map(function (x) {
@@ -726,17 +777,12 @@
       }).join('');
 
       $('method').textContent = 'A starting point, not a rule. Suggested length: the PGA of America and USGA Tee It ' +
-        'Forward chart (2011), read at an estimated total drive of ' + Math.round(a.total) + ' yards (your carry ' +
+        'Forward chart (2011), read at an estimated total drive of ' + D(a.total) + ' ' + W() + ' (your carry ' +
         'converted with the USGA\'s 2023 carry-to-total fit), straight-line between rows, rounded to 50. Strokes: ' +
         'USGA Course Rating length formulas, 1 stroke per 220 yards at scratch to 1 per 160 at bogey, placed by ' +
         'your typical score. Approaches assume an average par 4 is about 6% of the course; clubs come from The ' +
-        'Distance Check\'s estimate for your driver.';
-
-      $('outWrap').classList.add('show');
-      if (window.GRTrack) GRTrack.completed();
-      if (window.RawGolf) RawGolf.save(cardData());
-      $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      save();
+        'Distance Check\'s estimate for your driver.' +
+        (metric() ? ' The chart is in yards; your metres are converted to yards and the answer back to metres.' : '');
     }
 
     function err(m) {
@@ -751,13 +797,14 @@
       if (!last) return err('Run the check first.');
       var a = last, v = verdictFor(a);
       var lines = ['THE TEE BOX REALITY CHECK', '', v.head.toUpperCase(), ''];
-      lines.push('Driver carry: ' + a.carry + ' yds');
-      lines.push('Tees I play: ' + comma(a.yards) + ' yds');
-      lines.push('Tee It Forward range: ' + span(a) + ' yds');
+      var u = metric() ? ' m' : ' yds';
+      lines.push('Driver carry: ' + D(a.carry) + u);
+      lines.push('Tees I play: ' + D(a.yards) + u);
+      lines.push('Tee It Forward range: ' + span(a) + u);
       if (a.status === 'back' || a.status === 'far_back') {
-        lines.push('Past the range by: ' + comma(a.over) + ' yds');
+        lines.push('Past the range by: ' + D(a.over, 10) + u);
         lines.push('Rough cost: about ' + r1(a.strokes) + ' strokes a round');
-        lines.push('Average par 4 approach: about ' + Math.round(a.approachNow) + ' yds (' + a.clubNow + ')');
+        lines.push('Average par 4 approach: about ' + D(a.approachNow) + u + ' (' + a.clubNow + ')');
       } else {
         lines.push('Verdict: ' + (a.status === 'forward' ? 'further forward than the guide suggests.' : 'about the right tees.'));
       }
@@ -785,10 +832,14 @@
     }
 
     /* ==================== PERSIST ==================== */
+    /* Saved in yards whatever is on screen, the format the tool always used. */
     function save() {
       try {
+        var c = fCarry.canon(), y = fYards.canon();
         localStorage.setItem(LS_KEY, JSON.stringify({
-          carry: $('carry').value, score: $('score').value, yards: $('yards').value
+          carry: c === null || isNaN(c) ? '' : String(Math.round(c * 1e6) / 1e6),
+          score: $('score').value,
+          yards: y === null || isNaN(y) ? '' : String(Math.round(y * 1e6) / 1e6)
         }));
       } catch (e) { }
     }
@@ -797,52 +848,85 @@
       try {
         var d = JSON.parse(localStorage.getItem(LS_KEY) || 'null');
         if (!d) return;
-        if (d.carry) $('carry').value = d.carry;
+        if (d.carry) fCarry.set(parseFloat(d.carry));
         if (d.score) $('score').value = d.score;
-        if (d.yards) $('yards').value = d.yards;
+        if (d.yards) fYards.set(parseFloat(d.yards));
       } catch (e) { }
     }
 
     function reset() {
-      $('carry').value = ''; $('score').value = ''; $('yards').value = '';
+      fCarry.set(null); $('score').value = ''; fYards.set(null);
       $('outWrap').classList.remove('show');
       err('');
       try { localStorage.removeItem(LS_KEY); } catch (e) { }
       $('carry').focus();
     }
 
-    /* ==================== QUICK PICKS ==================== */
-    (function buildQuick() {
-      var carries = [180, 200, 220, 240, 260, 280];
-      $('carryQuick').innerHTML = carries.map(function (c) {
-        return '<button type="button" data-c="' + c + '">' + c + '</button>';
+    /* ==================== QUICK PICKS ====================
+       Round numbers in whichever unit is on; a pick is treated as typed. */
+    var PICKS = {
+      yd: { carry: [180, 200, 220, 240, 260, 280], yards: [5200, 5800, 6200, 6500, 6700, 7040] },
+      m: { carry: [165, 185, 200, 220, 240, 255], yards: [4750, 5300, 5650, 5950, 6150, 6450] }
+    };
+    function buildQuick() {
+      var p = PICKS[du()];
+      $('carryQuick').innerHTML = p.carry.map(function (c) {
+        return '<button type="button" data-c="' + c + '" aria-label="' + c + ' ' + W() + '">' + c + '</button>';
       }).join('');
-      $('carryQuick').querySelectorAll('button').forEach(function (b) {
-        b.addEventListener('click', function () { $('carry').value = b.dataset.c; save(); });
-      });
+      $('yardQuick').innerHTML = p.yards.map(function (y) {
+        return '<button type="button" data-y="' + y + '" aria-label="' + comma(y) + ' ' + W() + '">' + comma(y) + '</button>';
+      }).join('');
+    }
+    $('carryQuick').addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('button[data-c]') : null;
+      if (!b) return;
+      $('carry').value = b.getAttribute('data-c'); fCarry.canon(); save();
+    });
+    $('yardQuick').addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('button[data-y]') : null;
+      if (!b) return;
+      $('yards').value = b.getAttribute('data-y'); fYards.canon(); save();
+    });
 
-      var tees = [5200, 5800, 6200, 6500, 6700, 7040];
-      $('yardQuick').innerHTML = tees.map(function (y) {
-        return '<button type="button" data-y="' + y + '">' + comma(y) + '</button>';
-      }).join('');
-      $('yardQuick').querySelectorAll('button').forEach(function (b) {
-        b.addEventListener('click', function () { $('yards').value = b.dataset.y; save(); });
-      });
-    })();
+    /* Labels, limits and the switch follow the unit on screen. */
+    function relabel() {
+      var c = U.limits('distance', TB.LIMITS.carry, du()), y = U.limits('distance', TB.LIMITS.yards, du());
+      $('carryLab').textContent = 'Driver carry (' + W() + ')';
+      $('yardsLab').textContent = 'Tees you currently play (' + W() + ')';
+      $('carry').min = c[0]; $('carry').max = c[1];
+      $('yards').min = y[0]; $('yards').max = y[1];
+      $('yards').step = metric() ? 1 : 10;
+      var btns = $('tbUnits').querySelectorAll('button');
+      for (var i = 0; i < btns.length; i++) btns[i].setAttribute('aria-pressed', btns[i].getAttribute('data-units') === unitPref ? 'true' : 'false');
+      buildQuick();
+    }
+
+    /* One yards/metres preference for every GolfRaw distance tool. */
+    U.onChange(function (pref) {
+      U.switchFields([fCarry, fYards], function () { unitPref = pref; });
+      relabel();
+      if (last) render(last);
+    });
+    $('tbUnits').addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('button[data-units]') : null;
+      if (b) U.setDistance(b.getAttribute('data-units'));
+    });
+    relabel();
 
     /* ============ ENGINE UPGRADE: history · PNG card · Web Share ============ */
     function cardData() {
       var a = last, v = verdictFor(a);
       var backish = a.status === 'back' || a.status === 'far_back';
+      var u = metric() ? ' m' : ' yds';
       var m = [
-        { k: 'Driver carry', v: a.carry + ' yds' },
-        { k: 'Tees played', v: comma(a.yards) + ' yds' },
-        { k: 'Suggested', v: span(a) + ' yds' }
+        { k: 'Driver carry', v: D(a.carry) + u },
+        { k: 'Tees played', v: D(a.yards) + u },
+        { k: 'Suggested', v: span(a) + u }
       ];
       if (backish) {
-        m.push({ k: 'Past the range', v: comma(a.over) + ' yds' });
+        m.push({ k: 'Past the range', v: D(a.over, 10) + u });
         m.push({ k: 'Rough cost', v: r1(a.strokes) + ' strokes' });
-        m.push({ k: 'Avg approach', v: Math.round(a.approachNow) + ' yds · ' + a.clubNow });
+        m.push({ k: 'Avg approach', v: D(a.approachNow) + u + ' · ' + a.clubNow });
       } else {
         m.push({ k: 'Verdict', v: a.status === 'forward' ? 'Further forward' : 'About right' });
       }
@@ -851,8 +935,8 @@
         slug: 'tools-tee-box-check',
         eyebrow: 'The Tee Box Reality Check',
         verdict: v.head,
-        big: backish ? comma(a.over) : 'OK',
-        bigLabel: backish ? 'Yards past the Tee It Forward range' : 'Close to the Tee It Forward range',
+        big: backish ? D(a.over, 10) : 'OK',
+        bigLabel: backish ? (metric() ? 'Metres' : 'Yards') + ' past the Tee It Forward range' : 'Close to the Tee It Forward range',
         filename: 'tee-box-check',
         metrics: m
       };
@@ -873,7 +957,7 @@
       RawGolf.shareResult({
         title: c.tool,
         text: (a.status === 'back' || a.status === 'far_back')
-          ? 'I am playing tees about ' + comma(a.over) + ' yards past what the Tee It Forward chart suggests ' +
+          ? 'I am playing tees about ' + D(a.over, 10) + ' ' + W() + ' past what the Tee It Forward chart suggests ' +
             'for my drive, worth roughly ' + r1(a.strokes) + ' strokes a round.'
           : 'Checked it: my tees are close to what the Tee It Forward chart suggests.',
         url: 'https://www.golfraw.com/' + c.slug
@@ -914,9 +998,9 @@
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=9" defer></script>
-  <script src="/lib/locker/store.js?v=9" defer></script>
-  <script src="/lib/locker/drawer.js?v=9" defer></script>
+  <script src="/lib/locker/schema.js?v=10" defer></script>
+  <script src="/lib/locker/store.js?v=10" defer></script>
+  <script src="/lib/locker/drawer.js?v=10" defer></script>
 <!-- LOCKER:END -->
   <!-- Ads + consent are deferred until the reader engages, or 6s, whichever
        comes first. Consent loads BEFORE AdSense so the EEA/UK gate still runs

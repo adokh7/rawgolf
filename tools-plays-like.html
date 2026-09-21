@@ -254,6 +254,15 @@
     .seg button:last-child { border-right: none }
     .seg button[aria-pressed="true"] { background: var(--ink); color: #fff }
     .seg button:hover:not([aria-pressed="true"]) { background: #F1F2EC }
+    .seg button:focus-visible { outline: 3px solid var(--flag); outline-offset: -4px }
+    .unit-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 20px }
+    .unit-lab { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--grey); font-weight: 600 }
+    .unit-row .seg { flex: 0 0 auto; min-width: 240px }
+    .unit-note { font-size: 12.5px; color: var(--grey) }
+    .lab-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px }
+    .lab-row label.fld { margin-bottom: 0 }
+    #plUnits button { min-height: 44px }
+    #plInputs .seg.mini button { flex: 0 0 auto; min-height: 44px; min-width: 52px; padding: 0 10px; letter-spacing: .02em; text-transform: none; font-size: 13px }
 
     .quick { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 9px }
     .quick button { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10.5px; font-weight: 600; letter-spacing: .06em; padding: 6px 10px; border: 2px solid var(--line); background: var(--white); cursor: pointer; transition: border-color .15s, background .15s }
@@ -420,26 +429,41 @@
       </section>
 
       <!-- ============ INPUT ============ -->
-      <section class="panel" data-gr-inputs>
+      <section class="panel" id="plInputs" data-gr-inputs>
         <div class="panel-head"><span><span class="step">01 ·</span> The Conditions</span>
           <span id="tag" class="mono" style="font-size:10px;color:#94a3b8"></span>
         </div>
         <div class="panel-in">
-          <div class="err" id="err"></div>
+          <div class="err" id="err" role="alert"></div>
+
+          <div class="unit-row">
+            <span class="unit-lab" id="plUnitLab">Distances in</span>
+            <div class="seg" id="plUnits" role="group" aria-labelledby="plUnitLab">
+              <button type="button" data-v="yards" data-gr-ignore aria-pressed="true">Yards &amp; feet</button>
+              <button type="button" data-v="meters" data-gr-ignore aria-pressed="false">Metres</button>
+            </div>
+            <span class="unit-note">Pick once. GolfRaw remembers it on this device.</span>
+          </div>
 
           <div class="row">
             <div>
-              <label class="fld" for="yards">Target yardage</label>
-              <input type="number" id="yards" min="20" max="400" step="1" inputmode="numeric" placeholder="150">
+              <label class="fld" for="yards" id="yardsLab">Target distance (yards)</label>
+              <input type="number" id="yards" min="20" max="400" step="1" inputmode="numeric" placeholder="–">
               <p class="sub">The number on the sprinkler head.</p>
             </div>
             <div>
-              <label class="fld" for="temp">Temperature (°F)</label>
-              <input type="number" id="temp" min="-20" max="130" step="1" inputmode="numeric" placeholder="70">
+              <div class="lab-row">
+                <label class="fld" for="temp" id="tempLab">Temperature (°F)</label>
+                <div class="seg mini" id="tempUnit" role="group" aria-label="Temperature unit">
+                  <button type="button" data-v="F" data-gr-ignore aria-pressed="true">°F</button>
+                  <button type="button" data-v="C" data-gr-ignore aria-pressed="false">°C</button>
+                </div>
+              </div>
+              <input type="number" id="temp" min="-20" max="130" step="1" inputmode="decimal" placeholder="–">
               <div class="quick" id="tempQuick"></div>
             </div>
             <div>
-              <label class="fld" for="alt">Altitude (feet)</label>
+              <label class="fld" for="alt" id="altLab">Altitude (feet)</label>
               <input type="number" id="alt" min="0" max="12000" step="50" inputmode="numeric" placeholder="0">
               <div class="quick" id="altQuick"></div>
             </div>
@@ -447,7 +471,13 @@
 
           <div class="row">
             <div>
-              <label class="fld" for="wind">Wind speed (mph)</label>
+              <div class="lab-row">
+                <label class="fld" for="wind" id="windLab">Wind speed (mph)</label>
+                <div class="seg mini" id="windUnit" role="group" aria-label="Wind speed unit">
+                  <button type="button" data-v="mph" data-gr-ignore aria-pressed="true">mph</button>
+                  <button type="button" data-v="kmh" data-gr-ignore aria-pressed="false">km/h</button>
+                </div>
+              </div>
               <input type="number" id="wind" min="0" max="60" step="1" inputmode="numeric" placeholder="0">
             </div>
             <div>
@@ -459,7 +489,7 @@
               <p class="sub">For wind straight into you or straight behind. For a crosswind, leave it at zero and aim off. Take the speed from a forecast.</p>
             </div>
             <div>
-              <label class="fld" for="slope">Elevation change (feet)</label>
+              <label class="fld" for="slope" id="slopeLab">Elevation change (feet)</label>
               <input type="number" id="slope" min="-200" max="200" step="1" inputmode="numeric" placeholder="0">
               <p class="sub">Positive = uphill, negative = downhill.</p>
             </div>
@@ -475,9 +505,9 @@
               <p class="sub">Humid air is slightly thinner than dry air. We count it as zero either way.</p>
             </div>
             <div>
-              <label class="fld" for="gap">Yards per club (optional)</label>
+              <label class="fld" for="gap" id="gapLab">Yards per club (optional)</label>
               <input type="number" id="gap" min="5" max="25" step="1" inputmode="numeric" placeholder="11">
-              <p class="sub">Used to work out how many clubs up or down. Default 11.</p>
+              <p class="sub" id="gapSub">Used to work out how many clubs up or down. Default 11 yards.</p>
             </div>
           </div>
 
@@ -503,7 +533,7 @@
 
           <div class="big-num">
             <span class="n" id="bigN">—</span>
-            <span class="l">yards — what it actually plays</span>
+            <span class="l" id="bigL">yards, about what it plays</span>
             <span class="club" id="clubLine"></span>
           </div>
 
@@ -607,6 +637,10 @@
               (a secondary source).</li>
           </ul>
 
+          <p>Yards or metres, °F or °C, mph or km/h: pick what your course card and forecast use. The rules
+            above are published in yards, °F, feet and mph, so the calculator converts your inputs to those units,
+            runs the same rules, and converts the answer back. Nothing changes but the rounding.</p>
+
           <h3>Limitations</h3>
           <ul class="src">
             <li>These are averages. Your launch, spin and ball speed change every line, and high-flight players
@@ -615,7 +649,7 @@
               wind move more than the rule says.</li>
             <li>Temperature counts the air. A cold ball costs extra.</li>
             <li>Rain, a wet ball, soft or firm ground and roll after landing are not modelled.</li>
-            <li>Inputs are in yards, °F, feet and mph.</li>
+            <li>Distance is in yards or metres; heights follow it (feet with yards, metres with metres).</li>
           </ul>
 
           <h3>Using it on the course</h3>
@@ -685,7 +719,8 @@
 
   <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
   <script src="./rawgolf-tools.js?v=2"></script>
-  <script src="/lib/distance/plays-like.js?v=1"></script>
+  <script src="/lib/distance/units.js?v=1"></script>
+  <script src="/lib/distance/plays-like.js?v=2"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -701,14 +736,49 @@
 
     /* ==================== ENGINE ====================
        The maths lives in /lib/distance/plays-like.js (window.GolfrawPlaysLike),
-       with every rate cited there. This script reads, renders and shares. */
-    var PL = window.GolfrawPlaysLike;
+       with every rate cited there. It works in yards, °F, feet and mph. This
+       script converts what the golfer types into those units at full
+       precision (/lib/distance/units.js), runs the model once, and converts
+       the answer back for the screen. */
+    var PL = window.GolfrawPlaysLike, U = window.GolfrawUnits;
     var TEMP_BASELINE = PL.TEMP_BASE_F;
     var DEFAULT_GAP = PL.DEFAULT_GAP;
     var LS_KEY = 'golfraw_playslike';
 
     var $ = function (id) { return document.getElementById(id); };
-    var sign = function (n) { return (n > 0 ? '+' : '') + Math.round(n); };
+
+    /* ==================== UNITS ====================
+       Distance is the shared GolfRaw preference and carries heights with it
+       (feet with yards, metres with metres). Temperature and wind have their
+       own switches: plenty of golfers read °C and mph together. */
+    var unitPref = U.distance();
+    var wx = U.weatherDefaults();                  /* { temp: 'F'|'C', speed: 'mph'|'kmh' } */
+    function du() { return U.distUnit(unitPref); }
+    function hu() { return U.heightUnit(unitPref); }
+    function metric() { return du() === 'm'; }
+    function DW(n) { return metric() ? (n === 1 ? 'metre' : 'metres') : (n === 1 ? 'yard' : 'yards'); }
+    function DS() { return metric() ? 'm' : 'yds'; }
+    function HW() { return hu() === 'm' ? 'metres' : 'feet'; }
+    function HS() { return hu() === 'm' ? 'm' : 'ft'; }
+    function TS() { return U.label(wx.temp); }
+    function SS() { return U.label(wx.speed); }
+    /* Model yards, feet, °F and mph as whole numbers in the units on screen. */
+    function dd(yd) { return Math.round(U.fromCanon('distance', yd, du())) || 0; }
+    function hh(ft) { return Math.round(U.fromCanon('height', ft, hu())) || 0; }
+    function tt(f) { return Math.round(U.fromCanon('temp', f, wx.temp)) || 0; }
+    function ss(mph) { return Math.round(U.fromCanon('speed', mph, wx.speed)) || 0; }
+    function comma(n) { return U.thousands(n); }
+    var sign = function (n) { return (n > 0 ? '+' : '') + n; };
+
+    var F = {
+      yards: U.field($('yards'), 'distance', du),
+      temp: U.field($('temp'), 'temp', function () { return wx.temp; }),
+      alt: U.field($('alt'), 'height', hu),
+      wind: U.field($('wind'), 'speed', function () { return wx.speed; }),
+      slope: U.field($('slope'), 'height', hu),
+      gap: U.field($('gap'), 'distance', du)
+    };
+    var FIELD_KEYS = ['yards', 'temp', 'alt', 'wind', 'slope', 'gap'];
 
     function clubPhrase(c) {
       var a = Math.abs(c);
@@ -719,10 +789,24 @@
       return c > 0 ? ('About ' + txt + ' more.') : ('About ' + txt + ' less.');
     }
 
-    /* ==================== VERDICTS ==================== */
+    /* The breakdown in the units on screen, rounded so the lines still add up
+       to the total shown. */
+    function shownParts(r) {
+      var keys = ['temp', 'alt', 'wind', 'slope', 'humid'];
+      var parts = keys.map(function (k) { return U.fromCanon('distance', r.parts[k], du()); });
+      var rounded = PL.roundParts(parts, U.fromCanon('distance', r.total, du()));
+      var out = {};
+      keys.forEach(function (k, i) { out[k] = rounded[i] || 0; });
+      out.total = Math.round(U.fromCanon('distance', r.total, du())) || 0;
+      return out;
+    }
+
+    /* ==================== VERDICTS ====================
+       The tiers are judged in model yards, so yards and metres always land in
+       the same tier; only the words and numbers follow the screen. */
     function verdictFor(r) {
-      var d = r.total, y = r.input.yards, pl = Math.round(r.playsLike), p = r.parts;
-      var yd = function (n) { return Math.round(Math.abs(n)); };
+      var d = r.total, y = dd(r.input.yards), pl = dd(r.playsLike), p = r.parts;
+      var amt = function (n) { var v = Math.abs(dd(n)); return v + ' ' + DW(v); };
       var bits = [];
       if (p.temp >= 2) bits.push('cold air');
       else if (p.temp <= -2) bits.push('warm air');
@@ -732,41 +816,41 @@
       else if (p.slope <= -3) bits.push('downhill');
       if (p.alt <= -4) bits.push('thin mountain air');
       var why = bits.length ? bits.join(', ') : 'conditions close to neutral';
+      var Why = why.charAt(0).toUpperCase() + why.slice(1);
 
       if (d >= 15) {
         return {
-          head: 'Your ' + y + '-yard shot is playing ' + pl + '.',
-          sub: '<b>' + why.charAt(0).toUpperCase() + why.slice(1) + '.</b> That is about ' + yd(d) +
-            ' yards the conditions are adding. ' + clubPhrase(r.clubs) +
+          head: 'Your ' + y + '-' + DW(1) + ' shot is playing ' + pl + '.',
+          sub: '<b>' + Why + '.</b> That is about ' + amt(d) + ' the conditions are adding. ' + clubPhrase(r.clubs) +
             ' Then stop blaming your swing when you come up short.'
         };
       }
       if (d >= 6) {
         return {
           head: 'It is playing ' + pl + ', not ' + y + '.',
-          sub: '<b>' + why.charAt(0).toUpperCase() + why.slice(1) + '</b> is adding about ' + yd(d) +
-            ' yards. ' + clubPhrase(r.clubs) + ' That is roughly the gap between pin high and short of the green.'
+          sub: '<b>' + Why + '</b> is adding about ' + amt(d) + '. ' + clubPhrase(r.clubs) +
+            ' That is roughly the gap between pin high and short of the green.'
         };
       }
       if (d <= -15) {
         return {
           head: 'It is only playing ' + pl + '.',
-          sub: '<b>' + why.charAt(0).toUpperCase() + why.slice(1) + '.</b> The conditions are handing you about ' +
-            yd(d) + ' free yards. ' + clubPhrase(r.clubs) +
+          sub: '<b>' + Why + '.</b> The conditions are handing you about ' + amt(d) + ' for free. ' +
+            clubPhrase(r.clubs) +
             ' Fire at this with your normal club and you are through the back, in the rubbish, wondering why.'
         };
       }
       if (d <= -6) {
         return {
           head: 'It is playing ' + pl + ', not ' + y + '.',
-          sub: '<b>' + why.charAt(0).toUpperCase() + why.slice(1) + '</b> is taking about ' + yd(d) +
-            ' yards off it. ' + clubPhrase(r.clubs) + ' Long is usually worse than short here.'
+          sub: '<b>' + Why + '</b> is taking about ' + amt(d) + ' off it. ' + clubPhrase(r.clubs) +
+            ' Long is usually worse than short here.'
         };
       }
       return {
         head: 'It plays about what it says: ' + pl + '.',
-        sub: 'Conditions are close to neutral. Everything nets out to ' + sign(d) +
-          ' yards, so hit your normal club. For once the number on the sprinkler head is telling the truth, ' +
+        sub: 'Conditions are close to neutral. Everything nets out to ' + sign(shownParts(r).total) + ' ' + DW(2) +
+          ', so hit your normal club. For once the number on the sprinkler head is telling the truth, ' +
           'which means any bad result from here is your own work.'
       };
     }
@@ -774,80 +858,55 @@
     /* ==================== RENDER ==================== */
     var last = null;
 
+    /* Canonical inputs: blanks fall back to neutral conditions. */
     function readInputs() {
-      var yards = parseFloat($('yards').value);
-      var temp = $('temp').value === '' ? TEMP_BASELINE : parseFloat($('temp').value);
-      var alt = $('alt').value === '' ? 0 : parseFloat($('alt').value);
-      var wind = $('wind').value === '' ? 0 : parseFloat($('wind').value);
-      var slope = $('slope').value === '' ? 0 : parseFloat($('slope').value);
-      var gap = $('gap').value === '' ? DEFAULT_GAP : parseFloat($('gap').value);
+      var c = {};
+      FIELD_KEYS.forEach(function (k) { c[k] = F[k].canon(); });
       return {
-        yards: yards, temp: temp, alt: alt, wind: wind, slope: slope, gap: gap,
+        yards: c.yards === null ? NaN : c.yards,
+        temp: c.temp === null ? TEMP_BASELINE : c.temp,
+        alt: c.alt === null ? 0 : c.alt,
+        wind: c.wind === null ? 0 : c.wind,
+        slope: c.slope === null ? 0 : c.slope,
+        gap: c.gap === null ? DEFAULT_GAP : c.gap,
         windDir: segValue('windDir'), humidity: segValue('humid')
       };
     }
 
-    var ERRORS = {
-      yards_missing: 'Enter the target yardage first.',
-      yards: 'Target yardage should be between 20 and 400.',
-      temp: 'Temperature should be between -20 and 130 °F.',
-      alt: 'Altitude should be between 0 and 12,000 feet.',
-      wind: 'Wind speed should be between 0 and 60 mph.',
-      windDir: 'Pick headwind or tailwind.',
-      slope: 'Elevation change should be between -200 and 200 feet.',
-      slope_ratio: 'That elevation change is more than half the shot. The yard-for-a-yard rule does not hold there, so check the numbers.'
-    };
-    var CAUTIONS = {
-      strong_wind: 'Strong wind: from about 20 mph the real effect grows faster than this rule, especially into the wind. Treat the wind line as a floor.',
-      cold_ball: 'Below 40°F: this counts the air only. A cold ball loses more, so keep the spare in a warm pocket.',
-      short_altitude: 'Short shot at altitude: Titleist says shorter, slower shots gain less, so the altitude line fades out below 100 yards.',
-      steep: 'Big elevation change for the distance: steep-landing shots move less than a yard for a yard, low shots more. Read it loosely.'
-    };
+    /* Errors quote the limits in the units the golfer is using. */
+    function errorFor(code) {
+      var L = PL.LIMITS;
+      var y = U.limits('distance', L.yards, du()), t = U.limits('temp', L.temp, wx.temp);
+      var a = U.limits('height', L.alt, hu()), w = U.limits('speed', L.wind, wx.speed);
+      var sl = U.limits('height', L.slope, hu());
+      return {
+        yards_missing: 'Enter the target distance first.',
+        yards: 'Target distance should be between ' + y[0] + ' and ' + y[1] + ' ' + DW(2) + '.',
+        temp: 'Temperature should be between ' + t[0] + ' and ' + t[1] + ' ' + TS() + '.',
+        alt: 'Altitude should be between 0 and ' + comma(a[1]) + ' ' + HW() + '.',
+        wind: 'Wind speed should be between 0 and ' + w[1] + ' ' + SS() + '.',
+        windDir: 'Pick headwind or tailwind.',
+        slope: 'Elevation change should be between ' + sl[0] + ' and ' + sl[1] + ' ' + HW() + '.',
+        slope_ratio: 'That elevation change is more than half the shot. The yard-for-a-yard rule does not hold there, so check the numbers.'
+      }[code] || 'Check the numbers and try again.';
+    }
+
+    function cautionFor(flag) {
+      return {
+        strong_wind: 'Strong wind: from about ' + ss(20) + ' ' + SS() + ' the real effect grows faster than this rule, especially into the wind. Treat the wind line as a floor.',
+        cold_ball: 'Below ' + tt(40) + TS() + ': this counts the air only. A cold ball loses more, so keep the spare in a warm pocket.',
+        short_altitude: 'Short shot at altitude: Titleist says shorter, slower shots gain less, so the altitude line fades out below ' + dd(100) + ' ' + DW(2) + '.',
+        steep: 'Big elevation change for the distance: steep-landing shots move less than a ' + DW(1) + ' for a ' + DW(1) + ', low shots more. Read it loosely.'
+      }[flag];
+    }
 
     function run() {
       var o = readInputs();
       var r = PL.compute(o);
-      if (!r.ok) return err(ERRORS[r.code] || 'Check the numbers and try again.');
+      if (!r.ok) return err(errorFor(r.code));
       err('');
-      o = r.input;
       last = r;
-      var v = verdictFor(r);
-
-      $('vHead').textContent = v.head;
-      $('vSub').innerHTML = v.sub;
-
-      var bn = $('bigN');
-      bn.textContent = Math.round(r.playsLike);
-      bn.className = 'n' + (r.total < 0 ? ' short' : '');
-      $('clubLine').textContent = clubPhrase(r.clubs);
-
-      var humidity = segValue('humid');
-      $('brk').innerHTML =
-        brkRow('Temperature', o.temp + '°F vs 70°F', r.shown.temp) +
-        brkRow('Wind', o.wind + ' mph ' + (o.windDir === 'head' ? 'headwind' : 'tailwind'), r.shown.wind) +
-        brkRow('Elevation', Math.abs(o.slope) + ' ft ' + (o.slope >= 0 ? 'uphill' : 'downhill'), r.shown.slope) +
-        brkRow('Altitude', o.alt.toLocaleString() + ' ft above sea level', r.shown.alt) +
-        brkRow('Humidity', humidity === 'high' ? 'High / muggy' : 'Low / dry', r.shown.humid) +
-        '<div class="brk-row total"><span class="k">Plays like, about</span><span class="v">' +
-        Math.round(r.playsLike) + ' yds (' + sign(r.total) + ')</span></div>';
-
-      $('myth').innerHTML = humidity === 'high'
-        ? '<b>Humidity: 0 yards.</b> You picked muggy, and it barely matters. Water vapour is lighter than the ' +
-          'nitrogen and oxygen it replaces, so humid air is <b>less</b> dense and the ball flies a touch further: ' +
-          'about a yard across the whole range, by TrackMan\'s numbers. Rain and a wet ball are a different story.'
-        : '<b>Humidity: 0 yards.</b> It would still be about 0 if you picked muggy. Humid air is less dense than ' +
-          'dry air, so it helps by a yard at most rather than hurting. Rain and a wet ball are a different story.';
-
-      var cautions = r.flags.map(function (f) { return CAUTIONS[f]; }).filter(Boolean);
-      $('cautions').innerHTML = cautions.length ? '<b>Read with care.</b> ' + cautions.join(' ') : '';
-      $('cautions').hidden = !cautions.length;
-
-      $('method').textContent = 'An estimate from published rules of thumb, not a launch monitor. Altitude: about ' +
-        '1.16% per 1,000 ft (Titleist), fading out on shots under 100 yards. Temperature: about 0.75% per 10°F ' +
-        'from 70°F, air only (Titleist). Wind: 1 yard per mph into it and half that downwind (Andrew Rice and ' +
-        'PING), applied at 150 yards and scaled with the shot. Elevation: a yard for a yard (TrackMan). Humidity: 0. ' +
-        'Club change assumes ' + r.gap + ' yards between clubs.';
-
+      render(r);
       $('outWrap').classList.add('show');
       if (window.GRTrack) GRTrack.completed();
       if (window.RawGolf) RawGolf.save(cardData());
@@ -855,10 +914,51 @@
       save();
     }
 
+    function render(r) {
+      var o = r.input, v = verdictFor(r), sp = shownParts(r);
+      $('vHead').textContent = v.head;
+      $('vSub').innerHTML = v.sub;
+
+      var bn = $('bigN');
+      bn.textContent = dd(r.playsLike);
+      bn.className = 'n' + (r.total < 0 ? ' short' : '');
+      $('bigL').textContent = DW(2) + ', about what it plays';
+      $('clubLine').textContent = clubPhrase(r.clubs);
+
+      var humidity = segValue('humid');
+      $('brk').innerHTML =
+        brkRow('Temperature', tt(o.temp) + TS() + ' vs ' + tt(TEMP_BASELINE) + TS(), sp.temp) +
+        brkRow('Wind', ss(o.wind) + ' ' + SS() + ' ' + (o.windDir === 'head' ? 'headwind' : 'tailwind'), sp.wind) +
+        brkRow('Elevation', Math.abs(hh(o.slope)) + ' ' + HS() + ' ' + (o.slope >= 0 ? 'uphill' : 'downhill'), sp.slope) +
+        brkRow('Altitude', comma(hh(o.alt)) + ' ' + HS() + ' above sea level', sp.alt) +
+        brkRow('Humidity', humidity === 'high' ? 'High / muggy' : 'Low / dry', sp.humid) +
+        '<div class="brk-row total"><span class="k">Plays like, about</span><span class="v">' +
+        dd(r.playsLike) + ' ' + DS() + ' (' + sign(sp.total) + ')</span></div>';
+
+      $('myth').innerHTML = humidity === 'high'
+        ? '<b>Humidity: 0 ' + DW(2) + '.</b> You picked muggy, and it barely matters. Water vapour is lighter than the ' +
+          'nitrogen and oxygen it replaces, so humid air is <b>less</b> dense and the ball flies a touch further: ' +
+          'about a yard across the whole range, by TrackMan\'s numbers. Rain and a wet ball are a different story.'
+        : '<b>Humidity: 0 ' + DW(2) + '.</b> It would still be about 0 if you picked muggy. Humid air is less dense than ' +
+          'dry air, so it helps by a yard at most rather than hurting. Rain and a wet ball are a different story.';
+
+      var cautions = r.flags.map(cautionFor).filter(Boolean);
+      $('cautions').innerHTML = cautions.length ? '<b>Read with care.</b> ' + cautions.join(' ') : '';
+      $('cautions').hidden = !cautions.length;
+
+      $('method').textContent = 'An estimate from published rules of thumb, not a launch monitor. Altitude: about ' +
+        '1.16% per 1,000 ft (Titleist), fading out on shots under 100 yards. Temperature: about 0.75% per 10°F ' +
+        'from 70°F, air only (Titleist). Wind: 1 yard per mph into it and half that downwind (Andrew Rice and ' +
+        'PING), applied at 150 yards and scaled with the shot. Elevation: a yard for a yard (TrackMan). Humidity: 0. ' +
+        'Club change assumes ' + dd(r.gap) + ' ' + DW(2) + ' between clubs.' +
+        (metric() || wx.temp === 'C' || wx.speed === 'kmh'
+          ? ' Your metric inputs are converted to those units first, and the answer is converted back.' : '');
+    }
+
     function brkRow(k, detail, v) {
       var cls = v === 0 ? 'zero' : (v > 0 ? 'plus' : 'minus');
       return '<div class="brk-row"><span class="k">' + k + '<small>' + detail + '</small></span>' +
-        '<span class="v ' + cls + '">' + sign(v) + ' yds</span></div>';
+        '<span class="v ' + cls + '">' + sign(v) + ' ' + DS() + '</span></div>';
     }
 
     function err(m) {
@@ -888,13 +988,14 @@
       if (!last) return err('Run it first.');
       var r = last, o = r.input, v = verdictFor(r);
       var lines = ['THE PLAYS LIKE CALCULATOR', '', v.head.toUpperCase(), ''];
-      lines.push('Target:      ' + o.yards + ' yds');
-      lines.push('Plays like:  about ' + Math.round(r.playsLike) + ' yds (' + sign(r.total) + ')');
+      var sp = shownParts(r);
+      lines.push('Target:      ' + dd(o.yards) + ' ' + DS());
+      lines.push('Plays like:  about ' + dd(r.playsLike) + ' ' + DS() + ' (' + sign(sp.total) + ')');
       lines.push('');
-      lines.push('Temperature (' + o.temp + 'F):  ' + sign(r.shown.temp));
-      lines.push('Wind (' + o.wind + 'mph ' + o.windDir + '): ' + sign(r.shown.wind));
-      lines.push('Elevation (' + o.slope + 'ft):  ' + sign(r.shown.slope));
-      lines.push('Altitude (' + o.alt + 'ft):     ' + sign(r.shown.alt));
+      lines.push('Temperature (' + tt(o.temp) + TS() + '):  ' + sign(sp.temp));
+      lines.push('Wind (' + ss(o.wind) + ' ' + SS() + ' ' + o.windDir + '): ' + sign(sp.wind));
+      lines.push('Elevation (' + hh(o.slope) + ' ' + HS() + '):  ' + sign(sp.slope));
+      lines.push('Altitude (' + comma(hh(o.alt)) + ' ' + HS() + '):     ' + sign(sp.alt));
       lines.push('Humidity:              0');
       lines.push('');
       lines.push(clubPhrase(r.clubs));
@@ -921,26 +1022,43 @@
       document.body.removeChild(ta);
     }
 
-    /* ==================== PERSIST ==================== */
+    /* ==================== PERSIST ====================
+       Saved in the model's units (yards, °F, feet, mph), the format the tool
+       always used, plus the temperature and wind units picked. */
+    function plState() {
+      var d = {};
+      FIELD_KEYS.forEach(function (k) {
+        var c = F[k].canon();
+        d[k] = c === null || isNaN(c) ? '' : String(Math.round(c * 1e6) / 1e6);
+      });
+      d.windDir = segValue('windDir');
+      d.humidity = segValue('humid');
+      d.tempUnit = wx.temp;
+      d.speedUnit = wx.speed;
+      return d;
+    }
+
+    function plApply(d) {
+      if (d && (d.tempUnit === 'F' || d.tempUnit === 'C')) wx.temp = d.tempUnit;
+      if (d && (d.speedUnit === 'mph' || d.speedUnit === 'kmh')) wx.speed = d.speedUnit;
+      FIELD_KEYS.forEach(function (k) {
+        var v = d && d[k] !== undefined && d[k] !== '' ? parseFloat(d[k]) : null;
+        F[k].set(v !== null && isFinite(v) ? v : null);
+      });
+      setSeg('windDir', (d && d.windDir) || 'head');
+      setSeg('humid', (d && d.humidity) || 'low');
+      relabel();
+    }
+
     function save() {
-      try {
-        localStorage.setItem(LS_KEY, JSON.stringify({
-          yards: $('yards').value, temp: $('temp').value, alt: $('alt').value,
-          wind: $('wind').value, slope: $('slope').value, gap: $('gap').value,
-          windDir: segValue('windDir'), humidity: segValue('humid')
-        }));
-      } catch (e) { }
+      try { localStorage.setItem(LS_KEY, JSON.stringify(plState())); } catch (e) { }
     }
 
     function restore() {
       var d = null;
       try { d = JSON.parse(localStorage.getItem(LS_KEY) || 'null'); } catch (e) { d = null; }
-      if (!d) return;
-      ['yards', 'temp', 'alt', 'wind', 'slope', 'gap'].forEach(function (k) {
-        if (d[k] !== undefined && d[k] !== '') $(k).value = d[k];
-      });
-      setSeg('windDir', d.windDir);
-      setSeg('humid', d.humidity);
+      if (!d) { relabel(); return; }
+      plApply(d);
       flash('Conditions restored');
     }
 
@@ -952,7 +1070,7 @@
     }
 
     function reset() {
-      ['yards', 'temp', 'alt', 'wind', 'slope', 'gap'].forEach(function (k) { $(k).value = ''; });
+      FIELD_KEYS.forEach(function (k) { F[k].set(null); });
       setSeg('windDir', 'head'); setSeg('humid', 'low');
       $('outWrap').classList.remove('show');
       err('');
@@ -965,25 +1083,79 @@
       setTimeout(function () { t.textContent = ''; }, 2200);
     }
 
-    /* ==================== QUICK PICKS ==================== */
-    (function () {
-      var temps = [30, 45, 60, 70, 85, 100];
-      $('tempQuick').innerHTML = temps.map(function (t) {
-        return '<button type="button" data-t="' + t + '">' + t + '°</button>';
+    /* ==================== QUICK PICKS ====================
+       Round numbers in whichever unit is on; a pick counts as typed. */
+    var PICKS = {
+      temp: { F: [30, 45, 60, 70, 85, 100], C: [0, 5, 10, 15, 25, 35] },
+      alt: {
+        ft: [[0, 'Sea level'], [1000, '1k ft'], [3000, '3k ft'], [5280, 'Denver']],
+        m: [[0, 'Sea level'], [300, '300 m'], [1000, '1,000 m'], [1609, 'Denver']]
+      }
+    };
+    function buildQuick() {
+      $('tempQuick').innerHTML = PICKS.temp[wx.temp].map(function (t) {
+        return '<button type="button" data-t="' + t + '" aria-label="' + t + ' ' + TS() + '">' + t + '°</button>';
       }).join('');
-      $('tempQuick').querySelectorAll('button').forEach(function (b) {
-        b.addEventListener('click', function () { $('temp').value = b.dataset.t; save(); });
-      });
+      $('altQuick').innerHTML = PICKS.alt[hu()].map(function (a) {
+        return '<button type="button" data-a="' + a[0] + '" aria-label="' + comma(a[0]) + ' ' + HW() + '">' + a[1] + '</button>';
+      }).join('');
+    }
+    $('tempQuick').addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('button[data-t]') : null;
+      if (!b) return;
+      $('temp').value = b.getAttribute('data-t'); F.temp.canon(); save();
+    });
+    $('altQuick').addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('button[data-a]') : null;
+      if (!b) return;
+      $('alt').value = b.getAttribute('data-a'); F.alt.canon(); save();
+    });
 
-      var alts = [0, 1000, 3000, 5280];
-      var labels = { 0: 'Sea level', 1000: '1k ft', 3000: '3k ft', 5280: 'Denver' };
-      $('altQuick').innerHTML = alts.map(function (a) {
-        return '<button type="button" data-a="' + a + '">' + labels[a] + '</button>';
-      }).join('');
-      $('altQuick').querySelectorAll('button').forEach(function (b) {
-        b.addEventListener('click', function () { $('alt').value = b.dataset.a; save(); });
-      });
-    })();
+    /* Labels, limits and switches follow the units on screen. */
+    function relabel() {
+      $('yardsLab').textContent = 'Target distance (' + DW(2) + ')';
+      $('tempLab').textContent = 'Temperature (' + TS() + ')';
+      $('altLab').textContent = 'Altitude (' + HW() + ')';
+      $('windLab').textContent = 'Wind speed (' + SS() + ')';
+      $('slopeLab').textContent = 'Elevation change (' + HW() + ')';
+      $('gapLab').textContent = (metric() ? 'Metres' : 'Yards') + ' per club (optional)';
+      $('gapSub').textContent = 'Used to work out how many clubs up or down. Default ' + dd(DEFAULT_GAP) + ' ' + DW(2) + '.';
+      var L = PL.LIMITS;
+      var lim = {
+        yards: U.limits('distance', L.yards, du()), temp: U.limits('temp', L.temp, wx.temp),
+        alt: U.limits('height', L.alt, hu()), wind: U.limits('speed', L.wind, wx.speed),
+        slope: U.limits('height', L.slope, hu()), gap: U.limits('distance', L.gap, du())
+      };
+      FIELD_KEYS.forEach(function (k) { $(k).min = lim[k][0]; $(k).max = lim[k][1]; });
+      $('alt').step = hu() === 'm' ? 10 : 50;
+      setSeg('plUnits', unitPref);
+      setSeg('tempUnit', wx.temp);
+      setSeg('windUnit', wx.speed);
+      buildQuick();
+    }
+
+    /* A switch keeps every exact value: fields redraw from it, results re-render. */
+    function applySwitch(fields, change) {
+      U.switchFields(fields.map(function (k) { return F[k]; }), change);
+      relabel();
+      if (last) render(last);
+      save();
+    }
+    U.onChange(function (pref) {
+      applySwitch(['yards', 'alt', 'slope', 'gap'], function () { unitPref = pref; });
+    });
+    $('plUnits').addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('button[data-v]') : null;
+      if (b) U.setDistance(b.getAttribute('data-v'));
+    });
+    $('tempUnit').addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('button[data-v]') : null;
+      if (b && b.getAttribute('data-v') !== wx.temp) applySwitch(['temp'], function () { wx.temp = b.getAttribute('data-v'); });
+    });
+    $('windUnit').addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('button[data-v]') : null;
+      if (b && b.getAttribute('data-v') !== wx.speed) applySwitch(['wind'], function () { wx.speed = b.getAttribute('data-v'); });
+    });
 
     /* ============ ENGINE UPGRADE: history · PNG card · Web Share ============ */
     function cardData() {
@@ -993,16 +1165,16 @@
         slug: 'tools-plays-like',
         eyebrow: 'The Plays Like Calculator',
         verdict: v.head,
-        big: String(Math.round(r.playsLike)),
-        bigLabel: 'Plays like · yards',
+        big: String(dd(r.playsLike)),
+        bigLabel: 'Plays like · ' + DW(2),
         filename: 'plays-like',
         metrics: [
-          { k: 'Target', v: o.yards + ' yds' },
-          { k: 'Plays like', v: Math.round(r.playsLike) + ' yds' },
-          { k: 'Adjustment', v: sign(r.total) + ' yds' },
-          { k: 'Wind', v: o.wind + 'mph ' + o.windDir },
+          { k: 'Target', v: dd(o.yards) + ' ' + DS() },
+          { k: 'Plays like', v: dd(r.playsLike) + ' ' + DS() },
+          { k: 'Adjustment', v: sign(shownParts(r).total) + ' ' + DS() },
+          { k: 'Wind', v: ss(o.wind) + ' ' + SS() + ' ' + o.windDir },
           { k: 'Club', v: clubPhrase(r.clubs) },
-          { k: 'Humidity', v: '0 yds' }
+          { k: 'Humidity', v: '0 ' + DS() }
         ]
       };
     }
@@ -1021,8 +1193,8 @@
       var c = cardData(), r = last;
       RawGolf.shareResult({
         title: c.tool,
-        text: 'My ' + r.input.yards + '-yard shot is playing ' + Math.round(r.playsLike) +
-          '. ' + clubPhrase(r.clubs) + '.',
+        text: 'My ' + dd(r.input.yards) + '-' + DW(1) + ' shot is playing ' + dd(r.playsLike) +
+          '. ' + clubPhrase(r.clubs),
         url: 'https://www.golfraw.com/' + c.slug
       });
     }
@@ -1061,28 +1233,21 @@
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=9" defer></script>
-  <script src="/lib/locker/store.js?v=9" defer></script>
-  <script src="/lib/locker/drawer.js?v=9" defer></script>
+  <script src="/lib/locker/schema.js?v=10" defer></script>
+  <script src="/lib/locker/store.js?v=10" defer></script>
+  <script src="/lib/locker/drawer.js?v=10" defer></script>
   <script>
     /* ---- Locker bridge: Tool #05 Plays Like -----------------------------
        Conditions are this tool's own state, so they live in toolState rather
-       than in a shared schema. The reader's unit preference does come from the
-       shared profile — it is a property of the person, not of one calculator. */
+       than in a shared schema. They are stored in the model's own units
+       (yards, °F, feet, mph) with the temperature and wind units the golfer
+       picked, so switching yards and metres later cannot change what they
+       mean. The page owns the conversion (plState / plApply). */
     window.addEventListener('DOMContentLoaded', function () {
       var L = window.GolfrawLocker;
-      if (!L) return;
+      if (!L || typeof plState !== 'function' || typeof plApply !== 'function') return;
       var TOOL = 'plays-like';
-      var FIELDS = ['yards', 'temp', 'alt', 'wind', 'slope', 'gap'];
       var timer = null, hydrating = false, missedWrite = false;
-
-      function collect() {
-        var d = {};
-        for (var i = 0; i < FIELDS.length; i++) d[FIELDS[i]] = $(FIELDS[i]).value;
-        d.windDir = segValue('windDir');
-        d.humidity = segValue('humid');
-        return d;
-      }
 
       function push() {
         /* A keystroke during hydration must not be lost: remember it and
@@ -1091,35 +1256,24 @@
         if (hydrating) { missedWrite = true; return; }
         if (timer) clearTimeout(timer);
         timer = setTimeout(function () {
-          L.setToolState(TOOL, collect())['catch'](function () { });
+          L.setToolState(TOOL, plState())['catch'](function () { });
         }, 400);
       }
 
       function hydrate(force) {
         return L.getToolState(TOOL).then(function (d) {
-          if (!d) { if (force) clearFields(); return; }
+          if (!d && !force) return;
           hydrating = true;
-          for (var i = 0; i < FIELDS.length; i++) {
-            var k = FIELDS[i];
-            if (d[k] !== undefined && d[k] !== '') $(k).value = d[k];
-          }
-          if (d.windDir) setSeg('windDir', d.windDir);
-          if (d.humidity) setSeg('humid', d.humidity);
+          plApply(d || null);
           hydrating = false;
           if (missedWrite) { missedWrite = false; push(); }
         })['catch'](function () { hydrating = false; missedWrite = false; });
       }
 
-      function clearFields() {
-        hydrating = true;
-        for (var i = 0; i < FIELDS.length; i++) $(FIELDS[i]).value = '';
-        setSeg('windDir', 'head'); setSeg('humid', 'low');
-        hydrating = false;
-      }
-
-      for (var i = 0; i < FIELDS.length; i++) $(FIELDS[i]).addEventListener('input', push);
-      $('windDir').addEventListener('click', push);
-      $('humid').addEventListener('click', push);
+      // Typing, the direction and humidity buttons, the quick picks and the
+      // unit switches all live in the conditions panel.
+      $('plInputs').addEventListener('input', push);
+      $('plInputs').addEventListener('click', push);
 
       L.ready().then(function () { return hydrate(false); });
       L.subscribe(function (kind) { if (kind === 'import' || kind === 'clear') hydrate(true); });

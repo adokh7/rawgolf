@@ -98,6 +98,10 @@ rate".
   That gap is itself the signal to watch.
 - Tendency Engine needs 18 holes before anything completes, so expect a low
   completion rate and read return use alongside it.
+- Units are not measured. The yards/metres, °F/°C and mph/km/h switches carry
+  `data-gr-ignore`, so they are neither a start nor an event, and no unit
+  label is sent: GA4's country report already answers "who uses metres"
+  closely enough, and nothing about the tools would change on the answer.
 - The Distance Check sends `anchor_type` on the first completion of a page view
   only. A golfer who runs a 7-iron carry and then a handicap band counts once,
   as `iron_carry`. Read the split as "what golfers start from", not every run.

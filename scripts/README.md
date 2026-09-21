@@ -716,6 +716,41 @@ Forward chart).
   golfer started from, never the number, the band or any output.
 
 
+## Units: yards or metres across the distance tools (`lib/distance/units.js`)
+
+The Distance Check, Plays Like, Tee Box and Bag Audit run one model each, in
+one canonical unit per quantity: yards, feet, °F and mph. Pages convert what
+the golfer types into those units at full precision, run the model once, and
+round only the numbers they show. `units.js` holds the exact conversions
+(0.9144 m/yd, 0.3048 m/ft, 1.609344 km/h per mph), inward-rounded input
+limits, and `field()`, which keeps the exact value behind a number input so
+yards -> metres -> yards returns what was typed. No separate metric logic,
+no separate URLs.
+
+- **The preference** is the Locker profile's existing `units` field
+  (`yards` | `meters`), the one the drawer, The Standing Order and the Coach
+  Report already read. `GolfrawUnits.setDistance()` writes it through
+  `GolfrawLocker.setUnits()`, which converts stored bag carries and range
+  shots (one decimal, never accumulating) instead of relabelling them. The
+  drawer goes through `setUnits` too. First visit: yards. Nothing reaches a
+  URL or the analytics layer.
+- **Temperature and wind** (Plays Like only) are not in the profile. They
+  default from the browser language (°F only for the US; mph for the US and
+  UK) and are saved in Plays Like's own state.
+- **Storage stays canonical**: Plays Like and Tee Box save yards/°F/feet/mph
+  (the format they always used), Bag Audit's own key saves yards, and the
+  Locker bridge writes the bag in the profile's units, reading the profile in
+  the same step as the write.
+- Bag Audit's switch styles sit in a `<!-- UNITS:START/END -->` block that
+  `tool_shell.py` strips, so the generated tools do not inherit them.
+- `wire_locker.py` now also refreshes the Locker `?v=` inside the Locker
+  blocks on articles and hubs, so a `VER` bump reaches every page.
+- Tests: `node tests/units.test.js` (conversions, rounding rules,
+  repeated-switch drift, imperial-vs-metric equivalence for all four tools,
+  Distance Check vs Tee Box), `node tests/locker-units.test.js`, and
+  `python3 -m unittest tests.test_distance_units_pages`. **Bump `version`**
+  in `units.js` (and every page's `?v=`) when it changes.
+
 ## Plays Like and Tee Box models (`lib/distance/plays-like.js`, `lib/distance/tee-box.js`)
 
 Both pages are hand-written (no builder); their maths lives in these two UMD

@@ -72,6 +72,8 @@ class ClubDistancePageTests(unittest.TestCase):
     def test_scripts_load_at_the_versions_the_builders_declare(self):
         ver = re.search(r"^MODEL_VER = '(\d+)'", self.builder, re.M).group(1)
         self.assertEqual(1, self.source.count(f'<script src="/lib/distance/club-distance.js?v={ver}"></script>'))
+        units = re.search(r"^UNITS_VER = '(\d+)'", self.builder, re.M).group(1)
+        self.assertLess(self.source.index(f'/lib/distance/units.js?v={units}'), self.source.index("club-distance.js?v="))
         self.assertIn("/lib/analytics/tool-events.js?v=", self.source)
         self.assertIn("/lib/locker/store.js?v=", self.source)
         self.assertLess(self.source.index("club-distance.js?v="), self.source.index("window.GolfrawDistance"))
@@ -105,9 +107,19 @@ class ClubDistancePageTests(unittest.TestCase):
         expected = json.loads(subprocess.run(["node", "-e", script], cwd=ROOT, capture_output=True,
                                              text=True, check=True).stdout)
         table = self.source.split('<table class="cd-examples">')[1].split("</table>")[0]
-        rows = [[text(td).replace("–", "-") for td in re.findall(r"<td>(.*?)</td>", tr, re.S)]
-                for tr in re.findall(r"<tr>(.*?)</tr>", table.split("<tbody>")[1], re.S)]
+        body = table.split("<tbody>")[1]
+        rows = [[text(td).replace("–", "-") for td in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)]
+                for tr in re.findall(r"<tr>(.*?)</tr>", body, re.S)]
         self.assertEqual(expected, rows)
+        # The metres view is drawn from the exact values in data-cd-ex, so they
+        # must be the model's own numbers, not the rounded yards.
+        exact = json.loads(subprocess.run(["node", "-e", (
+            "const D=require('./lib/distance/club-distance.js');"
+            "console.log(JSON.stringify([120,145,170].map(v=>{const r=D.estimate({anchor:'iron_carry',value:v});"
+            "return [String(v)].concat(['driver','5i','pw'].map(id=>r.clubs.find(c=>c.id===id).typical.map(x=>+x.toFixed(3)).join(',')));})));"
+        )], cwd=ROOT, capture_output=True, text=True, check=True).stdout)
+        attrs = [re.findall(r'data-cd-ex="([^"]+)"', tr) for tr in re.findall(r"<tr>(.*?)</tr>", body, re.S)]
+        self.assertEqual(exact, attrs)
 
     def test_builder_owns_the_page(self):
         for marker in ('<p class="tool-brand">The Distance Check</p>', "How this estimate works",

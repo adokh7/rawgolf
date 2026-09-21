@@ -7,14 +7,14 @@ moment wire_locker.py and apply_theme.py injected their managed blocks into
 the shell: every rebuild would have produced a page with no </head>, no <body>
 and no tool CSS. Markers do not drift; line numbers do.
 
-The managed LOCKER and THEME blocks are stripped from every part on purpose.
+The managed LOCKER, THEME, TOOL-EVENTS and UNITS blocks are stripped from every part on purpose.
 The wiring scripts are idempotent and re-inject them after a rebuild, so a
 builder must never bake a stale copy in.
 """
 import io
 import re
 
-MANAGED = re.compile(r'\s*<!-- (LOCKER|THEME|TOOL-EVENTS):START -->.*?<!-- \1:END -->\n?', re.S)
+MANAGED = re.compile(r'\s*<!-- (LOCKER|THEME|TOOL-EVENTS|UNITS):START -->.*?<!-- \1:END -->\n?', re.S)
 
 
 def _between(text, start_pat, end_pat, inclusive_end=True, label=''):

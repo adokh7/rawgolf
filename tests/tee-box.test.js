@@ -82,8 +82,9 @@ for (let yards = 3000; yards < 8500; yards += 50) {
 }
 
 // ---- STATUS BOUNDARIES ----------------------------------------------------------------
-const hi = T.analyse({ carry: 220, score: 95, yards: 6500 }).range[1];
-const lo = T.analyse({ carry: 220, score: 95, yards: 6500 }).range[0];
+// Status is measured against the unrounded chart; only the screen rounds.
+const hi = T.analyse({ carry: 220, score: 95, yards: 6500 }).rangeRaw[1];
+const lo = T.analyse({ carry: 220, score: 95, yards: 6500 }).rangeRaw[0];
 check(T.analyse({ carry: 220, score: 95, yards: hi + 290 }).status === 'fits', 'just past the range still fits');
 check(T.analyse({ carry: 220, score: 95, yards: hi + 300 }).status === 'back', '300 past the range is too far back');
 check(T.analyse({ carry: 220, score: 95, yards: hi + 810 }).status === 'far_back', 'over 800 past is far too far back');

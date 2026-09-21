@@ -123,7 +123,7 @@
           "name": "What is a good distance gap between golf clubs?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Between 10 and 15 yards is the target through the set. Anything over 20 yards leaves a distance you have no club for, and anything under 8 yards means you are carrying two clubs that do the same job and wasting one of your fourteen slots."
+            "text": "Between 10 and 15 yards (about 9 to 14 metres) is the target through the set. Anything over 20 yards (about 18 metres) leaves a distance you have no club for, and anything under 8 yards (about 7 metres) means you are carrying two clubs that do the same job and wasting one of your fourteen slots."
           }
         },
         {
@@ -155,6 +155,22 @@
   ]
 }
   </script>
+<!-- UNITS:START -->
+  <!-- The yards/metres switch. Kept out of the shared tool shell (tool_shell.py
+       strips this block) because only this page uses it. -->
+  <style>
+    .unit-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 16px }
+    .unit-lab { font-size: 13px; font-weight: 700; color: var(--ink) }
+    .unit-seg { display: inline-flex; border: 2px solid var(--ink); border-radius: 10px; overflow: hidden }
+    .unit-seg button { min-height: 44px; min-width: 88px; padding: 8px 16px; margin: 0; font-family: inherit; font-size: 15px; font-weight: 700; line-height: 1.2; letter-spacing: normal; text-transform: none; background: var(--white); color: var(--ink); border: 0; border-radius: 0; cursor: pointer; box-shadow: none }
+    .unit-seg button + button { border-left: 2px solid var(--ink) }
+    .unit-seg button[aria-pressed="true"] { background: var(--ink); color: #fff }
+    .unit-seg button:focus-visible { outline: 3px solid var(--flag); outline-offset: -4px }
+    .unit-note { font-size: 12.5px; color: var(--grey) }
+    /* The theme gives every button 40px; the id wins so the switch keeps 44px targets. */
+    #baUnits button { min-height: 44px }
+  </style>
+  <!-- UNITS:END -->
 <!-- ============ FONTS (self-hosted, no third-party round trip) ============ -->
   <style>
     /* font-display:swap paints fallback text immediately instead of blocking on the font. */
@@ -436,8 +452,17 @@
         <div class="panel-in">
           <div class="err" id="err" role="alert"></div>
 
+          <div class="unit-row" role="group" aria-labelledby="baUnitLab">
+            <span class="unit-lab" id="baUnitLab">Carries in</span>
+            <div class="unit-seg" id="baUnits">
+              <button type="button" data-units="yards" data-gr-ignore aria-pressed="true">Yards</button>
+              <button type="button" data-units="meters" data-gr-ignore aria-pressed="false">Metres</button>
+            </div>
+            <span class="unit-note">Pick once. GolfRaw remembers it on this device.</span>
+          </div>
+
           <div class="bag-head" aria-hidden="true">
-            <span>Club</span><span>Carry (yds)</span><span>Uses / round</span><span>Trust (1–5)</span>
+            <span>Club</span><span id="baCarryHead">Carry (yds)</span><span>Uses / round</span><span>Trust (1–5)</span>
           </div>
 
           <div id="bagList"></div>
@@ -537,9 +562,11 @@
 
           <h3>Gapping</h3>
           <p>Your clubs get sorted longest to shortest and the distance between each pair is measured. Over
-            <b>20 yards</b> is a hole you have no club for. Under <b>8 yards</b> is two clubs doing one job, which
-            means one of your fourteen slots is being wasted on a spare. Between 10 and 15 is where you want to
-            live.</p>
+            <b>20 yards</b> (about 18 metres) is a hole you have no club for. Under <b>8 yards</b> (about 7 metres)
+            is two clubs doing one job, which means one of your fourteen slots is being wasted on a spare. Between
+            10 and 15 yards is where you want to live.</p>
+          <p>Enter carries in yards or metres. The audit converts metres to yards before it measures, so the
+            thresholds mean the same distance either way: 20 yards stays 20 yards, not 20 metres.</p>
 
           <h3>Why the gaps matter more than the gear</h3>
           <p>A 20-yard hole in your set does not show up as a bad shot. It shows up as a decision you cannot make
@@ -584,7 +611,7 @@
         <div class="faq-in">
           <div class="faq-item">
             <h3>What is a good distance gap between golf clubs?</h3>
-            <p>Between 10 and 15 yards is the target through the set. Anything over 20 yards leaves a distance you have no club for, and anything under 8 yards means you are carrying two clubs that do the same job and wasting one of your fourteen slots.</p>
+            <p>Between 10 and 15 yards (about 9 to 14 metres) is the target through the set. Anything over 20 yards (about 18 metres) leaves a distance you have no club for, and anything under 8 yards (about 7 metres) means you are carrying two clubs that do the same job and wasting one of your fourteen slots.</p>
           </div>
           <div class="faq-item">
             <h3>How many clubs are you allowed in a golf bag?</h3>
@@ -626,6 +653,8 @@
 
   <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
   <script src="./rawgolf-tools.js?v=2"></script>
+  <script src="/lib/distance/units.js?v=1"></script>
+  <script src="/lib/distance/bag-audit.js?v=1"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -644,16 +673,21 @@
 
     var $ = function (id) { return document.getElementById(id); };
 
-    /* ==================== ENGINE CONSTANTS ==================== */
+    /* ==================== ENGINE ====================
+       The audit maths lives in /lib/distance/bag-audit.js and works in yards.
+       Carries typed in metres are converted at the edge (/lib/distance/units.js),
+       so the 20-yard and 8-yard thresholds stay yards in either unit. */
+    var BA = window.GolfrawBagAudit, U = window.GolfrawUnits;
     var SLOTS = 14;
-    var DEAD_SCORE = 4;      /* uses x trust at or below this = passenger */
-    var GAP_BIG = 20;        /* yards between clubs above this = gaping hole */
-    var GAP_TIGHT = 8;       /* yards between clubs below this = redundancy */
-    var LEGAL_LIMIT = 14;    /* Rule 4.1b — the putter counts as one of the fourteen */
+    var DEAD_SCORE = BA.DEAD_SCORE;
+    var GAP_BIG = BA.GAP_BIG;
+    var GAP_TIGHT = BA.GAP_TIGHT;
+    var LEGAL_LIMIT = BA.LEGAL_LIMIT;
     var LS_BAG = 'golfraw_bag_audit';
 
     var DEFAULT_NAMES = ['Driver', '3-Wood', '5-Wood', '3-Hybrid', '4-Hybrid', '5-iron', '6-iron',
       '7-iron', '8-iron', '9-iron', 'PW', 'GW', 'SW', 'LW'];
+    /* Sample carries are yards; they show converted when metres are on. */
     var SAMPLE = [
       ['Driver', 245, 12, 4], ['3-Wood', 228, 1, 2], ['5-Wood', 212, 2, 3], ['3-Hybrid', 205, 0, 2],
       ['4-Hybrid', 196, 4, 4], ['5-iron', 185, 3, 3], ['6-iron', 173, 5, 4], ['7-iron', 161, 7, 5],
@@ -663,76 +697,23 @@
 
     function r1(n) { return Math.round(n * 10) / 10; }
 
-    /* Order matters: wedges are tested before woods, because "SW" and "PW" both
-       end in a w and would otherwise be classified as fairway woods. */
-    function typeOf(name) {
-      var n = String(name).toLowerCase().trim();
-      if (/driver|^1\s*-?\s*wood$|^1w$/.test(n)) return 'driver';
-      if (/wedge|^[pgasl]\s*-?\s*w$|\b(pw|gw|aw|sw|lw)\b/.test(n)) return 'wedge';
-      if (/hybrid|rescue|^\d\s*-?\s*h$/.test(n)) return 'hybrid';
-      if (/wood|^\d\s*-?\s*w$/.test(n)) return 'wood';
-      if (/iron|^\d\s*-?\s*i$/.test(n)) return 'iron';
-      return 'other';
+    var typeOf = BA.typeOf;
+    var analyse = BA.analyse;
+
+    /* ==================== UNITS ==================== */
+    var unitPref = U.distance();                 /* 'yards' | 'meters', shared */
+    var carryFields = [];
+    function du() { return U.distUnit(unitPref); }
+    function metric() { return du() === 'm'; }
+    /* A yardage from the engine as a whole number in the unit on screen. */
+    function dn(yd) { return Math.round(U.fromCanon('distance', yd, du())) || 0; }
+    function word(n) { return metric() ? (n === 1 ? 'metre' : 'metres') : (n === 1 ? 'yard' : 'yards'); }
+    function unitShort() { return metric() ? 'm' : 'yds'; }
+    /* The gap thresholds are yards; metres show them to one decimal. */
+    function thresh(yd) {
+      return metric() ? (Math.round(U.fromCanon('distance', yd, 'm') * 10) / 10) + ' metres (' + yd + ' yards)' : yd + ' yards';
     }
-
-    /* ==================== THE AUDIT ENGINE ==================== */
-    function analyse(rows) {
-      var clubs = [], i, j;
-      for (i = 0; i < rows.length; i++) {
-        var r = rows[i];
-        if (!r.name || !String(r.name).trim()) continue;
-        if (!isFinite(r.carry) || r.carry <= 0) continue;
-        clubs.push({
-          name: String(r.name).trim(),
-          carry: r.carry,
-          usage: r.usage,            /* null when the field was left blank */
-          conf: isFinite(r.conf) && r.conf >= 1 ? r.conf : 3,
-          type: typeOf(r.name)
-        });
-      }
-      if (clubs.length < 3) return null;
-
-      /* dead wood — only judged where the golfer actually told us the usage */
-      var unscored = 0;
-      for (i = 0; i < clubs.length; i++) {
-        var c = clubs[i];
-        if (c.usage === null || !isFinite(c.usage)) {
-          c.scored = false; c.score = null; c.never = false; c.dead = false;
-          unscored++;
-        } else {
-          c.scored = true;
-          c.score = c.usage * c.conf;
-          c.never = c.usage === 0;
-          c.dead = c.never || c.score <= DEAD_SCORE;
-        }
-      }
-
-      var ladder = clubs.slice().sort(function (a, b) { return b.carry - a.carry; });
-
-      var gaps = [];
-      for (i = 0; i < ladder.length - 1; i++) {
-        var d = ladder[i].carry - ladder[i + 1].carry;
-        gaps.push({
-          hi: ladder[i], lo: ladder[i + 1], yards: d,
-          kind: d > GAP_BIG ? 'hole' : (d < GAP_TIGHT ? 'overlap' : 'ok')
-        });
-      }
-
-      var holes = gaps.filter(function (g) { return g.kind === 'hole'; });
-      var overlaps = gaps.filter(function (g) { return g.kind === 'overlap'; });
-      var dead = clubs.filter(function (c) { return c.dead; })
-        .sort(function (a, b) { return a.score - b.score; });
-
-      return {
-        clubs: clubs, ladder: ladder, gaps: gaps,
-        dead: dead, overlaps: overlaps, holes: holes,
-        n: clubs.length, unscored: unscored,
-        problems: dead.length + overlaps.length + holes.length,
-        illegal: clubs.length >= LEGAL_LIMIT,
-        longest: ladder[0], shortest: ladder[ladder.length - 1],
-        spread: ladder[0].carry - ladder[ladder.length - 1].carry
-      };
-    }
+    function carryLimits() { return U.limits('distance', [1, 400], du()); }
 
     /* ==================== SWAP RECOMMENDATIONS ==================== */
     function useWord(c) {
@@ -762,7 +743,7 @@
             tag: c.name,
             text: 'Your ' + c.name + ' is a passenger — ' + useWord(c) + ' and you rate it ' + c.conf +
               ' out of 5. Bin it and put something you will actually swing into that slot: there is a ' +
-              below.yards + '-yard hole sitting directly underneath it.'
+              dn(below.yards) + '-' + word(1) + ' hole sitting directly underneath it.'
           });
         } else if (c.never) {
           out.push({
@@ -796,8 +777,8 @@
         var o = a.overlaps[i];
         out.push({
           tag: o.hi.name + ' / ' + o.lo.name,
-          text: 'Your ' + o.hi.name + ' and your ' + o.lo.name + ' are ' + o.yards + ' yard' +
-            (o.yards === 1 ? '' : 's') + ' apart. That is not a gap, that is the same club twice. You are ' +
+          text: 'Your ' + o.hi.name + ' and your ' + o.lo.name + ' are ' + dn(o.yards) + ' ' + word(dn(o.yards)) +
+            ' apart. That is not a gap, that is the same club twice. You are ' +
             'paying to carry a spare, and it is costing you a slot somewhere else in the set.'
         });
       }
@@ -809,7 +790,7 @@
         if (covered) continue;
         out.push({
           tag: h.hi.name + ' → ' + h.lo.name,
-          text: h.yards + ' yards between your ' + h.hi.name + ' and your ' + h.lo.name + '. Every shot that ' +
+          text: dn(h.yards) + ' ' + word(dn(h.yards)) + ' between your ' + h.hi.name + ' and your ' + h.lo.name + '. Every shot that ' +
             'lands in there is a guess — either a soft one or a forced one — and you will face it more often ' +
             'than you would like to admit.'
         });
@@ -870,9 +851,9 @@
           '<div><span class="cr-lab">Club</span>' +
           '<input type="text" id="n' + i + '" class="cn" value="' + DEFAULT_NAMES[i] +
           '" maxlength="18" aria-label="Club ' + (i + 1) + ' name"></div>' +
-          '<div><span class="cr-lab">Carry</span>' +
+          '<div><span class="cr-lab cr-carry">Carry, yds</span>' +
           '<input type="number" id="y' + i + '" class="cy" min="1" max="400" step="1" inputmode="numeric" ' +
-          'placeholder="–" aria-label="Carry yardage for club ' + (i + 1) + '"></div>' +
+          'placeholder="–" aria-label="Carry in yards for club ' + (i + 1) + '"></div>' +
           '<div><span class="cr-lab">Uses</span>' +
           '<input type="number" id="u' + i + '" class="cu" min="0" max="30" step="1" inputmode="numeric" ' +
           'placeholder="–" aria-label="Uses per round for club ' + (i + 1) + '"></div>' +
@@ -884,7 +865,37 @@
           '</div>';
       }
       $('bagList').innerHTML = html;
+      for (var k = 0; k < SLOTS; k++) carryFields.push(U.field($('y' + k), 'distance', du));
     })();
+
+    /* Labels, limits and the switch follow the unit on screen. */
+    function relabel() {
+      var l = carryLimits();
+      $('baCarryHead').textContent = 'Carry (' + unitShort() + ')';
+      var labs = document.querySelectorAll('.cr-carry');
+      for (var i = 0; i < labs.length; i++) labs[i].textContent = 'Carry, ' + unitShort();
+      for (var j = 0; j < SLOTS; j++) {
+        $('y' + j).setAttribute('aria-label', 'Carry in ' + word(2) + ' for club ' + (j + 1));
+        $('y' + j).min = l[0]; $('y' + j).max = l[1];
+      }
+      var btns = $('baUnits').querySelectorAll('button');
+      for (var b = 0; b < btns.length; b++) btns[b].setAttribute('aria-pressed', btns[b].getAttribute('data-units') === unitPref ? 'true' : 'false');
+    }
+
+    /* Carry for slot i in yards, exact. NaN when blank or not a number. */
+    function carryYd(i) {
+      var c = carryFields[i].canon();
+      return c === null || isNaN(c) ? NaN : c;
+    }
+    /* Locker bridge hooks: the stored bag is in the profile's units. */
+    function bagCarryOut(i, units) {
+      var c = carryYd(i);
+      if (!isFinite(c)) return null;
+      return Math.round(U.fromCanon('distance', c, U.distUnit(units)) * 10) / 10;
+    }
+    function bagCarryIn(i, value, units) {
+      carryFields[i].set(value === null || value === undefined ? null : U.toCanon('distance', value, U.distUnit(units)));
+    }
 
     function readBag() {
       var rows = [];
@@ -892,7 +903,7 @@
         var uRaw = $('u' + i).value.trim();
         rows.push({
           name: $('n' + i).value,
-          carry: parseFloat($('y' + i).value),
+          carry: carryYd(i),
           usage: uRaw === '' ? null : parseInt(uRaw, 10),
           conf: parseInt($('c' + i).value, 10)
         });
@@ -912,7 +923,11 @@
     function persist() {
       try {
         var v = [];
-        for (var i = 0; i < SLOTS; i++) v.push([$('n' + i).value, $('y' + i).value, $('u' + i).value, $('c' + i).value]);
+        /* Carries are saved in yards whatever is on screen, as they always were. */
+        for (var i = 0; i < SLOTS; i++) {
+          var c = carryYd(i);
+          v.push([$('n' + i).value, isFinite(c) ? String(Math.round(c * 1e6) / 1e6) : '', $('u' + i).value, $('c' + i).value]);
+        }
         localStorage.setItem(LS_BAG, JSON.stringify(v));
       } catch (e) { /* private mode — the tool still works, it just will not remember */ }
     }
@@ -926,7 +941,7 @@
         for (var i = 0; i < SLOTS && i < v.length; i++) {
           if (!v[i]) continue;
           $('n' + i).value = v[i][0] || '';
-          $('y' + i).value = v[i][1] || '';
+          carryFields[i].set(v[i][1] === '' || v[i][1] == null ? null : parseFloat(v[i][1]));
           $('u' + i).value = v[i][2] || '';
           if (v[i][3]) $('c' + i).value = v[i][3];
         }
@@ -956,7 +971,8 @@
         var r = rows[i];
         if (!r.name || !String(r.name).trim()) continue;
         if (r.carry !== undefined && isFinite(r.carry) && (r.carry < 1 || r.carry > 400)) {
-          return err(String(r.name).trim() + ': carry should be between 1 and 400 yards.');
+          var lim = carryLimits();
+          return err(String(r.name).trim() + ': carry should be between ' + lim[0] + ' and ' + lim[1] + ' ' + word(2) + '.');
         }
         if (r.usage !== null && isFinite(r.usage) && (r.usage < 0 || r.usage > 30)) {
           return err(String(r.name).trim() + ': uses per round should be between 0 and 30.');
@@ -967,6 +983,17 @@
       if (!a) return err('Enter a carry distance for at least three clubs — below that there is no set to audit.');
       err('');
       last = a;
+      renderResult(a);
+
+      $('outWrap').classList.add('show');
+      $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      persist();
+      if (window.GRTrack) GRTrack.completed();
+      if (window.RawGolf) RawGolf.save(cardData());
+    }
+
+    function renderResult(a) {
+      var i;
 
       var v = verdictFor(a);
       var clean = a.problems === 0;
@@ -992,22 +1019,22 @@
         html += '<div class="lad-row">' +
           '<span class="ln' + (c.dead ? ' dead' : '') + '" title="' + esc(c.name) + '">' + esc(c.name) + '</span>' +
           '<span class="lb' + (c.dead ? ' dead' : '') + '" style="width:' + w + '%"></span>' +
-          '<span class="ly">' + c.carry + '</span></div>';
+          '<span class="ly">' + dn(c.carry) + '</span></div>';
 
         if (i < a.gaps.length) {
           var g = a.gaps[i];
           if (g.kind !== 'ok') {
             html += '<div class="gap-row ' + g.kind + '"><span class="gtxt">' +
               (g.kind === 'hole'
-                ? '↕ ' + g.yards + ' yard gap — nothing covers this'
-                : '↕ ' + g.yards + ' yards — same club twice') +
+                ? '↕ ' + dn(g.yards) + ' ' + word(1) + ' gap — nothing covers this'
+                : '↕ ' + dn(g.yards) + ' ' + word(dn(g.yards)) + ' — same club twice') +
               '</span></div>';
           }
         }
       }
       $('ladder').innerHTML = html;
-      $('ladLab').textContent = 'The yardage ladder — ' + a.n + ' clubs, ' + a.longest.carry + ' down to ' +
-        a.shortest.carry + ' yards';
+      $('ladLab').textContent = 'The ' + (metric() ? 'distance' : 'yardage') + ' ladder — ' + a.n + ' clubs, ' +
+        dn(a.longest.carry) + ' down to ' + dn(a.shortest.carry) + ' ' + word(2);
 
       /* ---- recommendations ---- */
       var recs = recommend(a);
@@ -1017,17 +1044,12 @@
       }).join('');
 
       $('method').textContent = 'Dead wood score is uses per round multiplied by trust out of 5; ' +
-        DEAD_SCORE + ' or below is a passenger, and a club never used is always flagged. Gaps over ' + GAP_BIG +
-        ' yards are holes, under ' + GAP_TIGHT + ' yards is redundancy. Audited ' + a.n + ' club' +
+        DEAD_SCORE + ' or below is a passenger, and a club never used is always flagged. Gaps over ' + thresh(GAP_BIG) +
+        ' are holes, under ' + thresh(GAP_TIGHT) + ' is redundancy. Audited ' + a.n + ' club' +
         (a.n === 1 ? '' : 's') +
         (a.unscored ? ', of which ' + a.unscored + ' had no usage entered and were measured for gapping only' : '') +
-        '. Carry distances are whatever you told it — the audit is only as honest as the numbers.';
-
-      $('outWrap').classList.add('show');
-      $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      persist();
-      if (window.GRTrack) GRTrack.completed();
-      if (window.RawGolf) RawGolf.save(cardData());
+        '. Carry distances are whatever you told it — the audit is only as honest as the numbers.' +
+        (metric() ? ' Metres are converted to yards for the audit and back for display.' : '');
     }
 
     /* ==================== SHARED ENGINE: history · PNG · Web Share ==================== */
@@ -1040,7 +1062,7 @@
         { k: 'Clubs audited', v: String(a.n) }
       ];
       if (a.dead.length) m.push({ k: 'Worst passenger', v: a.dead[0].name });
-      if (a.holes.length) m.push({ k: 'Biggest gap', v: a.holes[0].yards + ' yds' });
+      if (a.holes.length) m.push({ k: 'Biggest gap', v: dn(a.holes[0].yards) + ' ' + unitShort() });
 
       return {
         tool: 'The Bag Audit',
@@ -1079,7 +1101,7 @@
       lines.push('Clubs audited:  ' + a.n);
       lines.push('Dead wood:      ' + a.dead.length + (a.dead.length ? '  (' + a.dead.map(function (c) { return c.name; }).join(', ') + ')' : ''));
       lines.push('Redundant:      ' + a.overlaps.length + (a.overlaps.length ? '  (' + a.overlaps.map(function (o) { return o.hi.name + '/' + o.lo.name; }).join(', ') + ')' : ''));
-      lines.push('Gaping holes:   ' + a.holes.length + (a.holes.length ? '  (' + a.holes.map(function (h) { return h.yards + 'y'; }).join(', ') + ')' : ''));
+      lines.push('Gaping holes:   ' + a.holes.length + (a.holes.length ? '  (' + a.holes.map(function (h) { return dn(h.yards) + (metric() ? 'm' : 'y'); }).join(', ') + ')' : ''));
       lines.push('');
       var recs = recommend(a);
       for (i = 0; i < recs.length && i < 4; i++) lines.push('- ' + recs[i].text);
@@ -1099,7 +1121,7 @@
     function loadSample() {
       for (var i = 0; i < SLOTS; i++) {
         $('n' + i).value = SAMPLE[i][0];
-        $('y' + i).value = SAMPLE[i][1];
+        carryFields[i].set(SAMPLE[i][1]);
         $('u' + i).value = SAMPLE[i][2];
         $('c' + i).value = SAMPLE[i][3];
       }
@@ -1110,7 +1132,7 @@
     function clearBag() {
       for (var i = 0; i < SLOTS; i++) {
         $('n' + i).value = DEFAULT_NAMES[i];
-        $('y' + i).value = '';
+        carryFields[i].set(null);
         $('u' + i).value = '';
         $('c' + i).value = '3';
       }
@@ -1135,7 +1157,23 @@
     $('bagList').addEventListener('input', function () { updateTally(); persist(); });
     $('bagList').addEventListener('change', function () { updateTally(); persist(); });
 
+    /* One yards/metres preference for every GolfRaw distance tool. A switch
+       redraws the carries from their exact yards, then resyncs the Locker bag. */
+    U.onChange(function (pref) {
+      U.switchFields(carryFields, function () { unitPref = pref; });
+      relabel();
+      if (last) renderResult(last);
+    });
+    $('baUnits').addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('button[data-units]') : null;
+      if (!b) return;
+      U.setDistance(b.getAttribute('data-units')).then(function () {
+        $('y0').dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
+
     restore();
+    relabel();
     updateTally();
   </script>
   <script>
@@ -1154,26 +1192,28 @@
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=9" defer></script>
-  <script src="/lib/locker/store.js?v=9" defer></script>
-  <script src="/lib/locker/drawer.js?v=9" defer></script>
+  <script src="/lib/locker/schema.js?v=10" defer></script>
+  <script src="/lib/locker/store.js?v=10" defer></script>
+  <script src="/lib/locker/drawer.js?v=10" defer></script>
   <script>
     /* ---- Locker bridge: Tool #07 Bag Audit ------------------------------
        The fourteen slots are the edit surface; the Locker is the record of
        truth that other tools and the drawer read. Writes are debounced so a
        burst of keystrokes is one transaction, and each club is validated
        individually — one nonsense yardage must not cost the reader the other
-       thirteen clubs. */
+       thirteen clubs. Stored carries are in the profile's units; the page holds
+       yards, so each write reads the profile first and converts in the same
+       step (a switch halfway through an edit cannot convert twice). */
     window.addEventListener('DOMContentLoaded', function () {
       var L = window.GolfrawLocker;
       if (!L || typeof SLOTS === 'undefined') return;
       var timer = null, hydrating = false, missedWrite = false;
 
-      function collect() {
+      function collect(units) {
         var clubs = [];
         for (var i = 0; i < SLOTS; i++) {
           var name = String($('n' + i).value || '').replace(/^\s+|\s+$/g, '');
-          var carry = L.util.toNum($('y' + i).value);
+          var carry = typeof bagCarryOut === 'function' ? bagCarryOut(i, units) : L.util.toNum($('y' + i).value);
           if (!name && carry === null) continue;
           var conf = L.util.toInt($('c' + i).value);
           var candidate = {
@@ -1195,12 +1235,15 @@
         if (hydrating) { missedWrite = true; return; }
         if (timer) clearTimeout(timer);
         timer = setTimeout(function () {
-          L.saveActiveBagClubs(collect())['catch'](function () { /* local-only; the form still works */ });
+          L.getProfile().then(function (p) {
+            return L.saveActiveBagClubs(collect(p.units));
+          })['catch'](function () { /* local-only; the form still works */ });
         }, 400);
       }
 
       function hydrate(force) {
-        return L.getActiveBag().then(function (bag) {
+        return Promise.all([L.getActiveBag(), L.getProfile()]).then(function (res) {
+          var bag = res[0], units = res[1] && res[1].units;
           var clubs = (bag && bag.clubs) || [];
           if (!clubs.length && !force) return;
           hydrating = true;
@@ -1208,12 +1251,14 @@
             var c = clubs[i];
             if (!c) {
               if (!force) continue;
-              $('n' + i).value = ''; $('y' + i).value = ''; $('u' + i).value = '';
+              $('n' + i).value = ''; $('u' + i).value = '';
+              if (typeof bagCarryIn === 'function') bagCarryIn(i, null, units); else $('y' + i).value = '';
               $('c' + i).value = '3';
               continue;
             }
             $('n' + i).value = c.name || '';
-            $('y' + i).value = c.carry === null ? '' : c.carry;
+            if (typeof bagCarryIn === 'function') bagCarryIn(i, c.carry, units);
+            else $('y' + i).value = c.carry === null ? '' : c.carry;
             $('u' + i).value = c.usage === null ? '' : c.usage;
             $('c' + i).value = c.conf || 3;
           }
