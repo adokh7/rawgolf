@@ -157,13 +157,33 @@ PAGES = [
 ]
 
 
+# Both pages carry a key to a Pro pass in their URL: Stripe's ?session_id= on
+# the thanks page (GET /api/pro-claim turns it into a pass, any number of
+# times) and the restore token #t= on the restore page. The URL itself stays
+# bookmarkable, but analytics only ever sees the path, and the referrer policy
+# stops the full URL riding along to the next page's page_view.
+REFERRER_META = '<meta name="referrer" content="strict-origin">'
+GTAG_CONFIG = "gtag('config', 'G-PMECW4VW66');"
+SAFE_GTAG_CONFIG = """gtag('config', 'G-PMECW4VW66', {
+      page_location: location.origin + location.pathname,
+      page_referrer: document.referrer.replace(/^(https?:\\/\\/[^\\/?#]+).*$/, '$1/')
+    });"""
+
+
+def account_safe(head_top, gtag):
+    assert '<meta charset="UTF-8">' in head_top and gtag.count(GTAG_CONFIG) == 1
+    return (head_top.replace('<meta charset="UTF-8">', '<meta charset="UTF-8">\n  ' + REFERRER_META, 1),
+            gtag.replace(GTAG_CONFIG, SAFE_GTAG_CONFIG))
+
+
 def main():
     p = _shell_parts(SHELL)
     for slug, title, desc, main in PAGES:
+        head_top, gtag = account_safe(rewrite_meta(p['head_top'], slug, title, desc), p['gtag'])
         doc = '\n'.join([
-            rewrite_meta(p['head_top'], slug, title, desc),
+            head_top,
             p['head_tail'].replace('</head>', STYLE + '</head>'),
-            p['body_open'], main, p['footer'], '', p['nav_script'], SCRIPT, p['gtag'], TAIL + '</body>', '', '</html>',
+            p['body_open'], main, p['footer'], '', p['nav_script'], SCRIPT, gtag, TAIL + '</body>', '', '</html>',
         ])
         out = os.path.join(ROOT, slug + '.html')
         io.open(out, 'w', encoding='utf-8').write(doc)

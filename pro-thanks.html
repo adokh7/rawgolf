@@ -7,6 +7,7 @@
 <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
 <meta charset="UTF-8">
+  <meta name="referrer" content="strict-origin">
   <!-- ============ FAVICON / GOOGLE SEARCH LOGO ============ -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
@@ -101,6 +102,7 @@
     .hub-hero .eyebrow { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
     .hub-hero h1 { font-weight: 900; font-size: clamp(32px, 5.6vw, 64px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
     .hub-hero p { font-size: 17px; color: #cbd5e1; max-width: 62ch; line-height: 1.6 }
+    .hub-hero .tool-brand { margin: -6px 0 14px; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gr-mint, #dcfce7) }
 
     /* PANELS */
     .tool-body { padding: 40px 0 72px }
@@ -415,7 +417,10 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-PMECW4VW66');
+    gtag('config', 'G-PMECW4VW66', {
+      page_location: location.origin + location.pathname,
+      page_referrer: document.referrer.replace(/^(https?:\/\/[^\/?#]+).*$/, '$1/')
+    });
   </script>
   <script>window.__gr_consent=true;window.__gr_ads=false;</script>
 <!-- LOCKER:START -->
