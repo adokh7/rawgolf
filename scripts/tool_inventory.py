@@ -110,8 +110,14 @@ def _tool(
     access="free",
     access_label="Free",
     newest=False,
+    search_name=None,
 ):
-    """Define one public tool without duplicating route or access plumbing."""
+    """Define one public tool without duplicating route or access plumbing.
+
+    ``search_name`` is the query-language name a tool's H1 and breadcrumb use
+    when searchers know it by a generic name ("Golf Skins Calculator") rather
+    than the GolfRaw product name, which stays in ``name``.
+    """
     return {
         "slug": slug,
         "route": "/" + slug,
@@ -124,6 +130,7 @@ def _tool(
         "access": access,
         "access_label": access_label,
         "newest": newest,
+        "search_name": search_name or name,
     }
 
 
@@ -189,37 +196,41 @@ TOOLS = (
         "tools-plays-like",
         5,
         "The Plays Like Calculator",
-        "Environmental · On the Course",
+        "Altitude · Elevation · Wind",
         "Wind, cold, altitude and slope in. The distance your shot is genuinely playing out, plus the club that number demands.",
         "What does it play? →",
         "course-management",
+        search_name="Golf Altitude & Elevation Distance Calculator",
     ),
     _tool(
         "tools-tee-box-check",
         3,
         "The Tee Box Reality Check",
-        "Ego · Course Management",
+        "Tee Calculator · Driver Distance",
         "Three honest numbers reveal the course length you have earned, and how far back your ego has wandered.",
         "Check my tees →",
         "course-management",
+        search_name="What Tees Should I Play?",
     ),
     _tool(
         "tools-bag-audit",
         7,
         "The Bag Audit",
-        "Equipment · Dead Wood",
+        "Club Gapping Calculator",
         "Fourteen slots and some of them are luggage. Finds the passengers, the two clubs doing one job, and the distance you have no club for.",
         "Find the dead wood →",
         "bag-equipment",
+        search_name="Golf Club Gapping Calculator",
     ),
     _tool(
         "tools-settle-up-calculator",
         1,
         "The Settle Up",
-        "Betting · Nassau · Skins",
+        "Golf Skins Calculator · Nassau",
         "Nassau, skins with carryovers, automatic presses and junk. One clean who-owes-who card, built for the group chat.",
         "Settle the money →",
         "games-scoring",
+        search_name="Golf Skins Calculator",
     ),
     _tool(
         "tools-gimme-audit",

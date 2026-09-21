@@ -102,7 +102,7 @@ class Phase8SchemaContractTests(unittest.TestCase):
                     [inventory.SITE + "/", inventory.HUB_CANONICAL, canonical],
                     [item["item"] for item in items],
                 )
-                self.assertEqual(tool["name"], items[-1]["name"])
+                self.assertEqual(tool["search_name"], items[-1]["name"])
 
                 faq = _nodes(source, "FAQPage")
                 visible_faq = extract_visible_faq(source)

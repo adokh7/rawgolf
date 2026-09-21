@@ -183,6 +183,41 @@ ARTICLE_SEO_OVERRIDES["/news-2026-donald-trump-amgen-irish-open-doonbeg"] = {
     ),
 }
 
+# Free tools lead with the name searchers use in Search Console queries; the
+# GolfRaw product name stays as the on-page subtitle and schema entity name.
+# Settle Up does not allocate handicap strokes, so its copy says "enter gross
+# or net scores" rather than claiming net scoring.
+ARTICLE_SEO_OVERRIDES.update({
+    "/tools-settle-up-calculator": {
+        "title": "Golf Skins Calculator: Carryovers & Nassau | GolfRaw",
+        "description": (
+            "Free golf skins calculator with carryovers. Enter gross or net scores, "
+            "add a Nassau and presses, then settle up with one who-owes-who card."
+        ),
+    },
+    "/tools-tee-box-check": {
+        "title": "What Tees Should I Play? Tee Calculator by Driver Distance",
+        "description": (
+            "Enter your driver carry to see the course yardage you should play and "
+            "which tees get you there. It uses the Tee It Forward rule of thumb: carry × 28."
+        ),
+    },
+    "/tools-plays-like": {
+        "title": "Golf Altitude & Elevation Distance Calculator | GolfRaw",
+        "description": (
+            "Enter a target distance with altitude, elevation change, wind and "
+            "temperature. Get the adjusted yardage your golf shot plays and the club to hit."
+        ),
+    },
+    "/tools-bag-audit": {
+        "title": "Golf Club Gapping Calculator: Find Gaps & Overlaps | GolfRaw",
+        "description": (
+            "Enter each club's carry to find gaps over 20 yards and clubs less than "
+            "8 yards apart, then see which clubs earn their spot in your bag."
+        ),
+    },
+})
+
 
 _ATTR_RE = re.compile(
     r"([:\w-]+)\s*=\s*(?:\"([^\"]*)\"|'([^']*)'|([^\s>]+))", re.S

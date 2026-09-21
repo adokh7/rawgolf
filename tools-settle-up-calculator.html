@@ -17,20 +17,20 @@
   <meta name="theme-color" content="#166534">
 
   <!-- SEO audit metadata: managed by scripts/fix_seo_audit.py -->
-  <title>The Settle Up: Free Golf Betting &amp; Skins | GolfRaw</title>
-  <meta name="description" content="Free golf betting calculator. Work out Nassau, skins with carryovers, automatic 2-down presses and junk, then get a clean who-owes-who card for the group.">
+  <title>Golf Skins Calculator: Carryovers &amp; Nassau | GolfRaw</title>
+  <meta name="description" content="Free golf skins calculator with carryovers. Enter gross or net scores, add a Nassau and presses, then settle up with one who-owes-who card.">
   <link rel="canonical" href="https://www.golfraw.com/tools-settle-up-calculator">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta property="og:site_name" content="GolfRaw">
   <meta name="application-name" content="GolfRaw">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="The Settle Up: Free Golf Betting &amp; Skins | GolfRaw">
-  <meta property="og:description" content="Free golf betting calculator. Work out Nassau, skins with carryovers, automatic 2-down presses and junk, then get a clean who-owes-who card for the group.">
+  <meta property="og:title" content="Golf Skins Calculator: Carryovers &amp; Nassau | GolfRaw">
+  <meta property="og:description" content="Free golf skins calculator with carryovers. Enter gross or net scores, add a Nassau and presses, then settle up with one who-owes-who card.">
   <meta property="og:url" content="https://www.golfraw.com/tools-settle-up-calculator">
   <meta property="og:image" content="https://www.golfraw.com/public/raw-golf-practice.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Settle Up: Free Golf Betting &amp; Skins | GolfRaw">
-  <meta name="twitter:description" content="Free golf betting calculator. Work out Nassau, skins with carryovers, automatic 2-down presses and junk, then get a clean who-owes-who card for the group.">
+  <meta name="twitter:title" content="Golf Skins Calculator: Carryovers &amp; Nassau | GolfRaw">
+  <meta name="twitter:description" content="Free golf skins calculator with carryovers. Enter gross or net scores, add a Nassau and presses, then settle up with one who-owes-who card.">
   <meta name="twitter:image" content="https://www.golfraw.com/public/raw-golf-practice.webp">
   <meta name="p:domain_verify" content="b7225cf07b728cc1691b9a4c7a938dbe"/>
 
@@ -76,7 +76,7 @@
       "applicationCategory": "SportsApplication",
       "operatingSystem": "Any browser",
       "browserRequirements": "Requires JavaScript",
-      "description": "Free golf betting calculator. Work out Nassau, skins with carryovers, automatic 2-down presses and junk, then get a clean who-owes-who card for the group.",
+      "description": "Free golf skins calculator with carryovers. Enter gross or net scores, add a Nassau and presses, then settle up with one who-owes-who card.",
       "publisher": {
         "@id": "https://www.golfraw.com#organization"
       },
@@ -87,7 +87,8 @@
         "url": "https://www.golfraw.com/tools-settle-up-calculator",
         "price": "0",
         "priceCurrency": "USD"
-      }
+      },
+      "alternateName": "Golf Skins Calculator"
     },
     {
       "@type": "BreadcrumbList",
@@ -108,7 +109,7 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "The Settle Up",
+          "name": "Golf Skins Calculator",
           "item": "https://www.golfraw.com/tools-settle-up-calculator"
         }
       ]
@@ -203,6 +204,7 @@
     .hub-hero .eyebrow { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--flag); font-weight: 600; margin-bottom: 16px }
     .hub-hero h1 { font-weight: 900; font-size: clamp(34px, 6vw, 68px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin-bottom: 16px }
     .hub-hero p { font-size: 17px; color: #cbd5e1; max-width: 60ch; line-height: 1.6 }
+    .hub-hero .tool-brand { margin: -6px 0 14px; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gr-mint, #dcfce7) }
 
     /* PANELS */
     .tool-body { padding: 40px 0 72px }
@@ -389,7 +391,8 @@
   <div class="hub-hero">
     <div class="wrap">
       <div class="eyebrow">GolfRaw · TOOLS</div>
-      <h1>The Settle Up</h1>
+      <h1>Golf Skins Calculator</h1>
+      <p class="tool-brand">The Settle Up</p>
       <p>Nassau, skins with carryovers, automatic 2-down presses and junk. Put the scores in, get a clean
         who-owes-who card you can screenshot straight into the group chat. Runs entirely in your browser — nothing
         is uploaded anywhere.</p>
@@ -428,8 +431,8 @@
 
           <label class="fld">Names &amp; Handicaps</label>
           <div class="players-list" id="playersList"></div>
-          <p class="hint">Handicap is optional — it only feeds the "Bandit of the Day" badge. Leave at 0 if you
-            play straight up.</p>
+          <p class="hint">Handicap is optional and only feeds the "Bandit of the Day" badge. Leave it at 0 if you
+            play straight up; for a net game, enter each player's net score on the card.</p>
 
           <hr style="border:none;border-top:2px solid var(--line);margin:22px 0">
 

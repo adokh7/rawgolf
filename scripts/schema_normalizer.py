@@ -359,7 +359,7 @@ def _normalize_tool(source: str, route: str) -> str:
     nodes = [
         _organization(),
         application,
-        _breadcrumbs(canonical, tool["name"]),
+        _breadcrumbs(canonical, tool["search_name"]),
     ]
     faq = _faq_node(canonical, extract_visible_faq(source))
     if faq:

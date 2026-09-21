@@ -385,36 +385,55 @@ def sanitize_title(path: Path, parsed: PageParser) -> str:
     return title
 
 
-def finish_description(value: str, limit: int = 155) -> str:
-    """Return natural, word-safe copy no longer than limit, ending in a period."""
+DESCRIPTION_DANGLING_WORDS = frozenset({
+    "a", "an", "and", "as", "at", "by", "for", "from", "in", "into",
+    "of", "on", "or", "the", "to", "with", "within", "without",
+})
+
+
+def _drop_description_connectors(value: str) -> str:
+    """Remove connector words a cut can strand at the end ("with.", "the…")."""
+    words = value.split()
+    while len(words) > 1 and words[-1].strip("'\"()[]{}:,;").casefold() in DESCRIPTION_DANGLING_WORDS:
+        words.pop()
+    return " ".join(words)
+
+
+def finish_description(value: str, limit: int = 155, floor: int = 120) -> str:
+    """Return natural copy no longer than limit that never fakes a sentence end.
+
+    Over-long copy is cut at the last sentence end, then the last clause break
+    (spaced dash, semicolon or colon), that keeps at least ``floor`` characters.
+    Only when neither exists is it cut at a word boundary, and that cut ends in
+    an ellipsis: a bare word cut followed by a period published fragments such
+    as "...and the club you." that read as finished sentences but were not.
+    """
     value = clean_text(value).strip()
     if not value:
         return value
-    # A word-boundary cut can otherwise leave copy ending in "with." or
-    # "within.". Remove dangling connector words before final punctuation.
-    dangling = {
-        "a", "an", "and", "as", "at", "by", "for", "from", "in", "into",
-        "of", "on", "or", "the", "to", "with", "within", "without",
-    }
     terminal = value[-1] if value[-1] in ".!?" else ""
-    words = value.rstrip(".!?").split()
-    while len(words) > 1 and words[-1].strip("'\"()[]{}:,;").casefold() in dangling:
-        words.pop()
-    value = " ".join(words) + terminal
+    value = _drop_description_connectors(value.rstrip(".!?")) + terminal
     if len(value) < limit and value[-1] not in ".!?":
         value += "."
     if len(value) <= limit:
         return value
 
-    body_limit = limit - 1
-    window = value[: body_limit + 1]
+    window = value[:limit]
     sentence_ends = [m.end() for m in re.finditer(r"[.!?](?=\s|$)", window)]
-    viable = [end for end in sentence_ends if end >= 120]
+    viable = [end for end in sentence_ends if end >= floor]
     if viable:
-        cut = window[: viable[-1]].rstrip(".!?")
-    else:
-        cut = window.rsplit(" ", 1)[0].rstrip(" ,;:—–-.!?")
-    return cut + "."
+        return window[: viable[-1]].rstrip(".!?") + "."
+
+    clause_breaks = [
+        m.start() for m in re.finditer(r"\s[—–]\s|[;:]\s", window) if m.start() + 1 >= floor
+    ]
+    if clause_breaks:
+        clause = _drop_description_connectors(window[: clause_breaks[-1]].rstrip(" ,;:—–-"))
+        if len(clause) + 1 >= floor:
+            return clause + "."
+
+    cut = _drop_description_connectors(window.rsplit(" ", 1)[0].rstrip(" ,;:—–-.!?"))
+    return cut + "…"
 
 
 def description_for(title: str, parsed: PageParser) -> str:

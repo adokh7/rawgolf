@@ -58,6 +58,10 @@ EXPECTED_TITLES = {
     "/why-pros-are-ditching-hybrids": "Why Pros Are Ditching Hybrids, and Why You Shouldn't",
     "/guides-how-to-play-in-a-golf-pro-am-costs-etiquette": "How to Play in a Golf Pro-Am: Costs & Etiquette",
     "/news-2026-how-much-pro-am-costs": "How Much Does a Pro-Am Cost? PGA vs Local Events",
+    "/tools-settle-up-calculator": "Golf Skins Calculator: Carryovers & Nassau | GolfRaw",
+    "/tools-tee-box-check": "What Tees Should I Play? Tee Calculator by Driver Distance",
+    "/tools-plays-like": "Golf Altitude & Elevation Distance Calculator | GolfRaw",
+    "/tools-bag-audit": "Golf Club Gapping Calculator: Find Gaps & Overlaps | GolfRaw",
 }
 
 EXPECTED_DESCRIPTIONS = {
@@ -65,6 +69,10 @@ EXPECTED_DESCRIPTIONS = {
     "/news-2026-donald-trump-amgen-irish-open-doonbeg": "President Donald Trump is scheduled to attend the 2026 Amgen Irish Open at his Doonbeg golf course. The visit brings major security to County Clare.",
     "/news-2026-scottie-scheffler-final-press-conference-answer": "After winning $10 million and a second FedEx Cup, Scottie Scheffler passed Tiger Woods on the money list and discussed wind and family travel.",
     "/news-2026-wyndham-clark-gary-woodland-bmw-championship-recap": "Wyndham Clark leads the BMW Championship by five at Bellerive as Gary Woodland's 199 protects his Tour Championship bubble.",
+    "/tools-settle-up-calculator": "Free golf skins calculator with carryovers. Enter gross or net scores, add a Nassau and presses, then settle up with one who-owes-who card.",
+    "/tools-tee-box-check": "Enter your driver carry to see the course yardage you should play and which tees get you there. It uses the Tee It Forward rule of thumb: carry × 28.",
+    "/tools-plays-like": "Enter a target distance with altitude, elevation change, wind and temperature. Get the adjusted yardage your golf shot plays and the club to hit.",
+    "/tools-bag-audit": "Enter each club's carry to find gaps over 20 yards and clubs less than 8 yards apart, then see which clubs earn their spot in your bag.",
 }
 
 
