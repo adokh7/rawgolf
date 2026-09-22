@@ -33,7 +33,7 @@ if ROOT not in sys.path:
 from scripts import tool_inventory  # noqa: E402
 
 # Bump whenever lib/ads/tool-ads.js changes: .js is served immutable.
-VER = '7'
+VER = '8'
 
 # ISO 3166-1 codes: the EU 27, Iceland, Liechtenstein and Norway (the EEA),
 # the UK and Switzerland, the regions Google's European regulations message

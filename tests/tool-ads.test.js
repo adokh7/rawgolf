@@ -46,6 +46,7 @@ function slotEl(placement, when, visible) {
 function browser(opts) {
   const scripts = [];
   const listeners = {};
+  const docListeners = {};
   const timers = [];
   const slots = opts.slots || [];
   const results = opts.results || {};
@@ -63,7 +64,7 @@ function browser(opts) {
       return results[sel] || null;
     },
     querySelectorAll: (sel) => (sel === '[data-gr-ad]' ? slots.filter((s) => !s.removed) : []),
-    addEventListener: () => {}
+    addEventListener: (t, fn) => { (docListeners[t] = docListeners[t] || []).push(fn); }
   };
   const win = {
     document: doc,
@@ -97,6 +98,7 @@ function browser(opts) {
   return {
     win, scripts, listeners, timers, slots, obsList,
     interact() { (listeners.click || []).slice().forEach((f) => f()); },
+    setHidden(h) { doc.hidden = h; (docListeners.visibilitychange || []).slice().forEach((f) => f()); },
     runTimers(ms) {
       const end = clock + ms;
       for (;;) {
@@ -278,6 +280,28 @@ function failureCase(name, onScript, afterLoad, prep) {
   return new Promise((resolve) => setImmediate(() => { if (afterLoad) afterLoad(b); check(b.win.GolfrawAds.slots()[0].state === 'collapsed', name + ': slot collapses (' + b.win.GolfrawAds.slots()[0].state + ')'); resolve(); }));
 }
 
+/* AdSense requests nothing in a background tab, so the no-answer clock only
+   counts visible time: a reader who switches tabs after a result does not
+   come back to a collapsed slot that AdSense was about to fill. */
+function hiddenTabCase() {
+  const A = slotEl('after_result', null, true);
+  const b = browser({ host: 'localhost', test: TEST, slots: [A], onScript: (s) => { if (s.onload) setImmediate(() => s.onload()); } });
+  b.setHidden(true);
+  b.runTimers(11000);
+  return new Promise((resolve) => setImmediate(() => {
+    const st = () => b.win.GolfrawAds.slots()[0].state;
+    b.runTimers(30000);
+    check(st() === 'requested', 'a background tab never runs the no-answer clock (' + st() + ')');
+    b.setHidden(false); b.runTimers(6000); b.setHidden(true); b.runTimers(30000);
+    check(st() === 'requested', 'hiding the tab again stops the clock (' + st() + ')');
+    b.setHidden(false); b.runTimers(11000);
+    check(st() === 'requested', 'coming back restarts the full 12s (' + st() + ')');
+    b.runTimers(2000);
+    check(st() === 'collapsed', 'visible and silent for 12s: the slot collapses (' + st() + ')');
+    resolve();
+  }));
+}
+
 let pending = 1;
 function finish() {
   if (--pending > 0) return;
@@ -285,7 +309,8 @@ function finish() {
     failureCase('blocked script', (s) => { if (/stub/.test(s.src)) setImmediate(() => s.onerror && s.onerror()); else if (s.onload) setImmediate(() => s.onload()); }),
     failureCase('push throws', (s) => { if (s.onload) setImmediate(() => s.onload()); }, null,
       (b) => { b.win.adsbygoogle = { push() { throw new Error('adsbygoogle failed'); } }; }),
-    failureCase('no answer in time', (s) => { if (s.onload) setImmediate(() => s.onload()); }, (b) => b.runTimers(13000))
+    failureCase('no answer in time', (s) => { if (s.onload) setImmediate(() => s.onload()); }, (b) => b.runTimers(13000)),
+    hiddenTabCase()
   ]).then(() => {
     if (failures.length) { console.error(failures.join('\n')); console.error(failures.length + ' of ' + checks + ' tool-ads checks failed'); process.exit(1); }
     console.log('tool-ads: ' + checks + ' checks passed');

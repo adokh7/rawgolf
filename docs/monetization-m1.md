@@ -1,14 +1,31 @@
 # Monetization M1: light ads on free tools, Pro ad-free
 
-Status on 22 September 2026 (M1.1): **live on the four phase A pilots**
-(Distance Check, Tee Box, Plays Like, Bag Audit) with the manual units
-`8457096514` (after_result) and `1432433875` (lower). The owner has excluded
-those four URLs from Auto ads and enabled both consent-mode toggles in Privacy
-& messaging. Every other tool page loads the consent message and nothing else.
+Status on 22 September 2026 (M1.1): **wired and verified on the four phase A
+pilots (Distance Check, Tee Box, Plays Like, Bag Audit), held for readers.**
+- The manual units are `8457096514` (after_result) and `1432433875` (lower).
+- The owner added those four URLs to the Auto ads page exclusions. Live checks
+  after that still found Auto ads on the pilots: an in-page unit on Distance
+  Check and Tee Box, and an anchor on Tee Box. So `AUTO_ADS_EXCLUDED` stays
+  `false`, and readers get no ad code on any tool page.
+- In the owner's browser Google's consent message reports consent mode as not
+  configured (`googlefc.getGoogleConsentModeValues()` returns 4 for every
+  purpose), and GA4 still pings `gcs=G100` after an Accept. The Privacy &
+  messaging consent-mode toggles are not in effect yet.
+- Every other tool page loads the consent message and nothing else.
+
+To release to readers:
+1. In AdSense, check that each exclusion is the exact page URL
+   `https://www.golfraw.com/tools-…`, "This page only".
+2. Wait for it to apply. A QA browser (below) must show no
+   `.google-auto-placed` element and no `ins[data-anchor-status]` on any
+   pilot.
+3. Set `AUTO_ADS_EXCLUDED = true`, bump `version` and `VER`, rewire, deploy.
 
 QA without counting impressions: in a test browser set localStorage
-`gr_adtest` to `1`. The module then adds `data-adtest="on"` to its units. Never
-click a live ad.
+`gr_adtest` to `1`. The module then adds `data-adtest="on"` to its units and
+skips the `AUTO_ADS_EXCLUDED` hold (never the Pro or page checks). Never
+click a live ad. Test with the tab in the foreground: AdSense requests
+nothing in a background tab.
 
 ## Product decisions
 
@@ -46,14 +63,21 @@ click a live ad.
     the slot is a labelled complementary region. It never takes focus.
   - A 40px top margin and a rule keep a dead zone between the result's
     buttons and the ad.
-  - 290px of space is reserved when the slot renders, which happens within the
-    click that produced the result, so the fill does not shift the page.
+  - The units are fixed rectangles (`data-ad-format="rectangle"`, no
+    full-width), so a phone gets a 300x250-class ad rather than a full-screen
+    one.
+  - 318px of space (280px for the unit) is reserved when the slot renders,
+    which happens within the click that produced the result, so the fill does
+    not shift the page.
   - In the EEA, UK and Switzerland the slots wait for the answer to Google's
     consent message (TCF `tcloaded` or `useractioncomplete`, or
     `gdprApplies:false` elsewhere). While the message is open they take no
     space and load nothing. A visitor who never answers sees no ad and no gap.
-  - Unfilled, blocked, failed, silent 12s after the request, or throwing: the
-    slot collapses and the tool is untouched.
+  - Unfilled, blocked, failed or throwing: the slot collapses and the tool is
+    untouched. So does a unit AdSense leaves silent for 12s. That clock counts
+    only time with the slot on screen and the tab in the foreground, because
+    AdSense holds units below the fold and requests nothing in a background
+    tab.
 - **Pro:** the pass `lib/pro/pro.js` keeps in `localStorage`
   (`golfraw_pro_pass`, `v1.<payload>.<sig>`, `exp` in seconds). A pass with a
   future `exp` means no slots and no adsbygoogle.js, on tools and on articles.
@@ -62,9 +86,9 @@ click a live ad.
   server-verified.
 - **Switches** (top of `tool-ads.js`):
   - `UNITS`: the two ad unit ids. Empty means off.
-  - `AUTO_ADS_EXCLUDED`: `true` since M1.1, because every `PAGES` slug is on
-    AdSense's Auto ads page exclusions. Exclude a page there before adding it
-    to `PAGES`.
+  - `AUTO_ADS_EXCLUDED`: `false`. Set it to `true` only once a QA browser
+    shows no Auto ads on every `PAGES` slug. Exclude a page in AdSense before
+    adding it to `PAGES`.
   - `PAGES`: the rollout list. Phase A is the four pilots.
   - A localhost-only test switch (`gr_ads_test` in localStorage) points the
     module at `tests/fixtures/adsbygoogle-stub.js`. It is ignored on the live
@@ -162,7 +186,7 @@ Measured in the in-app browser. Tee Box, Bag Audit and Plays Like include the
 consent script, which loads after 6s. Distance Check did not load it because
 generated tools had no loader; every tool page now does.
 
-## Activating phase A (done 22 September 2026)
+## Activating phase A (steps 1 to 3 done by the owner on 22 September 2026)
 
 1. **AdSense → Privacy & messaging → European regulations → Settings:** turn
    on "Enable consent mode for analytics purposes" and "Enable consent mode
@@ -175,7 +199,8 @@ generated tools had no loader; every tool page now does.
    "GolfRaw tools: after result" and "GolfRaw tools: lower". Copy their ids
    (`data-ad-slot`).
 4. In `lib/ads/tool-ads.js`:
-   - set `UNITS` to those ids and `AUTO_ADS_EXCLUDED = true`;
+   - set `UNITS` to those ids (done);
+   - once step 5 shows no Auto ads, set `AUTO_ADS_EXCLUDED = true`;
    - bump `version` and `VER` in `scripts/wire_ads.py`;
    - run `python3 scripts/wire_ads.py`, then deploy.
 5. Validate live without clicking any ad:
