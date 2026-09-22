@@ -139,10 +139,10 @@ const now = Math.floor(Date.now() / 1000);
 /* ---- QA test mode ------------------------------------------------------ */
 {
   const A = slotEl('after_result', null, true);
-  browser({ slots: [A], storage: { gr_adtest: '1' } });
+  browser({ slots: [A], storage: { gr_adtest: '1' } }).runTimers(2500);
   check(/data-adtest="on"/.test(A.innerHTML), 'gr_adtest=1 asks AdSense for test ads');
   const B = slotEl('after_result', null, true);
-  browser({ slots: [B] });
+  browser({ slots: [B] }).runTimers(2500);
   check(!/data-adtest/.test(B.innerHTML), 'everyone else gets normal units');
   check(/data-ad-slot="8457096514"/.test(B.innerHTML), 'slot A requests unit 8457096514');
 }
@@ -177,11 +177,12 @@ for (const [label, value] of [['expired', pass(now - 60)], ['malformed', 'garbag
   // the result appears: its container and slot A inside it become visible
   outWrap.visible = true; A.visible = true;
   b.mutate();
+  check(A.ins === null, 'no unit until the consent script has answered or given up');
+  b.runTimers(2500);   // the consent script neither loaded nor exposed a TCF API: stop waiting
   check(A.ins && A.ins.slot === '1111111111', 'slot A renders the after_result unit');
   check(B.ins && B.ins.slot === '2222222222', 'slot B renders the lower unit with the result');
   check(/>Advertisements</.test(A.innerHTML), 'the label is "Advertisements"');
   check(A.getAttribute('role') === 'complementary', 'the slot is a labelled complementary region');
-  b.runTimers(2500);   // consent wait ends
   setImmediate(() => {
     check(b.adsScripts().length === 1, 'adsbygoogle.js loads once for both slots');
     b.win.adsbygoogle = b.win.adsbygoogle || [];
@@ -194,6 +195,36 @@ for (const [label, value] of [['expired', pass(now - 60)], ['malformed', 'garbag
     check(b.win.GolfrawAds.slots()[1].state === 'filled', 'a filled unit stays');
     finish();
   });
+}
+
+/* ---- Google's consent message (TCF) ----------------------------------- */
+function tcfBrowser(events) {
+  const A = slotEl('after_result', null, true);
+  const b = browser({ host: 'localhost', test: TEST, slots: [A] });
+  let listener = null;
+  b.win.__tcfapi = (cmd, v, cb) => { if (cmd === 'addEventListener') listener = cb; };
+  b.mutate();
+  return { A, b, send: (d) => { listener && listener(d, true); } };
+}
+{
+  const t = tcfBrowser();
+  t.send({ gdprApplies: true, eventStatus: 'cmpuishown' });
+  t.b.runTimers(20000);
+  check(t.A.ins === null, 'message open: the slot waits and takes no space');
+  check(t.b.win.GolfrawAds.slots()[0].state === 'waiting', 'message open: nothing collapses or times out');
+  check(t.b.adsScripts().length === 0, 'message open: no ad code yet');
+  t.send({ gdprApplies: true, eventStatus: 'useractioncomplete' });
+  check(t.A.ins && t.A.ins.slot === '1111111111', 'a choice made: the slot renders');
+}
+{
+  const t = tcfBrowser();
+  t.send({ gdprApplies: true, eventStatus: 'tcloaded' });
+  check(t.A.ins !== null, 'a returning reader who already chose: renders at once');
+}
+{
+  const t = tcfBrowser();
+  t.send({ gdprApplies: false, eventStatus: 'tcloaded' });
+  check(t.A.ins !== null, 'outside Europe: renders at once');
 }
 
 /* ---- failures collapse, never throw ----------------------------------- */

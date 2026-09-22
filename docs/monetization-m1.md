@@ -48,8 +48,12 @@ click a live ad.
     buttons and the ad.
   - 290px of space is reserved when the slot renders, which happens within the
     click that produced the result, so the fill does not shift the page.
-  - Unfilled, blocked, failed, silent after 12s or throwing: the slot
-    collapses and the tool is untouched.
+  - In the EEA, UK and Switzerland the slots wait for the answer to Google's
+    consent message (TCF `tcloaded` or `useractioncomplete`, or
+    `gdprApplies:false` elsewhere). While the message is open they take no
+    space and load nothing. A visitor who never answers sees no ad and no gap.
+  - Unfilled, blocked, failed, silent 12s after the request, or throwing: the
+    slot collapses and the tool is untouched.
 - **Pro:** the pass `lib/pro/pro.js` keeps in `localStorage`
   (`golfraw_pro_pass`, `v1.<payload>.<sig>`, `exp` in seconds). A pass with a
   future `exp` means no slots and no adsbygoogle.js, on tools and on articles.
