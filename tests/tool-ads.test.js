@@ -166,6 +166,7 @@ const now = Math.floor(Date.now() / 1000);
   browser({ slots: [A], storage: { gr_adtest: '1' } }).runTimers(11000);
   check(/data-adtest="on"/.test(A.innerHTML), 'gr_adtest=1 asks AdSense for test ads');
   check(/data-ad-slot="8457096514"/.test(A.innerHTML), 'slot A requests unit 8457096514');
+  check(/data-ad-format="rectangle" data-full-width-responsive="false"/.test(A.innerHTML), 'units are rectangles, never full-screen');
   const B = slotEl('after_result', null, true);
   browser({ slots: [B], host: 'localhost', test: TEST }).runTimers(11000);
   check(!/data-adtest/.test(B.innerHTML) && B.ins, 'everyone else gets normal units');
