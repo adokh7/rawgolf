@@ -121,6 +121,8 @@ const now = Math.floor(Date.now() / 1000);
 {
   const units = /var UNITS = \{ after_result: '(\d{10})', lower: '(\d{10})' \};/.exec(SRC);
   check(units && units[1] === '8457096514' && units[2] === '1432433875', 'shipped: the two real AdSense unit ids');
+  check(/var ADS_SRC = 'https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js';/.test(SRC),
+    'tool pages load the ad-unit loader, never the ?client= Auto ads form');
   for (const p of ['/tools-club-distance-calculator', '/tools-tee-box-check', '/tools-plays-like', '/tools-bag-audit']) {
     const b = browser({ path: p });
     check(b.win.GolfrawAds.reason() === 'eligible', 'shipped: ' + p + ' is live, got ' + b.win.GolfrawAds.reason());
