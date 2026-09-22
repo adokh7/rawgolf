@@ -716,6 +716,33 @@ Forward chart).
   golfer started from, never the number, the band or any output.
 
 
+## The Settle Up V2 (`lib/games/settle-core.js`, `lib/games/settle-up.js`)
+
+`tools-settle-up-calculator.html` is hand-written; its maths is two UMD modules
+tested in Node (`node tests/settle-up.test.js`, and the page contract
+`python3 -m unittest tests.test_settle_up_page`).
+
+- **settle-core.js**: money as whole minor units (cents or hundredths of a
+  point; currency is presentation only), stroke allocation by stroke index
+  (Rules of Handicapping Appendix E, plus handicaps give back from SI 18,
+  nine-hole rounds rank the nine), and `settle()`: the fewest possible
+  payments (the largest number of zero-sum sub-groups, then largest debtor
+  pays largest creditor inside each). Nobody both pays and receives.
+- **settle-up.js**: skins (outright low wins; carryovers on or off; carried
+  skins after the last hole are lost or go to a named playoff winner; optional
+  birdie double; net strokes full or off the low), Nassau (match play, every
+  pair, front/back/18, net at 100% of the difference; presses off, automatic
+  at 2 down on the latest bet of each nine and the 18, or entered by hand) and
+  closest to the pin on par 3s. Every rule is an input; `validate()` names the
+  exact player and hole for any problem.
+- Nothing about a round is put in a URL. Shares are plain text (the page opens
+  the share sheet itself so line breaks survive). Analytics gets
+  `game_type` and `scoring_mode` enums only.
+- Saved state lives in this browser (`golfraw_settleup_round`,
+  `golfraw_settleup_group`, format `v: 2`); the page still reads the V1 format.
+- **Bump `version`** in a module and its `?v=` on the page together.
+- Wolf is deliberately not in V2: its scoring has no agreed standard.
+
 ## Units: yards or metres across the distance tools (`lib/distance/units.js`)
 
 The Distance Check, Plays Like, Tee Box and Bag Audit run one model each, in

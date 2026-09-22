@@ -225,8 +225,22 @@ function names(p) {
   check(!/152/.test(JSON.stringify(p.events().concat(q.events()))), 'no anchor value is ever sent');
 }
 
+// 15. Settle Up sends which games and which scoring, as enums, never money or names.
+{
+  const p = page('/tools-settle-up-calculator');
+  p.GRTrack.completed({ game_type: 'skins_nassau', scoring_mode: 'net', stake: 500, player: 'Sam' });
+  const done = p.events().find((e) => e.event === 'tool_completed');
+  check(done && done.params.game_type === 'skins_nassau' && done.params.scoring_mode === 'net', 'game and scoring labels are sent');
+  check(done && !('stake' in done.params) && !('player' in done.params), 'money and names are dropped');
+  const q = page('/tools-settle-up-calculator');
+  q.GRTrack.completed({ game_type: 'wolf', scoring_mode: '5' });
+  const bad = q.events().find((e) => e.event === 'tool_completed');
+  check(bad && !('game_type' in bad.params) && !('scoring_mode' in bad.params), 'unknown labels are dropped, not sent');
+  check(!/Sam|500/.test(JSON.stringify(p.events().concat(q.events()))), 'no player name or stake is ever sent');
+}
+
 if (failures.length) {
   console.error('Tool events contract failed:\n- ' + failures.join('\n- '));
   process.exit(1);
 }
-console.log('Tool events contract passed (14 scenarios).');
+console.log('Tool events contract passed (15 scenarios).');

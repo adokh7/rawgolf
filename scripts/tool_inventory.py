@@ -237,7 +237,7 @@ TOOLS = (
         1,
         "The Settle Up",
         "Golf Skins Calculator · Nassau",
-        "Nassau, skins with carryovers, automatic presses and junk. One clean who-owes-who card, built for the group chat.",
+        "Skins with or without carryovers, gross or net, plus a Nassau with presses. Put the card in and get the fewest payments that square the group.",
         "Settle the money →",
         "games-scoring",
         search_name="Golf Skins Calculator",

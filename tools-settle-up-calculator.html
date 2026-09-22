@@ -120,26 +120,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "How does a Nassau bet work in golf?",
+          "name": "What is a skin in golf?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A Nassau is three separate bets in one: the front nine, the back nine and the overall eighteen. Each is usually worth the same stake, so a five dollar Nassau is really fifteen dollars in play. You can win the front, lose the back and still take the overall, which is why it is scored as three independent matches rather than one running total."
+            "text": "A skin is the prize for winning one hole outright. The player with the single lowest score on the hole wins it; if two or more players share the lowest score, nobody does. In most casual games every other player pays the winner an agreed amount for each skin."
           }
         },
         {
           "@type": "Question",
-          "name": "What is an automatic two-down press in golf betting?",
+          "name": "What happens when a skin is tied?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A press is a new bet opened for the remaining holes, traditionally when a player goes two holes down. Automatic presses trigger without anyone having to ask, and they stack: a player two down on the front can be carrying the original bet plus several presses at once. This is where casual games get expensive, because the total exposure grows faster than most groups realise."
+            "text": "It depends on the house rule. With carryovers, the tied skin moves to the next hole, so the next outright winner collects every skin that has built up. Without carryovers, nobody wins a tied skin. Skins still carried after the last hole need a rule of their own: groups either play off for them or agree that nobody wins them."
           }
         },
         {
           "@type": "Question",
-          "name": "How do skins carryovers work when a hole is tied?",
+          "name": "What is the difference between gross and net skins?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "If two or more players tie the low score on a hole, nobody wins that skin and its value carries forward to the next hole. Carryovers stack, so a run of tied holes can leave a single skin worth many times the base stake. A hole late in the round can end up carrying more money than the entire Nassau."
+            "text": "Gross skins use the scores as played. Net skins take each player's handicap strokes off first, on the holes with the lowest stroke index. The Rules of Handicapping set no allowance for skins, so groups either use full playing handicaps or play off the lowest handicap in the group. Agree which before you tee off."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does a Nassau work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Nassau is three bets of the same stake: the front nine, the back nine and all 18. It is usually match play, so whoever wins more holes wins the bet, and a tied bet is a push. With more than two players, this calculator plays a separate Nassau for every pair. In net play the higher handicap receives the difference in strokes, which is 100% for singles match play under the Rules of Handicapping."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do presses work in golf?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A press is a new bet, usually for the same stake, started by the player who is behind. It runs from the next hole to the end of that nine or the 18. Many groups press automatically whenever someone goes 2 down. Whether the 18-hole bet can be pressed, and whether a press can be pressed, varies, so agree it first. This calculator can press automatically at 2 down or use the presses you enter."
           }
         }
       ]
@@ -259,7 +275,7 @@
 
     /* SCORECARD */
     .card-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 2px solid var(--ink) }
-    table.sc { border-collapse: collapse; width: 100%; min-width: 480px; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 14px }
+    table.sc { border-collapse: collapse; width: 100%; min-width: 0; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 14px }
     table.sc th, table.sc td { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); padding: 0; text-align: center }
     table.sc th { background: var(--ink); color: #fff; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; padding: 10px 6px; position: sticky; top: 0; z-index: 2 }
     table.sc th:first-child, table.sc td:first-child { position: sticky; left: 0; z-index: 1; background: var(--paper); font-weight: 700; width: 62px; min-width: 62px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase }
@@ -270,16 +286,61 @@
     table.sc input:focus { outline: 2px solid var(--flag); outline-offset: -2px; background: #fff }
     table.sc td.parcell input { color: var(--grey); font-size: 13px }
 
-    /* JUNK */
-    .junk-grid { display: grid; gap: 12px }
-    .junk-row { border: 2px solid var(--line); padding: 12px 14px; display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center }
-    @media(max-width:560px) { .junk-row { grid-template-columns: 1fr; gap: 10px } }
-    .junk-name { font-weight: 800; font-size: 15px }
-    .stepper { display: flex; align-items: center; gap: 8px }
-    .stepper .lbl { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--grey); min-width: 58px }
-    .stepper button { width: 34px; height: 34px; border: 2px solid var(--ink); background: var(--white); font-weight: 900; font-size: 16px; cursor: pointer; line-height: 1 }
-    .stepper button:hover { background: var(--ink); color: #fff }
-    .stepper .val { font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-weight: 700; min-width: 22px; text-align: center; font-size: 16px }
+    /* SETTLE UP V2: game setup, the card and the audit trail */
+    .su-q { margin-bottom: 18px }
+    .su-grid { display: flex; flex-wrap: wrap; gap: 0 28px }
+    .su-lab { display: block; font-family: var(--gr-meta, Inter, system-ui, sans-serif); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--grey); font-weight: 600; margin-bottom: 8px; padding: 0 }
+    .su-seg { display: inline-flex; flex-wrap: wrap; border: 2px solid var(--ink); max-width: 100% }
+    .su-seg button { min-width: 52px; padding: 8px 14px; margin: 0; border: 0; border-right: 2px solid var(--ink); border-radius: 0; background: var(--white); color: var(--ink); font-family: inherit; font-size: 15px; font-weight: 700; letter-spacing: normal; text-transform: none; cursor: pointer; box-shadow: none }
+    .su-seg button:last-child { border-right: 0 }
+    .su-seg button[aria-pressed="true"] { background: var(--ink); color: #fff }
+    .su-seg button:focus-visible { outline: 3px solid var(--flag); outline-offset: -4px }
+    /* The theme gives every button 40px; the id keeps these at 44px. */
+    #suSetup .su-seg button { min-height: 44px }
+    #suCardPanel .btn, #outWrap .act-btns .btn { min-height: 44px }
+    /* The shared stylesheet lifts only the first panel above the answer copy;
+       the whole calculator (game, card, result) comes first here. */
+    .tool-body > .wrap > #suCardPanel, .tool-body > .wrap > #outWrap { order: 1 }
+    .su-players { display: grid; gap: 10px; margin-bottom: 6px }
+    .su-player { display: grid; grid-template-columns: 1fr 96px; gap: 8px; align-items: end }
+    .su-player.gross { grid-template-columns: 1fr }
+    .su-rules { border: 0; padding: 0; margin: 8px 0 0; display: grid; gap: 10px }
+    .su-rules > div { display: grid; gap: 10px }
+    .su-sub select { max-width: 340px }
+    .su-course { border: 2px solid var(--line); padding: 10px 14px; margin-bottom: 14px }
+    .su-course summary { cursor: pointer; font-weight: 800; font-size: 14.5px; min-height: 32px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap }
+    .su-course summary span { font-weight: 500; color: var(--grey); font-size: 13px }
+    .su-course-grid { overflow-x: auto; margin-top: 10px }
+    .su-course-t { border-collapse: collapse; font-size: 13px }
+    .su-course-t th, .su-course-t td { border: 1px solid var(--line); padding: 0; text-align: center; min-width: 40px }
+    .su-course-t th { padding: 6px 4px; font-size: 11px; background: var(--paper) !important; color: var(--grey) !important }
+    .su-course-t input { border: 0; width: 40px; text-align: center; padding: 10px 2px; font-weight: 700; font-size: 16px }
+    table.sc thead th { max-width: 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; letter-spacing: .04em; text-transform: none }
+    table.sc tbody th { position: sticky; left: 0; z-index: 1; width: 54px; min-width: 54px; padding: 4px 2px; text-align: center; line-height: 1.1; background: var(--paper) !important; color: var(--ink) !important }
+    table.sc tbody th .hn { display: block; font-weight: 800; font-size: 15px }
+    table.sc tbody th .hp { display: block; font-size: 9.5px; color: var(--grey); font-weight: 600; letter-spacing: .04em }
+    table.sc tr.turn th { background: #ECEFE8 !important; font-size: 11px; letter-spacing: .08em; text-transform: uppercase }
+    table.sc input.scr { width: 100%; min-height: 46px; font-size: 18px; font-weight: 700 }
+    table.sc input[aria-invalid="true"] { outline: 2px solid #8f2015; outline-offset: -2px; background: #FDF0EE }
+    table.sc td.tot { font-weight: 800; font-size: 14px; padding: 10px 2px }
+    .su-extra { margin-top: 20px; border-top: 2px solid var(--line); padding-top: 16px }
+    .su-h3 { font-weight: 800; font-size: 16px; margin-bottom: 8px }
+    .su-line { display: grid; grid-template-columns: 90px 1fr; gap: 10px; align-items: center; margin-bottom: 8px }
+    .su-line label.fld { margin: 0 }
+    .su-press { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; border: 2px solid var(--line); padding: 10px; margin-bottom: 10px; align-items: end }
+    @media(min-width:700px) { .su-press { grid-template-columns: 1fr 1fr 110px 110px auto } }
+    .su-audit { margin-top: 24px; border: 2px solid var(--ink); background: var(--white); padding: 18px 18px 8px }
+    .su-a { border-bottom: 1px solid var(--line); padding: 10px 0 12px }
+    .su-a:last-of-type { border-bottom: 0 }
+    .su-a summary { cursor: pointer; font-weight: 800; font-size: 14.5px; min-height: 32px }
+    .su-list { margin: 8px 0 4px 20px; font-size: 14px; line-height: 1.6 }
+    .su-p { font-size: 13.5px; color: var(--grey); line-height: 1.55; margin: 8px 0 }
+    .su-pair { margin: 10px 0 }
+    .su-pair-h { font-weight: 800; font-size: 14.5px; margin-top: 10px }
+    .net-table tbody th { text-align: left; font-family: var(--gr-sans, Inter, system-ui, sans-serif); font-weight: 800; font-size: 14.5px; letter-spacing: normal; text-transform: none; padding: 9px 8px 9px 0; border-bottom: 1px solid rgba(255,255,255,.08); background: transparent !important; color: #fff !important }
+    .net-table td:not(:last-child) { color: #cbd5e1 }
+    .su-word { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; opacity: .85 }
+    .su-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap }
 
     /* OUTPUT CARD */
     .out-wrap { display: none }
@@ -393,9 +454,9 @@
       <div class="eyebrow">GolfRaw · TOOLS</div>
       <h1>Golf Skins Calculator</h1>
       <p class="tool-brand">The Settle Up</p>
-      <p>Nassau, skins with carryovers, automatic 2-down presses and junk. Put the scores in, get a clean
-        who-owes-who card you can screenshot straight into the group chat. Runs entirely in your browser — nothing
-        is uploaded anywhere.</p>
+      <p>Round's over. Settle it cleanly. Skins with or without carryovers, gross or net, and a Nassau if you
+        played one. Put the card in and get the fewest payments that square the group. No app, no sign-up, and it
+        runs in your browser.</p>
     </div>
   </div>
 
@@ -405,144 +466,202 @@
       <!-- ============ AEO: DIRECT ANSWER ============ -->
       <section class="answer-block" aria-labelledby="aeo-q">
         <div class="ab-tag">The short answer</div>
-        <h2 id="aeo-q">How do you calculate a golf Nassau bet instantly without an app?</h2>
-        <p class="ab-answer">Enter every player's hole-by-hole scores and this free golf betting calculator settles the Nassau, presses, skins and junk in a single click.</p>
-        <p class="ab-body">The Settle Up is a <b>free online golf betting calculator</b> that runs entirely in your browser. It handles a full Nassau (front nine, back nine and overall match), automatic two-down presses, skins with stacked carryovers, and per-hole junk like greenies and sandies, then reduces the whole mess to the smallest possible set of payments. If you want to <b>settle your golf bets now</b> without arguing in a car park, you enter the scores and it does the arithmetic. If you are here <b>understanding how Nassau scoring works</b> in the first place, the maths is explained in full below the calculator. For the wider context around group formats, see the <a href="/guides-how-to-play-in-a-golf-pro-am-costs-etiquette">pro-am format guide</a> and the practical <a href="/charity-golf-scrambles-access-guide">charity scramble guide</a>.</p>
+        <h2 id="aeo-q">How do golf skins work?</h2>
+        <p class="ab-answer">Every hole is worth a skin, and it goes to the one player with the lowest score. If two or more tie for low, nobody wins it: with carryovers the skin moves to the next hole, without them it is gone. Every other player pays the winner the stake for each skin.</p>
+        <p class="ab-body">The Settle Up is a <b>free golf skins calculator</b> that runs in your browser. It settles gross or net skins, a Nassau with or without presses, and closest to the pin, then boils everything down to the fewest payments. Every rule groups argue about is a setting you pick before you settle, and the result shows how each number was reached. For group formats beyond money games, see the <a href="/guides-how-to-play-in-a-golf-pro-am-costs-etiquette">pro-am format guide</a> and the <a href="/charity-golf-scrambles-access-guide">charity scramble guide</a>.</p>
         <ul class="ab-facts"><li><b>Free</b> forever</li><li><b>No</b> signup</li><li><b>0</b> data uploaded</li><li><b>100%</b> in your browser</li></ul>
       </section>
 
-      <!-- ============ STEP 1: SETUP ============ -->
-      <section class="panel" data-gr-inputs>
+      <!-- ============ STEP 1: THE GAME ============ -->
+      <section class="panel" id="suSetup" data-gr-inputs>
         <div class="panel-head"><span><span class="step">01 ·</span> The Game</span>
-          <span id="groupTag" class="mono" style="font-size:10px;color:#94a3b8"></span>
+          <span id="groupTag" class="mono" role="status" style="font-size:10px;color:#94a3b8"></span>
         </div>
         <div class="panel-in">
-
-          <label class="fld" for="playerCount">Players (2–6)</label>
-          <div class="row c3" style="margin-bottom:14px">
-            <select id="playerCount" aria-label="Number of players">
-              <option value="2">2 players</option>
-              <option value="3">3 players</option>
-              <option value="4" selected>4 players</option>
-              <option value="5">5 players</option>
-              <option value="6">6 players</option>
-            </select>
+          <div class="su-q">
+            <span class="su-lab" id="suGameLab">Game</span>
+            <div class="su-seg" id="suGames" role="group" aria-labelledby="suGameLab">
+              <button type="button" data-game="skins" aria-pressed="true">Skins</button>
+              <button type="button" data-game="nassau" aria-pressed="false">Nassau</button>
+            </div>
+            <p class="hint">Pick one or both. They settle together.</p>
           </div>
 
-          <label class="fld">Names &amp; Handicaps</label>
-          <div class="players-list" id="playersList"></div>
-          <p class="hint">Handicap is optional and only feeds the "Bandit of the Day" badge. Leave it at 0 if you
-            play straight up; for a net game, enter each player's net score on the card.</p>
-
-          <hr style="border:none;border-top:2px solid var(--line);margin:22px 0">
-
-          <label class="fld">Stakes ($ per bet)</label>
-          <div class="row c3">
-            <div>
-              <label class="fld" for="stakeNassau">Nassau / press</label>
-              <input type="number" id="stakeNassau" value="5" min="0" step="1" inputmode="decimal">
+          <div class="su-grid">
+            <div class="su-q">
+              <span class="su-lab" id="suScoringLab">Scoring</span>
+              <div class="su-seg" id="suScoring" role="group" aria-labelledby="suScoringLab">
+                <button type="button" data-v="gross" aria-pressed="true">Gross</button>
+                <button type="button" data-v="net" aria-pressed="false">Net</button>
+              </div>
             </div>
-            <div>
+            <div class="su-q">
+              <span class="su-lab" id="suRoundLab">Holes</span>
+              <div class="su-seg" id="suRound" role="group" aria-labelledby="suRoundLab">
+                <button type="button" data-v="18" aria-pressed="true">18</button>
+                <button type="button" data-v="front" aria-pressed="false">Front 9</button>
+                <button type="button" data-v="back" aria-pressed="false">Back 9</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="su-q">
+            <span class="su-lab" id="suCountLab">Players</span>
+            <div class="su-seg" id="suCount" role="group" aria-labelledby="suCountLab">
+              <button type="button" data-v="2" aria-pressed="false">2</button>
+              <button type="button" data-v="3" aria-pressed="false">3</button>
+              <button type="button" data-v="4" aria-pressed="true">4</button>
+              <button type="button" data-v="5" aria-pressed="false">5</button>
+              <button type="button" data-v="6" aria-pressed="false">6</button>
+            </div>
+          </div>
+          <div class="su-players" id="suPlayers"></div>
+          <p class="hint" id="suHcpHint" hidden>Handicap here means <b>playing handicap</b>: the strokes each player
+            gets today from these tees. That is your Course Handicap, with any allowance your group uses. A plus
+            handicap goes in as +2 or -2.</p>
+
+          <div class="su-q">
+            <span class="su-lab" id="suCurLab">Playing for</span>
+            <div class="su-seg" id="suCurrency" role="group" aria-labelledby="suCurLab">
+              <button type="button" data-v="usd" aria-pressed="true" aria-label="Dollars">$</button>
+              <button type="button" data-v="eur" aria-pressed="false" aria-label="Euros">€</button>
+              <button type="button" data-v="gbp" aria-pressed="false" aria-label="Pounds">£</button>
+              <button type="button" data-v="pts" aria-pressed="false">Points</button>
+            </div>
+          </div>
+          <div class="row c3 su-stakes">
+            <div data-show="skins">
               <label class="fld" for="stakeSkins">Per skin</label>
-              <input type="number" id="stakeSkins" value="2" min="0" step="1" inputmode="decimal">
+              <input type="text" id="stakeSkins" inputmode="decimal" autocomplete="off" value="1">
             </div>
-            <div>
-              <label class="fld" for="stakeJunk">Per junk</label>
-              <input type="number" id="stakeJunk" value="1" min="0" step="1" inputmode="decimal">
+            <div data-show="nassau" hidden>
+              <label class="fld" for="stakeNassau">Per Nassau bet</label>
+              <input type="text" id="stakeNassau" inputmode="decimal" autocomplete="off" value="5">
+            </div>
+            <div data-show="ctp" hidden>
+              <label class="fld" for="stakeCtp">Closest to the pin</label>
+              <input type="text" id="stakeCtp" inputmode="decimal" autocomplete="off" value="1">
             </div>
           </div>
 
-          <label class="fld">Games in play</label>
-          <div class="toggles">
-            <label class="toggle on" id="tgNassauWrap">
-              <input type="checkbox" id="tgNassau" checked>
-              <span><b>Nassau</b><span>Front 9, back 9 and total, played head-to-head between every pair in the
-                  group.</span></span>
+          <fieldset class="su-rules">
+            <legend class="su-lab">House rules</legend>
+            <div data-show="skins">
+              <label class="toggle on" id="ruleCarryWrap">
+                <input type="checkbox" id="ruleCarry" checked>
+                <span><b>Carryovers</b><span>On: a tied skin moves to the next hole and the next outright winner
+                    takes the lot. Off: a tied skin is not won by anyone.</span></span>
+              </label>
+              <div class="su-sub" id="endCarryWrap">
+                <label class="fld" for="ruleEnd">Skins still carried after the last hole</label>
+                <select id="ruleEnd">
+                  <option value="lost">Nobody wins them</option>
+                  <option value="playoff">A playoff decided them</option>
+                </select>
+                <div id="playoffWrap" hidden>
+                  <label class="fld" for="rulePlayoff">Playoff winner</label>
+                  <select id="rulePlayoff"></select>
+                </div>
+              </div>
+              <label class="toggle" id="ruleBirdieWrap">
+                <input type="checkbox" id="ruleBirdie">
+                <span><b>Birdies count double</b><span>A skin won with a gross birdie or better is worth two, carried
+                    skins included.</span></span>
+              </label>
+              <div class="su-sub" data-show="net" hidden>
+                <label class="fld" for="ruleStrokes">Net skins strokes</label>
+                <select id="ruleStrokes">
+                  <option value="full">Full playing handicaps</option>
+                  <option value="low">Off the lowest handicap</option>
+                </select>
+              </div>
+            </div>
+            <div data-show="nassau" hidden>
+              <div class="su-sub">
+                <label class="fld" for="rulePresses">Nassau presses</label>
+                <select id="rulePresses">
+                  <option value="off">No presses</option>
+                  <option value="auto">Automatic at 2 down</option>
+                  <option value="manual">We'll enter them</option>
+                </select>
+                <p class="hint" id="pressHint">Each pair plays its own Nassau: front 9, back 9 and 18, match play.</p>
+              </div>
+            </div>
+            <label class="toggle" id="ruleCtpWrap">
+              <input type="checkbox" id="ruleCtp">
+              <span><b>Closest to the pin</b><span>On each par 3. Every other player pays the winner.</span></span>
             </label>
-            <label class="toggle on" id="tgPressWrap">
-              <input type="checkbox" id="tgPress" checked>
-              <span><b>Auto press at 2-down</b><span>Opens a fresh bet for the rest of that nine the moment
-                  someone goes two down. Presses can be pressed.</span></span>
-            </label>
-            <label class="toggle on" id="tgSkinsWrap">
-              <input type="checkbox" id="tgSkins" checked>
-              <span><b>Skins with carryover</b><span>Low outright score wins the hole. Ties carry the skin
-                  forward and stack the value.</span></span>
-            </label>
-            <label class="toggle on" id="tgJunkWrap">
-              <input type="checkbox" id="tgJunk" checked>
-              <span><b>Junk (greenies &amp; sandies)</b><span>Side payments tallied per player. Each one is
-                  collected from everybody else.</span></span>
-            </label>
+          </fieldset>
+
+          <div class="btn-row" style="margin-top:20px">
+            <button class="btn ghost sm" id="saveGroup" type="button" data-gr-ignore>Save this group</button>
+            <button class="btn ghost sm" id="loadGroup" type="button" data-gr-ignore>Load saved group</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ STEP 2: THE CARD ============ -->
+      <section class="panel" id="suCardPanel" data-gr-inputs>
+        <div class="panel-head"><span><span class="step">02 ·</span> The Card</span></div>
+        <div class="panel-in">
+          <div class="err" id="scoreErr" role="alert"></div>
+          <details class="su-course" id="suCourse">
+            <summary>Par and stroke index <span id="suCourseWhy">(needed for net, birdies and par 3s)</span></summary>
+            <p class="hint">Copy both rows from your scorecard. Stroke index is the "handicap" or "HCP" row, 1 to 18.
+              The defaults are a common layout, not your course.</p>
+            <div class="su-course-grid" id="suCourseGrid"></div>
+          </details>
+          <div class="card-scroll">
+            <table class="sc" id="scoreTable"></table>
+          </div>
+          <p class="hint">Scores are strokes on each hole. Typing a score moves you to the next box; a 1 waits in
+            case it is a 10.</p>
+
+          <div class="su-extra" id="suCtp" hidden>
+            <h3 class="su-h3">Closest to the pin</h3>
+            <div id="suCtpList"></div>
+          </div>
+          <div class="su-extra" id="suPresses" hidden>
+            <h3 class="su-h3">Presses</h3>
+            <p class="hint">A press is a new bet, same stake, from the hole it starts on to the end of its nine (or
+              the 18).</p>
+            <div id="suPressList"></div>
+            <button class="btn ghost sm" id="addPress" type="button">Add a press</button>
           </div>
 
           <div class="btn-row" style="margin-top:22px">
-            <button class="btn" id="buildCard" type="button">Build the scorecard →</button>
-            <button class="btn ghost sm" id="saveGroup" type="button">Save this group</button>
-            <button class="btn ghost sm" id="loadGroup" type="button">Load saved group</button>
-            <button class="btn ghost sm" id="clearAll" data-gr-ignore type="button">Reset everything</button>
+            <button class="btn" id="calcBtn" data-gr-run type="button">Settle up →</button>
+            <button class="btn ghost sm" id="clearScores" data-gr-ignore type="button">Clear the card</button>
           </div>
         </div>
       </section>
 
-      <!-- ============ STEP 2: SCORECARD ============ -->
-      <section class="panel" id="cardPanel" data-gr-inputs style="display:none">
-        <div class="panel-head"><span><span class="step">02 ·</span> The Card</span>
-          <span class="mono" style="font-size:10px;color:#94a3b8">Scroll sideways on mobile</span>
-        </div>
-        <div class="panel-in">
-          <div class="err" id="scoreErr"></div>
-          <div class="card-scroll">
-            <table class="sc" id="scoreTable" aria-label="Hole by hole scorecard"></table>
-          </div>
-          <p class="hint">Leave a hole blank and it is simply skipped. Par only matters for the scorecard read-out,
-            not the maths.</p>
-        </div>
-      </section>
-
-      <!-- ============ STEP 3: JUNK ============ -->
-      <section class="panel" id="junkPanel" data-gr-inputs style="display:none">
-        <div class="panel-head"><span><span class="step">03 ·</span> The Junk</span></div>
-        <div class="panel-in">
-          <div class="junk-grid" id="junkGrid"></div>
-          <p class="hint">Greenie: closest to the pin on a par 3. Sandie: up and down out of a bunker. Each one is
-            paid by every other player in the group.</p>
-        </div>
-      </section>
-
-      <!-- ============ CALCULATE ============ -->
-      <div class="btn-row" id="calcRow" style="display:none;margin-bottom:28px">
-        <button class="btn" id="calcBtn" type="button">Settle up →</button>
-        <button class="btn ghost sm" id="copyBtn" type="button">Copy for group chat</button>
-      </div>
-
-      <!-- ============ STEP 4: OUTPUT ============ -->
+      <!-- ============ STEP 3: WHO PAYS WHOM ============ -->
       <div class="out-wrap" id="outWrap">
         <div class="settle-card" id="settleCard">
           <div class="sc-eyebrow">The Settle Up</div>
-          <h2 id="outTitle">Who Owes Who</h2>
+          <h2 id="outTitle" tabindex="-1">Who pays whom</h2>
           <div class="sc-sub" id="outSub"></div>
-
           <div class="owe-list" id="oweList"></div>
-
           <table class="net-table" id="netTable"></table>
-
-          <div class="badges" id="badgeList"></div>
-
           <div class="sc-foot">
             <span class="mark">Golf<span>Raw</span></span>
             <span class="url">GolfRaw · the settle up</span>
           </div>
         </div>
-        <p class="note" id="mathNote"></p>
         <div class="act-bar">
-          <span class="act-lab">Take it with you</span>
+          <span class="act-lab">Send it to the group</span>
           <div class="act-btns">
-            <button class="btn sm" id="pngBtn" type="button">Download card (.png)</button>
-            <button class="btn ghost sm" id="shareBtn" type="button">Share result</button>
+            <button class="btn sm" id="copyBtn" type="button">Copy summary</button>
+            <button class="btn ghost sm" id="shareBtn" type="button">Share</button>
+            <button class="btn ghost sm" id="pngBtn" type="button">Download card</button>
           </div>
         </div>
-
+        <p class="note" id="copyMsg" role="status"></p>
+        <section class="su-audit" aria-labelledby="suAuditH">
+          <h3 id="suAuditH" class="su-h3">How we got there</h3>
+          <div id="suAudit"></div>
+        </section>
       </div>
 
 
@@ -551,16 +670,24 @@
         <div class="panel-head"><span id="faq-h"><span class="step">FAQ ·</span> Questions Golfers Actually Ask</span></div>
         <div class="faq-in">
           <div class="faq-item">
-            <h3>How does a Nassau bet work in golf?</h3>
-            <p>A Nassau is three separate bets in one: the front nine, the back nine and the overall eighteen. Each is usually worth the same stake, so a five dollar Nassau is really fifteen dollars in play. You can win the front, lose the back and still take the overall, which is why it is scored as three independent matches rather than one running total.</p>
+            <h3>What is a skin in golf?</h3>
+            <p>A skin is the prize for winning one hole outright. The player with the single lowest score on the hole wins it; if two or more players share the lowest score, nobody does. In most casual games every other player pays the winner an agreed amount for each skin.</p>
           </div>
           <div class="faq-item">
-            <h3>What is an automatic two-down press in golf betting?</h3>
-            <p>A press is a new bet opened for the remaining holes, traditionally when a player goes two holes down. Automatic presses trigger without anyone having to ask, and they stack: a player two down on the front can be carrying the original bet plus several presses at once. This is where casual games get expensive, because the total exposure grows faster than most groups realise.</p>
+            <h3>What happens when a skin is tied?</h3>
+            <p>It depends on the house rule. With carryovers, the tied skin moves to the next hole, so the next outright winner collects every skin that has built up. Without carryovers, nobody wins a tied skin. Skins still carried after the last hole need a rule of their own: groups either play off for them or agree that nobody wins them.</p>
           </div>
           <div class="faq-item">
-            <h3>How do skins carryovers work when a hole is tied?</h3>
-            <p>If two or more players tie the low score on a hole, nobody wins that skin and its value carries forward to the next hole. Carryovers stack, so a run of tied holes can leave a single skin worth many times the base stake. A hole late in the round can end up carrying more money than the entire Nassau.</p>
+            <h3>What is the difference between gross and net skins?</h3>
+            <p>Gross skins use the scores as played. Net skins take each player's handicap strokes off first, on the holes with the lowest stroke index. The Rules of Handicapping set no allowance for skins, so groups either use full playing handicaps or play off the lowest handicap in the group. Agree which before you tee off.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How does a Nassau work?</h3>
+            <p>A Nassau is three bets of the same stake: the front nine, the back nine and all 18. It is usually match play, so whoever wins more holes wins the bet, and a tied bet is a push. With more than two players, this calculator plays a separate Nassau for every pair. In net play the higher handicap receives the difference in strokes, which is 100% for singles match play under the Rules of Handicapping.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How do presses work in golf?</h3>
+            <p>A press is a new bet, usually for the same stake, started by the player who is behind. It runs from the next hole to the end of that nine or the 18. Many groups press automatically whenever someone goes 2 down. Whether the 18-hole bet can be pressed, and whether a press can be pressed, varies, so agree it first. This calculator can press automatically at 2 down or use the presses you enter.</p>
           </div>
         </div>
       </section>
@@ -591,6 +718,8 @@
 
   <!-- Shared Raw Tools engine: history, passport, PNG cards, Web Share -->
   <script src="./rawgolf-tools.js?v=2"></script>
+  <script src="/lib/games/settle-core.js?v=1"></script>
+  <script src="/lib/games/settle-up.js?v=1"></script>
 
   <script>
     /* ==================== NAV ==================== */
@@ -607,586 +736,564 @@
       }
     })();
 
-    /* ==================== STATE ==================== */
+    /* ==================== STATE ====================
+       The rules live in /lib/games/settle-up.js and the money, strokes and
+       settlement in /lib/games/settle-core.js, both tested in Node. This script
+       holds what the group typed, draws the card, and words the result. */
+    var SU = window.GolfrawSettleUp, SC = window.GolfrawSettleCore;
     var HOLES = 18;
-    var DEFAULT_PARS = [4, 4, 3, 5, 4, 4, 3, 4, 5, 4, 3, 4, 5, 4, 4, 3, 4, 5];
     var LS_GROUP = 'golfraw_settleup_group';
     var LS_ROUND = 'golfraw_settleup_round';
+    var SYMBOLS = { usd: '$', eur: '€', gbp: '£', pts: 'pts' };
 
     var state = {
-      players: [],           // {name, hcp}
-      pars: DEFAULT_PARS.slice(),
-      scores: [],            // scores[p][hole] = number|null
-      junk: [],              // junk[p] = {greenies:n, sandies:n}
-      stakes: { nassau: 5, skins: 2, junk: 1 },
-      games: { nassau: true, press: true, skins: true, junk: true }
+      games: { skins: true, nassau: false },
+      scoring: 'gross', round: '18',
+      players: [],                   // { name, hcp } as typed
+      currency: 'usd',
+      stakes: { skins: '1', nassau: '5', ctp: '1' },
+      rules: { carry: true, endCarry: 'lost', playoffWinner: '', birdie: false, strokes: 'full', presses: 'off', ctp: false },
+      pars: SU.DEFAULT_PARS.slice(),
+      si: SU.DEFAULT_SI.slice(),
+      scores: [],                    // scores[p][h]: number or null
+      ctpWinners: {},                // hole index -> player index as text, '' for nobody
+      presses: []                    // { by, against, bet, from } as text
     };
 
     var $ = function (id) { return document.getElementById(id); };
-    var money = function (n) {
-      var s = (Math.round(Math.abs(n) * 100) / 100).toFixed(2).replace(/\.00$/, '');
-      return '$' + s;
-    };
     var esc = function (s) {
       return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     };
-
-    /* ==================== SETUP UI ==================== */
     function defaultName(i) { return 'Player ' + (i + 1); }
+    function nameOf(i) { var p = state.players[i]; return (p && p.name.replace(/^\s+|\s+$/g, '')) || defaultName(i); }
+    function holesInPlay() { return SU.holesFor(state.round); }
+    function net() { return state.scoring === 'net'; }
+    function money(minor) { return SC.format(minor, SYMBOLS[state.currency]); }
+    function signed(minor) { return minor > 0 ? '+' + money(minor) : minor < 0 ? '−' + money(-minor) : money(0); }
+
+    /* A new player count keeps everything already typed for the players who
+       stay, adds empty rows for new ones, and never leaves the card and the
+       player list out of step (that mismatch used to crash Settle up). */
+    function setCount(n) {
+      n = Math.max(SU.LIMITS.players[0], Math.min(SU.LIMITS.players[1], n));
+      while (state.players.length < n) state.players.push({ name: '', hcp: '' });
+      state.players.length = n;
+      while (state.scores.length < n) state.scores.push(new Array(HOLES).fill(null));
+      state.scores.length = n;
+      state.presses = state.presses.filter(function (m) { return +m.by < n && +m.against < n; });
+      for (var h in state.ctpWinners) if (state.ctpWinners[h] !== '' && +state.ctpWinners[h] >= n) state.ctpWinners[h] = '';
+      if (state.rules.playoffWinner !== '' && +state.rules.playoffWinner >= n) state.rules.playoffWinner = '';
+    }
+
+    /* ==================== SETUP ==================== */
+    function press(groupId, value, attr) {
+      $(groupId).querySelectorAll('button').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute(attr || 'data-v') === String(value) ? 'true' : 'false');
+      });
+    }
+
+    function renderSetup() {
+      $('suGames').querySelectorAll('button').forEach(function (b) {
+        b.setAttribute('aria-pressed', state.games[b.getAttribute('data-game')] ? 'true' : 'false');
+      });
+      press('suScoring', state.scoring);
+      press('suRound', state.round);
+      press('suCount', state.players.length);
+      press('suCurrency', state.currency);
+      var show = { skins: state.games.skins, nassau: state.games.nassau, ctp: state.rules.ctp, net: net() };
+      document.querySelectorAll('#suSetup [data-show]').forEach(function (el) { el.hidden = !show[el.getAttribute('data-show')]; });
+      $('stakeSkins').value = state.stakes.skins;
+      $('stakeNassau').value = state.stakes.nassau;
+      $('stakeCtp').value = state.stakes.ctp;
+      $('ruleCarry').checked = state.rules.carry;
+      $('ruleCarryWrap').classList.toggle('on', state.rules.carry);
+      $('endCarryWrap').hidden = !state.rules.carry;
+      $('ruleEnd').value = state.rules.endCarry;
+      $('playoffWrap').hidden = state.rules.endCarry !== 'playoff';
+      $('ruleBirdie').checked = state.rules.birdie;
+      $('ruleBirdieWrap').classList.toggle('on', state.rules.birdie);
+      $('ruleStrokes').value = state.rules.strokes;
+      $('rulePresses').value = state.rules.presses;
+      $('pressHint').textContent = state.players.length > 2
+        ? 'Each pair plays its own Nassau: front 9, back 9 and 18, match play. ' + (state.players.length * (state.players.length - 1) / 2) + ' pairs in this group.'
+        : 'Front 9, back 9 and 18, match play.';
+      $('ruleCtp').checked = state.rules.ctp;
+      $('ruleCtpWrap').classList.toggle('on', state.rules.ctp);
+      $('suHcpHint').hidden = !net();
+      var opts = '<option value="">Pick the winner</option>';
+      for (var i = 0; i < state.players.length; i++) opts += '<option value="' + i + '">' + esc(nameOf(i)) + '</option>';
+      $('rulePlayoff').innerHTML = opts;
+      $('rulePlayoff').value = state.rules.playoffWinner;
+      renderPlayers();
+    }
 
     function renderPlayers() {
-      var n = parseInt($('playerCount').value, 10);
-      var list = $('playersList');
-      var existing = [];
-      list.querySelectorAll('.player-row').forEach(function (r) {
-        existing.push({
-          name: r.querySelector('.pname').value,
-          hcp: r.querySelector('.phcp').value
-        });
-      });
-      list.innerHTML = '';
-      for (var i = 0; i < n; i++) {
-        var prev = existing[i] || {};
-        var row = document.createElement('div');
-        row.className = 'player-row';
-        row.innerHTML =
-          '<input type="text" class="pname" maxlength="18" placeholder="' + defaultName(i) + '" value="' +
-          esc(prev.name || '') + '" aria-label="Player ' + (i + 1) + ' name">' +
-          '<input type="number" class="phcp" value="' + (prev.hcp !== undefined ? esc(prev.hcp) : '0') +
-          '" min="0" max="54" step="1" inputmode="numeric" aria-label="Player ' + (i + 1) + ' handicap">' +
-          '<span class="mono" style="font-size:9px;letter-spacing:.1em;color:var(--grey);text-align:center">HCP</span>';
-        list.appendChild(row);
+      var html = '';
+      for (var i = 0; i < state.players.length; i++) {
+        var p = state.players[i];
+        html += '<div class="su-player' + (net() ? '' : ' gross') + '">' +
+          '<div><label class="fld" for="pn' + i + '">Player ' + (i + 1) + '</label>' +
+          '<input type="text" id="pn' + i + '" data-i="' + i + '" class="pname" maxlength="18" autocomplete="off" placeholder="' +
+          defaultName(i) + '" value="' + esc(p.name) + '"></div>' +
+          (net() ? '<div><label class="fld" for="ph' + i + '">Handicap</label>' +
+            '<input type="text" id="ph' + i + '" data-i="' + i + '" class="phcp" inputmode="numeric" autocomplete="off" ' +
+            'aria-label="Handicap, player ' + (i + 1) + '" ' +
+            'placeholder="0" value="' + esc(p.hcp) + '" aria-describedby="suHcpHint"></div>' : '') +
+          '</div>';
       }
+      $('suPlayers').innerHTML = html;
     }
 
-    function readSetup() {
-      var rows = document.querySelectorAll('#playersList .player-row');
-      state.players = [];
-      rows.forEach(function (r, i) {
-        var nm = r.querySelector('.pname').value.trim() || defaultName(i);
-        var h = parseFloat(r.querySelector('.phcp').value);
-        state.players.push({ name: nm, hcp: isNaN(h) ? 0 : h });
-      });
-      state.stakes.nassau = Math.max(0, parseFloat($('stakeNassau').value) || 0);
-      state.stakes.skins = Math.max(0, parseFloat($('stakeSkins').value) || 0);
-      state.stakes.junk = Math.max(0, parseFloat($('stakeJunk').value) || 0);
-      state.games.nassau = $('tgNassau').checked;
-      state.games.press = $('tgPress').checked;
-      state.games.skins = $('tgSkins').checked;
-      state.games.junk = $('tgJunk').checked;
+    /* ==================== THE CARD ==================== */
+    function renderCourse() {
+      var html = '<table class="su-course-t"><caption class="su-sr">Par and stroke index for each hole</caption><thead><tr><th scope="col">Hole</th>';
+      for (var h = 0; h < HOLES; h++) html += '<th scope="col">' + (h + 1) + '</th>';
+      html += '</tr></thead><tbody><tr><th scope="row">Par</th>';
+      for (h = 0; h < HOLES; h++) {
+        html += '<td><input type="text" inputmode="numeric" class="cpar" data-h="' + h + '" value="' + state.pars[h] +
+          '" aria-label="Par, hole ' + (h + 1) + '"></td>';
+      }
+      html += '</tr><tr><th scope="row">SI</th>';
+      for (h = 0; h < HOLES; h++) {
+        html += '<td><input type="text" inputmode="numeric" class="csi" data-h="' + h + '" value="' + state.si[h] +
+          '" aria-label="Stroke index, hole ' + (h + 1) + '"></td>';
+      }
+      $('suCourseGrid').innerHTML = html + '</tr></tbody></table>';
     }
 
-    ['tgNassau', 'tgPress', 'tgSkins', 'tgJunk'].forEach(function (id) {
-      $(id).addEventListener('change', function () {
-        $(id + 'Wrap').classList.toggle('on', $(id).checked);
-      });
-    });
-    $('playerCount').addEventListener('change', renderPlayers);
-
-    /* ==================== SCORECARD ==================== */
-    function buildScorecard() {
-      readSetup();
-      var P = state.players.length;
-      if (state.scores.length !== P) {
-        state.scores = [];
-        for (var i = 0; i < P; i++) state.scores.push(new Array(HOLES).fill(null));
-      }
-      if (state.junk.length !== P) {
-        state.junk = [];
-        for (var j = 0; j < P; j++) state.junk.push({ greenies: 0, sandies: 0 });
-      }
-
-      var t = $('scoreTable');
-      var head = '<thead><tr><th>Hole</th><th>Par</th>';
-      state.players.forEach(function (p) { head += '<th>' + esc(p.name) + '</th>'; });
-      head += '</tr></thead>';
-
+    function renderCard() {
+      var P = state.players.length, holes = holesInPlay();
+      var head = '<caption class="su-sr">Scores by hole. Each box is one player on one hole.</caption><thead><tr><th scope="col">Hole</th>';
+      for (var p = 0; p < P; p++) head += '<th scope="col" title="' + esc(nameOf(p)) + '">' + esc(nameOf(p)) + '</th>';
       var body = '<tbody>';
-      for (var h = 0; h < HOLES; h++) {
-        var turn = (h === 8 || h === 17) ? ' class="turn"' : '';
-        body += '<tr' + turn + '><td>' + (h + 1) + '</td>';
-        body += '<td class="parcell"><input type="number" class="par" data-h="' + h + '" value="' +
-          state.pars[h] + '" min="3" max="6" inputmode="numeric" aria-label="Par for hole ' + (h + 1) + '"></td>';
-        for (var p = 0; p < P; p++) {
-          var v = state.scores[p][h];
-          body += '<td><input type="number" class="scr" data-p="' + p + '" data-h="' + h + '" value="' +
-            (v === null || v === undefined ? '' : v) + '" min="1" max="20" inputmode="numeric" ' +
-            'aria-label="' + esc(state.players[p].name) + ' hole ' + (h + 1) + '"></td>';
+      holes.forEach(function (h, k) {
+        body += '<tr><th scope="row"><span class="hn">' + (h + 1) + '</span><span class="hp">Par ' + state.pars[h] + '</span></th>';
+        for (var q = 0; q < P; q++) {
+          var v = state.scores[q][h];
+          body += '<td><input type="text" inputmode="numeric" pattern="[0-9]*" enterkeyhint="next" autocomplete="off" class="scr" ' +
+            'data-p="' + q + '" data-h="' + h + '" value="' + (v === null || v === undefined ? '' : v) + '" ' +
+            'aria-label="' + esc(nameOf(q)) + ', hole ' + (h + 1) + '"></td>';
         }
         body += '</tr>';
-      }
-      body += '</tbody>';
-      t.innerHTML = head + body;
-
-      t.querySelectorAll('input.scr').forEach(function (inp) {
-        inp.addEventListener('input', function () {
-          var p = +inp.dataset.p, h = +inp.dataset.h;
-          var val = inp.value === '' ? null : parseInt(inp.value, 10);
-          state.scores[p][h] = (val === null || isNaN(val)) ? null : val;
-          persistRound();
-        });
+        if (holes.length === 18 && k === 8) body += totalRow('Out', SU.FRONT, 'out');
       });
-      t.querySelectorAll('input.par').forEach(function (inp) {
-        inp.addEventListener('input', function () {
-          var v = parseInt(inp.value, 10);
-          state.pars[+inp.dataset.h] = isNaN(v) ? 4 : v;
-          persistRound();
-        });
-      });
-
-      buildJunk();
-      $('cardPanel').style.display = '';
-      $('junkPanel').style.display = state.games.junk ? '' : 'none';
-      $('calcRow').style.display = '';
-      $('cardPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      persistRound();
+      if (holes.length === 18) body += totalRow('In', SU.BACK, 'in') + totalRow('Total', SU.ALL, 'tot');
+      else body += totalRow('Total', holes, 'tot');
+      $('scoreTable').innerHTML = head + '</tr></thead>' + body + '</tbody>';
     }
 
-    function buildJunk() {
-      var g = $('junkGrid');
-      g.innerHTML = '';
-      state.players.forEach(function (p, i) {
-        var row = document.createElement('div');
-        row.className = 'junk-row';
-        row.innerHTML =
-          '<span class="junk-name">' + esc(p.name) + '</span>' +
-          stepperHTML(i, 'greenies', 'Greenies') +
-          stepperHTML(i, 'sandies', 'Sandies');
-        g.appendChild(row);
-      });
-      g.querySelectorAll('button[data-act]').forEach(function (b) {
-        b.addEventListener('click', function () {
-          var i = +b.dataset.i, k = b.dataset.k, d = b.dataset.act === 'up' ? 1 : -1;
-          state.junk[i][k] = Math.max(0, state.junk[i][k] + d);
-          g.querySelector('[data-val="' + i + '-' + k + '"]').textContent = state.junk[i][k];
-          persistRound();
-        });
-      });
+    function totalRow(label, holes, key) {
+      var html = '<tr class="turn"><th scope="row">' + label + '</th>';
+      for (var p = 0; p < state.players.length; p++) {
+        html += '<td class="tot" data-tot="' + key + '" data-p="' + p + '" aria-label="' + esc(nameOf(p)) + ', ' + label.toLowerCase() + '">' + sum(p, holes) + '</td>';
+      }
+      return html + '</tr>';
     }
-
-    function stepperHTML(i, key, label) {
-      return '<span class="stepper"><span class="lbl">' + label + '</span>' +
-        '<button type="button" data-act="down" data-i="' + i + '" data-k="' + key + '" aria-label="Decrease ' + label + '">–</button>' +
-        '<span class="val" data-val="' + i + '-' + key + '">' + state.junk[i][key] + '</span>' +
-        '<button type="button" data-act="up" data-i="' + i + '" data-k="' + key + '" aria-label="Increase ' + label + '">+</button></span>';
-    }
-
-    /* ==================== BETTING MATHS ==================== */
-
-    // Match play over a set of hole indexes, with optional automatic 2-down presses.
-    // Returns net UNITS player A wins from player B (negative = A loses).
-    function segmentUnits(a, b, idxs, pressOn) {
-      var margins = [0];      // running margin of each live bet (main bet + presses)
-      var starts = [0];       // index within idxs at which each bet begins
-      for (var i = 0; i < idxs.length; i++) {
-        var h = idxs[i];
-        var sa = a[h], sb = b[h];
-        if (sa === null || sb === null) continue;
-        var res = sa < sb ? 1 : (sa > sb ? -1 : 0);
-        for (var m = 0; m < margins.length; m++) {
-          if (i >= starts[m]) margins[m] += res;
-        }
-        if (pressOn) {
-          var last = margins.length - 1;
-          // a new press opens once the newest bet reaches 2 down, and only if holes remain
-          if (Math.abs(margins[last]) >= 2 && i < idxs.length - 1) {
-            margins.push(0);
-            starts.push(i + 1);
-          }
-        }
-      }
-      var units = 0;
-      for (var k = 0; k < margins.length; k++) {
-        units += margins[k] > 0 ? 1 : (margins[k] < 0 ? -1 : 0);
-      }
-      return units;
-    }
-
-    function range(from, to) { var r = []; for (var i = from; i <= to; i++) r.push(i); return r; }
-
-    function calculate() {
-      readSetup();
-      var P = state.players.length;
-      var net = new Array(P).fill(0);
-      var detail = { nassauUnits: 0, skins: [], presses: 0 };
-      var skinWins = new Array(P).fill(0);
-
-      // ---- NASSAU (round robin, every pair) ----
-      if (state.games.nassau && state.stakes.nassau > 0) {
-        var front = range(0, 8), back = range(9, 17), all = range(0, 17);
-        for (var a = 0; a < P; a++) {
-          for (var b = a + 1; b < P; b++) {
-            var u = 0;
-            u += segmentUnits(state.scores[a], state.scores[b], front, state.games.press);
-            u += segmentUnits(state.scores[a], state.scores[b], back, state.games.press);
-            u += segmentUnits(state.scores[a], state.scores[b], all, false); // total: straight bet
-            net[a] += u * state.stakes.nassau;
-            net[b] -= u * state.stakes.nassau;
-            detail.nassauUnits += Math.abs(u);
-          }
-        }
-      }
-
-      // ---- SKINS (carryover) ----
-      if (state.games.skins && state.stakes.skins > 0 && P > 1) {
-        var carry = 1;
-        for (var h = 0; h < HOLES; h++) {
-          var vals = [], complete = true;
-          for (var p = 0; p < P; p++) {
-            var s = state.scores[p][h];
-            if (s === null) { complete = false; break; }
-            vals.push(s);
-          }
-          if (!complete) continue;
-          var min = Math.min.apply(null, vals);
-          var winners = [];
-          for (var q = 0; q < P; q++) if (vals[q] === min) winners.push(q);
-          if (winners.length === 1) {
-            var w = winners[0];
-            var pot = carry * state.stakes.skins;
-            net[w] += pot * (P - 1);
-            for (var o = 0; o < P; o++) if (o !== w) net[o] -= pot;
-            skinWins[w] += carry;
-            detail.skins.push({ hole: h + 1, player: w, value: carry });
-            carry = 1;
-          } else {
-            carry++;
-          }
-        }
-      }
-
-      // ---- JUNK ----
-      if (state.games.junk && state.stakes.junk > 0 && P > 1) {
-        for (var jp = 0; jp < P; jp++) {
-          var count = state.junk[jp].greenies + state.junk[jp].sandies;
-          if (!count) continue;
-          var amt = count * state.stakes.junk;
-          net[jp] += amt * (P - 1);
-          for (var jo = 0; jo < P; jo++) if (jo !== jp) net[jo] -= amt;
-        }
-      }
-
-      return { net: net, skinWins: skinWins, detail: detail };
-    }
-
-    // Greedy debt simplification -> fewest transactions
-    function settle(net) {
-      var cred = [], debt = [];
-      net.forEach(function (v, i) {
-        var r = Math.round(v * 100) / 100;
-        if (r > 0.004) cred.push({ i: i, v: r });
-        else if (r < -0.004) debt.push({ i: i, v: -r });
-      });
-      cred.sort(function (x, y) { return y.v - x.v; });
-      debt.sort(function (x, y) { return y.v - x.v; });
-      var out = [], ci = 0, di = 0;
-      while (ci < cred.length && di < debt.length) {
-        var amt = Math.min(cred[ci].v, debt[di].v);
-        amt = Math.round(amt * 100) / 100;
-        if (amt > 0.004) out.push({ from: debt[di].i, to: cred[ci].i, amt: amt });
-        cred[ci].v -= amt; debt[di].v -= amt;
-        if (cred[ci].v <= 0.004) ci++;
-        if (debt[di].v <= 0.004) di++;
-      }
-      return out;
-    }
-
-    /* ==================== BADGES ==================== */
-    function nineTotal(p, from, to) {
+    function sum(p, holes) {
       var t = 0, n = 0;
-      for (var h = from; h <= to; h++) {
-        var s = state.scores[p][h];
-        if (s !== null) { t += s; n++; }
-      }
-      return { total: t, count: n };
+      holes.forEach(function (h) { var v = state.scores[p][h]; if (v !== null && v !== undefined) { t += v; n++; } });
+      return n ? t : '–';
+    }
+    function refreshTotals() {
+      document.querySelectorAll('#scoreTable td.tot').forEach(function (td) {
+        var p = +td.getAttribute('data-p'), k = td.getAttribute('data-tot');
+        td.textContent = sum(p, k === 'out' ? SU.FRONT : k === 'in' ? SU.BACK : holesInPlay());
+      });
     }
 
-    function buildBadges(res) {
+    function renderExtras() {
       var P = state.players.length;
-      var out = [];
-
-      // Biggest Choker — worst back-nine vs front-nine swing
-      var worst = null;
-      for (var p = 0; p < P; p++) {
-        var f = nineTotal(p, 0, 8), b = nineTotal(p, 9, 17);
-        if (f.count === 9 && b.count === 9) {
-          var swing = b.total - f.total;
-          if (worst === null || swing > worst.swing) worst = { p: p, swing: swing, f: f.total, b: b.total };
-        }
+      var par3 = holesInPlay().filter(function (h) { return state.pars[h] === 3; });
+      $('suCtp').hidden = !state.rules.ctp;
+      if (state.rules.ctp) {
+        $('suCtpList').innerHTML = par3.length ? par3.map(function (h) {
+          var opts = '<option value="">Nobody</option>';
+          for (var i = 0; i < P; i++) opts += '<option value="' + i + '"' + (state.ctpWinners[h] === String(i) ? ' selected' : '') + '>' + esc(nameOf(i)) + '</option>';
+          return '<div class="su-line"><label class="fld" for="ctp' + h + '">Hole ' + (h + 1) + '</label><select id="ctp' + h + '" class="ctpSel" data-h="' + h + '">' + opts + '</select></div>';
+        }).join('') : '<p class="hint">No par 3s in play. Check the par row.</p>';
       }
-      if (worst && worst.swing > 0) {
-        out.push({
-          t: 'Biggest Choker',
-          n: state.players[worst.p].name,
-          d: 'Went out in ' + worst.f + ', came home in ' + worst.b + '. That is ' + worst.swing +
-            ' shot' + (worst.swing === 1 ? '' : 's') + ' worse on the back nine.'
-        });
-      }
-
-      // Bandit of the Day — beat their handicap by the most
-      var bandit = null, anyHcp = state.players.some(function (p) { return p.hcp > 0; });
-      for (var q = 0; q < P; q++) {
-        var tot = nineTotal(q, 0, 17);
-        if (tot.count !== 18) continue;
-        var val = anyHcp ? (tot.total - state.players[q].hcp) : tot.total;
-        if (bandit === null || val < bandit.val) bandit = { p: q, val: val, gross: tot.total };
-      }
-      if (bandit) {
-        out.push({
-          t: 'Bandit of the Day',
-          n: state.players[bandit.p].name,
-          d: anyHcp
-            ? 'Shot ' + bandit.gross + ' off a handicap of ' + state.players[bandit.p].hcp +
-              ' for a net ' + bandit.val + '. Check that card twice.'
-            : 'Low round of the day at ' + bandit.gross + '. Suspiciously tidy.'
-        });
-      }
-
-      // Skin Collector
-      var topSkin = -1, topSkinIdx = -1;
-      res.skinWins.forEach(function (v, i) { if (v > topSkin) { topSkin = v; topSkinIdx = i; } });
-      if (topSkin > 0) {
-        out.push({
-          t: 'Skin Collector',
-          n: state.players[topSkinIdx].name,
-          d: 'Took ' + topSkin + ' skin' + (topSkin === 1 ? '' : 's') + ' off the group.'
-        });
-      }
-
-      // Today's ATM — biggest loser
-      var lowIdx = -1, lowVal = 0;
-      res.net.forEach(function (v, i) { if (v < lowVal) { lowVal = v; lowIdx = i; } });
-      if (lowIdx >= 0) {
-        out.push({
-          t: "Today's ATM",
-          n: state.players[lowIdx].name,
-          d: 'Down ' + money(lowVal) + ' on the day. Drinks are presumably also on him.'
-        });
-      }
-
-      return out;
-    }
-
-    /* ==================== RENDER OUTPUT ==================== */
-    var lastResult = null;
-
-    function render() {
-      var P = state.players.length;
-      if (P < 2) { return showErr('Add at least two players before settling up.'); }
-
-      var anyScore = state.scores.some(function (row) { return row.some(function (v) { return v !== null; }); });
-      if (!anyScore) { return showErr('Put some scores in the card first — nothing to settle yet.'); }
-      showErr('');
-
-      var res = calculate();
-      var moves = settle(res.net);
-
-      // headline
-      var holesPlayed = 0;
-      for (var h = 0; h < HOLES; h++) {
-        var full = true;
-        for (var p = 0; p < P; p++) if (state.scores[p][h] === null) { full = false; break; }
-        if (full) holesPlayed++;
-      }
-      var games = [];
-      if (state.games.nassau) games.push('Nassau' + (state.games.press ? ' + presses' : ''));
-      if (state.games.skins) games.push('skins');
-      if (state.games.junk) games.push('junk');
-      $('outSub').textContent = P + ' players · ' + holesPlayed + ' complete holes · ' +
-        (games.join(' · ') || 'no games selected');
-
-      // who owes who
-      var ol = $('oweList');
-      if (!moves.length) {
-        ol.innerHTML = '<div class="all-square">All square. Nobody owes anybody a thing.</div>';
-      } else {
-        ol.innerHTML = moves.map(function (m) {
-          return '<div class="owe"><span class="who">' + esc(state.players[m.from].name) +
-            ' <i>pays</i> ' + esc(state.players[m.to].name) + '</span><span class="amt">' +
-            money(m.amt) + '</span></div>';
+      var manual = state.games.nassau && state.rules.presses === 'manual';
+      $('suPresses').hidden = !manual;
+      if (manual) {
+        var who = function (sel, i) {
+          var o = '';
+          for (var k = 0; k < P; k++) o += '<option value="' + k + '"' + (String(sel) === String(k) ? ' selected' : '') + '>' + esc(nameOf(k)) + '</option>';
+          return o;
+        };
+        $('suPressList').innerHTML = state.presses.map(function (m, i) {
+          var holesOpt = '';
+          for (var h = 1; h < HOLES; h++) holesOpt += '<option value="' + h + '"' + (String(m.from) === String(h) ? ' selected' : '') + '>' + (h + 1) + '</option>';
+          return '<div class="su-press" data-i="' + i + '">' +
+            '<div><label class="fld" for="pb' + i + '">Pressed by</label><select id="pb' + i + '" data-k="by">' + who(m.by) + '</select></div>' +
+            '<div><label class="fld" for="pa' + i + '">Against</label><select id="pa' + i + '" data-k="against">' + who(m.against) + '</select></div>' +
+            '<div><label class="fld" for="pt' + i + '">Bet</label><select id="pt' + i + '" data-k="bet">' +
+              '<option value="front"' + (m.bet === 'front' ? ' selected' : '') + '>Front 9</option>' +
+              '<option value="back"' + (m.bet === 'back' ? ' selected' : '') + '>Back 9</option>' +
+              '<option value="overall"' + (m.bet === 'overall' ? ' selected' : '') + '>18</option></select></div>' +
+            '<div><label class="fld" for="ph' + i + 'x">From hole</label><select id="ph' + i + 'x" data-k="from">' + holesOpt + '</select></div>' +
+            '<button type="button" class="btn ghost sm su-del" data-gr-ignore aria-label="Remove press ' + (i + 1) + '">Remove</button></div>';
         }).join('');
       }
+    }
 
-      // net table
-      var rows = '<thead><tr><th>Player</th><th>Gross</th><th>Skins</th><th>Net</th></tr></thead><tbody>';
-      for (var i = 0; i < P; i++) {
-        var g = nineTotal(i, 0, 17);
-        var v = Math.round(res.net[i] * 100) / 100;
-        var cls = v > 0.004 ? 'pos' : (v < -0.004 ? 'neg' : 'zero');
-        var sign = v > 0.004 ? '+' : (v < -0.004 ? '−' : '');
-        rows += '<tr><td class="nm">' + esc(state.players[i].name) + '</td>' +
-          '<td>' + (g.count ? g.total : '—') + '</td>' +
-          '<td>' + res.skinWins[i] + '</td>' +
-          '<td class="' + cls + '">' + sign + money(v) + '</td></tr>';
+    function renderAll() { renderSetup(); renderCourse(); renderCard(); renderExtras(); }
+
+    /* Any change to players, rules or scores makes the shown result wrong, so
+       it goes (nothing stale can be copied or shared). Currency only redraws. */
+    function stale() {
+      if (!last) return;
+      last = null;
+      $('outWrap').classList.remove('show');
+      $('copyMsg').textContent = '';
+    }
+
+    /* ==================== READ THE GAME ==================== */
+    function parseHcp(text) {
+      var s = String(text).replace(/\s+/g, '');
+      if (s === '') return 0;
+      if (/^\+\d+$/.test(s)) return -parseInt(s.slice(1), 10);
+      if (/^-?\d+$/.test(s)) return parseInt(s, 10);
+      return NaN;
+    }
+    function gameInput() {
+      return {
+        players: state.players.map(function (p, i) { return { name: nameOf(i), hcp: net() ? parseHcp(p.hcp) : null }; }),
+        round: state.round,
+        scoring: state.scoring,
+        pars: state.pars, si: state.si, scores: state.scores,
+        skins: {
+          on: state.games.skins, stake: SC.toMinor(state.stakes.skins), carry: state.rules.carry,
+          endCarry: state.rules.endCarry, playoffWinner: state.rules.playoffWinner === '' ? null : +state.rules.playoffWinner,
+          birdieDouble: state.rules.birdie, strokes: state.rules.strokes
+        },
+        nassau: {
+          on: state.games.nassau, stake: SC.toMinor(state.stakes.nassau), presses: state.rules.presses,
+          manual: state.presses.map(function (m) { return { by: +m.by, against: +m.against, bet: m.bet, from: +m.from }; })
+        },
+        ctp: {
+          on: state.rules.ctp, stake: SC.toMinor(state.stakes.ctp),
+          winners: (function () { var w = {}; for (var h in state.ctpWinners) w[h] = state.ctpWinners[h] === '' ? null : +state.ctpWinners[h]; return w; })()
+        }
+      };
+    }
+
+    /* Errors name the exact player and hole, and the first problem gets focus. */
+    function explain(errs) {
+      var sym = SYMBOLS[state.currency] === 'pts' ? 'points' : 'money';
+      var missing = errs.filter(function (e) { return e.code === 'score_missing'; });
+      var lines = [], focus = null;
+      errs.forEach(function (e) {
+        if (e.code === 'score_missing') return;
+        var t = {
+          players: 'Pick 2 to 6 players.',
+          no_game: 'Pick a game: skins, a Nassau, or both.',
+          nassau_needs_18: 'A Nassau needs all 18 holes. Switch Holes to 18, or turn the Nassau off.',
+          stake_skins: 'Enter what one skin is worth, above zero (up to two decimals).',
+          stake_nassau: 'Enter what each Nassau bet is worth, above zero.',
+          stake_ctp: 'Enter what closest to the pin is worth, above zero.',
+          hcp: e.player !== undefined ? nameOf(e.player) + ': enter a whole-number handicap from +10 to 54.' : '',
+          si: 'The stroke index row has to use 1 to 18 once each. Copy it from your card.',
+          par: e.hole !== undefined ? 'Hole ' + (e.hole + 1) + ': par should be 3, 4, 5 or 6.' : '',
+          score_range: e.player !== undefined ? nameOf(e.player) + ', hole ' + (e.hole + 1) + ': enter a score from 1 to 20.' : '',
+          press: 'Press ' + ((e.index || 0) + 1) + ': pick two different players and a start after the bet\'s first hole.',
+          ctp: 'Closest to the pin: pick a player or nobody.',
+          playoff_winner: (e.carried || 0) + ' skin' + (e.carried === 1 ? ' is' : 's are') + ' still carried after the last hole. Pick who won the playoff, or set that rule to "Nobody wins them".'
+        }[e.code];
+        if (t) lines.push(t);
+        if (!focus) {
+          if (e.code === 'score_range') focus = document.querySelector('.scr[data-p="' + e.player + '"][data-h="' + e.hole + '"]');
+          else if (e.code === 'hcp') focus = $('ph' + e.player);
+          else if (/^stake_/.test(e.code)) focus = $(e.code === 'stake_skins' ? 'stakeSkins' : e.code === 'stake_nassau' ? 'stakeNassau' : 'stakeCtp');
+          else if (e.code === 'playoff_winner') focus = $('rulePlayoff');
+          else if (e.code === 'si' || e.code === 'par') { $('suCourse').open = true; }
+        }
+      });
+      if (missing.length) {
+        var first = missing.slice(0, 3).map(function (e) { return nameOf(e.player) + ', hole ' + (e.hole + 1); });
+        lines.unshift('Empty score box' + (missing.length === 1 ? '' : 'es') + ': ' + first.join('; ') +
+          (missing.length > 3 ? ', and ' + (missing.length - 3) + ' more.' : '.'));
+        focus = document.querySelector('.scr[data-p="' + missing[0].player + '"][data-h="' + missing[0].hole + '"]');
       }
-      rows += '</tbody>';
-      $('netTable').innerHTML = rows;
+      void sym;
+      return { text: lines.join(' '), focus: focus };
+    }
 
-      // badges
-      var badges = buildBadges(res);
-      $('badgeList').innerHTML = badges.map(function (b) {
-        return '<div class="badge-item"><div class="bt">' + esc(b.t) + '</div><div class="bn">' +
-          esc(b.n) + '</div><div class="bd">' + esc(b.d) + '</div></div>';
-      }).join('');
+    function showErr(msg, focus) {
+      var e = $('scoreErr');
+      e.textContent = msg || '';
+      e.classList.toggle('show', !!msg);
+      document.querySelectorAll('#scoreTable .scr[aria-invalid]').forEach(function (i) { i.removeAttribute('aria-invalid'); });
+      if (msg) {
+        if (focus) { if (focus.classList.contains('scr')) focus.setAttribute('aria-invalid', 'true'); focus.focus(); }
+        else e.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
 
-      // maths note
+    /* ==================== THE RESULT ==================== */
+    var last = null;
+
+    function rulesLine() {
       var bits = [];
-      if (state.games.nassau) {
-        bits.push('Nassau played head-to-head between all ' + (P * (P - 1) / 2) + ' pairings at ' +
-          money(state.stakes.nassau) + ' a bet (front, back, total)' +
-          (state.games.press ? ', with a fresh bet opened every time someone went two down' : '') + '.');
+      if (state.games.skins) bits.push('Skins');
+      if (state.games.nassau) bits.push('Nassau');
+      bits.push(net() ? 'Net' : 'Gross');
+      if (state.games.skins) {
+        bits.push(state.rules.carry ? 'Carryovers on' : 'Carryovers off');
+        if (state.rules.birdie) bits.push('Birdies double');
       }
-      if (state.games.skins) bits.push('Skins at ' + money(state.stakes.skins) +
-        ' a hole, ties carried forward and stacked.');
-      if (state.games.junk) bits.push('Junk at ' + money(state.stakes.junk) +
-        ' a pop, collected from every other player.');
-      $('mathNote').textContent = bits.join(' ');
+      if (state.games.nassau && state.rules.presses !== 'off') bits.push(state.rules.presses === 'auto' ? 'Auto presses at 2 down' : 'Presses entered');
+      if (state.rules.ctp) bits.push('Closest to the pin');
+      if (state.round !== '18') bits.push(state.round === 'front' ? 'Front 9' : 'Back 9');
+      return bits.join(' · ');
+    }
 
-      lastResult = { res: res, moves: moves, holes: holesPlayed, badges: badges };
+    /* The share text and the card are built from the same lines. */
+    function summary(res) {
+      var order = res.balances.map(function (v, i) { return i; }).sort(function (a, b) { return res.balances[b] - res.balances[a] || a - b; });
+      return {
+        rules: rulesLine(),
+        balances: order.map(function (i) { return nameOf(i) + ' ' + signed(res.balances[i]); }),
+        transfers: res.transfers.map(function (t) { return nameOf(t.from) + ' pays ' + nameOf(t.to) + ' ' + money(t.amount); })
+      };
+    }
+    function shareText(res) {
+      var s = summary(res);
+      return ['GolfRaw Settle Up', s.rules, ''].concat(s.balances, [''],
+        s.transfers.length ? s.transfers : ['All square. Nobody owes anybody.']).join('\n');
+    }
+
+    function run() {
+      if (!SU || !SC) return showErr('The calculator did not load. Reload the page and try again.');
+      var res = SU.compute(gameInput());
+      if (!res.ok) { var ex = explain(res.errors); return showErr(ex.text, ex.focus); }
+      showErr('');
+      last = res;
+      renderResult(res);
       $('outWrap').classList.add('show');
+      $('outTitle').focus({ preventScroll: true });
       $('outWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      persistRound();
-      if (window.GRTrack) GRTrack.completed();
+      persist();
+      var gameType = state.games.skins && state.games.nassau ? 'skins_nassau' : state.games.skins ? 'skins' : 'nassau';
+      var scoringMode = state.scoring;
+      if (window.GRTrack) GRTrack.completed({ game_type: gameType, scoring_mode: scoringMode });
       if (window.RawGolf) RawGolf.save(cardData());
     }
 
-    function showErr(msg) {
-      var e = $('scoreErr');
-      if (!msg) { e.classList.remove('show'); e.textContent = ''; return; }
-      e.textContent = msg;
-      e.classList.add('show');
-      e.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    function renderResult(res) {
+      var s = summary(res), P = state.players.length;
+      $('outSub').textContent = s.rules;
+      $('oweList').innerHTML = res.transfers.length ? res.transfers.map(function (t, i) {
+        return '<div class="owe"><span class="who">' + esc(nameOf(t.from)) + ' <i>pays</i> ' + esc(nameOf(t.to)) +
+          '</span><span class="amt">' + esc(money(t.amount)) + '</span></div>';
+      }).join('') : '<div class="all-square">All square. Nobody owes anybody.</div>';
+
+      var cols = [];
+      if (res.skins) cols.push(['skins', 'Skins']);
+      if (res.nassau) cols.push(['nassau', 'Nassau']);
+      if (res.ctp) cols.push(['ctp', 'Pin']);
+      var html = '<caption class="su-sr">Each player\'s result, game by game, and overall</caption><thead><tr><th scope="col">Player</th>';
+      cols.forEach(function (c) { html += '<th scope="col">' + c[1] + '</th>'; });
+      html += '<th scope="col">Overall</th></tr></thead><tbody>';
+      for (var i = 0; i < P; i++) {
+        var v = res.balances[i];
+        html += '<tr><th scope="row" class="nm">' + esc(nameOf(i)) + '</th>';
+        cols.forEach(function (c) { html += '<td>' + esc(signed(res.parts[c[0]][i])) + '</td>'; });
+        html += '<td class="' + (v > 0 ? 'pos' : v < 0 ? 'neg' : 'zero') + '">' + esc(signed(v)) +
+          ' <span class="su-word">' + (v > 0 ? 'up' : v < 0 ? 'down' : 'square') + '</span></td></tr>';
+      }
+      $('netTable').innerHTML = html + '</tbody>';
+      $('suAudit').innerHTML = audit(res);
     }
 
-    /* ==================== COPY FOR CHAT ==================== */
-    function copySummary() {
-      var P = state.players.length;
-      if (P < 2) return showErr('Add at least two players first.');
-      var res = calculate();
-      var moves = settle(res.net);
-      var lines = ['THE SETTLE UP — golfraw.com', ''];
-      if (!moves.length) lines.push('All square. Nobody owes anybody.');
-      else moves.forEach(function (m) {
-        lines.push(state.players[m.from].name + ' pays ' + state.players[m.to].name + ' ' + money(m.amt));
-      });
-      lines.push('', 'NET:');
-      res.net.forEach(function (v, i) {
-        var r = Math.round(v * 100) / 100;
-        lines.push('  ' + state.players[i].name + ': ' + (r > 0 ? '+' : r < 0 ? '-' : '') + money(r));
-      });
-      var badges = buildBadges(res);
-      if (badges.length) {
-        lines.push('');
-        badges.forEach(function (b) { lines.push(b.t.toUpperCase() + ': ' + b.n); });
-      }
-      var txt = lines.join('\n');
+    function listNames(ix) {
+      var n = ix.map(nameOf);
+      return n.length <= 2 ? n.join(' and ') : n.slice(0, -1).join(', ') + ' and ' + n[n.length - 1];
+    }
+    function strokesNote(strokesByPlayer, holes) {
+      return state.players.map(function (p, i) {
+        var t = 0;
+        holes.forEach(function (h) { t += strokesByPlayer[i][h] || 0; });
+        return nameOf(i) + ' ' + (t > 0 ? t : t < 0 ? '+' + (-t) : 0);
+      }).join(', ');
+    }
 
+    function audit(res) {
+      var out = '', P = state.players.length;
+      if (res.skins) {
+        var sk = res.skins;
+        out += '<details class="su-a" open><summary>Skins at ' + esc(money(SC.toMinor(state.stakes.skins))) + ' each, paid by every other player</summary><ol class="su-list">';
+        sk.holes.forEach(function (r) {
+          var line = 'Hole ' + (r.hole + 1) + ': ';
+          if (r.outcome === 'won') {
+            line += nameOf(r.winner) + ' wins ' + r.skins + ' skin' + (r.skins === 1 ? '' : 's') +
+              (r.carried ? ' (' + r.carried + ' carried' + (r.birdie ? ', doubled for a birdie' : '') + ')' : r.birdie ? ' (doubled for a birdie)' : '') +
+              '. ' + money(r.each) + ' from each.';
+          } else if (r.outcome === 'carried') {
+            line += 'tied by ' + listNames(r.tied) + '. The skin carries.';
+          } else {
+            line += 'tied by ' + listNames(r.tied) + '. Not won (carryovers off).';
+          }
+          out += '<li>' + esc(line) + '</li>';
+        });
+        out += '</ol>';
+        if (sk.end.carried) {
+          out += '<p class="su-p">' + esc(sk.end.carried + ' skin' + (sk.end.carried === 1 ? ' was' : 's were') + ' still carried after the last hole. ' +
+            (sk.end.rule === 'playoff' ? nameOf(sk.end.winner) + ' won the playoff: ' + money(sk.end.each) + ' from each.' : 'House rule: nobody wins them.')) + '</p>';
+        }
+        if (net()) {
+          out += '<p class="su-p">' + esc('Net strokes (' + (state.rules.strokes === 'low' ? 'off the lowest handicap' : 'full playing handicaps') +
+            '): ' + strokesNote(sk.strokes, res.holes) + '. Strokes fall on the lowest stroke index holes first.') + '</p>';
+        }
+        out += '</details>';
+      }
+      if (res.nassau) {
+        out += '<details class="su-a"' + (res.nassau.length <= 3 ? ' open' : '') + '><summary>Nassau at ' + esc(money(SC.toMinor(state.stakes.nassau))) +
+          ' a bet, match play, every pair</summary>';
+        res.nassau.forEach(function (pair) {
+          var a = pair.a, b = pair.b, tot = 0;
+          pair.bets.forEach(function (bet) { if (bet.winner === a) tot += bet.amount; else if (bet.winner === b) tot -= bet.amount; });
+          out += '<div class="su-pair"><p class="su-pair-h">' + esc(nameOf(a) + ' v ' + nameOf(b) + ': ' +
+            (tot === 0 ? 'square' : (tot > 0 ? nameOf(a) : nameOf(b)) + ' ' + money(Math.abs(tot)))) + '</p>';
+          if (pair.give.player !== null) {
+            out += '<p class="su-p">' + esc(nameOf(pair.give.player) + ' gets ' + pair.give.strokes + ' stroke' + (pair.give.strokes === 1 ? '' : 's') +
+              ' from ' + nameOf(pair.give.player === a ? b : a) + ', on the lowest stroke index holes.') + '</p>';
+          }
+          out += '<ul class="su-list">';
+          pair.bets.forEach(function (bet) {
+            var label = bet.kind === 'main'
+              ? (bet.seg === 'front' ? 'Front 9' : bet.seg === 'back' ? 'Back 9' : '18 holes')
+              : 'Press by ' + nameOf(bet.by) + (bet.auto ? ' (2 down)' : '') +
+                (bet.from === bet.to ? ', hole ' + (bet.to + 1) : ', holes ' + (bet.from + 1) + '–' + (bet.to + 1));
+            var result = bet.margin === 0 ? 'all square, no money' :
+              nameOf(bet.winner) + ' ' + Math.abs(bet.margin) + ' up, wins ' + money(bet.amount);
+            out += '<li>' + esc(label + ': ' + result + '.') + '</li>';
+          });
+          out += '</ul></div>';
+        });
+        out += '</details>';
+      }
+      if (res.ctp) {
+        out += '<details class="su-a" open><summary>Closest to the pin at ' + esc(money(SC.toMinor(state.stakes.ctp))) + ', paid by every other player</summary><ul class="su-list">';
+        res.ctp.forEach(function (r) {
+          out += '<li>' + esc('Hole ' + (r.hole + 1) + ': ' + (r.winner === null ? 'nobody.' : nameOf(r.winner) + ', ' + money(r.each) + ' from each.')) + '</li>';
+        });
+        out += '</ul></details>';
+      }
+      out += '<p class="su-p">' + esc('Balances add up to zero. ' + (res.transfers.length
+        ? res.transfers.length + (res.transfers.length === 1 ? ' payment settles' : ' payments settle') + ' everything, the fewest possible for these numbers.'
+        : 'Nobody needs to pay.')) + '</p>';
+      void P;
+      return out;
+    }
+
+    /* ==================== SHARE ==================== */
+    function copySummary() {
+      if (!last) return showErr('Settle up first.');
+      var text = shareText(last) + '\n\nSettled with golfraw.com/tools-settle-up-calculator';
       var done = function () {
         if (window.GRTrack) GRTrack.shared('copy_result');
-        var btn = $('copyBtn'), old = btn.textContent;
-        btn.textContent = 'Copied ✓';
-        setTimeout(function () { btn.textContent = old; }, 1800);
+        $('copyMsg').textContent = 'Copied. Paste it into the group chat.';
       };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(txt).then(done, function () { fallbackCopy(txt, done); });
-      } else { fallbackCopy(txt, done); }
+      var fail = function () { $('copyMsg').textContent = 'Could not copy on this device. Try Share instead.'; };
+      // Some browsers refuse the async clipboard; a hidden text box usually still works.
+      var legacy = function () {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+        if (ok) done(); else fail();
+      };
+      if (window.RawGolf) RawGolf.copyText(text).then(done, legacy); else legacy();
     }
 
-    function fallbackCopy(txt, cb) {
-      var ta = document.createElement('textarea');
-      ta.value = txt;
-      ta.setAttribute('readonly', '');
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      try { document.execCommand('copy'); cb(); } catch (e) { /* no-op */ }
-      document.body.removeChild(ta);
+    /* The shared helper flattens share text to one line; a settlement reads
+       better with its line breaks, so this page opens the share sheet itself.
+       A cancelled sheet is not a share; any other failure falls back to copy. */
+    function doShare() {
+      if (!last) return showErr('Settle up first.');
+      var text = shareText(last), url = 'https://www.golfraw.com/tools-settle-up-calculator';
+      if (!navigator.share) return copySummary();
+      navigator.share({ title: 'GolfRaw Settle Up', text: text, url: url }).then(function () {
+        if (window.GRTrack) GRTrack.shared('native_share');
+        $('copyMsg').textContent = 'Shared.';
+      }, function (err) {
+        if (err && err.name === 'AbortError') return;
+        copySummary();
+      });
     }
 
-    /* ==================== LOCALSTORAGE ==================== */
-    function persistRound() {
-      try {
-        localStorage.setItem(LS_ROUND, JSON.stringify({
-          players: state.players, pars: state.pars, scores: state.scores,
-          junk: state.junk, stakes: state.stakes, games: state.games
-        }));
-      } catch (e) { /* storage unavailable — tool still works */ }
+    function cardData() {
+      var s = summary(last), m = [];
+      last.transfers.slice(0, 4).forEach(function (t) { m.push({ k: nameOf(t.from) + ' → ' + nameOf(t.to), v: money(t.amount) }); });
+      if (!last.transfers.length) m.push({ k: 'Result', v: 'All square' });
+      m.push({ k: 'Game', v: s.rules });
+      return {
+        tool: 'The Settle Up', slug: 'tools-settle-up-calculator', eyebrow: 'The Settle Up',
+        verdict: s.transfers.length ? s.transfers[0] : 'All square. Nobody owes anybody.',
+        big: String(last.transfers.length),
+        bigLabel: last.transfers.length === 1 ? 'Payment settles it' : 'Payments settle it',
+        filename: 'settle-up', metrics: m
+      };
     }
 
-    function saveGroup() {
-      readSetup();
-      try {
-        localStorage.setItem(LS_GROUP, JSON.stringify({
-          players: state.players, stakes: state.stakes, games: state.games
-        }));
-        flashTag('Group saved ✓');
-      } catch (e) { flashTag('Storage blocked'); }
+    function doPng() {
+      if (!last) return showErr('Settle up first.');
+      var c = cardData();
+      RawGolf.downloadCard({ eyebrow: c.eyebrow, headline: c.verdict, big: c.big, bigLabel: c.bigLabel, lines: c.metrics, filename: c.filename });
     }
 
-    function loadGroup() {
-      var raw;
-      try { raw = localStorage.getItem(LS_GROUP); } catch (e) { raw = null; }
-      if (!raw) return flashTag('No saved group yet');
-      try {
-        var g = JSON.parse(raw);
-        applySetup(g);
-        flashTag('Group loaded ✓');
-      } catch (e) { flashTag('Saved group unreadable'); }
+    /* ==================== SAVE & RESTORE (this device only) ==================== */
+    function snapshot(withRound) {
+      var d = {
+        v: 2, games: state.games, scoring: state.scoring, round: state.round,
+        players: state.players, currency: state.currency, stakes: state.stakes, rules: state.rules
+      };
+      if (withRound) { d.pars = state.pars; d.si = state.si; d.scores = state.scores; d.ctpWinners = state.ctpWinners; d.presses = state.presses; }
+      return d;
     }
+    function persist() { try { localStorage.setItem(LS_ROUND, JSON.stringify(snapshot(true))); } catch (e) { } }
 
-    function applySetup(g) {
-      if (g.players && g.players.length) {
-        $('playerCount').value = String(Math.min(6, Math.max(2, g.players.length)));
-        renderPlayers();
-        var rows = document.querySelectorAll('#playersList .player-row');
-        rows.forEach(function (r, i) {
-          if (g.players[i]) {
-            r.querySelector('.pname').value = g.players[i].name || '';
-            r.querySelector('.phcp').value = g.players[i].hcp || 0;
-          }
-        });
+    /* Reads this version's shape and the one before it (dollars, junk, a
+       Nassau and skins switched on separately). */
+    function apply(d, withRound) {
+      if (!d || typeof d !== 'object') return false;
+      var players = Array.isArray(d.players) ? d.players : [];
+      if (!players.length) return false;
+      state.players = players.slice(0, SU.LIMITS.players[1]).map(function (p) {
+        return { name: String((p && p.name) || '').slice(0, 18), hcp: p && p.hcp !== undefined && p.hcp !== null && p.hcp !== 0 ? String(p.hcp) : '' };
+      });
+      if (d.v === 2) {
+        if (d.games) state.games = { skins: !!d.games.skins, nassau: !!d.games.nassau };
+        if (d.scoring === 'net' || d.scoring === 'gross') state.scoring = d.scoring;
+        if (d.round === '18' || d.round === 'front' || d.round === 'back') state.round = d.round;
+        if (SYMBOLS[d.currency]) state.currency = d.currency;
+        if (d.stakes) ['skins', 'nassau', 'ctp'].forEach(function (k) { if (d.stakes[k] !== undefined) state.stakes[k] = String(d.stakes[k]); });
+        if (d.rules) for (var k in state.rules) if (d.rules[k] !== undefined) state.rules[k] = d.rules[k];
+      } else {
+        if (d.games) {
+          state.games = { skins: d.games.skins !== false, nassau: !!d.games.nassau };
+          if (d.games.nassau && d.games.press) state.rules.presses = 'auto';
+        }
+        if (d.stakes) {
+          if (d.stakes.skins !== undefined) state.stakes.skins = String(d.stakes.skins);
+          if (d.stakes.nassau !== undefined) state.stakes.nassau = String(d.stakes.nassau);
+        }
       }
-      if (g.stakes) {
-        $('stakeNassau').value = g.stakes.nassau;
-        $('stakeSkins').value = g.stakes.skins;
-        $('stakeJunk').value = g.stakes.junk;
+      if (!state.games.skins && !state.games.nassau) state.games.skins = true;
+      if (withRound) {
+        if (Array.isArray(d.pars) && d.pars.length === HOLES) state.pars = d.pars.map(function (v) { return +v || 4; });
+        if (Array.isArray(d.si) && d.si.length === HOLES) state.si = d.si.map(function (v) { return +v || 0; });
+        state.scores = Array.isArray(d.scores) ? d.scores.map(function (row) {
+          return Array.isArray(row) ? row.slice(0, HOLES).map(function (v) { return typeof v === 'number' && isFinite(v) ? v : null; }) : [];
+        }) : [];
+        state.scores.forEach(function (row) { while (row.length < HOLES) row.push(null); });
+        if (d.ctpWinners && typeof d.ctpWinners === 'object') state.ctpWinners = d.ctpWinners;
+        if (Array.isArray(d.presses)) state.presses = d.presses;
       }
-      if (g.games) {
-        ['nassau', 'press', 'skins', 'junk'].forEach(function (k) {
-          var id = 'tg' + k.charAt(0).toUpperCase() + k.slice(1);
-          $(id).checked = !!g.games[k];
-          $(id + 'Wrap').classList.toggle('on', !!g.games[k]);
-        });
-      }
-    }
-
-    function restoreRound() {
-      var raw;
-      try { raw = localStorage.getItem(LS_ROUND); } catch (e) { raw = null; }
-      if (!raw) return false;
-      try {
-        var r = JSON.parse(raw);
-        if (!r.players || !r.players.length) return false;
-        applySetup(r);
-        state.pars = (r.pars && r.pars.length === HOLES) ? r.pars : DEFAULT_PARS.slice();
-        state.scores = r.scores || [];
-        state.junk = r.junk || [];
-        buildScorecard();
-        flashTag('Round in progress restored');
-        return true;
-      } catch (e) { return false; }
-    }
-
-    function clearAll() {
-      try { localStorage.removeItem(LS_ROUND); localStorage.removeItem(LS_GROUP); } catch (e) { }
-      state.scores = []; state.junk = []; state.pars = DEFAULT_PARS.slice();
-      $('outWrap').classList.remove('show');
-      $('cardPanel').style.display = 'none';
-      $('junkPanel').style.display = 'none';
-      $('calcRow').style.display = 'none';
-      renderPlayers();
-      flashTag('Cleared');
+      setCount(state.players.length);
+      return true;
     }
 
     function flashTag(msg) {
@@ -1194,68 +1301,157 @@
       t.textContent = msg;
       setTimeout(function () { t.textContent = ''; }, 2400);
     }
-
-    /* ============ ENGINE UPGRADE: history · PNG card · Web Share ============ */
-    function cardData() {
-      var L = lastResult, moves = L.moves, m = [];
-      var headline = moves.length
-        ? state.players[moves[0].from].name + ' pays ' + state.players[moves[0].to].name + ' ' + money(moves[0].amt)
-        : 'All square. Nobody owes anybody.';
-
-      for (var i = 0; i < moves.length && i < 4; i++) {
-        m.push({
-          k: state.players[moves[i].from].name + ' → ' + state.players[moves[i].to].name,
-          v: money(moves[i].amt)
-        });
-      }
-      if (!moves.length) m.push({ k: 'Result', v: 'All square' });
-      m.push({ k: 'Holes settled', v: String(L.holes) });
-      if (L.badges.length) m.push({ k: L.badges[0].t, v: L.badges[0].n });
-
-      return {
-        tool: 'The Settle Up',
-        slug: 'tools-settle-up-calculator',
-        eyebrow: 'The Settle Up',
-        verdict: headline,
-        big: moves.length ? String(moves.length) : '0',
-        bigLabel: moves.length === 1 ? 'Payment to make' : 'Payments to make',
-        filename: 'settle-up',
-        metrics: m
-      };
+    function saveGroup() {
+      try { localStorage.setItem(LS_GROUP, JSON.stringify(snapshot(false))); flashTag('Group saved on this device'); }
+      catch (e) { flashTag('This browser is blocking storage'); }
     }
-
-    function doPng() {
-      if (!lastResult) return showErr('Settle up first.');
-      var c = cardData();
-      RawGolf.downloadCard({
-        eyebrow: c.eyebrow, headline: c.verdict, big: c.big,
-        bigLabel: c.bigLabel, lines: c.metrics, filename: c.filename
-      });
+    function loadGroup() {
+      var d = null;
+      try { d = JSON.parse(localStorage.getItem(LS_GROUP) || 'null'); } catch (e) { d = null; }
+      if (!apply(d, false)) return flashTag('No saved group yet');
+      stale(); renderAll(); persist(); flashTag('Group loaded');
     }
-
-    function doShare() {
-      if (!lastResult) return showErr('Settle up first.');
-      var c = cardData(), moves = lastResult.moves;
-      var text = moves.length
-        ? 'Settled up: ' + moves.map(function (x) {
-            return state.players[x.from].name + ' pays ' + state.players[x.to].name + ' ' + money(x.amt);
-          }).join('; ') + '.'
-        : 'Settled up: all square, nobody owes anybody.';
-      RawGolf.shareResult({ title: c.tool, text: text, url: 'https://www.golfraw.com/' + c.slug });
+    function clearScores() {
+      state.scores = state.scores.map(function () { return new Array(HOLES).fill(null); });
+      state.ctpWinners = {}; state.presses = [];
+      last = null;
+      $('outWrap').classList.remove('show');
+      showErr('');
+      renderCard(); renderExtras(); persist();
+      var first = document.querySelector('#scoreTable .scr');
+      if (first) first.focus();
     }
 
     /* ==================== WIRE UP ==================== */
-    $('buildCard').addEventListener('click', buildScorecard);
-    $('calcBtn').addEventListener('click', render);
+    function segClick(id, fn) {
+      $(id).addEventListener('click', function (e) {
+        var b = e.target.closest ? e.target.closest('button') : null;
+        if (b) fn(b);
+      });
+    }
+    segClick('suGames', function (b) {
+      var g = b.getAttribute('data-game');
+      state.games[g] = !state.games[g];
+      if (!state.games.skins && !state.games.nassau) state.games[g] = true;   // always one game
+      if (state.games.nassau && state.round !== '18') state.round = '18';
+      stale(); renderSetup(); renderCard(); renderExtras(); persist();
+    });
+    segClick('suScoring', function (b) { state.scoring = b.getAttribute('data-v'); stale(); renderSetup(); persist(); });
+    segClick('suRound', function (b) {
+      state.round = b.getAttribute('data-v');
+      if (state.round !== '18') state.games.nassau = false;
+      if (!state.games.skins && !state.games.nassau) state.games.skins = true;
+      stale(); renderSetup(); renderCard(); renderExtras(); persist();
+    });
+    segClick('suCount', function (b) { setCount(+b.getAttribute('data-v')); stale(); renderAll(); persist(); });
+    segClick('suCurrency', function (b) { state.currency = b.getAttribute('data-v'); renderSetup(); if (last) renderResult(last); persist(); });
+
+    $('suPlayers').addEventListener('input', function (e) {
+      var t = e.target, i = +t.getAttribute('data-i');
+      if (!state.players[i]) return;
+      stale();
+      if (t.classList.contains('pname')) state.players[i].name = t.value;
+      if (t.classList.contains('phcp')) state.players[i].hcp = t.value;
+      persist();
+    });
+    // Names appear on the card, the pickers and the result, so redraw them when a name is done.
+    $('suPlayers').addEventListener('change', function (e) {
+      if (e.target.classList.contains('pname')) {
+        renderCard(); renderExtras();
+        var opts = '<option value="">Pick the winner</option>';
+        for (var i = 0; i < state.players.length; i++) opts += '<option value="' + i + '">' + esc(nameOf(i)) + '</option>';
+        $('rulePlayoff').innerHTML = opts; $('rulePlayoff').value = state.rules.playoffWinner;
+      }
+    });
+
+    ['stakeSkins', 'stakeNassau', 'stakeCtp'].forEach(function (id) {
+      $(id).addEventListener('input', function () { state.stakes[{ stakeSkins: 'skins', stakeNassau: 'nassau', stakeCtp: 'ctp' }[id]] = $(id).value; stale(); persist(); });
+    });
+    $('suSetup').addEventListener('change', function (e) { if (e.target.tagName === 'SELECT' || e.target.type === 'checkbox') stale(); });
+    $('ruleCarry').addEventListener('change', function () { state.rules.carry = $('ruleCarry').checked; renderSetup(); persist(); });
+    $('ruleEnd').addEventListener('change', function () { state.rules.endCarry = $('ruleEnd').value; renderSetup(); persist(); });
+    $('rulePlayoff').addEventListener('change', function () { state.rules.playoffWinner = $('rulePlayoff').value; persist(); });
+    $('ruleBirdie').addEventListener('change', function () { state.rules.birdie = $('ruleBirdie').checked; renderSetup(); persist(); });
+    $('ruleStrokes').addEventListener('change', function () { state.rules.strokes = $('ruleStrokes').value; persist(); });
+    $('rulePresses').addEventListener('change', function () {
+      state.rules.presses = $('rulePresses').value;
+      if (state.rules.presses === 'manual' && !state.presses.length) state.presses.push({ by: '1', against: '0', bet: 'back', from: '11' });
+      renderExtras(); persist();
+    });
+    $('ruleCtp').addEventListener('change', function () { state.rules.ctp = $('ruleCtp').checked; renderSetup(); renderExtras(); persist(); });
+
+    // Course details: par and stroke index.
+    $('suCourseGrid').addEventListener('input', function (e) {
+      var t = e.target, h = +t.getAttribute('data-h'), v = parseInt(t.value, 10);
+      stale();
+      if (t.classList.contains('cpar')) { state.pars[h] = isNaN(v) ? 0 : v; }
+      if (t.classList.contains('csi')) { state.si[h] = isNaN(v) ? 0 : v; }
+      persist();
+    });
+    $('suCourseGrid').addEventListener('change', function (e) {
+      if (e.target.classList.contains('cpar')) { renderCard(); renderExtras(); }
+    });
+
+    // Scores: a digit from 2 to 9 is a whole score, so move on; a 1 might be
+    // a 10, so wait. Enter always moves on. Order: across the group, then down.
+    var cells = function () { return Array.prototype.slice.call(document.querySelectorAll('#scoreTable .scr')); };
+    function next(from) {
+      var list = cells(), i = list.indexOf(from);
+      if (i >= 0 && i < list.length - 1) { list[i + 1].focus(); list[i + 1].select(); }
+      else $('calcBtn').focus();
+    }
+    $('scoreTable').addEventListener('input', function (e) {
+      var t = e.target;
+      if (!t.classList.contains('scr')) return;
+      var clean = t.value.replace(/\D/g, '').slice(0, 2);
+      if (clean !== t.value) t.value = clean;
+      var p = +t.getAttribute('data-p'), h = +t.getAttribute('data-h');
+      stale();
+      state.scores[p][h] = clean === '' ? null : parseInt(clean, 10);
+      t.removeAttribute('aria-invalid');
+      refreshTotals();
+      persist();
+      if (/^[2-9]$/.test(clean) || /^1\d$/.test(clean)) next(t);
+    });
+    $('scoreTable').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && e.target.classList.contains('scr')) { e.preventDefault(); next(e.target); }
+    });
+    $('scoreTable').addEventListener('focusin', function (e) { if (e.target.classList.contains('scr')) e.target.select(); });
+
+    $('suCtpList').addEventListener('change', function (e) {
+      if (e.target.classList.contains('ctpSel')) { state.ctpWinners[e.target.getAttribute('data-h')] = e.target.value; stale(); persist(); }
+    });
+    $('suPressList').addEventListener('change', function (e) {
+      var row = e.target.closest ? e.target.closest('.su-press') : null;
+      if (!row) return;
+      state.presses[+row.getAttribute('data-i')][e.target.getAttribute('data-k')] = e.target.value;
+      stale(); persist();
+    });
+    $('suPressList').addEventListener('click', function (e) {
+      if (!e.target.classList.contains('su-del')) return;
+      state.presses.splice(+e.target.closest('.su-press').getAttribute('data-i'), 1);
+      stale(); renderExtras(); persist();
+    });
+    $('addPress').addEventListener('click', function () {
+      state.presses.push({ by: '1', against: '0', bet: 'back', from: '11' });
+      stale(); renderExtras(); persist();
+    });
+
+    $('calcBtn').addEventListener('click', run);
+    $('clearScores').addEventListener('click', clearScores);
     $('copyBtn').addEventListener('click', copySummary);
-    $('pngBtn').addEventListener('click', doPng);
     $('shareBtn').addEventListener('click', doShare);
+    $('pngBtn').addEventListener('click', doPng);
     $('saveGroup').addEventListener('click', saveGroup);
     $('loadGroup').addEventListener('click', loadGroup);
-    $('clearAll').addEventListener('click', clearAll);
 
-    renderPlayers();
-    restoreRound();
+    (function boot() {
+      var d = null;
+      try { d = JSON.parse(localStorage.getItem(LS_ROUND) || 'null'); } catch (e) { d = null; }
+      if (!apply(d, true)) setCount(4);
+      else flashTag('Last round restored');
+      renderAll();
+    })();
   </script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -1267,7 +1463,7 @@
 <!-- TOOL-EVENTS:START -->
   <!-- Tool events: which tools people start, finish and share. Actions only,
        never the numbers typed in; see lib/analytics/tool-events.js. -->
-  <script src="/lib/analytics/tool-events.js?v=2" defer></script>
+  <script src="/lib/analytics/tool-events.js?v=3" defer></script>
 <!-- TOOL-EVENTS:END -->
 <!-- LOCKER:START -->
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.

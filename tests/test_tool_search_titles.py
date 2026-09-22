@@ -108,12 +108,15 @@ class RetitledToolPageTests(unittest.TestCase):
                     f'<link rel="canonical" href="{inventory.SITE}/{slug}">', source
                 )
 
-    def test_settle_up_copy_does_not_claim_handicap_strokes(self):
+    def test_settle_up_net_claim_is_backed_by_the_engine(self):
         source = (ROOT / "tools-settle-up-calculator.html").read_text(encoding="utf-8")
         description = metadata_override_for("/tools-settle-up-calculator")["description"]
         self.assertIn("gross or net scores", description)
-        # The engine applies no strokes, so the page must tell net players what to enter.
-        self.assertIn("enter each player's net score on the card", source)
+        # Since Settle Up V2 the engine applies handicap strokes by stroke index,
+        # so the page must say which handicap it expects and load that engine.
+        self.assertIn("playing handicap", source)
+        self.assertIn("stroke index", source)
+        self.assertIn('<script src="/lib/games/settle-up.js?v=', source)
 
 
 if __name__ == "__main__":

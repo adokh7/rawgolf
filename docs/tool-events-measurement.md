@@ -9,8 +9,10 @@ the window closes, not estimated before it.
 1. **Register event-scoped custom dimensions** (Admin → Custom definitions),
    parameter name = dimension name: `tool_id`, `tool_name`, `input_mode`,
    `share_method`, `from_tool`, `to_tool`, `placement`, `error_code`,
-   `view_type`, `tool_access`, `anchor_type`. Until they exist the events arrive
+   `view_type`, `tool_access`, `anchor_type`, `game_type`, `scoring_mode`. Until they exist the events arrive
    but cannot be broken down. They are not retroactive, so do this first.
+   `game_type` (`skins`, `nassau`, `skins_nassau`) and `scoring_mode` (`gross`, `net`) only appear on
+   The Settle Up's `tool_completed`, never with a name, score, handicap, stake or balance.
    `anchor_type` only appears on The Distance Check's `tool_completed`:
    `driver_carry`, `iron_carry`, `swing_speed` or `handicap_band`.
 2. **Keep test traffic out.** Events sent from `localhost`, or with
@@ -72,7 +74,7 @@ rate".
 
 | Tool | Start | Complete | Share | Related |
 |---|---|---|---|---|
-| Settle Up | edit setup, card or junk; Build scorecard | Settle up renders a result | copy, PNG, native share | none in body |
+| Settle Up | setup, rules or a score edit; Settle up | Settle up with a complete, valid card (sends `game_type`, `scoring_mode`) | copy summary, native share (not counted if cancelled), PNG | none in body |
 | Tee Box | carry/score/yards edit or preset chip | Check my tees / Enter | copy, PNG, native share | Distance Check (`input_distance_check`) |
 | Plays Like | condition edit, chip or toggle | What does it play / Enter | copy, PNG, native share | Distance Check (`result_distance_check`) |
 | Bag Audit | club edit; Load a typical bag (sample) | Audit the bag | copy, PNG, native share | Rest of the Suite links |

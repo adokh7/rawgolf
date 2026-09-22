@@ -36,6 +36,9 @@ ALLOWED_ARGS = {
     # helper enum-validates it (tests/tool-events.test.js) and the model can only
     # return the four anchor ids checked below.
     "{ anchor_type: res.anchor }",
+    # The Settle Up reports which games were settled and gross or net: two
+    # enums the helper validates, built from the page's own fixed choices.
+    "{ game_type: gameType, scoring_mode: scoringMode }",
 }
 CALL = re.compile(r"GRTrack\.(\w+)\(([^()]*)\)")
 
@@ -64,10 +67,14 @@ class ToolEventsWiringTests(unittest.TestCase):
         for slug in HAND_WRITTEN:
             with self.subTest(slug):
                 source = page(slug)
-                self.assertEqual(1, source.count("GRTrack.completed()"))
+                # The Settle Up passes two enums (game and scoring); the rest pass nothing.
+                call = (r"GRTrack\.completed\(\{ game_type: gameType, scoring_mode: scoringMode \}\)"
+                        if slug == "tools-settle-up-calculator" else r"GRTrack\.completed\(\)")
+                self.assertEqual(1, len(re.findall(call, source)))
+                self.assertEqual(1, source.count("GRTrack.completed("))
                 self.assertRegex(
                     source,
-                    r"if \(window\.GRTrack\) GRTrack\.completed\(\);\n\s*if \(window\.RawGolf\) RawGolf\.save\(cardData\(\)\);",
+                    r"if \(window\.GRTrack\) " + call + r";\n\s*if \(window\.RawGolf\) RawGolf\.save\(cardData\(\)\);",
                 )
                 self.assertIn('src="./rawgolf-tools.js?v=2"', source)
                 self.assertIn("data-gr-inputs", source)
@@ -93,7 +100,8 @@ class ToolEventsWiringTests(unittest.TestCase):
         keys = set(re.findall(r"'([a-z_]+)'", events))
         self.assertEqual(
             {"tool_id", "tool_name", "tool_access", "page_path", "view_type", "input_mode",
-             "share_method", "from_tool", "to_tool", "placement", "error_code", "anchor_type"},
+             "share_method", "from_tool", "to_tool", "placement", "error_code", "anchor_type",
+             "game_type", "scoring_mode"},
             keys,
         )
         for reserved in ("round_logged", "pro_preview_viewed", "pro_waitlist_joined", "review_unlocked"):

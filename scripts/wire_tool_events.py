@@ -27,7 +27,7 @@ from scripts import tool_inventory  # noqa: E402
 # Bump whenever lib/analytics/tool-events.js changes: vercel.json serves .js
 # with a one-year immutable Cache-Control, so without a new query string
 # returning readers keep the old file.
-VER = '2'
+VER = '3'
 
 START = '<!-- TOOL-EVENTS:START -->'
 END = '<!-- TOOL-EVENTS:END -->'
