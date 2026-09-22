@@ -1176,8 +1176,19 @@ html_content = """<!DOCTYPE html>
         document.head.appendChild(s);
       }
 
+      // GolfRaw Pro is ad-free: a live Pro pass on this device skips AdSense
+      // entirely. lib/ads/tool-ads.js explains why a readable pass is enough.
+      function proPass() {
+        try {
+          var p = (localStorage.getItem('golfraw_pro_pass') || '').split('.');
+          if (p.length !== 3 || p[0] !== 'v1') return false;
+          var d = JSON.parse(atob(p[1].replace(/-/g, '+').replace(/_/g, '/')));
+          return typeof d.exp === 'number' && d.exp * 1000 > Date.now();
+        } catch (e) { return false; }
+      }
+
       function loadAds() {
-        if (adsQueued || !window.__gr_ads) return;
+        if (adsQueued || !window.__gr_ads || proPass()) return;
         adsQueued = true;
         inject(ADS, true);
       }

@@ -270,6 +270,9 @@ MAIN = r'''
             <span class="cd-hint" id="cdCopyMsg" role="status"></span>
           </div>
         </div>
+        <!-- Ad slot A: after the result, its Bag Audit hand-off and its copy button,
+             never before a result (lib/ads/tool-ads.js) -->
+        <div class="gr-ad-slot" data-gr-ad="after_result" hidden></div>
       </section>
 
       <!-- ============ HOW IT WORKS ============ -->
@@ -383,6 +386,9 @@ MAIN = r'''
           <p class="cd-updated">Updated 21 September 2026. Model version 1.</p>
         </div>
       </section>
+
+      <!-- Ad slot B: below the explainers, only once a result exists (lib/ads/tool-ads.js) -->
+      <div class="gr-ad-slot" data-gr-ad="lower" data-gr-ad-when="#cdOut" hidden></div>
 
       <section class="faq-block panel" aria-labelledby="faq-h">
         <h2 id="faq-h">Questions</h2>

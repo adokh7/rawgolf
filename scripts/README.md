@@ -743,6 +743,41 @@ tested in Node (`node tests/settle-up.test.js`, and the page contract
 - **Bump `version`** in a module and its `?v=` on the page together.
 - Wolf is deliberately not in V2: its scoring has no agreed standard.
 
+## Ads and consent (`lib/ads/tool-ads.js`, `wire_ads.py`)
+
+Decisions, placement map, measurement plan and the activation steps live in
+`docs/monetization-m1.md`. The engineering rules:
+
+- `wire_ads.py` is the one wiring script for ads and consent. Run it after
+  any builder, with `wire_locker.py` and `wire_tool_events.py`; `--check`
+  reports drift. It does three things:
+  - puts the `CONSENT-MODE` block before gtag.js on every GA4 page: defaults
+    denied for the EEA, UK and Switzerland (32 ISO codes), granted elsewhere;
+  - adds a Pro check to the article Auto ads loader, and to the two guide
+    builders that embed it;
+  - puts the `TOOL-ADS` block on every tool page in
+    `tool_inventory.tracked_pages()`, replacing the inline loader.
+- `TOOL-ADS` sits directly before `TOOL-EVENTS`. That block sits before
+  `LOCKER`, which sits before `</body>`, so none of the three scripts moves
+  another's block. `tool_shell.py` strips both new blocks, as it does the
+  others.
+- Tool pages never carry a static AdSense bootstrap, an `ins.adsbygoogle`, or
+  `window.__gr_ads=true`. The module loads adsbygoogle.js once, only after a
+  result, only when the `UNITS`, `AUTO_ADS_EXCLUDED` and `PAGES` switches allow
+  it, and never with a live Pro pass.
+- Slots are `data-gr-ad="after_result"` inside the result container, after its
+  last action, and `data-gr-ad="lower"` before the FAQ with
+  `data-gr-ad-when="#<result id>"`. Both start `hidden`.
+- Never put a slot inside a `data-gr-inputs` panel, a form, a table, a
+  scorecard entry or who-pays-whom. `tests/test_tool_ads.py` enforces it.
+- Unit ids are real AdSense ids (ten digits) or empty; never invent one.
+  Bump `VER` in `wire_ads.py` and `version` in the module together.
+- Tests: `node tests/tool-ads.test.js` (the module in a fake browser) and
+  `python3 -m unittest tests.test_tool_ads`. For a local look with a stub,
+  set localStorage `gr_ads_test` to
+  `{"units":{"after_result":"1111111111","lower":"2222222222"},"autoAdsExcluded":true,"adsSrc":"/tests/fixtures/adsbygoogle-stub.js"}`
+  on localhost. The live domain ignores it.
+
 ## The Round Card (`lib/round/round-card.js`, `build_round_card.py`)
 
 `tools-scorecard-analyzer.html` is generated (edit the builder, then run the

@@ -5,6 +5,12 @@
   <!-- Google Funding Choices — EEA/UK consent management (required by Google's EU User Consent Policy) -->
 <script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
 <!-- Google tag (gtag.js) -->
+<!-- CONSENT-MODE:START -->
+  <!-- Consent Mode defaults, before any Google tag runs. In the EEA, the UK
+       and Switzerland nothing is stored until the reader answers Google's
+       consent message (Privacy & messaging), which updates these. -->
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],wait_for_update:500});</script>
+<!-- CONSENT-MODE:END -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
 <meta charset="UTF-8">
   <!-- ============ FAVICON / GOOGLE SEARCH LOGO ============ -->
@@ -518,11 +524,6 @@
         <p class="note" id="method"></p>
       </div>
 
-      <!-- Future AdSense Slot -->
-      <div class="ad-zone" aria-hidden="true">
-        <span>Advertisement</span>
-      </div>
-      <!-- /Future AdSense Slot -->
 
       <!-- ============ EXPLAINER ============ -->
       <section class="panel explain">
@@ -557,11 +558,6 @@
         </div>
       </section>
 
-      <!-- Future AdSense Slot -->
-      <div class="ad-zone" aria-hidden="true">
-        <span>Advertisement</span>
-      </div>
-      <!-- /Future AdSense Slot -->
 
       <section class="panel" data-gr-placement="suite_links">
         <div class="panel-head"><span><span class="step">03 ·</span> The Rest Of The Suite</span></div>
@@ -1100,6 +1096,12 @@
     gtag('config', 'G-PMECW4VW66');
   </script>
   <script>window.__gr_consent=true;window.__gr_ads=false;</script>
+<!-- TOOL-ADS:START -->
+  <!-- Consent and ads for the tool pages: Google's consent message on the
+       first interaction or after 6s, and manual ad slots that render only
+       after a result, never for GolfRaw Pro. See lib/ads/tool-ads.js. -->
+  <script src="/lib/ads/tool-ads.js?v=1" defer></script>
+<!-- TOOL-ADS:END -->
 <!-- TOOL-EVENTS:START -->
   <!-- Tool events: which tools people start, finish and share. Actions only,
        never the numbers typed in; see lib/analytics/tool-events.js. -->
@@ -1113,55 +1115,6 @@
   <script src="/lib/locker/store.js?v=11" defer></script>
   <script src="/lib/locker/drawer.js?v=11" defer></script>
 <!-- LOCKER:END -->
-  <!-- Ads + consent are deferred until the reader engages, or 6s, whichever
-       comes first. Consent loads BEFORE AdSense so the EEA/UK gate still runs
-       ahead of any ad request. Analytics is NOT deferred: delaying it would
-       lose pageviews from readers who bounce without interacting. -->
-  <script>
-    (function () {
-      var FC = 'https://fundingchoicesmessages.google.com/i/pub-8933725159594062?ers=1';
-      var ADS = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8933725159594062';
-      var EVENTS = ['touchstart', 'scroll', 'mousemove', 'keydown', 'click', 'wheel'];
-      var started = false, adsQueued = false, timer;
-
-      function inject(src, isAds, onload) {
-        var s = document.createElement('script');
-        s.src = src; s.async = true;
-        if (isAds) s.crossOrigin = 'anonymous';
-        if (onload) { s.onload = onload; s.onerror = onload; }
-        document.head.appendChild(s);
-      }
-
-      function loadAds() {
-        if (adsQueued || !window.__gr_ads) return;
-        adsQueued = true;
-        inject(ADS, true);
-      }
-
-      function start() {
-        if (started) return;
-        started = true;
-        clearTimeout(timer);
-        for (var i = 0; i < EVENTS.length; i++) {
-          window.removeEventListener(EVENTS[i], start, LISTEN);
-        }
-        // Consent first; ads follow once it has loaded (or failed).
-        if (window.__gr_consent) {
-          inject(FC, false, loadAds);
-          // If the consent script is blocked outright, do not strand the ads.
-          setTimeout(loadAds, 2500);
-        } else {
-          loadAds();
-        }
-      }
-
-      var LISTEN = { passive: true };
-      for (var i = 0; i < EVENTS.length; i++) {
-        window.addEventListener(EVENTS[i], start, LISTEN);
-      }
-      timer = setTimeout(start, 6000);
-    })();
-  </script>
 </body>
 
 </html>

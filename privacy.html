@@ -4,6 +4,12 @@
 <!-- Google Funding Choices — EEA/UK consent management (required by Google's EU User Consent Policy) -->
 <script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
 <!-- Google tag (gtag.js) -->
+<!-- CONSENT-MODE:START -->
+  <!-- Consent Mode defaults, before any Google tag runs. In the EEA, the UK
+       and Switzerland nothing is stored until the reader answers Google's
+       consent message (Privacy & messaging), which updates these. -->
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],wait_for_update:500});</script>
+<!-- CONSENT-MODE:END -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMECW4VW66"></script>
 <meta charset="UTF-8">
   <!-- ============ FAVICON / GOOGLE SEARCH LOGO ============ -->
@@ -157,7 +163,7 @@ table { max-width: 100%; }
   <div class="wrap">
     <div class="doc-id">
       <span>DOCUMENT <b>L-01</b></span>
-      <span>LAST UPDATED <b>21 SEP 2026</b></span>
+      <span>LAST UPDATED <b>22 SEP 2026</b></span>
       <span>READING TIME <b>4 MIN, HONESTLY</b></span>
     </div>
     <h1>Privacy Policy: <mark>the straight version</mark></h1>
@@ -175,7 +181,7 @@ table { max-width: 100%; }
   <section class="sec">
     <div class="sec-h"><span class="n">§2</span><h2>What we collect, and why</h2></div>
     <ul>
-      <li><b>Analytics data</b> — pages visited, time on page, rough location (country/city level), device and browser type. We use this to learn which stories you actually read, so we write more of those and less of what bores you. This data is aggregated; we're looking at crowds, not at you.</li>
+      <li><b>Analytics data</b> — pages visited, time on page, rough location (country/city level), device and browser type. We use this to learn which stories you actually read, so we write more of those and less of what bores you. This data is aggregated; we're looking at crowds, not at you. In the EEA, the UK and Switzerland, analytics cookies are only set once you agree in the consent message.</li>
       <li><b>Tool usage</b> — when you use one of the GolfRaw tools, we count that you opened it, started, got a result, shared it or moved on to another tool, whether you were playing with the sample data, and whether a tool broke on you. We never collect what you type: your scores, handicaps, yardages, names, stakes and results stay in your browser. These counts go to the same analytics as above.</li>
       <li><b>Newsletter email</b> — if you sign up for The Card, we store your email address for exactly one purpose: sending you The Card. Unsubscribe anytime with one click, and we delete it.</li>
       <li><b>Contact submissions</b> — if you send us a tip, a correction, or hate mail, we keep the message. Tips may be kept confidential indefinitely to protect sources — that one's non-negotiable, it's how journalism works.</li>
@@ -187,14 +193,15 @@ table { max-width: 100%; }
     <div class="sec-h"><span class="n">§3</span><h2>Advertising & cookies (the Google part)</h2></div>
     <p>This site is funded by advertising served through <b>Google AdSense</b>. Here's the honest mechanics of that:</p>
     <ul>
-      <li>Google and its certified ad partners use <b>cookies</b> (including the DoubleClick cookie) to serve ads based on your visits to this site and other sites across the internet.</li>
-      <li>These cookies allow Google to show you <b>personalized ads</b> based on your interests. We don't see your individual profile — Google handles that on their side.</li>
-      <li>You can opt out of personalized advertising at any time via <b>Google's Ads Settings</b> (adssettings.google.com), or opt out of many third-party ad cookies at aboutads.info/choices.</li>
-      <li>If you're in the EU/EEA or UK (like a lot of our readers), you'll see a <b>consent banner</b> before any non-essential cookies load, and you can refuse them. The site works fine either way — refusing just means the ads get dumber, not fewer.</li>
+      <li><b>Where ads appear.</b> On articles, Google places the ads. On some of the free tools, one or two ads appear only after you get your result, below it, labelled &ldquo;Advertisements&rdquo;. Nothing is placed inside a calculator, a scorecard or a result.</li>
+      <li><b>What Google stores.</b> Google and its certified ad partners may use <b>cookies</b> or similar storage (including the DoubleClick cookie) to serve and measure ads and, where you allow it, to show you <b>personalized ads</b> based on your visits to this site and others. We don't see your individual profile; Google handles that on its side.</li>
+      <li><b>Your choice in the EEA, the UK and Switzerland.</b> Google's consent message, a Google-certified consent tool built on the IAB Transparency &amp; Consent Framework, asks before any advertising or analytics cookies are set. If you refuse, Google may still show limited ads that are not personalized. Clear this site's cookies and the message asks again.</li>
+      <li><b>Everywhere else too.</b> You can switch off personalized advertising in <b>Google's My Ad Center</b> (myadcenter.google.com), or opt out of many third-party ad cookies at aboutads.info/choices.</li>
+      <li><b>GolfRaw Pro.</b> While a Pro subscription is active in your browser, GolfRaw loads no ads.</li>
     </ul>
     <div class="plain">
       <span class="mono">Plain English</span>
-      Ads pay for the journalism. Cookies make the ads relevant. You can switch the tracking off and we won't guilt-trip you about it.
+      Ads pay for the journalism and keep the tools free. You can refuse the tracking and we won't guilt-trip you about it.
     </div>
   </section>
 
@@ -334,8 +341,19 @@ if(burger && links) {
         document.head.appendChild(s);
       }
 
+      // GolfRaw Pro is ad-free: a live Pro pass on this device skips AdSense
+      // entirely. lib/ads/tool-ads.js explains why a readable pass is enough.
+      function proPass() {
+        try {
+          var p = (localStorage.getItem('golfraw_pro_pass') || '').split('.');
+          if (p.length !== 3 || p[0] !== 'v1') return false;
+          var d = JSON.parse(atob(p[1].replace(/-/g, '+').replace(/_/g, '/')));
+          return typeof d.exp === 'number' && d.exp * 1000 > Date.now();
+        } catch (e) { return false; }
+      }
+
       function loadAds() {
-        if (adsQueued || !window.__gr_ads) return;
+        if (adsQueued || !window.__gr_ads || proPass()) return;
         adsQueued = true;
         inject(ADS, true);
       }
