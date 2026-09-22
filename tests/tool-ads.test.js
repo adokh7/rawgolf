@@ -121,11 +121,15 @@ const now = Math.floor(Date.now() / 1000);
 {
   const units = /var UNITS = \{ after_result: '(\d{10})', lower: '(\d{10})' \};/.exec(SRC);
   check(units && units[1] === '8457096514' && units[2] === '1432433875', 'shipped: the two real AdSense unit ids');
-  check(/var ADS_SRC = 'https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js';/.test(SRC),
-    'tool pages load the ad-unit loader, never the ?client= Auto ads form');
+  check(/var ADS_SRC = 'https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=' \+ CLIENT;/.test(SRC),
+    'tool pages load Google\'s standard loader');
+  const autoOff = /var AUTO_ADS_EXCLUDED = (true|false);/.exec(SRC)[1] === 'true';
   for (const p of ['/tools-club-distance-calculator', '/tools-tee-box-check', '/tools-plays-like', '/tools-bag-audit']) {
     const b = browser({ path: p });
-    check(b.win.GolfrawAds.reason() === 'eligible', 'shipped: ' + p + ' is live, got ' + b.win.GolfrawAds.reason());
+    check(b.win.GolfrawAds.reason() === (autoOff ? 'eligible' : 'auto_ads_not_excluded'),
+      'shipped: ' + p + ' follows AUTO_ADS_EXCLUDED, got ' + b.win.GolfrawAds.reason());
+    const q = browser({ path: p, storage: { gr_adtest: '1' } });
+    check(q.win.GolfrawAds.reason() === 'eligible', 'a QA browser (gr_adtest=1) can check ' + p + ' live');
   }
   for (const p of ['/tools-scorecard-analyzer', '/tools-settle-up-calculator', '/tools-coach-report', '/tools-gimme-audit', '/tools-round-autopsy']) {
     const b = browser({ path: p, slots: [slotEl('after_result', null, true)] });
@@ -148,9 +152,9 @@ const now = Math.floor(Date.now() / 1000);
 /* ---- the test switches only work on localhost ------------------------- */
 {
   const off = { units: TEST.units, autoAdsExcluded: true, pages: {} };
-  const b = browser({ test: off });
+  const b = browser({ test: off, storage: { gr_adtest: '1' } });
   check(b.win.GolfrawAds.reason() === 'eligible', 'production ignores __GR_ADS_TEST__');
-  const c = browser({ storage: { gr_ads_test: JSON.stringify(off) } });
+  const c = browser({ storage: { gr_ads_test: JSON.stringify(off), gr_adtest: '1' } });
   check(c.win.GolfrawAds.reason() === 'eligible', 'production ignores the gr_ads_test storage key');
   const d = browser({ host: 'localhost', test: off });
   check(d.win.GolfrawAds.reason() === 'page_off', 'localhost honours the test switches');
@@ -161,10 +165,10 @@ const now = Math.floor(Date.now() / 1000);
   const A = slotEl('after_result', null, true);
   browser({ slots: [A], storage: { gr_adtest: '1' } }).runTimers(11000);
   check(/data-adtest="on"/.test(A.innerHTML), 'gr_adtest=1 asks AdSense for test ads');
+  check(/data-ad-slot="8457096514"/.test(A.innerHTML), 'slot A requests unit 8457096514');
   const B = slotEl('after_result', null, true);
-  browser({ slots: [B] }).runTimers(11000);
-  check(!/data-adtest/.test(B.innerHTML), 'everyone else gets normal units');
-  check(/data-ad-slot="8457096514"/.test(B.innerHTML), 'slot A requests unit 8457096514');
+  browser({ slots: [B], host: 'localhost', test: TEST }).runTimers(11000);
+  check(!/data-adtest/.test(B.innerHTML) && B.ins, 'everyone else gets normal units');
 }
 
 /* ---- Pro -------------------------------------------------------------- */
