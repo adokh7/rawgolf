@@ -99,8 +99,8 @@ JSONLD = '''  <!-- ============ STRUCTURED DATA ============ -->
     },
     {
       "@type": "Question",
-      "name": "What is the difference between this and The Round Autopsy?",
-      "acceptedAnswer": { "@type": "Answer", "text": "The Round Autopsy dissects one round in detail. The Tendency Engine watches many rounds and finds the pattern that repeats: which way you miss, whether you come up short or run through the green, and which part of the game is quietly taking the most from you." }
+      "name": "What is the difference between this and The Round Card?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The Round Card reads one round: which holes cost you and why. The Tendency Engine watches many rounds and finds the miss that repeats. Your 18-hole Round Card rounds show up here too." }
     },
     {
       "@type": "Question",
@@ -381,8 +381,8 @@ MAIN = '''
 
           <div class="te-acts" data-gr-placement="result_actions">
             <button type="button" class="te-go" id="pushBtn">Send scores to the Handicap Lie Detector</button>
-            <a class="te-go ghost" href="/tools-round-autopsy"
-               style="display:inline-flex;align-items:center;text-decoration:none">Dissect one round instead</a>
+            <a class="te-go ghost" href="/tools-scorecard-analyzer"
+               style="display:inline-flex;align-items:center;text-decoration:none">Read one round instead</a>
           </div>
           <div class="te-msg" id="resMsg" role="status" data-gr-placement="result_message"></div>
 
@@ -435,10 +435,10 @@ MAIN = '''
           <p>No. Real strokes gained needs the distance and lie of every shot. This compares your fairway,
             green, scrambling and putting rates to a 15-handicap benchmark. Reliable in direction, rough
             in magnitude.</p></details>
-        <details><summary>How is this different from The Round Autopsy?</summary>
-          <p><a href="/tools-round-autopsy">The Round Autopsy</a> dissects a single round in detail. This
-            watches many rounds and finds what repeats. Use the Autopsy after a strange round, and this
-            one every round.</p></details>
+        <details><summary>How is this different from The Round Card?</summary>
+          <p><a href="/tools-scorecard-analyzer">The Round Card</a> reads one round: which holes cost you
+            and why. This watches many rounds and finds the miss that repeats. Rounds you save there show
+            up here too, as long as they are 18 holes.</p></details>
         <details><summary>Does it upload my scores?</summary>
           <p>No. Everything stays in your browser and never leaves the device. Clearing browser data
             deletes it, so export a backup from the locker if you want to keep it.</p></details>
@@ -1128,9 +1128,9 @@ LOCKER = '''<!-- LOCKER:START -->
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=10" defer></script>
-  <script src="/lib/locker/store.js?v=10" defer></script>
-  <script src="/lib/locker/drawer.js?v=10" defer></script>
+  <script src="/lib/locker/schema.js?v=11" defer></script>
+  <script src="/lib/locker/store.js?v=11" defer></script>
+  <script src="/lib/locker/drawer.js?v=11" defer></script>
 <!-- LOCKER:END -->
 '''
 

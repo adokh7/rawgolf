@@ -39,6 +39,9 @@ ALLOWED_ARGS = {
     # The Settle Up reports which games were settled and gross or net: two
     # enums the helper validates, built from the page's own fixed choices.
     "{ game_type: gameType, scoring_mode: scoringMode }",
+    # The Round Card reports nine or eighteen holes and whether putts and
+    # penalties were entered: two enums, never a value from the card.
+    "{ round_length: a.holes === 18 ? 'eighteen' : 'nine', detail_mode: a.detail }",
 }
 CALL = re.compile(r"GRTrack\.(\w+)\(([^()]*)\)")
 
@@ -50,13 +53,14 @@ def page(slug):
 class ToolEventsWiringTests(unittest.TestCase):
     def test_helper_registry_matches_the_tool_inventory(self):
         registry = dict(re.findall(r"'(tools-[a-z0-9-]+)': \['[a-z_]+', '([^']+)'", HELPER))
-        expected = {tool["slug"]: tool["name"] for tool in inventory.TOOLS}
+        # Legacy pages (off the hub, still live) keep their analytics.
+        expected = {tool["slug"]: tool["name"] for tool in inventory.tracked_pages()}
         self.assertEqual(expected, registry)
         self.assertIn("'tools-coach-report': ['coach_report', 'The Coach Report', 'pro_preview']", HELPER)
 
     def test_every_tool_page_loads_the_helper_once_at_the_current_version(self):
         tag = f'<script src="/lib/analytics/tool-events.js?v={wire_tool_events.VER}" defer></script>'
-        for tool in inventory.TOOLS:
+        for tool in inventory.tracked_pages():
             with self.subTest(tool["slug"]):
                 source = page(tool["slug"])
                 self.assertEqual(1, source.count(tag))
@@ -101,7 +105,7 @@ class ToolEventsWiringTests(unittest.TestCase):
         self.assertEqual(
             {"tool_id", "tool_name", "tool_access", "page_path", "view_type", "input_mode",
              "share_method", "from_tool", "to_tool", "placement", "error_code", "anchor_type",
-             "game_type", "scoring_mode"},
+             "game_type", "scoring_mode", "round_length", "detail_mode"},
             keys,
         )
         for reserved in ("round_logged", "pro_preview_viewed", "pro_waitlist_joined", "review_unlocked"):

@@ -138,6 +138,17 @@ def _tool(
 # output and the ItemList schema generated for /tools.
 TOOLS = (
     _tool(
+        "tools-scorecard-analyzer",
+        15,
+        "The Round Card",
+        "Scorecard Analyzer · Blow-Up Holes",
+        "Put the card in after the round and see which holes cost you, and why. Par and score are enough; putts and penalties tell you more, and it suggests one thing for next time only when the card points at it.",
+        "Where did it go wrong? →",
+        "performance-practice",
+        newest=True,
+        search_name="Golf Scorecard Analyzer",
+    ),
+    _tool(
         "tools-tendency-engine",
         11,
         "The Tendency Engine",
@@ -153,15 +164,6 @@ TOOLS = (
         "Range Logger · Gapping",
         "Your gaps were set by a fitter on a launch monitor once, indoors, on a good day. Tap in five balls a club on the range and find out what you actually carry, how far the bad ones stray, and which two clubs are quietly doing the same job.",
         "Gap my bag for real →",
-        "performance-practice",
-    ),
-    _tool(
-        "tools-round-autopsy",
-        2,
-        "The Round Autopsy",
-        "Diagnostic · Strokes Lost",
-        "Eighteen holes in. A blunt cause-of-death verdict, a strokes-lost breakdown, and no comfortable excuses about your equipment.",
-        "Run the autopsy →",
         "performance-practice",
     ),
     _tool(
@@ -219,7 +221,6 @@ TOOLS = (
         "One number you actually know, your driver or 7-iron carry or your swing speed, and it works out the rest of your bag. A range to plan on and a best-strike range for every club, in yards or metres.",
         "How far should I hit it? →",
         "bag-equipment",
-        newest=True,
         search_name="Golf Club Distance Calculator",
     ),
     _tool(
@@ -272,6 +273,25 @@ TOOLS = (
         access_label="Pro preview",
     ),
 )
+
+
+# Tool pages that stay live, and keep their analytics, but have left the hub
+# because a newer tool does their job. They are not in TOOLS, so they are not
+# counted, listed or given hub schema. Retiring one with a redirect is a
+# separate, evidence-led decision (see scripts/README.md, "The Round Card").
+LEGACY_TOOLS = (
+    {
+        "slug": "tools-round-autopsy",
+        "route": "/tools-round-autopsy",
+        "name": "The Round Autopsy",
+        "replaced_by": "tools-scorecard-analyzer",
+    },
+)
+
+
+def tracked_pages():
+    """Every tool page that loads the tool-events layer: the hub plus legacy."""
+    return tuple(TOOLS) + tuple(LEGACY_TOOLS)
 
 
 def tools_by_group(group_id):

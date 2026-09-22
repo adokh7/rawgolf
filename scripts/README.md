@@ -743,6 +743,72 @@ tested in Node (`node tests/settle-up.test.js`, and the page contract
 - **Bump `version`** in a module and its `?v=` on the page together.
 - Wolf is deliberately not in V2: its scoring has no agreed standard.
 
+## The Round Card (`lib/round/round-card.js`, `build_round_card.py`)
+
+`tools-scorecard-analyzer.html` is generated (edit the builder, then run the
+usual chain: builder, `wire_locker.py`, `wire_tool_events.py`,
+`apply_theme.py`). The analysis is one UMD module tested in Node
+(`node tests/round-card.test.js`, which also runs the real Locker in a
+sandbox) plus the page contract (`python3 -m unittest tests.test_round_card_page`).
+
+- **Input**: par and score on every hole, 9 or 18 holes. Optional putts and
+  penalty strokes. Greens in regulation are derived (score - putts <= par - 2,
+  unknown with 0 putts), never asked. Fairways are deliberately not collected:
+  fairway rate barely moves with handicap and costly tee misses show up as
+  penalties. In detail mode an empty penalty box on a hole with putts is
+  stored as 0; a saved card with no penalty anywhere (a Tendency Engine card)
+  keeps them unknown.
+- **Blow-up**: double bogey or worse; when the typical hole (median to par,
+  rounded down) is already a double, triple or worse. The result states the
+  rule it used. Each blow-up is tagged from the optional stats: penalty,
+  three putts or more, two or more extra shots to reach the green.
+- **Findings**: at most three, from the card only, no handicap benchmarks, no
+  strokes gained, no "tilt" (TheGrint found play after a blow-up is no worse).
+  Confidence: strong when the stat covers >= 90% of holes, some >= 60%, unused
+  below. The one focus is whichever of penalty strokes, putts beyond two or
+  extra shots to the green cost most (>= 3 strokes on 18, >= 2 on 9, no tie);
+  approach and damage control are only ever "some evidence".
+- **Storage**: rounds live in the Locker's `scorecards` store beside the
+  Tendency Engine's, so it is one history. The card being typed also lives in
+  `localStorage` (`golfraw_roundcard_draft`); a blocked storage still leaves a
+  working card. A card started in the Round Autopsy
+  (`golfraw_autopsy_round`) can be opened once, on request.
+- **Scorecard record, schema v2** (Locker `ScorecardSchema`; v1 is the
+  Tendency Engine's card and still reads):
+
+  ```
+  { id: 'card-…',            // Locker uid, made on this device
+    v: 2,                    // 1 = Tendency Engine card, 2 = Round Card
+    course: '',              // up to 80 chars, never leaves the device
+    playedAt, createdAt, updatedAt,   // ms; playedAt is local noon of the date played
+    holes: [ { par: 3-6, score: 1-15|null, putts: 0-6|null, pen: 0-6|null,
+               fir: 'hit'|'left'|'right'|null,          // Tendency Engine only
+               app: 'hit'|'miss'|'short'|'long'|'left'|'right'|null } ],  // 9 or 18
+    summary: { holes, gross, par, toPar, blowups, blowupToPar,
+               putts|null, pen|null, gir|null, detail: 'quick'|'detailed' } | null }
+  ```
+
+  `null` always means "not recorded". `summary` is recomputed from the holes on
+  every save and never trusted over them. A valid round is 9 or 18 holes, all
+  scored. `listCompletedScorecards()` still returns 18-hole cards only, because
+  the Tendency Engine and the Coach Report average per 18 holes; a finished
+  9-hole card is no longer mistaken for a Tendency Engine draft.
+- **Export / import**: `golfraw.rounds` v1 JSON (and CSV, one row per hole, for
+  spreadsheets). Import reads that or a whole Locker backup, keeps only valid
+  rounds, and adds new ids or newer copies. Nothing is uploaded.
+- **Habit data** for a later multi-round review is derived, not stored:
+  `habit(cards)` gives valid rounds, dates played and the first logged date.
+  The page only says how many rounds are saved; nothing is sold.
+- Analytics: `tool_completed` carries `round_length` (`nine`|`eighteen`) and
+  `detail_mode` (`quick`|`detailed`) only. Never a score, course, date, hole,
+  history count or summary.
+- **Legacy**: The Round Autopsy left the hub (`LEGACY_TOOLS` in
+  `tool_inventory.py`), stays live and tracked, and points here; so does the
+  Tilt Meter, which stays listed. Neither is redirected: both had near-zero
+  search value (Search Console, Mar-Sep 2026: 14 and 95 impressions), and a
+  301 waits on an explicit decision.
+- **Bump `MODEL_VER`** in the builder with any change to `round-card.js`.
+
 ## Units: yards or metres across the distance tools (`lib/distance/units.js`)
 
 The Distance Check, Plays Like, Tee Box and Bag Audit run one model each, in

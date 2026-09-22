@@ -27,7 +27,7 @@ from scripts import tool_inventory  # noqa: E402
 # Bump whenever lib/analytics/tool-events.js changes: vercel.json serves .js
 # with a one-year immutable Cache-Control, so without a new query string
 # returning readers keep the old file.
-VER = '3'
+VER = '4'
 
 START = '<!-- TOOL-EVENTS:START -->'
 END = '<!-- TOOL-EVENTS:END -->'
@@ -42,7 +42,7 @@ BLOCK = START + """
 
 
 def tool_pages():
-    return [os.path.join(ROOT, tool['slug'] + '.html') for tool in tool_inventory.TOOLS]
+    return [os.path.join(ROOT, tool['slug'] + '.html') for tool in tool_inventory.tracked_pages()]
 
 
 def wired(source):

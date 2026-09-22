@@ -19,7 +19,7 @@ HUB_PATH = ROOT / "tools.html"
 
 EXPECTED_ROUTES = {
     "/tools-settle-up-calculator",
-    "/tools-round-autopsy",
+    "/tools-scorecard-analyzer",
     "/tools-tee-box-check",
     "/tools-handicap-detector",
     "/tools-plays-like",

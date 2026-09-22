@@ -53,9 +53,9 @@ ARTICLE_TOOL_CTAS = {
         "anchor": "track repeated miss patterns",
     },
     "/golf-swing-drills": {
-        "tool_id": "tools-round-autopsy",
+        "tool_id": "tools-scorecard-analyzer",
         "variant": "inline",
-        "anchor": "measure where your shots go",
+        "anchor": "find the holes that cost you",
     },
     "/swing-guide": {
         "tool_id": "tools-tendency-engine",

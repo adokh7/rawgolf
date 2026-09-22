@@ -239,8 +239,25 @@ function names(p) {
   check(!/Sam|500/.test(JSON.stringify(p.events().concat(q.events()))), 'no player name or stake is ever sent');
 }
 
+// 16. The Round Card sends nine or eighteen and quick or detailed, never a card.
+{
+  const p = page('/tools-scorecard-analyzer');
+  check(p.GRTrack.tool && p.GRTrack.tool.id === 'round_card', 'the Round Card is registered');
+  p.GRTrack.completed({ round_length: 'eighteen', detail_mode: 'detailed', score: 89, course: 'Muni', holes: [5, 6] });
+  const done = p.events().find((e) => e.event === 'tool_completed');
+  check(done && done.params.round_length === 'eighteen' && done.params.detail_mode === 'detailed', 'card labels are sent');
+  check(done && !('score' in done.params) && !('course' in done.params) && !('holes' in done.params), 'scores, course and holes are dropped');
+  const q = page('/tools-scorecard-analyzer');
+  q.GRTrack.completed({ round_length: '18', detail_mode: 'full' });
+  const bad = q.events().find((e) => e.event === 'tool_completed');
+  check(bad && !('round_length' in bad.params) && !('detail_mode' in bad.params), 'unknown labels are dropped, not sent');
+  check(!/Muni|89/.test(JSON.stringify(p.events().concat(q.events()))), 'no course or score is ever sent');
+  const legacy = page('/tools-round-autopsy');
+  check(legacy.GRTrack.tool && legacy.GRTrack.tool.id === 'round_autopsy', 'the legacy Round Autopsy page keeps its analytics');
+}
+
 if (failures.length) {
   console.error('Tool events contract failed:\n- ' + failures.join('\n- '));
   process.exit(1);
 }
-console.log('Tool events contract passed (15 scenarios).');
+console.log('Tool events contract passed (16 scenarios).');

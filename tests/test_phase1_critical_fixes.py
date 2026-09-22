@@ -13,7 +13,7 @@ SITE = "https://www.golfraw.com"
 
 TOOL_ROUTES = {
     "/tools-settle-up-calculator",
-    "/tools-round-autopsy",
+    "/tools-scorecard-analyzer",
     "/tools-tee-box-check",
     "/tools-handicap-detector",
     "/tools-plays-like",

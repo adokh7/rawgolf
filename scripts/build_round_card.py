@@ -1,0 +1,1007 @@
+#!/usr/bin/env python3
+"""Generate tools-scorecard-analyzer.html (The Round Card).
+
+Lifts the shared tool shell from tools-bag-audit.html like the other generated
+tools. The analysis is /lib/round/round-card.js; this page only renders it and
+keeps rounds in the Locker's scorecards store. Re-runnable: rewrites the file
+wholesale, so edit this builder, never the HTML. After a rebuild run, in
+order: this builder, wire_locker.py, wire_tool_events.py, apply_theme.py (see
+scripts/README.md, "The Round Card").
+
+    PYTHONPATH=.:scripts python3 scripts/build_round_card.py
+"""
+import io, os, re, sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SHELL = os.path.join(ROOT, 'tools-bag-audit.html')
+OUT = os.path.join(ROOT, 'tools-scorecard-analyzer.html')
+
+SITE = 'https://www.golfraw.com'
+SLUG = 'tools-scorecard-analyzer'
+TITLE = 'Golf Scorecard Analyzer: Find Your Blow-Up Holes | GolfRaw'
+DESC = ('Enter your score for each hole after the round, plus putts and penalties if you have them, '
+        'and see which holes cost you and why. Free, no signup.')
+OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
+MODEL_VER = '1'   # bump when lib/round/round-card.js changes (immutable .js cache)
+
+from tool_shell import shell_parts as _shell_parts
+from scripts.schema_normalizer import normalize_tool_page
+
+
+def shell_parts():
+    return _shell_parts(SHELL)
+
+
+PREMIUM_LINK = '  <link rel="stylesheet" href="/public/tool-premium.css?v=4">\n'
+
+
+def rewrite_meta(s):
+    s = re.sub(r'<title>.*?</title>', '<title>%s</title>' % TITLE.replace('&', '&amp;'), s, flags=re.S)
+    for pat, val in [
+        (r'(<meta name="description" content=")[^"]*(")', DESC),
+        (r'(<meta property="og:title" content=")[^"]*(")', TITLE.replace('&', '&amp;')),
+        (r'(<meta property="og:description" content=")[^"]*(")', DESC),
+        (r'(<meta property="og:image" content=")[^"]*(")', OG_IMAGE),
+        (r'(<meta name="twitter:title" content=")[^"]*(")', TITLE.replace('&', '&amp;')),
+        (r'(<meta name="twitter:description" content=")[^"]*(")', DESC),
+        (r'(<meta name="twitter:image" content=")[^"]*(")', OG_IMAGE),
+    ]:
+        s = re.sub(pat, lambda m, v=val: m.group(1) + v + m.group(2), s)
+    s = re.sub(r'(<link rel="canonical" href=")[^"]*(")', r'\g<1>%s/%s\g<2>' % (SITE, SLUG), s)
+    s = re.sub(r'(<meta property="og:url" content=")[^"]*(")', r'\g<1>%s/%s\g<2>' % (SITE, SLUG), s)
+    return s
+
+
+# Replaced wholesale by schema_normalizer.normalize_tool_page (WebApplication,
+# BreadcrumbList and the visible FAQ), which reads the tool from tool_inventory.
+JSONLD = """  <!-- ============ STRUCTURED DATA ============ -->
+  <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "The Round Card"}
+  </script>
+"""
+
+STYLE = r'''<style>
+    /* ---- The Round Card -------------------------------------------------------
+       A card typed in after the round, on a phone, in one hand: one row per
+       hole, 44px targets, a number pad, and the result straight under it.
+       Nothing is carried by colour alone. */
+    .tool-body > .wrap > .rc-panel, .tool-body > .wrap > .rc-out, .tool-body > .wrap > .rc-hist { order: 1 }
+    /* The theme's display rules on .btn and friends outrank the hidden
+       attribute; inside this tool, hidden always means hidden. */
+    .rc-panel [hidden], .rc-out [hidden] { display: none !important }
+    .rc-panel .panel-in { max-width: 680px }
+    .rc-q { margin-bottom: 16px }
+    .rc-lab { display: block; font-size: 13px; font-weight: 800; color: var(--ink); margin-bottom: 8px }
+    .rc-seg { display: inline-flex; flex-wrap: wrap; border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; max-width: 100% }
+    .rc-seg button { min-width: 64px; padding: 8px 14px; margin: 0; border: 0; border-right: 2px solid var(--ink); border-radius: 0;
+      background: var(--white); color: var(--ink); font-family: inherit; font-size: 15px; font-weight: 700; letter-spacing: normal;
+      text-transform: none; cursor: pointer; box-shadow: none }
+    .rc-seg button:last-child { border-right: 0 }
+    .rc-seg button[aria-pressed="true"] { background: var(--ink); color: #fff }
+    .rc-seg button:focus-visible { outline: 3px solid var(--flag); outline-offset: -4px }
+    /* The theme gives every button 40px; ids keep these at 44px. */
+    #rcSetup .rc-seg button, #rcCardPanel .btn, #rcCardPanel .rc-par, #rcOut .btn, #rcHist .btn, #rcHist .rc-open { min-height: 44px }
+    .rc-row2 { display: grid; grid-template-columns: 1fr; gap: 12px }
+    @media (min-width: 560px) { .rc-row2 { grid-template-columns: 180px 1fr } }
+    .rc-row2 input { width: 100%; min-height: 46px; font-size: 16px }
+    .rc-hint { font-size: 13.5px; color: var(--grey); line-height: 1.55; margin: 6px 0 0; max-width: 62ch }
+
+    .rc-card { width: 100%; border-collapse: collapse; table-layout: fixed; font-variant-numeric: tabular-nums; margin-top: 6px }
+    .rc-card th, .rc-card td { padding: 3px 3px; text-align: center; border-bottom: 1px solid var(--line) }
+    .rc-card thead th { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; padding: 8px 2px }
+    .rc-card col.c-hole { width: 44px } .rc-card col.c-par { width: 58px }
+    .rc-card tbody th { font-size: 17px; font-weight: 800; background: var(--paper) !important; color: var(--ink) !important }
+    .rc-card .rc-par { width: 100%; min-height: 44px; padding: 0; margin: 0; border: 2px solid var(--line); border-radius: 8px;
+      background: var(--white); color: var(--ink); font: inherit; font-size: 17px; font-weight: 800; letter-spacing: normal;
+      text-transform: none; cursor: pointer; box-shadow: none }
+    .rc-card .rc-par:focus-visible { outline: 3px solid var(--flag); outline-offset: 1px }
+    .rc-card input.rc-in { width: 100%; min-height: 46px; padding: 4px 2px; border: 2px solid var(--line); border-radius: 8px;
+      font-size: 19px !important; font-weight: 800; text-align: center; background: var(--white); color: var(--ink) }
+    .rc-card input.rc-in:focus { border-color: var(--ink) }
+    .rc-card input.rc-in::placeholder { color: #b6bcb3; font-weight: 600 }
+    .rc-card input[aria-invalid="true"] { border-color: #8f2015; background: #FDF0EE }
+    .rc-card tr.rc-tot th, .rc-card tr.rc-tot td { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
+      background: #ECEFE8 !important; color: var(--ink) !important; padding: 10px 2px }
+    .rc-card tr.rc-tot td b { font-size: 16px; letter-spacing: normal }
+    .rc-acts { margin-top: 18px; align-items: center }
+    .rc-go { min-height: 52px !important; font-size: 13px; padding-left: 22px; padding-right: 22px }
+    .rc-legacy { border: 2px dashed var(--line); padding: 12px 14px; margin-bottom: 14px; font-size: 14.5px; line-height: 1.5 }
+    .rc-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap }
+
+    .rc-out { scroll-margin-top: 88px }
+    .rc-result { border: 2px solid var(--ink); border-radius: 16px; background: var(--white); padding: 20px 18px; margin-bottom: 24px }
+    .rc-result h2 { font-size: clamp(22px, 4vw, 28px); line-height: 1.15; margin-bottom: 10px }
+    .rc-result h2:focus { outline: none }
+    .rc-result h3 { font-size: 17px; margin: 22px 0 8px; padding-top: 16px; border-top: 1px solid var(--line) }
+    .rc-score { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-bottom: 8px }
+    .rc-score b { font-size: 44px; line-height: 1; font-weight: 900 }
+    .rc-score .rc-topar { font-size: 22px; font-weight: 800 }
+    .rc-score .rc-nines { font-size: 14.5px; color: var(--grey); font-weight: 600 }
+    .rc-lead { font-size: 19px; line-height: 1.4; font-weight: 800; margin-bottom: 8px; max-width: 60ch }
+    .rc-note { font-size: 13.5px; color: var(--grey); line-height: 1.5; margin-bottom: 4px; max-width: 62ch }
+    .rc-rule { font-size: 14px; color: var(--grey); margin-bottom: 8px }
+    .rc-list { list-style: none; margin: 0; padding: 0 }
+    .rc-list li { padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 15.5px; line-height: 1.45 }
+    .rc-list li:last-child { border-bottom: 0 }
+    .rc-list .rc-why { display: block; font-size: 13.5px; color: var(--grey) }
+    .rc-find li { display: flex; flex-direction: column; gap: 4px }
+    .rc-conf { display: inline-block; align-self: flex-start; font-size: 10.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+      border: 1.5px solid var(--ink); border-radius: 999px; padding: 2px 8px }
+    .rc-conf[data-c="some"] { border-style: dashed }
+    .rc-focus p { font-size: 15.5px; line-height: 1.5; margin-bottom: 6px; max-width: 62ch }
+    .rc-stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin: 0 }
+    .rc-stats div { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px }
+    .rc-stats dt { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--grey); font-weight: 700 }
+    .rc-stats dd { margin: 4px 0 0; font-size: 20px; font-weight: 800 }
+    .rc-stats dd small { display: block; font-size: 12.5px; font-weight: 600; color: var(--grey) }
+    .rc-save { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 10px; align-items: center }
+    .rc-check { display: flex; align-items: center; gap: 8px; font-size: 14.5px; min-height: 44px }
+    .rc-check input { width: 20px; height: 20px }
+    .rc-msg { font-size: 14px; font-weight: 600; min-height: 1.2em }
+    .rc-next { font-size: 14.5px; line-height: 1.55; margin-top: 16px }
+
+    .rc-hist .panel-in { max-width: 680px }
+    .rc-rounds { list-style: none; margin: 0 0 12px; padding: 0 }
+    .rc-rounds li { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding: 10px 0; border-bottom: 1px solid var(--line) }
+    .rc-rounds .rc-open { flex: 1 1 220px; text-align: left; min-height: 44px; padding: 6px 0; margin: 0; border: 0; background: none;
+      color: var(--ink); font: inherit; font-size: 15.5px; font-weight: 700; letter-spacing: normal; text-transform: none; cursor: pointer;
+      text-decoration: underline; text-underline-offset: 3px; box-shadow: none }
+    .rc-rounds .rc-open span { font-weight: 500; color: var(--grey) }
+    .rc-rounds .btn { min-height: 44px }
+    .rc-habit { font-size: 14.5px; margin-bottom: 12px }
+    .rc-io { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px }
+    .rc-sources li { font-size: 14px; line-height: 1.55; margin-bottom: 8px }
+    .rc-updated { font-size: 13px; color: var(--grey); margin-top: 8px }
+
+    @media print {
+      .site-header, .site-footer, .rc-panel#rcSetup, .rc-hist, .answer-block, .explain, .faq-block, .rc-save, .rc-next,
+      #gr-locker-fab, .gr-lk-fab, .ad-zone, .hub-hero p { display: none !important }
+      .tool-body { padding: 0 }
+      .rc-card input.rc-in { border: 0; font-size: 14px !important; min-height: 0 }
+      .rc-card .rc-par { border: 0; min-height: 0 }
+      .rc-result { border: 0; padding: 0 }
+      #rcCardPanel .btn, #rcCardPanel .rc-hint, #rcErr, .rc-legacy { display: none !important }
+    }
+  </style>
+'''
+
+MAIN = r'''
+  <div class="hub-hero">
+    <div class="wrap">
+      <div class="eyebrow">GolfRaw &middot; TOOLS</div>
+      <h1>Golf Scorecard Analyzer</h1>
+      <p class="tool-brand">The Round Card</p>
+      <p>Round&rsquo;s done. Put the card in hole by hole and see which holes cost you, and why. Par and score are
+        enough; putts and penalties tell you more. Nothing you type leaves your browser.</p>
+    </div>
+  </div>
+
+  <div class="tool-body">
+    <div class="wrap">
+
+      <section class="answer-block" aria-labelledby="aeo-q">
+        <div class="ab-tag">The short answer</div>
+        <h2 id="aeo-q">What is a blow-up hole in golf?</h2>
+        <p class="ab-answer">A blow-up hole is one you finish at double bogey or worse: two or more over par. A few of
+          them usually account for a big share of an amateur&rsquo;s score. Arccos data puts it at about three a round
+          for a 10-handicapper and four for a 15.</p>
+        <p class="ab-body">The Round Card is a <b>free golf scorecard analyzer</b>. It finds the blow-ups on your card and
+          shows what they cost. If double bogey is your normal hole that day, only triples or worse count, so the list
+          stays short. Add putts and penalties and it tags what went into each one: a penalty, a three-putt, or extra
+          shots to reach the green.</p>
+        <ul class="ab-facts"><li><b>Par + score</b> is enough</li><li><b>9 or 18</b> holes</li><li><b>0</b> data uploaded</li><li><b>100%</b> in your browser</li></ul>
+      </section>
+
+      <!-- ============ THE ROUND ============ -->
+      <section class="panel rc-panel" id="rcSetup" aria-labelledby="rc-setup-h" data-gr-inputs>
+        <div class="panel-head"><span id="rc-setup-h"><span class="step">01 &middot;</span> The round</span></div>
+        <div class="panel-in">
+          <div class="rc-legacy" id="rcLegacy" hidden>
+            You have a card from the Round Autopsy on this device.
+            <button type="button" class="btn ghost sm" id="rcLegacyOpen" data-gr-mode="import">Open it here</button>
+          </div>
+          <div class="rc-q">
+            <span class="rc-lab" id="rcHolesLab">Holes</span>
+            <div class="rc-seg" id="rcHoles" role="group" aria-labelledby="rcHolesLab">
+              <button type="button" data-v="18" aria-pressed="true">18 holes</button>
+              <button type="button" data-v="9" aria-pressed="false">9 holes</button>
+            </div>
+          </div>
+          <div class="rc-q">
+            <span class="rc-lab" id="rcDetailLab">What you have</span>
+            <div class="rc-seg" id="rcDetail" role="group" aria-labelledby="rcDetailLab">
+              <button type="button" data-v="quick" aria-pressed="true">Score only</button>
+              <button type="button" data-v="detailed" aria-pressed="false">Score, putts, penalties</button>
+            </div>
+            <p class="rc-hint">Score only takes about a minute. Putts and penalties show the why.</p>
+          </div>
+          <div class="rc-row2">
+            <div>
+              <label class="rc-lab" for="rcDate">Date played</label>
+              <input type="date" id="rcDate">
+            </div>
+            <div>
+              <label class="rc-lab" for="rcCourse">Course <span style="font-weight:500">(optional)</span></label>
+              <input type="text" id="rcCourse" maxlength="80" autocomplete="off" placeholder="e.g. Sunday muni" aria-describedby="rcCourseHint">
+              <p class="rc-hint" id="rcCourseHint">Stays on this device. It is never sent anywhere.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ THE CARD ============ -->
+      <section class="panel rc-panel" id="rcCardPanel" aria-labelledby="rc-card-h" data-gr-inputs>
+        <div class="panel-head"><span id="rc-card-h"><span class="step">02 &middot;</span> The card</span></div>
+        <div class="panel-in">
+          <p class="rc-hint" id="rcParHint">Pars start as a standard par 72. Tap a par to change it to match your course.</p>
+          <p class="rc-hint" id="rcDetailHint" hidden><b>Putts:</b> strokes on the green only; a putt from the fringe counts
+            as a chip. <b>Penalties:</b> 1 for out of bounds, a lost ball, water or an unplayable lie; 2 under the local rule
+            that lets you drop instead of going back for out of bounds. Leave it empty for none.</p>
+          <div class="err" id="rcErr" role="alert"></div>
+          <table class="rc-card" id="rcTable">
+            <caption class="rc-sr">Your scorecard, one row per hole</caption>
+          </table>
+          <p class="rc-hint">Typing a score moves you on; a 1 waits in case it is a 10. Enter also moves on.</p>
+          <p class="rc-sr" id="rcLive" aria-live="polite"></p>
+          <div class="btn-row rc-acts">
+            <button type="button" class="btn rc-go" id="rcGo" data-gr-run>What cost me this round? &rarr;</button>
+            <button type="button" class="btn ghost sm" id="rcNew" data-gr-ignore>New card</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ THE RESULT ============ -->
+      <section class="out-wrap rc-out" id="rcOut" aria-labelledby="rcResultHead">
+        <div class="rc-result">
+          <h2 id="rcResultHead" tabindex="-1">What cost you this round?</h2>
+          <p class="rc-score"><b id="rcGross"></b><span class="rc-topar" id="rcToPar"></span><span class="rc-nines" id="rcNines"></span></p>
+          <p class="rc-lead" id="rcHeadline"></p>
+          <p class="rc-note" id="rcData"></p>
+
+          <h3>Blow-up holes</h3>
+          <p class="rc-rule" id="rcRule"></p>
+          <ul class="rc-list" id="rcBlow"></ul>
+          <p class="rc-note" id="rcWithout"></p>
+
+          <div id="rcFindWrap">
+            <h3>What the card says</h3>
+            <ul class="rc-list rc-find" id="rcFind"></ul>
+          </div>
+
+          <div class="rc-focus">
+            <h3>Next round</h3>
+            <p id="rcFocus"></p>
+            <span class="rc-conf" id="rcFocusConf"></span>
+          </div>
+
+          <h3>The numbers</h3>
+          <dl class="rc-stats" id="rcStats"></dl>
+
+          <div class="rc-save">
+            <button type="button" class="btn" id="rcSave">Save to my rounds</button>
+            <span class="rc-msg" id="rcSaveMsg" role="status"></span>
+          </div>
+          <div class="rc-save">
+            <button type="button" class="btn ghost sm" id="rcCopy">Copy summary</button>
+            <button type="button" class="btn ghost sm" id="rcShare">Share</button>
+            <button type="button" class="btn ghost sm" id="rcPrint">Print or save as PDF</button>
+            <label class="rc-check" id="rcCourseShareWrap" hidden><input type="checkbox" id="rcCourseShare"> Include the course name</label>
+            <span class="rc-msg" id="rcShareMsg" role="status"></span>
+          </div>
+          <p class="rc-next" data-gr-placement="result_patterns">One round is one round. To see whether a miss keeps coming back,
+            <a href="/tools-tendency-engine">the Tendency Engine</a> tracks fairway and green misses across rounds; your
+            18-hole rounds saved here show up there too.</p>
+        </div>
+      </section>
+
+      <!-- ============ HISTORY ============ -->
+      <section class="panel rc-panel rc-hist" id="rcHist" aria-labelledby="rc-hist-h">
+        <div class="panel-head"><span id="rc-hist-h"><span class="step">03 &middot;</span> Your rounds</span></div>
+        <div class="panel-in">
+          <p class="rc-habit" id="rcHabit">No rounds saved yet. Rounds you save stay in this browser, on this device.</p>
+          <ul class="rc-rounds" id="rcRounds"></ul>
+          <div class="rc-io">
+            <button type="button" class="btn ghost sm" id="rcExport">Export my rounds (JSON)</button>
+            <button type="button" class="btn ghost sm" id="rcCsv">Download as CSV</button>
+            <button type="button" class="btn ghost sm" id="rcImportBtn">Import rounds</button>
+            <input type="file" id="rcImport" accept=".json,application/json" hidden>
+          </div>
+          <p class="rc-msg" id="rcHistMsg" role="status"></p>
+          <p class="rc-hint">Export writes a file to your device; nothing is uploaded. Import takes a Round Card export or a
+            whole Locker backup, and skips rounds already here.</p>
+        </div>
+      </section>
+
+      <!-- ============ HOW IT WORKS ============ -->
+      <section class="panel explain" aria-labelledby="rc-how-h">
+        <div class="panel-in">
+          <h2 id="rc-how-h">How the Round Card reads your card</h2>
+          <p><b>Blow-ups.</b> A blow-up is a double bogey or worse. If double bogey is your typical hole that day (the
+            middle of your scores against par), only triples or worse count, so the list shows the holes that really got
+            away. The result says which rule it used.</p>
+          <p><b>What they cost.</b> It adds up the blow-ups against par, sets that against your whole round, and shows
+            what you would have shot had each one been a bogey.</p>
+          <p><b>Greens in regulation, without asking.</b> A green is hit in regulation when you are on it with two shots to
+            spare against par. With your putts entered, score minus putts answers it. TheGrint and SwingU work
+            it out the same way. A hole with no putt is left unknown.</p>
+          <p><b>Three things a card can price.</b> Penalty strokes, putts beyond two, and shots beyond one to reach a green
+            you missed. Those are the usual routes to a double bogey. The next-round focus goes to whichever cost you
+            most, if it cost at least three strokes (two over nine holes) and nothing else tied it. If it points at the
+            greens, our <a href="/guides-the-three-feet-that-decide-whether-you-three-putt">three-putt guide</a> is where
+            to start; for turning any priority into range time, read the
+            <a href="/news-2026-raw-golf-honest-practice-guide">honest practice guide</a>.</p>
+          <p><b>How sure it is.</b> A strong signal means the numbers behind a finding were entered on at least 90% of
+            the holes. Some evidence means 60% or more, or a finding that has to guess at the cause. Below 60% a stat is
+            not used at all.</p>
+          <p><b>What it will not do.</b> No strokes gained: that needs the distance of every shot. No handicap
+            benchmarks: the published averages disagree too much to judge one round by. And no &ldquo;tilt&rdquo; score:
+            TheGrint&rsquo;s data found golfers play the holes after a blow-up no worse than the holes before it.</p>
+
+          <h2 id="rc-track-h">What to write down after a round</h2>
+          <ul class="rc-sources">
+            <li><b>Your score on every hole.</b> The one thing the card needs.</li>
+            <li><b>Putts,</b> counting only strokes on the green. Jot them on the card hole by hole; a round of putts is
+              hard to rebuild afterwards.</li>
+            <li><b>Penalty strokes:</b> one for out of bounds, a lost ball, water or an unplayable lie. The shot you replay
+              is a normal stroke.</li>
+            <li><b>Skip fairways.</b> Fairway rate barely moves with handicap (about 50% for scratch golfers and 46% at
+              20 to 25 in Shot Scope&rsquo;s data), and the tee shots that really cost you show up as penalties.</li>
+          </ul>
+
+          <h3>Limitations</h3>
+          <ul class="rc-sources">
+            <li>It works from memory and a card. A wrong putt count or a forgotten penalty moves the findings, which is why
+              each one says how much data is behind it.</li>
+            <li>Picked up? Enter the score you wrote down. If you picked up at net double bogey, the real damage was at
+              least that.</li>
+            <li>One round is one round. A single finding can be a bad day; a pattern needs several cards.</li>
+            <li>Fringe putts count as chips here, as on most stats sheets. Counting them as putts makes it look as if you
+              hit more greens.</li>
+            <li>Nine-hole rounds are saved and shown here, but the Tendency Engine and the Coach Report only average full
+              18-hole rounds.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="panel explain" aria-labelledby="rc-src-h">
+        <div class="panel-in">
+          <h2 id="rc-src-h">Sources</h2>
+          <ul class="rc-sources">
+            <li><b>R&amp;A and USGA</b>, Rules of Golf: Rule 3.1c (a score includes penalty strokes) and Rule 18 (stroke
+              and distance is one penalty stroke). Rules of Handicapping, Rule 3.1 (net double bogey as the most a hole
+              counts for handicap).</li>
+            <li><b>Mark Broadie</b>, &ldquo;Assessing Golfer Performance Using Golfmetrics&rdquo;, 2008: the long game
+              explains most of the gap between amateurs, and consistent golfers make few blow-ups.</li>
+            <li><b>Arccos</b>, community data posts comparing 5, 10 and 15 handicaps: doubles or worse per round.</li>
+            <li><b>Lou Stagner</b>, newsletter, &ldquo;Where your doubles come from&rdquo;: penalties, three-putts and chipping
+              twice.</li>
+            <li><b>Shot Scope</b>, strokes gained ebook and three-putt data; <b>TheGrint</b>, blow-up hole study and
+              automatic GIR calculation; <b>SwingU</b>, how greens in regulation are calculated.</li>
+          </ul>
+          <p class="rc-updated">Updated 22 September 2026. Engine version 1.</p>
+        </div>
+      </section>
+
+      <section class="faq-block panel" aria-labelledby="faq-h">
+        <h2 id="faq-h">Questions</h2>
+        <details><summary>What stats should I track after a golf round?</summary>
+          <p>Your score on every hole is the minimum, and it already shows where the round went: which holes, how many
+            blow-ups, which nine. Add putts and penalty strokes and you can see why. Those two, with greens in regulation
+            worked out from them, cover the usual ways a hole turns into a double bogey. Fairways add little for one
+            round.</p></details>
+        <details><summary>Which golf stats matter most for amateurs?</summary>
+          <p>The ones that explain big numbers. Mark Broadie&rsquo;s research found the long game explains most of the
+            gap between better and worse amateurs, and that consistent golfers make few blow-ups. Lou Stagner&rsquo;s
+            analysis of shot data found penalties are the fastest route to a double bogey at every level, with
+            three-putts a growing share as handicaps rise. Putts per round on its own misleads, because hitting more
+            greens means more putts.</p></details>
+        <details><summary>How can I review a round without tracking every shot?</summary>
+          <p>Write your score, putts and any penalty strokes on the card as you play, then put the card in here
+            afterwards. It takes a minute or two and needs no phone on the course. The Round Card finds the blow-ups,
+            prices penalties, three-putts and extra shots to the green, and picks one thing for next time only when the
+            card clearly points at it.</p></details>
+        <details><summary>How does it work out greens in regulation?</summary>
+          <p>From score and putts. Regulation is par minus two strokes to reach the green, so on a par 4 you are on in
+            two. If your score minus your putts is two or less, you hit it. Penalty strokes count as strokes. With no
+            putt recorded, the green is left unknown.</p></details>
+        <details><summary>Is my round stored or sent anywhere?</summary>
+          <p>Rounds you save stay in this browser, on this device, including the course name. GolfRaw counts that the
+            tool was used, whether it was a 9- or 18-hole card and whether putts and penalties were entered, never a
+            score, a course, a date or a hole. Export your rounds to a file to keep a copy or move them to another
+            browser.</p></details>
+      </section>
+
+    </div>
+  </div>
+'''
+
+SCRIPT = r'''  <script>
+    /* ---- The Round Card: page wiring -----------------------------------------
+       All analysis lives in /lib/round/round-card.js (window.GolfrawRoundCard).
+       This script keeps the card, renders the result, saves rounds in the
+       Locker's scorecards store and reports actions (never values) to the
+       tool-events layer. The current card also lives in localStorage, so a
+       reload never loses it; if storage is blocked the card still works for
+       the visit. */
+    (function () {
+      'use strict';
+      var RC = window.GolfrawRoundCard;
+      if (!RC) return;
+      var $ = function (id) { return document.getElementById(id); };
+      var esc = function (s) {
+        return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      };
+      var LS_DRAFT = 'golfraw_roundcard_draft';
+      var LS_AUTOPSY = 'golfraw_autopsy_round';
+      var URL = 'https://www.golfraw.com/tools-scorecard-analyzer';
+      var L = null;          // the Locker, resolved in boot(): its scripts are deferred
+      var saved = [];        // finished rounds on this device, newest played first
+      var last = null;       // the analysis on screen
+      var printing = false;
+      var dirty = false;     // edited since it was opened or saved: only then is a saved round rewritten
+
+      function blank(n) { var a = []; for (var i = 0; i < n; i++) a.push(null); return a; }
+      /* "an 84", "an 81", "an 18", "a 79". */
+      function aOrAn(n) { var s = String(n); return /^8/.test(s) || /^1[18]\d?$/.test(s) ? 'an' : 'a'; }
+      function pad(n) { return (n < 10 ? '0' : '') + n; }
+      function isoToday() { var d = new Date(); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+      function dateToMs(s) {
+        var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || '');
+        return m ? new Date(+m[1], +m[2] - 1, +m[3], 12).getTime() : 0;   // local noon: no time-zone slip
+      }
+      function msToIso(ms) { var d = new Date(ms); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+      function dateText(ms) {
+        if (!ms) return 'Undated';
+        try { return new Date(ms).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }); }
+        catch (e) { return msToIso(ms); }
+      }
+
+      var state = fresh(18, 'quick');
+      function fresh(holes, detail) {
+        return { holes: holes, detail: detail, date: isoToday(), course: '',
+          pars: (holes === 9 ? RC.PARS_9 : RC.PARS_18).slice(), score: blank(holes), putts: blank(holes), pen: blank(holes),
+          keep: blank(holes), id: null, createdAt: 0 };
+      }
+      function detailed() { return state.detail === 'detailed'; }
+
+      /* ==================== SETUP ==================== */
+      function setHoles(n) {
+        if (n === state.holes) return;
+        var cut = function (arr, fill) {
+          var out = arr.slice(0, n);
+          while (out.length < n) out.push(fill ? fill(out.length) : null);
+          return out;
+        };
+        state.pars = cut(state.pars, function (i) { return RC.PARS_18[i]; });
+        state.score = cut(state.score); state.putts = cut(state.putts); state.pen = cut(state.pen); state.keep = cut(state.keep);
+        state.holes = n;
+        renderSetup(); renderCard(); stale(); persist();
+      }
+      function setDetail(v) {
+        if (v === state.detail) return;
+        state.detail = v;
+        renderSetup(); renderCard(); stale(); persist();
+      }
+      function renderSetup() {
+        var seg = function (id, val) {
+          var bs = $(id).querySelectorAll('button');
+          for (var i = 0; i < bs.length; i++) bs[i].setAttribute('aria-pressed', String(bs[i].getAttribute('data-v') === String(val)));
+        };
+        seg('rcHoles', state.holes); seg('rcDetail', state.detail);
+        $('rcDate').value = state.date || '';
+        $('rcCourse').value = state.course || '';
+        $('rcDetailHint').hidden = !detailed();
+      }
+
+      /* ==================== THE CARD ==================== */
+      function box(k, h, label, value, placeholder) {
+        return '<td><input class="rc-in" type="text" inputmode="numeric" pattern="[0-9]*" enterkeyhint="next" autocomplete="off" maxlength="2" ' +
+          'data-k="' + k + '" data-h="' + h + '" value="' + (value === null ? '' : value) + '"' +
+          (placeholder ? ' placeholder="' + placeholder + '"' : '') + ' aria-label="' + label + '"></td>';
+      }
+      function totalRow(label, from, to) {
+        return '<tr class="rc-tot" data-from="' + from + '" data-to="' + to + '"><th scope="row" colspan="2">' + label +
+          ' <span data-t="par"></span></th><td><b data-t="score"></b></td>' +
+          (detailed() ? '<td><b data-t="putts"></b></td><td><b data-t="pen"></b></td>' : '') + '</tr>';
+      }
+      function renderCard() {
+        var d = detailed(), n = state.holes, html = '<caption class="rc-sr">Your scorecard, one row per hole</caption>';
+        html += '<colgroup><col class="c-hole"><col class="c-par"><col>' + (d ? '<col><col>' : '') + '</colgroup>';
+        html += '<thead><tr><th scope="col">Hole</th><th scope="col">Par</th><th scope="col">Score</th>' +
+          (d ? '<th scope="col">Putts</th><th scope="col">Pen.</th>' : '') + '</tr></thead><tbody>';
+        for (var h = 0; h < n; h++) {
+          var no = h + 1;
+          html += '<tr><th scope="row">' + no + '</th><td><button type="button" class="rc-par" data-h="' + h + '" ' +
+            'aria-label="Hole ' + no + ', par ' + state.pars[h] + '. Change par">' + state.pars[h] + '</button></td>' +
+            box('score', h, 'Hole ' + no + ' score', state.score[h]) +
+            (d ? box('putts', h, 'Hole ' + no + ' putts', state.putts[h]) + box('pen', h, 'Hole ' + no + ' penalty strokes', state.pen[h], '0') : '') +
+            '</tr>';
+          if (n === 18 && h === 8) html += totalRow('Out', 0, 9);
+        }
+        if (n === 18) html += totalRow('In', 9, 18);
+        html += totalRow('Total', 0, n) + '</tbody>';
+        $('rcTable').innerHTML = html;
+        refreshTotals();
+      }
+      function refreshTotals() {
+        var rows = $('rcTable').querySelectorAll('tr.rc-tot');
+        for (var r = 0; r < rows.length; r++) {
+          var from = +rows[r].getAttribute('data-from'), to = +rows[r].getAttribute('data-to');
+          var t = { par: 0, score: 0, putts: 0, pen: 0 }, has = { score: false, putts: false, pen: false };
+          for (var h = from; h < to; h++) {
+            t.par += state.pars[h];
+            ['score', 'putts', 'pen'].forEach(function (k) { if (state[k][h] !== null) { t[k] += state[k][h]; has[k] = true; } });
+          }
+          rows[r].querySelector('[data-t="par"]').textContent = 'par ' + t.par;
+          ['score', 'putts', 'pen'].forEach(function (k) {
+            var el = rows[r].querySelector('[data-t="' + k + '"]');
+            if (el) el.textContent = has[k] ? t[k] : '–';
+          });
+        }
+      }
+      /* Where typing moves you: every score, plus putts in detail mode.
+         Penalty boxes are left out of the run because most holes have none;
+         Tab and a tap still reach them. */
+      function order() {
+        return Array.prototype.slice.call($('rcTable').querySelectorAll(detailed() ? 'input[data-k="score"], input[data-k="putts"]' : 'input[data-k="score"]'));
+      }
+      function next(from) {
+        var list = order(), i = list.indexOf(from);
+        if (from.getAttribute('data-k') === 'pen') {
+          var h = +from.getAttribute('data-h');
+          for (i = 0; i < list.length; i++) if (+list[i].getAttribute('data-h') > h) break;
+          i -= 1;
+        }
+        if (i < list.length - 1) { list[i + 1].focus(); list[i + 1].select(); } else $('rcGo').focus();
+      }
+
+      /* ==================== RUN ==================== */
+      function gather() {
+        var holes = [];
+        /* In detail mode an empty penalty box on a hole with putts means none.
+           The Round Card saves those as explicit zeros, so a saved card with
+           no penalty recorded anywhere is one that never asked (a Tendency
+           Engine card): its blanks stay unknown until the golfer enters one. */
+        var blankIsNone = !state.id || state.pen.some(function (v) { return v !== null; });
+        for (var h = 0; h < state.holes; h++) {
+          var putts = detailed() ? state.putts[h] : null;
+          var pen = detailed() ? state.pen[h] : null;
+          if (detailed() && blankIsNone && pen === null && putts !== null) pen = 0;
+          var keep = state.keep[h] || {};
+          holes.push({ par: state.pars[h], score: state.score[h], putts: putts, pen: pen,
+            fir: keep.fir || null, app: keep.app || null });
+        }
+        return { v: RC.SCHEMA_VERSION, holes: holes };
+      }
+      var MSG = {
+        score_range: function (e) { return 'Hole ' + e.hole + ': a score goes from 1 to 15.'; },
+        putts_range: function (e) { return 'Hole ' + e.hole + ': putts go from 0 to 6.'; },
+        pen_range: function (e) { return 'Hole ' + e.hole + ': penalty strokes go from 0 to 6.'; },
+        par: function (e) { return 'Hole ' + e.hole + ': tap the par to set 3, 4 or 5.'; },
+        too_many: function (e) {
+          return 'Hole ' + e.hole + ': ' + e.putts + ' ' + (e.putts === 1 ? 'putt' : 'putts') + (e.pen ? ' and ' + e.pen + ' penalty ' +
+            (e.pen === 1 ? 'stroke' : 'strokes') : '') + ' will not fit in a ' + e.score + '. Every hole needs at least one other shot.';
+        }
+      };
+      function explain(errors) {
+        var lines = [], missing = [], first = null;
+        clearInvalid();
+        errors.forEach(function (e) {
+          var k = e.code === 'score_missing' || e.code === 'score_range' ? 'score' : e.code === 'putts_range' ? 'putts' :
+            e.code === 'pen_range' ? 'pen' : e.code === 'too_many' ? 'putts' : null;
+          var el = k ? $('rcTable').querySelector('input[data-k="' + k + '"][data-h="' + (e.hole - 1) + '"]') :
+            $('rcTable').querySelector('.rc-par[data-h="' + (e.hole - 1) + '"]');
+          if (el) { el.setAttribute('aria-invalid', 'true'); if (!first) first = el; }
+          if (e.code === 'score_missing') missing.push(e.hole);
+          else if (MSG[e.code]) lines.push(MSG[e.code](e));
+        });
+        if (missing.length) {
+          var shown = missing.slice(0, 8), more = missing.length - shown.length;
+          lines.unshift((missing.length === 1 ? 'Hole ' : 'Holes ') + (shown.length === 1 ? shown[0] :
+            shown.slice(0, -1).join(', ') + (more ? ', ' + shown[shown.length - 1] : ' and ' + shown[shown.length - 1])) +
+            (more ? ' and ' + more + ' more' : '') + (missing.length === 1 ? ' needs a score.' : ' need a score.'));
+        }
+        showErr(lines.join(' '));
+        if (first) first.focus();
+      }
+      function showErr(m) { var e = $('rcErr'); e.textContent = m || ''; e.classList.toggle('show', !!m); }
+      function clearInvalid() {
+        var bad = $('rcTable').querySelectorAll('[aria-invalid="true"]');
+        for (var i = 0; i < bad.length; i++) bad[i].removeAttribute('aria-invalid');
+      }
+
+      function run(opts) {
+        opts = opts || {};
+        var card = gather(), a = RC.analyse(card);
+        if (!a.ok) { explain(a.errors); return; }
+        showErr(''); clearInvalid();
+        last = a;
+        renderResult(a);
+        $('rcOut').classList.add('show');
+        if (!opts.quiet) {
+          $('rcOut').scrollIntoView({ block: 'start' });
+          $('rcResultHead').focus({ preventScroll: true });
+        }
+        if (window.GRTrack) GRTrack.completed({ round_length: a.holes === 18 ? 'eighteen' : 'nine', detail_mode: a.detail });
+        if (state.id && L && dirty) saveRound(true);
+      }
+      function stale() {
+        dirty = true;
+        if (!last) return;
+        last = null;
+        $('rcOut').classList.remove('show');
+      }
+
+      /* ==================== RESULT ==================== */
+      var MIX = [['under', 'Birdies or better'], ['par', 'Pars'], ['bogey', 'Bogeys'], ['double', 'Double bogeys'], ['worse', 'Triples or worse']];
+      function stat(label, value, small) {
+        return '<div><dt>' + label + '</dt><dd>' + value + (small ? '<small>' + small + '</small>' : '') + '</dd></div>';
+      }
+      function confChip(el, conf) {
+        el.textContent = conf || '';
+        el.hidden = !conf;
+        el.setAttribute('data-c', conf === RC.CONF.strong ? 'strong' : 'some');
+      }
+      function renderResult(a) {
+        $('rcGross').textContent = a.gross;
+        $('rcToPar').textContent = RC.toParText(a.toPar);
+        $('rcNines').textContent = a.front ? 'Out ' + a.front.gross + ' · In ' + a.back.gross : '9 holes, par ' + a.par;
+        $('rcHeadline').textContent = a.headline;
+        $('rcData').textContent = a.dataNote;
+        $('rcRule').textContent = RC.blowupRule(a);
+        $('rcBlow').innerHTML = a.blowups.length ? a.blowups.map(function (r) {
+          var why = RC.causeText(r);
+          return '<li><b>Hole ' + r.hole + '</b>, par ' + r.par + ': ' + r.score + ', ' + RC.holeName(r.d) + ' (' + RC.toParText(r.d) + ')' +
+            (why ? '<span class="rc-why">Had ' + esc(why) + '.</span>' : '') + '</li>';
+        }).join('') : '<li>None today.</li>';
+        $('rcWithout').textContent = a.blowups.length
+          ? 'Make ' + (a.blowups.length === 1 ? 'that hole a ' + RC.holeName(a.fallback) : 'those holes ' + RC.holeNamePlural(a.fallback)) +
+            ' and this is ' + aOrAn(a.withoutBlowups) + ' ' + a.withoutBlowups + '.'
+          : '';
+        $('rcFindWrap').hidden = !a.findings.length;
+        $('rcFind').innerHTML = a.findings.map(function (f) {
+          return '<li><span>' + esc(f.text) + '</span><span class="rc-conf" data-c="' + (f.confidence === RC.CONF.strong ? 'strong' : 'some') +
+            '">' + esc(f.confidence) + '</span></li>';
+        }).join('');
+        $('rcFocus').textContent = a.focus ? a.focus.text : a.noFocus;
+        confChip($('rcFocusConf'), a.focus ? a.focus.confidence : '');
+
+        var s = MIX.map(function (m) { return stat(m[1], a.mix[m[0]]); }).join('');
+        s += a.byPar.map(function (g) { return stat('Par ' + g.par + 's', RC.toParText(g.toPar), g.holes + (g.holes === 1 ? ' hole' : ' holes')); }).join('');
+        if (a.putts) s += stat('Putts', a.putts.total, 'on ' + a.putts.holes + ' holes · ' + a.putts.three + ' three-putt' + (a.putts.three === 1 ? '' : 's'));
+        if (a.gir) s += stat('Greens in regulation', a.gir.hit + ' of ' + a.gir.of, RC.toParText(a.gir.onHit) + ' on greens hit · ' + RC.toParText(a.gir.onMissed) + ' on the rest');
+        if (a.pen) s += stat('Penalty strokes', a.pen.strokes, a.pen.holes + (a.pen.holes === 1 ? ' hole' : ' holes'));
+        $('rcStats').innerHTML = s;
+
+        $('rcCourseShareWrap').hidden = !state.course;
+        $('rcShareMsg').textContent = '';
+        renderSaveState();
+      }
+      function renderSaveState() {
+        var btn = $('rcSave'), msg = $('rcSaveMsg');
+        if (!L) { btn.hidden = true; msg.textContent = 'This browser is not letting GolfRaw save anything. Copy or print the result to keep it.'; return; }
+        btn.hidden = !!state.id;
+        msg.textContent = state.id ? 'Saved on this device. Changes update it when you run the card again.' : '';
+      }
+
+      /* ==================== SAVE / HISTORY ==================== */
+      function record() {
+        var card = gather();
+        return {
+          id: state.id || undefined, v: RC.SCHEMA_VERSION, course: (state.course || '').slice(0, 80),
+          playedAt: dateToMs(state.date) || Date.now(), createdAt: state.createdAt || 0,
+          holes: card.holes.map(function (h) {
+            return { par: h.par, score: h.score, putts: h.putts, pen: h.pen, fir: h.fir, app: RC.approachFor(h) };
+          }),
+          summary: RC.summary(card)
+        };
+      }
+      function saveRound(quietly) {
+        if (!L || !last) return;
+        L.saveScorecard(record()).then(function (rec) {
+          state.id = rec.id; state.createdAt = rec.createdAt; dirty = false;
+          persist(); renderSaveState(); loadHistory();
+          if (!quietly) $('rcSaveMsg').textContent = 'Saved on this device.';
+        })['catch'](function () {
+          $('rcSaveMsg').textContent = 'Could not save on this browser. Copy or print the result to keep it.';
+        });
+      }
+      function loadHistory() {
+        if (!L) { renderHistory(); return Promise.resolve(); }
+        return L.ready().then(function () { return L.listScorecards(); }).then(function (all) {
+          saved = all.filter(RC.isValidRound);
+          renderHistory();
+        })['catch'](function () { L = null; renderHistory(); renderSaveState(); });
+      }
+      function summaryOf(c) { return c.summary || RC.summary(c); }
+      function renderHistory() {
+        var list = $('rcRounds'), habit = $('rcHabit');
+        if (!L) {
+          habit.textContent = 'This browser is not letting GolfRaw save anything, so rounds cannot be kept here. The card still works.';
+          list.innerHTML = '';
+          ['rcExport', 'rcCsv', 'rcImportBtn'].forEach(function (id) { $(id).hidden = true; });
+          return;
+        }
+        var n = saved.length;
+        habit.textContent = !n ? 'No rounds saved yet. Rounds you save stay in this browser, on this device.'
+          : n === 1 ? 'One round saved on this device.'
+          : cap(numberWord(n)) + ' rounds saved on this device.' + (n >= 3 ? ' Patterns get more useful with more rounds.' : '');
+        list.innerHTML = saved.map(function (c) {
+          var s = summaryOf(c), when = dateText(c.playedAt), label = when + ' · ' + (c.course ? esc(c.course) + ' · ' : '');
+          return '<li data-id="' + esc(c.id) + '"><button type="button" class="rc-open" data-act="open">' + label + s.gross +
+            ' (' + RC.toParText(s.toPar) + ') <span>' + s.holes + ' holes</span></button>' +
+            '<button type="button" class="btn ghost sm" data-act="again" aria-label="New card for ' + (c.course ? esc(c.course) : 'this course') +
+            ', same pars">Same course again</button>' +
+            '<button type="button" class="btn ghost sm" data-act="del" aria-label="Delete the round from ' + esc(when) + ', ' + s.gross + '">Delete</button></li>';
+        }).join('');
+        ['rcExport', 'rcCsv'].forEach(function (id) { $(id).hidden = !n; });
+        $('rcImportBtn').hidden = false;
+      }
+      var WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+      function numberWord(n) { return n < WORDS.length ? WORDS[n] : String(n); }
+      function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+      function find(id) { for (var i = 0; i < saved.length; i++) if (saved[i].id === id) return saved[i]; return null; }
+
+      function load(c, keepId) {
+        var n = c.holes.length, detail = c.holes.some(function (h) { return h.putts !== null && h.putts !== undefined; }) ? 'detailed' : 'quick';
+        state = fresh(n, detail);
+        state.course = c.course || '';
+        state.date = c.playedAt ? msToIso(c.playedAt) : isoToday();
+        c.holes.forEach(function (h, i) {
+          state.pars[i] = h.par; state.score[i] = h.score === undefined ? null : h.score;
+          state.putts[i] = h.putts === undefined ? null : h.putts; state.pen[i] = h.pen === undefined ? null : h.pen;
+          state.keep[i] = { fir: h.fir || null, app: h.app || null };
+        });
+        if (keepId) { state.id = c.id; state.createdAt = c.createdAt || 0; }
+        last = null; dirty = false; $('rcOut').classList.remove('show');
+        renderSetup(); renderCard(); persist();
+      }
+      function onHistoryClick(e) {
+        var b = e.target.closest ? e.target.closest('button[data-act]') : null;
+        if (!b) return;
+        var li = b.closest('li'), id = li.getAttribute('data-id'), c = find(id), act = b.getAttribute('data-act');
+        if (act === 'open' && c) { load(c, true); run(); }
+        else if (act === 'again' && c) {
+          load({ holes: c.holes.map(function (h) { return { par: h.par, score: null, putts: null, pen: null }; }), course: c.course, playedAt: 0 }, false);
+          state.detail = c.holes.some(function (h) { return h.putts !== null && h.putts !== undefined; }) ? 'detailed' : 'quick';
+          renderSetup(); renderCard(); persist();
+          $('rcSetup').scrollIntoView({ block: 'start' });
+          var first = $('rcTable').querySelector('input[data-k="score"]'); if (first) first.focus();
+        } else if (act === 'del') {
+          li.innerHTML = '<span>Delete this round for good?</span> <button type="button" class="btn sm" data-act="really">Delete</button>' +
+            ' <button type="button" class="btn ghost sm" data-act="keep">Keep it</button>';
+          li.querySelector('[data-act="keep"]').focus();
+        } else if (act === 'keep') { renderHistory(); }
+        else if (act === 'really') {
+          L.deleteScorecard(id).then(function () {
+            if (state.id === id) { state.id = null; state.createdAt = 0; persist(); renderSaveState(); }
+            $('rcHistMsg').textContent = 'Round deleted.';
+            return loadHistory();
+          })['catch'](function () { $('rcHistMsg').textContent = 'Could not delete that round.'; });
+        }
+      }
+
+      /* ==================== EXPORT / IMPORT ==================== */
+      function download(name, text, type) {
+        try {
+          var blob = new Blob([text], { type: type }), url = window.URL.createObjectURL(blob), a = document.createElement('a');
+          a.href = url; a.download = name; document.body.appendChild(a); a.click();
+          setTimeout(function () { window.URL.revokeObjectURL(url); a.remove(); }, 500);
+        } catch (e) { $('rcHistMsg').textContent = 'This browser would not create the file.'; }
+      }
+      function doImport(file) {
+        var reader = new FileReader();
+        reader.onload = function () {
+          var res = RC.parseImport(String(reader.result || ''));
+          if (!res.ok) {
+            $('rcHistMsg').textContent = res.error === 'newer' ? 'That file comes from a newer version of GolfRaw.'
+              : 'That file is not a Round Card export or a Locker backup.';
+            return;
+          }
+          var plan = RC.mergePlan(saved, res.rounds), chain = Promise.resolve();
+          plan.write.forEach(function (c) {
+            chain = chain.then(function () { c.summary = RC.summary(c); return L.saveScorecard(c); });
+          });
+          chain.then(loadHistory).then(function () {
+            var n = plan.write.length;
+            $('rcHistMsg').textContent = (n ? 'Imported ' + n + (n === 1 ? ' round.' : ' rounds.') : 'Nothing new to import.') +
+              (plan.alreadyHere ? ' ' + plan.alreadyHere + ' already here.' : '') +
+              (res.skipped ? ' ' + res.skipped + ' could not be read.' : '');
+          })['catch'](function () { $('rcHistMsg').textContent = 'Could not save the imported rounds on this browser.'; });
+        };
+        reader.readAsText(file);
+      }
+
+      /* ==================== SHARE / PRINT ==================== */
+      function shareText(link) {
+        return RC.shareText(last, { course: $('rcCourseShare').checked ? state.course : '', link: link });
+      }
+      function copyText(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          return navigator.clipboard.writeText(text)['catch'](function () { return legacyCopy(text); });
+        }
+        return legacyCopy(text);
+      }
+      function legacyCopy(text) {
+        return new Promise(function (resolve, reject) {
+          var ta = document.createElement('textarea');
+          ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select();
+          var ok = false;
+          try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+          ta.remove();
+          if (ok) resolve(); else reject(new Error('copy failed'));
+        });
+      }
+      function copySummary() {
+        if (!last) return;
+        copyText(shareText(true)).then(function () {
+          if (window.GRTrack) GRTrack.shared('copy_result');
+          $('rcShareMsg').textContent = 'Copied.';
+        }, function () { $('rcShareMsg').textContent = 'Could not copy on this device.'; });
+      }
+      function doShare() {
+        if (!last) return;
+        if (!navigator.share) return copySummary();
+        navigator.share({ title: 'GolfRaw Round Card', text: shareText(false), url: URL }).then(function () {
+          if (window.GRTrack) GRTrack.shared('native_share');
+          $('rcShareMsg').textContent = 'Shared.';
+        }, function (err) { if (err && err.name === 'AbortError') return; copySummary(); });
+      }
+      function doPrint() {
+        if (!last) return;
+        printing = true;
+        window.print();
+      }
+      window.addEventListener('afterprint', function () {
+        if (printing && last && window.GRTrack) GRTrack.shared('print');
+        printing = false;
+      });
+
+      /* ==================== KEEP THE CARD ==================== */
+      function persist() {
+        try { localStorage.setItem(LS_DRAFT, JSON.stringify({ v: 1, state: state, dirty: dirty })); } catch (e) { /* storage blocked: the card still works */ }
+      }
+      function restore() {
+        var d = null;
+        try { d = JSON.parse(localStorage.getItem(LS_DRAFT) || 'null'); } catch (e) { d = null; }
+        var s = d && d.state;
+        if (!s || (s.holes !== 9 && s.holes !== 18) || !s.pars || s.pars.length !== s.holes) return false;
+        var ok = ['score', 'putts', 'pen'].every(function (k) { return s[k] && s[k].length === s.holes; });
+        if (!ok) return false;
+        state = fresh(s.holes, s.detail === 'detailed' ? 'detailed' : 'quick');
+        state.date = typeof s.date === 'string' ? s.date : isoToday();
+        state.course = typeof s.course === 'string' ? s.course.slice(0, 80) : '';
+        for (var i = 0; i < s.holes; i++) {
+          state.pars[i] = [3, 4, 5, 6].indexOf(s.pars[i]) >= 0 ? s.pars[i] : RC.PARS_18[i];
+          ['score', 'putts', 'pen'].forEach(function (k) { state[k][i] = typeof s[k][i] === 'number' ? s[k][i] : null; });
+          state.keep[i] = s.keep && s.keep[i] ? { fir: s.keep[i].fir || null, app: s.keep[i].app || null } : null;
+        }
+        state.id = typeof s.id === 'string' ? s.id : null;
+        state.createdAt = typeof s.createdAt === 'number' ? s.createdAt : 0;
+        dirty = d.dirty === true;
+        return true;
+      }
+      /* A card half-typed into the Round Autopsy opens here once, on request. */
+      function autopsyCard() {
+        var d = null;
+        try { d = JSON.parse(localStorage.getItem(LS_AUTOPSY) || 'null'); } catch (e) { d = null; }
+        var s = d && d.state;
+        if (!s || !s.pars || s.pars.length !== 18 || !s.score || !s.score.some(function (v) { return typeof v === 'number'; })) return null;
+        return {
+          course: typeof d.course === 'string' ? d.course : '', playedAt: 0,
+          holes: s.pars.map(function (p, i) {
+            return { par: [3, 4, 5, 6].indexOf(p) >= 0 ? p : RC.PARS_18[i], score: typeof s.score[i] === 'number' ? s.score[i] : null,
+              putts: s.putts && typeof s.putts[i] === 'number' ? s.putts[i] : null, pen: s.pen && typeof s.pen[i] === 'number' ? s.pen[i] : null,
+              fir: s.fir && s.fir[i] === 1 ? 'hit' : null, app: null };
+          })
+        };
+      }
+      function cardEmpty() { return !state.score.some(function (v) { return v !== null; }); }
+
+      /* ==================== WIRING ==================== */
+      function boot() {
+        L = window.GolfrawLocker || null;
+        if (!restore()) state = fresh(18, 'quick');
+        renderSetup(); renderCard();
+        var legacy = cardEmpty() ? autopsyCard() : null;
+        if (legacy) $('rcLegacy').hidden = false;
+        $('rcLegacyOpen').addEventListener('click', function () {
+          if (window.GRTrack) GRTrack.inputMode('import');
+          load(legacy, false); $('rcLegacy').hidden = true;
+        });
+
+        $('rcHoles').addEventListener('click', function (e) { var b = e.target.closest('button[data-v]'); if (b) setHoles(+b.getAttribute('data-v')); });
+        $('rcDetail').addEventListener('click', function (e) { var b = e.target.closest('button[data-v]'); if (b) setDetail(b.getAttribute('data-v')); });
+        $('rcDate').addEventListener('change', function () { state.date = $('rcDate').value; dirty = true; persist(); });
+        $('rcCourse').addEventListener('input', function () { state.course = $('rcCourse').value.slice(0, 80); dirty = true; persist(); });
+
+        $('rcTable').addEventListener('click', function (e) {
+          var b = e.target.closest ? e.target.closest('.rc-par') : null;
+          if (!b) return;
+          var h = +b.getAttribute('data-h'), p = state.pars[h];
+          p = p >= 5 ? 3 : p + 1;
+          state.pars[h] = p;
+          b.textContent = p;
+          b.setAttribute('aria-label', 'Hole ' + (h + 1) + ', par ' + p + '. Change par');
+          b.removeAttribute('aria-invalid');
+          $('rcLive').textContent = 'Hole ' + (h + 1) + ' is now a par ' + p + '.';
+          refreshTotals(); stale(); persist();
+        });
+        $('rcTable').addEventListener('input', function (e) {
+          var t = e.target;
+          if (!t.classList || !t.classList.contains('rc-in')) return;
+          var clean = t.value.replace(/\D/g, '').slice(0, 2);
+          if (clean !== t.value) t.value = clean;
+          var k = t.getAttribute('data-k'), h = +t.getAttribute('data-h');
+          state[k][h] = clean === '' ? null : parseInt(clean, 10);
+          t.removeAttribute('aria-invalid');
+          refreshTotals(); stale(); persist();
+          if (k === 'score' ? (/^[2-9]$/.test(clean) || /^1\d$/.test(clean)) : /^\d$/.test(clean)) next(t);
+        });
+        $('rcTable').addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' && e.target.classList && e.target.classList.contains('rc-in')) { e.preventDefault(); next(e.target); }
+        });
+
+        $('rcGo').addEventListener('click', function () { run(); });
+        $('rcNew').addEventListener('click', function () {
+          var keepPars = state.pars.slice(), holes = state.holes, detail = state.detail;
+          state = fresh(holes, detail); state.pars = keepPars;
+          last = null; $('rcOut').classList.remove('show'); showErr('');
+          renderSetup(); renderCard(); persist();
+          $('rcLive').textContent = 'New card. Pars kept.';
+        });
+        $('rcSave').addEventListener('click', function () { saveRound(false); });
+        $('rcCopy').addEventListener('click', copySummary);
+        $('rcShare').addEventListener('click', doShare);
+        $('rcPrint').addEventListener('click', doPrint);
+        $('rcRounds').addEventListener('click', onHistoryClick);
+        $('rcExport').addEventListener('click', function () { download('golfraw-rounds-' + isoToday() + '.json', RC.exportRounds(saved), 'application/json'); });
+        $('rcCsv').addEventListener('click', function () { download('golfraw-rounds-' + isoToday() + '.csv', RC.toCSV(saved), 'text/csv'); });
+        $('rcImportBtn').addEventListener('click', function () { $('rcImport').click(); });
+        $('rcImport').addEventListener('change', function () {
+          if (this.files && this.files[0] && L) doImport(this.files[0]);
+          this.value = '';
+        });
+
+        renderHistory();
+        loadHistory();
+        if (L && L.subscribe) L.subscribe(function (kind) { if (kind === 'scorecards' || kind === 'import' || kind === 'clear') loadHistory(); });
+      }
+
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
+    })();
+  </script>
+'''
+
+MODEL = '  <script src="/lib/round/round-card.js?v=%s"></script>\n' % MODEL_VER
+
+TAIL = '''  <script>window.__gr_consent=true;window.__gr_ads=false;</script>
+'''
+
+
+def main():
+    p = shell_parts()
+    doc = '\n'.join([
+        rewrite_meta(p['head_top']),
+        JSONLD,
+        p['head_tail'].replace(PREMIUM_LINK, '').replace('</head>', STYLE + PREMIUM_LINK + '</head>'),
+        p['body_open'],
+        MAIN,
+        p['footer'],
+        '',
+        p['nav_script'],
+        MODEL + SCRIPT,
+        p['gtag'],
+        TAIL + '</body>',
+        '',
+        '</html>',
+    ])
+    doc = normalize_tool_page(doc, OUT)
+    io.open(OUT, 'w', encoding='utf-8').write(doc)
+    print('  wrote %s (%d bytes)' % (os.path.basename(OUT), len(doc.encode('utf-8'))))
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())

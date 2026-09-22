@@ -389,6 +389,13 @@
   <div class="tool-body">
     <div class="wrap">
 
+      <!-- ============ REPLACED BY THE ROUND CARD ============ -->
+      <div class="legacy-note" role="note" data-gr-placement="legacy_notice" style="order:0;border:2px solid var(--ink);background:var(--white);border-radius:12px;padding:14px 16px;margin-bottom:22px;font-size:15px;line-height:1.55">
+        <b>The Round Card does this job now.</b> Put your card in there and see which holes cost you and why, with
+        your rounds saved on this device. A card you started here opens there too.
+        <a href="/tools-scorecard-analyzer" style="font-weight:700">Open the Round Card &rarr;</a>
+      </div>
+
       <!-- ============ AEO: DIRECT ANSWER ============ -->
       <section class="answer-block" aria-labelledby="aeo-q">
         <div class="ab-tag">The short answer</div>
@@ -1078,15 +1085,15 @@
 <!-- TOOL-EVENTS:START -->
   <!-- Tool events: which tools people start, finish and share. Actions only,
        never the numbers typed in; see lib/analytics/tool-events.js. -->
-  <script src="/lib/analytics/tool-events.js?v=3" defer></script>
+  <script src="/lib/analytics/tool-events.js?v=4" defer></script>
 <!-- TOOL-EVENTS:END -->
 <!-- LOCKER:START -->
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=10" defer></script>
-  <script src="/lib/locker/store.js?v=10" defer></script>
-  <script src="/lib/locker/drawer.js?v=10" defer></script>
+  <script src="/lib/locker/schema.js?v=11" defer></script>
+  <script src="/lib/locker/store.js?v=11" defer></script>
+  <script src="/lib/locker/drawer.js?v=11" defer></script>
 <!-- LOCKER:END -->
   <!-- Ads + consent are deferred until the reader engages, or 6s, whichever
        comes first. Consent loads BEFORE AdSense so the EEA/UK gate still runs
