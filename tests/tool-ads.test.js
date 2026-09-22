@@ -99,30 +99,52 @@ function browser(opts) {
 const TEST = { units: { after_result: '1111111111', lower: '2222222222' }, autoAdsExcluded: true, adsSrc: '/stub.js' };
 const now = Math.floor(Date.now() / 1000);
 
-/* ---- shipped switches: dormant ---------------------------------------- */
+/* ---- shipped switches: live on the four pilots only ------------------- */
 {
-  const b = browser({ slots: [slotEl('after_result', null, false), slotEl('lower', '#outWrap', true)] });
-  check(b.win.GolfrawAds.reason() === 'auto_ads_not_excluded', 'shipped: a pilot page waits for Auto ads to be excluded, got ' + b.win.GolfrawAds.reason());
-  check(b.slots.every((s) => s.removed), 'shipped: the empty slots are removed, not left as gaps');
-  b.interact(); b.runTimers(7000);
-  check(b.adsScripts().length === 0, 'shipped: adsbygoogle.js is never requested');
-  check(b.fcScripts().length === 1, 'shipped: the consent message still loads once');
+  const units = /var UNITS = \{ after_result: '(\d{10})', lower: '(\d{10})' \};/.exec(SRC);
+  check(units && units[1] === '8457096514' && units[2] === '1432433875', 'shipped: the two real AdSense unit ids');
+  for (const p of ['/tools-club-distance-calculator', '/tools-tee-box-check', '/tools-plays-like', '/tools-bag-audit']) {
+    const b = browser({ path: p });
+    check(b.win.GolfrawAds.reason() === 'eligible', 'shipped: ' + p + ' is live, got ' + b.win.GolfrawAds.reason());
+  }
+  for (const p of ['/tools-scorecard-analyzer', '/tools-settle-up-calculator', '/tools-coach-report', '/tools-gimme-audit', '/tools-round-autopsy']) {
+    const b = browser({ path: p, slots: [slotEl('after_result', null, true)] });
+    check(b.win.GolfrawAds.reason() === 'page_off', 'shipped: ' + p + ' stays off');
+    check(b.slots.every((s) => s.removed), 'shipped: slots on an off page are removed, not left as gaps');
+    b.interact(); b.runTimers(20000); b.mutate();
+    check(b.adsScripts().length === 0, 'shipped: ' + p + ' never requests adsbygoogle.js');
+    check(b.fcScripts().length === 1, 'shipped: ' + p + ' still loads the consent message once');
+  }
 }
 {
-  const b = browser({ path: '/tools-scorecard-analyzer', test: TEST, host: 'localhost' });
-  check(b.win.GolfrawAds.reason() === 'page_off', 'Round Card is not in the rollout yet');
-}
-{
-  const b = browser({ path: '/tools-coach-report', host: 'localhost', test: TEST });
-  check(b.win.GolfrawAds.reason() === 'page_off', 'the Pro preview tool never carries ads');
+  // a pilot with no result yet: the module waits, loads nothing
+  const A = slotEl('after_result', null, false);
+  const b = browser({ slots: [A, slotEl('lower', '#outWrap', true)] });
+  b.interact(); b.runTimers(7000); b.mutate();
+  check(b.adsScripts().length === 0, 'shipped pilot: no ad code before a result');
+  check(A.ins === null, 'shipped pilot: no unit before a result');
 }
 
 /* ---- the test switches only work on localhost ------------------------- */
 {
-  const b = browser({ test: TEST });
-  check(b.win.GolfrawAds.reason() === 'auto_ads_not_excluded', 'production ignores __GR_ADS_TEST__');
-  const c = browser({ storage: { gr_ads_test: JSON.stringify(TEST) } });
-  check(c.win.GolfrawAds.reason() === 'auto_ads_not_excluded', 'production ignores the gr_ads_test storage key');
+  const off = { units: TEST.units, autoAdsExcluded: true, pages: {} };
+  const b = browser({ test: off });
+  check(b.win.GolfrawAds.reason() === 'eligible', 'production ignores __GR_ADS_TEST__');
+  const c = browser({ storage: { gr_ads_test: JSON.stringify(off) } });
+  check(c.win.GolfrawAds.reason() === 'eligible', 'production ignores the gr_ads_test storage key');
+  const d = browser({ host: 'localhost', test: off });
+  check(d.win.GolfrawAds.reason() === 'page_off', 'localhost honours the test switches');
+}
+
+/* ---- QA test mode ------------------------------------------------------ */
+{
+  const A = slotEl('after_result', null, true);
+  browser({ slots: [A], storage: { gr_adtest: '1' } });
+  check(/data-adtest="on"/.test(A.innerHTML), 'gr_adtest=1 asks AdSense for test ads');
+  const B = slotEl('after_result', null, true);
+  browser({ slots: [B] });
+  check(!/data-adtest/.test(B.innerHTML), 'everyone else gets normal units');
+  check(/data-ad-slot="8457096514"/.test(B.innerHTML), 'slot A requests unit 8457096514');
 }
 
 /* ---- Pro -------------------------------------------------------------- */

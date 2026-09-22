@@ -771,6 +771,10 @@ Decisions, placement map, measurement plan and the activation steps live in
 - Never put a slot inside a `data-gr-inputs` panel, a form, a table, a
   scorecard entry or who-pays-whom. `tests/test_tool_ads.py` enforces it.
 - Unit ids are real AdSense ids (ten digits) or empty; never invent one.
+  Live since M1.1: `8457096514` (after_result), `1432433875` (lower), on the
+  four `PAGES` pilots, which are the four URLs excluded from Auto ads. Add a
+  page to `PAGES` only after it is excluded too. QA browsers set localStorage
+  `gr_adtest=1` for test ads.
   Bump `VER` in `wire_ads.py` and `version` in the module together.
 - Tests: `node tests/tool-ads.test.js` (the module in a fake browser) and
   `python3 -m unittest tests.test_tool_ads`. For a local look with a stub,

@@ -1,8 +1,14 @@
 # Monetization M1: light ads on free tools, Pro ad-free
 
-Status on 22 September 2026: the architecture is live and **dormant**. Tool
-pages load the consent message and nothing else. No tool page loads
-adsbygoogle.js until the three AdSense steps at the end of this file are done.
+Status on 22 September 2026 (M1.1): **live on the four phase A pilots**
+(Distance Check, Tee Box, Plays Like, Bag Audit) with the manual units
+`8457096514` (after_result) and `1432433875` (lower). The owner has excluded
+those four URLs from Auto ads and enabled both consent-mode toggles in Privacy
+& messaging. Every other tool page loads the consent message and nothing else.
+
+QA without counting impressions: in a test browser set localStorage
+`gr_adtest` to `1`. The module then adds `data-adtest="on"` to its units. Never
+click a live ad.
 
 ## Product decisions
 
@@ -52,8 +58,9 @@ adsbygoogle.js until the three AdSense steps at the end of this file are done.
   server-verified.
 - **Switches** (top of `tool-ads.js`):
   - `UNITS`: the two ad unit ids. Empty means off.
-  - `AUTO_ADS_EXCLUDED`: stays `false` until the tool URLs are on AdSense's
-    Auto ads page exclusions.
+  - `AUTO_ADS_EXCLUDED`: `true` since M1.1, because every `PAGES` slug is on
+    AdSense's Auto ads page exclusions. Exclude a page there before adding it
+    to `PAGES`.
   - `PAGES`: the rollout list. Phase A is the four pilots.
   - A localhost-only test switch (`gr_ads_test` in localStorage) points the
     module at `tests/fixtures/adsbygoogle-stub.js`. It is ignored on the live
@@ -151,7 +158,7 @@ Measured in the in-app browser. Tee Box, Bag Audit and Plays Like include the
 consent script, which loads after 6s. Distance Check did not load it because
 generated tools had no loader; every tool page now does.
 
-## Activating phase A
+## Activating phase A (done 22 September 2026)
 
 1. **AdSense → Privacy & messaging → European regulations → Settings:** turn
    on "Enable consent mode for analytics purposes" and "Enable consent mode
