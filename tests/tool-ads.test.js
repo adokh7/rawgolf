@@ -80,16 +80,34 @@ function browser(opts) {
   };
   const obsList = [];
   if (opts.test) win.__GR_ADS_TEST__ = opts.test;
+  // A fake clock: timers and intervals fire only when the test advances it.
+  let clock = 0;
+  const base = Date.now();
+  const FakeDate = { now: () => base + clock };
   const ctx = {
-    window: win, setTimeout: (fn, ms) => { timers.push({ fn, ms }); return timers.length; }, clearTimeout: () => {},
-    Date, JSON, Math, Object, Array, String, RegExp, Buffer
+    window: win,
+    setTimeout: (fn, ms) => { timers.push({ fn, at: clock + ms }); return timers.length; },
+    setInterval: (fn, ms) => { timers.push({ fn, at: clock + ms, every: ms }); return timers.length; },
+    clearTimeout: (id) => { if (timers[id - 1]) timers[id - 1].ran = true; },
+    clearInterval: (id) => { if (timers[id - 1]) timers[id - 1].ran = true; },
+    Date: FakeDate, JSON, Math, Object, Array, String, RegExp, Buffer
   };
   vm.createContext(ctx);
   vm.runInContext(SRC, ctx);
   return {
     win, scripts, listeners, timers, slots, obsList,
     interact() { (listeners.click || []).slice().forEach((f) => f()); },
-    runTimers(maxMs) { const due = timers.filter((t) => !t.ran && t.ms <= maxMs); due.forEach((t) => { t.ran = true; t.fn(); }); },
+    runTimers(ms) {
+      const end = clock + ms;
+      for (;;) {
+        const next = timers.filter((t) => !t.ran && t.at <= end).sort((a, b) => a.at - b.at)[0];
+        if (!next) break;
+        clock = next.at;
+        if (next.every) next.at += next.every; else next.ran = true;
+        next.fn();
+      }
+      clock = end;
+    },
     mutate() { obsList.slice().forEach((cb) => cb()); },
     adsScripts() { return scripts.filter((s) => /adsbygoogle|stub/.test(s.src || '')); },
     fcScripts() { return scripts.filter((s) => /fundingchoices/.test(s.src || '')); }
@@ -139,10 +157,10 @@ const now = Math.floor(Date.now() / 1000);
 /* ---- QA test mode ------------------------------------------------------ */
 {
   const A = slotEl('after_result', null, true);
-  browser({ slots: [A], storage: { gr_adtest: '1' } }).runTimers(2500);
+  browser({ slots: [A], storage: { gr_adtest: '1' } }).runTimers(11000);
   check(/data-adtest="on"/.test(A.innerHTML), 'gr_adtest=1 asks AdSense for test ads');
   const B = slotEl('after_result', null, true);
-  browser({ slots: [B] }).runTimers(2500);
+  browser({ slots: [B] }).runTimers(11000);
   check(!/data-adtest/.test(B.innerHTML), 'everyone else gets normal units');
   check(/data-ad-slot="8457096514"/.test(B.innerHTML), 'slot A requests unit 8457096514');
 }
@@ -178,7 +196,9 @@ for (const [label, value] of [['expired', pass(now - 60)], ['malformed', 'garbag
   outWrap.visible = true; A.visible = true;
   b.mutate();
   check(A.ins === null, 'no unit until the consent script has answered or given up');
-  b.runTimers(2500);   // the consent script neither loaded nor exposed a TCF API: stop waiting
+  b.runTimers(2500);   // the consent script has had its chance
+  check(A.ins === null, 'still no unit: the TCF API may appear a moment after the loader');
+  b.runTimers(8500);   // no TCF API after 8s more: treat the CMP as blocked
   check(A.ins && A.ins.slot === '1111111111', 'slot A renders the after_result unit');
   check(B.ins && B.ins.slot === '2222222222', 'slot B renders the lower unit with the result');
   check(/>Advertisements</.test(A.innerHTML), 'the label is "Advertisements"');
@@ -227,12 +247,27 @@ function tcfBrowser(events) {
   check(t.A.ins !== null, 'outside Europe: renders at once');
 }
 
+{
+  // What happened live: Google's loader finishes, __tcfapi appears a second
+  // later, and the message is open. The slot must wait, not give up at 8s.
+  const A = slotEl('after_result', null, true);
+  const b = browser({ host: 'localhost', test: TEST, slots: [A] });
+  b.runTimers(2500);
+  check(A.ins === null, 'late TCF API: nothing before the API appears');
+  let listener = null;
+  b.win.__tcfapi = (cmd, v, cb) => { if (cmd === 'addEventListener') { listener = cb; cb({ gdprApplies: true, eventStatus: 'cmpuishown' }, true); } };
+  b.runTimers(30000);
+  check(A.ins === null && b.win.GolfrawAds.slots()[0].state === 'waiting', 'late TCF API with the message open: still waiting, no gap');
+  listener({ gdprApplies: true, eventStatus: 'useractioncomplete' }, true);
+  check(A.ins && A.ins.slot === '1111111111', 'late TCF API: renders on the choice');
+}
+
 /* ---- failures collapse, never throw ----------------------------------- */
 function failureCase(name, onScript, afterLoad, prep) {
   const A = slotEl('after_result', null, true);
   const b = browser({ host: 'localhost', test: TEST, slots: [A], onScript });
   if (prep) prep(b);
-  b.runTimers(2500);
+  b.runTimers(11000);
   return new Promise((resolve) => setImmediate(() => { if (afterLoad) afterLoad(b); check(b.win.GolfrawAds.slots()[0].state === 'collapsed', name + ': slot collapses (' + b.win.GolfrawAds.slots()[0].state + ')'); resolve(); }));
 }
 
