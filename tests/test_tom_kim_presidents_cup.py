@@ -16,7 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SLUG = "tom-kim-presidents-cup-record-medinah"
 CANONICAL = f"https://www.golfraw.com/{SLUG}"
-IMAGE = "/public/tom-kim-presidents-cup-medinah.webp"
+IMAGE = "/public/images/tom-kim-presidents-cup-medinah.webp"
 TITLE = "Tom Kim Presidents Cup Record: 3-5-1 and a Rematch Waiting"
 H1 = "Tom Kim Is 3-5-1 at the Presidents Cup. The Villain Label Doesn't Fit the Record."
 DESCRIPTION = (
@@ -67,7 +67,7 @@ class TomKimArticleTests(unittest.TestCase):
     def test_page_and_hero_exist(self):
         self.assertTrue(self.path.exists())
         asset = ROOT / IMAGE.lstrip("/")
-        self.assertTrue(asset.exists(), "the hero is uploaded by hand to public/")
+        self.assertTrue(asset.exists(), "the hero is uploaded by hand to public/images/")
         self.assertEqual(b"RIFF", asset.read_bytes()[:4])
         self.assertEqual(b"WEBP", asset.read_bytes()[8:12])
 

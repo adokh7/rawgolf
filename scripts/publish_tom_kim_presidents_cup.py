@@ -42,10 +42,13 @@ DATE = "2026-09-23"
 # News articles carry the full publication time: the Google News sitemap and
 # feed.xml read it, and the standard sitemap keeps the date part as lastmod.
 DATETIME = "2026-09-23T16:45:00+02:00"
-# The owner uploads images by hand. The file sits in public/ at the repo root,
-# which the site serves as /public/<name> (the /images/ prefix maps only to
-# public/images/). The size is the file's own; the image pass re-reads it.
-HERO = "/public/tom-kim-presidents-cup-medinah.webp"
+# The owner uploads images by hand; this one is committed at
+# public/images/<name>.webp. Vercel serves the repo root (outputDirectory "."),
+# so that file is /public/images/<name>.webp. The bare /images/ prefix only
+# works for heroes that also have a copy in the root images/ folder, which
+# this one does not (checked live: /images/... 404, /public/images/... 200).
+# The size is the file's own; the image pass re-reads it.
+HERO = "/public/images/tom-kim-presidents-cup-medinah.webp"
 HERO_ALT = "Tom Kim of the International Team during a Presidents Cup match"
 HERO_W, HERO_H = 1536, 1024
 
