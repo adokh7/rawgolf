@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 21 Sep 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 Sep 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>Tom Kim Presidents Cup Record: 3-5-1 and a Rematch Waiting</title>
+      <link>https://www.golfraw.com/tom-kim-presidents-cup-record-medinah</link>
+      <guid isPermaLink="true">https://www.golfraw.com/tom-kim-presidents-cup-record-medinah</guid>
+      <pubDate>Wed, 23 Sep 2026 09:00:00 +0000</pubDate>
+      <category>PGA TOUR, PRESIDENTS CUP, PRO GOLF</category>
+      <description>What Tom Kim said in 2024, what he walked back, his 3-5-1 Presidents Cup record, and why the Schauffele-Cantlay rematch at Medinah matters more than the boos.</description>
+      <enclosure url="https://www.golfraw.com/public/tom-kim-presidents-cup-medinah.webp" length="108410" type="image/webp"/>
+    </item>
     <item>
       <title>3-Wood vs 3-Hybrid: Distance, Forgiveness and Which One Belongs in Your Bag</title>
       <link>https://www.golfraw.com/3-wood-vs-3-hybrid</link>
@@ -134,15 +143,6 @@
       <category>TOURNAMENTS, NEWS, SOLHEIM CUP, CHARLEY HULL, MEL REID, BERNARDUS GOLF, TEAM EUROPE, LPGA</category>
       <description>The clip came from Hull herself. The denial came from Mel Reid. What actually made her two minutes late at Bernardus, and why it matters this week.</description>
       <enclosure url="https://www.golfraw.com/news-2026-charley-hull-solheim-practice-fairway.webp" length="162222" type="image/webp"/>
-    </item>
-    <item>
-      <title>Rory McIlroy: Irish Open Will Feel &#x27;Different&#x27; With Trump Visit | GolfRaw</title>
-      <link>https://www.golfraw.com/rory-mcilroy-trump-irish-open-doonbeg</link>
-      <guid isPermaLink="true">https://www.golfraw.com/rory-mcilroy-trump-irish-open-doonbeg</guid>
-      <pubDate>Tue, 08 Sep 2026 09:00:00 +0000</pubDate>
-      <category>TOURNAMENTS, DP WORLD TOUR, RORY MCILROY, IRISH OPEN, DOONBEG, DONALD TRUMP, COUNTY CLARE</category>
-      <description>Rory McIlroy warns of crowd limits and logistics headaches as Donald Trump visits the Irish Open at Doonbeg. Here is what fans need to know.</description>
-      <enclosure url="https://www.golfraw.com/news-2026-rory-mcilroy-amgen-irish-open-doonbeg.webp" length="87710" type="image/webp"/>
     </item>
   </channel>
 </rss>
