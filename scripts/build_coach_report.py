@@ -19,7 +19,7 @@ TITLE = 'Coach &amp; Fitter Report: Gapping, Bag, Tendencies | GolfRaw'
 DESC = ('GolfRaw Pro coach report from your range session, bag and rounds: dispersion, gaps, passengers and tendencies. Open as a preview; print or share.')
 OG_IMAGE = SITE + '/public/raw-golf-practice.webp'
 # Bump when lib/pro/report.js changes (immutable .js cache).
-REPORT_VER = '2'
+REPORT_VER = '3'
 # Pro client (paywall / entitlement). Bump when lib/pro/pro.js changes.
 PRO_VER = '2'
 PREMIUM_LINK = '  <link rel="stylesheet" href="/public/tool-premium.css?v=4">\n'

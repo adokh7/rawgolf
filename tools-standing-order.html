@@ -158,7 +158,7 @@
           "name": "Can I import my launch monitor data?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Export the session as a CSV from TrackMan, Foresight, Garmin, FlightScope, Rapsodo or SkyTrak and drop it into the import panel at the top of this page. The tool finds the club and carry columns, converts meters if the file uses them, skips the summary rows vendors append, and logs the shots into today’s session. You can correct the column mapping before anything is written, and the file never leaves your device."
+            "text": "Yes. Export the session as a CSV from TrackMan, Foresight, Garmin, FlightScope, Rapsodo or SkyTrak and drop it into the import panel at the top of this page. The tool finds the club and carry columns, converts metres if the file uses them, skips the summary rows vendors append, and logs the shots into today’s session. You can correct the column mapping before anything is written, and the file never leaves your device."
           }
         },
         {
@@ -700,7 +700,7 @@
               <div><label for="lmClubCol">Club column</label><select id="lmClubCol"></select></div>
               <div><label for="lmCarryCol">Carry column</label><select id="lmCarryCol"></select></div>
               <div><label for="lmUnits">File units</label>
-                <select id="lmUnits"><option value="yards">Yards</option><option value="meters">Meters</option></select></div>
+                <select id="lmUnits"><option value="yards">Yards</option><option value="meters">Metres</option></select></div>
             </div>
             <div class="lm-warn" id="lmWarn" hidden></div>
             <label class="lm-opt"><input type="checkbox" id="lmMishits" checked>
@@ -733,7 +733,7 @@
           <p class="so-step" id="s2">Step 2 &mdash; tap the carry, then log it</p>
           <div class="so-readout" aria-live="polite" aria-atomic="true">
             <span class="val ghost" id="readout">0</span>
-            <span class="unit" id="unitLabel">yards carry</span>
+            <span class="unit" id="unitLabel">yards carry</span><!-- follows the Locker profile -->
           </div>
 
           <div class="so-pad" id="pad" role="group" aria-labelledby="s2">
@@ -775,10 +775,10 @@
                 <tr>
                   <th scope="col">Club</th>
                   <th scope="col">Shots</th>
-                  <th scope="col">Median</th>
+                  <th scope="col">Median <span id="thMedianU">(yd)</span></th>
                   <th scope="col">Spread</th>
                   <th scope="col">80% band</th>
-                  <th scope="col">Gap</th>
+                  <th scope="col">Gap <span id="thGapU">(yd)</span></th>
                 </tr>
               </thead>
               <tbody id="statBody"></tbody>
@@ -813,6 +813,8 @@
         <p><b>Gaps</b> are measured median to median. Under 8 yards, two clubs are doing one job and one
           of them is spending a slot for nothing. Over 25 yards, there is a distance you simply cannot
           cover, and you will find it on a par three at the worst possible moment.</p>
+        <p>Both numbers are yards. Log in metres and the tool holds them at 7.3 and 22.9 metres, so a
+          25-yard hole in the bag stays a 25-yard hole whichever unit you read.</p>
         <p>Range balls fly shorter than premium balls &mdash; commonly 5&ndash;10% shorter on full swings. That
           offset applies to every club roughly equally, so your <em>gaps</em> stay honest even when the
           absolute yardages read low. Gap on the shape of the ladder, not the height of it.</p>
@@ -839,7 +841,7 @@
         <details><summary>Can I import my launch monitor data?</summary>
           <p>Yes. Export the session as a CSV from TrackMan, Foresight, Garmin, FlightScope, Rapsodo or
             SkyTrak and drop it into the import panel at the top of this page. The tool finds the club and
-            carry columns, converts meters if the file uses them, skips the summary rows vendors append,
+            carry columns, converts metres if the file uses them, skips the summary rows vendors append,
             and logs the shots into today&rsquo;s session. You can correct the column mapping before anything
             is written, and the file never leaves your device.</p></details>
         <details><summary>Does this send my numbers anywhere?</summary>
@@ -933,10 +935,45 @@
       '7-iron', '8-iron', '9-iron', 'PW', 'GW', 'SW', 'LW'];
     var MIN_SHOTS = 5;        /* below this the median is not worth trusting */
     var GOOD_SHOTS = 8;       /* where the 80% band starts to mean something */
-    var GAP_HOLE = 25;        /* median-to-median gap above this = no club for it */
-    var GAP_DUP = 8;          /* below this = two clubs doing one job */
+    var GAP_HOLE = 25;        /* yards: median-to-median gap above this = no club for it */
+    var GAP_DUP = 8;          /* yards: below this = two clubs doing one job */
     var MAX_SHOTS = 50;
     var MAX_CARRY = 500;
+
+    /* ==================== UNITS ==================== */
+    /* Every shot is stored in the unit the Locker profile says (GolfrawLocker
+       .setUnits converts the stored numbers when that changes), so the logger
+       works in whichever unit the golfer chose and only the words change.
+       The two gap thresholds are yards, like the Bag Audit's: 25 yards stays
+       25 yards (22.9 metres) rather than silently becoming 25 metres. */
+    var M_PER_YD = 0.9144;
+    var profileUnits = 'yards';                    /* 'yards' | 'meters' */
+    function metric() { return profileUnits === 'meters'; }
+    function uShort() { return metric() ? 'm' : 'yd'; }
+    function uWord(n) {
+      if (metric()) return n === 1 ? 'metre' : 'metres';
+      return n === 1 ? 'yard' : 'yards';
+    }
+    /* A yard threshold in the unit on screen, one decimal in metres. */
+    function thr(yd) { return metric() ? Math.round(yd * M_PER_YD * 10) / 10 : yd; }
+    /* ...and how to say it, keeping the yard figure visible in metric. */
+    function thrWords(yd) {
+      var v = thr(yd);
+      return metric() ? v + ' ' + uWord(v) + ' (' + yd + ' yards)' : v + ' ' + uWord(v);
+    }
+    /* Adopt the profile's unit. Runs at boot and again whenever the Locker
+       drawer (or another tool) changes it. Only words change here: the stored
+       numbers were already converted by GolfrawLocker.setUnits. */
+    function applyUnits(units) {
+      profileUnits = units === 'meters' ? 'meters' : 'yards';
+      var lab = $('unitLabel');
+      if (lab) lab.textContent = uWord(2) + ' carry';
+      var cells = ['thMedianU', 'thGapU'];
+      for (var i = 0; i < cells.length; i++) {
+        var c = $(cells[i]);
+        if (c) c.textContent = '(' + uShort() + ')';
+      }
+    }
 
     /* ==================== STATISTICS ==================== */
     /* Medians and percentiles throughout, never means: one thinned range ball
@@ -1008,26 +1045,27 @@
       for (var i = 0; i < rows.length - 1; i++) {
         var a = rows[i], b = rows[i + 1], gap = a.median - b.median;
         if (!a.reliable || !b.reliable) continue;
-        if (gap > GAP_HOLE) {
+        var hole = thr(GAP_HOLE), dup = thr(GAP_DUP);
+        if (gap > hole) {
           out.push({ kind: 'gap', title: 'Hole in the bag',
-            text: r0(gap) + ' yards between your ' + a.name + ' (' + r0(a.median) + ') and your ' +
+            text: r0(gap) + ' ' + uWord(r0(gap)) + ' between your ' + a.name + ' (' + r0(a.median) + ') and your ' +
               b.name + ' (' + r0(b.median) + '). Anything landing in between has no club for it.' });
-        } else if (gap < GAP_DUP) {
+        } else if (gap < dup) {
           out.push({ kind: 'dup', title: 'Two clubs, one job',
-            text: a.name + ' and ' + b.name + ' are ' + r0(gap) + ' yards apart. One of them is ' +
+            text: a.name + ' and ' + b.name + ' are ' + r0(gap) + ' ' + uWord(r0(gap)) + ' apart. One of them is ' +
               'spending a slot for nothing &mdash; the shorter one is the usual cut.' });
         }
         /* Bands can overlap even when the medians look respectably apart. */
-        if (gap >= GAP_DUP && gap <= GAP_HOLE && a.solid && b.solid && a.p10 < b.p90) {
+        if (gap >= dup && gap <= hole && a.solid && b.solid && a.p10 < b.p90) {
           out.push({ kind: 'dup', title: 'Overlapping dispersion',
-            text: a.name + ' and ' + b.name + ' are ' + r0(gap) + ' yards apart on the median, but ' +
+            text: a.name + ' and ' + b.name + ' are ' + r0(gap) + ' ' + uWord(r0(gap)) + ' apart on the median, but ' +
               'their 80% bands overlap. On any given swing you cannot reliably tell which one you hit.' });
         }
       }
       if (!out.length && rows.length > 1) {
         out.push({ kind: 'ok', title: 'Ladder looks clean',
-          text: 'No gaps over ' + GAP_HOLE + ' yards and no two clubs inside ' + GAP_DUP +
-            ' yards of each other. Nothing in this session needs changing.' });
+          text: 'No gaps over ' + thrWords(GAP_HOLE) + ' and no two clubs inside ' + thrWords(GAP_DUP) +
+            ' of each other. Nothing in this session needs changing.' });
       }
       return out;
     }
@@ -1052,9 +1090,10 @@
       var sx = function (v) { return x0 + (v - lo) / (hi - lo) * (x1 - x0); };
 
       var p = [];
+      var chartTitle = 'Carry distance dispersion by club, in ' + uWord(2);
       p.push('<svg class="so-chart" viewBox="0 0 ' + W + ' ' + H + '" role="img" ' +
-        'aria-label="Carry distance dispersion by club" xmlns="http://www.w3.org/2000/svg">');
-      p.push('<title>Carry distance dispersion by club</title>');
+        'aria-label="' + chartTitle + '" xmlns="http://www.w3.org/2000/svg">');
+      p.push('<title>' + chartTitle + '</title>');
 
       /* axis ticks every 25 yards */
       var t0 = Math.ceil(lo / 25) * 25;
@@ -1132,6 +1171,28 @@
         setState('Could not save to this device — the session still works, but it will not survive a reload.');
       });
       return writeChain;
+    }
+
+    /* The Locker drawer can switch yards and metres while this page is open.
+       setUnits converts every stored shot, which leaves the session held here
+       in the old unit: re-read it before the next tap writes yards back over
+       metres. The re-read joins the write chain so it cannot overtake a save
+       already in flight. */
+    function syncUnits() {
+      if (!L) return;
+      L.getProfile().then(function (p) {
+        var u = p && p.units === 'meters' ? 'meters' : 'yards';
+        if (u === profileUnits) return;
+        applyUnits(u);
+        writeChain = writeChain.then(function () {
+          return L.getOrStartSession();
+        }).then(function (s) {
+          session = s;
+          if (!session.clubs) session.clubs = [];
+          renderClubs(); renderShots(); renderReadout(); renderBar();
+          if (lastRows.length) showResults(true);
+        })['catch'](function () { /* the chain must survive for the next tap */ });
+      })['catch'](function () { });
     }
 
     function setState(msg) {
@@ -1226,7 +1287,7 @@
       for (var i = 0; i < e.shots.length; i++) {
         html.push('<span class="so-shot">' + e.shots[i] +
           '<button type="button" data-del="' + i + '" aria-label="Remove the ' + e.shots[i] +
-          ' yard shot">&times;</button></span>');
+          ' ' + uWord(1) + ' shot">&times;</button></span>');   /* "150 yard shot", attributive */
       }
       host.innerHTML = html.join('');
     }
@@ -1245,7 +1306,9 @@
     /* ==================== RESULTS ==================== */
     var lastRows = [];
 
-    function showResults() {
+    /* quiet: a re-render after a unit change, not a golfer asking for results.
+       It must not scroll the page under them or count a second completion. */
+    function showResults(quiet) {
       var rows = analyse(session.clubs);
       lastRows = rows;
       if (rows.length < 2) return;
@@ -1285,6 +1348,7 @@
       $('verdicts').innerHTML = vh.join('');
 
       $('results').hidden = false;
+      if (quiet) return;
       $('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
       if (window.GRTrack) GRTrack.completed();
     }
@@ -1338,11 +1402,11 @@
 
     function buildPrint() {
       var d = new Date();
-      $('printSub').textContent = 'Median carry distances measured ' + d.toLocaleDateString() +
-        ' · ' + lastRows.length + ' clubs';
+      $('printSub').textContent = 'Median carry distances in ' + uWord(2) + ', measured ' +
+        d.toLocaleDateString() + ' · ' + lastRows.length + ' clubs';
       $('printChart').innerHTML = chartSvg(lastRows);
-      var rowsHtml = ['<table><thead><tr><th>Club</th><th>Shots</th><th>Median</th>' +
-        '<th>Spread</th><th>80% band</th><th>Gap</th></tr></thead><tbody>'];
+      var rowsHtml = ['<table><thead><tr><th>Club</th><th>Shots</th><th>Median (' + uShort() + ')</th>' +
+        '<th>Spread</th><th>80% band</th><th>Gap (' + uShort() + ')</th></tr></thead><tbody>'];
       for (var i = 0; i < lastRows.length; i++) {
         var r = lastRows[i];
         rowsHtml.push('<tr><td>' + esc(r.name) + '</td><td>' + r.n + '</td><td>' + r0(r.median) +
@@ -1381,7 +1445,8 @@
     var LM = null;
     var lmText = '';           /* the raw CSV currently being previewed */
     var lmResult = null;       /* last engine result for lmText + current overrides */
-    var profileUnits = 'yards';
+    /* The import target is the profile's unit (see UNITS above), so an
+       imported file lands in the same unit as a tapped-in shot. */
 
     function lmMsg(text, kind) { msg('lmMsg', text, kind); }
 
@@ -1435,7 +1500,7 @@
 
       var warn = [];
       if (res.mapping.carryIsTotal) warn.push('<b>No carry column found.</b> The preview is using <em>total</em> distance, which includes roll. Pick the carry column above if the file has one.');
-      if (unitsUnknown) warn.push('<b>The file does not say whether it is in yards or meters.</b> It is being read as ' + $('lmUnits').value + ' — change that above if it is wrong.');
+      if (unitsUnknown) warn.push('<b>The file does not say whether it is in yards or metres.</b> It is being read as ' + ($('lmUnits').value === 'meters' ? 'metres' : 'yards') + ' — change that above if it is wrong.');
       if (res.stats.unknownClubs.length) warn.push('<b>Unrecognised club name' + (res.stats.unknownClubs.length > 1 ? 's' : '') + ':</b> ' + esc(res.stats.unknownClubs.join(', ')) + '. Kept as written; you can rename them in the Bag Audit.');
       if (!res.clubs.length) warn.push('<b>No usable shots.</b> Check that the club and carry columns are right.');
       $('lmWarn').innerHTML = warn.join('<br>');
@@ -1637,7 +1702,7 @@
         for (var j = 0; j < session.clubs.length; j++) {
           if (clubNames.indexOf(session.clubs[j].name) === -1) clubNames.push(session.clubs[j].name);
         }
-        if (res[2] && res[2].units === 'meters') { $('unitLabel').textContent = 'meters carry'; profileUnits = 'meters'; }
+        applyUnits(res[2] && res[2].units);
         renderClubs(); renderShots(); renderBar();
         var logged = 0;
         for (var k = 0; k < session.clubs.length; k++) logged += session.clubs[k].shots.length;
@@ -1651,6 +1716,7 @@
       if (L) {
         L.subscribe(function (kind) {
           if (kind === 'clear' || kind === 'import') window.location.reload();
+          else if (kind === 'profile') syncUnits();
         });
       }
     }
@@ -1681,9 +1747,9 @@
   <!-- The Locker: local-first storage (IndexedDB) + the My Bag drawer.
        Deferred so it never competes with first paint; execution order is
        guaranteed by `defer`, which the storage layer relies on. -->
-  <script src="/lib/locker/schema.js?v=11" defer></script>
-  <script src="/lib/locker/store.js?v=11" defer></script>
-  <script src="/lib/locker/drawer.js?v=11" defer></script>
+  <script src="/lib/locker/schema.js?v=12" defer></script>
+  <script src="/lib/locker/store.js?v=12" defer></script>
+  <script src="/lib/locker/drawer.js?v=12" defer></script>
 <!-- LOCKER:END -->
 </body>
 

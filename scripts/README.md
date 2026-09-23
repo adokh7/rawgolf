@@ -877,13 +877,27 @@ no separate URLs.
   the same step as the write.
 - Bag Audit's switch styles sit in a `<!-- UNITS:START/END -->` block that
   `tool_shell.py` strips, so the generated tools do not inherit them.
+- **Tools that read stored numbers back** (the drawer's bag rows, The Standing
+  Order, the Coach Report) hold no model of their own: the numbers are already
+  in the profile's unit, so those pages only choose the words. Three rules:
+  label a stored carry from `profile.units`, never from a literal; spell it
+  *metres* on screen while the stored value stays `meters`; and convert any
+  yard threshold you compare against (The Standing Order and the report both
+  hold gaps at 25 and 8 yards, which read 22.9 and 7.3 in metres) rather than
+  comparing a metre gap against a yard number.
+- **A unit change can land while a page is open.** `setUnits` converts what is
+  in the store, which makes any copy a page is holding stale: The Standing
+  Order re-reads its session on the `profile` event before its next write,
+  because writing the copy back put yards into a metric profile.
 - `wire_locker.py` now also refreshes the Locker `?v=` inside the Locker
   blocks on articles and hubs, so a `VER` bump reaches every page.
 - Tests: `node tests/units.test.js` (conversions, rounding rules,
   repeated-switch drift, imperial-vs-metric equivalence for all four tools,
-  Distance Check vs Tee Box), `node tests/locker-units.test.js`, and
-  `python3 -m unittest tests.test_distance_units_pages`. **Bump `version`**
-  in `units.js` (and every page's `?v=`) when it changes.
+  Distance Check vs Tee Box), `node tests/locker-units.test.js`,
+  `node tests/standing-order-units.test.js`, `node tests/report-units.test.js`
+  and `python3 -m unittest tests.test_distance_units_pages
+  tests.test_locker_units_ui`. **Bump `version`** in `units.js` (and every
+  page's `?v=`) when it changes.
 
 ## Plays Like and Tee Box models (`lib/distance/plays-like.js`, `lib/distance/tee-box.js`)
 
