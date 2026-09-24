@@ -5,10 +5,19 @@
     <link>https://www.golfraw.com/</link>
     <description>Golf news without the press-release language. Evidence first, opinion labeled.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 23 Sep 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 09:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://www.golfraw.com/feed.xml" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
     <atom:link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+    <item>
+      <title>3 Clubs That Feel Like a Cheat Code (the Data Backs 2) | GolfRaw</title>
+      <link>https://www.golfraw.com/clubs-that-feel-like-a-cheat-code</link>
+      <guid isPermaLink="true">https://www.golfraw.com/clubs-that-feel-like-a-cheat-code</guid>
+      <pubDate>Thu, 24 Sep 2026 09:00:00 +0000</pubDate>
+      <category>GUIDES, EQUIPMENT, CLUB FITTING</category>
+      <description>A 7-wood, a hybrid and a chipper. Tracking data from millions of amateur rounds shows two of them lower scores. The third comes with a catch.</description>
+      <enclosure url="https://www.golfraw.com/public/images/clubs-that-feel-like-a-cheat-code.webp" length="0" type="image/webp"/>
+    </item>
     <item>
       <title>Srixon ZXi Irons Review: Which 2026 Set Fits? | GolfRaw</title>
       <link>https://www.golfraw.com/srixon-zxi-irons-review</link>
@@ -134,15 +143,6 @@
       <category>TOURNAMENTS, LIV GOLF, PRESIDENTS CUP, GEOFF OGILVY, PGA TOUR, MEDINAH, CAMERON SMITH</category>
       <description>Smith, Niemann and Herbert can&#x27;t play Medinah. Ogilvy says the Internationals got hurt harder than the US. The ownership rule behind the ban, explained.</description>
       <enclosure url="https://www.golfraw.com/news-2026-geoff-ogilvy-presidents-cup-medinah-practice.webp" length="65900" type="image/webp"/>
-    </item>
-    <item>
-      <title>Angel Yin Solheim Cup Fitness: What Team USA&#x27;s Spin Really Means | GolfRaw</title>
-      <link>https://www.golfraw.com/angel-yin-solheim-cup-fitness-team-usa-europe</link>
-      <guid isPermaLink="true">https://www.golfraw.com/angel-yin-solheim-cup-fitness-team-usa-europe</guid>
-      <pubDate>Tue, 08 Sep 2026 09:00:00 +0000</pubDate>
-      <category>TOURNAMENTS, NEWS, SOLHEIM CUP, ANGEL YIN, TEAM USA, ANGELA STANFORD, LILIA VU, BERNARDUS GOLF</category>
-      <description>Yin lost 35 pounds after a six-day hospital stay and has played one round since June. What her captain said, what she didn&#x27;t, and why Lilia Vu is there.</description>
-      <enclosure url="https://www.golfraw.com/news-2026-angel-yin-solheim-practice-tee.webp" length="154076" type="image/webp"/>
     </item>
   </channel>
 </rss>
