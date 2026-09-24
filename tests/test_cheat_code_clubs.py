@@ -17,7 +17,7 @@ from scripts.schema_normalizer import extract_visible_faq
 ROOT = Path(__file__).resolve().parents[1]
 SLUG = "clubs-that-feel-like-a-cheat-code"
 CANONICAL = f"https://www.golfraw.com/{SLUG}"
-IMAGE = "/public/images/clubs-that-feel-like-a-cheat-code.webp"
+IMAGE = "/public/clubs-that-feel-like-a-cheat-code.webp"
 TITLE = "3 Clubs That Feel Like a Cheat Code (the Data Backs 2) | GolfRaw"
 H1 = "3 Clubs That Feel Like a Cheat Code on the Course"
 DESCRIPTION = (

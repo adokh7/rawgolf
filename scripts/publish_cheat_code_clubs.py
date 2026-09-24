@@ -35,12 +35,11 @@ H1 = "3 Clubs That Feel Like a Cheat Code on the Course"
 STANDFIRST = DESCRIPTION
 DATE = "2026-09-24"
 DATETIME = "2026-09-24T15:55:00+02:00"
-# The owner uploads images by hand to public/images/, served as /public/images/.
-# The file was not on disk when this was written, so the standard hero size
-# is set here; the image pass rewrites width/height from the file once it lands.
-HERO = "/public/images/clubs-that-feel-like-a-cheat-code.webp"
+# The owner uploads images by hand; this hero sits directly in public/,
+# served as /public/<name>. The image pass rewrites width/height from the file.
+HERO = "/public/clubs-that-feel-like-a-cheat-code.webp"
 HERO_ALT = "The three golf clubs that feel like a cheat code: 7-wood, hybrid and chipper"
-HERO_W, HERO_H = 1536, 1024
+HERO_W, HERO_H = 2752, 1536
 READING_TIME = "7 min read"
 
 REGISTRY_RECORD = {
