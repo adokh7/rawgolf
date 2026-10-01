@@ -103,7 +103,7 @@
     }
 
     body { background: var(--article-paper); color: var(--article-ink); }
-    .guide-page { max-width: 1180px; margin: 0 auto; padding: clamp(26px, 4vw, 52px) clamp(16px, 4vw, 32px) 72px; }
+    .guide-page { max-width: 1180px; margin: 0 auto; padding: clamp(26px, 4vw, 52px) clamp(16px, 4vw, 32px) 44px; }
     .guide-article { min-width: 0; }
     .site-header { position: sticky; top: 0; z-index: 60; border-bottom: 1px solid var(--article-line); background: rgba(247, 247, 245, .96); box-shadow: 0 1px 2px rgba(16, 24, 20, .04); }
     .nav { display: flex; max-width: 1180px; height: 68px; align-items: center; justify-content: space-between; gap: 20px; margin: 0 auto; padding: 0 20px; }
@@ -141,8 +141,9 @@
     .methodology { margin: 24px 0 30px; padding: 16px 0; border-block: 1px solid var(--article-line); color: #48534d; font-size: 14px; line-height: 1.6; }
     .methodology strong { color: var(--article-ink); }
 
-    .affiliate-box { display: grid; grid-template-columns: minmax(170px, .72fr) minmax(0, 1.28fr); gap: clamp(18px, 3vw, 28px); align-items: center; margin: 28px 0 34px; padding: clamp(16px, 3vw, 24px); border: 1px solid #d3d5d1; border-radius: 16px; background: #fff; }
-    .affiliate-image { width: 100%; aspect-ratio: 1.5; object-fit: cover; border-radius: 10px; background: #f1f3f1; }
+    .affiliate-box { display: grid; grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr); gap: clamp(18px, 3vw, 24px); align-items: center; box-sizing: border-box; width: 100%; max-width: var(--article-measure); margin: 28px auto 34px; padding: clamp(16px, 3vw, 22px); border: 1px solid #d3d5d1; border-radius: 16px; background: #fff; box-shadow: 0 8px 24px rgba(15, 23, 42, .055); }
+    .affiliate-media { display: grid; min-width: 0; min-height: 204px; place-items: center; padding: 12px; overflow: hidden; border-radius: 11px; background: #f3f6f4; }
+    .affiliate-image { display: block; width: 100%; height: 180px; max-height: 180px; object-fit: contain; border-radius: 8px; }
     .affiliate-badge { display: inline-flex; min-height: 28px; align-items: center; margin-bottom: 10px; padding: 5px 10px; border-radius: 999px; background: #e7f6ee; color: #14583d; font-size: 11px; font-weight: 800; letter-spacing: .045em; }
     .affiliate-copy h3 { margin: 0 0 8px; color: var(--article-ink); font-size: clamp(1.18rem, 2vw, 1.45rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.2; text-transform: none; }
     .affiliate-copy > p { margin: 0 0 16px; color: #47534d; font-size: 15px; line-height: 1.55; }
@@ -168,14 +169,14 @@
     .sources li { margin: 0 0 9px; padding-left: 3px; }
     .sources a { font-weight: 600; }
 
-    .related-guides { max-width: var(--article-measure); margin: 44px auto 0; padding-top: 22px; border-top: 1px solid var(--article-line); }
+    .related-guides { max-width: var(--article-measure); margin: 36px auto 0; padding-top: 22px; border-top: 1px solid var(--article-line); }
     .related-guides h2 { margin: 0 0 12px; color: var(--article-ink); font-size: 1.3rem; letter-spacing: -.02em; }
     .related-guides ul { margin: 0; padding: 0; list-style: none; }
     .related-guides li { padding: 13px 0; border-top: 1px solid var(--article-line); }
     .related-guides a { color: #0b673b; font-weight: 700; text-decoration: underline; text-decoration-color: #b7c9be; text-underline-offset: 3px; }
     .related-guides p { margin: 5px 0 0; color: var(--article-muted); font-size: 14px; }
-    .site-footer { padding: 28px 0 calc(28px + env(safe-area-inset-bottom)); background: #0f172a; color: #f8fafc; }
-    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px; }
+    .site-footer { padding: 24px 0 calc(24px + env(safe-area-inset-bottom)); background: #0f172a; color: #f8fafc; }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; box-sizing: border-box; width: 100%; max-width: 1180px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 32px); gap: 14px 24px; }
     .footer-inner p { margin: 0; color: #cbd5e1; font-size: 13px; }
     .footer-links { display: flex; flex-wrap: wrap; gap: 10px 18px; }
     .footer-links a { min-height: 44px; display: inline-flex; align-items: center; color: #fff; font-size: 13px; text-decoration: underline; text-decoration-color: #64748b; text-underline-offset: 3px; }
@@ -205,7 +206,8 @@
       .article-body { font-size: 16px; line-height: 1.72; }
       .article-body h2 { margin-top: 40px; padding-top: 21px; }
       .affiliate-box { grid-template-columns: 1fr; gap: 16px; }
-      .affiliate-image { max-height: 250px; }
+      .affiliate-media { min-height: 0; }
+      .affiliate-image { height: 190px; max-height: 190px; }
       .affiliate-button { width: 100%; }
       .observations .table-wrap { overflow: visible; border: 0; border-radius: 0; background: transparent; }
       .observations table, .observations tbody { display: block; width: 100%; }
@@ -295,7 +297,9 @@
         <p>It isn't a universal measurement. In <a href="https://golf.com/instruction/strong-weak-neutral-golf-grip/" target="_blank" rel="noopener noreferrer">Nathalie Filler's 2020 instruction</a>, the Vs of a neutral grip point closer to the nose. Coaches also account for the way a player's arms hang and hands move. If your V lands between those cues, you haven't failed a grip test. Start in a comfortable middle position and pay attention to the shots it produces.</p>
 
         <aside class="affiliate-box" aria-label="Recommended golf grip training aid">
-          <img class="affiliate-image" src="/public/sklz-golf-grip-trainer.webp" alt="SKLZ Golf Grip Trainer" width="1268" height="675" loading="lazy" decoding="async">
+          <div class="affiliate-media">
+            <img class="affiliate-image" src="/public/sklz-golf-grip-trainer.webp" alt="SKLZ Golf Grip Trainer" width="1268" height="675" loading="lazy" decoding="async">
+          </div>
           <div class="affiliate-copy">
             <span class="affiliate-badge">Best Grip Training Aid</span>
             <h3>SKLZ Golf Grip Trainer</h3>
