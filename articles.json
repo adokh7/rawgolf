@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-23",
-  "count": 353,
+  "generated": "2026-10-01",
+  "count": 354,
   "categories": [
     "3-HYBRID",
     "3-WOOD",
@@ -42,6 +42,25 @@
     "WOMEN'S GOLF"
   ],
   "articles": [
+    {
+      "canonical": "/strong-weak-neutral-golf-grip",
+      "alias_of": "",
+      "slug": "strong-weak-neutral-golf-grip",
+      "url": "/strong-weak-neutral-golf-grip",
+      "title": "Strong, Weak or Neutral Golf Grip? Start With Your Miss | GolfRaw",
+      "excerpt": "Learn how neutral, strong and weak grips affect your clubface, then use your usual miss to decide whether a small change is worth trying.",
+      "category": [
+        "GUIDES",
+        "SWING TIPS",
+        "GOLF GRIP"
+      ],
+      "date": "2026-10-01",
+      "image": "/public/strong-weak-neutral-golf-grip.webp",
+      "keywords": "strong golf grip, weak golf grip, neutral golf grip, golf grip for slice, golf grip for hook, golf grip trainer",
+      "category_source": "editorial",
+      "section": "GUIDES",
+      "reading_time": "4 min read"
+    },
     {
       "canonical": "/clubs-that-feel-like-a-cheat-code",
       "alias_of": "",
