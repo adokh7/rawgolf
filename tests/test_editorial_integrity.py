@@ -38,6 +38,12 @@ REMOVED_FABRICATIONS = [
     "lines that fit your eye",
     "no warm-up holes out there",
     "LPGA Tour Player Financial Ledger Disclosure",
+    # Task 7 (15 Nov 2026): unsourced or misattributed quotes removed.
+    "It's a course where you have to think your way around",
+    "never really became wealthy from playing golf",
+    "Surreal about covers it",
+    "and now he's a great friend of mine",
+    "voided if they put together a smaller schedule for less money,\" DeChambeau said",
 ]
 
 # Phrases that claim first-hand or confidential sourcing GolfRaw does not have.
