@@ -147,6 +147,14 @@ class CorrectionsLogTests(unittest.TestCase):
         for entry in self.entries:
             self.assertRegex(entry, r"LOGGED \d{2} [A-Z]{3} \d{4}")
 
+    def test_unverifiable_legacy_entries_keep_their_editors_note(self):
+        # ERR-001 to ERR-003 describe articles that were never published.
+        for entry in self.entries:
+            number = int(re.search(r"ERR-(\d+)", entry).group(1))
+            if number <= 3:
+                self.assertIn("Editor&rsquo;s note", entry, f"ERR-{number:03d}")
+                self.assertIn("not a record of a real correction", entry, f"ERR-{number:03d}")
+
     def test_new_entries_link_to_live_pages(self):
         routes = set(sitemap_routes())
         for entry in self.entries:
