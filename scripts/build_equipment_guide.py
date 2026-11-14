@@ -956,10 +956,6 @@ html_content = """<!DOCTYPE html>
 
           <p>By consulting our comprehensive guide on <a href="/news-2026-driver-fitting-guide-fitzpatrick">driver fitting and hardware upgrades</a>, golfers can purchase previous-generation flagship heads at 40% to 60% discounts and invest a portion of the savings into an aftermarket shaft fitting—yielding superior dispersion compared to an un-fitted current-year $650 retail release.</p>
 
-          <blockquote class="pull">
-            "A fitted shaft in a two-year-old driver head will beat an off-the-rack $650 current release ten times out of ten on launch monitor dispersion."
-            <footer>— GolfRaw Hardware Testing Lab</footer>
-          </blockquote>
 
           <h2>Pillar 2: The Ball Formulation Truth (Urethane vs Surlyn)</h2>
           <p>Golf balls represent the highest recurring consumable cost for the average golfer. Over an active 36-round season, losing 1.5 balls per 18 holes requires roughly 18 dozen balls (including practice and warm-up wear).</p>
