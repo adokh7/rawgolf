@@ -37,7 +37,14 @@ ROBOTS_VALUE = "index, follow, max-image-preview:large"
 # and near-duplicate by nature, and Google's own guidance is to keep them
 # out; "follow" is retained so link equity still flows through them.
 NOINDEX_ROBOTS_VALUE = "noindex, follow"
-NOINDEX_PAGES = {"search.html"}
+# Search-first keyword/CPC analyses (quality review 2026-11-14): kept live for
+# readers who have the link, but out of the index.
+NOINDEX_PAGES = {
+    "search.html",
+    "guides-most-valuable-golf-search-cpc-data.html",
+    "news-2026-golf-deals-means-travel.html",
+    "news-2026-golf-pga-australia-search-demand.html",
+}
 
 
 def robots_for(name: str) -> str:

@@ -114,7 +114,7 @@ class EndOfSeasonDriverDealsTests(unittest.TestCase):
             "Sources",
             "/news-2026-scheffler-ted-scott-finding-the-number",
             "/news-2026-scheffler-true-strokes-gained",
-            "/news-2026-tour-championship-points-and-payouts",
+            "/news-2026-tour-championship-prize-money-payout",
         ):
             self.assertIn(marker, self.html, marker)
 

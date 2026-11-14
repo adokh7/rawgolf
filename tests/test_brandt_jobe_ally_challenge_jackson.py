@@ -110,7 +110,7 @@ class BrandtJobeArticleTests(unittest.TestCase):
             "4 Ks",
             "4-1 Win vs Tampa Bay",
             "/news-2026-michael-block-ally-challenge",
-            "/news-2026-tour-championship-points-and-payouts",
+            "/news-2026-tour-championship-prize-money-payout",
             "/news-2026-hovland-tour-championship-runner-up",
         ):
             self.assertIn(marker, self.html, marker)

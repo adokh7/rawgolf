@@ -16,7 +16,7 @@ SITEMAP_NS = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 
 ARTICLE_TITLES = {
     "news-2026-tour-championship-winners-losers-friday.html": "Tour Championship Winners & Losers: Scheffler Surges",
-    "news-2026-tour-championship-prize-money-payout.html": "2026 Tour Championship Payout: $355K for 30th | GolfRaw",
+    "news-2026-tour-championship-prize-money-payout.html": "2026 Tour Championship Payout: Full Prize Money | GolfRaw",
     "news-2026-cameron-young-new-putter-62-tour-championship.html": "Cameron Young's New Putter Led to a 62 | GolfRaw",
     "news-2026-hovland-tie-for-lead-tour-championship.html": "Hovland Ties Tour Championship Lead: 12 of 14 | GolfRaw",
     "news-2026-henrik-stenson-pga-tour-champions-debut.html": "Henrik Stenson's PGA Tour Champions Debut | GolfRaw",

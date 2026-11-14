@@ -300,15 +300,24 @@ class ArticleSchemaTests(unittest.TestCase):
         self.assertIn("$23,000,000", html)
         self.assertIn("THE 2026 TOUR CHAMPIONSHIP CARRIES A $40 MILLION OFFICIAL PURSE WITH $10 MILLION TO THE WINNER. PHOTO: GolfRaw", html)
 
-    def test_tour_championship_purse_page_is_registered(self):
+    def test_tour_championship_purse_page_is_merged_into_payout_page(self):
+        # Quality review 2026-11-14: the purse explainer competed with the payout
+        # page for the same queries, so it is an alias that 301s to the payout page.
         slug = "news-2026-tour-championship-purse-east-lake"
+        target = "news-2026-tour-championship-prize-money-payout"
         registry = json.loads((ROOT / "articles.json").read_text(encoding="utf-8"))
         record = next((a for a in registry["articles"] if a.get("slug") == slug), None)
         self.assertIsNotNone(record, "Tour Championship purse article is missing from articles.json")
-        self.assertEqual("PGA TOUR", record.get("category"))
-        self.assertEqual("TOURNAMENTS", record.get("section"))
+        self.assertEqual(target, record.get("alias_of"))
+        self.assertEqual(f"/{target}", record.get("canonical"))
+        redirects = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))["redirects"]
+        self.assertIn(
+            {"source": f"/{slug}", "destination": f"/{target}", "permanent": True}, redirects
+        )
         for generated in ("news.html", "tournaments.html", "search.html", "sitemap.xml"):
-            self.assertIn(slug, (ROOT / generated).read_text(encoding="utf-8"), generated)
+            text = (ROOT / generated).read_text(encoding="utf-8")
+            self.assertNotRegex(text, rf"/{slug}[\"<]", generated)
+            self.assertIn(target, text, generated)
 
 
     def test_tour_championship_2028_match_play_page_has_clean_news_schema(self):

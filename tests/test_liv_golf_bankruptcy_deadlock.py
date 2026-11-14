@@ -110,7 +110,7 @@ class LivGolfBankruptcyDeadlockTests(unittest.TestCase):
             "Sources",
             "/news-2026-the-end-of-liv-golf-bankruptcy",
             "/news-2026-scott-oneil-linkedin-post-liv-golf",
-            "/news-2026-tour-championship-points-and-payouts",
+            "/news-2026-tour-championship-prize-money-payout",
         ):
             self.assertIn(marker, self.html, marker)
 

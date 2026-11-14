@@ -95,7 +95,7 @@ class SchefflerBrandelChambleeTests(unittest.TestCase):
             "/news-2026-scottie-scheffler-final-press-conference-answer",
             "/scottie-scheffler-swing-explained",
             "/news-2026-hovland-on-what-makes-scheffler-successful",
-            "/news-2026-tour-championship-points-and-payouts",
+            "/news-2026-tour-championship-prize-money-payout",
         ):
             self.assertIn(f'href="{href}"', self.html)
         self.assertRegex(self.html, r'<section class="sources"[^>]*>')
