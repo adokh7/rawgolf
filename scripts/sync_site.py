@@ -89,12 +89,15 @@ def esc(s):
     return html_mod.escape(s, quote=True)
 
 
+# Registry titles and excerpts are stored partly HTML-encoded (for example
+# "Clark&#x27;s"). Decode them once here so esc()/js_esc() encode exactly once;
+# otherwise hub cards, search.html and feed.xml show a literal "&#x27;".
 def get_title(a):
-    return a.get('title', '')
+    return html_mod.unescape(a.get('title', ''))
 
 
 def get_excerpt(a):
-    return a.get('snippet') or a.get('excerpt') or ''
+    return html_mod.unescape(a.get('snippet') or a.get('excerpt') or '')
 
 
 def get_date(a):
@@ -888,8 +891,10 @@ def article_fingerprint(article):
     page_path = os.path.join(ROOT, slug + '.html')
     stable = {
         'url': url,
-        'title': get_title(article),
-        'excerpt': get_excerpt(article),
+        # Raw registry values, so the entity decoding in get_title/get_excerpt
+        # does not mark every encoded record as changed.
+        'title': article.get('title', ''),
+        'excerpt': article.get('snippet') or article.get('excerpt') or '',
         'date': get_date(article),
         'image': get_image(article),
         'category': get_category(article),
