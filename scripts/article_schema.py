@@ -308,12 +308,6 @@ def _author_value(parser: PageParser, nodes: list[dict]) -> object:
         return _editorial_author()
     if source.startswith(("http://", "https://")) and "golfraw.com" in source:
         return _editorial_author()
-    if source.casefold() == "marcus keane":
-        return {
-            "@type": "Person",
-            "name": "Marcus Keane",
-            "url": f"{SITE}/about",
-        }
     return source
 
 

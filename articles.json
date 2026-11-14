@@ -1307,8 +1307,8 @@
       "section": "PGA TOUR"
     },
     {
-      "canonical": "/news-2026-tour-championship-points-and-payouts",
-      "alias_of": "",
+      "canonical": "/news-2026-tour-championship-prize-money-payout",
+      "alias_of": "news-2026-tour-championship-prize-money-payout",
       "slug": "news-2026-tour-championship-points-and-payouts",
       "url": "/news-2026-tour-championship-points-and-payouts",
       "title": "Tour Championship Points and Payouts: All 29 Checks | GolfRaw",
@@ -1593,8 +1593,8 @@
       "alias_of": "",
       "slug": "news-2026-tour-championship-prize-money-payout",
       "url": "/news-2026-tour-championship-prize-money-payout",
-      "title": "2026 Tour Championship prize money payout: $355K last",
-      "excerpt": "Every spot from $10 million down to $355,000, plus the reason two different payout tables are circulating and which one the Tour actually publishes.",
+      "title": "2026 Tour Championship Payout: Full Prize Money",
+      "excerpt": "Scheffler won $10 million and 29 players shared $39.6 million at East Lake. The full 2026 Tour Championship payout, the T4 split, and why 30th went unpaid.",
       "category": "PGA TOUR",
       "date": "2026-08-27",
       "image": "/public/tour-championship-2026-prize-money-payout.webp",
@@ -1659,8 +1659,8 @@
       "section": "TOURNAMENTS"
     },
     {
-      "canonical": "/news-2026-tour-championship-purse-east-lake",
-      "alias_of": "",
+      "canonical": "/news-2026-tour-championship-prize-money-payout",
+      "alias_of": "news-2026-tour-championship-prize-money-payout",
       "slug": "news-2026-tour-championship-purse-east-lake",
       "url": "/news-2026-tour-championship-purse-east-lake",
       "title": "2026 Tour Championship Purse: The Winner Gets $10 Million",

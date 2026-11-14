@@ -137,7 +137,7 @@ class SchefflerTedScottArticleTests(unittest.TestCase):
         for href in (
             "/news-2026-hovland-tour-championship-runner-up",
             "/news-2026-scheffler-brandel-chamblee",
-            "/news-2026-tour-championship-points-and-payouts",
+            "/news-2026-tour-championship-prize-money-payout",
         ):
             self.assertIn(f'href="{href}"', self.html)
         for name in ("index.html", "news.html", "pga-tour.html", "search.html", "feed.xml", "sitemap.xml"):

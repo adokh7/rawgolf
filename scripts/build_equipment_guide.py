@@ -24,7 +24,7 @@ html_content = """<!DOCTYPE html>
   <meta name="description" content="Save $2,176 annually on golf equipment, balls, and tee times. The data-backed guide to equipment release cycles, direct-to-consumer urethane balls, and twilight rates.">
   <link rel="canonical" href="https://www.golfraw.com/equipment/golf-deals-equipment-tee-times-guide">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="author" content="Marcus Keane">
+  <meta name="author" content="GolfRaw Editorial">
 
   <!-- ============ OPEN GRAPH ============ -->
   <meta property="og:type" content="article">
@@ -38,7 +38,7 @@ html_content = """<!DOCTYPE html>
   <meta property="og:image:alt" content="Golf Deals and Equipment Optimization Guide — Save $2,176 Annually">
   <meta property="article:published_time" content="2026-08-23T08:00:00+02:00">
   <meta property="article:modified_time" content="2026-08-23T08:00:00+02:00">
-  <meta property="article:author" content="Marcus Keane">
+  <meta property="article:author" content="GolfRaw Editorial">
   <meta property="article:section" content="Equipment">
   <meta property="article:tag" content="Golf Deals">
   <meta property="article:tag" content="Equipment Guide">
@@ -71,14 +71,10 @@ html_content = """<!DOCTYPE html>
       "datePublished": "2026-08-23T08:00:00+02:00",
       "dateModified": "2026-08-23T08:00:00+02:00",
       "author": {
-        "@type": "Person",
-        "name": "Marcus Keane",
-        "jobTitle": "Senior Equipment Analyst",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "GolfRaw",
-          "url": "https://www.golfraw.com"
-        }
+        "@type": "Organization",
+        "@id": "https://www.golfraw.com/about#editorial",
+        "name": "GolfRaw Editorial",
+        "url": "https://www.golfraw.com/about"
       },
       "publisher": {
         "@type": "Organization",
@@ -128,13 +124,6 @@ html_content = """<!DOCTYPE html>
         "width": 1254,
         "height": 1254
       }
-    },
-    {
-      "@type": "Person",
-      "@id": "https://www.golfraw.com/#author-marcus-keane",
-      "name": "Marcus Keane",
-      "jobTitle": "Senior Equipment Analyst",
-      "url": "https://www.golfraw.com/about"
     },
     {
       "@type": "FAQPage",
@@ -876,7 +865,7 @@ html_content = """<!DOCTYPE html>
           <h1>Golf Deals: Save $2,176 Annually on Equipment and Rounds</h1>
           <p class="standfirst">The golf commercial engine relies on annual club release cycles, $55-a-dozen tour balls, and peak weekend markup. Here is the verified, data-backed blueprint to save $2,176 every season without sacrificing performance or playing fewer rounds.</p>
           <div class="byline">
-            <span>BY <b><a href="/about">MARCUS KEANE</a></b> · SENIOR EQUIPMENT ANALYST</span>
+            <span>BY <b><a href="/about">GOLFRAW EDITORIAL</a></b></span>
             <span>PUBLISHED <b>SUN 23 AUG 2026</b></span>
           </div>
         </header>

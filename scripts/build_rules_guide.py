@@ -24,7 +24,7 @@ html_content = """<!DOCTYPE html>
   <meta name="description" content="Complete guide to competitive golf tournament formats, USGA handicap allowances, Rule 3.3b scorecard compliance, amateur prize limits, and IRS tax reporting.">
   <link rel="canonical" href="https://www.golfraw.com/rules/golf-tournaments-rules-formats-tax-guide">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="author" content="Marcus Keane">
+  <meta name="author" content="GolfRaw Editorial">
 
   <!-- ============ OPEN GRAPH ============ -->
   <meta property="og:type" content="article">
@@ -38,7 +38,7 @@ html_content = """<!DOCTYPE html>
   <meta property="og:image:alt" content="Golf Tournament Rules, Formats, and Tax Guide">
   <meta property="article:published_time" content="2026-08-23T08:00:00+02:00">
   <meta property="article:modified_time" content="2026-08-23T08:00:00+02:00">
-  <meta property="article:author" content="Marcus Keane">
+  <meta property="article:author" content="GolfRaw Editorial">
   <meta property="article:section" content="Rules & Tournaments">
   <meta property="article:tag" content="Tournament Rules">
   <meta property="article:tag" content="Golf Formats">
@@ -71,14 +71,10 @@ html_content = """<!DOCTYPE html>
       "datePublished": "2026-08-23T08:00:00+02:00",
       "dateModified": "2026-08-23T08:00:00+02:00",
       "author": {
-        "@type": "Person",
-        "name": "Marcus Keane",
-        "jobTitle": "Senior Equipment Analyst",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "GolfRaw",
-          "url": "https://www.golfraw.com"
-        }
+        "@type": "Organization",
+        "@id": "https://www.golfraw.com/about#editorial",
+        "name": "GolfRaw Editorial",
+        "url": "https://www.golfraw.com/about"
       },
       "publisher": {
         "@type": "Organization",
@@ -128,13 +124,6 @@ html_content = """<!DOCTYPE html>
         "width": 1254,
         "height": 1254
       }
-    },
-    {
-      "@type": "Person",
-      "@id": "https://www.golfraw.com/#author-marcus-keane",
-      "name": "Marcus Keane",
-      "jobTitle": "Senior Equipment Analyst",
-      "url": "https://www.golfraw.com/about"
     },
     {
       "@type": "FAQPage",
@@ -876,7 +865,7 @@ html_content = """<!DOCTYPE html>
           <h1>Golf Tournament Rules, Formats, and Tax Guide</h1>
           <p class="standfirst">From World Handicap System allowance formulas and Rule 3.3b scorecard verification to the $1,000 amateur prize limit and IRS 1099 reporting, here is the verified operational manual for competitive golf.</p>
           <div class="byline">
-            <span>BY <b><a href="/about">MARCUS KEANE</a></b> · SENIOR EQUIPMENT ANALYST</span>
+            <span>BY <b><a href="/about">GOLFRAW EDITORIAL</a></b></span>
             <span>PUBLISHED <b>SUN 23 AUG 2026</b></span>
           </div>
         </header>

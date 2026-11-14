@@ -222,7 +222,7 @@
     },
     {
       "source": "/explainers/tour-championship-points-and-payouts-2026",
-      "destination": "/news-2026-tour-championship-points-and-payouts",
+      "destination": "/news-2026-tour-championship-prize-money-payout",
       "permanent": true
     },
     {
@@ -248,6 +248,16 @@
     {
       "source": "/news/mcilroy-sunday-67-doonbeg-irish-open",
       "destination": "/mcilroy-sunday-67-doonbeg-irish-open",
+      "permanent": true
+    },
+    {
+      "source": "/news-2026-tour-championship-points-and-payouts",
+      "destination": "/news-2026-tour-championship-prize-money-payout",
+      "permanent": true
+    },
+    {
+      "source": "/news-2026-tour-championship-purse-east-lake",
+      "destination": "/news-2026-tour-championship-prize-money-payout",
       "permanent": true
     }
   ],

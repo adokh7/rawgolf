@@ -135,7 +135,7 @@ class HovlandArticleTests(unittest.TestCase):
 
     def test_internal_links_and_synced_public_surfaces_include_article(self):
         for href in (
-            "/news-2026-tour-championship-points-and-payouts",
+            "/news-2026-tour-championship-prize-money-payout",
             "/news-2026-scheffler-brandel-chamblee",
             "/news-2026-hovland-on-what-makes-scheffler-successful",
         ):
