@@ -34,7 +34,7 @@ EXPECTED_TITLES = {
     "/news-2026-lpga-tour-golfer-costs-alexa-pano-expenses": "LPGA Tour Golfer Costs: $250k Earnings Yields $37,620",
     "/news-2026-michael-block-ally-challenge": "Michael Block's Ally Challenge: A 36-Hole Record, Then 74",
     "/news-2026-michael-block-lead-ally-challenge": "Michael Block's 2-Shot Lead at the Ally Challenge Explained",
-    "/news-2026-pga-tour-winners-2026": "PGA Tour Winners 2026: 28 Names, 35 Events, One Left",
+    "/news-2026-pga-tour-winners-2026": "PGA Tour Winners 2026: 29 Names, 37 Events",
     "/news-2026-scheffler-ted-scott-finding-the-number": "Scottie Scheffler and Ted Scott: How They Find the Number",
     "/news-2026-scheffler-true-strokes-gained": "Scottie Scheffler's True Strokes Gained: 12th Since 1983",
     "/news-2026-scott-oneil-linkedin-post-liv-golf": "Scott O'Neil's LinkedIn Post on LIV Golf 1.0, Fact-Checked",

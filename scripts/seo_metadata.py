@@ -87,7 +87,7 @@ ARTICLE_SEO_OVERRIDES: dict[str, dict[str, str]] = {
         "title": "Michael Block's 2-Shot Lead at the Ally Challenge Explained",
     },
     "/news-2026-pga-tour-winners-2026": {
-        "title": "PGA Tour Winners 2026: 28 Names, 35 Events, One Left",
+        "title": "PGA Tour Winners 2026: 29 Names, 37 Events",
     },
     "/news-2026-scheffler-ted-scott-finding-the-number": {
         "title": "Scottie Scheffler and Ted Scott: How They Find the Number",
