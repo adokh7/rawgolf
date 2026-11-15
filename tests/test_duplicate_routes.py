@@ -15,8 +15,9 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://www.golfraw.com"
 
 REDIRECTS = {
+    # Re-pointed 2026-11-15 when the 2-shot-lead page was merged (pruning phase 1).
     "/news-2026-michael-block-leads-ally-challenge-final-round":
-        "/news-2026-michael-block-lead-ally-challenge",
+        "/news-2026-michael-block-ally-challenge",
     "/news-2026-hovland-leads-tour-championship-final-day":
         "/news-2026-tour-championship-final-round-hovland-leads",
     "/blog/morikawa-61-travelers-championship-2026":
@@ -84,8 +85,8 @@ REDIRECTS = {
 }
 
 WINNERS = {
-    "/news-2026-michael-block-lead-ally-challenge":
-        "news-2026-michael-block-lead-ally-challenge.html",
+    "/news-2026-michael-block-ally-challenge":
+        "news-2026-michael-block-ally-challenge.html",
     "/news-2026-tour-championship-final-round-hovland-leads":
         "news-2026-tour-championship-final-round-hovland-leads.html",
     "/morikawa-61-travelers-championship-2026":
@@ -141,7 +142,7 @@ class DuplicateRouteTests(unittest.TestCase):
         articles = registry["articles"]
         records = {article["url"]: article for article in articles}
         for winner in (
-            "/news-2026-michael-block-lead-ally-challenge",
+            "/news-2026-michael-block-ally-challenge",
             "/news-2026-tour-championship-final-round-hovland-leads",
             "/morikawa-61-travelers-championship-2026",
             "/equipment/golf-deals-equipment-tee-times-guide",
@@ -155,7 +156,7 @@ class DuplicateRouteTests(unittest.TestCase):
     def test_sitemap_contains_each_winner_once_and_no_redirect_source(self):
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
         for winner in (
-            "/news-2026-michael-block-lead-ally-challenge",
+            "/news-2026-michael-block-ally-challenge",
             "/news-2026-tour-championship-final-round-hovland-leads",
             "/morikawa-61-travelers-championship-2026",
             "/equipment/golf-deals-equipment-tee-times-guide",

@@ -12,7 +12,7 @@
   "redirects": [
     {
       "source": "/news-2026-michael-block-leads-ally-challenge-final-round",
-      "destination": "/news-2026-michael-block-lead-ally-challenge",
+      "destination": "/news-2026-michael-block-ally-challenge",
       "permanent": true
     },
     {
@@ -258,6 +258,26 @@
     {
       "source": "/news-2026-tour-championship-purse-east-lake",
       "destination": "/news-2026-tour-championship-prize-money-payout",
+      "permanent": true
+    },
+    {
+      "source": "/news-2026-tour-championship-sunday-tee-times-round-4",
+      "destination": "/news-2026-tour-championship-tee-times-round-4",
+      "permanent": true
+    },
+    {
+      "source": "/news-2026-michael-block-lead-ally-challenge",
+      "destination": "/news-2026-michael-block-ally-challenge",
+      "permanent": true
+    },
+    {
+      "source": "/news-2026-lucas-herbert-liv-uk-record-asterisk",
+      "destination": "/news-2026-lucas-herbert-liv-golf-uk-record-win",
+      "permanent": true
+    },
+    {
+      "source": "/news-2028-pga-tour-overhaul-winners-losers",
+      "destination": "/news-2026-pga-tour-2028-overhaul-analysis",
       "permanent": true
     }
   ],

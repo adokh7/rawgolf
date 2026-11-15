@@ -156,7 +156,8 @@ class SitemapIndexationTests(unittest.TestCase):
                 self.assertEqual(expected, entries[path], path)
         self.assertEqual("2026-08-11", entries["/news-2026-liv-golf-bedminster-crushers-six-over-par"])
         self.assertEqual("2026-08-26", entries["/liv-golf-pga-tour-return"])
-        self.assertEqual("2026-08-04", entries["/news-2026-wyndham-championship-odds-day-bradley"])
+        # Noindexed in pruning phase 1 (2026-11-15), so the generator leaves it out.
+        self.assertNotIn("/news-2026-wyndham-championship-odds-day-bradley", entries)
         self.assertEqual("", entries["/"])
 
     def test_fresh_generator_recreates_the_checked_in_sitemap_contract(self):
