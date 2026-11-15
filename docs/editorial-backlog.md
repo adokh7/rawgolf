@@ -88,6 +88,7 @@ How to close an item: fetch the cited source, keep verbatim quotes with a link, 
 | /news-2026-megha-ganne-lpga-debut-inkster-award | PHOTO: GETTY IMAGES / GolfRaw |
 | /news-2026-us-womens-amateur-match-play-malixi | PHOTO: USGA/GolfRaw |
 
+- **Event photos credited "PHOTO: GolfRaw" that show third-party events.** `public/news-bryson-dechambeau-liv-indianapolis-tee.webp` (lead image on /bryson-dechambeau-liv-golf-2027) shows LIV Golf Indianapolis **2024** signage and reads as a professional event photo. Its caption was corrected to 2024 on 15 Nov 2026 (ERR-071); the credit and licence are unverified and were left unchanged.
 - **Site default image** `public/raw-golf-practice.webp`: a photorealistic person, provenance unknown, used on 39 pages including the homepage and About social previews.
 
 ## 3. Text-bearing graphics

@@ -212,6 +212,16 @@ ARTICLE_SEO_OVERRIDES.update({
 })
 
 
+# Task 14 (15 Nov 2026): the page was rewritten after LIV Golf began winding
+# down; its old title promised a LIV 2.0 decision that can no longer happen.
+ARTICLE_SEO_OVERRIDES["/bryson-dechambeau-liv-golf-2027"] = {
+    "title": "Bryson DeChambeau 2027 Decision After LIV: What's Confirmed",
+    "description": (
+        "LIV Golf is winding down. DeChambeau has a DP World Tour offer for 2027 and, as of 15 November, no announced decision. What is confirmed so far."
+    ),
+}
+
+
 # The equipment page is also one of the four overlong descriptions found in
 # the audit. Keeping the values in the same route-keyed catalog makes it
 # impossible for the shared finalizers to update only one social mirror.
