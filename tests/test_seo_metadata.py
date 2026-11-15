@@ -62,6 +62,15 @@ EXPECTED_TITLES = {
     "/tools-tee-box-check": "What Tees Should I Play? Tee Calculator by Driver Distance",
     "/tools-plays-like": "Golf Altitude & Elevation Distance Calculator | GolfRaw",
     "/tools-bag-audit": "Golf Club Gapping Calculator: Find Gaps & Overlaps | GolfRaw",
+    "/golf-majors-guide": "The 4 Golf Majors Explained: Winners Since 2006 | GolfRaw",
+    "/topgolf-first-timers": "Topgolf First Time: Rain, Clubs and What to Expect | GolfRaw",
+    "/news-2026-fedexcup-bonus-pool-payout-structure-east-lake": "FedExCup Payout 2026: The $100M Bonus Pool | GolfRaw",
+    "/news-2026-fm-championship-field-tpc-boston": "2026 FM Championship: Field, Entry List and Winner | GolfRaw",
+    "/news-2026-jack-nicklaus-career-earnings-vs-modern-pga-tour": "Jack Nicklaus Career Earnings: $5.7M From 73 Wins | GolfRaw",
+    "/news-2026-jackson-koivun-tpc-southwind-fedex-st-jude": "Koivun at the 2026 FedEx St. Jude: How He Finished | GolfRaw",
+    "/news-2026-fedex-st-jude-round-1-tee-times-jackson-koivun": "Jackson Koivun Tee Time: FedEx St. Jude Round 1 | GolfRaw",
+    "/news-2026-tony-romo-withdraws-texas-state-open": "Tony Romo Out of Texas State Open: What's Confirmed",
+    "/what-to-wear-to-topgolf": "Topgolf Dress Code: What You Can (and Can't) Wear | GolfRaw",
 }
 
 EXPECTED_DESCRIPTIONS = {
@@ -73,6 +82,9 @@ EXPECTED_DESCRIPTIONS = {
     "/tools-tee-box-check": "Enter your driver carry to see the course length the Tee It Forward chart suggests for your drive, and roughly what longer tees cost you a round.",
     "/tools-plays-like": "Enter a target distance with altitude, elevation change, wind and temperature. Get the adjusted yardage your golf shot plays and the club to hit.",
     "/tools-bag-audit": "Enter each club's carry to find gaps over 20 yards and clubs less than 8 yards apart, then see which clubs earn their spot in your bag.",
+    "/topgolf-first-timers": "First time at Topgolf? Clubs are free, bays are covered and heated, and rain rarely stops play. How a visit works and what to expect.",
+    "/news-2026-jackson-koivun-tpc-southwind-fedex-st-jude": "Koivun won the 3M Open at 25 under, then tied for 24th at TPC Southwind, with seven par 4s over 450 yards and water on 11 holes.",
+    "/what-to-wear-to-topgolf": "Topgolf has no formal dress code. Wear shoes, skip metal spikes and dress to swing. Sandals, flip-flops, closed-toe shoes and rain, answered.",
 }
 
 
