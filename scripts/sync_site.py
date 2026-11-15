@@ -56,6 +56,11 @@ HOMEPAGE_PRIORITY_URLS = (
     '/news-2026-7-wood-vs-3-iron-australian-golfers',
     '/news-2026-golf-club-distances-guide',
 )
+HOMEPAGE_TICKER_LIMIT = 5
+HOMEPAGE_TICKER_START = '<!-- START HOMEPAGE TICKER -->'
+HOMEPAGE_TICKER_END = '<!-- END HOMEPAGE TICKER -->'
+HOMEPAGE_LEAD_START = '<!-- START HOMEPAGE LEAD -->'
+HOMEPAGE_LEAD_END = '<!-- END HOMEPAGE LEAD -->'
 HOMEPAGE_START = '<!-- START HOMEPAGE ARTICLE FEED -->'
 HOMEPAGE_END = '<!-- END HOMEPAGE ARTICLE FEED -->'
 
@@ -94,6 +99,15 @@ def esc(s):
 # otherwise hub cards, search.html and feed.xml show a literal "&#x27;".
 def get_title(a):
     return html_mod.unescape(a.get('title', ''))
+
+
+BRAND_SUFFIX = re.compile(r'\s*\|\s*golfraw\s*$', re.I)
+
+
+def card_title(a):
+    """Title for a visible card heading or image alt: the <title> minus the
+    trailing brand suffix, which reads as clutter once repeated down a grid."""
+    return BRAND_SUFFIX.sub('', get_title(a)).strip()
 
 
 def get_excerpt(a):
@@ -157,12 +171,12 @@ def news_card(a):
     image_attrs = image_attribute_string(image, "card", Path(ROOT))
     return f'''        <article class="news">
           <a href="{esc(get_url(a))}" style="display:block; margin-bottom:16px;">
-            <img src="{esc(image)}" alt="{esc(get_title(a))}"{image_attrs} style="width: 100%; border-radius: 4px;" loading="lazy" decoding="async">
+            <img src="{esc(image)}" alt="{esc(card_title(a))}"{image_attrs} style="width: 100%; border-radius: 4px;" loading="lazy" decoding="async">
           </a>
           <div class="cat" style="display:flex;align-items:center;gap:8px;">
             <span>{esc(get_category(a))}</span>
           </div>
-          <h3><a href="{esc(get_url(a))}">{esc(get_title(a))}</a></h3>
+          <h3><a href="{esc(get_url(a))}">{esc(card_title(a))}</a></h3>
           <p>{esc(get_excerpt(a))}</p>
           <div class="meta"><span>BY GolfRaw Editorial</span><span class="mono">{esc(get_date(a))}</span></div>
         </article>'''
@@ -177,10 +191,10 @@ def guide_card(a):
     if reading_time:
         date_label = f"{date_label} · {reading_time}"
     return f'''        <a class="guide-card" href="{esc(get_url(a))}">
-          <img src="{esc(image)}" alt="{esc(get_title(a))}"{image_attrs} class="card-thumb" loading="lazy" decoding="async">
+          <img src="{esc(image)}" alt="{esc(card_title(a))}"{image_attrs} class="card-thumb" loading="lazy" decoding="async">
           <div class="card-body">
             <div class="badge-row"><span class="badge badge-red">{esc(get_category(a))}</span></div>
-            <h3>{esc(get_title(a))}</h3>
+            <h3>{esc(card_title(a))}</h3>
             <p>{esc(get_excerpt(a))}</p>
             <div class="card-meta">
               <span class="author">GolfRaw Editorial · {esc(date_label)}</span>
@@ -360,6 +374,67 @@ def inject_search_index(articles):
 
     write_if_changed(path, src[:start_idx] + new_block + src[end_idx:])
     return True
+
+
+def newest_articles(articles, limit):
+    """The newest articles by publication date, with no priority overrides."""
+    return sorted(articles, key=lambda a: iso_date(get_date(a)), reverse=True)[:limit]
+
+
+def display_date(a):
+    """'1 OCT 2026' from a registry date, or '' when the date is unreadable."""
+    d = iso_date(get_date(a))
+    if not d:
+        return ''
+    month = next(k for k, v in MONTHS.items() if v == d[5:7])
+    return f'{int(d[8:10])} {month} {d[:4]}'
+
+
+def ticker_item(a, hidden=False):
+    first_category = get_category(a).split(',')[0].strip()
+    label = ' · '.join(x for x in (first_category, display_date(a)) if x)
+    attrs = ' aria-hidden="true"' if hidden else ''
+    tab = ' tabindex="-1"' if hidden else ''
+    return (f'        <span{attrs}>• <b>{esc(label)}:</b> '
+            f'<a href="{esc(get_url(a))}"{tab}>{esc(card_title(a))}</a></span>')
+
+
+def replace_between(src, start_marker, end_marker, body):
+    if start_marker not in src or end_marker not in src:
+        return None
+    start = src.index(start_marker) + len(start_marker)
+    end = src.index(end_marker, start)
+    return src[:start] + body + src[end:]
+
+
+def inject_homepage_ticker_and_lead(articles):
+    """Fill the homepage ticker and hero lead from the registry.
+
+    Both used to be hand-written, so they kept announcing June stories in
+    November. Generating them means they can only ever show real, dated
+    articles. The ticker repeats its items once (hidden from assistive tech and
+    the tab order) because the CSS scroll loop translates by -50%.
+    """
+    path = os.path.join(ROOT, 'index.html')
+    src = open(path, encoding='utf-8').read()
+    newest = newest_articles(articles, HOMEPAGE_TICKER_LIMIT)
+    if not newest:
+        return False
+    items = [ticker_item(a) for a in newest] + [ticker_item(a, hidden=True) for a in newest]
+    out = replace_between(src, HOMEPAGE_TICKER_START, HOMEPAGE_TICKER_END,
+                          '\n' + '\n'.join(items) + '\n        ')
+    if out is None:
+        print('  WARNING: homepage ticker markers are missing')
+        return False
+    lead = newest[0]
+    lead_html = (f'\n        <a class="hero-lead" href="{esc(get_url(lead))}">'
+                 f'<span class="hero-lead-label">Latest · {esc(display_date(lead))}</span>'
+                 f'<span class="hero-lead-title">{esc(card_title(lead))}</span></a>\n        ')
+    out2 = replace_between(out, HOMEPAGE_LEAD_START, HOMEPAGE_LEAD_END, lead_html)
+    if out2 is None:
+        print('  WARNING: homepage lead markers are missing')
+        return False
+    return write_if_changed(path, out2)
 
 
 def inject_homepage_feed(articles):
@@ -1120,6 +1195,7 @@ if __name__ == '__main__':
 
     # 0. index.html — 15 newest direct links, with priority crawl targets
     homepage_changed = inject_homepage_feed(arts)
+    homepage_changed = inject_homepage_ticker_and_lead(arts) or homepage_changed
     print(f"  index.html homepage feed rebuilt: {len(homepage_articles(arts))} articles")
 
     # 1. news.html — ALL articles
