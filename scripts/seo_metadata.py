@@ -169,6 +169,49 @@ ARTICLE_SEO_OVERRIDES: dict[str, dict[str, str]] = {
 }
 
 
+# Task 13 (15 Nov 2026): titles the old truncator cut mid-phrase, rewritten
+# for the queries each page earns, plus the Topgolf cluster. Reviewed values:
+# fix_seo_audit.py would otherwise rebuild them from the H1 and cut them again.
+ARTICLE_SEO_OVERRIDES.update({
+    "/golf-majors-guide": {
+        "title": "The 4 Golf Majors Explained: Winners Since 2006 | GolfRaw",
+    },
+    "/topgolf-first-timers": {
+        "title": "Topgolf First Time: Rain, Clubs and What to Expect | GolfRaw",
+        "description": (
+            "First time at Topgolf? Clubs are free, bays are covered and heated, and rain rarely stops play. How a visit works and what to expect."
+        ),
+    },
+    "/news-2026-fedexcup-bonus-pool-payout-structure-east-lake": {
+        "title": "FedExCup Payout 2026: The $100M Bonus Pool | GolfRaw",
+    },
+    "/news-2026-fm-championship-field-tpc-boston": {
+        "title": "2026 FM Championship: Field, Entry List and Winner | GolfRaw",
+    },
+    "/news-2026-jack-nicklaus-career-earnings-vs-modern-pga-tour": {
+        "title": "Jack Nicklaus Career Earnings: $5.7M From 73 Wins | GolfRaw",
+    },
+    "/news-2026-jackson-koivun-tpc-southwind-fedex-st-jude": {
+        "title": "Koivun at the 2026 FedEx St. Jude: How He Finished | GolfRaw",
+        "description": (
+            "Koivun won the 3M Open at 25 under, then tied for 24th at TPC Southwind, with seven par 4s over 450 yards and water on 11 holes."
+        ),
+    },
+    "/news-2026-fedex-st-jude-round-1-tee-times-jackson-koivun": {
+        "title": "Jackson Koivun Tee Time: FedEx St. Jude Round 1 | GolfRaw",
+    },
+    "/news-2026-tony-romo-withdraws-texas-state-open": {
+        "title": "Tony Romo Out of Texas State Open: What's Confirmed",
+    },
+    "/what-to-wear-to-topgolf": {
+        "title": "Topgolf Dress Code: What You Can (and Can't) Wear | GolfRaw",
+        "description": (
+            "Topgolf has no formal dress code. Wear shoes, skip metal spikes and dress to swing. Sandals, flip-flops, closed-toe shoes and rain, answered."
+        ),
+    },
+})
+
+
 # The equipment page is also one of the four overlong descriptions found in
 # the audit. Keeping the values in the same route-keyed catalog makes it
 # impossible for the shared finalizers to update only one social mirror.
