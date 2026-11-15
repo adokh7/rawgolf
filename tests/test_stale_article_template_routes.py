@@ -47,12 +47,12 @@ ROUTES = (
     },
     {
         "output": "news-2026-pga-tour-winners-2026.html",
-        "h1": "PGA Tour Winners 2026: 28 Names, 35 Events, One Left",
-        "title": "PGA Tour Winners 2026: 28 Names, 35 Events, One Left",
-        "description": "Every winner from the Sony Open to the BMW, the three men who won three times, and why the best player in the world isn't one of them.",
+        "h1": "PGA Tour Winners 2026: 29 Names, 37 Events",
+        "title": "PGA Tour Winners 2026: 29 Names, 37 Events",
+        "description": "Every winner from the Sony Open to the Tour Championship, the four men who won three times, and the year Scottie Scheffler won no majors.",
         "canonical": "https://www.golfraw.com/news-2026-pga-tour-winners-2026",
         "image": "https://www.golfraw.com/public/pga-tour-winners-2026-season-recap.webp",
-        "body_marker": "The Complete 2026 PGA Tour Winners & Purses",
+        "body_marker": "The Complete 2026 PGA Tour Winners</h2>",
     },
     {
         "output": "news-2026-tiger-woods-career-money-list-record.html",

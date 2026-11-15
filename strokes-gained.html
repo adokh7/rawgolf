@@ -53,6 +53,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Golf caddie looking at strokes gained data in a yardage book">
 <meta property="article:published_time" content="2026-06-12T08:00:00+02:00" />
+<meta property="article:modified_time" content="2026-11-15T12:00:00+01:00" />
 <meta property="article:author" content="GolfRaw Editorial" />
 <meta property="article:section" content="Data">
 <meta property="article:tag" content="Strokes Gained">
@@ -73,7 +74,7 @@
     "https://www.golfraw.com/public/strokes-gained-explained.webp"
   ],
   "datePublished": "2026-06-12T08:00:00+02:00",
-  "dateModified": "2026-11-14T12:00:00+01:00",
+  "dateModified": "2026-11-15T12:00:00+01:00",
   "author": {
     "@type": "Organization",
     "@id": "https://www.golfraw.com/about#editorial",
@@ -408,7 +409,8 @@ table { max-width: 100%; }
         <div class="byline">
           <span>BY <b>GolfRaw DATA DESK</b></span>
           <span>PUBLISHED <b>THU 12 JUN 2026</b></span>
-          <span class="evergreen">EVERGREEN · UPDATED WEEKLY</span>
+            <span>UPDATED <b>15 NOV 2026</b></span>
+          <span class="evergreen">EVERGREEN</span>
           <span><b>11 MIN READ</b></span>
         </div>
       </header>
@@ -422,12 +424,16 @@ table { max-width: 100%; }
 
       <div class="article-body">
           <aside class="update-note" role="note" style="border-left:4px solid var(--flag);padding:14px 18px;margin:0 0 28px;background:var(--white);">
+            <p style="margin:0;"><strong>Updated 15 November 2026.</strong> We replaced baseline figures we could not source with Mark Broadie&rsquo;s published examples, corrected when the PGA Tour adopted Strokes Gained (Putting first, in May 2011), and removed a &ldquo;Week 24&rdquo; U.S. Open example whose scores and statistics were invented: the page was published before the 2026 U.S. Open, which was played at Shinnecock Hills, not Oakmont. See the <a href="/corrections">Corrections Log</a>.</p>
+          </aside>
+
+          <aside class="update-note" role="note" style="border-left:4px solid var(--flag);padding:14px 18px;margin:0 0 28px;background:var(--white);">
             <p style="margin:0;"><strong>Updated 14 November 2026.</strong> A pull-quote on this page was previously attributed to Mark Broadie&rsquo;s book <em>Every Shot Counts</em>. We could not find that line in any source, so it is now credited to GolfRaw Editorial.</p>
           </aside>
 
         <p>Whether you're chasing the SG putting meaning or just the basics, <b>here's the problem with traditional golf stats:</b> they tell you what happened but not whether it was good. A player makes 70% of their putts from 6 feet. Is that excellent? Average? A total disaster? You have no idea, because 70% of what compared to what?</p>
 
-        <p>Strokes Gained — developed by Columbia Business School professor Mark Broadie and adopted by the PGA Tour in 2011 — solves this by answering one question for every single shot: <b>compared to what a benchmark player would do from this exact situation, did you gain or lose strokes?</b></p>
+        <p>Strokes Gained — developed by Columbia Business School professor Mark Broadie; the PGA Tour introduced Strokes Gained: Putting in May 2011 and later extended it to the rest of the game — solves this by answering one question for every single shot: <b>compared to what a benchmark player would do from this exact situation, did you gain or lose strokes?</b></p>
 
         <p>That's it. That's the whole idea. Everything else is just implementation detail.</p>
 
@@ -435,7 +441,7 @@ table { max-width: 100%; }
 
         <p>The PGA Tour maintains a massive database of millions of shots across every tournament, every lie, every distance, every course condition. From this, they calculate the <b>expected number of strokes</b> a tour-average player needs to hole out from any given position on the course.</p>
 
-        <p>This is called the <b>baseline</b>. It lives in a lookup table. 15 feet from the hole on the green? Baseline: 1.83 putts. 150 yards from the fairway? Baseline: 2.81 strokes to hole out. In the rough at 200 yards? Baseline: 3.24. The table knows everything.</p>
+        <p>This is called the <b>baseline</b>. It lives in a lookup table. 16 feet from the hole on the green? Baseline: 1.8 putts. 120 yards in the fairway? Baseline: 2.85 strokes to hole out. The same distance in the rough? 3.08. These examples come from <a href="https://business.columbia.edu/sites/default/files-efs/pubfiles/4996/assessing_golfer_performance.full.pdf" rel="noopener">Broadie&rsquo;s 2012 paper</a>.</p>
 
         <div class="sg-formula">
           <div class="label">The Strokes Gained Formula</div>
@@ -444,9 +450,9 @@ table { max-width: 100%; }
           </div>
         </div>
 
-        <p>The "minus 1" accounts for the shot you just hit. If you started with a baseline of 2.81 (150 yards, fairway) and hit it to 10 feet (baseline: 1.53), you used 1 shot and moved from 2.81 expected strokes to 1.53. Your gain: <b>2.81 − 1.53 − 1 = +0.28 strokes gained.</b> You beat the field average. The shot was good.</p>
+        <p>The "minus 1" accounts for the shot you just hit. If you started 40 yards out in the fairway (baseline: 2.6) and hit it to one foot (baseline: 1.0), you used 1 shot and moved from 2.6 expected strokes to 1.0. Your gain: <b>2.6 − 1.0 − 1 = +0.6 strokes gained.</b> That is Broadie&rsquo;s own example. The shot was good.</p>
 
-        <p>Now imagine you hit it into a bunker at 40 yards (baseline: 2.10). Your gain: 2.81 − 2.10 − 1 = <b>−0.29 strokes lost.</b> The shot was bad. The baseline confirms it.</p>
+        <p>Now take a tee shot that finishes 120 yards out in the rough (3.08) instead of the fairway (2.85). The miss has already cost about a quarter of a stroke before the next swing.</p>
 
 
         <h2>The Four Categories You Need to Know</h2>
@@ -493,10 +499,10 @@ table { max-width: 100%; }
         <p>Tour average is always zero — that's built into the definition. When you see a player with <b>SG: Approach of +1.4</b>, it means they gain 1.4 strokes per round on the field with their iron play alone. That's elite. That's Scheffler in a major.</p>
 
         <h3>Why Approach is king</h3>
-        <p>Of the four categories, SG: Approach has the highest correlation with winning. Getting the ball close with your irons creates birdie opportunities that putting and short game can only capitalize on — not generate. Players who lead SG: Approach consistently rank among the best in the world, full stop. Our <a href="ratings-manual">Raw Rating system</a> weights approach at 35% for exactly this reason.</p>
+        <p>Broadie found that long-game shots, those starting over 100 yards from the hole, explain about two-thirds of the scoring differences among PGA TOUR players. Getting the ball close with your irons creates birdie opportunities that putting and short game can only capitalize on — not generate. Players who lead SG: Approach consistently rank among the best in the world, full stop. Our <a href="ratings-manual">Raw Rating system</a> weights approach at 35% for exactly this reason.</p>
 
-        <h3>Why Putting is the most overrated stat</h3>
-        <p>This will upset people: putting is the weakest predictor of future performance of the four categories. Season-long putting SG has very low year-to-year correlation — streaky putters revert to mean, elite ball-strikers stay elite. The broadcast will credit or blame the putter every week. The data says: look at the approach numbers first.</p>
+        <h3>Why putting gets too much credit</h3>
+        <p>Putting matters, but by Broadie&rsquo;s analysis it explains far less of the gap between players than the long game. The broadcast will credit or blame the putter every week. The data says: look at the approach numbers first.</p>
 
         <blockquote class="pull">
           "You can fake a scorecard. You cannot fake Strokes Gained."
@@ -504,7 +510,7 @@ table { max-width: 100%; }
         </blockquote>
 
         <h2>Strokes Gained Approach (SG: APP) Explained</h2>
-        <p>SG: Approach (often shortened to SG: APP) measures every shot a player hits from outside 100 yards with the goal of reaching the green. It compares where each approach finishes against the tour baseline for that exact distance and lie, then credits or debits the strokes gained or lost. Because hitting the ball close is what creates birdie chances, SG: APP is the single category most tightly linked to winning.</p>
+        <p>SG: Approach (often shortened to SG: APP) measures a player&rsquo;s approach shots to the green. It compares where each approach finishes against the tour baseline for that exact distance and lie, then credits or debits the strokes gained or lost. Because hitting the ball close is what creates birdie chances, it is the category to look at first.</p>
 
         <h2>What Is SG: Putting?</h2>
         <p>SG: Putting measures how many strokes a golfer gains or loses on the greens compared to a benchmark, based on every putt's starting distance. A positive number means you putted better than the field average; a negative number means worse.</p>
@@ -530,20 +536,6 @@ table { max-width: 100%; }
           </tbody>
         </table>
 
-        <h2>A Real Example: Reading a Week 24 Leaderboard</h2>
-
-        <p>Let's apply this to the current US Open leaderboard. Scheffler is at −9. McIlroy is at +1 and on the cut line. Their raw scores tell a story. Their Strokes Gained data tells the whole story.</p>
-
-        <div class="stat-box" role="table" aria-label="Week 24 SG comparison: Scheffler vs McIlroy">
-          <div class="stat-cell"><span class="n grn">+1.4</span><span class="l">Scheffler SG: Approach</span></div>
-          <div class="stat-cell"><span class="n red">−0.6</span><span class="l">McIlroy SG: Approach</span></div>
-          <div class="stat-cell"><span class="n grn">+0.9</span><span class="l">McIlroy SG: Putting</span></div>
-        </div>
-
-        <p>McIlroy is actually putting brilliantly this week — +0.9 SG: Putting is genuinely elite for a major. But it's masking a −0.6 SG: Approach disaster. His iron play is losing him almost a shot per round to the field at Oakmont, where greens hit close to the hole is the only currency that matters. The putter is covering a wound, not winning a championship.</p>
-
-        <p>Scheffler's +1.4 on approach isn't just a number — it means he's systematically hitting the ball to positions on these ultra-fast greens that leave makeable putts. The setup rewards exactly what he does best. The score is inevitable. <b>Strokes Gained told you before the weekend.</b></p>
-
         <h2>How to Use Strokes Gained as a Fan</h2>
 
         <p>You don't need to calculate anything. The PGA Tour publishes all SG data on their stats page, updated in near-real-time during tournaments. Here's a practical three-step read for any leaderboard:</p>
@@ -554,10 +546,18 @@ table { max-width: 100%; }
 
         <p><b>3. Use SG: Total as a reality check.</b> SG: Total is the sum of all four categories. It is the single best predictor of whether a player "deserved" their score that week. A player at −6 with a negative SG: Total got lucky. A player at even-par with +3.0 SG: Total is about to make a move.</p>
 
-        <p>That's the whole system. Every caddie on tour has been using a version of this since 2011. Now you're reading the same information they are — just from the grandstand instead of the bag.</p>
+        <p>That's the whole system. Now you're reading the same information they are — just from the grandstand instead of the bag.</p>
 
         <p>As always: <b>the numbers don't care about the narrative.</b></p>
 
+
+          <section class="sources" aria-labelledby="sources-checked">
+            <h2 id="sources-checked">Sources</h2>
+            <ol>
+              <li><a href="https://business.columbia.edu/sites/default/files-efs/pubfiles/4996/assessing_golfer_performance.full.pdf" rel="noopener">Mark Broadie, Interfaces (2012)</a>. Assessing Golfer Performance on the PGA TOUR.</li>
+              <li><a href="https://pgatour.com/stats/detail/02568" rel="noopener">PGA TOUR</a>. Strokes Gained: Approach the Green stats.</li>
+            </ol>
+          </section>
         <nav class="tag-row" aria-label="Article tags">
           <a href="#">Strokes Gained</a>
           <a href="#">Golf Stats</a>
