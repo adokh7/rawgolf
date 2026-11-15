@@ -71,6 +71,7 @@ EXPECTED_TITLES = {
     "/news-2026-fedex-st-jude-round-1-tee-times-jackson-koivun": "Jackson Koivun Tee Time: FedEx St. Jude Round 1 | GolfRaw",
     "/news-2026-tony-romo-withdraws-texas-state-open": "Tony Romo Out of Texas State Open: What's Confirmed",
     "/what-to-wear-to-topgolf": "Topgolf Dress Code: What You Can (and Can't) Wear | GolfRaw",
+    "/bryson-dechambeau-liv-golf-2027": "Bryson DeChambeau 2027 Decision After LIV: What's Confirmed",
 }
 
 EXPECTED_DESCRIPTIONS = {
@@ -85,6 +86,7 @@ EXPECTED_DESCRIPTIONS = {
     "/topgolf-first-timers": "First time at Topgolf? Clubs are free, bays are covered and heated, and rain rarely stops play. How a visit works and what to expect.",
     "/news-2026-jackson-koivun-tpc-southwind-fedex-st-jude": "Koivun won the 3M Open at 25 under, then tied for 24th at TPC Southwind, with seven par 4s over 450 yards and water on 11 holes.",
     "/what-to-wear-to-topgolf": "Topgolf has no formal dress code. Wear shoes, skip metal spikes and dress to swing. Sandals, flip-flops, closed-toe shoes and rain, answered.",
+    "/bryson-dechambeau-liv-golf-2027": "LIV Golf is winding down. DeChambeau has a DP World Tour offer for 2027 and, as of 15 November, no announced decision. What is confirmed so far.",
 }
 
 
